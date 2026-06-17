@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-luxury-cream: #fbfbfa;
-  --color-luxury-sand: #f4f1ea;
-  --color-luxury-charcoal: #22252a;
+  --color-luxury-slate: #121816;
+  --color-luxury-moss: #1b2421;
+  --color-luxury-linen: #eadcc9;
   --color-luxury-gold: #ba996a;
 
   --font-serif: var(--font-cormorant), Georgia, serif;
@@ -11,8 +11,8 @@
 }
 
 :root {
-  --background: #fbfbfa; /* Luxury Cream as default body background */
-  --foreground: #22252a; /* Luxury Charcoal as default text */
+  --background: #121816; /* Slate background as default */
+  --foreground: #eadcc9; /* Linen color as default text */
 }
 
 body {
@@ -26,19 +26,19 @@ body {
   flex-direction: column;
 }
 
-/* Custom scrollbar to match luxury theme */
+/* Custom scrollbar to match luxury dark theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f1ea; /* luxury-sand */
+  background: #1b2421; /* luxury-moss */
 }
 ::-webkit-scrollbar-thumb {
   background: #ba996a; /* luxury-gold */
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #22252a; /* luxury-charcoal */
+  background: #eadcc9; /* luxury-linen */
 }
 
 /* Helper styles for rich editorial layouts */

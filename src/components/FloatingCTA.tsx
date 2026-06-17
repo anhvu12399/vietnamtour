@@ -27,7 +27,7 @@ export default function FloatingCTA({ title, duration, priceFrom }: FloatingCTAP
 
   return (
     <div
-      className={`fixed bottom-0 left-0 w-full bg-luxury-cream border-t border-luxury-gold/30 shadow-2xl z-40 transition-all duration-500 py-4 px-6 lg:px-12 transform ${
+      className={`fixed bottom-0 left-0 w-full bg-luxury-slate border-t border-luxury-gold/30 shadow-2xl z-40 transition-all duration-500 py-4 px-6 lg:px-12 transform ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
       }`}
     >
@@ -37,7 +37,7 @@ export default function FloatingCTA({ title, duration, priceFrom }: FloatingCTAP
           <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">
             {duration} Days Tailor-Made Journey
           </span>
-          <h4 className="font-serif text-sm md:text-base text-luxury-charcoal font-medium">
+          <h4 className="font-serif text-sm md:text-base text-luxury-linen font-medium">
             {title}
           </h4>
         </div>
@@ -45,12 +45,12 @@ export default function FloatingCTA({ title, duration, priceFrom }: FloatingCTAP
         {/* Right Price & Button */}
         <div className="flex items-center space-x-6">
           <div className="text-right hidden xs:block">
-            <span className="text-[9px] uppercase tracking-wider text-luxury-charcoal/50 block font-light">From</span>
-            <span className="text-sm md:text-base font-bold text-luxury-charcoal">£{priceFrom.toLocaleString('en-GB')}pp</span>
+            <span className="text-[9px] uppercase tracking-wider text-luxury-linen/50 block font-light">From</span>
+            <span className="text-sm md:text-base font-bold text-luxury-linen">£{priceFrom.toLocaleString('en-GB')}pp</span>
           </div>
           <Link
             href="/enquire"
-            className="px-6 py-2.5 bg-luxury-gold hover:bg-luxury-gold/90 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
+            className="px-6 py-2.5 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
           >
             Enquire Now
           </Link>

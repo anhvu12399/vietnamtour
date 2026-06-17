@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-luxury-charcoal text-luxury-cream/90 border-t border-luxury-sand/20 pt-20 pb-10 mt-auto">
+    <footer className="bg-luxury-moss text-luxury-linen/90 border-t border-luxury-gold/20 pt-20 pb-10 mt-auto">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
@@ -22,7 +22,7 @@ export default function Footer() {
                 VIETNAM TOUR
               </span>
             </div>
-            <p className="text-sm text-luxury-cream/70 font-light leading-relaxed max-w-sm">
+            <p className="text-sm text-luxury-linen/70 font-light leading-relaxed max-w-sm">
               We design extraordinary, bespoke luxury journeys to Vietnam for discerning UK travelers. Every itinerary is tailor-made, hand-crafted, and curated by specialists with deep local expertise.
             </p>
             <div className="flex items-center space-x-4 text-xs font-semibold tracking-wider text-luxury-gold">
@@ -85,18 +85,18 @@ export default function Footer() {
               Contact & Hours
             </h4>
             <div className="space-y-4 text-sm font-light">
-              <p className="leading-relaxed text-luxury-cream/70">
+              <p className="leading-relaxed text-luxury-linen/70">
                 Speak directly to our UK-based team of destination consultants:
               </p>
               <div className="space-y-1">
                 <a href="tel:+442078459200" className="block text-base font-medium text-luxury-gold hover:underline">
                   +44 (0) 20 7845 9200
                 </a>
-                <a href="mailto:expert@vietnamtour.co.uk" className="block text-xs text-luxury-cream/60 hover:underline">
+                <a href="mailto:expert@vietnamtour.co.uk" className="block text-xs text-luxury-linen/60 hover:underline">
                   expert@vietnamtour.co.uk
                 </a>
               </div>
-              <div className="text-xs text-luxury-cream/60 space-y-1">
+              <div className="text-xs text-luxury-linen/60 space-y-1">
                 <p>Monday - Friday: 09:00 - 18:00 GMT</p>
                 <p>Saturday: 10:00 - 14:00 GMT</p>
               </div>
@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-luxury-cream/10 flex flex-col md:flex-row items-center justify-between text-xs text-luxury-cream/50 font-light">
+        <div className="mt-16 pt-8 border-t border-luxury-linen/10 flex flex-col md:flex-row items-center justify-between text-xs text-luxury-linen/50 font-light">
           <p>© {new Date().getFullYear()} VietnamTour.co.uk. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:underline">Privacy Policy</a>

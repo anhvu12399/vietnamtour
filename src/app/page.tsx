@@ -29,7 +29,7 @@ export default async function HomePage() {
             priority
           />
           {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-luxury-charcoal/80 via-luxury-charcoal/25 to-luxury-charcoal/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate/90 via-luxury-slate/25 to-luxury-slate/40 z-10" />
         </div>
 
         {/* Content */}
@@ -46,7 +46,7 @@ export default async function HomePage() {
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/enquire"
-              className="w-full sm:w-auto px-8 py-3.5 bg-luxury-gold hover:bg-luxury-gold/90 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
+              className="w-full sm:w-auto px-8 py-3.5 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
             >
               Enquire Online
             </Link>
@@ -70,31 +70,31 @@ export default async function HomePage() {
       </section>
 
       {/* 2. Brand Value Pitch Section */}
-      <section className="bg-luxury-sand py-24 border-y border-luxury-gold/20">
+      <section className="bg-luxury-moss py-24 border-y border-luxury-gold/20">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-8">
-          <h2 className="font-serif text-2xl lg:text-4xl text-luxury-charcoal font-medium">
+          <h2 className="font-serif text-2xl lg:text-4xl text-luxury-linen font-medium">
             The Art of Customised Travel
           </h2>
           <div className="h-[1px] w-24 bg-luxury-gold mx-auto" />
-          <p className="font-serif italic text-lg sm:text-xl text-luxury-charcoal/80 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-serif italic text-lg sm:text-xl text-luxury-linen/80 max-w-3xl mx-auto leading-relaxed">
             &ldquo;We don&rsquo;t believe in pre-packaged tours. Your journey to Vietnam will be drafted from a blank page, aligned with your personal pacing, style, and culinary wishes.&rdquo;
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
             <div className="space-y-3">
-              <h3 className="font-serif text-lg text-luxury-charcoal font-medium">Bespoke Curation</h3>
-              <p className="text-xs sm:text-sm text-luxury-charcoal/70 font-light leading-relaxed">
+              <h3 className="font-serif text-lg text-luxury-linen font-medium">Bespoke Curation</h3>
+              <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
                 Handpicked boutique stays, private regional flights, and customized daily activities configured for you.
               </p>
             </div>
             <div className="space-y-3">
-              <h3 className="font-serif text-lg text-luxury-charcoal font-medium">True Local Expertise</h3>
-              <p className="text-xs sm:text-sm text-luxury-charcoal/70 font-light leading-relaxed">
+              <h3 className="font-serif text-lg text-luxury-linen font-medium">True Local Expertise</h3>
+              <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
                 Consultants who have lived, traveled, and thoroughly explored Vietnam to bring you real insider insight.
               </p>
             </div>
             <div className="space-y-3">
-              <h3 className="font-serif text-lg text-luxury-charcoal font-medium">Peace of Mind</h3>
-              <p className="text-xs sm:text-sm text-luxury-charcoal/70 font-light leading-relaxed">
+              <h3 className="font-serif text-lg text-luxury-linen font-medium">Peace of Mind</h3>
+              <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
                 Full ATOL and ABTA security, with 24/7 localized support from arrival to departure.
               </p>
             </div>
@@ -109,18 +109,18 @@ export default async function HomePage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
               Tailor-Made Options
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-charcoal font-medium">
+            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium">
               Curated Itineraries
             </h2>
           </div>
-          <p className="text-sm text-luxury-charcoal/60 font-light max-w-md leading-relaxed">
+          <p className="text-sm text-luxury-linen/60 font-light max-w-md leading-relaxed">
             Get inspired by our popular itineraries. You can personalize any element, length of stay, or selection of resorts.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {itineraries.map((it) => (
-            <div key={it._id} className="group flex flex-col bg-white border border-luxury-sand overflow-hidden transition-all duration-300 hover:shadow-xl">
+            <div key={it._id} className="group flex flex-col bg-luxury-moss border border-luxury-moss overflow-hidden transition-all duration-300 hover:shadow-xl">
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
                 <Image
@@ -129,7 +129,7 @@ export default async function HomePage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-luxury-charcoal text-white text-[10px] tracking-widest uppercase font-semibold px-3 py-1">
+                <div className="absolute top-4 left-4 bg-luxury-slate text-luxury-linen text-[10px] tracking-widest uppercase font-semibold px-3 py-1 border border-luxury-gold/30">
                   {it.duration} Days
                 </div>
               </div>
@@ -137,18 +137,18 @@ export default async function HomePage() {
               {/* Body */}
               <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
                 <div className="space-y-3">
-                  <h3 className="font-serif text-xl text-luxury-charcoal group-hover:text-luxury-gold transition-colors font-medium leading-snug">
+                  <h3 className="font-serif text-xl text-luxury-linen group-hover:text-luxury-gold transition-colors font-medium leading-snug">
                     {it.title}
                   </h3>
-                  <p className="text-xs text-luxury-charcoal/60 font-light leading-relaxed line-clamp-3">
+                  <p className="text-xs text-luxury-linen/60 font-light leading-relaxed line-clamp-3">
                     {it.intro}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-luxury-sand flex items-center justify-between">
+                <div className="pt-6 border-t border-luxury-slate flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <span className="text-[10px] uppercase tracking-wider text-luxury-charcoal/50 block font-light">From</span>
-                    <span className="text-base font-semibold text-luxury-charcoal">£{it.priceFrom.toLocaleString('en-GB')}pp</span>
+                    <span className="text-[10px] uppercase tracking-wider text-luxury-linen/50 block font-light">From</span>
+                    <span className="text-base font-semibold text-luxury-linen">£{it.priceFrom.toLocaleString('en-GB')}pp</span>
                   </div>
                   <Link
                     href={`/itineraries/${it.slug.current}`}
@@ -165,24 +165,24 @@ export default async function HomePage() {
       </section>
 
       {/* 4. Luxury Accommodation Section */}
-      <section id="accommodations" className="bg-luxury-sand py-24">
+      <section id="accommodations" className="bg-luxury-moss py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
               Elite Retreats
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-charcoal font-medium">
+            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium">
               Featured Luxury Stays
             </h2>
             <div className="h-[1px] w-16 bg-luxury-gold mx-auto mt-4" />
-            <p className="text-sm text-luxury-charcoal/65 font-light leading-relaxed">
+            <p className="text-sm text-luxury-linen/65 font-light leading-relaxed">
               We partner only with Vietnam&rsquo;s most premium, private resorts to guarantee absolute seclusion, customized spa programs, and fine dining.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {accommodations.map((acc) => (
-              <div key={acc._id} className="bg-white border border-luxury-sand p-4 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-shadow duration-300">
+              <div key={acc._id} className="bg-luxury-slate border border-luxury-moss p-4 flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48 sm:h-auto w-full sm:w-48 md:w-56 shrink-0 overflow-hidden">
                   <Image
                     src={acc.gallery[0]}
@@ -195,19 +195,19 @@ export default async function HomePage() {
                   <div className="space-y-3">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">{acc.rating}</span>
-                      <h3 className="font-serif text-lg text-luxury-charcoal font-semibold">{acc.name}</h3>
-                      <p className="text-xs text-luxury-charcoal/50 italic">{acc.location}</p>
+                      <h3 className="font-serif text-lg text-luxury-linen font-semibold">{acc.name}</h3>
+                      <p className="text-xs text-luxury-linen/50 italic">{acc.location}</p>
                     </div>
                     <ul className="flex flex-wrap gap-2">
                       {acc.features.slice(0, 3).map((f, i) => (
-                        <li key={i} className="text-[10px] bg-luxury-sand text-luxury-charcoal/80 px-2 py-0.5 rounded-none font-medium">
+                        <li key={i} className="text-[10px] bg-luxury-moss text-luxury-linen/80 px-2 py-0.5 rounded-none font-medium">
                           {f}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-4 border-t border-luxury-sand flex items-center justify-between">
-                    <span className="text-[10px] uppercase text-luxury-charcoal/50 font-light">Featured accommodation</span>
+                  <div className="pt-4 border-t border-luxury-moss flex items-center justify-between">
+                    <span className="text-[10px] uppercase text-luxury-linen/50 font-light">Featured accommodation</span>
                     <a
                       href={acc.websiteUrl}
                       target="_blank"
@@ -231,11 +231,11 @@ export default async function HomePage() {
           <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
             Local Curators
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-luxury-charcoal font-medium">
+          <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium">
             Meet Our Travel Experts
           </h2>
           <div className="h-[1px] w-16 bg-luxury-gold mx-auto mt-4" />
-          <p className="text-sm text-luxury-charcoal/65 font-light leading-relaxed">
+          <p className="text-sm text-luxury-linen/65 font-light leading-relaxed">
             Our experts travel to Vietnam regularly, mapping out new adventures and building close ties with local hosts to ensure your itinerary runs perfectly.
           </p>
         </div>
@@ -253,15 +253,15 @@ export default async function HomePage() {
               </div>
               <div className="space-y-4 flex-grow">
                 <div>
-                  <h3 className="font-serif text-xl text-luxury-charcoal font-semibold">{spec.name}</h3>
+                  <h3 className="font-serif text-xl text-luxury-linen font-semibold">{spec.name}</h3>
                   <p className="text-xs text-luxury-gold uppercase tracking-wider font-semibold">{spec.role}</p>
                 </div>
-                <p className="text-xs sm:text-sm text-luxury-charcoal/75 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-luxury-linen/75 font-light leading-relaxed">
                   {spec.bio[0].children[0].text}
                 </p>
                 <div className="pt-2 text-xs space-y-1">
-                  <p className="text-luxury-charcoal/60">📍 Favorite Area: <span className="font-medium text-luxury-charcoal">{spec.favoriteDestinations.join(', ')}</span></p>
-                  <p className="text-luxury-charcoal/70 font-semibold">📞 Direct UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
+                  <p className="text-luxury-linen/60">📍 Favorite Area: <span className="font-medium text-luxury-linen">{spec.favoriteDestinations.join(', ')}</span></p>
+                  <p className="text-luxury-linen/70 font-semibold">📞 Direct UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
                 </div>
               </div>
             </div>
@@ -270,23 +270,23 @@ export default async function HomePage() {
       </section>
 
       {/* 6. Editorial CTA Banner */}
-      <section className="relative bg-luxury-charcoal text-white py-24 overflow-hidden">
+      <section className="relative bg-luxury-moss text-white py-24 overflow-hidden border-t border-luxury-gold/20">
         {/* Decorative subtle texture/glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(186,153,106,0.15),transparent_50%)]" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
           <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
             Design Your Journey
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-snug">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-snug text-luxury-linen">
             Ready to Begin Planning Your Custom Trip?
           </h2>
-          <p className="text-sm sm:text-base font-light text-white/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base font-light text-luxury-linen/70 max-w-2xl mx-auto leading-relaxed">
             Contact us today. We will match you with one of our Vietnam specialists to draft a bespoke itinerary matching your preferred pacing and luxury hotels.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
             <Link
               href="/enquire"
-              className="w-full sm:w-auto px-10 py-4 bg-luxury-gold hover:bg-luxury-gold/90 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
+              className="w-full sm:w-auto px-10 py-4 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
             >
               Start Planning
             </Link>

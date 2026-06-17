@@ -32,15 +32,15 @@ export default function Navbar() {
 
   const navbarBg = isHeroPage
     ? isScrolled
-      ? 'bg-luxury-cream/95 backdrop-blur-md shadow-sm border-b border-luxury-sand'
+      ? 'bg-luxury-slate/95 backdrop-blur-md shadow-sm border-b border-luxury-moss/50'
       : 'bg-transparent text-white'
-    : 'bg-luxury-cream/95 backdrop-blur-md shadow-sm border-b border-luxury-sand';
+    : 'bg-luxury-slate/95 backdrop-blur-md shadow-sm border-b border-luxury-moss/50';
 
-  const textColor = isHeroPage && !isScrolled ? 'text-white' : 'text-luxury-charcoal';
+  const textColor = isHeroPage && !isScrolled ? 'text-white' : 'text-luxury-linen';
   const logoColor = isHeroPage && !isScrolled ? 'text-white' : 'text-luxury-gold';
   const buttonStyle = isHeroPage && !isScrolled
-    ? 'border-white text-white hover:bg-white hover:text-luxury-charcoal'
-    : 'border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-white';
+    ? 'border-white text-white hover:bg-white hover:text-luxury-slate'
+    : 'border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-slate';
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navbarBg} ${textColor}`}>
@@ -94,7 +94,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggles */}
+          {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -119,7 +119,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-luxury-cream text-luxury-charcoal border-b border-luxury-sand animate-fade-in">
+        <div className="md:hidden bg-luxury-slate text-luxury-linen border-b border-luxury-moss/50 animate-fade-in">
           <div className="px-6 pt-4 pb-6 space-y-4">
             {navLinks.map((link) => (
               <Link
@@ -131,7 +131,7 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-luxury-sand flex flex-col space-y-4">
+            <div className="pt-4 border-t border-luxury-moss/50 flex flex-col space-y-4">
               <a 
                 href="tel:+442078459200" 
                 className="text-sm font-medium tracking-wide"
@@ -141,7 +141,7 @@ export default function Navbar() {
               <Link
                 href="/enquire"
                 onClick={() => setIsOpen(false)}
-                className="w-full text-center px-6 py-3 border border-luxury-gold text-luxury-gold bg-transparent hover:bg-luxury-gold hover:text-white text-xs tracking-widest uppercase font-semibold transition-all duration-300"
+                className="w-full text-center px-6 py-3 border border-luxury-gold text-luxury-gold bg-transparent hover:bg-luxury-gold hover:text-luxury-slate text-xs tracking-widest uppercase font-semibold transition-all duration-300"
               >
                 Enquire Now
               </Link>
