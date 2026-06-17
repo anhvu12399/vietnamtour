@@ -1,4 +1,6 @@
 import { createClient } from '@sanity/client';
+import { defineLive } from 'next-sanity/live';
+import { draftMode } from 'next/headers';
 import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
 import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post } from './types';
 
@@ -12,10 +14,51 @@ export const client = projectId
       dataset,
       apiVersion,
       useCdn: true,
+      stega: {
+        studioUrl: '/studio',
+      },
     })
   : null;
 
 const useMock = !client;
+
+export const { sanityFetch, SanityLive } = client
+  ? defineLive({
+      client,
+      serverToken: process.env.SANITY_WRITE_TOKEN,
+      browserToken: process.env.SANITY_WRITE_TOKEN,
+    })
+  : { sanityFetch: null, SanityLive: () => null };
+
+async function fetchSanity<T>(query: string, params: Record<string, any> = {}): Promise<T> {
+  if (sanityFetch) {
+    let previewOptions: {
+      perspective: 'published' | 'previewDrafts';
+      stega: boolean;
+    } = {
+      perspective: 'published',
+      stega: false,
+    };
+
+    try {
+      const draft = await draftMode();
+      previewOptions = {
+        perspective: draft.isEnabled ? 'previewDrafts' : 'published',
+        stega: draft.isEnabled,
+      };
+    } catch (e) {
+      // draftMode() throws during static generation / build time without HTTP request context
+    }
+
+    const { data } = await sanityFetch({
+      query,
+      params,
+      ...previewOptions,
+    });
+    return data as T;
+  }
+  return await client!.fetch(query, params);
+}
 
 // --- Itineraries ---
 
@@ -33,7 +76,7 @@ export async function getItineraries(): Promise<Itinerary[]> {
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query);
+  return await fetchSanity<Itinerary[]>(query);
 }
 
 export async function getFeaturedItineraries(): Promise<Itinerary[]> {
@@ -50,7 +93,7 @@ export async function getFeaturedItineraries(): Promise<Itinerary[]> {
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query);
+  return await fetchSanity<Itinerary[]>(query);
 }
 
 export async function getItineraryBySlug(slug: string): Promise<Itinerary | null> {
@@ -67,7 +110,7 @@ export async function getItineraryBySlug(slug: string): Promise<Itinerary | null
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query, { slug });
+  return await fetchSanity<Itinerary | null>(query, { slug });
 }
 
 // --- Accommodations ---
@@ -76,14 +119,14 @@ export async function getAccommodations(): Promise<Accommodation[]> {
   if (useMock) {
     return mockAccommodations;
   }
-  return await client!.fetch(`*[_type == "accommodation"]`);
+  return await fetchSanity<Accommodation[]>(`*[_type == "accommodation"]`);
 }
 
 export async function getAccommodationBySlug(slug: string): Promise<Accommodation | null> {
   if (useMock) {
     return mockAccommodations.find(acc => acc.slug.current === slug) || null;
   }
-  return await client!.fetch(`*[_type == "accommodation" && slug.current == $slug][0]`, { slug });
+  return await fetchSanity<Accommodation | null>(`*[_type == "accommodation" && slug.current == $slug][0]`, { slug });
 }
 
 // --- Specialists ---
@@ -92,14 +135,14 @@ export async function getSpecialists(): Promise<Specialist[]> {
   if (useMock) {
     return mockSpecialists;
   }
-  return await client!.fetch(`*[_type == "specialist"]`);
+  return await fetchSanity<Specialist[]>(`*[_type == "specialist"]`);
 }
 
 export async function getSpecialistBySlug(slug: string): Promise<Specialist | null> {
   if (useMock) {
     return mockSpecialists.find(spec => spec.slug.current === slug) || null;
   }
-  return await client!.fetch(`*[_type == "specialist" && slug.current == $slug][0]`, { slug });
+  return await fetchSanity<Specialist | null>(`*[_type == "specialist" && slug.current == $slug][0]`, { slug });
 }
 
 // --- Destinations ---
@@ -108,7 +151,7 @@ export async function getDestinations(): Promise<Destination[]> {
   if (useMock) {
     return mockDestinations;
   }
-  return await client!.fetch(`*[_type == "destination"]{
+  return await fetchSanity<Destination[]>(`*[_type == "destination"]{
     ...,
     "seo": seo{
       metaTitle, metaDescription, keywords,
@@ -132,14 +175,14 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query, { slug });
+  return await fetchSanity<Destination | null>(query, { slug });
 }
 
 // --- Cruises ---
 
 export async function getCruises(): Promise<Cruise[]> {
   if (useMock) return [];
-  return await client!.fetch(`*[_type == "cruise"]{
+  return await fetchSanity<Cruise[]>(`*[_type == "cruise"]{
     ...,
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url,
@@ -161,7 +204,7 @@ export async function getCruiseBySlug(slug: string): Promise<Cruise | null> {
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query, { slug });
+  return await fetchSanity<Cruise | null>(query, { slug });
 }
 
 export async function getCruisesByDestination(destinationSlug: string): Promise<Cruise[]> {
@@ -171,14 +214,14 @@ export async function getCruisesByDestination(destinationSlug: string): Promise<
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url
   }`;
-  return await client!.fetch(query, { destinationSlug });
+  return await fetchSanity<Cruise[]>(query, { destinationSlug });
 }
 
 // --- Travel Guides ---
 
 export async function getTravelGuides(): Promise<TravelGuide[]> {
   if (useMock) return [];
-  return await client!.fetch(`*[_type == "travelGuide"]{
+  return await fetchSanity<TravelGuide[]>(`*[_type == "travelGuide"]{
     ...,
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url,
@@ -214,7 +257,7 @@ export async function getTravelGuideBySlug(destinationSlug: string, guideSlug: s
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query, { destinationSlug, guideSlug });
+  return await fetchSanity<TravelGuide | null>(query, { destinationSlug, guideSlug });
 }
 
 export async function getTravelGuidesByDestination(destinationSlug: string): Promise<TravelGuide[]> {
@@ -224,7 +267,7 @@ export async function getTravelGuidesByDestination(destinationSlug: string): Pro
     "mainImage": mainImage.asset->url,
     destination->{ _id, name, slug }
   }`;
-  return await client!.fetch(query, { destinationSlug });
+  return await fetchSanity<TravelGuide[]>(query, { destinationSlug });
 }
 
 // --- Homepage ---
@@ -246,7 +289,7 @@ export interface HomepageData {
 
 export async function getHomepage(): Promise<HomepageData | null> {
   if (useMock) return null;
-  return await client!.fetch(`*[_type == "homepage"][0]{
+  return await fetchSanity<HomepageData | null>(`*[_type == "homepage"][0]{
     title, heroHeading, heroSubheading,
     introHeading, introParagraph1, introParagraph2,
     artOfTravelHeading, artOfTravelText,
@@ -259,7 +302,7 @@ export async function getHomepage(): Promise<HomepageData | null> {
 
 export async function getPosts(): Promise<Post[]> {
   if (useMock) return [];
-  return await client!.fetch(`*[_type == "post"] | order(publishedAt desc){
+  return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
     ...,
     "mainImage": mainImage.asset->url,
     "seo": seo{
@@ -279,6 +322,5 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await client!.fetch(query, { slug });
+  return await fetchSanity<Post | null>(query, { slug });
 }
-

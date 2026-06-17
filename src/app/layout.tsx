@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
+import { SanityLive } from "@/sanity/client";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,11 +34,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://vietnamtour.co.uk"),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDraftMode = (await draftMode()).isEnabled;
   return (
     <html
       lang="en"
@@ -43,6 +47,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-luxury-slate text-luxury-linen">
         {children}
+        {SanityLive && <SanityLive />}
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );
