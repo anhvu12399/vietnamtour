@@ -31,7 +31,7 @@ export default async function AccommodationsPage() {
 
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {accommodations.map((acc) => (
+            {accommodations.map((acc, idx) => (
               <div key={acc._id} className="bg-luxury-moss border border-luxury-moss p-6 flex flex-col sm:flex-row gap-6 hover:shadow-xl transition-all duration-300">
                 <div className="relative h-60 sm:h-auto w-full sm:w-56 md:w-64 shrink-0 overflow-hidden">
                   <Image
@@ -39,6 +39,7 @@ export default async function AccommodationsPage() {
                     alt={acc.name}
                     fill
                     className="object-cover"
+                    priority={idx < 2}
                   />
                 </div>
                 <div className="flex flex-col justify-between py-2 pr-2 flex-grow space-y-4 sm:space-y-0">

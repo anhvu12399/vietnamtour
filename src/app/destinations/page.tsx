@@ -31,7 +31,7 @@ export default async function DestinationsPage() {
 
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {destinations.map((dest) => (
+            {destinations.map((dest, idx) => (
               <div key={dest._id} className="group relative h-[350px] overflow-hidden flex items-end justify-start p-8 border border-luxury-moss/50 shadow-lg">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
@@ -40,6 +40,7 @@ export default async function DestinationsPage() {
                     alt={dest.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-75"
+                    priority={idx < 2}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate via-luxury-slate/20 to-transparent z-10" />
                 </div>

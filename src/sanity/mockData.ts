@@ -21,8 +21,8 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Plunge Pool', 'Personal Butler Service', 'Hilltop Infinity Pool', 'Private Beach Club', 'World-Class Spa Pavilions'],
     gallery: [
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_amanoi_villa.png',
+      '/images/beach_night.png'
     ],
     websiteUrl: 'https://www.aman.com/resorts/amanoi'
   },
@@ -46,8 +46,8 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Overwater & Hilltop Villas', 'Wine Cave Dining', 'Pristine Coral Reef Access', 'Award-winning Wellness Spa', 'Eco-friendly Sustainability Philosophy'],
     gallery: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_cave_dining.png',
+      '/images/halong_night.png'
     ],
     websiteUrl: 'https://www.sixsenses.com/en/resorts/ninh-van-bay'
   },
@@ -71,8 +71,8 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Historic French-Colonial Wing', 'Michelin-selected Restaurant', 'Bespoke Sommelier Service', 'Heated Outdoor Pool', 'Private Historical Bunker Tour'],
     gallery: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_hanoi_colonial.png',
+      '/images/sapa_night.png'
     ],
     websiteUrl: 'https://all.accor.com/hotel/1555/index.en.shtml'
   },
@@ -96,8 +96,8 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Lagoon Villas', 'Ocean View Sky Pools', 'Omakase & Fine Dining', 'Private Luxury Catamaran', 'Interactive Kids Club'],
     gallery: [
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_phu_quoc_beach.png',
+      '/images/beach_night.png'
     ],
     websiteUrl: 'https://phuquoc.regenthotels.com'
   }
@@ -108,7 +108,7 @@ export const mockSpecialists: Specialist[] = [
     _id: 'spec-1',
     name: 'Alice Mercer',
     slug: { current: 'alice-mercer' },
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80',
+    image: '/images/specialist_alice.png',
     role: 'Senior Indochina Specialist',
     email: 'alice.mercer@vietnamtour.co.uk',
     phone: '+44 (0) 20 7845 9210',
@@ -134,7 +134,7 @@ export const mockSpecialists: Specialist[] = [
     _id: 'spec-2',
     name: 'James Harrison',
     slug: { current: 'james-harrison' },
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80',
+    image: '/images/specialist_james.png',
     role: 'Vietnam & Expedition Consultant',
     email: 'james.harrison@vietnamtour.co.uk',
     phone: '+44 (0) 20 7845 9214',
@@ -163,7 +163,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-1',
     name: 'Hanoi & The North',
     slug: { current: 'hanoi-and-the-north' },
-    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/vietnamtour_sapa_lodge.png',
     description: [
       {
         _key: 'b1',
@@ -187,7 +187,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-2',
     name: 'Central Coast & Hoi An',
     slug: { current: 'central-coast-and-hoi-an' },
-    image: 'https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/vietnamtour_cave_dining.png',
     description: [
       {
         _key: 'b1',
@@ -211,7 +211,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-3',
     name: 'Saigon & Mekong Delta',
     slug: { current: 'saigon-and-mekong-delta' },
-    image: 'https://images.unsplash.com/photo-1545638191-4df6e250f288?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/vietnamtour_mekong_sampan.png',
     description: [
       {
         _key: 'b1',
@@ -235,7 +235,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-4',
     name: 'Phu Quoc Island',
     slug: { current: 'phu-quoc-island' },
-    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/vietnamtour_phu_quoc_beach.png',
     description: [
       {
         _key: 'b1',
@@ -285,9 +285,9 @@ export const mockItineraries: Itinerary[] = [
       '4 nights of ultimate luxury and wellness at the prestigious Amanoi.'
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_halong_yacht_luxury.png',
+      '/images/vietnamtour_amanoi_villa.png',
+      '/images/vietnamtour_hanoi_colonial.png'
     ],
     timeline: [
       {
@@ -390,8 +390,8 @@ export const mockItineraries: Itinerary[] = [
       'Craft beer and rooftop culinary crawl in Saigon by Vespa.'
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_cave_dining.png',
+      '/images/vietnamtour_mekong_sampan.png'
     ],
     timeline: [
       {
@@ -477,8 +477,8 @@ export const mockItineraries: Itinerary[] = [
       'Customized 24/7 butler service throughout the journey.'
     ],
     gallery: [
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545638191-4df6e250f288?auto=format&fit=crop&w=1200&q=80'
+      '/images/vietnamtour_phu_quoc_beach.png',
+      '/images/vietnamtour_amanoi_villa.png'
     ],
     timeline: [
       {

@@ -31,7 +31,7 @@ export default async function ItinerariesPage() {
 
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {itineraries.map((it) => (
+            {itineraries.map((it, idx) => (
               <div key={it._id} className="group flex flex-col bg-luxury-moss border border-luxury-moss overflow-hidden transition-all duration-300 hover:shadow-xl">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
@@ -40,6 +40,7 @@ export default async function ItinerariesPage() {
                     alt={it.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    priority={idx < 2}
                   />
                   <div className="absolute top-4 left-4 bg-luxury-slate text-luxury-linen text-[10px] tracking-widest uppercase font-semibold px-3 py-1 border border-luxury-gold/30">
                     {it.duration} Days
