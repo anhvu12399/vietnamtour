@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
@@ -17,6 +18,27 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const itinerary = await getItineraryBySlug(slug);
+  if (!itinerary) return {};
+
+  const seo = itinerary.seo;
+  const title = seo?.metaTitle || `${itinerary.title} – Luxury Vietnam Tours`;
+  const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
+
+  return {
+    title,
+    description,
+    keywords: seo?.keywords?.join(', '),
+    openGraph: {
+      title,
+      description,
+      ...(seo?.ogImage && { images: [{ url: seo.ogImage }] }),
+    },
+  };
 }
 
 export default async function ItineraryDetailPage({ params }: PageProps) {
@@ -45,13 +67,24 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full text-white space-y-4">
-          <Link
-            href="/#journeys"
-            className="text-xs uppercase tracking-widest text-luxury-gold font-semibold hover:underline flex items-center space-x-1.5"
-          >
-            <span>←</span>
-            <span>Back to Journeys</span>
-          </Link>
+          <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-luxury-gold font-semibold">
+            {itinerary.destination && (
+              <>
+                <Link href={`/destinations/${itinerary.destination.slug.current}`} className="hover:underline">
+                  {itinerary.destination.name}
+                </Link>
+                <span className="opacity-50">›</span>
+                <Link href={`/destinations/${itinerary.destination.slug.current}/tours/${itinerary.slug.current}`} className="hover:underline opacity-70">
+                  Tours
+                </Link>
+              </>
+            )}
+            {!itinerary.destination && (
+              <Link href="/#journeys" className="hover:underline flex items-center space-x-1.5">
+                <span>←</span><span>Back to Journeys</span>
+              </Link>
+            )}
+          </div>
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
             <span>{itinerary.duration} Days Tailor-Made</span>
             <span>•</span>

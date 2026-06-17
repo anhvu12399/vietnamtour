@@ -1,9 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { getDestinationBySlug, getDestinations, getItineraries } from '@/sanity/client';
+import {
+  getDestinationBySlug,
+  getDestinations,
+  getTravelGuidesByDestination,
+  getCruisesByDestination,
+} from '@/sanity/client';
 
 export const revalidate = 3600;
 
@@ -18,23 +24,40 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function DestinationDetailPage({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const destination = await getDestinationBySlug(slug);
+  if (!destination) return {};
+
+  const seo = destination.seo;
+  const title = seo?.metaTitle || `${destination.name} – Luxury Vietnam Tours`;
+  const description = seo?.metaDescription || `Discover the beauty of ${destination.name}. Explore tailor-made luxury tours, travel guides and insider tips with Vietnam Tour UK.`;
+
+  return {
+    title,
+    description,
+    keywords: seo?.keywords?.join(', '),
+    openGraph: {
+      title,
+      description,
+      ...(seo?.ogImage && { images: [{ url: seo.ogImage }] }),
+    },
+  };
+}
+
+export default async function DestinationDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const [destination, guides, cruises] = await Promise.all([
+    getDestinationBySlug(slug),
+    getTravelGuidesByDestination(slug),
+    getCruisesByDestination(slug),
+  ]);
 
   if (!destination) {
     notFound();
   }
 
-  // Find itineraries related to this destination
-  const itineraries = await getItineraries();
-  // Filter itineraries that have highlights or text relating to this destination
-  const relatedItineraries = itineraries.filter(
-    (it) =>
-      it.title.toLowerCase().includes(destination.name.toLowerCase()) ||
-      it.intro.toLowerCase().includes(destination.name.split(' ')[0].toLowerCase()) ||
-      it.highlights.some((hl) => hl.toLowerCase().includes(destination.name.split(' ')[0].toLowerCase()))
-  );
+  const featuredTours = destination.featuredTours || [];
 
   return (
     <>
@@ -77,7 +100,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           
           {/* Left columns */}
-          <div className="lg:col-span-2 space-y-16">
+          <div className="lg:col-span-2 space-y-20">
             
             {/* Description */}
             <div className="space-y-6">
@@ -106,23 +129,25 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </ul>
             </div>
 
-            {/* Related Itineraries */}
-            <div className="space-y-8">
-              <h3 className="font-serif text-2xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
-                Recommended Itineraries featuring this region
-              </h3>
-              {relatedItineraries.length > 0 ? (
+            {/* Featured Tours from Sanity reference */}
+            {featuredTours.length > 0 && (
+              <div className="space-y-8">
+                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                  Signature Land Tours
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {relatedItineraries.map((it) => (
+                  {featuredTours.map((it) => (
                     <div key={it._id} className="bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
-                      <div className="relative h-48 overflow-hidden">
-                        <Image
-                          src={it.gallery[0]}
-                          alt={it.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
+                      {it.gallery?.[0] && (
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={it.gallery[0]}
+                            alt={it.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                      )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                         <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">
                           {it.title}
@@ -130,7 +155,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
                           <span className="text-xs text-luxury-linen/60 font-semibold">{it.duration} Days</span>
                           <Link
-                            href={`/itineraries/${it.slug.current}`}
+                            href={`/destinations/${slug}/tours/${it.slug.current}`}
                             className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
                           >
                             <span>Explore Trip</span>
@@ -141,13 +166,65 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                     </div>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-luxury-linen/50 font-light">
-                  Speak to Alice or James to design a custom itinerary specifically traversing this region.
-                </p>
-              )}
-            </div>
+              </div>
+            )}
 
+            {/* Cruises for this destination */}
+            {cruises.length > 0 && (
+              <div className="space-y-8">
+                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                  Luxury Cruises
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {cruises.map((cruise) => (
+                    <div key={cruise._id} className="bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                      {cruise.mainImage && (
+                        <div className="relative h-48 overflow-hidden">
+                          <Image src={cruise.mainImage} alt={cruise.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      )}
+                      <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
+                        <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
+                          <span className="text-xs text-luxury-linen/60 font-semibold">{cruise.duration}</span>
+                          <Link href={`/destinations/${slug}/cruises/${cruise.slug.current}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
+                            <span>View Cruise</span><span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Travel Guides for this destination */}
+            {guides.length > 0 && (
+              <div className="space-y-8">
+                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                  Travel Guides & Articles
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {guides.map((guide) => (
+                    <Link
+                      key={guide._id}
+                      href={`/destinations/${slug}/blog/${guide.slug.current}`}
+                      className="group bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
+                    >
+                      {guide.mainImage && (
+                        <div className="relative h-40 overflow-hidden">
+                          <Image src={guide.mainImage} alt={guide.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                        </div>
+                      )}
+                      <div className="p-5 space-y-2">
+                        <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold">Travel Guide</span>
+                        <h4 className="font-serif text-sm font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Column: CTA Panel */}
