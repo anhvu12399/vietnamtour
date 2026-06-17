@@ -16,8 +16,10 @@ export async function generateStaticParams() {
   const destinations = await getDestinations();
   const params: { slug: string; cruiseSlug: string }[] = [];
   for (const dest of destinations) {
+    if (!dest.slug?.current) continue;
     const cruises = await getCruisesByDestination(dest.slug.current);
     for (const cruise of cruises) {
+      if (!cruise.slug?.current) continue;
       params.push({ slug: dest.slug.current, cruiseSlug: cruise.slug.current });
     }
   }

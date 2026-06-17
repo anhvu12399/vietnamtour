@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const specialists = await getSpecialists();
-  return specialists.map((spec) => ({
+  return specialists.filter((spec) => spec.slug?.current).map((spec) => ({
     slug: spec.slug.current,
   }));
 }

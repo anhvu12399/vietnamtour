@@ -55,7 +55,7 @@ export default async function DestinationsPage() {
                   </p>
                   <div className="pt-2">
                     <Link
-                      href={`/destinations/${dest.slug.current}`}
+                      href={`/destinations/${dest.slug?.current || ''}`}
                       className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center space-x-1.5"
                     >
                       <span>Explore Region</span>

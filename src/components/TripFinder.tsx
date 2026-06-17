@@ -205,7 +205,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
                     From £{it.priceFrom.toLocaleString('en-GB')} pp
                   </span>
                   <Link
-                    href={`/itineraries/${it.slug.current}`}
+                    href={`/itineraries/${it.slug?.current || ''}`}
                     className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
                   >
                     <span>View Itinerary</span>

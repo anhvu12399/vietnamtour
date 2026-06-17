@@ -54,7 +54,7 @@ export default async function SpecialistsPage() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
                       <p className="text-luxury-linen/70 font-semibold">📞 UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
                       <Link
-                        href={`/specialists/${spec.slug.current}`}
+                        href={`/specialists/${spec.slug?.current || ''}`}
                         className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
                       >
                         <span>View Profile</span>

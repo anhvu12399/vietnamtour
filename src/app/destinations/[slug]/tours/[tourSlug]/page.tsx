@@ -16,9 +16,11 @@ export async function generateStaticParams() {
 
   const params: { slug: string; tourSlug: string }[] = [];
   for (const dest of destinations) {
+    if (!dest.slug?.current) continue;
     for (const it of itineraries) {
+      if (!it.slug?.current) continue;
       // Include only tours whose destination matches or tours that have no destination
-      if (!it.destination || it.destination.slug.current === dest.slug.current) {
+      if (!it.destination || it.destination?.slug?.current === dest.slug.current) {
         params.push({ slug: dest.slug.current, tourSlug: it.slug.current });
       }
     }

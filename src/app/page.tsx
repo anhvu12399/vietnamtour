@@ -417,7 +417,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {destinations.map((dest) => (
+            {destinations.filter((dest) => dest.slug?.current).map((dest) => (
               <Link
                 key={dest._id}
                 href={`/destinations/${dest.slug.current}`}

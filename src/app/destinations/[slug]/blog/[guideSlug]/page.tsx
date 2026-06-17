@@ -21,8 +21,10 @@ export async function generateStaticParams() {
   const destinations = await getDestinations();
   const params: { slug: string; guideSlug: string }[] = [];
   for (const dest of destinations) {
+    if (!dest.slug?.current) continue;
     const guides = await getTravelGuidesByDestination(dest.slug.current);
     for (const guide of guides) {
+      if (!guide.slug?.current) continue;
       params.push({ slug: dest.slug.current, guideSlug: guide.slug.current });
     }
   }
@@ -137,8 +139,8 @@ export default async function TravelGuidePage({ params }: PageProps) {
                     const isTour = isItinerary(tour);
                     const image = isTour ? (tour as Itinerary).gallery?.[0] : (tour as Cruise).mainImage;
                     const detailHref = isTour
-                      ? `/destinations/${slug}/tours/${tour.slug.current}`
-                      : `/destinations/${slug}/cruises/${tour.slug.current}`;
+                      ? `/destinations/${slug}/tours/${tour.slug?.current || ''}`
+                      : `/destinations/${slug}/cruises/${tour.slug?.current || ''}`;
                     const label = isTour ? 'Land Tour' : 'Cruise';
                     const meta = isTour
                       ? `${(tour as Itinerary).duration} Days · From £${(tour as Itinerary).priceFrom?.toLocaleString('en-GB')}`

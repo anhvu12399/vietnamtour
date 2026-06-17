@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const accommodations = await getAccommodations();
-  return accommodations.map((acc) => ({
+  return accommodations.filter((acc) => acc.slug?.current).map((acc) => ({
     slug: acc.slug.current,
   }));
 }

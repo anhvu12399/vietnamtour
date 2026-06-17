@@ -11,7 +11,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const itineraries = await getItineraries();
-  return itineraries.map((it) => ({
+  return itineraries.filter((it) => it.slug?.current).map((it) => ({
     slug: it.slug.current,
   }));
 }
@@ -70,11 +70,11 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
           <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-luxury-gold font-semibold">
             {itinerary.destination && (
               <>
-                <Link href={`/destinations/${itinerary.destination.slug.current}`} className="hover:underline">
+                <Link href={`/destinations/${itinerary.destination?.slug?.current || ''}`} className="hover:underline">
                   {itinerary.destination.name}
                 </Link>
                 <span className="opacity-50">›</span>
-                <Link href={`/destinations/${itinerary.destination.slug.current}/tours/${itinerary.slug.current}`} className="hover:underline opacity-70">
+                <Link href={`/destinations/${itinerary.destination?.slug?.current || ''}/tours/${itinerary.slug?.current || ''}`} className="hover:underline opacity-70">
                   Tours
                 </Link>
               </>

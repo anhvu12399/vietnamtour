@@ -62,7 +62,7 @@ export default async function AccommodationsPage() {
                   </div>
                   <div className="pt-4 border-t border-luxury-slate/50 flex items-center justify-between">
                     <Link
-                      href={`/accommodations/${acc.slug.current}`}
+                      href={`/accommodations/${acc.slug?.current || ''}`}
                       className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
                     >
                       <span>Explore Resort</span>

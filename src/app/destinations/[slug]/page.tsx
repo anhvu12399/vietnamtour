@@ -15,7 +15,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const destinations = await getDestinations();
-  return destinations.map((dest) => ({
+  return destinations.filter((dest) => dest.slug?.current).map((dest) => ({
     slug: dest.slug.current,
   }));
 }
@@ -155,7 +155,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
                           <span className="text-xs text-luxury-linen/60 font-semibold">{it.duration} Days</span>
                           <Link
-                            href={`/destinations/${slug}/tours/${it.slug.current}`}
+                            href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
                             className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
                           >
                             <span>Explore Trip</span>
@@ -187,7 +187,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
                           <span className="text-xs text-luxury-linen/60 font-semibold">{cruise.duration}</span>
-                          <Link href={`/destinations/${slug}/cruises/${cruise.slug.current}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
+                          <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
                             <span>View Cruise</span><span>→</span>
                           </Link>
                         </div>
@@ -208,7 +208,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                   {guides.map((guide) => (
                     <Link
                       key={guide._id}
-                      href={`/destinations/${slug}/blog/${guide.slug.current}`}
+                      href={`/destinations/${slug}/blog/${guide.slug?.current || ''}`}
                       className="group bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
                     >
                       {guide.mainImage && (

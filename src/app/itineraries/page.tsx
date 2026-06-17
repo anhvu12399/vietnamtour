@@ -64,7 +64,7 @@ export default async function ItinerariesPage() {
                       <span className="text-base font-semibold text-luxury-linen">£{it.priceFrom.toLocaleString('en-GB')}pp</span>
                     </div>
                     <Link
-                      href={`/itineraries/${it.slug.current}`}
+                      href={`/itineraries/${it.slug?.current || ''}`}
                       className="text-xs uppercase tracking-widest font-semibold text-luxury-gold group-hover:underline flex items-center space-x-1"
                     >
                       <span>View Trip</span>
