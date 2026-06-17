@@ -4,7 +4,7 @@ import { draftMode } from 'next/headers';
 import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
 import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post } from './types';
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '';
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'knxuvin4';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const apiVersion = '2026-06-17';
 
