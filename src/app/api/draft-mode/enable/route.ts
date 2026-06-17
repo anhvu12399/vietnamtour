@@ -50,6 +50,16 @@ export const GET = async (request: Request) => {
     ) {
       throw error;
     }
+
+    const errorMessage = error?.message || '';
+    if (errorMessage.includes('secret') || errorMessage.includes('preview URL')) {
+      console.warn('Unauthorized draft-mode request:', errorMessage);
+      return new NextResponse(
+        `<html><body><h1>Unauthorized</h1><p>${errorMessage}</p></body></html>`,
+        { status: 401, headers: { 'Content-Type': 'text/html' } }
+      );
+    }
+
     console.error('Error in draft-mode enable route:', error);
     return new NextResponse(
       `<html><body><h1>Internal Server Error</h1><p>${error?.message}</p></body></html>`, 
