@@ -270,31 +270,6 @@ export default async function HomePage() {
 
       {/* 4. Editorial Philosophy Block */}
       <section className="bg-luxury-moss py-24 border-y border-luxury-gold/20 relative overflow-hidden">
-        {/* Majestic Sapa Mountains & Terraced Fields Line Art Background */}
-        <svg viewBox="0 0 800 500" className="absolute left-0 bottom-0 w-[550px] h-[380px] opacity-[0.04] text-luxury-gold pointer-events-none select-none" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          {/* Peaks */}
-          <path d="M 50 450 L 180 250 L 300 400 L 450 180 L 600 380 L 700 280 L 800 420" />
-          <path d="M 120 450 L 250 280 L 380 430 M 350 430 L 480 220 L 650 450" opacity="0.7" strokeDasharray="3 3" />
-          
-          {/* Terraced Fields (layered curves) */}
-          <path d="M 0 460 Q 100 440, 200 460 Q 300 480, 400 460 Q 500 440, 600 460 Q 700 480, 800 460" />
-          <path d="M 0 440 Q 120 420, 240 445 Q 360 470, 480 445 Q 600 420, 720 445 Q 760 455, 800 445" opacity="0.8" />
-          <path d="M 0 420 Q 140 395, 280 425 Q 420 455, 560 425 Q 700 395, 800 425" opacity="0.6" />
-          <path d="M 50 380 Q 150 365, 250 385 Q 350 405, 450 385 Q 550 365, 650 385" opacity="0.4" />
-          
-          {/* Rising Sun/Moon */}
-          <circle cx="350" cy="180" r="45" opacity="0.3" strokeDasharray="4 2" />
-          
-          {/* Birds / Cranes in distance */}
-          <path d="M 280 120 Q 290 110, 300 120 Q 310 110, 320 120" />
-          <path d="M 330 140 Q 338 132, 346 140 Q 354 132, 362 140" opacity="0.8" />
-          <path d="M 230 150 Q 236 144, 242 150 Q 248 144, 254 150" opacity="0.7" />
-
-          {/* Misty Clouds */}
-          <path d="M 100 280 C 130 260, 180 260, 210 280 C 240 300, 290 300, 320 280 C 350 260, 400 260, 430 280" opacity="0.5" />
-          <path d="M 450 240 C 480 220, 530 220, 560 240 C 590 260, 640 260, 670 240" opacity="0.5" />
-        </svg>
-
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left text */}
@@ -337,169 +312,106 @@ export default async function HomePage() {
       </section>
 
       {/* 4.5. Bespoke Experiences Showcase */}
-      <section className="relative overflow-hidden py-24 border-b border-luxury-gold/10">
-        {/* Halong Bay Limestone Karsts & Sailboat SVG Background */}
-        <svg viewBox="0 0 800 500" className="absolute right-0 bottom-0 w-[500px] h-[350px] opacity-[0.04] text-luxury-gold pointer-events-none select-none" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          {/* Karsts */}
-          <path d="M 50 500 C 60 420, 80 300, 110 300 C 130 300, 140 400, 160 500" />
-          <path d="M 120 500 C 135 440, 150 320, 180 320 C 205 320, 215 420, 230 500" opacity="0.7" />
-          <path d="M 550 500 C 570 410, 590 250, 630 250 C 660 250, 680 380, 710 500" />
-          <path d="M 660 500 C 675 430, 690 310, 720 310 C 745 310, 755 420, 770 500" opacity="0.8" />
-          {/* Sailboat Hull */}
-          <path d="M 320 420 L 480 420 C 500 420, 510 410, 515 400 L 525 375 L 295 375 L 305 400 C 310 410, 315 420, 320 420 Z" />
-          {/* Sails */}
-          <line x1="370" y1="375" x2="370" y2="180" />
-          <line x1="450" y1="375" x2="450" y2="200" />
-          <path d="M 370 180 C 390 200, 420 230, 430 270 C 435 300, 430 340, 430 375 L 370 375 Z" />
-          <path d="M 370 210 Q 400 230, 428 280" />
-          <path d="M 370 250 Q 395 270, 429 310" />
-          <path d="M 370 290 Q 395 310, 430 340" />
-          <path d="M 370 330 Q 395 345, 430 365" />
-          <path d="M 450 200 C 465 215, 485 240, 492 275 C 496 300, 492 340, 492 375 L 450 375 Z" />
-          <path d="M 450 230 Q 470 245, 491 285" />
-          <path d="M 450 270 Q 470 285, 492 320" />
-          <path d="M 450 310 Q 470 325, 492 355" />
-          <path d="M 370 180 L 355 185 L 370 190 Z" />
-          {/* Waves */}
-          <path d="M 0 460 Q 40 455, 80 460 T 160 460 T 240 460 T 320 460 T 400 460 T 480 460 T 560 460 T 640 460 T 720 460 T 800 460" />
-          <path d="M 0 480 Q 50 475, 100 480 T 200 480 T 300 480 T 400 480 T 500 480 T 600 480 T 700 480 T 800 480" opacity="0.6" />
-          <path d="M 40 440 Q 80 435, 120 440 T 200 440 T 280 440 T 360 440 T 440 440 T 520 440 T 600 440 T 680 440 T 760 440" opacity="0.4" strokeDasharray="5 5" />
-        </svg>
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+        <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
+            Bespoke Elements
+          </span>
+          <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
+            Signature Luxury Experiences
+          </h2>
+          <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
+          <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
+            Unique activities crafted exclusively for Vietnam Tour travelers, ensuring your holiday is unlike any other.
+          </p>
+        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
-              Bespoke Elements
-            </span>
-            <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
-              Signature Luxury Experiences
-            </h2>
-            <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
-            <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
-              Unique activities crafted exclusively for Vietnam Tour travelers, ensuring your holiday is unlike any other.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Cave Dining in Halong Bay",
-                desc: "A candle-lit gourmet banquet set up inside a private volcanic rock cave, listening to the gentle lap of waves.",
-                image: "/images/vietnamtour_cave_dining.png",
-                price: "Included in Luxury Programmes"
-              },
-              {
-                title: "Private Lan Ha Bay Catamaran",
-                desc: "Charter our custom catamaran to explore secret lagoons and limestone karsts far from the standard tourist paths.",
-                image: "/images/vietnamtour_halong_yacht_luxury.png",
-                price: "Available for Private Booking"
-              },
-              {
-                title: "Misty Sapa Sanctuary Retreat",
-                desc: "Wake up above the clouds in a hand-crafted cedar lodge overlooking emerald rice terraces, with a private local guide.",
-                image: "/images/vietnamtour_sapa_lodge.png",
-                price: "Featured in Adventure Tours"
-              }
-            ].map((exp, idx) => (
-              <div key={idx} className="group flex flex-col bg-luxury-moss border border-luxury-gold/10 overflow-hidden hover:border-luxury-gold/45 transition-all duration-300 shadow-xl">
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={exp.image}
-                    alt={exp.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate via-transparent to-transparent opacity-80" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Cave Dining in Halong Bay",
+              desc: "A candle-lit gourmet banquet set up inside a private volcanic rock cave, listening to the gentle lap of waves.",
+              image: "/images/vietnamtour_cave_dining.png",
+              price: "Included in Luxury Programmes"
+            },
+            {
+              title: "Private Lan Ha Bay Catamaran",
+              desc: "Charter our custom catamaran to explore secret lagoons and limestone karsts far from the standard tourist paths.",
+              image: "/images/vietnamtour_halong_yacht_luxury.png",
+              price: "Available for Private Booking"
+            },
+            {
+              title: "Misty Sapa Sanctuary Retreat",
+              desc: "Wake up above the clouds in a hand-crafted cedar lodge overlooking emerald rice terraces, with a private local guide.",
+              image: "/images/vietnamtour_sapa_lodge.png",
+              price: "Featured in Adventure Tours"
+            }
+          ].map((exp, idx) => (
+            <div key={idx} className="group flex flex-col bg-luxury-moss border border-luxury-gold/10 overflow-hidden hover:border-luxury-gold/45 transition-all duration-300 shadow-xl">
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={exp.image}
+                  alt={exp.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate via-transparent to-transparent opacity-80" />
+              </div>
+              <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
+                <div className="space-y-3">
+                  <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">
+                    {exp.price}
+                  </span>
+                  <h3 className="font-serif text-xl text-luxury-linen font-semibold group-hover:text-luxury-gold transition-colors">
+                    {exp.title}
+                  </h3>
+                  <p className="text-xs text-luxury-linen/60 font-light leading-relaxed">
+                    {exp.desc}
+                  </p>
                 </div>
-                <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
-                  <div className="space-y-3">
-                    <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">
-                      {exp.price}
-                    </span>
-                    <h3 className="font-serif text-xl text-luxury-linen font-semibold group-hover:text-luxury-gold transition-colors">
-                      {exp.title}
-                    </h3>
-                    <p className="text-xs text-luxury-linen/60 font-light leading-relaxed">
-                      {exp.desc}
-                    </p>
-                  </div>
-                  <div className="pt-4 border-t border-luxury-slate flex justify-start">
-                    <Link
-                      href="/enquire"
-                      className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center"
-                    >
-                      Enquire About Experience &rarr;
-                    </Link>
-                  </div>
+                <div className="pt-4 border-t border-luxury-slate flex justify-start">
+                  <Link
+                    href="/enquire"
+                    className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center"
+                  >
+                    Enquire About Experience &rarr;
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* 5. Four Steps Process */}
-      <section className="relative overflow-hidden py-24 border-b border-luxury-gold/10 text-center">
-        {/* Dong Son flying crane (Chim Lạc) & Sun Star Line Art Background */}
-        <svg viewBox="0 0 1000 400" className="absolute inset-x-0 bottom-0 w-full h-[300px] opacity-[0.035] text-luxury-gold pointer-events-none select-none" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="500" cy="200" r="70" strokeDasharray="8 4" />
-          <circle cx="500" cy="200" r="50" />
-          <path d="M 500 130 L 500 270 M 430 200 L 570 200 M 450 150 L 550 250 M 450 250 L 550 150" />
-          <circle cx="500" cy="200" r="110" strokeDasharray="3 3" />
-          <circle cx="500" cy="200" r="140" opacity="0.5" />
-          {/* Crane 1 */}
-          <g transform="translate(150, 80) scale(0.9)">
-            <path d="M 120 80 Q 90 70, 70 85 Q 50 100, 30 100 C 15 100, 5 90, 0 85 C 15 80, 35 80, 50 82 Q 70 85, 90 75 Q 110 65, 130 70 Z" />
-            <path d="M 130 70 L 190 65 L 135 73" />
-            <path d="M 85 75 C 95 30, 110 10, 130 0 Q 105 20, 90 50 Q 80 35, 70 20 Q 75 45, 80 65" />
-            <path d="M 80 77 C 70 110, 55 130, 35 140 Q 55 120, 70 95 Q 60 115, 45 130 Q 62 105, 75 82" />
-            <path d="M 25 95 Q 10 120, -20 130 C 0 115, 12 105, 20 95" />
-            <path d="M 15 90 Q 0 110, -35 115 C -15 105, 2 98, 10 90" />
-            <path d="M 30 98 Q 15 130, -10 145 C 5 125, 20 110, 25 98" />
-          </g>
-          {/* Crane 2 */}
-          <g transform="translate(720, 100) scale(0.75)">
-            <path d="M 120 80 Q 90 70, 70 85 Q 50 100, 30 100 C 15 100, 5 90, 0 85 C 15 80, 35 80, 50 82 Q 70 85, 90 75 Q 110 65, 130 70 Z" />
-            <path d="M 130 70 L 190 65 L 135 73" />
-            <path d="M 85 75 C 95 30, 110 10, 130 0 Q 105 20, 90 50 Q 80 35, 70 20 Q 75 45, 80 65" />
-            <path d="M 80 77 C 70 110, 55 130, 35 140 Q 55 120, 70 95 Q 60 115, 45 130 Q 62 105, 75 82" />
-            <path d="M 25 95 Q 10 120, -20 130 C 0 115, 12 105, 20 95" />
-            <path d="M 15 90 Q 0 110, -35 115 C -15 105, 2 98, 10 90" />
-            <path d="M 30 98 Q 15 130, -10 145 C 5 125, 20 110, 25 98" />
-          </g>
-          <path d="M 50 120 Q 80 110, 100 125 T 150 120 T 190 135" strokeDasharray="3 3" />
-          <path d="M 800 220 Q 830 210, 850 225 T 900 220 T 940 235" strokeDasharray="3 3" />
-        </svg>
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-16">
+        <div className="space-y-3 max-w-2xl mx-auto">
+          <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
+            Four Steps to Your Luxury Holiday
+          </h2>
+          <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
+        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
-          <div className="space-y-3 max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
-              Four Steps to Your Luxury Holiday
-            </h2>
-            <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative">
-            {planningSteps.map((step, idx) => (
-              <div key={idx} className="space-y-4 relative flex flex-col items-center">
-                {/* Step indicator circle */}
-                <div className="w-16 h-16 rounded-full border border-luxury-gold/30 bg-luxury-moss flex items-center justify-center font-serif text-xl font-semibold text-luxury-gold shadow-md">
-                  {step.num}
-                </div>
-                <h3 className="font-serif text-lg text-luxury-linen font-medium">{step.title}</h3>
-                <p className="text-xs text-luxury-linen/70 font-light leading-relaxed max-w-xs">{step.desc}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 relative">
+          {planningSteps.map((step, idx) => (
+            <div key={idx} className="space-y-4 relative flex flex-col items-center">
+              {/* Step indicator circle */}
+              <div className="w-16 h-16 rounded-full border border-luxury-gold/30 bg-luxury-moss flex items-center justify-center font-serif text-xl font-semibold text-luxury-gold shadow-md">
+                {step.num}
               </div>
-            ))}
-          </div>
+              <h3 className="font-serif text-lg text-luxury-linen font-medium">{step.title}</h3>
+              <p className="text-xs text-luxury-linen/70 font-light leading-relaxed max-w-xs">{step.desc}</p>
+            </div>
+          ))}
+        </div>
 
-          <div className="pt-6">
-            <Link
-              href="/enquire"
-              className="px-10 py-3.5 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
-            >
-              Design My Holiday
-            </Link>
-          </div>
+        <div className="pt-6">
+          <Link
+            href="/enquire"
+            className="px-10 py-3.5 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-lg"
+          >
+            Design My Holiday
+          </Link>
         </div>
       </section>
 
