@@ -50,14 +50,25 @@ async function fetchSanity<T>(query: string, params: Record<string, any> = {}): 
       // draftMode() throws during static generation / build time without HTTP request context
     }
 
-    const { data } = await sanityFetch({
-      query,
-      params,
-      ...previewOptions,
-    });
-    return data as T;
+    try {
+      const { data } = await sanityFetch({
+        query,
+        params,
+        ...previewOptions,
+      });
+      return data as T;
+    } catch (error) {
+      console.error('sanityFetch failed, falling back to client.fetch:', error);
+      if (client) {
+        return await client.fetch(query, params);
+      }
+      throw error;
+    }
   }
-  return await client!.fetch(query, params);
+  if (client) {
+    return await client.fetch(query, params);
+  }
+  throw new Error('Sanity client not configured');
 }
 
 // --- Itineraries ---
