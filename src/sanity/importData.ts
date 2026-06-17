@@ -141,6 +141,27 @@ async function importData() {
       console.log(`✓ Imported itinerary: ${it.title} (${it._id})`);
     }
 
+    // 5. Import Homepage Singleton
+    console.log('\nImporting default homepage...');
+    const defaultHomepage = {
+      _type: 'homepage',
+      _id: 'homepage-singleton',
+      title: 'Vietnam Tour Homepage (Default)',
+      heroHeading: 'The Art of Travel',
+      heroSubheading: 'Where Your Journey Meets Our Legacy',
+      introHeading: 'Tailor-Made Luxury Holidays with Vietnam Tour',
+      introParagraph1: 'Since our founding, we have worked tirelessly to become the premier luxury travel operator for Vietnam. With our seamless service, deep insider insights, and carefully curated collection, we design one-of-a-kind experiences.',
+      introParagraph2: 'Delve deep into destinations on privately guided tours, enjoy exclusive access to the country\'s most sought-after sites, and embark on journeys that are truly out of the ordinary.',
+      artOfTravelHeading: 'The Art of Travel',
+      artOfTravelText: 'Vietnam Tour has transformed travel into an art form. Every journey taken is shaped by decades of expertise and an enduring passion for exploration. Where your journey meets our legacy is not simply a promise, but an invitation to experience travel crafted with care, enriched by history, and designed to inspire for generations to come.',
+      finalCtaHeading: 'Draft Your Dream Itinerary',
+      finalCtaSubtext: 'Every holiday we design is unique. Speak directly to Alice Mercer or James Harrison to tailor your travel dates, properties, and dining pacing.',
+      seoTitle: 'VietnamTour.co.uk | Luxury Bespoke Travel Vietnam',
+      seoDescription: 'Experience ultra-luxury travel in Vietnam. Fully bespoke itineraries curated by local specialists.',
+    };
+    await client.createOrReplace(defaultHomepage);
+    console.log('✓ Imported homepage singleton');
+
     console.log('\n=============================================');
     console.log('SUCCESS: All luxury mock datasets successfully imported!');
     console.log('Refresh your Sanity Studio at /studio to view and edit the live content.');
