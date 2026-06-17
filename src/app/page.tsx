@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TripFinder from '@/components/TripFinder';
+import HeroSlider from '@/components/HeroSlider';
 import { getFeaturedItineraries, getAccommodations, getSpecialists, getDestinations } from '@/sanity/client';
 
 export const revalidate = 3600;
@@ -135,63 +136,8 @@ export default async function HomePage() {
     <>
       <Navbar />
       
-      {/* 1. Hero Section (Full-bleed matching layout) */}
-      <section className="relative h-screen min-h-[650px] flex items-center justify-start overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/vietnamtour_halong_yacht_luxury.png"
-            alt="Twilight over Halong Bay, Vietnam"
-            fill
-            className="object-cover brightness-50 scale-100 transition-transform duration-[12s] hover:scale-105"
-            priority
-          />
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-luxury-slate/90 via-luxury-slate/40 to-transparent z-10" />
-        </div>
-
-        {/* Content (Left-aligned editorial layout) */}
-        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full animate-fade-in space-y-8 text-left">
-          <div className="space-y-4 max-w-3xl">
-            <span className="text-xs uppercase tracking-[0.4em] font-semibold text-luxury-gold block">
-              Bespoke Luxury Travel
-            </span>
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight font-light uppercase tracking-wide text-luxury-linen">
-              The Art of Travel
-            </h1>
-            <h2 className="font-serif text-lg sm:text-2xl text-luxury-gold/90 font-light italic tracking-wide max-w-xl">
-              Where Your Journey Meets Our Legacy
-            </h2>
-          </div>
-
-          {/* Quick Categories Bar (Matching layout) */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl pt-6">
-            {[
-              { name: 'FOR HONEYMOONS', href: '/enquire' },
-              { name: 'FOR COUPLES', href: '/itineraries/indochine-romance-and-beach-escape' },
-              { name: 'TO THE BEACH', href: '/accommodations' },
-              { name: 'FOR WILDERNESS', href: '/destinations/hanoi-and-the-north' }
-            ].map((cat) => (
-              <Link
-                key={cat.name}
-                href={cat.href}
-                className="bg-luxury-slate/75 backdrop-blur-sm border border-luxury-gold/20 p-4 text-center text-[10px] tracking-widest font-semibold hover:border-luxury-gold hover:bg-luxury-gold hover:text-luxury-slate transition-all duration-300 text-luxury-linen rounded-none"
-              >
-                {cat.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden sm:block">
-          <a href="#pillars" aria-label="Scroll down">
-            <svg className="w-6 h-6 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </a>
-        </div>
-      </section>
+      {/* 1. Hero Section — Premium Slideshow */}
+      <HeroSlider />
 
       {/* Interactive Trip Finder Section */}
       <section className="relative z-30 max-w-6xl mx-auto px-6 -mt-16 sm:-mt-24 pb-12">
