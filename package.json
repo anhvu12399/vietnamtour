@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity:import": "npx tsx src/sanity/importData.ts"
   },
   "dependencies": {
     "@sanity/client": "^7.23.0",
