@@ -43,5 +43,10 @@ export const post = defineType({
       type: 'array',
       of: [{ type: 'block' }],
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'seoFields',
+    }),
   ],
 });

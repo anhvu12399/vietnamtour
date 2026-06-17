@@ -8,6 +8,7 @@ import { about } from './about';
 import { cruise } from './cruise';
 import { travelGuide } from './travelGuide';
 import { post } from './post';
+import { seoFields } from './seoFields';
 
 export const schemaTypes = [
   homepage,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   specialist,
   enquiry,
   post,
+  seoFields,
 ];

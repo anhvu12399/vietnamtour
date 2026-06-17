@@ -102,5 +102,16 @@ export const itinerary = {
       type: 'boolean',
       initialValue: false,
     },
+    {
+      name: 'destination',
+      title: 'Destination',
+      type: 'reference',
+      to: [{ type: 'destination' }],
+    },
+    {
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'seoFields',
+    },
   ],
 };

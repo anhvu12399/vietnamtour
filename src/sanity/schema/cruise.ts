@@ -47,5 +47,16 @@ export const cruise = defineType({
       title: 'Description',
       type: 'text',
     }),
+    defineField({
+      name: 'destination',
+      title: 'Destination',
+      type: 'reference',
+      to: [{ type: 'destination' }],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'seoFields',
+    }),
   ],
 });

@@ -43,5 +43,16 @@ export const destination = {
       title: 'Best Time to Visit',
       type: 'string',
     },
+    {
+      name: 'featuredTours',
+      title: 'Featured Tours',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'itinerary' }] }],
+    },
+    {
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'seoFields',
+    },
   ],
 };

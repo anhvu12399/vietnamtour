@@ -39,5 +39,18 @@ export const travelGuide = defineType({
       type: 'array',
       of: [{ type: 'block' }],
     }),
+    defineField({
+      name: 'relatedTours',
+      title: 'Related Tours',
+      type: 'array',
+      of: [
+        { type: 'reference', to: [{ type: 'itinerary' }, { type: 'cruise' }] },
+      ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO Settings',
+      type: 'seoFields',
+    }),
   ],
 });
