@@ -39,7 +39,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isDraftMode = (await draftMode()).isEnabled;
+  let isDraftMode = false;
+  try {
+    isDraftMode = (await draftMode()).isEnabled;
+  } catch (error) {
+    // Next.js might throw Dynamic Server Usage error when reading draftMode
+  }
   return (
     <html
       lang="en"
