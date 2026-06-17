@@ -1,6 +1,7 @@
 import { defineEnableDraftMode } from 'next-sanity/draft-mode';
 import { client } from '@/sanity/client';
 import { NextResponse } from 'next/server';
+import { draftMode } from 'next/headers';
 
 export const GET = async (request: Request) => {
   try {
@@ -20,6 +21,22 @@ export const GET = async (request: Request) => {
         { status: 500, headers: { 'Content-Type': 'text/html' } }
       );
     }
+
+    const { searchParams } = new URL(request.url);
+    const secret = searchParams.get('secret');
+
+    // 1. Direct check: allow using SANITY_WRITE_TOKEN directly as the secret key
+    if (secret === token) {
+      const draft = await draftMode();
+      draft.enable();
+      const slug = searchParams.get('slug') || '/';
+      if (!slug.startsWith('/')) {
+        return new NextResponse('Invalid slug', { status: 400 });
+      }
+      return NextResponse.redirect(new URL(slug, request.url));
+    }
+
+    // 2. Fallback check: use next-sanity's built-in handshake via Sanity documents
     // Must set useCdn: false so we fetch the newly created preview secret immediately
     const handler = defineEnableDraftMode({
       client: client.withConfig({ token, useCdn: false }),
