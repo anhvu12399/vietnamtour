@@ -26,6 +26,13 @@ export const GET = async (request: Request) => {
     });
     return await handler.GET(request);
   } catch (error: any) {
+    if (
+      error &&
+      (error.message === 'NEXT_REDIRECT' ||
+        (typeof error.digest === 'string' && error.digest.includes('NEXT_REDIRECT')))
+    ) {
+      throw error;
+    }
     console.error('Error in draft-mode enable route:', error);
     return new NextResponse(
       `<html><body><h1>Internal Server Error</h1><p>${error?.message}</p></body></html>`, 
