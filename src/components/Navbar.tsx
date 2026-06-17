@@ -50,21 +50,20 @@ export default function Navbar() {
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         {/* Desktop Overlapping Logo Card */}
-        <div className="absolute top-0 left-6 lg:left-12 z-50 bg-white px-5 pt-4 pb-6 shadow-xl border-t-[4px] border-[#0f4c43] hidden md:flex flex-col items-center justify-center w-36 lg:w-40 transition-all duration-300">
-          <Link href="/" className="flex flex-col items-center group">
-            {/* SVG Chim Lạc Bay */}
+        <div className="absolute top-0 left-6 lg:left-12 z-50 bg-white px-6 pt-5 pb-6 shadow-xl border-t-[4px] border-[#0f4c43] hidden md:flex items-center justify-center transition-all duration-300">
+          <Link href="/" className="flex items-center space-x-2 group">
             <svg 
-              className="w-10 h-10 lg:w-12 lg:h-12 text-[#0f4c43] transition-transform duration-500 group-hover:scale-105" 
-              viewBox="0 0 100 100" 
-              fill="currentColor"
+              className="w-6 h-6 transition-transform duration-500 group-hover:rotate-45 text-[#0f4c43]"
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              strokeWidth={1.5}
             >
-              <path d="M75 25C60 28 45 35 35 45C28 38 18 32 5 28C15 36 25 48 30 53C20 60 10 70 2 78C12 72 28 64 35 58C40 64 50 75 62 82C55 70 48 58 43 52C52 45 62 35 75 25ZM38 49C39 50 40 51 41 52C39 53 38 53 37 52Z" />
+              <circle cx="12" cy="12" r="9" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 9l-3 3 3 3 3-3-3-3z" />
             </svg>
-            <span className="font-serif text-xs lg:text-sm tracking-[0.25em] font-bold text-[#0f4c43] mt-2 block text-center leading-none">
-              VIETNAM
-            </span>
-            <span className="font-serif text-[9px] lg:text-[10px] tracking-[0.4em] font-semibold text-[#0f4c43] block text-center leading-none mt-1">
-              TOUR
+            <span className="font-serif text-base lg:text-lg tracking-[0.2em] font-bold uppercase text-[#0f4c43]">
+              VIETNAM TOUR
             </span>
           </Link>
         </div>
@@ -74,20 +73,23 @@ export default function Navbar() {
           <div className="flex-shrink-0 md:hidden">
             <Link href="/" className="flex items-center space-x-2 group">
               <svg 
-                className="w-5 h-5 text-luxury-gold" 
-                viewBox="0 0 100 100" 
-                fill="currentColor"
+                className={`w-6 h-6 transition-transform duration-500 group-hover:rotate-45 ${logoColor}`}
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                strokeWidth={1.5}
               >
-                <path d="M75 25C60 28 45 35 35 45C28 38 18 32 5 28C15 36 25 48 30 53C20 60 10 70 2 78C12 72 28 64 35 58C40 64 50 75 62 82C55 70 48 58 43 52C52 45 62 35 75 25ZM38 49C39 50 40 51 41 52C39 53 38 53 37 52Z" />
+                <circle cx="12" cy="12" r="9" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 9l-3 3 3 3 3-3-3-3z" />
               </svg>
-              <span className="font-serif text-sm tracking-[0.2em] font-semibold uppercase text-luxury-gold">
+              <span className={`font-serif text-base tracking-[0.2em] font-semibold uppercase ${logoColor}`}>
                 VIETNAM TOUR
               </span>
             </Link>
           </div>
 
           {/* Desktop Logo Placeholder to preserve flex spacing */}
-          <div className="hidden md:block w-36 lg:w-40 flex-shrink-0" />
+          <div className="hidden md:block w-56 lg:w-60 flex-shrink-0" />
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-8 lg:space-x-12">

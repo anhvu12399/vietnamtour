@@ -147,11 +147,14 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
               <svg 
-                className="w-7 h-7 text-luxury-gold" 
-                viewBox="0 0 100 100" 
-                fill="currentColor"
+                className="w-6 h-6 text-luxury-gold" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                strokeWidth={1.5}
               >
-                <path d="M75 25C60 28 45 35 35 45C28 38 18 32 5 28C15 36 25 48 30 53C20 60 10 70 2 78C12 72 28 64 35 58C40 64 50 75 62 82C55 70 48 58 43 52C52 45 62 35 75 25ZM38 49C39 50 40 51 41 52C39 53 38 53 37 52Z" />
+                <circle cx="12" cy="12" r="9" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 9l-3 3 3 3 3-3-3-3z" />
               </svg>
               <span className="font-serif text-lg tracking-[0.2em] font-semibold uppercase text-luxury-gold">
                 VIETNAM TOUR
