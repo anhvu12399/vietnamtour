@@ -75,6 +75,23 @@ export const homepage = defineType({
       type: 'text',
       rows: 3,
     }),
+    defineField({
+      name: 'gridCategories',
+      title: 'Grid Categories (Các ô vuông trang chủ)',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'gridCategory',
+          title: 'Grid Category',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'image', title: 'Image Path or URL', type: 'string' },
+            { name: 'link', title: 'Link (URL)', type: 'string' }
+          ]
+        }
+      ]
+    }),
 
     // ── SEO ───────────────────────────────────────────────
     defineField({

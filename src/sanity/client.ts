@@ -295,6 +295,11 @@ export interface HomepageData {
   artOfTravelText?: string;
   finalCtaHeading?: string;
   finalCtaSubtext?: string;
+  gridCategories?: {
+    title: string;
+    image: string;
+    link: string;
+  }[];
   seoTitle?: string;
   seoDescription?: string;
 }
@@ -306,6 +311,7 @@ export async function getHomepage(): Promise<HomepageData | null> {
     introHeading, introParagraph1, introParagraph2,
     artOfTravelHeading, artOfTravelText,
     finalCtaHeading, finalCtaSubtext,
+    gridCategories,
     seoTitle, seoDescription
   }`);
 }

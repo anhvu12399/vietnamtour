@@ -208,7 +208,7 @@ export default async function HomePage() {
 
             {/* Right Columns: 2x3 Grid Categories */}
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {gridCategories.map((cat, idx) => (
+              {(homepage?.gridCategories && homepage.gridCategories.length > 0 ? homepage.gridCategories : gridCategories).map((cat, idx) => (
                 <Link
                   key={idx}
                   href={cat.link}

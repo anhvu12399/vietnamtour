@@ -156,6 +156,44 @@ async function importData() {
       artOfTravelText: 'Vietnam Tour has transformed travel into an art form. Every journey taken is shaped by decades of expertise and an enduring passion for exploration. Where your journey meets our legacy is not simply a promise, but an invitation to experience travel crafted with care, enriched by history, and designed to inspire for generations to come.',
       finalCtaHeading: 'Draft Your Dream Itinerary',
       finalCtaSubtext: 'Every holiday we design is unique. Speak directly to Alice Mercer or James Harrison to tailor your travel dates, properties, and dining pacing.',
+      gridCategories: [
+        {
+          _key: 'grid-cat-0',
+          title: 'A Lifetime of Memories',
+          image: '/images/vietnamtour_halong_yacht_luxury.png',
+          link: '/itineraries/the-grand-tour-of-vietnam'
+        },
+        {
+          _key: 'grid-cat-1',
+          title: 'Elite Resort Offers',
+          image: '/images/vietnamtour_amanoi_villa.png',
+          link: '/accommodations'
+        },
+        {
+          _key: 'grid-cat-2',
+          title: 'Best Winter Sun Spots',
+          image: '/images/vietnamtour_phu_quoc_beach.png',
+          link: '/destinations/phu-quoc-island'
+        },
+        {
+          _key: 'grid-cat-3',
+          title: 'Top Culinary Expeditions',
+          image: '/images/vietnamtour_cave_dining.png',
+          link: '/itineraries/vietnamese-culinary-and-culture-journey'
+        },
+        {
+          _key: 'grid-cat-4',
+          title: 'Bucket List Journeys',
+          image: '/images/vietnamtour_sapa_lodge.png',
+          link: '/itineraries'
+        },
+        {
+          _key: 'grid-cat-5',
+          title: 'Active & Wilderness',
+          image: '/images/vietnamtour_mekong_sampan.png',
+          link: '/destinations/hanoi-and-the-north'
+        }
+      ],
       seoTitle: 'VietnamTour.co.uk | Luxury Bespoke Travel Vietnam',
       seoDescription: 'Experience ultra-luxury travel in Vietnam. Fully bespoke itineraries curated by local specialists.',
     };
