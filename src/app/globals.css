@@ -6,7 +6,7 @@
   --color-luxury-linen: #eadcc9;
   --color-luxury-gold: #c5a880;
 
-  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 

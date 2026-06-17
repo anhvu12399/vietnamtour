@@ -32,10 +32,10 @@ const slides = [
 ];
 
 const quickCategories = [
-  { name: 'For Honeymoons', href: '/enquire' },
-  { name: 'For Couples', href: '/itineraries/indochine-romance-and-beach-escape' },
-  { name: 'To The Beach', href: '/accommodations' },
-  { name: 'For Wilderness', href: '/destinations/hanoi-and-the-north' },
+  { name: 'FOR FAMILIES', href: '/enquire' },
+  { name: 'FOR COUPLES', href: '/itineraries/indochine-romance-and-beach-escape' },
+  { name: 'TO THE BEACH', href: '/accommodations' },
+  { name: 'SAFARIS', href: '/destinations/hanoi-and-the-north' },
 ];
 
 export default function HeroSlider() {
@@ -100,10 +100,10 @@ export default function HeroSlider() {
             Bespoke Luxury Travel
           </span>
 
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight font-light uppercase tracking-wide text-luxury-linen">
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight font-semibold tracking-wide text-luxury-linen">
             {slide.heading}
           </h1>
-          <h2 className="font-serif text-lg sm:text-2xl text-luxury-gold/90 font-light italic tracking-wide max-w-xl">
+          <h2 className="font-serif text-lg sm:text-2xl text-luxury-linen font-normal tracking-wide max-w-xl">
             {slide.subheading}
           </h2>
 
@@ -123,7 +123,7 @@ export default function HeroSlider() {
             <Link
               key={cat.name}
               href={cat.href}
-              className="bg-luxury-slate/75 backdrop-blur-sm border border-luxury-gold/20 p-4 text-center text-[10px] tracking-widest font-semibold hover:border-luxury-gold hover:bg-luxury-gold hover:text-luxury-slate transition-all duration-300 text-luxury-linen rounded-none"
+              className="bg-white text-[#0f4c43] text-[11px] tracking-[0.18em] font-bold py-4 px-2 hover:bg-[#0f4c43] hover:text-white transition-all duration-300 text-center uppercase shadow-lg border-none rounded-none flex items-center justify-center min-h-[48px]"
             >
               {cat.name}
             </Link>
