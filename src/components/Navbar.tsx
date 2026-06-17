@@ -45,32 +45,10 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navbarBg} ${textColor}`}>
-      {/* Top Accent Green Bar */}
-      <div className="h-1.5 w-full bg-[#0f4c43]" />
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-        {/* Desktop Overlapping Logo Card */}
-        <div className="absolute top-0 left-6 lg:left-12 z-50 bg-white px-6 pt-5 pb-6 shadow-xl border-t-[4px] border-[#0f4c43] hidden md:flex items-center justify-center transition-all duration-300">
-          <Link href="/" className="flex items-center space-x-2 group">
-            <svg 
-              className="w-6 h-6 transition-transform duration-500 group-hover:rotate-45 text-[#0f4c43]"
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <circle cx="12" cy="12" r="9" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 9l-3 3 3 3 3-3-3-3z" />
-            </svg>
-            <span className="font-serif text-base lg:text-lg tracking-[0.2em] font-bold uppercase text-[#0f4c43]">
-              VIETNAM TOUR
-            </span>
-          </Link>
-        </div>
-
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Mobile Logo */}
-          <div className="flex-shrink-0 md:hidden">
+          {/* Logo (Desktop & Mobile) */}
+          <div className="flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 group">
               <svg 
                 className={`w-6 h-6 transition-transform duration-500 group-hover:rotate-45 ${logoColor}`}
@@ -82,42 +60,43 @@ export default function Navbar() {
                 <circle cx="12" cy="12" r="9" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 9l-3 3 3 3 3-3-3-3z" />
               </svg>
-              <span className={`font-serif text-base tracking-[0.2em] font-semibold uppercase ${logoColor}`}>
+              <span className={`font-serif text-base lg:text-lg tracking-[0.2em] font-semibold uppercase ${logoColor}`}>
                 VIETNAM TOUR
               </span>
             </Link>
           </div>
 
-          {/* Desktop Logo Placeholder to preserve flex spacing */}
-          <div className="hidden md:block w-56 lg:w-60 flex-shrink-0" />
+          {/* Desktop Nav Links & CTA aligned to the right (similar to Scott Dunn layout) */}
+          <div className="hidden md:flex items-center space-x-8 lg:space-x-12 ml-auto">
+            <div className="flex items-center space-x-6 lg:space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm tracking-widest uppercase font-medium hover:text-luxury-gold transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm tracking-widest uppercase font-medium hover:text-luxury-gold transition-colors duration-200"
+            {/* Subtle vertical divider */}
+            <div className="h-4 w-[1px] bg-luxury-gold/20" />
+
+            <div className="flex items-center space-x-6">
+              <a 
+                href="tel:+442078459200" 
+                className="text-xs lg:text-sm font-medium tracking-wider hover:text-luxury-gold transition-colors duration-200"
               >
-                {link.name}
+                📞 +44 (0) 20 7845 9200
+              </a>
+              <Link
+                href="/enquire"
+                className={`px-6 py-2.5 border text-xs tracking-widest uppercase font-semibold transition-all duration-300 rounded-none ${buttonStyle}`}
+              >
+                Enquire
               </Link>
-            ))}
-          </div>
-
-          {/* Contact & CTA */}
-          <div className="hidden md:flex items-center space-x-6">
-            <a 
-              href="tel:+442078459200" 
-              className="text-xs lg:text-sm font-medium tracking-wider hover:text-luxury-gold transition-colors duration-200"
-            >
-              📞 +44 (0) 20 7845 9200
-            </a>
-            <Link
-              href="/enquire"
-              className={`px-6 py-2.5 border text-xs tracking-widest uppercase font-semibold transition-all duration-300 rounded-none ${buttonStyle}`}
-            >
-              Enquire
-            </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Toggles */}
