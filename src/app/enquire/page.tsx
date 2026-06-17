@@ -119,31 +119,31 @@ export default function EnquiryPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen pt-28 pb-20 bg-linen/50 flex flex-col justify-center">
+      <main className="min-h-screen pt-28 pb-20 bg-luxury-sand/50 flex flex-col justify-center">
         <div className="max-w-3xl w-full mx-auto px-6 lg:px-8">
           
           {/* Form Container */}
-          <div className="bg-white border border-linen p-8 md:p-12 shadow-xl animate-fade-in">
+          <div className="bg-white border border-luxury-sand p-8 md:p-12 shadow-xl animate-fade-in">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Header */}
                 <div className="text-center space-y-3">
-                  <span className="text-xs uppercase tracking-[0.3em] font-semibold text-burnt-sienna">
+                  <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
                     Bespoke Planning
                   </span>
-                  <h1 className="font-serif text-3xl md:text-4xl text-deep-green font-medium">
+                  <h1 className="font-serif text-3xl md:text-4xl text-luxury-charcoal font-medium">
                     Start Your Enquiry
                   </h1>
-                  <div className="h-[1px] w-12 bg-border-gold mx-auto" />
-                  <p className="text-xs sm:text-sm text-primary-dark/60 font-light">
+                  <div className="h-[1px] w-12 bg-luxury-gold mx-auto" />
+                  <p className="text-xs sm:text-sm text-luxury-charcoal/60 font-light">
                     Step {step} of 3: {step === 1 && 'Destinations & Styles'} {step === 2 && 'Party Size & Budget'} {step === 3 && 'Contact Details'}
                   </p>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="relative w-full h-[2px] bg-linen">
+                <div className="relative w-full h-[2px] bg-luxury-sand">
                   <div
-                    className="absolute top-0 left-0 h-full bg-burnt-sienna transition-all duration-500"
+                    className="absolute top-0 left-0 h-full bg-luxury-gold transition-all duration-500"
                     style={{ width: `${(step / 3) * 100}%` }}
                   />
                 </div>
@@ -160,7 +160,7 @@ export default function EnquiryPage() {
                   <div className="space-y-8 animate-fade-in">
                     {/* Destination Selection */}
                     <div className="space-y-4">
-                      <label className="font-serif text-base text-deep-green font-medium block">
+                      <label className="font-serif text-base text-luxury-charcoal font-medium block">
                         Which areas in Vietnam are you interested in?
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -173,8 +173,8 @@ export default function EnquiryPage() {
                               onClick={() => handleDestinationToggle(dest)}
                               className={`p-3.5 border text-xs tracking-wider uppercase font-medium text-left transition-all duration-200 rounded-none ${
                                 isSelected
-                                  ? 'border-burnt-sienna bg-burnt-sienna/5 text-burnt-sienna'
-                                  : 'border-linen hover:border-border-gold/60 text-primary-dark/70'
+                                  ? 'border-luxury-gold bg-luxury-gold/5 text-luxury-gold'
+                                  : 'border-luxury-sand hover:border-luxury-gold/60 text-luxury-charcoal/70'
                               }`}
                             >
                               {dest}
@@ -186,7 +186,7 @@ export default function EnquiryPage() {
 
                     {/* Travel Style */}
                     <div className="space-y-4">
-                      <label className="font-serif text-base text-deep-green font-medium block">
+                      <label className="font-serif text-base text-luxury-charcoal font-medium block">
                         What is your preferred style of travel?
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -199,8 +199,8 @@ export default function EnquiryPage() {
                               onClick={() => setFormData({ ...formData, style })}
                               className={`p-3.5 border text-xs tracking-wider uppercase font-medium text-left transition-all duration-200 rounded-none ${
                                 isSelected
-                                  ? 'border-burnt-sienna bg-burnt-sienna/5 text-burnt-sienna'
-                                  : 'border-linen hover:border-border-gold/60 text-primary-dark/70'
+                                  ? 'border-luxury-gold bg-luxury-gold/5 text-luxury-gold'
+                                  : 'border-luxury-sand hover:border-luxury-gold/60 text-luxury-charcoal/70'
                               }`}
                             >
                               {style}
@@ -218,7 +218,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Adults */}
                       <div className="space-y-2">
-                        <label htmlFor="adults" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="adults" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           Number of Adults
                         </label>
                         <select
@@ -226,7 +226,7 @@ export default function EnquiryPage() {
                           name="adults"
                           value={formData.adults}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-linen bg-white focus:outline-none focus:border-burnt-sienna text-sm"
+                          className="w-full p-3 border border-luxury-sand bg-white focus:outline-none focus:border-luxury-gold text-sm"
                         >
                           {[1, 2, 3, 4, 5, 6, '7+'].map((num) => (
                             <option key={num} value={num}>
@@ -238,7 +238,7 @@ export default function EnquiryPage() {
 
                       {/* Children */}
                       <div className="space-y-2">
-                        <label htmlFor="children" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="children" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           Number of Children
                         </label>
                         <select
@@ -246,7 +246,7 @@ export default function EnquiryPage() {
                           name="children"
                           value={formData.children}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-linen bg-white focus:outline-none focus:border-burnt-sienna text-sm"
+                          className="w-full p-3 border border-luxury-sand bg-white focus:outline-none focus:border-luxury-gold text-sm"
                         >
                           {[0, 1, 2, 3, 4, '5+'].map((num) => (
                             <option key={num} value={num}>
@@ -260,7 +260,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Duration */}
                       <div className="space-y-2">
-                        <label htmlFor="duration" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="duration" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           Preferred Duration
                         </label>
                         <select
@@ -268,7 +268,7 @@ export default function EnquiryPage() {
                           name="duration"
                           value={formData.duration}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-linen bg-white focus:outline-none focus:border-burnt-sienna text-sm"
+                          className="w-full p-3 border border-luxury-sand bg-white focus:outline-none focus:border-luxury-gold text-sm"
                           required
                         >
                           <option value="">Please Select</option>
@@ -281,7 +281,7 @@ export default function EnquiryPage() {
 
                       {/* Travel Month */}
                       <div className="space-y-2">
-                        <label htmlFor="travelMonth" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="travelMonth" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           When do you plan to travel?
                         </label>
                         <select
@@ -289,7 +289,7 @@ export default function EnquiryPage() {
                           name="travelMonth"
                           value={formData.travelMonth}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-linen bg-white focus:outline-none focus:border-burnt-sienna text-sm"
+                          className="w-full p-3 border border-luxury-sand bg-white focus:outline-none focus:border-luxury-gold text-sm"
                           required
                         >
                           <option value="">Please Select</option>
@@ -304,10 +304,10 @@ export default function EnquiryPage() {
                     {/* Budget slider */}
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
-                        <label htmlFor="budgetPerPerson" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold">
+                        <label htmlFor="budgetPerPerson" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold">
                           Budget Per Person (£ GBP)
                         </label>
-                        <span className="text-base font-semibold text-deep-green">
+                        <span className="text-base font-semibold text-luxury-charcoal">
                           £{parseInt(formData.budgetPerPerson).toLocaleString('en-GB')}+
                         </span>
                       </div>
@@ -320,9 +320,9 @@ export default function EnquiryPage() {
                         step="500"
                         value={formData.budgetPerPerson}
                         onChange={handleInputChange}
-                        className="w-full accent-burnt-sienna cursor-pointer"
+                        className="w-full accent-luxury-gold cursor-pointer"
                       />
-                      <p className="text-[11px] text-primary-dark/50 font-light">
+                      <p className="text-[11px] text-luxury-charcoal/50 font-light">
                         Note: As a bespoke luxury travel operator, our custom journeys typically start at £3,000 per person, excluding international flights.
                       </p>
                     </div>
@@ -334,7 +334,7 @@ export default function EnquiryPage() {
                   <div className="space-y-6 animate-fade-in">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                      <label htmlFor="name" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                         Full Name *
                       </label>
                       <input
@@ -345,7 +345,7 @@ export default function EnquiryPage() {
                         onChange={handleInputChange}
                         placeholder="e.g. John Smith"
                         className={`w-full p-3 border text-sm focus:outline-none ${
-                          errors.name ? 'border-red-500 focus:border-red-500' : 'border-linen focus:border-burnt-sienna'
+                          errors.name ? 'border-red-500 focus:border-red-500' : 'border-luxury-sand focus:border-luxury-gold'
                         }`}
                       />
                       {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
@@ -354,7 +354,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Email */}
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           Email Address *
                         </label>
                         <input
@@ -365,7 +365,7 @@ export default function EnquiryPage() {
                           onChange={handleInputChange}
                           placeholder="e.g. john@example.com"
                           className={`w-full p-3 border text-sm focus:outline-none ${
-                            errors.email ? 'border-red-500 focus:border-red-500' : 'border-linen focus:border-burnt-sienna'
+                            errors.email ? 'border-red-500 focus:border-red-500' : 'border-luxury-sand focus:border-luxury-gold'
                           }`}
                         />
                         {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
@@ -373,7 +373,7 @@ export default function EnquiryPage() {
 
                       {/* Phone */}
                       <div className="space-y-2">
-                        <label htmlFor="phone" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                        <label htmlFor="phone" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                           Contact Phone Number *
                         </label>
                         <input
@@ -384,7 +384,7 @@ export default function EnquiryPage() {
                           onChange={handleInputChange}
                           placeholder="e.g. +44 7911 123456"
                           className={`w-full p-3 border text-sm focus:outline-none ${
-                            errors.phone ? 'border-red-500 focus:border-red-500' : 'border-linen focus:border-burnt-sienna'
+                            errors.phone ? 'border-red-500 focus:border-red-500' : 'border-luxury-sand focus:border-luxury-gold'
                           }`}
                         />
                         {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
@@ -393,7 +393,7 @@ export default function EnquiryPage() {
 
                     {/* Notes */}
                     <div className="space-y-2">
-                      <label htmlFor="notes" className="text-xs uppercase tracking-wider text-primary-dark/60 font-semibold block">
+                      <label htmlFor="notes" className="text-xs uppercase tracking-wider text-luxury-charcoal/60 font-semibold block">
                         Tell us about your dream trip (preferred pacing, locations, key experiences)
                       </label>
                       <textarea
@@ -403,20 +403,20 @@ export default function EnquiryPage() {
                         value={formData.notes}
                         onChange={handleInputChange}
                         placeholder="e.g. We want to celebrate our 10th anniversary. We love fresh local food, private boats, and want a very relaxing pace with lots of spa treatments..."
-                        className="w-full p-3 border border-linen text-sm focus:outline-none focus:border-burnt-sienna"
+                        className="w-full p-3 border border-luxury-sand text-sm focus:outline-none focus:border-luxury-gold"
                       />
                     </div>
                   </div>
                 )}
 
                 {/* Form Navigation Buttons */}
-                <div className="pt-6 border-t border-linen flex justify-between items-center gap-4">
+                <div className="pt-6 border-t border-luxury-sand flex justify-between items-center gap-4">
                   {step > 1 ? (
                     <button
                       type="button"
                       disabled={isLoading}
                       onClick={handleBack}
-                      className="px-6 py-2.5 border border-linen text-primary-dark/70 font-semibold text-xs tracking-widest uppercase transition-all duration-300 hover:bg-linen/40 rounded-none disabled:opacity-50"
+                      className="px-6 py-2.5 border border-luxury-sand text-luxury-charcoal/70 font-semibold text-xs tracking-widest uppercase transition-all duration-300 hover:bg-luxury-sand/40 rounded-none disabled:opacity-50"
                     >
                       Back
                     </button>
@@ -428,7 +428,7 @@ export default function EnquiryPage() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-8 py-3 bg-deep-green hover:bg-deep-green/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
+                      className="px-8 py-3 bg-luxury-charcoal hover:bg-luxury-charcoal/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
                     >
                       Next Step
                     </button>
@@ -436,7 +436,7 @@ export default function EnquiryPage() {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="px-8 py-3 bg-burnt-sienna hover:bg-burnt-sienna/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md disabled:opacity-50 flex items-center space-x-2"
+                      className="px-8 py-3 bg-luxury-gold hover:bg-luxury-gold/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md disabled:opacity-50 flex items-center space-x-2"
                     >
                       {isLoading ? (
                         <>
@@ -457,31 +457,31 @@ export default function EnquiryPage() {
               /* Success Screen */
               <div className="text-center py-12 space-y-6 animate-fade-in">
                 {/* Success Icon */}
-                <div className="w-16 h-16 bg-deep-green/10 text-deep-green rounded-full flex items-center justify-center mx-auto border border-deep-green/20">
+                <div className="w-16 h-16 bg-luxury-gold/10 text-luxury-gold rounded-full flex items-center justify-center mx-auto border border-luxury-gold/20">
                   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div className="space-y-3">
-                  <span className="text-xs uppercase tracking-[0.3em] font-semibold text-burnt-sienna">
+                  <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
                     Enquiry Received
                   </span>
-                  <h2 className="font-serif text-3xl text-deep-green font-medium">
+                  <h2 className="font-serif text-3xl text-luxury-charcoal font-medium">
                     Thank You, {formData.name.split(' ')[0]}
                   </h2>
-                  <div className="h-[1px] w-12 bg-border-gold mx-auto" />
-                  <p className="text-sm text-primary-dark/80 font-light max-w-md mx-auto leading-relaxed">
+                  <div className="h-[1px] w-12 bg-luxury-gold mx-auto" />
+                  <p className="text-sm text-luxury-charcoal/80 font-light max-w-md mx-auto leading-relaxed">
                     Your bespoke travel enquiry has been registered and saved. An automatic confirmation email has been dispatched, and our lead Vietnam Specialist, **Alice Mercer**, will contact you within 24 hours.
                   </p>
                 </div>
-                <div className="pt-6 space-y-2 text-xs text-primary-dark/50">
-                  <p>A copy of your enquiry details was sent to: <span className="font-medium text-deep-green">{formData.email}</span></p>
-                  <p>Direct UK assistance: <span className="font-medium text-deep-green font-semibold">+44 (0) 20 7845 9200</span></p>
+                <div className="pt-6 space-y-2 text-xs text-luxury-charcoal/50">
+                  <p>A copy of your enquiry details was sent to: <span className="font-medium text-luxury-charcoal">{formData.email}</span></p>
+                  <p>Direct UK assistance: <span className="font-medium text-luxury-gold font-semibold">+44 (0) 20 7845 9200</span></p>
                 </div>
                 <div className="pt-8">
                   <Link
                     href="/"
-                    className="px-8 py-3 bg-deep-green hover:bg-deep-green/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md inline-block"
+                    className="px-8 py-3 bg-luxury-charcoal hover:bg-luxury-charcoal/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md inline-block"
                   >
                     Return to Homepage
                   </Link>

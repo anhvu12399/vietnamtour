@@ -8,7 +8,6 @@ import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 
 export const revalidate = 3600;
 
-// Generate static routes for itineraries to speed up production builds
 export async function generateStaticParams() {
   const itineraries = await getItineraries();
   return itineraries.map((it) => ({
@@ -42,18 +41,18 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             className="object-cover brightness-[0.7] animate-fade-in"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/95 via-primary-dark/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-luxury-charcoal/95 via-luxury-charcoal/20 to-transparent z-10" />
         </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full text-white space-y-4">
           <Link
             href="/#journeys"
-            className="text-xs uppercase tracking-widest text-warm-sand font-semibold hover:underline flex items-center space-x-1.5"
+            className="text-xs uppercase tracking-widest text-luxury-gold font-semibold hover:underline flex items-center space-x-1.5"
           >
             <span>←</span>
             <span>Back to Journeys</span>
           </Link>
-          <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-warm-sand uppercase">
+          <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
             <span>{itinerary.duration} Days Tailor-Made</span>
             <span>•</span>
             <span>From £{itinerary.priceFrom.toLocaleString('en-GB')} per person</span>
@@ -72,24 +71,24 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             
             {/* Overview */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl lg:text-3xl text-deep-green font-medium border-b border-linen pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-luxury-charcoal font-medium border-b border-luxury-sand pb-4">
                 Overview
               </h2>
-              <p className="text-base font-light text-primary-dark/80 leading-relaxed">
+              <p className="text-base font-light text-luxury-charcoal/80 leading-relaxed">
                 {itinerary.description[0]?.children[0]?.text || itinerary.intro}
               </p>
             </div>
 
             {/* Highlights */}
-            <div className="bg-linen p-8 border border-border-gold/30 space-y-6">
-              <h3 className="font-serif text-xl text-deep-green font-medium">
+            <div className="bg-luxury-sand p-8 border border-luxury-gold/30 space-y-6">
+              <h3 className="font-serif text-xl text-luxury-charcoal font-medium">
                 Trip Highlights
               </h3>
               <ul className="space-y-4">
                 {itinerary.highlights.map((hl, index) => (
                   <li key={index} className="flex items-start space-x-3">
-                    <span className="text-burnt-sienna font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-primary-dark/75 font-light leading-relaxed">
+                    <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
+                    <span className="text-sm sm:text-base text-luxury-charcoal/75 font-light leading-relaxed">
                       {hl}
                     </span>
                   </li>
@@ -99,28 +98,28 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
 
             {/* Day-by-Day Timeline */}
             <div className="space-y-12">
-              <h2 className="font-serif text-2xl lg:text-3xl text-deep-green font-medium border-b border-linen pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-luxury-charcoal font-medium border-b border-luxury-sand pb-4">
                 Day-by-Day Itinerary
               </h2>
               
-              <div className="relative pl-6 sm:pl-8 border-l border-border-gold/40 space-y-16">
+              <div className="relative pl-6 sm:pl-8 border-l border-luxury-gold/40 space-y-16">
                 {itinerary.timeline.map((item, idx) => (
                   <div key={idx} className="relative space-y-4">
                     {/* Circle Marker */}
-                    <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 bg-burnt-sienna border-2 border-canvas-light rounded-full" />
+                    <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 bg-luxury-gold border-2 border-luxury-cream rounded-full" />
                     
                     {/* Header */}
                     <div className="space-y-1">
-                      <span className="text-xs uppercase tracking-widest text-burnt-sienna font-semibold block">
+                      <span className="text-xs uppercase tracking-widest text-luxury-gold font-semibold block">
                         {item.dayRange}
                       </span>
-                      <h3 className="font-serif text-lg sm:text-xl text-deep-green font-medium">
+                      <h3 className="font-serif text-lg sm:text-xl text-luxury-charcoal font-medium">
                         {item.title}
                       </h3>
                     </div>
 
                     {/* Body */}
-                    <p className="text-sm sm:text-base font-light text-primary-dark/75 leading-relaxed">
+                    <p className="text-sm sm:text-base font-light text-luxury-charcoal/75 leading-relaxed">
                       {item.description[0]?.children[0]?.text}
                     </p>
 
@@ -128,17 +127,17 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                     {item.accommodation && (
                       <div className="pt-2">
                         {typeof item.accommodation === 'object' ? (
-                          <div className="inline-flex items-center space-x-3 bg-linen/50 border border-linen p-3 px-4">
-                            <span className="text-[10px] uppercase tracking-wider text-primary-dark/50">Stay:</span>
-                            <span className="text-xs font-semibold text-deep-green">{item.accommodation.name}</span>
-                            <span className="text-[10px] bg-border-gold/30 text-deep-green px-2 py-0.5 rounded-none font-medium">
+                          <div className="inline-flex items-center space-x-3 bg-luxury-sand/50 border border-luxury-sand p-3 px-4">
+                            <span className="text-[10px] uppercase tracking-wider text-luxury-charcoal/50">Stay:</span>
+                            <span className="text-xs font-semibold text-luxury-charcoal">{item.accommodation.name}</span>
+                            <span className="text-[10px] bg-luxury-gold/20 text-luxury-charcoal px-2 py-0.5 rounded-none font-medium">
                               {item.accommodation.rating}
                             </span>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center space-x-2 bg-linen/50 border border-linen p-2 px-3 text-xs">
-                            <span className="text-[10px] uppercase tracking-wider text-primary-dark/50">Stay:</span>
-                            <span className="font-medium text-deep-green">{item.accommodation}</span>
+                          <div className="inline-flex items-center space-x-2 bg-luxury-sand/50 border border-luxury-sand p-2 px-3 text-xs">
+                            <span className="text-[10px] uppercase tracking-wider text-luxury-charcoal/50">Stay:</span>
+                            <span className="font-medium text-luxury-charcoal">{item.accommodation}</span>
                           </div>
                         )}
                       </div>
@@ -152,17 +151,17 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
           {/* Right Column - Specialist Sidebar & Quick Actions */}
           <div className="space-y-10">
             {/* Specialist Panel */}
-            <div className="bg-white border border-linen p-8 text-center space-y-6 shadow-sm">
+            <div className="bg-white border border-luxury-sand p-8 text-center space-y-6 shadow-sm">
               <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-wider text-burnt-sienna font-semibold block">
+                <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">
                   Your Destination Curator
                 </span>
-                <h3 className="font-serif text-lg text-deep-green font-semibold">
+                <h3 className="font-serif text-lg text-luxury-charcoal font-semibold">
                   Plan with {itinerary.specialist.name}
                 </h3>
               </div>
 
-              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto border-2 border-border-gold/30">
+              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto border-2 border-luxury-gold/30">
                 <Image
                   src={itinerary.specialist.image}
                   alt={itinerary.specialist.name}
@@ -171,45 +170,45 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 />
               </div>
 
-              <p className="text-xs sm:text-sm text-primary-dark/70 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-luxury-charcoal/70 font-light leading-relaxed">
                 Alice has designed this journey based on personal travels. She can adjust any detail to suit your preferences.
               </p>
 
-              <div className="pt-4 border-t border-linen space-y-4">
+              <div className="pt-4 border-t border-luxury-sand space-y-4">
                 <Link
                   href="/enquire"
-                  className="block w-full py-3 bg-deep-green hover:bg-deep-green/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
+                  className="block w-full py-3 bg-luxury-charcoal hover:bg-luxury-charcoal/95 text-white font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
                 >
                   Request A Quote
                 </Link>
                 <div className="text-xs space-y-1.5 pt-2">
-                  <p className="text-primary-dark/50">Direct Phone: <span className="font-semibold text-deep-green">{itinerary.specialist.phone}</span></p>
-                  <p className="text-primary-dark/50">Email: <span className="font-semibold text-deep-green">{itinerary.specialist.email}</span></p>
+                  <p className="text-luxury-charcoal/50">Direct Phone: <span className="font-semibold text-luxury-charcoal">{itinerary.specialist.phone}</span></p>
+                  <p className="text-luxury-charcoal/50">Email: <span className="font-semibold text-luxury-charcoal">{itinerary.specialist.email}</span></p>
                 </div>
               </div>
             </div>
 
             {/* Quick Facts */}
-            <div className="border border-linen p-8 space-y-4">
-              <h4 className="font-serif text-sm tracking-widest uppercase text-deep-green font-semibold">
+            <div className="border border-luxury-sand p-8 space-y-4">
+              <h4 className="font-serif text-sm tracking-widest uppercase text-luxury-charcoal font-semibold">
                 Trip Details
               </h4>
-              <ul className="space-y-3 text-xs sm:text-sm font-light text-primary-dark/80">
-                <li className="flex justify-between py-1 border-b border-linen">
-                  <span className="text-primary-dark/50">Pacing:</span>
+              <ul className="space-y-3 text-xs sm:text-sm font-light text-luxury-charcoal/80">
+                <li className="flex justify-between py-1 border-b border-luxury-sand">
+                  <span className="text-luxury-charcoal/50">Pacing:</span>
                   <span className="font-medium">Relaxed / Luxury</span>
                 </li>
-                <li className="flex justify-between py-1 border-b border-linen">
-                  <span className="text-primary-dark/50">Primary currency:</span>
+                <li className="flex justify-between py-1 border-b border-luxury-sand">
+                  <span className="text-luxury-charcoal/50">Primary currency:</span>
                   <span className="font-medium">£ GBP (UK Market)</span>
                 </li>
-                <li className="flex justify-between py-1 border-b border-linen">
-                  <span className="text-primary-dark/50">Best Season:</span>
+                <li className="flex justify-between py-1 border-b border-luxury-sand">
+                  <span className="text-luxury-charcoal/50">Best Season:</span>
                   <span className="font-medium">Oct to Apr</span>
                 </li>
                 <li className="flex justify-between py-1">
-                  <span className="text-primary-dark/50">Protection:</span>
-                  <span className="font-medium text-deep-green">ATOL Protected</span>
+                  <span className="text-luxury-charcoal/50">Protection:</span>
+                  <span className="font-medium text-luxury-gold">ATOL Protected</span>
                 </li>
               </ul>
             </div>
