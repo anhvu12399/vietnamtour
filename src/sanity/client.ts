@@ -15,6 +15,7 @@ export const client = projectId
       apiVersion,
       useCdn: true,
       stega: {
+        enabled: true,
         studioUrl: '/studio',
       },
     })
@@ -26,10 +27,7 @@ export const { sanityFetch, SanityLive } = client
   ? defineLive({
       client,
       serverToken: process.env.SANITY_WRITE_TOKEN,
-      // browserToken: false prevents SanityLive from calling draftMode() internally
-      // on statically-rendered pages, which causes ERROR 1853131806.
-      // Draft previews are handled server-side by serverToken via the Presentation Tool.
-      browserToken: false,
+      browserToken: process.env.SANITY_WRITE_TOKEN,
     })
   : { sanityFetch: null, SanityLive: () => null };
 

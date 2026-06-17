@@ -52,7 +52,7 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-luxury-slate text-luxury-linen">
         {children}
-        {SanityLive && <SanityLive />}
+        <SanityLive />
         {isDraftMode && <VisualEditing />}
       </body>
     </html>
