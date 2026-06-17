@@ -29,6 +29,7 @@ export default function Navbar() {
     { name: 'Journeys', href: '/itineraries' },
     { name: 'Accommodations', href: '/accommodations' },
     { name: 'Specialists', href: '/specialists' },
+    { name: 'Enquire', href: '/enquire' },
   ];
 
   const navbarBg = isHeroPage
@@ -66,37 +67,17 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Nav Links & CTA aligned to the right (similar to Scott Dunn layout) */}
-          <div className="hidden md:flex items-center space-x-8 lg:space-x-12 ml-auto">
-            <div className="flex items-center space-x-6 lg:space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm tracking-widest uppercase font-medium hover:text-luxury-gold transition-colors duration-200"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-
-            {/* Subtle vertical divider */}
-            <div className="h-4 w-[1px] bg-luxury-gold/20" />
-
-            <div className="flex items-center space-x-6">
-              <a 
-                href="tel:+442078459200" 
-                className="text-xs lg:text-sm font-medium tracking-wider hover:text-luxury-gold transition-colors duration-200"
-              >
-                📞 +44 (0) 20 7845 9200
-              </a>
+          {/* Desktop Nav Links aligned to the right (Scott Dunn layout) */}
+          <div className="hidden md:flex items-center space-x-8 lg:space-x-10 ml-auto">
+            {navLinks.map((link) => (
               <Link
-                href="/enquire"
-                className={`px-6 py-2.5 border text-xs tracking-widest uppercase font-semibold transition-all duration-300 rounded-none ${buttonStyle}`}
+                key={link.name}
+                href={link.href}
+                className="text-[15px] lg:text-base tracking-wide font-medium hover:text-luxury-gold transition-colors duration-200"
               >
-                Enquire
+                {link.name}
               </Link>
-            </div>
+            ))}
           </div>
 
           {/* Mobile Menu Toggles */}
@@ -126,12 +107,12 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-luxury-slate text-luxury-linen border-b border-luxury-moss/50 animate-fade-in">
           <div className="px-6 pt-4 pb-6 space-y-4">
-            {navLinks.map((link) => (
+            {navLinks.filter(link => link.name !== 'Enquire').map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-sm tracking-widest uppercase font-medium hover:text-luxury-gold py-2"
+                className="block text-base font-medium hover:text-luxury-gold py-2"
               >
                 {link.name}
               </Link>
