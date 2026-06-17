@@ -1,0 +1,188 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { getDestinationBySlug, getDestinations, getItineraries } from '@/sanity/client';
+
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const destinations = await getDestinations();
+  return destinations.map((dest) => ({
+    slug: dest.slug.current,
+  }));
+}
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function DestinationDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const destination = await getDestinationBySlug(slug);
+
+  if (!destination) {
+    notFound();
+  }
+
+  // Find itineraries related to this destination
+  const itineraries = await getItineraries();
+  // Filter itineraries that have highlights or text relating to this destination
+  const relatedItineraries = itineraries.filter(
+    (it) =>
+      it.title.toLowerCase().includes(destination.name.toLowerCase()) ||
+      it.intro.toLowerCase().includes(destination.name.split(' ')[0].toLowerCase()) ||
+      it.highlights.some((hl) => hl.toLowerCase().includes(destination.name.split(' ')[0].toLowerCase()))
+  );
+
+  return (
+    <>
+      <Navbar />
+
+      {/* Hero Banner */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-end justify-start">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={destination.image}
+            alt={destination.name}
+            fill
+            className="object-cover brightness-[0.7] animate-fade-in"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate/95 via-luxury-slate/20 to-transparent z-10" />
+        </div>
+
+        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full text-white space-y-4">
+          <Link
+            href="/destinations"
+            className="text-xs uppercase tracking-widest text-luxury-gold font-semibold hover:underline flex items-center space-x-1.5"
+          >
+            <span>←</span>
+            <span>All Destinations</span>
+          </Link>
+          <div className="flex items-center space-x-3 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
+            <span>Vietnam</span>
+            <span>•</span>
+            <span>{destination.bestTimeToVisit}</span>
+          </div>
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-luxury-linen">
+            {destination.name}
+          </h1>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <main className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          
+          {/* Left columns */}
+          <div className="lg:col-span-2 space-y-16">
+            
+            {/* Description */}
+            <div className="space-y-6">
+              <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                Region Overview
+              </h2>
+              <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
+                {destination.description[0]?.children[0]?.text}
+              </p>
+            </div>
+
+            {/* Highlights */}
+            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 animate-fade-in">
+              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+                Key Region Highlights
+              </h3>
+              <ul className="space-y-4">
+                {destination.highlights.map((hl, index) => (
+                  <li key={index} className="flex items-start space-x-3">
+                    <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
+                    <span className="text-sm sm:text-base text-luxury-linen/75 font-light leading-relaxed">
+                      {hl}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Related Itineraries */}
+            <div className="space-y-8">
+              <h3 className="font-serif text-2xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                Recommended Itineraries featuring this region
+              </h3>
+              {relatedItineraries.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {relatedItineraries.map((it) => (
+                    <div key={it._id} className="bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={it.gallery[0]}
+                          alt={it.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">
+                          {it.title}
+                        </h4>
+                        <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
+                          <span className="text-xs text-luxury-linen/60 font-semibold">{it.duration} Days</span>
+                          <Link
+                            href={`/itineraries/${it.slug.current}`}
+                            className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
+                          >
+                            <span>Explore Trip</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-luxury-linen/50 font-light">
+                  Speak to Alice or James to design a custom itinerary specifically traversing this region.
+                </p>
+              )}
+            </div>
+
+          </div>
+
+          {/* Right Column: CTA Panel */}
+          <div className="space-y-8">
+            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 shadow-sm">
+              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+                Tailormade Travel Planning
+              </h3>
+              <p className="text-sm text-luxury-linen/75 font-light leading-relaxed">
+                Want to combine {destination.name} with other regions? We will draft an itinerary from scratch tailored to you.
+              </p>
+              <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
+                <Link
+                  href="/enquire"
+                  className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
+                >
+                  Plan this Journey
+                </Link>
+              </div>
+            </div>
+
+            <div className="border border-luxury-moss p-8 space-y-4">
+              <h4 className="font-serif text-sm tracking-widest uppercase text-luxury-linen font-semibold">
+                Best time to travel
+              </h4>
+              <p className="text-xs sm:text-sm font-light text-luxury-linen/80 leading-relaxed">
+                {destination.bestTimeToVisit}. Travel pacing can be adjusted based on local weather conditions.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

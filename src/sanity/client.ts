@@ -1,9 +1,7 @@
 import { createClient } from '@sanity/client';
-import { mockItineraries, mockAccommodations, mockSpecialists } from './mockData';
-import { Itinerary, Accommodation, Specialist } from './types';
+import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
+import { Itinerary, Accommodation, Specialist, Destination } from './types';
 
-// Standard Sanity client configuration
-// Will use local mock data if project ID is not set to keep build operational out-of-the-box
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 const apiVersion = '2026-06-17';
@@ -17,14 +15,12 @@ export const client = projectId
     })
   : null;
 
-// Helper to check if we should fall back to mock data
 const useMock = !client;
 
 export async function getItineraries(): Promise<Itinerary[]> {
   if (useMock) {
     return mockItineraries;
   }
-  // GROQ query for Sanity
   const query = `*[_type == "itinerary"]{
     ...,
     accommodations[]->,
@@ -83,4 +79,18 @@ export async function getSpecialistBySlug(slug: string): Promise<Specialist | nu
     return mockSpecialists.find(spec => spec.slug.current === slug) || null;
   }
   return await client!.fetch(`*[_type == "specialist" && slug.current == $slug][0]`, { slug });
+}
+
+export async function getDestinations(): Promise<Destination[]> {
+  if (useMock) {
+    return mockDestinations;
+  }
+  return await client!.fetch(`*[_type == "destination"]`);
+}
+
+export async function getDestinationBySlug(slug: string): Promise<Destination | null> {
+  if (useMock) {
+    return mockDestinations.find(dest => dest.slug.current === slug) || null;
+  }
+  return await client!.fetch(`*[_type == "destination" && slug.current == $slug][0]`, { slug });
 }

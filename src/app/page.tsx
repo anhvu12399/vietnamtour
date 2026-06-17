@@ -23,9 +23,9 @@ export default async function HomePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1920&q=80"
-            alt="Lan Ha Bay, Vietnam"
+            alt="Twilight over Halong Bay, Vietnam"
             fill
-            className="object-cover brightness-75 scale-105 transition-transform duration-[10s] hover:scale-100"
+            className="object-cover brightness-50 scale-105 transition-transform duration-[10s] hover:scale-100"
             priority
           />
           {/* Subtle gradient overlay */}
@@ -33,12 +33,13 @@ export default async function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 text-center max-w-4xl mx-auto px-6 text-white animate-fade-in space-y-6">
+        <div className="relative z-20 text-center max-w-5xl mx-auto px-6 text-white animate-fade-in space-y-6">
           <span className="text-xs uppercase tracking-[0.4em] font-semibold text-luxury-gold">
             Bespoke Luxury Travel
           </span>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl leading-tight font-medium">
-            Extraordinary Vietnam
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-7xl leading-tight font-light uppercase tracking-wide">
+            Mystic Midnight Forest:<br />
+            <span className="font-medium text-luxury-gold">A Journey of Emotions</span>
           </h1>
           <p className="text-sm sm:text-base lg:text-lg font-light tracking-wide text-white/80 max-w-2xl mx-auto leading-relaxed">
             Tailor-made itineraries, ultra-luxury retreats, and private cultural expeditions curated by destination experts.
@@ -50,12 +51,12 @@ export default async function HomePage() {
             >
               Enquire Online
             </Link>
-            <a
-              href="#journeys"
-              className="w-full sm:w-auto px-8 py-3.5 border border-white/50 hover:border-white text-white bg-transparent hover:bg-white/10 font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none"
+            <Link
+              href="/itineraries"
+              className="w-full sm:w-auto px-8 py-3.5 border border-white/50 hover:border-white text-white bg-transparent hover:bg-white/10 font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
             >
               Explore Journeys
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -89,13 +90,13 @@ export default async function HomePage() {
             <div className="space-y-3">
               <h3 className="font-serif text-lg text-luxury-linen font-medium">True Local Expertise</h3>
               <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
-                Consultants who have lived, traveled, and thoroughly explored Vietnam to bring you real insider insight.
+                Consultants who have lived, travelled, and thoroughly explored Vietnam to bring you real insider insight.
               </p>
             </div>
             <div className="space-y-3">
               <h3 className="font-serif text-lg text-luxury-linen font-medium">Peace of Mind</h3>
               <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
-                Full ATOL and ABTA security, with 24/7 localized support from arrival to departure.
+                Full ATOL and ABTA security, with 24/7 localised support from arrival to departure.
               </p>
             </div>
           </div>
@@ -114,7 +115,7 @@ export default async function HomePage() {
             </h2>
           </div>
           <p className="text-sm text-luxury-linen/60 font-light max-w-md leading-relaxed">
-            Get inspired by our popular itineraries. You can personalize any element, length of stay, or selection of resorts.
+            Get inspired by our popular itineraries. You can personalise any element, length of stay, or selection of resorts.
           </p>
         </div>
 
@@ -206,7 +207,7 @@ export default async function HomePage() {
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-4 border-t border-luxury-moss flex items-center justify-between">
+                  <div className="pt-4 border-t border-luxury-sand flex items-center justify-between">
                     <span className="text-[10px] uppercase text-luxury-linen/50 font-light">Featured accommodation</span>
                     <a
                       href={acc.websiteUrl}
@@ -260,7 +261,7 @@ export default async function HomePage() {
                   {spec.bio[0].children[0].text}
                 </p>
                 <div className="pt-2 text-xs space-y-1">
-                  <p className="text-luxury-linen/60">📍 Favorite Area: <span className="font-medium text-luxury-linen">{spec.favoriteDestinations.join(', ')}</span></p>
+                  <p className="text-luxury-linen/60">📍 Favourite Area: <span className="font-medium text-luxury-linen">{spec.favoriteDestinations.join(', ')}</span></p>
                   <p className="text-luxury-linen/70 font-semibold">📞 Direct UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
                 </div>
               </div>
@@ -272,7 +273,7 @@ export default async function HomePage() {
       {/* 6. Editorial CTA Banner */}
       <section className="relative bg-luxury-moss text-white py-24 overflow-hidden border-t border-luxury-gold/20">
         {/* Decorative subtle texture/glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(186,153,106,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(197,168,128,0.15),transparent_50%)]" />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
           <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
             Design Your Journey

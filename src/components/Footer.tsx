@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-luxury-linen/70 font-light leading-relaxed max-w-sm">
-              We design extraordinary, bespoke luxury journeys to Vietnam for discerning UK travelers. Every itinerary is tailor-made, hand-crafted, and curated by specialists with deep local expertise.
+              We design extraordinary, bespoke luxury journeys to Vietnam for discerning UK travellers. Every itinerary is tailor-made, hand-crafted, and curated by specialists with deep local expertise.
             </p>
             <div className="flex items-center space-x-4 text-xs font-semibold tracking-wider text-luxury-gold">
               <span>ABTA MEMBER</span>
@@ -63,13 +63,16 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm font-light">
               <li>
-                <a href="#journeys" className="hover:text-luxury-gold transition-colors">Featured Journeys</a>
+                <Link href="/destinations" className="hover:text-luxury-gold transition-colors">Destinations</Link>
               </li>
               <li>
-                <a href="#accommodations" className="hover:text-luxury-gold transition-colors">Luxury Lodges & Resorts</a>
+                <Link href="/itineraries" className="hover:text-luxury-gold transition-colors font-medium">Bespoke Journeys</Link>
               </li>
               <li>
-                <a href="#specialists" className="hover:text-luxury-gold transition-colors font-medium">Speak to a Specialist</a>
+                <Link href="/accommodations" className="hover:text-luxury-gold transition-colors">Luxury Retreats</Link>
+              </li>
+              <li>
+                <Link href="/specialists" className="hover:text-luxury-gold transition-colors">Speak to a Specialist</Link>
               </li>
               <li>
                 <Link href="/enquire" className="hover:text-luxury-gold transition-colors text-luxury-gold font-medium">
@@ -86,7 +89,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-4 text-sm font-light">
               <p className="leading-relaxed text-luxury-linen/70">
-                Speak directly to our UK-based team of destination consultants:
+                Speak directly to our UK-based team of destination specialists:
               </p>
               <div className="space-y-1">
                 <a href="tel:+442078459200" className="block text-base font-medium text-luxury-gold hover:underline">

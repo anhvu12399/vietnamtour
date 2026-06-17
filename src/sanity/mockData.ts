@@ -1,4 +1,4 @@
-import { Accommodation, Specialist, Itinerary } from './types';
+import { Accommodation, Specialist, Itinerary, Destination } from './types';
 
 export const mockAccommodations: Accommodation[] = [
   {
@@ -119,14 +119,14 @@ export const mockSpecialists: Specialist[] = [
         children: [
           {
             _type: 'span',
-            text: 'Alice has spent over 12 years traveling through Southeast Asia, with a particular love for Vietnam. She has mapped out hidden cycling routes in Hue, sampled private chef tables in Hanoi, and stayed at every premium property in the country. Alice specializes in planning immersive, multi-generational family journeys and private luxury escapes.'
+            text: 'Alice has spent over 12 years travelling through Southeast Asia, with a particular love for Vietnam. She has mapped out hidden cycling routes in Hue, sampled private chef tables in Hanoi, and stayed at every premium property in the country. Alice specialises in planning immersive, multi-generational family journeys and private luxury escapes.'
           }
         ]
       }
     ],
     favoriteDestinations: ['Hoi An Ancient Town', 'Sapa Highlands', 'Vinh Hy Bay (Amanoi)'],
     expertTips: [
-      'Take a private sidecar tour through the streets of Hanoi at dusk to experience the city like a local, followed by an exclusive dining experience at a restored colonial villa.',
+      'Take a private vintage sidecar tour through the streets of Hanoi at dusk to experience the city like a local, followed by an exclusive dining experience at a restored colonial villa.',
       'For the ultimate beach privacy, schedule your stay at Amanoi in Ninh Thuan, and ask for Pavilion 18 for the most breathtaking sunrise views over the bay.'
     ]
   },
@@ -155,6 +155,105 @@ export const mockSpecialists: Specialist[] = [
       'Instead of the standard tour boats in Halong Bay, charter a private luxury catamaran to the lesser-visited Lan Ha Bay, where you can kayak in complete solitude through hidden lagoons.',
       'The best way to see the Mekong Delta is by private luxury sampan, stopping at local orchards and private colonial estates for lunch.'
     ]
+  }
+];
+
+export const mockDestinations: Destination[] = [
+  {
+    _id: 'dest-1',
+    name: 'Hanoi & The North',
+    slug: { current: 'hanoi-and-the-north' },
+    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: "Home to the historic capital of Hanoi, the breathtaking limestone karsts of Halong Bay, and the misty terrace rice fields of Sapa's highlands. North Vietnam offers an unparalleled blend of culture, history, and raw scenic beauty. Wander the atmospheric streets of Hanoi's Old Quarter, cruise past towering stone monoliths on a private catamaran, and hike through ethnic minority villages high in the mountains."
+          }
+        ]
+      }
+    ],
+    highlights: [
+      "Explore Hanoi's French Quarter in a vintage sidecar at chao-time.",
+      "Private overnight junk boat cruise in Lan Ha Bay and secluded lagoons.",
+      "Hike through the terraced rice fields of Sapa and stay in luxury mountain lodges."
+    ],
+    bestTimeToVisit: 'October to April (cool, dry season)'
+  },
+  {
+    _id: 'dest-2',
+    name: 'Central Coast & Hoi An',
+    slug: { current: 'central-coast-and-hoi-an' },
+    image: 'https://images.unsplash.com/photo-1509060464153-44667396260f?auto=format&fit=crop&w=1200&q=80',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: "The cultural and historical heart of Vietnam. Here you will discover the majestic imperial city and royal tombs of Hue, the charming lantern-lit streets of Hoi An Ancient Town (a UNESCO World Heritage Site), and the pristine white-sand coastline of Danang and Nha Trang. Ideal for a relaxed mix of heritage exploration and luxury beach relaxation."
+          }
+        ]
+      }
+    ],
+    highlights: [
+      "Exclusive private access to Hue's Forbidden Purple City with a local historian.",
+      "Organic gardening and masterclass cooking session in a Hoi An garden home.",
+      "Relax on the golden sands of An Bang beach or stay in private bay villas."
+    ],
+    bestTimeToVisit: 'February to August (sunny and warm)'
+  },
+  {
+    _id: 'dest-3',
+    name: 'Saigon & Mekong Delta',
+    slug: { current: 'saigon-and-mekong-delta' },
+    image: 'https://images.unsplash.com/photo-1545638191-4df6e250f288?auto=format&fit=crop&w=1200&q=80',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: "A fascinating contrast of modern urban energy and peaceful rural life. Ho Chi Minh City (formerly Saigon) sparkles with French colonial architecture, high-end rooftop lounges, and Michelin-starred dining. Just a short journey away lies the Mekong Delta, a fertile maze of rivers, floating markets, fruit orchards, and traditional villages."
+          }
+        ]
+      }
+    ],
+    highlights: [
+      "Vespa culinary tour through Saigon's night markets with a private guide.",
+      "Private luxury sampan cruise along the floating markets of the Mekong Delta.",
+      "Exclusive tour of the Cu Chi Tunnels with a retired military historian."
+    ],
+    bestTimeToVisit: 'November to April (dry, warm season)'
+  },
+  {
+    _id: 'dest-4',
+    name: 'Phu Quoc Island',
+    slug: { current: 'phu-quoc-island' },
+    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: "A tropical island paradise situated in the Gulf of Thailand. Boasting turquoise waters, fine white sand beaches, and lush tropical national parks, Phu Quoc is Vietnam's premier beach getaway. Home to spectacular ultra-luxury resorts like Regent Phu Quoc, it is the perfect spot to end a tour of Vietnam in complete comfort."
+          }
+        ]
+      }
+    ],
+    highlights: [
+      "Private luxury catamaran charter to the deserted islands of the southern archipelago.",
+      "Snorkeling and coral reef diving in remote marine reserves.",
+      "Private sunset beach barbecue with your personal chef and butler."
+    ],
+    bestTimeToVisit: 'November to March (ideal beach weather)'
   }
 ];
 

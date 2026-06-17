@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   
-  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries/');
+  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries/') || pathname.startsWith('/destinations/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +25,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Journeys', href: '/#journeys' },
-    { name: 'Accommodations', href: '/#accommodations' },
-    { name: 'Specialists', href: '/#specialists' },
+    { name: 'Destinations', href: '/destinations' },
+    { name: 'Journeys', href: '/itineraries' },
+    { name: 'Accommodations', href: '/accommodations' },
+    { name: 'Specialists', href: '/specialists' },
   ];
 
   const navbarBg = isHeroPage
@@ -94,7 +95,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggles */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}

@@ -30,6 +30,16 @@ export interface TimelineItem {
   accommodation?: Accommodation | string; // Reference or object
 }
 
+export interface Destination {
+  _id: string;
+  name: string;
+  slug: { current: string };
+  image: string; // Image URL
+  description: any[]; // PortableText
+  highlights: string[];
+  bestTimeToVisit: string;
+}
+
 export interface Itinerary {
   _id: string;
   title: string;
