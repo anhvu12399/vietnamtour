@@ -1,19 +1,29 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TripFinder from '@/components/TripFinder';
 import HeroSlider from '@/components/HeroSlider';
-import { getFeaturedItineraries, getAccommodations, getSpecialists, getDestinations } from '@/sanity/client';
+import { getFeaturedItineraries, getAccommodations, getSpecialists, getDestinations, getHomepage } from '@/sanity/client';
 
 export const revalidate = 3600;
 
+export async function generateMetadata(): Promise<Metadata> {
+  const homepage = await getHomepage();
+  return {
+    title: homepage?.seoTitle || 'VietnamTour.co.uk | Luxury Bespoke Travel Vietnam',
+    description: homepage?.seoDescription || 'Experience ultra-luxury travel in Vietnam. Fully bespoke itineraries curated by local specialists.',
+  };
+}
+
 export default async function HomePage() {
-  const [itineraries, accommodations, specialists, destinations] = await Promise.all([
+  const [itineraries, accommodations, specialists, destinations, homepage] = await Promise.all([
     getFeaturedItineraries(),
     getAccommodations(),
     getSpecialists(),
-    getDestinations()
+    getDestinations(),
+    getHomepage(),
   ]);
 
   // Value Pillars data
@@ -137,7 +147,10 @@ export default async function HomePage() {
       <Navbar />
       
       {/* 1. Hero Section — Premium Slideshow */}
-      <HeroSlider />
+      <HeroSlider
+        heroHeading={homepage?.heroHeading}
+        heroSubheading={homepage?.heroSubheading}
+      />
 
       {/* Interactive Trip Finder Section */}
       <section className="relative z-30 max-w-6xl mx-auto px-6 -mt-16 sm:-mt-24 pb-12">
@@ -168,15 +181,19 @@ export default async function HomePage() {
           {/* Left Column: Title and Pitch */}
           <div className="space-y-6 lg:sticky lg:top-32">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-luxury-linen leading-tight font-medium">
-              Tailor-Made Luxury Holidays <br />
-              <span className="text-luxury-gold font-light italic">with Vietnam Tour</span>
+              {homepage?.introHeading ? (
+                homepage.introHeading
+              ) : (
+                <>Tailor-Made Luxury Holidays <br />
+                <span className="text-luxury-gold font-light italic">with Vietnam Tour</span></>
+              )}
             </h2>
             <div className="h-[1px] w-20 bg-luxury-gold" />
             <p className="text-sm text-luxury-linen/70 font-light leading-relaxed">
-              Since our founding, we have worked tirelessly to become the premier luxury travel operator for Vietnam. With our seamless service, deep insider insights, and carefully curated collection, we design one-of-a-kind experiences.
+              {homepage?.introParagraph1 || "Since our founding, we have worked tirelessly to become the premier luxury travel operator for Vietnam. With our seamless service, deep insider insights, and carefully curated collection, we design one-of-a-kind experiences."}
             </p>
             <p className="text-sm text-luxury-linen/70 font-light leading-relaxed">
-              Delve deep into destinations on privately guided tours, enjoy exclusive access to the country\'s most sought-after sites, and embark on journeys that are truly out of the ordinary.
+              {homepage?.introParagraph2 || "Delve deep into destinations on privately guided tours, enjoy exclusive access to the country's most sought-after sites, and embark on journeys that are truly out of the ordinary."}
             </p>
             <div className="pt-4 flex flex-wrap gap-4">
               <Link

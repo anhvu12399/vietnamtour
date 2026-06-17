@@ -227,6 +227,34 @@ export async function getTravelGuidesByDestination(destinationSlug: string): Pro
   return await client!.fetch(query, { destinationSlug });
 }
 
+// --- Homepage ---
+
+export interface HomepageData {
+  title?: string;
+  heroHeading?: string;
+  heroSubheading?: string;
+  introHeading?: string;
+  introParagraph1?: string;
+  introParagraph2?: string;
+  artOfTravelHeading?: string;
+  artOfTravelText?: string;
+  finalCtaHeading?: string;
+  finalCtaSubtext?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+}
+
+export async function getHomepage(): Promise<HomepageData | null> {
+  if (useMock) return null;
+  return await client!.fetch(`*[_type == "homepage"][0]{
+    title, heroHeading, heroSubheading,
+    introHeading, introParagraph1, introParagraph2,
+    artOfTravelHeading, artOfTravelText,
+    finalCtaHeading, finalCtaSubtext,
+    seoTitle, seoDescription
+  }`);
+}
+
 // --- Posts ---
 
 export async function getPosts(): Promise<Post[]> {

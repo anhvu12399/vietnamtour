@@ -38,7 +38,12 @@ const quickCategories = [
   { name: 'SAFARIS', href: '/destinations/hanoi-and-the-north' },
 ];
 
-export default function HeroSlider() {
+interface HeroSliderProps {
+  heroHeading?: string | null;
+  heroSubheading?: string | null;
+}
+
+export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderProps) {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -101,10 +106,10 @@ export default function HeroSlider() {
           </span>
 
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight font-semibold tracking-wide text-luxury-linen">
-            {slide.heading}
+            {current === 0 && heroHeading ? heroHeading : slide.heading}
           </h1>
           <h2 className="font-serif text-lg sm:text-2xl text-luxury-linen font-normal tracking-wide max-w-xl">
-            {slide.subheading}
+            {current === 0 && heroSubheading ? heroSubheading : slide.subheading}
           </h2>
 
           <div className="pt-2">
