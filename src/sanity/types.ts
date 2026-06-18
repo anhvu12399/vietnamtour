@@ -99,6 +99,26 @@ export interface Post {
   publishedAt?: string;
   mainImage?: string;
   excerpt?: string;
+  factSheet?: {
+    pacing?: string;
+    bestMonths?: string;
+    duration?: string;
+    destinations?: string;
+    operatorType?: string;
+  };
+  sidebarTip?: {
+    tip?: string;
+    specialist?: {
+      name?: string;
+      role?: string;
+      image?: string;
+    };
+  };
+  photoEssay?: {
+    title?: string;
+    caption?: string;
+    url?: string;
+  }[];
   content?: any[]; // PortableText
   seo?: SeoFields;
 }

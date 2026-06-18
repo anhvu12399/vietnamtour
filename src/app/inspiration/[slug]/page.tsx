@@ -334,25 +334,27 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <div className="divide-y divide-luxury-gold/10 pt-4 space-y-4">
                   <div className="flex justify-between items-center text-xs pb-4">
                     <span className="uppercase tracking-widest text-luxury-linen/50 font-light">Pacing</span>
-                    <span className="font-serif text-luxury-linen font-medium">Bespoke & Leisurely</span>
+                    <span className="font-serif text-luxury-linen font-medium">{post.factSheet?.pacing || "Bespoke & Leisurely"}</span>
                   </div>
                   <div className="flex justify-between items-center text-xs pt-4 pb-4">
                     <span className="uppercase tracking-widest text-luxury-linen/50 font-light">Best Months</span>
-                    <span className="font-serif text-luxury-gold font-medium">November – April</span>
+                    <span className="font-serif text-luxury-gold font-medium">{post.factSheet?.bestMonths || "November – April"}</span>
                   </div>
                   <div className="flex justify-between items-center text-xs pt-4 pb-4">
                     <span className="uppercase tracking-widest text-luxury-linen/50 font-light">Duration</span>
-                    <span className="font-serif text-luxury-linen font-medium">14 Days / 13 Nights</span>
+                    <span className="font-serif text-luxury-linen font-medium">{post.factSheet?.duration || "14 Days / 13 Nights"}</span>
                   </div>
                   <div className="flex justify-between items-start text-xs pt-4 pb-4">
                     <span className="uppercase tracking-widest text-luxury-linen/50 font-light mt-0.5">Destinations</span>
                     <span className="font-serif text-luxury-linen font-medium text-right max-w-[200px]">
-                      Hanoi · Halong Bay · Hoi An · Saigon · Mekong Delta
+                      {post.factSheet?.destinations || "Hanoi · Halong Bay · Hoi An · Saigon · Mekong Delta"}
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-xs pt-4">
                     <span className="uppercase tracking-widest text-luxury-linen/50 font-light">Operator Type</span>
-                    <span className="font-serif text-luxury-gold font-medium uppercase tracking-wider text-[10px]">Private Jet/VIP Ground</span>
+                    <span className="font-serif text-luxury-gold font-medium uppercase tracking-wider text-[10px]">
+                      {post.factSheet?.operatorType || "Private Jet/VIP Ground"}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -364,13 +366,20 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </span>
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden relative flex-shrink-0 border border-luxury-gold/20">
-                    <Image src="/images/specialist_alice.png" alt="Alice Mercer" fill className="object-cover grayscale" />
+                    <Image 
+                      src={post.sidebarTip?.specialist?.image || "/images/specialist_alice.png"} 
+                      alt={post.sidebarTip?.specialist?.name || "Alice Mercer"} 
+                      fill 
+                      className="object-cover grayscale" 
+                    />
                   </div>
                   <div className="space-y-1">
                     <p className="text-xs text-luxury-linen/80 font-light leading-relaxed italic">
-                      "While visa-free entry is valid for up to 45 days for UK passport holders, we recommend letting our VIP concierge handle fast-track clearance on arrival at Hanoi airport to keep your journey completely seamless."
+                      "{post.sidebarTip?.tip || "While visa-free entry is valid for up to 45 days for UK passport holders, we recommend letting our VIP concierge handle fast-track clearance on arrival at Hanoi airport to keep your journey completely seamless."}"
                     </p>
-                    <span className="block text-[10px] font-serif text-luxury-gold pt-2">— Alice Mercer, Senior Specialist</span>
+                    <span className="block text-[10px] font-serif text-luxury-gold pt-2">
+                      — {post.sidebarTip?.specialist?.name || "Alice Mercer"}, {post.sidebarTip?.specialist?.role || "Senior Specialist"}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -483,6 +492,47 @@ export default async function BlogPostPage({ params }: PageProps) {
                           );
                         }
 
+                        if (block._type === 'specialistTip') {
+                          const avatar = block.customAvatar?.url || block.specialist?.image || '/images/specialist_alice.png';
+                          const name = block.customName || block.specialist?.name || 'Travel Specialist';
+                          const role = block.customRole || block.specialist?.role || 'Expert';
+                          return (
+                            <div key={bIdx} className="my-8 p-6 bg-luxury-moss border-t-2 border-luxury-gold/30 space-y-4 rounded-xs">
+                              <div className="flex items-center space-x-3">
+                                <div className="w-8 h-8 rounded-full overflow-hidden relative flex-shrink-0 border border-luxury-gold/15">
+                                  <Image src={avatar} alt={name} fill className="object-cover grayscale" />
+                                </div>
+                                <div>
+                                  <span className="block text-[11px] font-serif text-luxury-linen font-medium">{name}</span>
+                                  <span className="block text-[8px] uppercase tracking-wider text-luxury-linen/40 font-light">{role}</span>
+                                </div>
+                              </div>
+                              <p className="text-xs text-luxury-gold font-light leading-relaxed italic">
+                                "{block.tip}"
+                              </p>
+                            </div>
+                          );
+                        }
+
+                        if (block._type === 'pullQuote') {
+                          return (
+                            <blockquote 
+                              key={bIdx} 
+                              className="border-y border-luxury-gold/20 py-8 my-10 text-center relative max-w-2xl mx-auto"
+                            >
+                              <span className="text-4xl font-serif text-luxury-gold/30 block leading-none select-none pointer-events-none mb-1">“</span>
+                              <p className="font-serif text-xl sm:text-2xl text-luxury-linen font-light italic leading-relaxed">
+                                {block.quote}
+                              </p>
+                              {block.author && (
+                                <span className="block text-[10px] uppercase tracking-widest text-luxury-gold mt-4 font-semibold">
+                                  — {block.author}
+                                </span>
+                              )}
+                            </blockquote>
+                          );
+                        }
+
                         const text = getBlockText(block);
                         // Catch pull-quotes inside text (block styled or italic markers)
                         if (text.startsWith('Insider Tip:') || text.startsWith('How to do it right:')) {
@@ -543,38 +593,56 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              {/* Image 1 */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image src="/images/vietnamtour_cave_dining.png" alt="Cave Dining" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
-                  <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Exclusive Dining</span>
-                  <span className="text-[9px] text-luxury-linen/70 font-light block">Private chef table inside Halong caverns.</span>
-                </div>
-              </div>
-
-              {/* Image 2 */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image src="/images/vietnamtour_amanoi_villa.png" alt="Amanoi Villa" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
-                  <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Ultra-Luxury Retreats</span>
-                  <span className="text-[9px] text-luxury-linen/70 font-light block">Ocean view private pavilions at Amanoi.</span>
-                </div>
-              </div>
-
-              {/* Image 3 */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image src="/images/vietnamtour_phu_quoc_beach.png" alt="Phu Quoc Beach" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
-                  <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Remote Island Bliss</span>
-                  <span className="text-[9px] text-luxury-linen/70 font-light block">Sun-kissed private beaches on Phu Quoc.</span>
-                </div>
-              </div>
+              {post.photoEssay && post.photoEssay.length > 0 ? (
+                post.photoEssay.map((item, idx) => (
+                  <div key={idx} className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
+                    <div className="relative w-full h-full overflow-hidden">
+                      {item.url && (
+                        <Image src={item.url} alt={item.title || 'Photo Essay'} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      )}
+                    </div>
+                    {(item.title || item.caption) && (
+                      <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
+                        {item.title && <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">{item.title}</span>}
+                        {item.caption && <span className="text-[9px] text-luxury-linen/70 font-light block">{item.caption}</span>}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <>
+                  {/* Fallback Image 1 */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image src="/images/vietnamtour_cave_dining.png" alt="Cave Dining" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
+                      <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Exclusive Dining</span>
+                      <span className="text-[9px] text-luxury-linen/70 font-light block">Private chef table inside Halong caverns.</span>
+                    </div>
+                  </div>
+                  {/* Fallback Image 2 */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image src="/images/vietnamtour_amanoi_villa.png" alt="Amanoi Villa" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
+                      <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Ultra-Luxury Retreats</span>
+                      <span className="text-[9px] text-luxury-linen/70 font-light block">Ocean view private pavilions at Amanoi.</span>
+                    </div>
+                  </div>
+                  {/* Fallback Image 3 */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group">
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image src="/images/vietnamtour_phu_quoc_beach.png" alt="Phu Quoc Beach" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 bg-luxury-slate/90 border border-luxury-gold/15 p-3 text-center">
+                      <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">Remote Island Bliss</span>
+                      <span className="text-[9px] text-luxury-linen/70 font-light block">Sun-kissed private beaches on Phu Quoc.</span>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>

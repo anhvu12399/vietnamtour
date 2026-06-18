@@ -323,11 +323,36 @@ export async function getPosts(): Promise<Post[]> {
   return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
     ...,
     "mainImage": mainImage.asset->url,
+    factSheet,
+    sidebarTip{
+      tip,
+      specialist->{
+        name,
+        role,
+        "image": image.asset->url
+      }
+    },
+    photoEssay[]{
+      title,
+      caption,
+      "url": image.asset->url
+    },
     content[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
+      },
+      _type == "specialistTip" => {
+        ...,
+        specialist->{
+          name,
+          role,
+          "image": image.asset->url
+        },
+        customAvatar{
+          "url": asset->url
+        }
       }
     },
     "seo": seo{
@@ -342,11 +367,36 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const query = `*[_type == "post" && slug.current == $slug][0]{
     ...,
     "mainImage": mainImage.asset->url,
+    factSheet,
+    sidebarTip{
+      tip,
+      specialist->{
+        name,
+        role,
+        "image": image.asset->url
+      }
+    },
+    photoEssay[]{
+      title,
+      caption,
+      "url": image.asset->url
+    },
     content[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
+      },
+      _type == "specialistTip" => {
+        ...,
+        specialist->{
+          name,
+          role,
+          "image": image.asset->url
+        },
+        customAvatar{
+          "url": asset->url
+        }
       }
     },
     "seo": seo{
