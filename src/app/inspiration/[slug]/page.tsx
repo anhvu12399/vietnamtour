@@ -281,6 +281,27 @@ export default async function BlogPostPage({ params }: PageProps) {
             {/* Intro text - Left Column */}
             <div className="lg:col-span-7 space-y-6">
               {introSection && introSection.blocks.map((block: any, blockIdx: number) => {
+                if (block._type === 'image') {
+                  return (
+                    <div key={blockIdx} className="my-8 relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm shadow-lg group">
+                      <div className="relative w-full h-full overflow-hidden">
+                        <Image 
+                          src={block.url} 
+                          alt={block.alt || 'Intro Image'} 
+                          fill 
+                          className="object-cover group-hover:scale-[1.02] transition-transform duration-500" 
+                          sizes="(max-width: 768px) 100vw, 600px"
+                        />
+                      </div>
+                      {block.caption && (
+                        <span className="block text-[10px] text-luxury-linen/50 uppercase tracking-widest font-light mt-2 text-center">
+                          {block.caption}
+                        </span>
+                      )}
+                    </div>
+                  );
+                }
+                
                 const text = getBlockText(block);
                 if (blockIdx === 0 && text) {
                   // Drop cap
@@ -364,15 +385,39 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-32">
             {chapters.map((chapter, idx) => {
               const headingText = chapter.headingText || '';
-              const chapterImage = getChapterImage(headingText);
-              const specialistTip = getSpecialistTip(headingText);
               const isEven = idx % 2 === 0;
+
+              // Filter inline images uploaded via Sanity
+              const inlineImages = chapter.blocks.filter(b => b._type === 'image' && b.url);
+
+              // Select the main image for this chapter
+              let chapterImageSrc = '';
+              let chapterImageCaption = '';
+
+              if (inlineImages.length > 0) {
+                chapterImageSrc = inlineImages[0].url;
+                chapterImageCaption = inlineImages[0].caption || inlineImages[0].alt || 'Travel scene in Vietnam';
+              } else {
+                const fallback = getChapterImage(headingText);
+                chapterImageSrc = fallback.src;
+                chapterImageCaption = fallback.caption;
+              }
+
+              // Exclude the first image from blocks rendering to avoid duplicating it
+              const blocksToRender = chapter.blocks.filter(block => {
+                if (block._type === 'image') {
+                  return inlineImages.length > 0 && block !== inlineImages[0];
+                }
+                return true;
+              });
 
               // Roman numeral generator
               const getRomanNumeral = (num: number) => {
                 const numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
                 return numerals[num] || String(num + 1);
               };
+
+              const specialistTip = getSpecialistTip(headingText);
 
               return (
                 <div 
@@ -387,7 +432,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[3/4] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss/30 rounded-sm group shadow-xl">
                       <div className="relative w-full h-full overflow-hidden">
                         <Image 
-                          src={chapterImage.src} 
+                          src={chapterImageSrc} 
                           alt={headingText} 
                           fill 
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-[800ms] ease-out" 
@@ -396,7 +441,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                       </div>
                     </div>
                     <span className="block text-[10px] text-luxury-linen/50 uppercase tracking-widest font-light text-center sm:text-left">
-                      {chapterImage.caption}
+                      {chapterImageCaption}
                     </span>
                   </div>
 
@@ -416,7 +461,28 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                     {/* Chapter Text Blocks */}
                     <div className="space-y-6">
-                      {chapter.blocks.map((block: any, bIdx: number) => {
+                      {blocksToRender.map((block: any, bIdx: number) => {
+                        if (block._type === 'image') {
+                          return (
+                            <div key={bIdx} className="my-8 relative aspect-[4/3] w-full overflow-hidden border border-luxury-gold/15 p-2 bg-luxury-moss rounded-sm group shadow-lg">
+                              <div className="relative w-full h-full overflow-hidden">
+                                <Image 
+                                  src={block.url} 
+                                  alt={block.alt || 'Travel Image'} 
+                                  fill 
+                                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500" 
+                                  sizes="(max-width: 768px) 100vw, 600px"
+                                />
+                              </div>
+                              {block.caption && (
+                                <span className="block text-[10px] text-luxury-linen/50 uppercase tracking-widest font-light mt-2 text-center">
+                                  {block.caption}
+                                </span>
+                              )}
+                            </div>
+                          );
+                        }
+
                         const text = getBlockText(block);
                         // Catch pull-quotes inside text (block styled or italic markers)
                         if (text.startsWith('Insider Tip:') || text.startsWith('How to do it right:')) {

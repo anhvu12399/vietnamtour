@@ -323,6 +323,13 @@ export async function getPosts(): Promise<Post[]> {
   return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
     ...,
     "mainImage": mainImage.asset->url,
+    content[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url
+      }
+    },
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -335,6 +342,13 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const query = `*[_type == "post" && slug.current == $slug][0]{
     ...,
     "mainImage": mainImage.asset->url,
+    content[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url
+      }
+    },
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
