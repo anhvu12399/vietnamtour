@@ -45,6 +45,10 @@ export default defineConfig({
             route: '/destinations/:destinationSlug/blog/:slug',
             filter: '_type == "travelGuide" && slug.current == $slug && destination->slug.current == $destinationSlug',
           },
+          {
+            route: '/inspiration/:slug',
+            filter: '_type == "post" && slug.current == $slug',
+          },
         ]),
         locations: {
           homepage: defineLocations({
@@ -113,6 +117,17 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug && doc?.destinationSlug ? { title: doc.title || 'Travel Guide', href: `/destinations/${doc.destinationSlug}/blog/${doc.slug}` } : null
+              ].filter(Boolean) as any
+            })
+          }),
+          post: defineLocations({
+            select: {
+              title: 'title',
+              slug: 'slug.current',
+            },
+            resolve: (doc) => ({
+              locations: [
+                doc?.slug ? { title: doc.title || 'Inspiration Article', href: `/inspiration/${doc.slug}` } : null
               ].filter(Boolean) as any
             })
           }),
