@@ -50,7 +50,7 @@ export default async function AccommodationsPage() {
                       <p className="text-xs text-luxury-linen/50 italic">{acc.location}</p>
                     </div>
                     <p className="text-xs text-luxury-linen/60 font-light leading-relaxed line-clamp-3">
-                      {acc.description[0]?.children[0]?.text}
+                      {acc.description?.[0]?.children?.[0]?.text || ''}
                     </p>
                     <ul className="flex flex-wrap gap-2 pt-2">
                       {acc.features.slice(0, 3).map((f, i) => (

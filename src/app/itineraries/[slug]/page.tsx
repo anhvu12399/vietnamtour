@@ -108,7 +108,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 Overview
               </h2>
               <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
-                {itinerary.description[0]?.children[0]?.text || itinerary.intro}
+                {itinerary.description?.[0]?.children?.[0]?.text || itinerary.intro}
               </p>
             </div>
 
@@ -153,7 +153,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
 
                     {/* Body */}
                     <p className="text-sm sm:text-base font-light text-luxury-linen/75 leading-relaxed">
-                      {item.description[0]?.children[0]?.text}
+                      {item.description?.[0]?.children?.[0]?.text || ''}
                     </p>
 
                     {/* Accommodation Tag */}

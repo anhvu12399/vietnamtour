@@ -51,7 +51,7 @@ export default async function DestinationsPage() {
                     {dest.name}
                   </h3>
                   <p className="text-xs text-luxury-linen/80 font-light leading-relaxed line-clamp-2 max-w-lg">
-                    {dest.description[0]?.children[0]?.text}
+                    {dest.description?.[0]?.children?.[0]?.text || ''}
                   </p>
                   <div className="pt-2">
                     <Link

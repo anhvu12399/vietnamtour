@@ -108,7 +108,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 Region Overview
               </h2>
               <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
-                {destination.description[0]?.children[0]?.text}
+                {destination.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 

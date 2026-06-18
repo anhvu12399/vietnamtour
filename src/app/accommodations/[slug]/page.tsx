@@ -74,7 +74,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
                 About the Resort
               </h2>
               <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
-                {accommodation.description[0]?.children[0]?.text}
+                {accommodation.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 
