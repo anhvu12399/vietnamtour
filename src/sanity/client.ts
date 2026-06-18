@@ -288,18 +288,47 @@ export interface HomepageData {
   title?: string;
   heroHeading?: string;
   heroSubheading?: string;
+  // Pillars
+  valuePillars?: { title: string; desc: string }[];
+  // Intro
   introHeading?: string;
   introParagraph1?: string;
   introParagraph2?: string;
+  introButtonText?: string;
+  introButtonLink?: string;
+  gridCategories?: { title: string; image: string; link: string }[];
+  // Art of Travel
   artOfTravelHeading?: string;
   artOfTravelText?: string;
+  artOfTravelButtonText?: string;
+  artOfTravelButtonLink?: string;
+  artOfTravelImage?: string;
+  artOfTravelImageLabel?: string;
+  artOfTravelImageTitle?: string;
+  // Experiences
+  experiencesLabel?: string;
+  experiencesHeading?: string;
+  experiencesDescription?: string;
+  experiences?: { title: string; desc: string; image: string; badge: string; link: string }[];
+  // Steps
+  stepsHeading?: string;
+  steps?: { num: string; title: string; desc: string }[];
+  stepsButtonText?: string;
+  // Press
+  pressLabel?: string;
+  pressHeading?: string;
+  pressBackgroundImage?: string;
+  pressQuotes?: { quote: string; source: string }[];
+  // Reviews
+  reviewsHeading?: string;
+  reviews?: { title: string; text: string; author: string; location: string; rating: number; date: string; highlights: string[] }[];
+  // CTA
+  finalCtaLabel?: string;
   finalCtaHeading?: string;
   finalCtaSubtext?: string;
-  gridCategories?: {
-    title: string;
-    image: string;
-    link: string;
-  }[];
+  finalCtaButtonText?: string;
+  finalCtaPhone?: string;
+  // SEO
   seoTitle?: string;
   seoDescription?: string;
 }
@@ -308,10 +337,26 @@ export async function getHomepage(): Promise<HomepageData | null> {
   if (useMock) return null;
   return await fetchSanity<HomepageData | null>(`*[_type == "homepage"][0]{
     title, heroHeading, heroSubheading,
+    valuePillars[]{ title, desc },
     introHeading, introParagraph1, introParagraph2,
+    introButtonText, introButtonLink,
+    gridCategories[]{ title, "image": image.asset->url, link },
     artOfTravelHeading, artOfTravelText,
-    finalCtaHeading, finalCtaSubtext,
-    gridCategories,
+    artOfTravelButtonText, artOfTravelButtonLink,
+    "artOfTravelImage": artOfTravelImage.asset->url,
+    artOfTravelImageLabel, artOfTravelImageTitle,
+    experiencesLabel, experiencesHeading, experiencesDescription,
+    experiences[]{ title, desc, "image": image.asset->url, badge, link },
+    stepsHeading,
+    steps[]{ num, title, desc },
+    stepsButtonText,
+    pressLabel, pressHeading,
+    "pressBackgroundImage": pressBackgroundImage.asset->url,
+    pressQuotes[]{ quote, source },
+    reviewsHeading,
+    reviews[]{ title, text, author, location, rating, date, highlights },
+    finalCtaLabel, finalCtaHeading, finalCtaSubtext,
+    finalCtaButtonText, finalCtaPhone,
     seoTitle, seoDescription
   }`);
 }
@@ -321,40 +366,59 @@ export async function getHomepage(): Promise<HomepageData | null> {
 export async function getPosts(): Promise<Post[]> {
   if (useMock) return [];
   return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
-    ...,
+    _id, title, slug, publishedAt, excerpt,
     "mainImage": mainImage.asset->url,
+    heroAuthor{
+      name, role,
+      "avatar": avatar.asset->url
+    },
     factSheet,
     sidebarTip{
       tip,
+      manualName, manualRole,
+      "manualAvatar": manualAvatar.asset->url,
       specialist->{
-        name,
-        role,
+        name, role,
         "image": image.asset->url
       }
     },
-    photoEssay[]{
-      title,
-      caption,
-      "url": image.asset->url
-    },
-    content[]{
+    introContent[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
-      },
-      _type == "specialistTip" => {
+      }
+    },
+    chapters[]{
+      heading,
+      "image": image.asset->url,
+      imageCaption,
+      body[]{
         ...,
-        specialist->{
-          name,
-          role,
-          "image": image.asset->url
-        },
-        customAvatar{
+        _type == "image" => {
+          ...,
           "url": asset->url
+        },
+        _type == "specialistTip" => {
+          ...,
+          specialist->{
+            name, role,
+            "image": image.asset->url
+          },
+          customAvatar{
+            "url": asset->url
+          }
         }
       }
     },
+    photoEssayHeading,
+    photoEssayTitle,
+    photoEssayDescription,
+    photoEssay[]{
+      title, caption,
+      "url": image.asset->url
+    },
+    ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -365,40 +429,59 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (useMock) return null;
   const query = `*[_type == "post" && slug.current == $slug][0]{
-    ...,
+    _id, title, slug, publishedAt, excerpt,
     "mainImage": mainImage.asset->url,
+    heroAuthor{
+      name, role,
+      "avatar": avatar.asset->url
+    },
     factSheet,
     sidebarTip{
       tip,
+      manualName, manualRole,
+      "manualAvatar": manualAvatar.asset->url,
       specialist->{
-        name,
-        role,
+        name, role,
         "image": image.asset->url
       }
     },
-    photoEssay[]{
-      title,
-      caption,
-      "url": image.asset->url
-    },
-    content[]{
+    introContent[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
-      },
-      _type == "specialistTip" => {
+      }
+    },
+    chapters[]{
+      heading,
+      "image": image.asset->url,
+      imageCaption,
+      body[]{
         ...,
-        specialist->{
-          name,
-          role,
-          "image": image.asset->url
-        },
-        customAvatar{
+        _type == "image" => {
+          ...,
           "url": asset->url
+        },
+        _type == "specialistTip" => {
+          ...,
+          specialist->{
+            name, role,
+            "image": image.asset->url
+          },
+          customAvatar{
+            "url": asset->url
+          }
         }
       }
     },
+    photoEssayHeading,
+    photoEssayTitle,
+    photoEssayDescription,
+    photoEssay[]{
+      title, caption,
+      "url": image.asset->url
+    },
+    ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
