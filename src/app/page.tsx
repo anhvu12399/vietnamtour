@@ -170,21 +170,54 @@ export default async function HomePage() {
         </section>
 
         {/* 2. Value Pillars Section */}
-        <section id="pillars" className="bg-luxury-moss py-16 border-y border-luxury-gold/20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {valuePillars.map((p, idx) => (
-                <div key={idx} className="space-y-3 text-center sm:text-left">
-                  <h3 className="font-serif text-lg text-luxury-gold font-medium border-b border-luxury-gold/10 pb-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-luxury-linen/75 font-light leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
-              ))}
+        <section id="pillars" className="relative bg-luxury-slate py-0 overflow-hidden border-y border-luxury-gold/20">
+          {/* Top decorative rule */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/50 to-transparent" />
+          
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-luxury-gold/10">
+              {valuePillars.map((p, idx) => {
+                const icons = ['◈', '◉', '◈', '◆'];
+                const iconSymbols = [
+                  <svg key={idx} className="w-7 h-7" viewBox="0 0 28 28" fill="none">
+                    {idx === 0 && <><path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3"/><path d="M14 6L22 10.5V17.5L14 22L6 17.5V10.5L14 6Z" stroke="currentColor" strokeWidth="1" fill="none"/><circle cx="14" cy="14" r="3" fill="currentColor"/></>}
+                    {idx === 1 && <><circle cx="14" cy="14" r="11" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3"/><circle cx="14" cy="14" r="7" stroke="currentColor" strokeWidth="1" fill="none"/><circle cx="14" cy="14" r="3" fill="currentColor"/><path d="M14 3V7M14 21V25M3 14H7M21 14H25" stroke="currentColor" strokeWidth="1"/></>}
+                    {idx === 2 && <><path d="M14 2L26 14L14 26L2 14L14 2Z" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3"/><path d="M14 7L21 14L14 21L7 14L14 7Z" stroke="currentColor" strokeWidth="1" fill="none"/><rect x="12" y="12" width="4" height="4" fill="currentColor"/></>}
+                    {idx === 3 && <><path d="M4 4L24 4L24 24L4 24Z" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3"/><path d="M8 8L20 8L20 20L8 20Z" stroke="currentColor" strokeWidth="1" fill="none"/><path d="M11 11L17 11L17 17L11 17Z" fill="currentColor" opacity="0.6"/><path d="M3 14H8M20 14H25M14 3V8M14 20V25" stroke="currentColor" strokeWidth="1"/></>}
+                  </svg>
+                ];
+                return (
+                  <div
+                    key={idx}
+                    className="group relative px-8 py-14 flex flex-col gap-6 hover:bg-luxury-moss/30 transition-all duration-500 cursor-default overflow-hidden"
+                  >
+                    {/* Large background number */}
+                    <span className="absolute right-4 bottom-4 font-serif text-[8rem] leading-none text-luxury-gold/[0.04] select-none group-hover:text-luxury-gold/[0.07] transition-colors duration-700 font-bold">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    {/* Top gold accent bar */}
+                    <div className="h-[2px] w-8 bg-luxury-gold/60 group-hover:w-14 transition-all duration-500" />
+                    {/* Icon */}
+                    <div className="text-luxury-gold/70 group-hover:text-luxury-gold transition-colors duration-300">
+                      {iconSymbols}
+                    </div>
+                    {/* Content */}
+                    <div className="space-y-3 relative z-10">
+                      <h3 className="font-serif text-lg text-luxury-linen font-medium group-hover:text-luxury-gold transition-colors duration-300">
+                        {p.title}
+                      </h3>
+                      <p className="text-xs text-luxury-linen/55 font-light leading-relaxed group-hover:text-luxury-linen/80 transition-colors duration-300">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+
+          {/* Bottom decorative rule */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/50 to-transparent" />
         </section>
 
         {/* 3. Featured Categories & Pitch Grid */}
@@ -390,27 +423,64 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 6. In The Press Section (Client references & Badger quotes) */}
-        <section className="bg-luxury-moss py-24 border-y border-luxury-gold/20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center space-y-16">
-            <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium">
-              In the Press
-            </h2>
+        {/* 6. In The Press Section */}
+        <section className="relative overflow-hidden border-y border-luxury-gold/20">
+          {/* Full-bleed editorial image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/press_hero_colonial.png"
+              alt="Luxury Vietnam travel editorial"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Multi-layer overlay for perfect readability */}
+            <div className="absolute inset-0 bg-luxury-slate/75" />
+            <div className="absolute inset-0 bg-gradient-to-b from-luxury-slate/60 via-transparent to-luxury-slate/85" />
+            <div className="absolute inset-0 bg-gradient-to-r from-luxury-slate/40 via-transparent to-luxury-slate/40" />
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 text-center">
+          {/* Content overlay */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-28">
+            {/* Header */}
+            <div className="text-center mb-16 space-y-3">
+              <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-luxury-gold block">
+                As Featured In
+              </span>
+              <h2 className="font-serif text-4xl lg:text-5xl text-white font-light">
+                In the
+                <span className="italic text-luxury-gold font-medium"> Press</span>
+              </h2>
+              <div className="h-[1px] w-16 bg-luxury-gold/60 mx-auto mt-4" />
+            </div>
+
+            {/* Quotes grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-luxury-gold/20">
               {pressQuotes.map((q, idx) => (
-                <div key={idx} className="space-y-6 max-w-md mx-auto flex flex-col justify-between h-full">
-                  <p className="font-serif italic text-base sm:text-lg text-luxury-linen/85 leading-relaxed">
+                <div key={idx} className="group px-10 py-8 flex flex-col items-center text-center space-y-6 hover:bg-white/[0.03] transition-colors duration-500">
+                  {/* Decorative open-quote */}
+                  <span className="font-serif text-5xl text-luxury-gold/30 leading-none select-none mb-0 group-hover:text-luxury-gold/60 transition-colors duration-500">&ldquo;</span>
+                  <p className="font-serif italic text-base sm:text-lg text-white/90 leading-relaxed -mt-4">
                     {q.quote}
                   </p>
-                  <div className="space-y-2">
-                    <div className="h-[1px] w-12 bg-luxury-gold/30 mx-auto" />
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-luxury-gold">
-                      {q.source}
-                    </span>
+                  <div className="mt-auto space-y-3 pt-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="h-[1px] w-8 bg-luxury-gold/40" />
+                      <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-luxury-gold">
+                        {q.source}
+                      </span>
+                      <div className="h-[1px] w-8 bg-luxury-gold/40" />
+                    </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom decorative line */}
+            <div className="mt-16 flex items-center justify-center gap-4">
+              <div className="h-[1px] flex-1 max-w-[120px] bg-luxury-gold/30" />
+              <span className="text-luxury-gold text-xs tracking-[0.25em] uppercase font-semibold">VietnamTour.co.uk</span>
+              <div className="h-[1px] flex-1 max-w-[120px] bg-luxury-gold/30" />
             </div>
           </div>
         </section>
