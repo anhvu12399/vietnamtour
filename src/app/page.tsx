@@ -121,25 +121,34 @@ export default async function HomePage() {
       }
     ];
 
-    // Trending Blog / What's Hot data
-    const trendingStories = [
+    // TripAdvisor reviews data
+    const tripAdvisorReviews = [
       {
-        title: 'Expedition Cruises',
-        desc: 'Surrender to the cathartic rhythm of private catamaran cruising through the limestone karsts of Lan Ha Bay.',
-        image: '/images/vietnamtour_halong_yacht_luxury.png',
-        link: '/itineraries/the-grand-tour-of-vietnam'
+        title: "Bespoke Perfection: Our 2-Week Luxury Journey",
+        text: "Vietnam Tour exceeded every expectation. Alice Mercer designed a flawless honeymoon covering Amanoi, a private catamaran in Lan Ha Bay, and historic sidecar tours in Hanoi. Every hotel stay included exclusive upgrades, and our private guides felt like family. Truly a bespoke luxury experience.",
+        author: "Charles & Victoria S.",
+        location: "London, UK",
+        rating: 5,
+        date: "June 2026",
+        highlights: ["Private Yacht Charter", "Bespoke Itinerary", "Amanoi Retreat"]
       },
       {
-        title: 'Best New Hideaways',
-        desc: 'As a team of fervent travellers, nothing excites us more than adding a brilliant new villa property like Regent Phu Quoc to our portfolio.',
-        image: '/images/vietnamtour_phu_quoc_beach.png',
-        link: '/accommodations/regent-phu-quoc'
+        title: "Flawless Multi-Generational Family Holiday",
+        text: "Traveling with three generations is challenging, but Alice orchestrated a seamless flow. From private cooking classes inside rock caves to slow luxury sampan cruising in the Mekong Delta, everything was tailored to our pacing. The attention to detail was incredible.",
+        author: "The Sinclair Family",
+        location: "Surrey, UK",
+        rating: 5,
+        date: "May 2026",
+        highlights: ["Mekong Sampan", "Cave Dining", "Private Guides"]
       },
       {
-        title: 'Memorable Dining',
-        desc: 'Explore Ninh Van Bay\'s most memorable dining experiences - from sunset beach barbecues to private chef feasts inside natural rock wine caves.',
-        image: '/images/vietnamtour_cave_dining.png',
-        link: '/itineraries/vietnamese-culinary-and-culture-journey'
+        title: "Unrivaled Local Access and Elite Service",
+        text: "James Harrison set us up with local historians in Saigon and arranged a private helicopter transfer to Ninh Van Bay. His insider tips on Ninh Thuan were spot-on. Vietnam Tour is in a league of its own for luxury Indochina travel. Worth every penny.",
+        author: "Sir Arthur & Lady Evelyn",
+        location: "Edinburgh, Scotland",
+        rating: 5,
+        date: "April 2026",
+        highlights: ["Helicopter Transfer", "Expert Insights", "VIP Airport Meet"]
       }
     ];
 
@@ -404,95 +413,233 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 7. Where to Go in the World (Carousel/Grid of destinations) */}
-        <section className="py-24 max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
-              Regions & Landscapes
-            </span>
-            <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
-              Where to Go in Vietnam
-            </h2>
-            <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {destinations.filter((dest) => dest.slug?.current).map((dest) => (
-              <Link
-                key={dest._id}
-                href={`/destinations/${dest.slug.current}`}
-                className="group relative h-80 overflow-hidden flex items-end p-6 border border-luxury-moss/50 shadow-md"
-              >
-                <div className="absolute inset-0 z-0">
-                  <Image
-                    src={dest.image}
-                    alt={dest.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-75"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate/95 via-luxury-slate/20 to-transparent z-10" />
-                </div>
-                <div className="relative z-20 space-y-2">
-                  <h3 className="font-serif text-lg text-luxury-linen group-hover:text-luxury-gold transition-colors font-medium">
-                    {dest.name}
-                  </h3>
-                  <span className="text-[9px] uppercase tracking-widest text-luxury-gold/90 font-semibold group-hover:underline flex items-center">
-                    Explore Region →
+        {/* 7. What Our Guests Have Said on TripAdvisor */}
+        <section className="py-28 bg-luxury-slate relative overflow-hidden border-t border-luxury-gold/20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,168,128,0.05),transparent_40%)]" />
+          
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+              
+              {/* Sticky Summary Card on the Left (4 columns) */}
+              <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
+                <div className="space-y-4">
+                  <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
+                    Guest Chronicles
                   </span>
+                  <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-luxury-linen leading-tight font-medium">
+                    Voices of the <br />
+                    <span className="text-luxury-gold font-light italic">Journey</span>
+                  </h2>
+                  <div className="h-[1px] w-16 bg-luxury-gold" />
                 </div>
-              </Link>
-            ))}
+                
+                {/* TripAdvisor Badge Box */}
+                <div className="p-8 bg-luxury-moss border border-luxury-gold/15 space-y-6">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-6 h-6 text-luxury-gold" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.5h-2v-2h2v2zm0-4.5h-2V7h2v6z" />
+                    </svg>
+                    <span className="font-serif text-sm tracking-widest font-semibold uppercase text-luxury-gold">tripadvisor</span>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="w-4 h-4 rounded-full bg-luxury-gold flex items-center justify-center text-[10px] text-luxury-moss">
+                          ●
+                        </div>
+                      ))}
+                      <span className="text-lg font-serif font-bold text-luxury-linen ml-2">5.0</span>
+                    </div>
+                    <p className="text-xs text-luxury-linen/70 font-light leading-relaxed">
+                      Based on verified guest feedback, Vietnam Tour is rated #1 Specialty Lodging and Tour Operator in Vietnam with 100% Excellent reviews.
+                    </p>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <a 
+                      href="https://www.tripadvisor.com" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-[10px] uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center"
+                    >
+                      Read All TripAdvisor Reviews &rarr;
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Asymmetrical Reviews List on the Right (8 columns) */}
+              <div className="lg:col-span-8 space-y-12">
+                {tripAdvisorReviews.map((rev, idx) => {
+                  const offsets = [
+                    "lg:mr-12",
+                    "lg:ml-12 border-l border-luxury-gold/30",
+                    "lg:mr-6 lg:ml-6"
+                  ];
+                  
+                  return (
+                    <div 
+                      key={idx} 
+                      className={`p-8 bg-luxury-moss/30 border border-luxury-gold/10 hover:border-luxury-gold/30 hover:bg-luxury-moss/50 transition-all duration-500 rounded-none shadow-xl relative group ${offsets[idx]}`}
+                    >
+                      <span className="absolute right-6 top-4 text-7xl font-serif text-luxury-gold/5 select-none pointer-events-none group-hover:text-luxury-gold/10 transition-colors duration-500">
+                        “
+                      </span>
+                      
+                      <div className="space-y-4">
+                        <div className="flex flex-wrap items-center justify-between gap-4">
+                          <div className="flex items-center space-x-1">
+                            {[...Array(rev.rating)].map((_, i) => (
+                              <span key={i} className="text-luxury-gold text-sm">★</span>
+                            ))}
+                            <span className="text-[10px] uppercase tracking-wider text-luxury-linen/50 ml-2">{rev.date}</span>
+                          </div>
+                          <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold">
+                            Verified Guest
+                          </span>
+                        </div>
+                        
+                        <h3 className="font-serif text-xl text-luxury-linen font-medium leading-snug group-hover:text-luxury-gold transition-colors">
+                          &ldquo;{rev.title}&rdquo;
+                        </h3>
+                        
+                        <p className="text-xs sm:text-sm text-luxury-linen/80 font-light leading-relaxed italic">
+                          {rev.text}
+                        </p>
+                        
+                        <div className="pt-4 border-t border-luxury-gold/10 flex flex-wrap items-center justify-between gap-4">
+                          <div>
+                            <span className="font-serif text-sm text-luxury-gold font-medium block">{rev.author}</span>
+                            <span className="text-[10px] text-luxury-linen/50 block">{rev.location}</span>
+                          </div>
+                          
+                          <div className="flex flex-wrap gap-2">
+                            {rev.highlights.map((h, i) => (
+                              <span key={i} className="text-[9px] uppercase tracking-wider bg-luxury-gold/10 text-luxury-gold px-2.5 py-1 font-medium border border-luxury-gold/15">
+                                {h}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
           </div>
         </section>
 
-        {/* 8. What's Hot / Blog Section */}
-        <section className="bg-luxury-moss py-24 border-t border-luxury-gold/20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
-            <div className="text-center space-y-3 max-w-2xl mx-auto">
+        {/* 8. Meet Our Specialists */}
+        <section className="py-28 bg-luxury-moss relative overflow-hidden border-t border-luxury-gold/20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(197,168,128,0.04),transparent_50%)]" />
+          
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 space-y-20">
+            
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
               <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
-                Trends & Guides
+                Architects of the Extraordinary
               </span>
-              <h2 className="font-serif text-3xl lg:text-4xl text-luxury-linen font-medium">
-                What&rsquo;s Hot in the World of Travel?
+              <h2 className="font-serif text-3xl lg:text-5xl text-luxury-linen font-medium leading-tight">
+                Meet Our Travel Specialists
               </h2>
               <div className="h-[1px] w-20 bg-luxury-gold mx-auto mt-4" />
               <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed">
-                Based on the latest travel trends our tour operators are seeing, here are the hottest experiences to keep on your radar.
+                We don&apos;t just book trips. We map out memories. Our experts have lived in and mapped out every corner of Vietnam to curate your perfect itinerary.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {trendingStories.map((story, idx) => (
-                <div key={idx} className="flex flex-col bg-luxury-slate border border-luxury-moss/50 overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={story.image}
-                      alt={story.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
-                    <div className="space-y-3">
-                      <h3 className="font-serif text-xl text-luxury-linen font-semibold">
-                        {story.title}
-                      </h3>
-                      <p className="text-xs text-luxury-linen/60 font-light leading-relaxed">
-                        {story.desc}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-stretch">
+              {specialists.map((spec, idx) => {
+                const isEven = idx % 2 === 0;
+                
+                return (
+                  <div 
+                    key={spec._id} 
+                    className={`flex flex-col space-y-8 group ${!isEven ? 'lg:pt-12' : ''}`}
+                  >
+                    <div className="relative h-[480px] w-full overflow-hidden border border-luxury-gold/20 group-hover:border-luxury-gold/50 transition-all duration-700 shadow-2xl flex items-end">
+                      <Image
+                        src={spec.image || (isEven ? '/images/specialist_alice.png' : '/images/specialist_james.png')}
+                        alt={spec.name}
+                        fill
+                        className="object-cover group-hover:scale-103 transition-transform duration-[1000ms] brightness-90 group-hover:brightness-95"
+                      />
+                      
+                      <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate via-luxury-slate/20 to-transparent opacity-90 z-10" />
+                      
+                      <div className="absolute top-6 right-6 bg-luxury-moss/80 backdrop-blur-sm border border-luxury-gold/20 px-4 py-2 z-20">
+                        <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold">
+                          Certified Specialist
+                        </span>
+                      </div>
+
+                      <div className="relative z-20 p-8 space-y-2 w-full">
+                        <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-luxury-gold block">
+                          {spec.role}
+                        </span>
+                        <h3 className="font-serif text-3xl text-white font-medium group-hover:text-luxury-gold transition-colors duration-300">
+                          {spec.name}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="space-y-6 flex-grow flex flex-col justify-between">
+                      <p className="text-sm text-luxury-linen/75 font-light leading-relaxed">
+                        {Array.isArray(spec.bio) && spec.bio[0]?.children?.[0]?.text
+                          ? spec.bio[0].children[0].text
+                          : "A passionate traveler with over a decade mapping out bespoke paths through Indochina. Dedicated to crafting seamless, private, and unforgettable experiences."}
                       </p>
-                    </div>
-                    <div className="pt-4 border-t border-luxury-moss/50">
-                      <Link
-                        href={story.link}
-                        className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center"
-                      >
-                        Explore More →
-                      </Link>
+
+                      <div className="space-y-2">
+                        <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">
+                          Favorite Havens:
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {(spec.favoriteDestinations || ['Hoi An', 'Sapa', 'Amanoi']).map((dest, i) => (
+                            <span 
+                              key={i} 
+                              className="text-[10px] text-luxury-linen bg-luxury-slate/40 border border-luxury-gold/15 px-3 py-1 font-light rounded-none"
+                            >
+                              {dest}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {spec.expertTips && spec.expertTips.length > 0 && (
+                        <div className="p-5 bg-luxury-slate/40 border-l border-luxury-gold space-y-2 shadow-inner">
+                          <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold block">
+                            Bespoke Insider Tip:
+                          </span>
+                          <p className="text-xs italic text-luxury-linen/85 leading-relaxed font-light">
+                            &ldquo;{spec.expertTips[0]}&rdquo;
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="pt-4 border-t border-luxury-gold/10 flex items-center justify-between">
+                        <a 
+                          href={`mailto:${spec.email}`}
+                          className="text-xs text-luxury-linen hover:text-luxury-gold transition-colors block font-medium"
+                        >
+                          ✉ {spec.email}
+                        </a>
+                        <Link
+                          href={`/specialists/${spec.slug?.current || ''}`}
+                          className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center"
+                        >
+                          Consult {spec.name.split(' ')[0]} &rarr;
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
+
           </div>
         </section>
 
