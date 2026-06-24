@@ -80,9 +80,16 @@ export async function getItineraries(): Promise<Itinerary[]> {
   }
   const query = `*[_type == "itinerary"]{
     ...,
-    accommodations[]->,
-    specialist->,
-    destination->{ _id, name, slug },
+    "gallery": gallery[].asset->url,
+    accommodations[]->{
+      ...,
+      "gallery": gallery[].asset->url
+    },
+    specialist->{
+      ...,
+      "image": image.asset->url
+    },
+    destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -97,9 +104,16 @@ export async function getFeaturedItineraries(): Promise<Itinerary[]> {
   }
   const query = `*[_type == "itinerary" && featured == true]{
     ...,
-    accommodations[]->,
-    specialist->,
-    destination->{ _id, name, slug },
+    "gallery": gallery[].asset->url,
+    accommodations[]->{
+      ...,
+      "gallery": gallery[].asset->url
+    },
+    specialist->{
+      ...,
+      "image": image.asset->url
+    },
+    destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -114,9 +128,16 @@ export async function getItineraryBySlug(slug: string): Promise<Itinerary | null
   }
   const query = `*[_type == "itinerary" && slug.current == $slug][0]{
     ...,
-    accommodations[]->,
-    specialist->,
-    destination->{ _id, name, slug },
+    "gallery": gallery[].asset->url,
+    accommodations[]->{
+      ...,
+      "gallery": gallery[].asset->url
+    },
+    specialist->{
+      ...,
+      "image": image.asset->url
+    },
+    destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -131,14 +152,20 @@ export async function getAccommodations(): Promise<Accommodation[]> {
   if (useMock) {
     return mockAccommodations;
   }
-  return await fetchSanity<Accommodation[]>(`*[_type == "accommodation"]`);
+  return await fetchSanity<Accommodation[]>(`*[_type == "accommodation"]{
+    ...,
+    "gallery": gallery[].asset->url
+  }`);
 }
 
 export async function getAccommodationBySlug(slug: string): Promise<Accommodation | null> {
   if (useMock) {
     return mockAccommodations.find(acc => acc.slug.current === slug) || null;
   }
-  return await fetchSanity<Accommodation | null>(`*[_type == "accommodation" && slug.current == $slug][0]`, { slug });
+  return await fetchSanity<Accommodation | null>(`*[_type == "accommodation" && slug.current == $slug][0]{
+    ...,
+    "gallery": gallery[].asset->url
+  }`, { slug });
 }
 
 // --- Specialists ---
@@ -147,14 +174,20 @@ export async function getSpecialists(): Promise<Specialist[]> {
   if (useMock) {
     return mockSpecialists;
   }
-  return await fetchSanity<Specialist[]>(`*[_type == "specialist"]`);
+  return await fetchSanity<Specialist[]>(`*[_type == "specialist"]{
+    ...,
+    "image": image.asset->url
+  }`);
 }
 
 export async function getSpecialistBySlug(slug: string): Promise<Specialist | null> {
   if (useMock) {
     return mockSpecialists.find(spec => spec.slug.current === slug) || null;
   }
-  return await fetchSanity<Specialist | null>(`*[_type == "specialist" && slug.current == $slug][0]`, { slug });
+  return await fetchSanity<Specialist | null>(`*[_type == "specialist" && slug.current == $slug][0]{
+    ...,
+    "image": image.asset->url
+  }`, { slug });
 }
 
 // --- Destinations ---
@@ -165,6 +198,7 @@ export async function getDestinations(): Promise<Destination[]> {
   }
   return await fetchSanity<Destination[]>(`*[_type == "destination"]{
     ...,
+    "image": image.asset->url,
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
@@ -178,6 +212,7 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
   }
   const query = `*[_type == "destination" && slug.current == $slug][0]{
     ...,
+    "image": image.asset->url,
     featuredTours[]->{
       _id, title, slug, duration, priceFrom, intro, featured,
       "gallery": gallery[].asset->url
@@ -189,6 +224,7 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
   }`;
   return await fetchSanity<Destination | null>(query, { slug });
 }
+
 
 // --- Cruises ---
 
@@ -372,51 +408,29 @@ export async function getPosts(): Promise<Post[]> {
       name, role,
       "avatar": avatar.asset->url
     },
-    factSheet,
-    sidebarTip{
-      tip,
-      manualName, manualRole,
-      "manualAvatar": manualAvatar.asset->url,
-      specialist->{
-        name, role,
-        "image": image.asset->url
-      }
-    },
-    introContent[]{
+    content[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
-      }
-    },
-    chapters[]{
-      heading,
-      "image": image.asset->url,
-      imageCaption,
-      body[]{
+      },
+      _type == "gallery" => {
         ...,
-        _type == "image" => {
-          ...,
-          "url": asset->url
+        images[]{
+          caption,
+          "url": image.asset->url
+        }
+      },
+      _type == "specialistTip" => {
+        ...,
+        specialist->{
+          name, role,
+          "image": image.asset->url
         },
-        _type == "specialistTip" => {
-          ...,
-          specialist->{
-            name, role,
-            "image": image.asset->url
-          },
-          customAvatar{
-            "url": asset->url
-          }
+        customAvatar{
+          "url": asset->url
         }
       }
-    },
-    photoEssayHeading,
-    photoEssayTitle,
-    photoEssayDescription,
-    photoEssay[]{
-      title, caption,
-      "url": image.asset->url
     },
     ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{
@@ -435,51 +449,29 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       name, role,
       "avatar": avatar.asset->url
     },
-    factSheet,
-    sidebarTip{
-      tip,
-      manualName, manualRole,
-      "manualAvatar": manualAvatar.asset->url,
-      specialist->{
-        name, role,
-        "image": image.asset->url
-      }
-    },
-    introContent[]{
+    content[]{
       ...,
       _type == "image" => {
         ...,
         "url": asset->url
-      }
-    },
-    chapters[]{
-      heading,
-      "image": image.asset->url,
-      imageCaption,
-      body[]{
+      },
+      _type == "gallery" => {
         ...,
-        _type == "image" => {
-          ...,
-          "url": asset->url
+        images[]{
+          caption,
+          "url": image.asset->url
+        }
+      },
+      _type == "specialistTip" => {
+        ...,
+        specialist->{
+          name, role,
+          "image": image.asset->url
         },
-        _type == "specialistTip" => {
-          ...,
-          specialist->{
-            name, role,
-            "image": image.asset->url
-          },
-          customAvatar{
-            "url": asset->url
-          }
+        customAvatar{
+          "url": asset->url
         }
       }
-    },
-    photoEssayHeading,
-    photoEssayTitle,
-    photoEssayDescription,
-    photoEssay[]{
-      title, caption,
-      "url": image.asset->url
     },
     ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{

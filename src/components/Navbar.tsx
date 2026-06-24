@@ -1,13 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname();
+  const navRef = useRef<HTMLDivElement>(null);
   
   const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries/') || pathname.startsWith('/destinations/');
 
@@ -24,12 +28,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when route changes
+  // Close menus when route changes
   useEffect(() => {
     setIsOpen(false);
+    setActiveMenu(null);
   }, [pathname]);
 
-  // Lock body scroll when menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -41,30 +46,64 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const navLinks = [
-    { name: 'Destinations', href: '/destinations' },
-    { name: 'Inspiration', href: '/inspiration' },
-    { name: 'Accommodations', href: '/accommodations' },
-    { name: 'Specialists', href: '/specialists' },
-    { name: 'Enquire', href: '/enquire' },
-  ];
+  // Click outside listener to close dropdowns
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-  const navbarBg = isHeroPage
-    ? isScrolled
-      ? 'bg-luxury-slate/95 backdrop-blur-md shadow-sm border-b border-luxury-moss/50'
-      : 'bg-transparent text-white'
-    : 'bg-luxury-slate/95 backdrop-blur-md shadow-sm border-b border-luxury-moss/50';
+  const handleMenuClick = (menu: string) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
 
-  const textColor = isHeroPage && !isScrolled ? 'text-white' : 'text-luxury-linen';
-  const logoColor = isHeroPage && !isScrolled ? 'text-white' : 'text-luxury-gold';
+  const toggleMobileExpanded = (menu: string) => {
+    setMobileExpanded(mobileExpanded === menu ? null : menu);
+  };
+
+  // Determine navbar background based on scroll, active dropdown state, and current page
+  const navbarBg = activeMenu
+    ? 'bg-luxury-navy border-b border-white/10'
+    : isHeroPage
+      ? isScrolled
+        ? 'bg-luxury-navy/95 backdrop-blur-md shadow-sm border-b border-white/10'
+        : 'bg-transparent text-white'
+      : 'bg-luxury-navy/95 backdrop-blur-md shadow-sm border-b border-white/10';
+
+  const textColor = activeMenu 
+    ? 'text-luxury-linen' 
+    : isHeroPage && !isScrolled 
+      ? 'text-white' 
+      : 'text-luxury-linen';
+
+  const logoColor = activeMenu
+    ? 'text-luxury-gold'
+    : isHeroPage && !isScrolled 
+      ? 'text-white' 
+      : 'text-luxury-gold';
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navbarBg} ${textColor}`}>
+      {/* Page Backdrop (Overlay) when a dropdown is open */}
+      {activeMenu && (
+        <div 
+          className="fixed inset-0 top-[80px] lg:top-[96px] bg-black/50 backdrop-blur-[2px] z-40 transition-opacity duration-300"
+          onClick={() => setActiveMenu(null)}
+        />
+      )}
+
+      <nav 
+        ref={navRef}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navbarBg} ${textColor}`}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
           <div className="flex items-center justify-between h-20 lg:h-24 relative">
             
-            {/* Logo on the Left (Desktop & Mobile) */}
+            {/* Logo on the Left */}
             <div className="flex-shrink-0 relative z-50">
               <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center space-x-2 group">
                 <svg 
@@ -83,20 +122,80 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Desktop Nav Links on the Right (Scott Dunn Style) */}
-            <div className="hidden md:flex items-center space-x-8 lg:space-x-10 ml-auto">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-[15px] lg:text-base tracking-wide font-medium hover:text-luxury-gold transition-colors duration-200"
-                >
-                  {link.name}
-                </Link>
-              ))}
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8 ml-auto">
+              
+              {/* Vietnam Tours Dropdown Trigger */}
+              <button
+                onClick={() => handleMenuClick('vietnam-tours')}
+                className={`font-serif text-[14px] lg:text-[15px] tracking-[0.15em] font-medium uppercase hover:text-luxury-gold transition-colors duration-200 flex items-center gap-1 focus:outline-none cursor-pointer ${
+                  activeMenu === 'vietnam-tours' ? 'text-luxury-gold' : ''
+                }`}
+              >
+                VIETNAM TOURS
+                <span className={`transition-transform duration-300 inline-block text-[11px] ${
+                  activeMenu === 'vietnam-tours' ? 'rotate-90 text-luxury-gold' : 'text-white/40'
+                }`}>
+                  &gt;
+                </span>
+              </button>
+
+              {/* Trip Ideas Dropdown Trigger */}
+              <button
+                onClick={() => handleMenuClick('trip-ideas')}
+                className={`font-serif text-[14px] lg:text-[15px] tracking-[0.15em] font-medium uppercase hover:text-luxury-gold transition-colors duration-200 flex items-center gap-1 focus:outline-none cursor-pointer ${
+                  activeMenu === 'trip-ideas' ? 'text-luxury-gold' : ''
+                }`}
+              >
+                TRIP IDEAS
+                <span className={`transition-transform duration-300 inline-block text-[11px] ${
+                  activeMenu === 'trip-ideas' ? 'rotate-90 text-luxury-gold' : 'text-white/40'
+                }`}>
+                  &gt;
+                </span>
+              </button>
+
+              {/* Inspirations Dropdown Trigger */}
+              <button
+                onClick={() => handleMenuClick('inspirations')}
+                className={`font-serif text-[14px] lg:text-[15px] tracking-[0.15em] font-medium uppercase hover:text-luxury-gold transition-colors duration-200 flex items-center gap-1 focus:outline-none cursor-pointer ${
+                  activeMenu === 'inspirations' ? 'text-luxury-gold' : ''
+                }`}
+              >
+                INSPIRATIONS
+                <span className={`transition-transform duration-300 inline-block text-[11px] ${
+                  activeMenu === 'inspirations' ? 'rotate-90 text-luxury-gold' : 'text-white/40'
+                }`}>
+                  &gt;
+                </span>
+              </button>
+
+              {/* Tailor-made Direct Link */}
+              <Link
+                href="/enquire"
+                className="font-serif text-[14px] lg:text-[15px] tracking-[0.15em] font-medium uppercase hover:text-luxury-gold transition-colors duration-200"
+              >
+                TAILOR-MADE
+              </Link>
+
+              {/* About Us Dropdown Trigger */}
+              <button
+                onClick={() => handleMenuClick('about-us')}
+                className={`font-serif text-[14px] lg:text-[15px] tracking-[0.15em] font-medium uppercase hover:text-luxury-gold transition-colors duration-200 flex items-center gap-1 focus:outline-none cursor-pointer ${
+                  activeMenu === 'about-us' ? 'text-luxury-gold' : ''
+                }`}
+              >
+                ABOUT US
+                <span className={`transition-transform duration-300 inline-block text-[11px] ${
+                  activeMenu === 'about-us' ? 'rotate-90 text-luxury-gold' : 'text-white/40'
+                }`}>
+                  &gt;
+                </span>
+              </button>
+
             </div>
 
-            {/* Mobile Hamburger Toggle on the Right (Regent Style Overlay Switch) */}
+            {/* Mobile Hamburger Toggle */}
             <div className="md:hidden flex items-center relative z-50">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -112,63 +211,536 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile-Only Overlay Menu Drawer */}
-        <div 
-          className={`fixed inset-0 z-40 bg-luxury-slate/98 backdrop-blur-md transition-all duration-500 ease-in-out flex flex-col justify-center px-8 pb-12 pt-24 md:hidden ${
-            isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
-        >
-          <div className="space-y-6 max-w-md w-full mx-auto">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
-              Where will your journey lead?
-            </span>
-            
-            <div className="flex flex-col space-y-3">
-              {navLinks.map((link, idx) => {
-                const delayStyles = {
-                  transitionDelay: isOpen ? `${(idx + 1) * 100}ms` : '0ms'
-                };
+        {/* ── DESKTOP MEGA MENUS ── */}
+
+        {/* 1. Vietnam Tours Mega Menu */}
+        {activeMenu === 'vietnam-tours' && (
+          <div className="absolute left-0 w-full top-full bg-luxury-navy border-b border-white/10 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+              
+              {/* Column 1 */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Vietnam Tours
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Vietnam Tours
+                  </Link>
+                  <Link href="/itineraries?category=bike" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Bike Tours
+                  </Link>
+                  <Link href="/itineraries?category=indochina" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Indochina Tours
+                  </Link>
+                  <Link href="/itineraries?category=culinary" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Culinary Tours
+                  </Link>
+                  <Link href="/itineraries?category=battlefield" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Battlefield Tours
+                  </Link>
+                  <Link href="/itineraries?category=day" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Day Tours
+                  </Link>
+                </div>
+                <Link
+                  href="/destinations"
+                  onClick={() => setActiveMenu(null)}
+                  className="inline-block mt-8 px-5 py-2 border border-luxury-gold/50 text-luxury-gold hover:border-luxury-gold hover:bg-luxury-gold hover:text-luxury-navy font-serif text-[11px] tracking-[0.2em] uppercase transition-all duration-300 font-semibold text-center"
+                >
+                  ALL DESTINATIONS A-Z
+                </Link>
+              </div>
+
+              {/* Column 2 */}
+              <div className="pt-8">
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/itineraries?category=top-10" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Top 10 Vietnam Tours
+                  </Link>
+                  <Link href="/itineraries?category=shore" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Shore Excursions
+                  </Link>
+                  <Link href="/itineraries?category=first-time" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    First time travel Vietnam
+                  </Link>
+                  <Link href="/itineraries?category=family" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Family Tours
+                  </Link>
+                  <Link href="/itineraries?category=student" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Student Tours
+                  </Link>
+                  <Link href="/itineraries?category=luxury" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Luxury Tours
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 3 - Popular Destinations */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Popular Destinations
+                </h3>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3.5">
+                  <Link href="/destinations/hanoi-and-the-north" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Hanoi
+                  </Link>
+                  <Link href="/destinations/hanoi-and-the-north" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Halong Bay
+                  </Link>
+                  <Link href="/destinations/saigon-and-mekong-delta" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Ho Chi Minh city
+                  </Link>
+                  <Link href="/destinations/central-coast-and-hoi-an" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Hoi An
+                  </Link>
+                  <Link href="/destinations/hanoi-and-the-north" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Ha Giang
+                  </Link>
+                  <Link href="/destinations/saigon-and-mekong-delta" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Mekong delta
+                  </Link>
+                  <Link href="/destinations/hanoi-and-the-north" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Sapa
+                  </Link>
+                  <Link href="/destinations/central-coast-and-hoi-an" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Nha Trang
+                  </Link>
+                  <Link href="/destinations/phu-quoc-island" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Phu Quoc Island
+                  </Link>
+                  <Link href="/destinations/hanoi-and-the-north" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Ninh Binh
+                  </Link>
+                  <Link href="/destinations/central-coast-and-hoi-an" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Hue
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 4 - Featured Guides */}
+              <div className="border-l border-white/10 pl-8">
+                <div className="flex items-center gap-1.5 mb-6 border-b border-white/5 pb-2">
+                  <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase">
+                    Featured guides
+                  </h3>
+                  <span className="text-[11px] text-luxury-linen">&gt;</span>
+                </div>
                 
-                return (
-                  <div key={link.name} className="overflow-hidden">
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      style={delayStyles}
-                      className={`block font-serif text-3xl text-luxury-linen hover:text-luxury-gold transition-all duration-700 ease-out transform py-2 ${
-                        isOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-                      }`}
-                    >
-                      {link.name}
+                <div className="space-y-6">
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="font-serif text-[15px] leading-snug font-medium text-white hover:text-luxury-gold transition-colors duration-200 block">
+                    Top 12 Places to Visit in Vietnam on Your Next Trip
+                  </Link>
+
+                  <div className="flex items-start gap-4">
+                    <div className="relative w-[110px] h-[80px] flex-shrink-0 border border-white/10 bg-luxury-slate">
+                      <Image 
+                        src="/images/featured_guide_passport.png"
+                        alt="Passport Guide"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[13px] leading-snug text-white/70 hover:text-luxury-gold transition-colors duration-200 font-medium">
+                      Your Guide to Tan Son Nhat International Airport: Arrival and Transportation Options
                     </Link>
                   </div>
-                );
-              })}
+                </div>
+              </div>
+
             </div>
           </div>
+        )}
 
-          {/* Contact Details (Mobile only, shown at bottom) */}
-          <div className="mt-auto pt-8 border-t border-luxury-gold/10 space-y-4 max-w-md w-full mx-auto">
-            <div className="grid grid-cols-2 gap-4">
+        {/* 2. Trip Ideas Mega Menu */}
+        {activeMenu === 'trip-ideas' && (
+          <div className="absolute left-0 w-full top-full bg-luxury-navy border-b border-white/10 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+              
+              {/* Column 1 */}
               <div>
-                <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold block mb-1">Phone</span>
-                <a href="tel:+442078459200" className="text-xs text-luxury-linen block font-medium">
-                  +44 (0) 20 7845 9200
-                </a>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  By Duration
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    1-7 Days Itineraries
+                  </Link>
+                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    8-14 Days Itineraries
+                  </Link>
+                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    15+ Days Itineraries
+                  </Link>
+                </div>
               </div>
+
+              {/* Column 2 */}
               <div>
-                <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold block mb-1">Email</span>
-                <a href="mailto:inspire@vietnamtour.co.uk" className="text-xs text-luxury-linen block font-medium truncate">
-                  inspire@vietnamtour.co.uk
-                </a>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  By Experience
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/itineraries?category=luxury" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Luxury Retreats
+                  </Link>
+                  <Link href="/itineraries?category=adventure" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Adventure Expeditions
+                  </Link>
+                  <Link href="/itineraries?category=culture" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Cultural Immersions
+                  </Link>
+                  <Link href="/itineraries?category=romance" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Honeymoon & Romance
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 3 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Popular Itineraries
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/itineraries/the-grand-tour-of-vietnam" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    The Grand Tour of Vietnam
+                  </Link>
+                  <Link href="/itineraries/vietnamese-culinary-and-culture-journey" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Vietnamese Culinary & Culture
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 4 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Featured Accommodation
+                </h3>
+                <div className="space-y-4">
+                  <div className="relative w-full h-[120px] border border-white/10">
+                    <Image 
+                      src="/images/vietnamtour_amanoi_villa.png"
+                      alt="Amanoi Villa"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-sm font-semibold text-white">Amanoi Sanctuary</h4>
+                    <p className="text-[12px] leading-relaxed text-white/60 font-light mt-1">
+                      A private hilltop sanctuary overlooking Vinh Hy Bay, offering ultimate peace and luxury.
+                    </p>
+                    <Link href="/accommodations/amanoi-ninh-thuan" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-luxury-gold font-semibold hover:underline mt-2">
+                      Discover Amanoi &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* 3. Inspirations Mega Menu */}
+        {activeMenu === 'inspirations' && (
+          <div className="absolute left-0 w-full top-full bg-luxury-navy border-b border-white/10 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+              
+              {/* Column 1 */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Travel Journal
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Latest Articles
+                  </Link>
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Luxury Travel Trends
+                  </Link>
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Expert Travel Tips
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 2 */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Practical Guides
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Best Time to Visit
+                  </Link>
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Visa & Entry Requirements
+                  </Link>
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Packing Essentials
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 3 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Featured Article
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    The Ultimate Guide to Cave Dining in Halong Bay
+                  </Link>
+                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Unveiling Sapa: A Trek Above the Clouds
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 4 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Photo Gallery
+                </h3>
+                <div className="space-y-4">
+                  <div className="relative w-full h-[120px] border border-white/10">
+                    <Image 
+                      src="/images/vietnamtour_cave_dining.png"
+                      alt="Cave Dining"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-[12px] leading-relaxed text-white/60 font-light">
+                    Capture the moments that define luxury travel. Read our travel journals and feel inspired.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* 4. About Us Mega Menu */}
+        {activeMenu === 'about-us' && (
+          <div className="absolute left-0 w-full top-full bg-luxury-navy border-b border-white/10 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+              
+              {/* Column 1 */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Our Company
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/specialists" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Who We Are
+                  </Link>
+                  <Link href="/specialists" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Why Choose Us
+                  </Link>
+                  <Link href="/enquire" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 2 */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Experts & Press
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/specialists" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Meet Our Specialists
+                  </Link>
+                  <Link href="/#reviews" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Guest Reviews
+                  </Link>
+                  <Link href="/#pillars" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    In the Press
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 3 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Tailor-Made Design
+                </h3>
+                <div className="flex flex-col space-y-3.5">
+                  <Link href="/#steps" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    How It Works
+                  </Link>
+                  <Link href="/enquire" onClick={() => setActiveMenu(null)} className="text-[14px] text-white/70 hover:text-luxury-gold transition-colors duration-200">
+                    Enquire Online
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 4 */}
+              <div className="border-l border-white/10 pl-8">
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-luxury-linen uppercase mb-6 border-b border-white/5 pb-2">
+                  Our Specialist
+                </h3>
+                <div className="flex items-start gap-4">
+                  <div className="relative w-[70px] h-[70px] flex-shrink-0 rounded-full overflow-hidden border border-white/10">
+                    <Image 
+                      src="/images/specialist_alice.png"
+                      alt="Alice Mercer"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-sm font-semibold text-white">Alice Mercer</h4>
+                    <p className="text-[11px] leading-relaxed text-white/60 font-light mt-0.5">
+                      12+ years designing bespoke luxury itineraries.
+                    </p>
+                    <Link href="/specialists/alice-mercer" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-luxury-gold font-semibold hover:underline mt-1">
+                      Read Profile &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* ── MOBILE ACCORDION OVERLAY MENU ── */}
+      <div 
+        className={`fixed inset-0 z-40 bg-luxury-slate/98 backdrop-blur-md transition-all duration-500 ease-in-out flex flex-col justify-start px-8 pb-12 pt-28 md:hidden overflow-y-auto ${
+          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="space-y-6 max-w-md w-full mx-auto">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
+            Where will your journey lead?
+          </span>
+          
+          <div className="flex flex-col space-y-4">
+            
+            {/* 1. Vietnam Tours Accordion */}
+            <div>
+              <button 
+                onClick={() => toggleMobileExpanded('vietnam-tours')}
+                className="w-full text-left font-serif text-2xl text-luxury-linen hover:text-luxury-gold flex items-center justify-between py-1 focus:outline-none"
+              >
+                <span>VIETNAM TOURS</span>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'vietnam-tours' ? 'rotate-90 text-luxury-gold' : 'text-white/30'}`}>
+                  &gt;
+                </span>
+              </button>
+              
+              <div className={`overflow-hidden transition-all duration-300 pl-4 ${
+                mobileExpanded === 'vietnam-tours' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+              }`}>
+                <Link href="/itineraries" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Vietnam Tours</Link>
+                <Link href="/itineraries?category=bike" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Bike Tours</Link>
+                <Link href="/itineraries?category=culinary" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Culinary Tours</Link>
+                <Link href="/itineraries?category=luxury" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Luxury Tours</Link>
+                <Link href="/destinations" onClick={() => setIsOpen(false)} className="block text-xs uppercase tracking-widest text-luxury-gold font-semibold pt-1">All Destinations A-Z</Link>
               </div>
             </div>
-            <div className="text-[9px] tracking-widest text-luxury-linen/40 font-light">
-              © {new Date().getFullYear()} Vietnam Tour. All rights reserved.
+
+            {/* 2. Trip Ideas Accordion */}
+            <div>
+              <button 
+                onClick={() => toggleMobileExpanded('trip-ideas')}
+                className="w-full text-left font-serif text-2xl text-luxury-linen hover:text-luxury-gold flex items-center justify-between py-1 focus:outline-none"
+              >
+                <span>TRIP IDEAS</span>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'trip-ideas' ? 'rotate-90 text-luxury-gold' : 'text-white/30'}`}>
+                  &gt;
+                </span>
+              </button>
+              
+              <div className={`overflow-hidden transition-all duration-300 pl-4 ${
+                mobileExpanded === 'trip-ideas' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+              }`}>
+                <Link href="/itineraries" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">By Duration</Link>
+                <Link href="/itineraries?category=adventure" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Adventure Expeditions</Link>
+                <Link href="/itineraries/the-grand-tour-of-vietnam" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">The Grand Tour of Vietnam</Link>
+              </div>
             </div>
+
+            {/* 3. Inspirations Accordion */}
+            <div>
+              <button 
+                onClick={() => toggleMobileExpanded('inspirations')}
+                className="w-full text-left font-serif text-2xl text-luxury-linen hover:text-luxury-gold flex items-center justify-between py-1 focus:outline-none"
+              >
+                <span>INSPIRATIONS</span>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'inspirations' ? 'rotate-90 text-luxury-gold' : 'text-white/30'}`}>
+                  &gt;
+                </span>
+              </button>
+              
+              <div className={`overflow-hidden transition-all duration-300 pl-4 ${
+                mobileExpanded === 'inspirations' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+              }`}>
+                <Link href="/inspiration" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Travel Journal</Link>
+                <Link href="/inspiration" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Practical Guides</Link>
+              </div>
+            </div>
+
+            {/* 4. Tailor-Made Direct Link */}
+            <div>
+              <Link 
+                href="/enquire" 
+                onClick={() => setIsOpen(false)}
+                className="block text-left font-serif text-2xl text-luxury-linen hover:text-luxury-gold py-1"
+              >
+                TAILOR-MADE
+              </Link>
+            </div>
+
+            {/* 5. About Us Accordion */}
+            <div>
+              <button 
+                onClick={() => toggleMobileExpanded('about-us')}
+                className="w-full text-left font-serif text-2xl text-luxury-linen hover:text-luxury-gold flex items-center justify-between py-1 focus:outline-none"
+              >
+                <span>ABOUT US</span>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'about-us' ? 'rotate-90 text-luxury-gold' : 'text-white/30'}`}>
+                  &gt;
+                </span>
+              </button>
+              
+              <div className={`overflow-hidden transition-all duration-300 pl-4 ${
+                mobileExpanded === 'about-us' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+              }`}>
+                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Who We Are</Link>
+                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Meet Our Specialists</Link>
+                <Link href="/enquire" onClick={() => setIsOpen(false)} className="block text-sm text-white/70 py-1">Contact Us</Link>
+              </div>
+            </div>
+
           </div>
         </div>
-      </nav>
+
+        {/* Contact Details (Mobile only, shown at bottom) */}
+        <div className="mt-12 pt-8 border-t border-luxury-gold/10 space-y-4 max-w-md w-full mx-auto pb-6">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold block mb-1">Phone</span>
+              <a href="tel:+442078459200" className="text-xs text-luxury-linen block font-medium">
+                +44 (0) 20 7845 9200
+              </a>
+            </div>
+            <div>
+              <span className="text-[9px] uppercase tracking-widest text-luxury-gold font-semibold block mb-1">Email</span>
+              <a href="mailto:inspire@vietnamtour.co.uk" className="text-xs text-luxury-linen block font-medium truncate">
+                inspire@vietnamtour.co.uk
+              </a>
+            </div>
+          </div>
+          <div className="text-[9px] tracking-widest text-luxury-linen/40 font-light">
+            © {new Date().getFullYear()} Vietnam Tour. All rights reserved.
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -92,13 +92,6 @@ export interface TravelGuide {
   seo?: SeoFields;
 }
 
-export interface PostChapter {
-  heading: string;
-  image?: string;
-  imageCaption?: string;
-  body?: any[]; // PortableText (blocks, images, specialistTip, pullQuote)
-}
-
 export interface Post {
   _id: string;
   title: string;
@@ -111,34 +104,7 @@ export interface Post {
     role?: string;
     avatar?: string;
   };
-  introContent?: any[]; // PortableText
-  factSheet?: {
-    pacing?: string;
-    bestMonths?: string;
-    duration?: string;
-    destinations?: string;
-    operatorType?: string;
-  };
-  sidebarTip?: {
-    tip?: string;
-    specialist?: {
-      name?: string;
-      role?: string;
-      image?: string;
-    };
-    manualName?: string;
-    manualRole?: string;
-    manualAvatar?: string;
-  };
-  chapters?: PostChapter[];
-  photoEssayHeading?: string;
-  photoEssayTitle?: string;
-  photoEssayDescription?: string;
-  photoEssay?: {
-    title?: string;
-    caption?: string;
-    url?: string;
-  }[];
+  content?: any[]; // PortableText
   ctaLabel?: string;
   ctaHeading?: string;
   ctaDescription?: string;

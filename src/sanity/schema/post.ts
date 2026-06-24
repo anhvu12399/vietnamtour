@@ -72,14 +72,14 @@ export const post = defineType({
     }),
 
     // ────────────────────────────────────
-    // GROUP 2: INTRO SECTION (sidebar)
+    // GROUP 2: CONTENT (Main Body)
     // ────────────────────────────────────
     defineField({
-      name: 'introContent',
-      title: 'Introduction Text',
+      name: 'content',
+      title: 'Article Content',
       type: 'array',
-      description: 'The opening paragraphs of the article (left column). The first paragraph gets a decorative drop cap.',
-      group: 'intro',
+      description: 'The main body of the article. You can insert text, images, galleries, tips, and quotes here.',
+      group: 'intro', // Can keep using the 'intro' group tab or just make it default
       of: [
         { type: 'block' },
         {
@@ -87,196 +87,67 @@ export const post = defineType({
           title: 'Inline Image',
           options: { hotspot: true },
           fields: [
-            { name: 'caption', type: 'string', title: 'Caption' },
-            { name: 'alt', type: 'string', title: 'Alt Text' },
+            { name: 'caption', type: 'string', title: 'Caption', description: 'Text shown below the image' },
+            { name: 'alt', type: 'string', title: 'Alt Text', description: 'Important for SEO and accessibility' },
           ],
         },
-      ],
-    }),
-    defineField({
-      name: 'factSheet',
-      title: 'Journey Fact Sheet (Right Sidebar)',
-      type: 'object',
-      description: 'The "At a Glance" info card shown beside the introduction.',
-      group: 'intro',
-      fields: [
-        { name: 'pacing', type: 'string', title: 'Pacing', description: 'e.g. Bespoke & Leisurely' },
-        { name: 'bestMonths', type: 'string', title: 'Best Months', description: 'e.g. November – April' },
-        { name: 'duration', type: 'string', title: 'Duration', description: 'e.g. 14 Days / 13 Nights' },
-        { name: 'destinations', type: 'string', title: 'Destinations', description: 'e.g. Hanoi · Halong Bay · Hoi An' },
-        { name: 'operatorType', type: 'string', title: 'Operator Type', description: 'e.g. Private Jet/VIP Ground' },
-      ],
-    }),
-    defineField({
-      name: 'sidebarTip',
-      title: 'Sidebar Specialist Tip',
-      type: 'object',
-      description: 'A specialist tip displayed in the sidebar next to the introduction.',
-      group: 'intro',
-      fields: [
-        {
-          name: 'specialist',
-          type: 'reference',
-          to: [{ type: 'specialist' }],
-          title: 'Specialist (link to existing)',
-          description: 'Select a specialist, or use the manual fields below instead.',
-        },
-        { name: 'manualName', type: 'string', title: 'Manual Name', description: 'Use this if you don\'t want to link a specialist.' },
-        { name: 'manualRole', type: 'string', title: 'Manual Role' },
-        { name: 'manualAvatar', type: 'image', title: 'Manual Avatar' },
-        {
-          name: 'tip',
-          type: 'text',
-          title: 'Tip Text',
-          description: 'The insider tip text displayed in quotes.',
-        },
-      ],
-    }),
-
-    // ────────────────────────────────────
-    // GROUP 3: CHAPTERS (the main body)
-    // ────────────────────────────────────
-    defineField({
-      name: 'chapters',
-      title: 'Article Chapters',
-      type: 'array',
-      description: 'Each chapter = 1 section with a heading, image, and text. They alternate left/right automatically.',
-      group: 'chapters',
-      of: [
         {
           type: 'object',
-          name: 'chapter',
-          title: 'Chapter',
-          preview: {
-            select: {
-              title: 'heading',
-              media: 'image',
-            },
-          },
+          name: 'gallery',
+          title: '🖼 Photo Gallery',
+          description: 'A beautiful grid of up to 3 images side-by-side.',
           fields: [
             {
-              name: 'heading',
-              type: 'string',
-              title: 'Chapter Heading',
-              description: 'e.g. "Days 1–3: Hanoi & the Old Quarter"',
-              validation: (rule) => rule.required(),
-            },
-            {
-              name: 'image',
-              type: 'image',
-              title: 'Chapter Image',
-              description: 'The main photo for this chapter (displayed beside the text).',
-              options: { hotspot: true },
-            },
-            {
-              name: 'imageCaption',
-              type: 'string',
-              title: 'Image Caption',
-              description: 'Text shown below the image, e.g. "The colonial grace and timeless streets of Hanoi."',
-            },
-            {
-              name: 'body',
+              name: 'images',
               type: 'array',
-              title: 'Chapter Content',
-              description: 'The text, images, tips, and quotes inside this chapter.',
+              title: 'Images',
               of: [
-                { type: 'block' },
-                {
-                  type: 'image',
-                  title: 'Inline Image',
-                  options: { hotspot: true },
-                  fields: [
-                    { name: 'caption', type: 'string', title: 'Caption' },
-                    { name: 'alt', type: 'string', title: 'Alt Text' },
-                  ],
-                },
                 {
                   type: 'object',
-                  name: 'specialistTip',
-                  title: '💡 Specialist Tip',
                   fields: [
-                    {
-                      name: 'specialist',
-                      type: 'reference',
-                      to: [{ type: 'specialist' }],
-                      title: 'Specialist (link)',
-                      description: 'Optional: link to an existing specialist.',
-                    },
-                    { name: 'customName', type: 'string', title: 'Custom Name (override)' },
-                    { name: 'customRole', type: 'string', title: 'Custom Role (override)' },
-                    { name: 'customAvatar', type: 'image', title: 'Custom Avatar (override)' },
-                    { name: 'tip', type: 'text', title: 'Tip Text', validation: (rule) => rule.required() },
-                  ],
-                },
-                {
-                  type: 'object',
-                  name: 'pullQuote',
-                  title: '✨ Pull Quote',
-                  fields: [
-                    { name: 'quote', type: 'text', title: 'Quote Text', validation: (rule) => rule.required() },
-                    { name: 'author', type: 'string', title: 'Author / Source' },
+                    { name: 'image', type: 'image', title: 'Image', options: { hotspot: true } },
+                    { name: 'caption', type: 'string', title: 'Overlay Caption (Optional)' },
                   ],
                 },
               ],
+              validation: (Rule) => Rule.max(3),
             },
           ],
         },
-      ],
-    }),
-
-    // ────────────────────────────────────
-    // GROUP 4: PHOTO GALLERY SECTION
-    // ────────────────────────────────────
-    defineField({
-      name: 'photoEssayHeading',
-      title: 'Gallery Section Label',
-      type: 'string',
-      description: 'Small label text above the heading. e.g. "Visual Poetry"',
-      group: 'gallery',
-    }),
-    defineField({
-      name: 'photoEssayTitle',
-      title: 'Gallery Section Heading',
-      type: 'string',
-      description: 'Main heading text. e.g. "The Art of Bespoke Travel"',
-      group: 'gallery',
-    }),
-    defineField({
-      name: 'photoEssayDescription',
-      title: 'Gallery Section Description',
-      type: 'string',
-      description: 'Short description below heading.',
-      group: 'gallery',
-    }),
-    defineField({
-      name: 'photoEssay',
-      title: 'Gallery Images (max 3)',
-      type: 'array',
-      description: 'A visual break section with up to 3 images, each with a title and caption.',
-      group: 'gallery',
-      of: [
         {
           type: 'object',
-          name: 'essayItem',
-          title: 'Gallery Item',
-          preview: {
-            select: {
-              title: 'title',
-              media: 'image',
-            },
-          },
+          name: 'specialistTip',
+          title: '💡 Specialist Tip',
+          description: 'An elegant sidebar-style tip with an avatar.',
           fields: [
-            { name: 'image', type: 'image', title: 'Image', options: { hotspot: true } },
-            { name: 'title', type: 'string', title: 'Overlay Title', description: 'e.g. "Exclusive Dining"' },
-            { name: 'caption', type: 'string', title: 'Overlay Caption', description: 'e.g. "Private chef table inside Halong caverns."' },
+            {
+              name: 'specialist',
+              type: 'reference',
+              to: [{ type: 'specialist' }],
+              title: 'Specialist (link)',
+              description: 'Optional: link to an existing specialist.',
+            },
+            { name: 'customName', type: 'string', title: 'Custom Name (override)' },
+            { name: 'customRole', type: 'string', title: 'Custom Role (override)' },
+            { name: 'customAvatar', type: 'image', title: 'Custom Avatar (override)', options: { hotspot: true } },
+            { name: 'tip', type: 'text', title: 'Tip Text', validation: (rule) => rule.required() },
+          ],
+        },
+        {
+          type: 'object',
+          name: 'pullQuote',
+          title: '✨ Pull Quote',
+          description: 'A large, magazine-style quote block.',
+          fields: [
+            { name: 'quote', type: 'text', title: 'Quote Text', validation: (rule) => rule.required() },
+            { name: 'author', type: 'string', title: 'Author / Source (Optional)' },
           ],
         },
       ],
-      validation: (rule) => rule.max(3),
     }),
 
     // ────────────────────────────────────
-    // GROUP 5: BOTTOM CALL-TO-ACTION
+    // GROUP 3: BOTTOM CALL-TO-ACTION
     // ────────────────────────────────────
     defineField({
       name: 'ctaLabel',
@@ -301,7 +172,7 @@ export const post = defineType({
     }),
 
     // ────────────────────────────────────
-    // GROUP 6: SEO
+    // GROUP 4: SEO
     // ────────────────────────────────────
     defineField({
       name: 'seo',
