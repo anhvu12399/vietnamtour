@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
+import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getItineraries, getToursLanding, getPosts } from '@/sanity/client';
 
 export const revalidate = 3600;
@@ -86,84 +87,8 @@ export default async function ItinerariesPage() {
           </div>
         </section>
 
-        {/* ── 2. DARK NAVY CATEGORIES BAR ── */}
-        <section className="w-full bg-[#002244] text-white sticky top-[88px] z-30 shadow-md border-b border-[#001f3f]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 overflow-x-auto scrollbar-none">
-            <div className="flex items-center space-x-8 lg:space-x-10 min-w-max h-14">
-              {/* Category 1: Vietnam Tours */}
-              <a href="#tours-listing" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer">
-                <span className="inline-flex items-center justify-center bg-[#c5a880] text-[#121816] text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  {itineraries.length}
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white">
-                  Vietnam Tours
-                </span>
-                {/* Downward triangle caret */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[7px] border-t-[#002244] z-10" />
-              </a>
-
-              {/* Category 2: Travel Guides */}
-              <a href="#blog-section" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer">
-                <span className="inline-flex items-center justify-center bg-white/20 text-white text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  {allPosts.length}
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Travel Guides
-                </span>
-              </a>
-
-              {/* Category 3: Places to Visit */}
-              <Link href="/destinations" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200">
-                <span className="inline-flex items-center justify-center bg-white/10 text-white/60 text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  12
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Places to visit
-                </span>
-              </Link>
-
-              {/* Category 4: Hotels */}
-              <Link href="/accommodations" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200">
-                <span className="inline-flex items-center justify-center bg-white/10 text-white/60 text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  25
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Hotels
-                </span>
-              </Link>
-
-              {/* Category 5: Things to Do */}
-              <a href="#recommended" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer">
-                <span className="inline-flex items-center justify-center bg-white/10 text-white/60 text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  32
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Things to do
-                </span>
-              </a>
-
-              {/* Category 6: Cruises */}
-              <a href="#tours-listing" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer">
-                <span className="inline-flex items-center justify-center bg-white/10 text-white/60 text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  5
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Vietnam Cruises
-                </span>
-              </a>
-
-              {/* Category 7: Best Time to Visit */}
-              <a href="#faq-section" className="relative h-full flex items-center gap-1.5 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer">
-                <span className="inline-flex items-center justify-center bg-white/10 text-white/60 text-[9px] font-bold rounded-full w-[19px] h-[19px]">
-                  12
-                </span>
-                <span className="text-[11px] lg:text-[12px] font-sans font-bold uppercase tracking-[0.15em] text-white/80">
-                  Best time to visit
-                </span>
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* ── 2. CHARCOAL SLATE CATEGORIES TAB BAR ── */}
+        <CategoriesTabBar activeTab="tours" />
 
         {/* ── 3. TWO-COLUMN DETAILS & LOCAL EXPERT ── */}
         <section id="details" className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">

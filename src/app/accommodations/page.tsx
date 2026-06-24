@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getAccommodations } from '@/sanity/client';
 
 export const revalidate = 3600;
@@ -13,8 +14,37 @@ export default async function AccommodationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+        
+        {/* Scenic Hero Banner */}
+        <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
+          <Image
+            src="/images/vietnamtour_amanoi_villa.png"
+            alt="Luxury Resorts Header"
+            fill
+            className="object-cover brightness-[0.5]"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#121816]/25" />
+          
+          <div className="relative z-10 text-center px-6 pt-24 sm:pt-32">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-medium leading-tight tracking-wide">
+              Luxury Resorts & Hotels
+            </h1>
+            
+            {/* Breadcrumbs */}
+            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#c5a880] font-semibold">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span className="text-white/40">&gt;</span>
+              <span className="text-white/80">Hotels</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Categories Tab Bar */}
+        <CategoriesTabBar activeTab="hotels" />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 space-y-16">
           
           {/* Header */}
           <div className="space-y-4 max-w-3xl animate-fade-in">
