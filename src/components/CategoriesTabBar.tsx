@@ -24,7 +24,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
 
   const tabs = [
     { id: 'tours', label: 'Vietnam Tours', count: toursCount, href: '/itineraries' },
-    { id: 'guides', label: 'Travel Guides', count: guidesCount, href: '/inspiration' },
+    { id: 'guides', label: 'Travel Guides', count: guidesCount, href: '/travel-guides' },
     { id: 'places', label: 'Places to visit', count: placesCount, href: '/destinations' },
     { id: 'hotels', label: 'Hotels', count: hotelsCount, href: '/accommodations' },
     { id: 'things', label: 'Things to do', count: thingsToDoCount, href: activeTab === 'tours' ? '#details' : '/itineraries#details' },

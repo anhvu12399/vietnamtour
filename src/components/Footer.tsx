@@ -204,7 +204,7 @@ export default function Footer() {
                 <Link href="/destinations" className="hover:text-luxury-gold transition-colors">Destinations</Link>
               </li>
               <li>
-                <Link href="/inspiration" className="hover:text-luxury-gold transition-colors font-medium">Inspiration</Link>
+                <Link href="/travel-guides" className="hover:text-luxury-gold transition-colors font-medium">Travel Guides</Link>
               </li>
               <li>
                 <Link href="/accommodations" className="hover:text-luxury-gold transition-colors">Luxury Retreats</Link>

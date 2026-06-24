@@ -347,7 +347,7 @@ export default async function ItinerariesPage() {
                 </div>
                 
                 <Link
-                  href="/inspiration"
+                  href="/travel-guides"
                   className="text-xs uppercase tracking-widest font-bold text-[#c5a880] hover:text-slate-800 transition-colors pb-1 border-b border-[#c5a880]/30 hover:border-slate-800"
                 >
                   View all articles
@@ -388,7 +388,7 @@ export default async function ItinerariesPage() {
                       )}
                       
                       <h4 className="font-serif text-lg leading-snug font-semibold text-slate-800 group-hover:text-[#c5a880] transition-colors duration-200">
-                        <Link href={`/inspiration/${post.slug?.current || ''}`}>
+                        <Link href={`/travel-guides/${post.slug?.current || ''}`}>
                           {post.title}
                         </Link>
                       </h4>

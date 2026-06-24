@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   
-  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries') || pathname.startsWith('/destinations') || pathname.startsWith('/accommodations') || pathname.startsWith('/inspiration');
+  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries') || pathname.startsWith('/destinations') || pathname.startsWith('/accommodations') || pathname.startsWith('/inspiration') || pathname.startsWith('/travel-guides');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -427,7 +427,7 @@ export default function Navbar() {
                 </div>
                 
                 <div className="space-y-6">
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="font-serif text-[15px] leading-snug font-medium text-slate-800 hover:text-[#c5a880] transition-colors duration-200 block">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="font-serif text-[15px] leading-snug font-medium text-slate-800 hover:text-[#c5a880] transition-colors duration-200 block">
                     Top 12 Places to Visit in Vietnam on Your Next Trip
                   </Link>
 
@@ -440,7 +440,7 @@ export default function Navbar() {
                         className="object-cover"
                       />
                     </div>
-                    <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[13px] leading-snug text-slate-500 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[13px] leading-snug text-slate-500 hover:text-[#c5a880] transition-colors duration-200 font-medium">
                       Your Guide to Tan Son Nhat International Airport: Arrival and Transportation Options
                     </Link>
                   </div>
@@ -551,13 +551,13 @@ export default function Navbar() {
                   Travel Journal
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Latest Articles
                   </Link>
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Luxury Travel Trends
                   </Link>
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Expert Travel Tips
                   </Link>
                 </div>
@@ -569,13 +569,13 @@ export default function Navbar() {
                   Practical Guides
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Best Time to Visit
                   </Link>
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Visa & Entry Requirements
                   </Link>
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Packing Essentials
                   </Link>
                 </div>
@@ -587,10 +587,10 @@ export default function Navbar() {
                   Featured Article
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     The Ultimate Guide to Cave Dining in Halong Bay
                   </Link>
-                  <Link href="/inspiration" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Unveiling Sapa: A Trek Above the Clouds
                   </Link>
                 </div>
@@ -779,8 +779,8 @@ export default function Navbar() {
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
                 mobileExpanded === 'inspirations' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/inspiration" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Travel Journal</Link>
-                <Link href="/inspiration" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Practical Guides</Link>
+                <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Travel Journal</Link>
+                <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Practical Guides</Link>
               </div>
             </div>
 
