@@ -66,14 +66,16 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
   }, [current, next]);
 
   const slide = slides[current];
+  const nextIndex = (current + 1) % slides.length;
+  const nextSlide = slides[nextIndex];
 
   return (
-    <section className="relative h-screen min-h-[650px] flex items-center justify-start overflow-hidden">
+    <section className="relative h-screen min-h-[750px] flex items-center justify-start overflow-hidden bg-[#121816] pt-[112px]">
       {/* Background images — all stacked, only current one is visible */}
       {slides.map((s, i) => (
         <div
           key={s.src}
-          className="absolute inset-0 z-0 transition-opacity duration-700 ease-in-out"
+          className="absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out"
           style={{ opacity: i === current && !isTransitioning ? 1 : 0 }}
         >
           <Image
@@ -87,105 +89,159 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
         </div>
       ))}
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-luxury-slate/85 via-luxury-slate/30 to-transparent z-10" />
+      {/* Dark vignette gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/40 z-10" />
 
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full space-y-8 text-left">
-        <div
-          className="space-y-4 max-w-3xl transition-all duration-500"
-          style={{ opacity: isTransitioning ? 0 : 1, transform: isTransitioning ? 'translateY(12px)' : 'translateY(0)' }}
-        >
-          {/* Location badge */}
-          <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-luxury-gold/80 block">
-            {slide.location}
-          </span>
+      {/* Main Grid Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full h-full flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8 pb-16">
+          
+          {/* Left Column (Main text and CTA) */}
+          <div 
+            className="lg:col-span-7 space-y-6 text-left transition-all duration-700 ease-out"
+            style={{ 
+              opacity: isTransitioning ? 0 : 1, 
+              transform: isTransitioning ? 'translateY(15px)' : 'translateY(0)' 
+            }}
+          >
+            {/* Category/Location Tag */}
+            <div className="space-y-1">
+              <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-[#c5a880] block">
+                {slide.location}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-white/60 block">
+                Bespoke Luxury Journey
+              </span>
+            </div>
 
-          <span className="text-xs uppercase tracking-[0.4em] font-semibold text-luxury-gold block">
-            Bespoke Luxury Travel
-          </span>
+            {/* Heading */}
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl leading-tight font-medium tracking-wide text-white max-w-2xl">
+              {current === 0 && heroHeading ? heroHeading : slide.heading}
+            </h1>
 
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-tight font-semibold tracking-wide text-luxury-linen">
-            {current === 0 && heroHeading ? heroHeading : slide.heading}
-          </h1>
-          <h2 className="font-serif text-lg sm:text-2xl text-luxury-linen font-normal tracking-wide max-w-xl">
-            {current === 0 && heroSubheading ? heroSubheading : slide.subheading}
-          </h2>
+            {/* Subheading */}
+            <h2 className="font-serif text-sm sm:text-lg text-white/80 font-light tracking-wide max-w-xl">
+              {current === 0 && heroSubheading ? heroSubheading : slide.subheading}
+            </h2>
 
-          <div className="pt-2">
-            <Link
-              href={slide.cta.href}
-              className="inline-block border border-luxury-gold text-luxury-gold text-xs tracking-widest uppercase px-8 py-3 hover:bg-luxury-gold hover:text-luxury-slate transition-all duration-300 font-semibold"
+            {/* CTA Button */}
+            <div className="pt-2">
+              <Link
+                href={slide.cta.href}
+                className="inline-flex items-center gap-2 border border-white text-white text-[11px] font-bold tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-white hover:text-black transition-all duration-300 rounded-none cursor-pointer group"
+              >
+                {slide.cta.label}
+                <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Quick Categories */}
+            <div className="flex flex-wrap gap-2.5 pt-6 border-t border-white/10 mt-8 max-w-lg">
+              <span className="text-[9px] text-white/40 uppercase tracking-[0.25em] block w-full mb-1">Quick Categories</span>
+              {quickCategories.map((cat) => (
+                <Link
+                  key={cat.name}
+                  href={cat.href}
+                  className="border border-white/15 hover:border-white hover:bg-white hover:text-black transition-all duration-300 text-[10px] tracking-[0.15em] font-semibold py-2 px-3.5 text-white/80 uppercase rounded-none cursor-pointer"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column (Floating Portrait Card Previewing Next Slide) */}
+          <div className="hidden lg:col-span-5 lg:flex justify-end pr-4">
+            <div 
+              onClick={next}
+              className="relative w-[280px] h-[380px] border border-white/10 shadow-2xl overflow-hidden cursor-pointer group transition-all duration-500 hover:scale-[1.03] animate-fade-in-delay select-none"
             >
-              {slide.cta.label} →
-            </Link>
+              {/* Card Image */}
+              <Image 
+                src={nextSlide.src}
+                alt={`Next Up: ${nextSlide.heading}`}
+                fill
+                className="object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+              />
+              
+              {/* Bottom Card Vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10" />
+              
+              {/* Card Text Content */}
+              <div className="absolute bottom-6 left-6 right-6 z-20 text-left space-y-1.5">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#c5a880] block">
+                  Next Up
+                </span>
+                <h3 className="font-serif text-lg leading-snug font-medium text-white group-hover:text-[#c5a880] transition-colors duration-300">
+                  {nextSlide.heading}
+                </h3>
+                <span className="text-[10px] text-white/60 tracking-wider block">
+                  {nextSlide.location}
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Panel (Pagination, Progress Bar & Arrow Controls) */}
+        <div className="absolute bottom-10 left-6 right-6 lg:left-12 lg:right-12 z-30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          {/* Next Up Info (Mobile/Tablet View alternative text) */}
+          <div className="flex flex-col text-left max-w-md">
+            <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-white/40">
+              Next Up
+            </span>
+            <button 
+              onClick={next} 
+              className="font-serif text-sm lg:text-base text-white/80 hover:text-[#c5a880] transition-colors duration-200 text-left mt-0.5"
+            >
+              {nextSlide.heading} — <span className="font-sans text-[11px] uppercase tracking-wider text-[#c5a880]">{nextSlide.location}</span>
+            </button>
+          </div>
+
+          {/* Slider Controls (Arrows & Counter) */}
+          <div className="flex items-center space-x-6 self-end md:self-auto">
+            {/* Slide counter */}
+            <div className="text-[11px] tracking-[0.25em] text-white/60 font-semibold font-sans">
+              {String(current + 1).padStart(2, '0')} <span className="text-white/20">/</span> {String(slides.length).padStart(2, '0')}
+            </div>
+
+            {/* Arrow Buttons */}
+            <div className="flex items-center space-x-2">
+              {/* Prev Arrow */}
+              <button
+                onClick={prev}
+                aria-label="Previous slide"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-black hover:bg-white hover:border-white transition-all duration-300 cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Next Arrow */}
+              <button
+                onClick={next}
+                aria-label="Next slide"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-black hover:bg-white hover:border-white transition-all duration-300 cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Quick category pills */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl pt-4">
-          {quickCategories.map((cat) => (
-            <Link
-              key={cat.name}
-              href={cat.href}
-              className="bg-white text-[#0f4c43] text-[11px] tracking-[0.18em] font-bold py-4 px-2 hover:bg-[#0f4c43] hover:text-white transition-all duration-300 text-center uppercase shadow-lg border-none rounded-none flex items-center justify-center min-h-[48px]"
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Left / Right Arrow Controls */}
-      <button
-        onClick={prev}
-        aria-label="Previous slide"
-        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center border border-white/30 bg-black/20 backdrop-blur-sm hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-slate text-white transition-all duration-300 rounded-none group"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <button
-        onClick={next}
-        aria-label="Next slide"
-        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center border border-white/30 bg-black/20 backdrop-blur-sm hover:bg-luxury-gold hover:border-luxury-gold hover:text-luxury-slate text-white transition-all duration-300 rounded-none"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* Dot indicators */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-3">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className="transition-all duration-300 rounded-none"
-            style={{
-              width: i === current ? '28px' : '8px',
-              height: '2px',
-              backgroundColor: i === current ? 'rgba(197,168,128,1)' : 'rgba(255,255,255,0.4)',
-            }}
+        {/* Bottom Horizontal Slide Progress Bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/10 z-30">
+          <div 
+            className="h-full bg-[#c5a880] transition-all duration-6000 ease-linear"
+            style={{ width: `${((current + 1) / slides.length) * 100}%` }}
           />
-        ))}
-      </div>
-
-      {/* Slide counter */}
-      <div className="absolute bottom-10 right-8 z-30 text-[10px] tracking-widest text-white/40 font-semibold">
-        {String(current + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden sm:block">
-        <a href="#pillars" aria-label="Scroll down">
-          <svg className="w-6 h-6 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
+        </div>
       </div>
     </section>
   );
