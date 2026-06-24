@@ -9,6 +9,7 @@ import { cruise } from './cruise';
 import { travelGuide } from './travelGuide';
 import { post } from './post';
 import { seoFields } from './seoFields';
+import { toursLanding } from './toursLanding';
 
 export const schemaTypes = [
   homepage,
@@ -22,4 +23,5 @@ export const schemaTypes = [
   enquiry,
   post,
   seoFields,
+  toursLanding,
 ];

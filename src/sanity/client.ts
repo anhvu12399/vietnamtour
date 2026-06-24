@@ -481,3 +481,53 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   }`;
   return await fetchSanity<Post | null>(query, { slug });
 }
+
+// --- Tours Landing Page ---
+
+export interface ToursLandingData {
+  title?: string;
+  heroHeading?: string;
+  heroSubheading?: string;
+  heroImage?: string;
+  recommendedToursLabel?: string;
+  recommendedToursHeading?: string;
+  recommendedTours?: Itinerary[];
+  faqLabel?: string;
+  faqHeading?: string;
+  faqs?: { question: string; answer: string }[];
+  inspirationLabel?: string;
+  inspirationHeading?: string;
+  inspirationPosts?: Post[];
+  seo?: { metaTitle?: string; metaDescription?: string };
+}
+
+export async function getToursLanding(): Promise<ToursLandingData | null> {
+  if (useMock) return null;
+  const query = `*[_type == "toursLanding"][0]{
+    title,
+    heroHeading,
+    heroSubheading,
+    "heroImage": heroImage.asset->url,
+    recommendedToursLabel,
+    recommendedToursHeading,
+    recommendedTours[]->{
+      _id, title, slug, duration, priceFrom, intro,
+      "gallery": gallery[].asset->url
+    },
+    faqLabel,
+    faqHeading,
+    faqs[]{ question, answer },
+    inspirationLabel,
+    inspirationHeading,
+    inspirationPosts[]->{
+      _id, title, slug, publishedAt, excerpt,
+      "mainImage": mainImage.asset->url
+    },
+    "seo": seo{
+      metaTitle, metaDescription, keywords,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<ToursLandingData | null>(query);
+}
+
