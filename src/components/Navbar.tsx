@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   
-  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries/') || pathname.startsWith('/destinations/');
+  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries') || pathname.startsWith('/destinations');
 
   useEffect(() => {
     const handleScroll = () => {

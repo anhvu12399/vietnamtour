@@ -520,7 +520,7 @@ export async function getToursLanding(): Promise<ToursLandingData | null> {
     inspirationLabel,
     inspirationHeading,
     inspirationPosts[]->{
-      _id, title, slug, publishedAt, excerpt,
+      _id, title, slug, publishedAt, excerpt, content,
       "mainImage": mainImage.asset->url
     },
     "seo": seo{
