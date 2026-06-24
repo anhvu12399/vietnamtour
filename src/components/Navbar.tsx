@@ -65,33 +65,56 @@ export default function Navbar() {
     setMobileExpanded(mobileExpanded === menu ? null : menu);
   };
 
-  // Determine navbar background based on scroll, active dropdown state, and current page
-  const navbarBg = activeMenu
-    ? 'bg-luxury-navy border-b border-white/10'
-    : isHeroPage
-      ? isScrolled
-        ? 'bg-luxury-navy/95 backdrop-blur-md shadow-sm border-b border-white/10'
-        : 'bg-transparent text-white'
-      : 'bg-luxury-navy/95 backdrop-blur-md shadow-sm border-b border-white/10';
+  const isTransparent = isHeroPage && !isScrolled;
 
-  const textColor = activeMenu 
-    ? 'text-luxury-linen' 
-    : isHeroPage && !isScrolled 
-      ? 'text-white' 
-      : 'text-luxury-linen';
+  // Top Bar Classes
+  const topBarBgClass = isTransparent
+    ? 'w-full bg-transparent border-b border-white/10 px-6 lg:px-12 py-5 text-white transition-all duration-300'
+    : 'w-full bg-[#faf9f6] border-b border-slate-200/40 px-6 lg:px-12 py-3 text-slate-800 transition-all duration-300';
 
-  const logoColor = activeMenu
-    ? 'text-luxury-gold'
-    : isHeroPage && !isScrolled 
-      ? 'text-white' 
-      : 'text-luxury-gold';
+  // Bottom Bar Classes
+  const bottomBarBgClass = isTransparent
+    ? 'w-full bg-transparent px-6 lg:px-12 py-3.5 text-white/90 transition-all duration-300'
+    : 'w-full bg-[#f2eee4] px-6 lg:px-12 py-2 text-slate-700 transition-all duration-300';
+
+  // Logo text colors
+  const logoMainColorClass = isTransparent ? 'text-white' : 'text-[#121816]';
+
+  // Action text/icon classes
+  const actionTextClass = isTransparent
+    ? 'text-white/80 hover:text-white transition-colors duration-200'
+    : 'text-slate-600 hover:text-slate-900 transition-colors duration-200';
+
+  const actionIconClass = isTransparent
+    ? 'text-white/80 hover:text-white transition-colors duration-200'
+    : 'text-slate-500 hover:text-slate-800 transition-colors duration-200';
+
+  // Phone Call info text class
+  const phoneTextClass = isTransparent ? 'text-white/70 transition-colors duration-200' : 'text-slate-500 transition-colors duration-200';
+  const phoneLinkClass = isTransparent
+    ? 'font-semibold text-white hover:text-[#c5a880] transition-colors duration-200'
+    : 'font-semibold text-slate-800 hover:text-[#c5a880] transition-colors duration-200';
+
+  // Quote Button class
+  const quoteButtonClass = isTransparent
+    ? 'bg-white/95 text-slate-900 hover:bg-[#c5a880] hover:text-[#121816] transition-all duration-300 font-sans text-[11px] font-bold tracking-[0.15em] uppercase px-5 py-2.5 rounded-none shadow-sm cursor-pointer'
+    : 'bg-[#121816] text-[#eadcc9] hover:bg-[#c5a880] hover:text-[#121816] transition-all duration-300 font-sans text-[11px] font-bold tracking-[0.15em] uppercase px-5 py-2.5 rounded-none shadow-sm cursor-pointer';
+
+  // Bottom row menu items text colors and hover pill colors
+  const menuItemClass = isTransparent
+    ? 'text-white/90 hover:bg-white/10 hover:text-white'
+    : 'text-[#121816]/85 hover:bg-[#e2ddd0] hover:text-[#121816]';
+
+  const menuItemChevronClass = isTransparent ? 'text-white/50' : 'text-slate-400';
 
   return (
     <>
       {/* Page Backdrop (Overlay) when a dropdown is open */}
       {activeMenu && (
         <div 
-          className="fixed inset-0 top-[80px] lg:top-[112px] bg-black/40 backdrop-blur-[2px] z-40 transition-opacity duration-300"
+          className={`fixed inset-0 bg-black/40 backdrop-blur-[2px] z-40 transition-opacity duration-300 ${
+            isTransparent ? 'top-[116px]' : 'top-[88px]'
+          } top-[80px] lg:${isTransparent ? 'top-[116px]' : 'top-[88px]'}`}
           onClick={() => setActiveMenu(null)}
         />
       )}
@@ -99,19 +122,23 @@ export default function Navbar() {
       <nav 
         ref={navRef}
         className={`fixed top-0 left-0 w-full z-50 flex flex-col transition-all duration-300 ${
-          isScrolled ? 'shadow-md border-b border-slate-200/50' : 'border-b border-slate-200/30'
+          isTransparent
+            ? 'bg-transparent border-b border-transparent'
+            : isScrolled
+              ? 'bg-[#faf9f6]/95 backdrop-blur-md shadow-md border-b border-slate-200/50'
+              : 'bg-[#faf9f6] border-b border-slate-200/30'
         }`}
       >
         {/* ── DESKTOP HEADER (Two-tier) ── */}
         <div className="hidden md:flex flex-col w-full">
           {/* Top Row: Logo & Actions */}
-          <div className="w-full bg-[#faf9f6] border-b border-slate-200/40 px-6 lg:px-12 py-4">
+          <div className={topBarBgClass}>
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               
               {/* Logo (Left) */}
               <div className="flex-shrink-0">
                 <Link href="/" className="flex flex-col items-start leading-none group select-none">
-                  <span className="font-serif italic text-[24px] lg:text-[28px] tracking-normal text-[#121816] font-semibold">
+                  <span className={`font-serif italic text-[24px] lg:text-[28px] tracking-normal font-semibold transition-colors duration-300 ${logoMainColorClass}`}>
                     Vietnam
                   </span>
                   <span className="font-sans text-[9px] lg:text-[10px] tracking-[0.35em] uppercase text-[#c5a880] font-bold -mt-0.5">
@@ -123,31 +150,31 @@ export default function Navbar() {
               {/* Top Actions (Right) */}
               <div className="flex items-center space-x-6 lg:space-x-8">
                 {/* UK Flag dropdown */}
-                <div className="flex items-center gap-1.5 text-[11px] lg:text-[12px] font-sans font-medium text-slate-600 hover:text-slate-900 cursor-pointer">
+                <div className={`flex items-center gap-1.5 text-[11px] lg:text-[12px] font-sans font-medium cursor-pointer ${actionTextClass}`}>
                   <span>🇬🇧</span>
                   <span className="uppercase tracking-wider text-[11px] font-bold">UK</span>
                   <span className="text-[7px] text-slate-400">▼</span>
                 </div>
 
                 {/* Wishlist Icon */}
-                <button className="text-slate-500 hover:text-slate-800 transition-colors duration-200 cursor-pointer" aria-label="Wishlist">
+                <button className={`transition-colors duration-200 cursor-pointer ${actionIconClass}`} aria-label="Wishlist">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </button>
 
                 {/* Account Icon */}
-                <button className="text-slate-500 hover:text-slate-800 transition-colors duration-200 cursor-pointer" aria-label="Account">
+                <button className={`transition-colors duration-200 cursor-pointer ${actionIconClass}`} aria-label="Account">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </button>
 
                 {/* Contact phone info */}
-                <div className="text-[12px] text-slate-500 font-sans flex items-center gap-1.5">
+                <div className={`text-[12px] font-sans flex items-center gap-1.5 ${phoneTextClass}`}>
                   <span>Call us today until 8pm</span>
-                  <a href="tel:+442078459200" className="font-semibold text-slate-800 hover:text-[#c5a880] transition-colors duration-200 flex items-center gap-1">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <a href="tel:+442078459200" className={phoneLinkClass}>
+                    <svg className="w-3.5 h-3.5 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     +44 (0) 20 7845 9200
@@ -156,10 +183,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Quote Button */}
-                <Link 
-                  href="/enquire" 
-                  className="bg-[#121816] text-[#eadcc9] hover:bg-[#c5a880] hover:text-[#121816] transition-all duration-300 font-sans text-[11px] font-bold tracking-[0.15em] uppercase px-5 py-2.5 rounded-none shadow-sm cursor-pointer"
-                >
+                <Link href="/enquire" className={quoteButtonClass}>
                   REQUEST A QUOTE
                 </Link>
               </div>
@@ -168,19 +192,19 @@ export default function Navbar() {
           </div>
 
           {/* Bottom Row: Navigation Links */}
-          <div className="w-full bg-[#f2eee4] px-6 lg:px-12 py-3">
+          <div className={bottomBarBgClass}>
             <div className="max-w-7xl mx-auto flex items-center">
               
-              <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-6 lg:space-x-8">
                 {/* 1. Vietnam Tours Dropdown Trigger */}
                 <button
                   onClick={() => handleMenuClick('vietnam-tours')}
-                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase text-[#121816]/85 hover:text-[#c5a880] transition-colors duration-200 flex items-center gap-1.5 focus:outline-none cursor-pointer ${
-                    activeMenu === 'vietnam-tours' ? 'text-[#c5a880]' : ''
+                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase flex items-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer ${menuItemClass} ${
+                    activeMenu === 'vietnam-tours' ? (isTransparent ? 'bg-white/10 text-white font-bold' : 'bg-[#e2ddd0] text-[#121816] font-bold') : ''
                   }`}
                 >
                   VIETNAM TOURS
-                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 text-slate-400 ${
+                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 ${menuItemChevronClass} ${
                     activeMenu === 'vietnam-tours' ? 'rotate-180 text-[#c5a880]' : ''
                   }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -190,12 +214,12 @@ export default function Navbar() {
                 {/* 2. Trip Ideas Dropdown Trigger */}
                 <button
                   onClick={() => handleMenuClick('trip-ideas')}
-                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase text-[#121816]/85 hover:text-[#c5a880] transition-colors duration-200 flex items-center gap-1.5 focus:outline-none cursor-pointer ${
-                    activeMenu === 'trip-ideas' ? 'text-[#c5a880]' : ''
+                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase flex items-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer ${menuItemClass} ${
+                    activeMenu === 'trip-ideas' ? (isTransparent ? 'bg-white/10 text-white font-bold' : 'bg-[#e2ddd0] text-[#121816] font-bold') : ''
                   }`}
                 >
                   TRIP IDEAS
-                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 text-slate-400 ${
+                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 ${menuItemChevronClass} ${
                     activeMenu === 'trip-ideas' ? 'rotate-180 text-[#c5a880]' : ''
                   }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -205,12 +229,12 @@ export default function Navbar() {
                 {/* 3. Inspirations Dropdown Trigger */}
                 <button
                   onClick={() => handleMenuClick('inspirations')}
-                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase text-[#121816]/85 hover:text-[#c5a880] transition-colors duration-200 flex items-center gap-1.5 focus:outline-none cursor-pointer ${
-                    activeMenu === 'inspirations' ? 'text-[#c5a880]' : ''
+                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase flex items-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer ${menuItemClass} ${
+                    activeMenu === 'inspirations' ? (isTransparent ? 'bg-white/10 text-white font-bold' : 'bg-[#e2ddd0] text-[#121816] font-bold') : ''
                   }`}
                 >
                   INSPIRATIONS
-                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 text-slate-400 ${
+                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 ${menuItemChevronClass} ${
                     activeMenu === 'inspirations' ? 'rotate-180 text-[#c5a880]' : ''
                   }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -220,7 +244,7 @@ export default function Navbar() {
                 {/* 4. Tailor-made Direct Link */}
                 <Link
                   href="/enquire"
-                  className="font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase text-[#121816]/85 hover:text-[#c5a880] transition-colors duration-200"
+                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase transition-all duration-300 ${menuItemClass}`}
                 >
                   TAILOR-MADE
                 </Link>
@@ -228,12 +252,12 @@ export default function Navbar() {
                 {/* 5. About Us Dropdown Trigger */}
                 <button
                   onClick={() => handleMenuClick('about-us')}
-                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase text-[#121816]/85 hover:text-[#c5a880] transition-colors duration-200 flex items-center gap-1.5 focus:outline-none cursor-pointer ${
-                    activeMenu === 'about-us' ? 'text-[#c5a880]' : ''
+                  className={`font-sans text-[12px] lg:text-[13px] tracking-[0.18em] font-semibold uppercase flex items-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer ${menuItemClass} ${
+                    activeMenu === 'about-us' ? (isTransparent ? 'bg-white/10 text-white font-bold' : 'bg-[#e2ddd0] text-[#121816] font-bold') : ''
                   }`}
                 >
                   ABOUT US
-                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 text-slate-400 ${
+                  <svg className={`w-2.5 h-2.5 transition-transform duration-300 ${menuItemChevronClass} ${
                     activeMenu === 'about-us' ? 'rotate-180 text-[#c5a880]' : ''
                   }`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -242,7 +266,7 @@ export default function Navbar() {
               </div>
 
               {/* Search Icon (Far Right of Bottom Row) */}
-              <button className="text-slate-600 hover:text-[#c5a880] transition-colors duration-200 cursor-pointer ml-auto" aria-label="Search">
+              <button className={`transition-colors duration-200 cursor-pointer ml-auto ${actionIconClass}`} aria-label="Search">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -253,11 +277,15 @@ export default function Navbar() {
         </div>
 
         {/* ── MOBILE HEADER (Single-tier) ── */}
-        <div className="flex md:hidden w-full h-20 bg-[#faf9f6] text-slate-800 px-6 items-center justify-between relative z-50">
+        <div className={`flex md:hidden w-full h-20 px-6 items-center justify-between relative z-50 transition-all duration-300 ${
+          isTransparent 
+            ? 'bg-transparent border-b border-white/10 text-white' 
+            : 'bg-[#faf9f6] text-slate-800 border-b border-slate-200/50'
+        }`}>
           {/* Logo (Left) */}
           <div className="flex-shrink-0">
             <Link href="/" onClick={() => setIsOpen(false)} className="flex flex-col items-start leading-none group select-none">
-              <span className="font-serif italic text-[20px] tracking-normal text-[#121816] font-semibold">
+              <span className={`font-serif italic text-[20px] tracking-normal font-semibold transition-colors duration-300 ${logoMainColorClass}`}>
                 Vietnam
               </span>
               <span className="font-sans text-[8px] tracking-[0.35em] uppercase text-[#c5a880] font-bold -mt-0.5">
@@ -269,7 +297,7 @@ export default function Navbar() {
           {/* Actions (Right) */}
           <div className="flex items-center space-x-4">
             {/* Quick Phone Call Icon */}
-            <a href="tel:+442078459200" className="text-slate-600 hover:text-[#c5a880] transition-colors duration-200" aria-label="Call Us">
+            <a href="tel:+442078459200" className={`transition-colors duration-200 ${isTransparent ? 'text-white/80 hover:text-white' : 'text-slate-600 hover:text-[#c5a880]'}`} aria-label="Call Us">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -279,7 +307,11 @@ export default function Navbar() {
             <Link 
               href="/enquire" 
               onClick={() => setIsOpen(false)}
-              className="bg-[#121816] text-[#eadcc9] hover:bg-[#c5a880] hover:text-[#121816] transition-all duration-300 font-sans text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-2 rounded-none"
+              className={`${
+                isTransparent 
+                  ? 'bg-white/95 text-slate-900 hover:bg-[#c5a880] hover:text-[#121816]' 
+                  : 'bg-[#121816] text-[#eadcc9] hover:bg-[#c5a880] hover:text-[#121816]'
+              } transition-all duration-300 font-sans text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-2 rounded-none`}
             >
               QUOTE
             </Link>
@@ -290,9 +322,9 @@ export default function Navbar() {
               className="flex flex-col space-y-1.5 w-6 focus:outline-none cursor-pointer animate-fade-in"
               aria-label="Toggle Mobile Menu"
             >
-              <span className={`block h-[2px] w-6 bg-slate-800 transition-all duration-300 transform ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-[2px] w-6 bg-slate-800 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-[2px] w-6 bg-slate-800 transition-all duration-300 transform ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`block h-[2px] w-6 transition-all duration-300 transform ${isOpen ? 'rotate-45 translate-y-2' : ''} ${isTransparent ? 'bg-white' : 'bg-slate-800'}`} />
+              <span className={`block h-[2px] w-6 transition-all duration-300 ${isOpen ? 'opacity-0' : ''} ${isTransparent ? 'bg-white' : 'bg-slate-800'}`} />
+              <span className={`block h-[2px] w-6 transition-all duration-300 transform ${isOpen ? '-rotate-45 -translate-y-2' : ''} ${isTransparent ? 'bg-white' : 'bg-slate-800'}`} />
             </button>
           </div>
         </div>

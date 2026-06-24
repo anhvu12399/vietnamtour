@@ -70,7 +70,7 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
   const nextSlide = slides[nextIndex];
 
   return (
-    <section className="relative h-screen min-h-[750px] flex items-center justify-start overflow-hidden bg-[#121816] pt-[112px]">
+    <section className="relative h-screen min-h-[750px] flex items-center justify-start overflow-hidden bg-[#121816] pt-0">
       {/* Background images — all stacked, only current one is visible */}
       {slides.map((s, i) => (
         <div
@@ -94,7 +94,7 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
 
       {/* Main Grid Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full h-full flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-8 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-28 lg:pt-36 pb-16">
           
           {/* Left Column (Main text and CTA) */}
           <div 
