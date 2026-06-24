@@ -149,26 +149,7 @@ export default function Navbar() {
 
               {/* Top Actions (Right) */}
               <div className="flex items-center space-x-6 lg:space-x-8">
-                {/* UK Flag dropdown */}
-                <div className={`flex items-center gap-1.5 text-[11px] lg:text-[12px] font-sans font-medium cursor-pointer ${actionTextClass}`}>
-                  <span>🇬🇧</span>
-                  <span className="uppercase tracking-wider text-[11px] font-bold">UK</span>
-                  <span className="text-[7px] text-slate-400">▼</span>
-                </div>
 
-                {/* Wishlist Icon */}
-                <button className={`transition-colors duration-200 cursor-pointer ${actionIconClass}`} aria-label="Wishlist">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </button>
-
-                {/* Account Icon */}
-                <button className={`transition-colors duration-200 cursor-pointer ${actionIconClass}`} aria-label="Account">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </button>
 
                 {/* Contact phone info */}
                 <div className={`text-[12px] font-sans flex items-center gap-1.5 ${phoneTextClass}`}>
