@@ -13,7 +13,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   
-  const isHeroPage = pathname === '/' || pathname.startsWith('/itineraries') || pathname.startsWith('/destinations') || pathname.startsWith('/accommodations') || pathname.startsWith('/inspiration') || pathname.startsWith('/travel-guides');
+  const isHeroPage = pathname === '/' || 
+    pathname.startsWith('/itineraries') || 
+    pathname.startsWith('/destinations') || 
+    pathname.startsWith('/accommodations') || 
+    pathname.startsWith('/inspiration') || 
+    pathname.startsWith('/travel-guides') ||
+    pathname.startsWith('/trip-ideas') ||
+    pathname.startsWith('/inspirations') ||
+    pathname.startsWith('/ideas-by-month');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -456,81 +464,107 @@ export default function Navbar() {
           <div className="absolute left-0 w-full top-full bg-white border-b border-slate-200 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in text-slate-800">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
               
-              {/* Column 1 */}
+              {/* Column 1: By Activity */}
               <div>
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  By Duration
+                  Trip Ideas By Activity
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    1-7 Days Itineraries
+                  <Link href="/trip-ideas/vietnam-culinary-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Vietnam Culinary Tours
                   </Link>
-                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    8-14 Days Itineraries
+                  <Link href="/trip-ideas/bike-and-boat-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Bike & Boat Tours
                   </Link>
-                  <Link href="/itineraries" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    15+ Days Itineraries
+                  <Link href="/trip-ideas/motorcycling-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Motorcycling Tours
+                  </Link>
+                  <Link href="/trip-ideas/golf-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Golf Tours
                   </Link>
                 </div>
               </div>
 
-              {/* Column 2 */}
+              {/* Column 2: Travel Styles */}
               <div>
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  By Experience
+                  Travel Styles
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/itineraries?category=luxury" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Luxury Retreats
+                  <Link href="/trip-ideas/classic-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Classic Tours
                   </Link>
-                  <Link href="/itineraries?category=adventure" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Adventure Expeditions
+                  <Link href="/trip-ideas/schools-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Schools Tours
                   </Link>
-                  <Link href="/itineraries?category=culture" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Cultural Immersions
+                  <Link href="/trip-ideas/beach-holidays" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Beach Holidays
                   </Link>
-                  <Link href="/itineraries?category=romance" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Honeymoon & Romance
+                  <Link href="/trip-ideas/beach-itinerary-ideas" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    Beach Itinerary Ideas
+                  </Link>
+                  <Link href="/trip-ideas/first-time-guide-vietnam" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200 font-medium">
+                    First Time Guide Vietnam
                   </Link>
                 </div>
               </div>
 
-              {/* Column 3 */}
+              {/* Column 3: Ideas by Month Calendar Grid */}
               <div className="border-l border-slate-100 pl-8">
-                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  Popular Itineraries
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-4 border-b border-slate-100 pb-2">
+                  Ideas By Month
                 </h3>
-                <div className="flex flex-col space-y-3.5">
-                  <Link href="/itineraries/the-grand-tour-of-vietnam" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    The Grand Tour of Vietnam
-                  </Link>
-                  <Link href="/itineraries/vietnamese-culinary-and-culture-journey" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Vietnamese Culinary & Culture
-                  </Link>
+                <p className="text-[11px] text-slate-400 mb-4 font-light">Select a month to see local weather and trip recommendations:</p>
+                <div className="grid grid-cols-4 gap-2 text-center text-[10px] tracking-widest font-semibold">
+                  {['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'].map((month, idx) => {
+                    const fullMonths = [
+                      'jannuary', 'february', 'march', 'april', 'may', 'june',
+                      'july', 'august', 'september', 'october', 'november', 'december'
+                    ];
+                    // Correcting typo in january slug
+                    const slugMonth = idx === 0 ? 'january' : fullMonths[idx];
+                    return (
+                      <Link 
+                        key={month}
+                        href={`/ideas-by-month/${slugMonth}`}
+                        onClick={() => setActiveMenu(null)}
+                        className="border border-slate-150 py-1.5 hover:bg-[#c5a880] hover:text-white hover:border-[#c5a880] transition-colors uppercase font-sans text-slate-600"
+                      >
+                        {month}
+                      </Link>
+                    );
+                  })}
                 </div>
+                <Link
+                  href="/ideas-by-month"
+                  onClick={() => setActiveMenu(null)}
+                  className="inline-block mt-5 text-[11px] font-bold tracking-widest uppercase text-[#c5a880] hover:underline"
+                >
+                  View All Months Guide &rarr;
+                </Link>
               </div>
 
-              {/* Column 4 */}
+              {/* Column 4: Featured culinary idea */}
               <div className="border-l border-slate-100 pl-8">
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  Featured Accommodation
+                  Featured Trip Idea
                 </h3>
                 <div className="space-y-4">
                   <div className="relative w-full h-[120px] border border-slate-100">
                     <Image 
-                      src="/images/vietnamtour_amanoi_villa.png"
-                      alt="Amanoi Villa"
+                      src="/images/trip_culinary_street_food.png"
+                      alt="Hoi An Culinary Tour"
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="font-serif text-sm font-semibold text-slate-800">Amanoi Sanctuary</h4>
+                    <h4 className="font-serif text-sm font-semibold text-slate-800">Vietnam Culinary Tours</h4>
                     <p className="text-[12px] leading-relaxed text-slate-500 font-light mt-1">
-                      A private hilltop sanctuary overlooking Vinh Hy Bay, offering ultimate peace and luxury.
+                      Eat your way through the country, exploring street food stalls to imperial dining rooms.
                     </p>
-                    <Link href="/accommodations/amanoi-ninh-thuan" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-[#c5a880] font-bold hover:underline mt-2">
-                      Discover Amanoi &rarr;
+                    <Link href="/trip-ideas/vietnam-culinary-tours" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-[#c5a880] font-bold hover:underline mt-2">
+                      Discover Cuisine &rarr;
                     </Link>
                   </div>
                 </div>
@@ -545,7 +579,31 @@ export default function Navbar() {
           <div className="absolute left-0 w-full top-full bg-white border-b border-slate-200 shadow-2xl py-12 px-6 lg:px-12 z-50 animate-fade-in text-slate-800">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
               
-              {/* Column 1 */}
+              {/* Column 1: Travel Inspirations */}
+              <div>
+                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
+                  Travel Inspirations
+                </h3>
+                <div className="flex flex-col space-y-3.5 font-medium">
+                  <Link href="/inspirations/luxury-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Luxury Tours
+                  </Link>
+                  <Link href="/inspirations/adventure-off-beaten-track" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Adventure & Off-Beaten Track
+                  </Link>
+                  <Link href="/inspirations/family-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Family Tours
+                  </Link>
+                  <Link href="/inspirations/culinary-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Culinary Inspiration
+                  </Link>
+                  <Link href="/inspirations/golf-tours" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Golf Inspiration
+                  </Link>
+                </div>
+              </div>
+
+              {/* Column 2: Travel Journal */}
               <div>
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
                   Travel Journal
@@ -554,65 +612,53 @@ export default function Navbar() {
                   <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
                     Latest Articles
                   </Link>
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Luxury Travel Trends
+                  <Link href="/travel-guides?category=places" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Places to Visit
                   </Link>
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Expert Travel Tips
-                  </Link>
-                </div>
-              </div>
-
-              {/* Column 2 */}
-              <div>
-                <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  Practical Guides
-                </h3>
-                <div className="flex flex-col space-y-3.5">
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Best Time to Visit
-                  </Link>
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Visa & Entry Requirements
-                  </Link>
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Packing Essentials
+                  <Link href="/travel-guides?category=things" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Things to Do
                   </Link>
                 </div>
               </div>
 
-              {/* Column 3 */}
+              {/* Column 3: Hotels & Cruises */}
               <div className="border-l border-slate-100 pl-8">
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  Featured Article
+                  Accommodations & Cruises
                 </h3>
                 <div className="flex flex-col space-y-3.5">
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    The Ultimate Guide to Cave Dining in Halong Bay
+                  <Link href="/accommodations" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Luxury Hotels & Villas
                   </Link>
-                  <Link href="/travel-guides" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
-                    Unveiling Sapa: A Trek Above the Clouds
+                  <Link href="/itineraries?category=cruise" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Premium Cruises
+                  </Link>
+                  <Link href="/specialists" onClick={() => setActiveMenu(null)} className="text-[14px] text-slate-600 hover:text-[#c5a880] transition-colors duration-200">
+                    Speak to Specialists
                   </Link>
                 </div>
               </div>
 
-              {/* Column 4 */}
+              {/* Column 4: Featured Image Card */}
               <div className="border-l border-slate-100 pl-8">
                 <h3 className="font-serif text-sm tracking-[0.2em] font-semibold text-slate-800 uppercase mb-6 border-b border-slate-100 pb-2">
-                  Photo Gallery
+                  Featured Inspiration
                 </h3>
                 <div className="space-y-4">
                   <div className="relative w-full h-[120px] border border-slate-100">
                     <Image 
-                      src="/images/vietnamtour_cave_dining.png"
-                      alt="Cave Dining"
+                      src="/images/trip_luxury_villa.png"
+                      alt="Luxury Amanoi resort"
                       fill
                       className="object-cover"
                     />
                   </div>
                   <p className="text-[12px] leading-relaxed text-slate-500 font-light">
-                    Capture the moments that define luxury travel. Read our travel journals and feel inspired.
+                    Discover Amanoi Sanctuary — a private luxury hilltop retreat overlooking pristine Vinh Hy Bay.
                   </p>
+                  <Link href="/inspirations/luxury-tours" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-[#c5a880] font-bold hover:underline mt-1">
+                    Discover Luxury &rarr;
+                  </Link>
                 </div>
               </div>
 
@@ -756,11 +802,14 @@ export default function Navbar() {
               </button>
               
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
-                mobileExpanded === 'trip-ideas' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+                mobileExpanded === 'trip-ideas' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/itineraries" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">By Duration</Link>
-                <Link href="/itineraries?category=adventure" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Adventure Expeditions</Link>
-                <Link href="/itineraries/the-grand-tour-of-vietnam" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">The Grand Tour of Vietnam</Link>
+                <Link href="/trip-ideas" onClick={() => setIsOpen(false)} className="block text-sm text-[#c5a880] font-bold py-1">All Trip Ideas &rarr;</Link>
+                <Link href="/trip-ideas/vietnam-culinary-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Culinary Tours</Link>
+                <Link href="/trip-ideas/bike-and-boat-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Bike & Boat Tours</Link>
+                <Link href="/trip-ideas/motorcycling-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Motorcycling Tours</Link>
+                <Link href="/trip-ideas/classic-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Classic Tours</Link>
+                <Link href="/ideas-by-month" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880] italic">Best Time / Month Ideas &rarr;</Link>
               </div>
             </div>
 
@@ -777,10 +826,13 @@ export default function Navbar() {
               </button>
               
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
-                mobileExpanded === 'inspirations' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
+                mobileExpanded === 'inspirations' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
+                <Link href="/inspirations" onClick={() => setIsOpen(false)} className="block text-sm text-[#c5a880] font-bold py-1">All Inspirations &rarr;</Link>
+                <Link href="/inspirations/luxury-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Luxury Tours</Link>
+                <Link href="/inspirations/adventure-off-beaten-track" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Adventure</Link>
+                <Link href="/inspirations/family-tours" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Family Tours</Link>
                 <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Travel Journal</Link>
-                <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-slate-600 py-1 hover:text-[#c5a880]">Practical Guides</Link>
               </div>
             </div>
 

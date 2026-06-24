@@ -29,7 +29,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
     { id: 'hotels', label: 'Hotels', count: hotelsCount, href: '/accommodations' },
     { id: 'things', label: 'Things to do', count: thingsToDoCount, href: activeTab === 'tours' ? '#details' : '/itineraries#details' },
     { id: 'cruises', label: 'Vietnam Cruises', count: cruisesCount, href: '/destinations' },
-    { id: 'weather', label: 'Best time to visit', count: weatherCount, href: activeTab === 'tours' ? '#faq-section' : '/itineraries#faq-section' },
+    { id: 'weather', label: 'Best time to visit', count: weatherCount, href: '/ideas-by-month' },
   ];
 
   return (
