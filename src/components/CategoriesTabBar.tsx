@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getItineraries, getPosts, getDestinations, getAccommodations, getCruises } from '@/sanity/client';
+import { thingsToDoData } from '@/lib/thingsToDoData';
 
 interface CategoriesTabBarProps {
   activeTab: 'tours' | 'guides' | 'places' | 'hotels' | 'cruises' | 'things' | 'weather';
@@ -19,7 +20,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
   const placesCount = destinations.length;
   const hotelsCount = accommodations.length;
   const cruisesCount = cruises.length;
-  const thingsToDoCount = destinations.reduce((sum, dest) => sum + (dest.highlights?.length || 0), 0);
+  const thingsToDoCount = thingsToDoData.length;
   const weatherCount = 12; // 12 months representing weather by month
 
   const tabs = [
@@ -27,7 +28,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
     { id: 'guides', label: 'Travel Guides', count: guidesCount, href: '/travel-guides' },
     { id: 'places', label: 'Places to visit', count: placesCount, href: '/destinations' },
     { id: 'hotels', label: 'Hotels', count: hotelsCount, href: '/accommodations' },
-    { id: 'things', label: 'Things to do', count: thingsToDoCount, href: activeTab === 'tours' ? '#details' : '/itineraries#details' },
+    { id: 'things', label: 'Things to do', count: thingsToDoCount, href: '/things-to-do' },
     { id: 'cruises', label: 'Vietnam Cruises', count: cruisesCount, href: '/destinations' },
     { id: 'weather', label: 'Best time to visit', count: weatherCount, href: '/ideas-by-month' },
   ];
