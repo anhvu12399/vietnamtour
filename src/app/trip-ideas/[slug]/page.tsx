@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { tripIdeasData, getTripIdea, getAllTripSlugs } from '@/lib/tripIdeasData';
-import { getItineraries } from '@/sanity/client';
+import { getItineraries, getTripIdeaFromSanity } from '@/sanity/client';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const data = getTripIdea(slug);
+  const sanityData = await getTripIdeaFromSanity(slug);
+  const data = sanityData || getTripIdea(slug);
   if (!data) return {};
 
   return {
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function TripIdeaSlugPage({ params }: PageProps) {
   const { slug } = await params;
-  const idea = getTripIdea(slug);
+  const sanityIdea = await getTripIdeaFromSanity(slug);
+  const idea = sanityIdea || getTripIdea(slug);
 
   if (!idea) {
     notFound();
@@ -75,9 +77,9 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
   }
 
   // Related trip ideas
-  const crossLinks = idea.relatedSlugs
-    .map(relSlug => tripIdeasData.find(t => t.slug === relSlug))
-    .filter((x): x is typeof tripIdeasData[0] => !!x);
+  const crossLinks = (idea.relatedSlugs || [])
+    .map((relSlug: string) => tripIdeasData.find(t => t.slug === relSlug))
+    .filter((x: any): x is typeof tripIdeasData[0] => !!x);
 
   return (
     <>
@@ -135,7 +137,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
 
               {/* Dynamic sections */}
               <div className="space-y-12 font-light text-slate-700 leading-relaxed text-base">
-                {idea.sections.map((section, idx) => (
+                {(idea.sections || []).map((section: any, idx: number) => (
                   <div key={idx} className="space-y-6">
                     <h2 className="font-serif text-2xl sm:text-3xl text-slate-900 font-medium border-b border-slate-200 pb-3">
                       {section.heading}
@@ -231,7 +233,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
                 </span>
                 
                 <ul className="space-y-4">
-                  {idea.highlights.map((item, idx) => (
+                  {(idea.highlights || []).map((item: any, idx: number) => (
                     <li key={idx} className="flex items-start gap-3 text-xs text-slate-300 leading-relaxed">
                       <span className="text-[#c5a880] font-bold text-sm shrink-0 leading-none">✓</span>
                       <span>{item}</span>
@@ -344,7 +346,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {crossLinks.map((item) => (
+                {crossLinks.map((item: any) => (
                   <Link 
                     key={item.slug} 
                     href={`/trip-ideas/${item.slug}`}

@@ -531,3 +531,102 @@ export async function getToursLanding(): Promise<ToursLandingData | null> {
   return await fetchSanity<ToursLandingData | null>(query);
 }
 
+// ─── Editorial dynamic pages (Sanity support) ─────────────────────────────────
+
+export async function getTripIdeaFromSanity(slug: string): Promise<any | null> {
+  if (useMock) return null;
+  const query = `*[_type == "tripIdea" && slug.current == $slug][0]{
+    title,
+    "slug": slug.current,
+    metaTitle,
+    metaDescription,
+    "heroImage": heroImage.asset->url,
+    heroSubtitle,
+    category,
+    breadcrumb,
+    intro,
+    sections[]{
+      heading,
+      body,
+      "image": image.asset->url,
+      "imageAlt": image.imageAlt,
+      "imageCaption": image.imageCaption
+    },
+    highlights,
+    faqs[]{ question, answer },
+    relatedSlugs,
+    ctaHeading,
+    ctaBody,
+    "seo": seo{
+      metaTitle, metaDescription, keywords,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<any>(query, { slug });
+}
+
+export async function getInspirationFromSanity(slug: string): Promise<any | null> {
+  if (useMock) return null;
+  const query = `*[_type == "inspiration" && slug.current == $slug][0]{
+    title,
+    "slug": slug.current,
+    metaTitle,
+    metaDescription,
+    "heroImage": heroImage.asset->url,
+    heroSubtitle,
+    category,
+    breadcrumb,
+    intro,
+    sections[]{
+      heading,
+      body,
+      "image": image.asset->url,
+      "imageAlt": image.imageAlt,
+      "imageCaption": image.imageCaption
+    },
+    highlights,
+    faqs[]{ question, answer },
+    relatedSlugs,
+    ctaHeading,
+    ctaBody,
+    "seo": seo{
+      metaTitle, metaDescription, keywords,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<any>(query, { slug });
+}
+
+export async function getMonthGuideFromSanity(slug: string): Promise<any | null> {
+  if (useMock) return null;
+  const query = `*[_type == "monthGuide" && slug.current == $slug][0]{
+    title,
+    "slug": slug.current,
+    metaTitle,
+    metaDescription,
+    "heroImage": heroImage.asset->url,
+    heroSubtitle,
+    category,
+    breadcrumb,
+    intro,
+    sections[]{
+      heading,
+      body,
+      "image": image.asset->url,
+      "imageAlt": image.imageAlt,
+      "imageCaption": image.imageCaption
+    },
+    highlights,
+    faqs[]{ question, answer },
+    relatedSlugs,
+    ctaHeading,
+    ctaBody,
+    "seo": seo{
+      metaTitle, metaDescription, keywords,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<any>(query, { slug });
+}
+
+

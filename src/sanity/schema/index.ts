@@ -10,6 +10,9 @@ import { travelGuide } from './travelGuide';
 import { post } from './post';
 import { seoFields } from './seoFields';
 import { toursLanding } from './toursLanding';
+import { tripIdea } from './tripIdea';
+import { inspiration } from './inspiration';
+import { monthGuide } from './monthGuide';
 
 export const schemaTypes = [
   homepage,
@@ -24,4 +27,7 @@ export const schemaTypes = [
   post,
   seoFields,
   toursLanding,
+  tripIdea,
+  inspiration,
+  monthGuide,
 ];

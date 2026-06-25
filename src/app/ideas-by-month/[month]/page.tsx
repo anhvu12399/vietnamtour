@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ideasByMonthData, getMonthBySlug, getAllMonthSlugs } from '@/lib/ideasByMonthData';
-import { getItineraries } from '@/sanity/client';
+import { getItineraries, getMonthGuideFromSanity } from '@/sanity/client';
 
 interface PageProps {
   params: Promise<{ month: string }>;
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { month } = await params;
-  const data = getMonthBySlug(month);
+  const sanityData = await getMonthGuideFromSanity(month);
+  const data = sanityData || getMonthBySlug(month);
   if (!data) return {};
 
   return {
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function MonthSlugPage({ params }: PageProps) {
   const { month } = await params;
-  const monthData = getMonthBySlug(month);
+  const sanityData = await getMonthGuideFromSanity(month);
+  const monthData = sanityData || getMonthBySlug(month);
 
   if (!monthData) {
     notFound();
@@ -72,9 +74,9 @@ export default async function MonthSlugPage({ params }: PageProps) {
   }
 
   // Related months (e.g. adjacent months)
-  const crossLinks = monthData.relatedSlugs
-    .map(relSlug => ideasByMonthData.find(m => m.slug === relSlug))
-    .filter((x): x is typeof ideasByMonthData[0] => !!x);
+  const crossLinks = (monthData.relatedSlugs || [])
+    .map((relSlug: string) => ideasByMonthData.find(m => m.slug === relSlug))
+    .filter((x: any): x is typeof ideasByMonthData[0] => !!x);
 
   return (
     <>
@@ -132,7 +134,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
               {/* Dynamic sections */}
               <div className="space-y-12 font-light text-slate-700 leading-relaxed text-base">
-                {monthData.sections.map((section, idx) => (
+                {(monthData.sections || []).map((section: any, idx: number) => (
                   <div key={idx} className="space-y-6">
                     <h2 className="font-serif text-2xl sm:text-3xl text-slate-900 font-medium border-b border-slate-200 pb-3">
                       {section.heading}
@@ -227,7 +229,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 </span>
                 
                 <ul className="space-y-4">
-                  {monthData.highlights.map((item, idx) => (
+                  {(monthData.highlights || []).map((item: any, idx: number) => (
                     <li key={idx} className="flex items-start gap-3 text-xs text-slate-300 leading-relaxed">
                       <span className="text-[#c5a880] font-bold text-sm shrink-0 leading-none">✓</span>
                       <span>{item}</span>
@@ -340,7 +342,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {crossLinks.map((item) => (
+                {crossLinks.map((item: any) => (
                   <Link 
                     key={item.slug} 
                     href={`/ideas-by-month/${item.slug}`}
