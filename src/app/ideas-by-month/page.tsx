@@ -16,7 +16,7 @@ export default function IdeasByMonthListingPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-slate-800">
+      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
@@ -54,10 +54,10 @@ export default function IdeasByMonthListingPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#c5a880] block">
               Monthly Weather & Guides
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 font-medium leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium leading-tight">
               When Will Your Journey Begin?
             </h2>
-            <p className="text-base text-slate-600 font-light leading-relaxed">
+            <p className="text-base text-luxury-linen/80 font-light leading-relaxed">
               Vietnam is a year-round destination, but weather varies significantly by region and season. Click on any month below to read our detailed travel guide, weather analysis (North, Central, South), and recommended travel spots.
             </p>
             <div className="h-[2px] w-20 bg-[#c5a880] mx-auto mt-6" />
@@ -69,7 +69,7 @@ export default function IdeasByMonthListingPage() {
               <Link 
                 key={item.slug} 
                 href={`/ideas-by-month/${item.slug}`}
-                className="group relative h-48 sm:h-56 overflow-hidden rounded-xs border border-slate-200 shadow-xs flex flex-col justify-end p-6 bg-slate-900 transition-all duration-300 hover:shadow-lg hover:border-[#c5a880]/30"
+                className="group relative h-48 sm:h-56 overflow-hidden rounded-xs border border-luxury-gold/10 shadow-md flex flex-col justify-end p-6 bg-luxury-slate transition-all duration-300 hover:shadow-xl hover:border-luxury-gold/30"
               >
                 <Image
                   src={item.heroImage}
@@ -88,7 +88,7 @@ export default function IdeasByMonthListingPage() {
                   <h3 className="font-serif text-xl sm:text-2xl text-white font-semibold leading-none group-hover:text-[#c5a880] transition-colors">
                     {item.breadcrumb}
                   </h3>
-                  <p className="text-[10px] text-slate-300 font-light line-clamp-1 group-hover:text-white transition-colors">
+                  <p className="text-[10px] text-luxury-linen/75 font-light line-clamp-1 group-hover:text-white transition-colors">
                     {item.heroSubtitle}
                   </p>
                 </div>
@@ -99,7 +99,7 @@ export default function IdeasByMonthListingPage() {
         </section>
 
         {/* Bottom CTA Block */}
-        <section className="bg-slate-900 text-white py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
+        <section className="bg-[#121816] text-white py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:16px_16px]" />
           <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
             <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#c5a880] block">
@@ -108,13 +108,13 @@ export default function IdeasByMonthListingPage() {
             <h3 className="font-serif text-3xl sm:text-5xl text-white font-medium leading-tight">
               Ready to Plan Your Seasonal Escape?
             </h3>
-            <p className="text-base sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-luxury-linen/80 font-light max-w-2xl mx-auto leading-relaxed">
               No matter what month you travel, our specialists will craft the perfect itinerary to match the best climates and festivals in Vietnam.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
                 href="/enquire"
-                className="w-full sm:w-auto bg-[#c5a880] hover:bg-white text-slate-950 text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
+                className="w-full sm:w-auto bg-[#c5a880] hover:bg-luxury-gold hover:text-luxury-slate text-slate-950 text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Request a Custom Quote
               </Link>

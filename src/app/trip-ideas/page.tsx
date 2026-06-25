@@ -16,7 +16,7 @@ export default function TripIdeasListingPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-slate-800">
+      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
@@ -54,10 +54,10 @@ export default function TripIdeasListingPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#c5a880] block">
               Curated Travel Styles
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 font-medium leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium leading-tight">
               Bespoke Ideas for Your Journey
             </h2>
-            <p className="text-base text-slate-600 font-light leading-relaxed">
+            <p className="text-base text-luxury-linen/80 font-light leading-relaxed">
               Every traveler experiences Vietnam differently. We have crafted these specialized travel concepts to serve as inspiration for your bespoke, private holiday. Select a style below to view detailed itineraries, regional highlights, and planning tips.
             </p>
             <div className="h-[2px] w-20 bg-[#c5a880] mx-auto mt-6" />
@@ -68,10 +68,10 @@ export default function TripIdeasListingPage() {
             {tripIdeasData.map((item) => (
               <div 
                 key={item.slug} 
-                className="group bg-white border border-slate-200/60 shadow-xs hover:shadow-md hover:border-[#c5a880]/30 transition-all duration-300 flex flex-col h-full rounded-xs overflow-hidden"
+                className="group bg-luxury-slate/30 border border-luxury-gold/10 shadow-md hover:shadow-xl hover:border-luxury-gold/30 transition-all duration-300 flex flex-col h-full rounded-xs overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-60 overflow-hidden shrink-0 bg-slate-100">
+                <div className="relative h-60 overflow-hidden shrink-0 bg-luxury-slate/20">
                   <Image
                     src={item.heroImage}
                     alt={item.title}
@@ -79,7 +79,7 @@ export default function TripIdeasListingPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-xs text-white text-[9px] uppercase tracking-widest font-semibold px-3 py-1.5 rounded-none border border-white/10">
+                  <div className="absolute top-4 left-4 bg-luxury-slate/90 backdrop-blur-xs text-luxury-linen text-[9px] uppercase tracking-widest font-semibold px-3 py-1.5 rounded-none border border-white/10">
                     {item.category}
                   </div>
                 </div>
@@ -87,20 +87,19 @@ export default function TripIdeasListingPage() {
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow space-y-6">
                   <div className="space-y-3">
-                    <h3 className="font-serif text-xl sm:text-2xl text-slate-900 font-medium leading-snug group-hover:text-[#c5a880] transition-colors">
+                    <h3 className="font-serif text-xl sm:text-2xl text-luxury-linen font-medium leading-snug group-hover:text-[#c5a880] transition-colors">
                       <Link href={`/trip-ideas/${item.slug}`}>
                         {item.title}
                       </Link>
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-500 font-light leading-relaxed line-clamp-3">
+                    <p className="text-xs sm:text-sm text-luxury-linen/60 font-light leading-relaxed line-clamp-3">
                       {item.heroSubtitle}
                     </p>
                   </div>
 
-                  {/* Bullet Highlights teaser */}
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
-                    <span className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Key Experiences:</span>
-                    <ul className="text-xs text-slate-600 space-y-1">
+                  <div className="space-y-2 pt-2 border-t border-luxury-gold/10">
+                    <span className="text-[10px] uppercase tracking-wider text-luxury-linen/50 font-semibold block">Key Experiences:</span>
+                    <ul className="text-xs text-luxury-linen/85 space-y-1">
                       {item.highlights.slice(0, 3).map((hl, i) => (
                         <li key={i} className="flex items-start gap-1.5 line-clamp-1">
                           <span className="text-[#c5a880] font-bold shrink-0">•</span>
@@ -113,7 +112,7 @@ export default function TripIdeasListingPage() {
                   <div className="pt-4">
                     <Link
                       href={`/trip-ideas/${item.slug}`}
-                      className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest font-bold text-[#c5a880] hover:text-slate-900 transition-colors"
+                      className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest font-bold text-[#c5a880] hover:text-luxury-linen transition-colors"
                     >
                       <span>Explore this style</span>
                       <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
@@ -127,7 +126,7 @@ export default function TripIdeasListingPage() {
         </section>
 
         {/* Bottom CTA Block */}
-        <section className="bg-slate-900 text-white py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
+        <section className="bg-[#121816] text-white py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:16px_16px]" />
           <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
             <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#c5a880] block">
@@ -136,13 +135,13 @@ export default function TripIdeasListingPage() {
             <h3 className="font-serif text-3xl sm:text-5xl text-white font-medium leading-tight">
               Ready to Craft Your Bespoke Journey?
             </h3>
-            <p className="text-base sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-luxury-linen/80 font-light max-w-2xl mx-auto leading-relaxed">
               Our specialists will weave these travel styles into a single, seamless, custom itinerary designed specifically for you.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
                 href="/enquire"
-                className="w-full sm:w-auto bg-[#c5a880] hover:bg-white text-slate-950 text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
+                className="w-full sm:w-auto bg-[#c5a880] hover:bg-luxury-gold hover:text-luxury-slate text-slate-950 text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Request a Custom Quote
               </Link>

@@ -60,7 +60,7 @@ export default async function ItinerariesPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-slate-800">
+      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
         
         {/* ── 1. SCENIC HERO BANNER ── */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[450px] w-full flex items-center justify-center overflow-hidden">
@@ -95,8 +95,8 @@ export default async function ItinerariesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column (Vietnam Intro Text) */}
-            <div className="lg:col-span-8 space-y-6 text-slate-700 leading-relaxed font-light text-base">
-              <p className="font-serif text-lg lg:text-xl font-medium text-slate-800 leading-relaxed">
+            <div className="lg:col-span-8 space-y-6 text-luxury-linen/85 leading-relaxed font-light text-base">
+              <p className="font-serif text-lg lg:text-xl font-medium text-luxury-linen leading-relaxed">
                 Travelers love Vietnam for its friendly people, rich culture, and breathtaking landscapes – from charming towns to lush countryside.
               </p>
               
@@ -109,10 +109,10 @@ export default async function ItinerariesPage() {
               </p>
 
               <div className="pt-4 space-y-4">
-                <h3 className="font-serif text-lg font-semibold text-slate-800 uppercase tracking-wide">
+                <h3 className="font-serif text-lg font-semibold text-luxury-linen uppercase tracking-wide">
                   Our private tours are designed to highlight the best of Vietnam, including:
                 </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-disc pl-5 text-sm font-medium text-slate-600">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-disc pl-5 text-sm font-medium text-luxury-linen/80">
                   <li>Stays at luxury hotels and resorts</li>
                   <li>A personal guide and driver for tailored experiences</li>
                   <li>Tips from local Vietnam experts</li>
@@ -122,20 +122,20 @@ export default async function ItinerariesPage() {
                 </ul>
               </div>
 
-              <p className="text-sm italic text-slate-500 pt-4">
+              <p className="text-sm italic text-luxury-linen/60 pt-4">
                 All tours are private, available year-round, and fully customizable. For more info, feel free to submit an online query or consult with our team.
               </p>
             </div>
 
             {/* Right Column (Contact Local Expert Box) */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-slate-200/70 p-8 shadow-sm flex flex-col items-center text-center space-y-6">
-                <h3 className="font-serif text-xl font-semibold text-slate-800 leading-snug">
+              <div className="bg-luxury-slate/30 border border-luxury-gold/15 p-8 shadow-md flex flex-col items-center text-center space-y-6">
+                <h3 className="font-serif text-xl font-semibold text-luxury-linen leading-snug">
                   Speak to one of our local experts
                 </h3>
                 
                 {/* Specialist Circular Image */}
-                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-slate-100 shadow-sm shrink-0">
+                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-luxury-gold/10 shadow-sm shrink-0">
                   <Image 
                     src="/images/specialist_alice.png"
                     alt="Alice Mercer"
@@ -145,24 +145,24 @@ export default async function ItinerariesPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-sans text-sm font-bold text-slate-800 uppercase tracking-wider">
+                  <h4 className="font-sans text-sm font-bold text-luxury-linen uppercase tracking-wider">
                     Alice Mercer
                   </h4>
-                  <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto font-light">
+                  <p className="text-xs text-luxury-linen/60 leading-relaxed max-w-[240px] mx-auto font-light">
                     Start planning your tailor-made trip by contacting one of our travel experts
                   </p>
                 </div>
 
                 <Link
                   href="/enquire"
-                  className="w-full bg-[#ba996a] text-white hover:bg-slate-800 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center cursor-pointer"
+                  className="w-full bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center cursor-pointer"
                 >
                   MAKE AN INQUIRY
                 </Link>
 
-                <div className="pt-2 border-t border-slate-100 w-full flex flex-col items-center">
-                  <span className="text-[10px] uppercase text-slate-400 font-bold tracking-widest block mb-0.5">Or call us directly</span>
-                  <a href="tel:+442078459200" className="text-base font-bold text-slate-800 hover:text-[#c5a880] transition-colors duration-200">
+                <div className="pt-2 border-t border-luxury-gold/10 w-full flex flex-col items-center">
+                  <span className="text-[10px] uppercase text-luxury-linen/50 font-bold tracking-widest block mb-0.5">Or call us directly</span>
+                  <a href="tel:+442078459200" className="text-base font-bold text-luxury-linen hover:text-[#c5a880] transition-colors duration-200">
                     +44 (0) 20 7845 9200
                   </a>
                 </div>
@@ -173,24 +173,24 @@ export default async function ItinerariesPage() {
         </section>
 
         {/* ── 4. VACATIONS HEADER & FILTER SELECTOR ── */}
-        <section className="bg-white border-t border-slate-200/40 py-16 px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-slate-100 pb-10">
+        <section className="bg-luxury-slate/20 border-t border-luxury-gold/10 py-16 px-6 lg:px-12">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-luxury-gold/10 pb-10">
             <div className="space-y-4 max-w-2xl text-left">
-              <h2 className="font-serif text-3xl sm:text-4xl text-slate-800 font-medium">
+              <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium">
                 Tailor-made Vietnam vacations
               </h2>
-              <p className="text-sm lg:text-base text-slate-500 font-light leading-relaxed">
+              <p className="text-sm lg:text-base text-luxury-linen/70 font-light leading-relaxed">
                 These sample itineraries are here to inspire your Vietnam journey – each one based on routes we know work brilliantly and can be tailored to suit your travel style.
               </p>
             </div>
             
             {/* Destination Picker Dropdown */}
             <div className="flex flex-col items-start space-y-2 self-start lg:self-end">
-              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-slate-400 block">Pick another destination</span>
+              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-luxury-linen/50 block">Pick another destination</span>
               <div className="relative">
                 <select 
                   defaultValue="vietnam"
-                  className="appearance-none bg-white border border-slate-200 text-slate-800 text-sm font-semibold tracking-wide py-3.5 pl-5 pr-12 rounded-sm focus:outline-none focus:border-slate-400 cursor-pointer min-w-[240px]"
+                  className="appearance-none bg-luxury-slate border border-luxury-gold/20 text-luxury-linen text-sm font-semibold tracking-wide py-3.5 pl-5 pr-12 rounded-sm focus:outline-none focus:border-luxury-gold cursor-pointer min-w-[240px]"
                 >
                   <option value="vietnam">Vietnam</option>
                   <option value="cambodia">Cambodia</option>
@@ -209,20 +209,20 @@ export default async function ItinerariesPage() {
           <div id="tours-listing" className="max-w-7xl mx-auto pt-12">
             
             {/* Listing Header Toggles */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-slate-100">
-              <h3 className="font-serif text-2xl font-semibold text-slate-800 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-luxury-gold/10">
+              <h3 className="font-serif text-2xl font-semibold text-luxury-linen text-left">
                 Vietnam Tours
               </h3>
               
               <div className="flex items-center space-x-6 self-start sm:self-center">
                 {/* Summary / Detail Toggles */}
-                <div className="flex bg-slate-100 p-1 rounded-sm text-xs font-semibold select-none">
-                  <button className="bg-white text-slate-800 px-4 py-1.5 shadow-sm rounded-sm">Summary</button>
-                  <button className="text-slate-500 hover:text-slate-800 px-4 py-1.5 transition-colors duration-200">Detail</button>
+                <div className="flex bg-luxury-slate/50 border border-luxury-gold/15 p-1 rounded-sm text-xs font-semibold select-none">
+                  <button className="bg-luxury-gold text-luxury-slate px-4 py-1.5 shadow-md rounded-sm">Summary</button>
+                  <button className="text-luxury-linen/60 hover:text-luxury-linen px-4 py-1.5 transition-colors duration-200">Detail</button>
                 </div>
 
                 {/* Filter Trigger button */}
-                <button className="flex items-center gap-2 border border-slate-200 hover:border-slate-400 transition-colors duration-200 px-4 py-2 text-xs font-semibold text-slate-700 bg-white rounded-sm cursor-pointer">
+                <button className="flex items-center gap-2 border border-luxury-gold/25 hover:border-luxury-gold/50 transition-colors duration-200 px-4 py-2 text-xs font-semibold text-luxury-linen bg-luxury-slate/30 rounded-sm cursor-pointer">
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                   </svg>
@@ -234,17 +234,17 @@ export default async function ItinerariesPage() {
             {/* Grid 4 columns */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {itineraries.map((it) => (
-                <div key={it._id} className="group bg-white border border-slate-200/50 hover:border-slate-300 transition-all duration-300 hover:shadow-lg flex flex-col justify-between h-full relative">
+                <div key={it._id} className="group bg-luxury-slate/30 border border-luxury-gold/10 hover:border-luxury-gold/30 transition-all duration-300 hover:shadow-xl flex flex-col justify-between h-full relative">
                   
                   {/* Featured Badge */}
-                  <div className="bg-red-600 border border-[#c5a880]/30 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-sm absolute top-4 left-4 z-10 flex items-center gap-0.5 shadow-sm">
+                  <div className="bg-luxury-gold border border-luxury-gold/30 text-luxury-slate text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-sm absolute top-4 left-4 z-10 flex items-center gap-0.5 shadow-sm">
                     <span>★</span>
                     <span>FEATURED</span>
                   </div>
 
                   <div>
                     {/* Tour Image */}
-                    <div className="relative h-48 overflow-hidden bg-slate-50 border-b border-slate-100">
+                    <div className="relative h-48 overflow-hidden bg-luxury-slate/20 border-b border-luxury-gold/10">
                       <Image
                         src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                         alt={it.title}
@@ -259,29 +259,29 @@ export default async function ItinerariesPage() {
                         VIETNAM
                       </span>
                       
-                      <h4 className="font-serif text-[16px] lg:text-[17px] leading-snug font-semibold text-slate-800 hover:text-[#c5a880] transition-colors duration-200">
+                      <h4 className="font-serif text-[16px] lg:text-[17px] leading-snug font-semibold text-luxury-linen hover:text-[#c5a880] transition-colors duration-200">
                         <Link href={`/itineraries/${it.slug?.current || ''}`}>
                           {it.title}
                         </Link>
                       </h4>
 
-                      <p className="text-[12px] font-medium text-slate-500 tracking-wide pt-1">
-                        {it.duration} Days from £{it.priceFrom?.toLocaleString('en-GB')}pp
+                      <p className="text-[12px] font-medium text-luxury-linen/70 tracking-wide pt-1">
+                        {it.duration} Days from <span className="text-luxury-gold">£{it.priceFrom?.toLocaleString('en-GB')}pp</span>
                       </p>
                     </div>
                   </div>
 
                   {/* Card Actions Footer */}
-                  <div className="px-5 py-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold select-none bg-white">
+                  <div className="px-5 py-4 border-t border-luxury-gold/10 flex items-center justify-between text-xs font-semibold select-none bg-luxury-slate/50">
                     <Link 
                       href={`/itineraries/${it.slug?.current || ''}`}
-                      className="text-slate-600 hover:text-slate-900 hover:underline transition-colors"
+                      className="text-luxury-linen/70 hover:text-luxury-gold transition-colors"
                     >
                       View detail
                     </Link>
                     <Link 
                       href="/enquire"
-                      className="text-[#c5a880] hover:text-slate-900 hover:underline transition-colors"
+                      className="text-[#c5a880] hover:text-luxury-linen transition-colors"
                     >
                       Request a quote
                     </Link>
@@ -292,20 +292,20 @@ export default async function ItinerariesPage() {
             </div>
 
             {/* Pagination & Progress */}
-            <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-slate-100">
-              <span className="text-[11px] text-slate-500 font-medium">
+            <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-luxury-gold/10">
+              <span className="text-[11px] text-luxury-linen/60 font-medium">
                 You've viewed {itineraries.length} of {itineraries.length} tours
               </span>
               
               {/* Progress Line */}
-              <div className="w-full h-[3px] bg-slate-200/60 rounded-full overflow-hidden">
-                <div className="h-full bg-slate-800 rounded-full w-full" />
+              <div className="w-full h-[3px] bg-luxury-slate border border-luxury-gold/10 rounded-full overflow-hidden">
+                <div className="h-full bg-luxury-gold rounded-full w-full" />
               </div>
 
               {/* Load More Button */}
               <button 
                 disabled 
-                className="w-full bg-[#002244] text-white py-3.5 text-xs font-bold tracking-[0.2em] uppercase transition-colors hover:bg-slate-800 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-2 rounded-sm"
+                className="w-full bg-luxury-gold text-luxury-slate py-3.5 text-xs font-bold tracking-[0.2em] uppercase transition-colors hover:bg-luxury-gold/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-2 rounded-sm"
               >
                 LOAD MORE TOURS
               </button>
@@ -318,7 +318,7 @@ export default async function ItinerariesPage() {
         {faqs.length > 0 && (
           <section id="faq-section" className="py-20 px-6 lg:px-12 max-w-4xl mx-auto">
             <div className="text-center space-y-4 mb-12">
-              <h2 className="font-serif text-2xl sm:text-3xl text-slate-800 font-semibold leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold leading-tight">
                 Useful information for planning your holiday in Vietnam
               </h2>
               <div className="h-[1.5px] w-12 bg-[#c5a880] mx-auto mt-4" />
@@ -332,7 +332,7 @@ export default async function ItinerariesPage() {
 
         {/* ── 7. MAGAZINE GUIDES & BLOG ── */}
         {inspirationPosts.length > 0 && (
-          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-white border-t border-slate-200/50">
+          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-luxury-slate/20 border-t border-luxury-gold/10">
             <div className="max-w-7xl mx-auto">
               
               {/* Blog Header */}
@@ -341,14 +341,14 @@ export default async function ItinerariesPage() {
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#c5a880] block">
                     Travel Journal
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-slate-800 font-semibold leading-tight">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold leading-tight">
                     Read more Vietnam Travel Guides on our blog
                   </h2>
                 </div>
                 
                 <Link
                   href="/travel-guides"
-                  className="text-xs uppercase tracking-widest font-bold text-[#c5a880] hover:text-slate-800 transition-colors pb-1 border-b border-[#c5a880]/30 hover:border-slate-800"
+                  className="text-xs uppercase tracking-widest font-bold text-[#c5a880] hover:text-luxury-linen transition-colors pb-1 border-b border-[#c5a880]/30 hover:border-luxury-gold"
                 >
                   View all articles
                 </Link>
@@ -360,7 +360,7 @@ export default async function ItinerariesPage() {
                   <article key={post._id} className="group flex flex-col space-y-4.5 text-left h-full">
                     
                     {/* Blog Image */}
-                    <div className="relative h-64 overflow-hidden rounded-sm bg-slate-50 border border-slate-200/40">
+                    <div className="relative h-64 overflow-hidden rounded-sm bg-luxury-slate/25 border border-luxury-gold/10">
                       <Image
                         src={post.mainImage || '/images/featured_guide_passport.png'}
                         alt={post.title}
@@ -369,7 +369,7 @@ export default async function ItinerariesPage() {
                       />
                       
                       {/* Duration Overlay */}
-                      <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
+                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-luxury-gold/10 backdrop-blur-[2px] text-luxury-linen text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(post.content)} minutes read</span>
                       </div>
@@ -378,7 +378,7 @@ export default async function ItinerariesPage() {
                     {/* Blog Body */}
                     <div className="space-y-2">
                       {post.publishedAt && (
-                        <span className="text-[9px] text-slate-400 uppercase tracking-widest block font-bold">
+                        <span className="text-[9px] text-luxury-linen/50 uppercase tracking-widest block font-bold">
                           {new Date(post.publishedAt).toLocaleDateString('en-GB', {
                             day: 'numeric',
                             month: 'long',
@@ -387,7 +387,7 @@ export default async function ItinerariesPage() {
                         </span>
                       )}
                       
-                      <h4 className="font-serif text-lg leading-snug font-semibold text-slate-800 group-hover:text-[#c5a880] transition-colors duration-200">
+                      <h4 className="font-serif text-lg leading-snug font-semibold text-luxury-linen group-hover:text-[#c5a880] transition-colors duration-200">
                         <Link href={`/travel-guides/${post.slug?.current || ''}`}>
                           {post.title}
                         </Link>

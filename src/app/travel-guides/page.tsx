@@ -82,7 +82,7 @@ export default async function TravelGuidesPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-slate-800">
+      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
 
         {/* ── 1. HERO BANNER ── */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[450px] w-full flex items-center justify-center overflow-hidden">
@@ -120,8 +120,8 @@ export default async function TravelGuidesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             {/* Left – intro text */}
-            <div className="lg:col-span-8 space-y-6 text-slate-700 leading-relaxed font-light text-base">
-              <p className="font-serif text-lg lg:text-xl font-medium text-slate-800 leading-relaxed">
+            <div className="lg:col-span-8 space-y-6 text-luxury-linen/85 leading-relaxed font-light text-base">
+              <p className="font-serif text-lg lg:text-xl font-medium text-luxury-linen leading-relaxed">
                 Vietnam is not a destination you understand from a brochure. It reveals itself in a roadside bowl of pho eaten at 6am, in the silence of a karst lagoon at dawn, in the warmth of a family who insists you stay for dinner.
               </p>
               <p>
@@ -132,10 +132,10 @@ export default async function TravelGuidesPage() {
               </p>
 
               <div className="pt-4 space-y-4">
-                <h3 className="font-serif text-lg font-semibold text-slate-800 uppercase tracking-wide">
+                <h3 className="font-serif text-lg font-semibold text-luxury-linen uppercase tracking-wide">
                   Our travel guides cover:
                 </h3>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-disc pl-5 text-sm font-medium text-slate-600">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-disc pl-5 text-sm font-medium text-luxury-linen/80">
                   <li>Itinerary planning & regional routes</li>
                   <li>Where to eat like a local in every city</li>
                   <li>Best luxury hotels & private villas</li>
@@ -145,19 +145,19 @@ export default async function TravelGuidesPage() {
                 </ul>
               </div>
 
-              <p className="text-sm italic text-slate-500 pt-4">
+              <p className="text-sm italic text-luxury-linen/60 pt-4">
                 All guides are updated regularly. For personalised advice based on your specific travel dates and interests, our Vietnam specialists are available by phone or email.
               </p>
             </div>
 
             {/* Right – contact card */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-slate-200/70 p-8 shadow-sm flex flex-col items-center text-center space-y-6">
-                <h3 className="font-serif text-xl font-semibold text-slate-800 leading-snug">
+              <div className="bg-luxury-slate/30 border border-luxury-gold/15 p-8 shadow-md flex flex-col items-center text-center space-y-6">
+                <h3 className="font-serif text-xl font-semibold text-luxury-linen leading-snug">
                   Speak to one of our local experts
                 </h3>
 
-                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-slate-100 shadow-sm shrink-0">
+                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-luxury-gold/10 shadow-sm shrink-0">
                   <Image
                     src="/images/specialist_james.png"
                     alt="James Harrison"
@@ -167,24 +167,24 @@ export default async function TravelGuidesPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-sans text-sm font-bold text-slate-800 uppercase tracking-wider">
+                  <h4 className="font-sans text-sm font-bold text-luxury-linen uppercase tracking-wider">
                     James Harrison
                   </h4>
-                  <p className="text-xs text-slate-500 leading-relaxed max-w-[240px] mx-auto font-light">
+                  <p className="text-xs text-luxury-linen/60 leading-relaxed max-w-[240px] mx-auto font-light">
                     Vietnam travel specialist with 12 years of on-the-ground expertise
                   </p>
                 </div>
 
                 <Link
                   href="/enquire"
-                  className="w-full bg-[#ba996a] text-white hover:bg-slate-800 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center cursor-pointer"
+                  className="w-full bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center cursor-pointer"
                 >
                   MAKE AN INQUIRY
                 </Link>
 
-                <div className="pt-2 border-t border-slate-100 w-full flex flex-col items-center">
-                  <span className="text-[10px] uppercase text-slate-400 font-bold tracking-widest block mb-0.5">Or call us directly</span>
-                  <a href="tel:+442078459200" className="text-base font-bold text-slate-800 hover:text-[#c5a880] transition-colors duration-200">
+                <div className="pt-2 border-t border-luxury-gold/10 w-full flex flex-col items-center">
+                  <span className="text-[10px] uppercase text-luxury-linen/50 font-bold tracking-widest block mb-0.5">Or call us directly</span>
+                  <a href="tel:+442078459200" className="text-base font-bold text-luxury-linen hover:text-[#c5a880] transition-colors duration-200">
                     +44 (0) 20 7845 9200
                   </a>
                 </div>
@@ -195,16 +195,16 @@ export default async function TravelGuidesPage() {
         </section>
 
         {/* ── 4. GUIDES LISTING ── */}
-        <section className="bg-white border-t border-slate-200/40 py-16 px-6 lg:px-12">
+        <section className="bg-luxury-slate/20 border-t border-luxury-gold/10 py-16 px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
 
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-100 pb-10 mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-luxury-gold/10 pb-10 mb-12">
               <div className="space-y-4 max-w-2xl text-left">
-                <h2 className="font-serif text-3xl sm:text-4xl text-slate-800 font-medium">
+                <h2 className="font-serif text-3xl sm:text-4xl text-luxury-linen font-medium">
                   Vietnam Travel Guides &amp; Expert Articles
                 </h2>
-                <p className="text-sm lg:text-base text-slate-500 font-light leading-relaxed">
+                <p className="text-sm lg:text-base text-luxury-linen/70 font-light leading-relaxed">
                   {posts.length} guide{posts.length !== 1 ? 's' : ''} written by specialists who know Vietnam inside out.
                 </p>
               </div>
@@ -214,9 +214,9 @@ export default async function TravelGuidesPage() {
             {featuredPost && (
               <div className="mb-16">
                 <Link href={`/travel-guides/${featuredPost.slug?.current || ''}`}>
-                  <article className="group grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white border border-slate-200/60 hover:border-[#c5a880]/40 hover:shadow-xl transition-all duration-500 overflow-hidden">
+                  <article className="group grid grid-cols-1 lg:grid-cols-2 gap-0 bg-luxury-slate/30 border border-luxury-gold/10 hover:border-luxury-gold/30 hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     {/* Image */}
-                    <div className="relative h-72 lg:h-[420px] overflow-hidden bg-slate-100">
+                    <div className="relative h-72 lg:h-[420px] overflow-hidden bg-luxury-slate/20">
                       <Image
                         src={featuredPost.mainImage || FALLBACK_IMAGES[0]}
                         alt={featuredPost.title}
@@ -224,10 +224,10 @@ export default async function TravelGuidesPage() {
                         className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
                         priority
                       />
-                      <div className="absolute top-5 left-5 bg-[#ba996a] text-white text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm">
+                      <div className="absolute top-5 left-5 bg-luxury-gold text-luxury-slate text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm">
                         FEATURED GUIDE
                       </div>
-                      <div className="absolute bottom-5 left-5 bg-black/55 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 rounded-sm">
+                      <div className="absolute bottom-5 left-5 bg-luxury-slate/85 border border-luxury-gold/10 backdrop-blur-[2px] text-luxury-linen text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(featuredPost.content)} min read</span>
                       </div>
@@ -240,23 +240,23 @@ export default async function TravelGuidesPage() {
                           {getCategory(featuredPost.title)}
                         </span>
                         {featuredPost.publishedAt && (
-                          <span className="text-[10px] text-slate-400 uppercase tracking-wider font-medium block">
+                          <span className="text-[10px] text-luxury-linen/50 uppercase tracking-wider font-medium block">
                             {new Date(featuredPost.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                           </span>
                         )}
                       </div>
 
-                      <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-snug font-semibold text-slate-800 group-hover:text-[#ba996a] transition-colors duration-300">
+                      <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl leading-snug font-semibold text-luxury-linen group-hover:text-luxury-gold transition-colors duration-300">
                         {featuredPost.title}
                       </h3>
 
                       {featuredPost.excerpt && (
-                        <p className="text-sm text-slate-600 leading-relaxed font-light line-clamp-3">
+                        <p className="text-sm text-luxury-linen/70 leading-relaxed font-light line-clamp-3">
                           {featuredPost.excerpt}
                         </p>
                       )}
 
-                      <div className="pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#ba996a] group-hover:text-slate-800 transition-colors">
+                      <div className="pt-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-luxury-gold group-hover:text-luxury-linen transition-colors">
                         <span>Read Full Guide</span>
                         <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -273,17 +273,17 @@ export default async function TravelGuidesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {gridPosts.map((post, idx) => (
                   <Link key={post._id} href={`/travel-guides/${post.slug?.current || ''}`}>
-                    <article className="group bg-white border border-slate-200/50 hover:border-slate-300 transition-all duration-300 hover:shadow-lg flex flex-col h-full">
+                    <article className="group bg-luxury-slate/30 border border-luxury-gold/10 hover:border-luxury-gold/30 transition-all duration-300 hover:shadow-xl flex flex-col h-full">
 
                       {/* Image */}
-                      <div className="relative h-48 overflow-hidden bg-slate-50 border-b border-slate-100">
+                      <div className="relative h-48 overflow-hidden bg-luxury-slate/20 border-b border-luxury-gold/10">
                         <Image
                           src={post.mainImage || FALLBACK_IMAGES[(idx + 1) % FALLBACK_IMAGES.length]}
                           alt={post.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         />
-                        <div className="absolute bottom-3 left-3 bg-black/55 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 flex items-center gap-1 rounded-sm">
+                        <div className="absolute bottom-3 left-3 bg-luxury-slate/85 border border-luxury-gold/10 backdrop-blur-[2px] text-luxury-linen text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 flex items-center gap-1 rounded-sm">
                           <span>🕒</span>
                           <span>{getReadingTime(post.content)} min</span>
                         </div>
@@ -294,19 +294,19 @@ export default async function TravelGuidesPage() {
                         <span className="text-[10px] text-[#c5a880] tracking-widest uppercase font-bold block">
                           {getCategory(post.title)}
                         </span>
-                        <h4 className="font-serif text-[16px] lg:text-[17px] leading-snug font-semibold text-slate-800 group-hover:text-[#c5a880] transition-colors duration-200 flex-1">
+                        <h4 className="font-serif text-[16px] lg:text-[17px] leading-snug font-semibold text-luxury-linen group-hover:text-luxury-gold transition-colors duration-200 flex-1">
                           {post.title}
                         </h4>
                         {post.publishedAt && (
-                          <p className="text-[11px] font-medium text-slate-400 tracking-wide pt-1">
+                          <p className="text-[11px] font-medium text-luxury-linen/50 tracking-wide pt-1">
                             {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                           </p>
                         )}
                       </div>
 
                       {/* Card Footer */}
-                      <div className="px-5 py-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold bg-white">
-                        <span className="text-slate-600 group-hover:text-slate-900 group-hover:underline transition-colors">
+                      <div className="px-5 py-4 border-t border-luxury-gold/10 flex items-center justify-between text-xs font-semibold bg-luxury-slate/50">
+                        <span className="text-luxury-linen/70 group-hover:text-luxury-gold transition-colors">
                           Read guide
                         </span>
                         <svg className="w-3.5 h-3.5 text-[#c5a880] group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -320,12 +320,12 @@ export default async function TravelGuidesPage() {
             )}
 
             {/* Count progress bar */}
-            <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-slate-100">
-              <span className="text-[11px] text-slate-500 font-medium">
+            <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-luxury-gold/10">
+              <span className="text-[11px] text-luxury-linen/60 font-medium">
                 You've viewed {posts.length} of {posts.length} guides
               </span>
-              <div className="w-full h-[3px] bg-slate-200/60 rounded-full overflow-hidden">
-                <div className="h-full bg-slate-800 rounded-full w-full" />
+              <div className="w-full h-[3px] bg-luxury-slate border border-luxury-gold/10 rounded-full overflow-hidden">
+                <div className="h-full bg-luxury-gold rounded-full w-full" />
               </div>
             </div>
 
@@ -336,7 +336,7 @@ export default async function TravelGuidesPage() {
         <section id="faq-section" className="py-20 px-6 lg:px-12 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#c5a880] block">Expert Knowledge</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-slate-800 font-semibold leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold leading-tight">
               Frequently Asked Questions About Vietnam Travel
             </h2>
             <div className="h-[1.5px] w-12 bg-[#c5a880] mx-auto mt-4" />
@@ -350,15 +350,15 @@ export default async function TravelGuidesPage() {
               { q: 'Which region of Vietnam is the most beautiful?', a: 'An impossible question — every region is distinct. Halong Bay for dramatic seascapes. Sapa for mountain landscapes and ethnic culture. Hoi An for architectural beauty and food. The Mekong Delta for river life. Ha Giang for wild, off-grid scenery. Our specialists will help you choose based on your interests and travel dates.' },
               { q: 'When should I avoid visiting Vietnam?', a: 'The main weather risks are: typhoon season on the central coast (September-November); the cool, foggy season in Sapa (December-February); and the wet season in the south (May-October). However, Vietnam is a year-round destination — the north and south often have opposite seasons, so there is always a great region to visit.' },
             ].map((item, i) => (
-              <details key={i} className="group bg-[#f5f6f6] border border-slate-200/70 rounded-sm shadow-sm open:border-slate-300">
+              <details key={i} className="group bg-luxury-slate/40 border border-luxury-gold/15 rounded-sm shadow-md open:border-luxury-gold/35">
                 <summary className="flex justify-between items-center px-6 py-4 cursor-pointer list-none select-none">
-                  <h4 className="font-serif text-[15px] sm:text-[17px] text-slate-800 font-semibold leading-snug pr-4">
+                  <h4 className="font-serif text-[15px] sm:text-[17px] text-luxury-linen font-semibold leading-snug pr-4">
                     {item.q}
                   </h4>
                   <span className="text-[#c5a880] text-xl font-light transition-transform duration-300 group-open:rotate-45 inline-block shrink-0">＋</span>
                 </summary>
-                <div className="px-6 pb-5 pt-1 border-t border-slate-200/40">
-                  <p className="text-slate-600 text-sm leading-relaxed font-light">{item.a}</p>
+                <div className="px-6 pb-5 pt-1 border-t border-luxury-gold/10">
+                  <p className="text-luxury-linen/70 text-sm leading-relaxed font-light">{item.a}</p>
                 </div>
               </details>
             ))}
@@ -366,10 +366,10 @@ export default async function TravelGuidesPage() {
         </section>
 
         {/* ── 6. FEATURED TOURS ── */}
-        <section className="py-20 px-6 lg:px-12 bg-white border-t border-slate-200/50">
+        <section className="py-20 px-6 lg:px-12 bg-luxury-slate/20 border-t border-luxury-gold/10">
           <div className="max-w-7xl mx-auto text-center space-y-4 mb-12">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#c5a880] block">Signature Journeys</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-slate-800 font-semibold">Explore Our Vietnam Tour Collection</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold">Explore Our Vietnam Tour Collection</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-6 justify-center">
             {[
@@ -378,7 +378,7 @@ export default async function TravelGuidesPage() {
               { label: 'Culinary Journey', desc: 'Vietnam through its food culture', link: '/itineraries', img: '/images/vietnamtour_cave_dining.png' },
             ].map((item, i) => (
               <Link key={i} href={item.link} className="group flex-1 min-w-[240px] max-w-sm">
-                <div className="relative h-56 overflow-hidden rounded-sm border border-slate-200/40">
+                <div className="relative h-56 overflow-hidden rounded-sm border border-luxury-gold/15 bg-luxury-slate/30">
                   <Image src={item.img} alt={item.label} fill className="object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 text-left">
@@ -392,7 +392,7 @@ export default async function TravelGuidesPage() {
           <div className="text-center mt-10">
             <Link
               href="/itineraries"
-              className="inline-block bg-[#002244] text-white text-xs font-bold uppercase tracking-[0.2em] px-10 py-4 hover:bg-slate-700 transition-colors"
+              className="inline-block bg-luxury-gold text-luxury-slate text-xs font-bold uppercase tracking-[0.2em] px-10 py-4 hover:bg-luxury-gold/90 transition-colors"
             >
               VIEW ALL VIETNAM TOURS
             </Link>
