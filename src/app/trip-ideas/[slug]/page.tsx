@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
+import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 import { tripIdeasData, getTripIdea, getAllTripSlugs } from '@/lib/tripIdeasData';
 import { getItineraries, getTripIdeaFromSanity } from '@/sanity/client';
 
@@ -83,6 +84,22 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Trip Ideas', url: 'https://www.vietnamtours.co.uk/trip-ideas' },
+        { name: idea.title, url: `https://www.vietnamtours.co.uk/trip-ideas/${idea.slug}` },
+      ]} />
+      <ArticleJsonLd
+        title={idea.title}
+        description={idea.metaDescription || idea.intro.substring(0, 160)}
+        url={`https://www.vietnamtours.co.uk/trip-ideas/${idea.slug}`}
+        image={`https://www.vietnamtours.co.uk${idea.heroImage}`}
+        section={idea.category}
+      />
+      {idea.faqs && idea.faqs.length > 0 && (
+        <FaqJsonLd faqs={idea.faqs} />
+      )}
+
       <Navbar />
 
       <main className="min-h-screen bg-luxury-slate text-luxury-linen">

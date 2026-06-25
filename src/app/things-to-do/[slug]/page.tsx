@@ -8,6 +8,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { thingsToDoData, getThingToDo, getAllThingToDoSlugs } from '@/lib/thingsToDoData';
 import { getItineraries } from '@/sanity/client';
+import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -51,6 +52,22 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Things To Do', url: 'https://www.vietnamtours.co.uk/things-to-do' },
+        { name: thing.title, url: `https://www.vietnamtours.co.uk/things-to-do/${thing.slug}` },
+      ]} />
+      <ArticleJsonLd
+        title={thing.title}
+        description={thing.metaDescription || thing.intro.substring(0, 160)}
+        url={`https://www.vietnamtours.co.uk/things-to-do/${thing.slug}`}
+        image={`https://www.vietnamtours.co.uk${thing.heroImage}`}
+        section={thing.category}
+      />
+      {thing.faqs && thing.faqs.length > 0 && (
+        <FaqJsonLd faqs={thing.faqs} />
+      )}
+
       <Navbar />
 
       <main className="min-h-screen bg-luxury-slate text-luxury-linen">

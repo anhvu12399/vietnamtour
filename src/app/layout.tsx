@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { SanityLive } from "@/sanity/client";
+import { OrganizationJsonLd } from "@/components/SeoJsonLd";
 import "./globals.css";
 
 const inter = Inter({
@@ -32,6 +33,11 @@ export const metadata: Metadata = {
     "Amanoi resort Vietnam"
   ],
   metadataBase: new URL("https://vietnamtour.co.uk"),
+  alternates: {
+    languages: {
+      'en-GB': '/',
+    },
+  },
 };
 
 export default async function RootLayout({
@@ -47,10 +53,11 @@ export default async function RootLayout({
   }
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-luxury-slate text-luxury-linen">
+        <OrganizationJsonLd />
         {children}
         <SanityLive />
         {isDraftMode && <VisualEditing />}

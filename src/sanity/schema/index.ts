@@ -13,21 +13,38 @@ import { toursLanding } from './toursLanding';
 import { tripIdea } from './tripIdea';
 import { inspiration } from './inspiration';
 import { monthGuide } from './monthGuide';
+import { thingToDo } from './thingToDo';
+import { blogPost } from './blogPost';
+import { mediaAsset } from './mediaAsset';
 
 export const schemaTypes = [
+  // ─── Core Pages ───────────────────────
   homepage,
   about,
+
+  // ─── Tours & Travel ───────────────────
   itinerary,
   cruise,
   destination,
-  travelGuide,
   accommodation,
-  specialist,
-  enquiry,
+
+  // ─── Editorial Content ────────────────
+  travelGuide,
   post,
-  seoFields,
-  toursLanding,
+  blogPost,
   tripIdea,
   inspiration,
   monthGuide,
+  thingToDo,
+
+  // ─── Media & Assets ───────────────────
+  mediaAsset,
+
+  // ─── People & Forms ───────────────────
+  specialist,
+  enquiry,
+
+  // ─── Configuration ────────────────────
+  seoFields,
+  toursLanding,
 ];

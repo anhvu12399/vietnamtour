@@ -8,6 +8,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ideasByMonthData, getMonthBySlug, getAllMonthSlugs } from '@/lib/ideasByMonthData';
 import { getItineraries, getMonthGuideFromSanity } from '@/sanity/client';
+import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 interface PageProps {
   params: Promise<{ month: string }>;
@@ -80,6 +81,22 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Ideas By Month', url: 'https://www.vietnamtours.co.uk/ideas-by-month' },
+        { name: monthData.title, url: `https://www.vietnamtours.co.uk/ideas-by-month/${monthData.slug}` },
+      ]} />
+      <ArticleJsonLd
+        title={monthData.title}
+        description={monthData.metaDescription || monthData.intro?.substring(0, 160)}
+        url={`https://www.vietnamtours.co.uk/ideas-by-month/${monthData.slug}`}
+        image={monthData.heroImage.startsWith('http') ? monthData.heroImage : `https://www.vietnamtours.co.uk${monthData.heroImage}`}
+        section={monthData.category}
+      />
+      {monthData.faqs && monthData.faqs.length > 0 && (
+        <FaqJsonLd faqs={monthData.faqs} />
+      )}
+
       <Navbar />
 
       <main className="min-h-screen bg-luxury-slate text-luxury-linen">

@@ -629,4 +629,125 @@ export async function getMonthGuideFromSanity(slug: string): Promise<any | null>
   return await fetchSanity<any>(query, { slug });
 }
 
+// ─── New Redesigned Schemas ─────────────────────────────────────────────────
 
+export async function getBlogPostsFromSanity(): Promise<any[]> {
+  if (useMock) return [];
+  const query = `*[_type == "blogPost"] | order(publishedAt desc){
+    _id, title, slug, publishedAt, category, excerpt,
+    "featuredImage": featuredImage.asset->url,
+    "imageAlt": featuredImage.alt,
+    author->{
+      name, role,
+      "avatar": image.asset->url
+    },
+    tags
+  }`;
+  return await fetchSanity<any[]>(query);
+}
+
+export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | null> {
+  if (useMock) return null;
+  const query = `*[_type == "blogPost" && slug.current == $slug][0]{
+    _id, title, slug, publishedAt, category, excerpt,
+    "featuredImage": featuredImage.asset->url,
+    "imageAlt": featuredImage.alt,
+    author->{
+      name, role,
+      "avatar": image.asset->url
+    },
+    tags,
+    content[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url
+      },
+      _type == "gallery" => {
+        ...,
+        images[]{
+          caption,
+          alt,
+          "url": image.asset->url
+        }
+      },
+      _type == "specialistTip" => {
+        ...,
+        specialist->{
+          name, role,
+          "image": image.asset->url
+        }
+      }
+    },
+    relatedPosts[]->{
+      _id, title, slug, publishedAt, category, excerpt,
+      "featuredImage": featuredImage.asset->url,
+      "imageAlt": featuredImage.alt
+    },
+    relatedTours[]->{
+      _id, title, slug, duration, priceFrom, intro,
+      "gallery": gallery[].asset->url
+    },
+    ctaHeading, ctaBody,
+    "seo": seo{
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<any | null>(query, { slug });
+}
+
+export async function getThingsToDoFromSanity(): Promise<any[]> {
+  if (useMock) return [];
+  const query = `*[_type == "thingToDo"] | order(_createdAt desc){
+    _id, title, slug, category, breadcrumb, readingTime, heroSubtitle,
+    "heroImage": heroImage.asset->url,
+    "imageAlt": heroImage.alt,
+    intro, highlights
+  }`;
+  return await fetchSanity<any[]>(query);
+}
+
+export async function getThingToDoBySlugFromSanity(slug: string): Promise<any | null> {
+  if (useMock) return null;
+  const query = `*[_type == "thingToDo" && slug.current == $slug][0]{
+    _id, title, slug, category, breadcrumb, readingTime, heroSubtitle,
+    "heroImage": heroImage.asset->url,
+    "imageAlt": heroImage.alt,
+    intro, highlights, practicalInfo,
+    sections[]{
+      heading,
+      body,
+      "image": image.asset->url,
+      "imageAlt": image.alt,
+      "imageCaption": image.caption
+    },
+    faqs[]{ question, answer },
+    relatedThings[]->{
+      _id, title, slug, category,
+      "heroImage": heroImage.asset->url,
+      "imageAlt": heroImage.alt
+    },
+    recommendedTours[]->{
+      _id, title, slug, duration, priceFrom, intro,
+      "gallery": gallery[].asset->url
+    },
+    ctaHeading, ctaBody,
+    "seo": seo{
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
+      "ogImage": ogImage.asset->url
+    }
+  }`;
+  return await fetchSanity<any | null>(query, { slug });
+}
+
+export async function getMediaAssetsFromSanity(category?: string): Promise<any[]> {
+  if (useMock) return [];
+  const categoryFilter = category ? ' && category == $category' : '';
+  const query = `*[_type == "mediaAsset"${categoryFilter}] | order(_createdAt desc){
+    _id, title, alt, caption, category, tags, photographer, usedIn,
+    "url": image.asset->url,
+    "metadata": image.asset->metadata
+  }`;
+  return await fetchSanity<any[]>(query, category ? { category } : {});
+}

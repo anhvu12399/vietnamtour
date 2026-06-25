@@ -8,6 +8,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { inspirationsData, getInspiration, getAllInspirationSlugs } from '@/lib/inspirationsData';
 import { getItineraries, getInspirationFromSanity } from '@/sanity/client';
+import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -80,6 +81,22 @@ export default async function InspirationSlugPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Inspirations', url: 'https://www.vietnamtours.co.uk/inspirations' },
+        { name: inspiration.title, url: `https://www.vietnamtours.co.uk/inspirations/${inspiration.slug}` },
+      ]} />
+      <ArticleJsonLd
+        title={inspiration.title}
+        description={inspiration.metaDescription || inspiration.intro?.substring(0, 160)}
+        url={`https://www.vietnamtours.co.uk/inspirations/${inspiration.slug}`}
+        image={inspiration.heroImage.startsWith('http') ? inspiration.heroImage : `https://www.vietnamtours.co.uk${inspiration.heroImage}`}
+        section={inspiration.category}
+      />
+      {inspiration.faqs && inspiration.faqs.length > 0 && (
+        <FaqJsonLd faqs={inspiration.faqs} />
+      )}
+
       <Navbar />
 
       <main className="min-h-screen bg-luxury-slate text-luxury-linen">
