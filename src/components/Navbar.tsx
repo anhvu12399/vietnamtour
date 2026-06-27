@@ -9,9 +9,11 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showBottomBar, setShowBottomBar] = useState(true);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+  const lastScrollYRef = useRef(0);
   
   const isHeroPage = pathname === '/' || 
     pathname.startsWith('/itineraries') || 
@@ -25,16 +27,35 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 50) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+
+      if (activeMenu) {
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      if (currentScrollY > 120) {
+        if (currentScrollY > lastScrollYRef.current) {
+          setShowBottomBar(false);
+        } else {
+          setShowBottomBar(true);
+        }
+      } else {
+        setShowBottomBar(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeMenu]);
 
   // Close menus when route changes
   useEffect(() => {
@@ -181,7 +202,14 @@ export default function Navbar() {
           </div>
 
           {/* Bottom Row: Navigation Links */}
-          <div className={bottomBarBgClass}>
+          <div 
+            className={`${bottomBarBgClass} transition-all duration-300 ease-in-out overflow-hidden`}
+            style={{
+              maxHeight: showBottomBar ? '60px' : '0px',
+              opacity: showBottomBar ? 1 : 0,
+              pointerEvents: showBottomBar ? 'auto' : 'none',
+            }}
+          >
             <div className="max-w-7xl mx-auto flex items-center">
               
               <div className="flex items-center space-x-6 lg:space-x-8">
