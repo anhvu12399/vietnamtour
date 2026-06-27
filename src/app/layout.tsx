@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
+import { Analytics } from "@vercel/analytics/next";
 import { SanityLive } from "@/sanity/client";
 import { OrganizationJsonLd } from "@/components/SeoJsonLd";
 import "./globals.css";
@@ -68,6 +69,7 @@ export default async function RootLayout({
         {children}
         <SanityLive />
         {isDraftMode && <VisualEditing />}
+        <Analytics />
       </body>
     </html>
   );
