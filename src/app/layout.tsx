@@ -21,8 +21,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | VietnamTour.co.uk",
-    default: "VietnamTour.co.uk | Luxury Bespoke Travel Vietnam",
+    template: "%s | VietnamTours.co.uk",
+    default: "VietnamTours.co.uk | Luxury Bespoke Travel Vietnam",
   },
   description: "Experience ultra-luxury travel in Vietnam. Fully bespoke itineraries curated by local specialists. Stay at world-class resorts like Amanoi & Six Senses.",
   keywords: [
@@ -37,6 +37,13 @@ export const metadata: Metadata = {
     languages: {
       'en-GB': '/',
     },
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/logo-dark.png',
   },
 };
 

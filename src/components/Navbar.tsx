@@ -166,13 +166,15 @@ export default function Navbar() {
               
               {/* Logo (Left) */}
               <div className="flex-shrink-0">
-                <Link href="/" className="flex flex-col items-start leading-none group select-none">
-                  <span className={`font-serif italic text-[24px] lg:text-[28px] tracking-normal font-semibold transition-colors duration-300 ${logoMainColorClass}`}>
-                    Vietnam
-                  </span>
-                  <span className="font-sans text-[9px] lg:text-[10px] tracking-[0.35em] uppercase text-[#c5a880] font-bold -mt-0.5">
-                    Tour
-                  </span>
+                <Link href="/" className="flex items-center leading-none group select-none">
+                  <Image
+                    src={isTransparent ? '/logo-dark.png' : '/logo-light.png'}
+                    alt="VietnamTours"
+                    width={160}
+                    height={52}
+                    className="h-[44px] w-auto object-contain transition-all duration-300"
+                    priority
+                  />
                 </Link>
               </div>
 
@@ -301,13 +303,15 @@ export default function Navbar() {
         }`}>
           {/* Logo (Left) */}
           <div className="flex-shrink-0">
-            <Link href="/" onClick={() => setIsOpen(false)} className="flex flex-col items-start leading-none group select-none">
-              <span className={`font-serif italic text-[20px] tracking-normal font-semibold transition-colors duration-300 ${logoMainColorClass}`}>
-                Vietnam
-              </span>
-              <span className="font-sans text-[8px] tracking-[0.35em] uppercase text-[#c5a880] font-bold -mt-0.5">
-                Tour
-              </span>
+            <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center leading-none group select-none">
+              <Image
+                src={isTransparent ? '/logo-dark.png' : '/logo-light.png'}
+                alt="VietnamTours"
+                width={130}
+                height={42}
+                className="h-[36px] w-auto object-contain transition-all duration-300"
+                priority
+              />
             </Link>
           </div>
 

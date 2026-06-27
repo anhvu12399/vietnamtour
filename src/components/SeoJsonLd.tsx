@@ -11,9 +11,9 @@ interface OrganizationProps {
 }
 
 export function OrganizationJsonLd({
-  name = 'Vietnam Tour',
+  name = 'VietnamTours',
   url = 'https://www.vietnamtours.co.uk',
-  logo = 'https://www.vietnamtours.co.uk/favicon.ico',
+  logo = 'https://www.vietnamtours.co.uk/logo-dark.png',
   phone = '+442078459200',
   email = 'info@vietnamtours.co.uk',
   sameAs = [],
@@ -108,7 +108,7 @@ export function ArticleJsonLd({
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Vietnam Tour',
+      name: 'VietnamTours',
       url: 'https://www.vietnamtours.co.uk',
       logo: {
         '@type': 'ImageObject',
@@ -187,7 +187,7 @@ export function TouristTripJsonLd({
     image,
     provider: {
       '@type': 'TravelAgency',
-      name: 'Vietnam Tour',
+      name: 'VietnamTours',
       url: 'https://www.vietnamtours.co.uk',
     },
   };
