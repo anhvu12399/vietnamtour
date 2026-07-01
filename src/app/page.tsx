@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PreambleText from "@/components/PreambleText";
 import DestinationsTabbed from "@/components/DestinationsTabbed";
@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Navbar />
       <main className="flex-grow flex flex-col">
         <Hero />
         <PreambleText />
