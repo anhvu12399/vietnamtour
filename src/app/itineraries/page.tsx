@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
-import { getItineraries, getToursLanding, getPosts } from '@/sanity/client';
+import { getItineraries, getSpecialists, getToursLanding, getPosts } from '@/sanity/client';
 
 export const revalidate = 3600;
 
@@ -25,6 +25,14 @@ function getReadingTime(content: any[] | undefined | null): number {
 }
 
 export default async function ItinerariesPage() {
+  const specialists = await getSpecialists();
+  const mainSpecialist = specialists[0] || {
+    name: "Alice Mercer",
+    role: "Vietnam Specialist",
+    image: "/images/specialist_alice.png",
+    slug: { current: "alice-mercer" }
+  };
+
   const [itineraries, toursLanding, allPosts] = await Promise.all([
     getItineraries(),
     getToursLanding(),
@@ -144,8 +152,8 @@ export default async function ItinerariesPage() {
                 {/* Specialist Circular Image */}
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-gold/15 shadow-sm shrink-0">
                   <Image 
-                    src="/images/specialist_alice.png"
-                    alt="Alice Mercer"
+                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    alt={mainSpecialist.name}
                     fill
                     className="object-cover"
                   />

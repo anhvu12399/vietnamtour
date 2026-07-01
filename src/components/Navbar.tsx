@@ -4,10 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { fetchMainSpecialistAction } from '@/app/actions';
+import { Specialist } from '@/sanity/types';
 
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [mainSpecialist, setMainSpecialist] = useState<Specialist | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBottomBar, setShowBottomBar] = useState(true);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -15,6 +18,13 @@ export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
   const lastScrollYRef = useRef(0);
   
+  
+  useEffect(() => {
+    fetchMainSpecialistAction().then(res => {
+      if (res) setMainSpecialist(res);
+    }).catch(console.error);
+  }, []);
+
   const isHeroPage = pathname === '/' || 
     pathname.startsWith('/itineraries') || 
     pathname.startsWith('/destinations') || 
@@ -766,18 +776,18 @@ export default function Navbar() {
                 <div className="flex items-start gap-4">
                   <div className="relative w-[70px] h-[70px] flex-shrink-0 rounded-full overflow-hidden border border-[#2A2D2B]/10">
                     <Image 
-                      src="/images/specialist_alice.png"
-                      alt="Alice Mercer"
+                      src={mainSpecialist?.image || "/images/specialist_alice.png"}
+                      alt={mainSpecialist?.name || "Alice Mercer"}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="font-serif text-sm font-semibold text-[#2A2D2B]">Alice Mercer</h4>
+                    <h4 className="font-serif text-sm font-semibold text-[#2A2D2B]">{mainSpecialist?.name || "Alice Mercer"}</h4>
                     <p className="text-[11px] leading-relaxed text-[#2A2D2B]/70 font-light mt-0.5">
-                      12+ years designing bespoke luxury itineraries.
+                      {mainSpecialist?.role || "12+ years designing bespoke luxury itineraries."}
                     </p>
-                    <Link href="/specialists/alice-mercer" onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-[#9A4B33] font-bold hover:underline mt-1">
+                    <Link href={`/specialists/${mainSpecialist?.slug?.current || "alice-mercer"}`} onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-[#9A4B33] font-bold hover:underline mt-1">
                       Read Profile &rarr;
                     </Link>
                   </div>

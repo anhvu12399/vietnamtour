@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { inspirationsData, getInspiration, getAllInspirationSlugs } from '@/lib/inspirationsData';
-import { getItineraries, getInspirationFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getInspirationFromSanity } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 interface PageProps {
@@ -42,6 +42,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function InspirationSlugPage({ params }: PageProps) {
+  const specialists = await getSpecialists();
+  const mainSpecialist = specialists[0] || {
+    name: "Alice Mercer",
+    role: "Vietnam Specialist",
+    image: "/images/specialist_alice.png",
+    slug: { current: "alice-mercer" }
+  };
+
   const { slug } = await params;
   const sanityInspiration = await getInspirationFromSanity(slug);
   const inspiration = sanityInspiration || getInspiration(slug);
@@ -200,8 +208,8 @@ export default async function InspirationSlugPage({ params }: PageProps) {
                 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
                   <Image 
-                    src="/images/specialist_alice.png"
-                    alt="Alice Mercer"
+                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    alt={mainSpecialist.name}
                     fill
                     className="object-cover"
                   />

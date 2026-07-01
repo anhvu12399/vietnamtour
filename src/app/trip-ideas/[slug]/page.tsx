@@ -8,7 +8,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 import { tripIdeasData, getTripIdea, getAllTripSlugs } from '@/lib/tripIdeasData';
-import { getItineraries, getTripIdeaFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getTripIdeaFromSanity } from '@/sanity/client';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -42,6 +42,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function TripIdeaSlugPage({ params }: PageProps) {
+  const specialists = await getSpecialists();
+  const mainSpecialist = specialists[0] || {
+    name: "Alice Mercer",
+    role: "Vietnam Specialist",
+    image: "/images/specialist_alice.png",
+    slug: { current: "alice-mercer" }
+  };
+
   const { slug } = await params;
   const sanityIdea = await getTripIdeaFromSanity(slug);
   const idea = sanityIdea || getTripIdea(slug);
@@ -204,8 +212,8 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
                 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
                   <Image 
-                    src="/images/specialist_alice.png"
-                    alt="Alice Mercer"
+                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    alt={mainSpecialist.name}
                     fill
                     className="object-cover"
                   />
@@ -215,9 +223,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
                   <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">
                     Alice Mercer
                   </h4>
-                  <span className="text-[10px] uppercase tracking-widest text-[#545454] font-semibold mt-0.5 block">
-                    Vietnam Specialist
-                  </span>
+                  <span className="text-[10px] uppercase tracking-widest text-[#545454] font-semibold mt-0.5 block">{mainSpecialist.role || "Vietnam Specialist"}</span>
                 </div>
 
                 <p className="text-xs text-[#343434]/70 font-light leading-relaxed">

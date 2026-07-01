@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getSpecialists } from '@/sanity/client';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -223,6 +224,14 @@ const FALLBACK_IMAGES = [
 
 // ─── Page Component ───────────────────────────────────────────────────────────
 export default async function TravelGuideDetailPage({ params }: PageProps) {
+  const specialists = await getSpecialists();
+  const mainSpecialist = specialists[0] || {
+    name: "Alice Mercer",
+    role: "Vietnam Specialist",
+    image: "/images/specialist_alice.png",
+    slug: { current: "alice-mercer" }
+  };
+
   const { slug } = await params;
 
   const [post, allPosts, itineraries] = await Promise.all([
@@ -366,15 +375,15 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
                   <Image
-                    src="/images/specialist_alice.png"
-                    alt="Alice Mercer"
+                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    alt={mainSpecialist.name}
                     fill
                     className="object-cover"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">Alice Mercer</h4>
+                  <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">{mainSpecialist.name}</h4>
                   <p className="text-xs text-[#545454] leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
                 </div>
 

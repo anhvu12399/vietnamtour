@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { thingsToDoData, getThingToDo, getAllThingToDoSlugs } from '@/lib/thingsToDoData';
-import { getItineraries } from '@/sanity/client';
+import { getItineraries, getSpecialists } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 interface PageProps {
@@ -38,6 +38,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ThingToDoDetailPage({ params }: PageProps) {
+  const specialists = await getSpecialists();
+  const mainSpecialist = specialists[0] || {
+    name: "Alice Mercer",
+    role: "Vietnam Specialist",
+    image: "/images/specialist_alice.png",
+    slug: { current: "alice-mercer" }
+  };
+
   const { slug } = await params;
   const thing = getThingToDo(slug);
 
@@ -247,10 +255,10 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   Speak to a Vietnam specialist
                 </h3>
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border border-[#e6e2d6] shadow-md shrink-0">
-                  <Image src="/images/specialist_alice.png" alt="Alice Mercer" fill className="object-cover" />
+                  <Image src={mainSpecialist.image || "/images/specialist_alice.png"} alt={mainSpecialist.name} fill className="object-cover" />
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="font-sans text-xs font-bold text-[#343434] uppercase tracking-wider">Alice Mercer</h4>
+                  <h4 className="font-sans text-xs font-bold text-[#343434] uppercase tracking-wider">{mainSpecialist.name}</h4>
                   <p className="text-[11px] text-[#343434]/55 font-light">Senior Vietnam Travel Specialist</p>
                 </div>
                 <Link
