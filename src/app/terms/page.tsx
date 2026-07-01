@@ -1,3 +1,5 @@
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -7,7 +9,9 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="bg-[#faf8f5] text-[#343434]">
+    <>
+      <Navbar />
+      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
       <section className="bg-[#343434] text-white py-24 px-6 text-center">
         <p className="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold mb-4">Legal</p>
         <h1 className="font-serif text-4xl md:text-5xl font-light">Terms &amp; Conditions</h1>
@@ -65,5 +69,7 @@ export default function TermsPage() {
 
       </section>
     </main>
+      <Footer />
+    </>
   );
 }

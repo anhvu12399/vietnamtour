@@ -1,3 +1,5 @@
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -54,7 +56,9 @@ const visaTypes = [
 
 export default function VisaGuidePage() {
   return (
-    <main className="bg-[#faf8f5] text-[#343434]">
+    <>
+      <Navbar />
+      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
 
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
@@ -168,5 +172,7 @@ export default function VisaGuidePage() {
       </section>
 
     </main>
+      <Footer />
+    </>
   );
 }

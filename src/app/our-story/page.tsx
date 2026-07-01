@@ -1,3 +1,5 @@
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -10,7 +12,9 @@ export const metadata: Metadata = {
 
 export default function OurStoryPage() {
   return (
-    <main className="bg-[#faf8f5] text-[#343434]">
+    <>
+      <Navbar />
+      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
@@ -129,5 +133,7 @@ export default function OurStoryPage() {
       </section>
 
     </main>
+      <Footer />
+    </>
   );
 }

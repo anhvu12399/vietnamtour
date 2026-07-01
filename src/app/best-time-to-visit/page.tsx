@@ -1,3 +1,5 @@
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { Metadata } from 'next';
 
@@ -61,7 +63,9 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function BestTimeToVisitPage() {
   return (
-    <main className="bg-[#faf8f5] text-[#343434]">
+    <>
+      <Navbar />
+      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
 
       {/* Hero — no image needed, text-driven */}
       <section className="bg-[#343434] text-white py-28 px-6 text-center">
@@ -149,5 +153,7 @@ export default function BestTimeToVisitPage() {
       </section>
 
     </main>
+      <Footer />
+    </>
   );
 }
