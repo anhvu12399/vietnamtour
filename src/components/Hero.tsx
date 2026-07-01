@@ -42,94 +42,100 @@ export default function Hero() {
   }, [slides.length]);
 
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center bg-bg-light overflow-hidden pt-36 pb-16 px-4 lg:px-12">
-      {/* Background Large Watermark */}
-      <div className="absolute right-[-10%] bottom-[-5%] text-[24vw] font-serif font-bold text-black/[0.02] select-none pointer-events-none uppercase tracking-widest leading-none">
-        Vietnam
+    <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden mt-[80px]">
+      
+      {/* Full-Screen Crossfading Background Slideshow */}
+      <div className="absolute inset-0 z-0">
+        {slides.map((slide, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
+              idx === currentIndex ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.title}
+              fill
+              priority
+              className="object-cover object-center transition-transform duration-[6000ms] ease-out"
+            />
+            {/* Elegant dark overlay vignette to make text pop */}
+            <div className="absolute inset-0 bg-black/45" />
+          </div>
+        ))}
       </div>
 
-      <div className="container mx-auto max-w-6xl z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Side: Creative Typography */}
-          <div className="lg:col-span-6 flex flex-col items-start gap-6 text-left">
-            <div className="flex items-center gap-2">
-              <span className="w-8 h-[1px] bg-blue" />
-              <span className="text-[10px] tracking-[0.25em] uppercase text-blue font-sans font-bold">
-                Bespoke Luxury Journeys
-              </span>
-            </div>
-
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-green leading-[1.05]">
-              Feel the world <br />
-              <span className="font-serif italic text-blue font-light">differently.</span>
-            </h1>
-
-            <p className="font-sans text-sm md:text-base text-gray-600 font-light max-w-md leading-relaxed">
-              We design highly exclusive, privately guided expeditions through Vietnam. No templates, no schedules—simply the art of travel, recomposed for you.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-              <a
-                href="#"
-                className="bg-green hover:bg-dark-green text-white text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase"
-              >
-                Design Your Journey
-              </a>
-              <a
-                href="#"
-                className="border border-green/30 hover:border-blue text-green hover:text-blue text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase bg-white/40 backdrop-blur-sm"
-              >
-                Explore Expeditions
-              </a>
-            </div>
+      {/* Main Container */}
+      <div className="relative z-20 container mx-auto max-w-6xl px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 h-full w-full">
+        
+        {/* Left Side: Editorial Typography */}
+        <div className="flex flex-col items-start gap-5 text-left text-white max-w-xl">
+          <div className="flex items-center gap-2">
+            <span className="w-8 h-[1px] bg-gold" />
+            <span className="text-[10px] tracking-[0.25em] uppercase text-gold font-sans font-bold">
+              Bespoke Luxury Journeys
+            </span>
           </div>
 
-          {/* Right Side: Indochine Archway Slideshow & Floating Card */}
-          <div className="lg:col-span-6 relative w-full flex justify-center lg:justify-end mt-8 lg:mt-0">
-            {/* Main Arched Image Container with Crossfade */}
-            <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-t-full overflow-hidden shadow-2xl border border-gold/10">
-              {slides.map((slide, idx) => (
-                <div
-                  key={idx}
-                  className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out ${
-                    idx === currentIndex ? "opacity-100 z-10 scale-100" : "opacity-0 z-0 scale-105"
-                  }`}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.title}
-                    fill
-                    priority
-                    className="object-cover transition-transform duration-[6000ms] ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                </div>
-              ))}
-            </div>
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-light tracking-tight leading-[1.05] text-white">
+            Feel the world <br />
+            <span className="font-serif italic text-gold font-light">differently.</span>
+          </h1>
 
-            {/* Overlapping Floating Glassmorphic Card (Transitions with Active Slide) */}
-            <div className="absolute bottom-6 left-2 sm:left-12 lg:left-[-20px] bg-white/85 backdrop-blur-md p-6 border border-white/50 shadow-lg max-w-[250px] flex flex-col gap-2 z-20 min-h-[160px] justify-between">
-              <div>
-                <span className="text-[9px] tracking-widest uppercase text-blue font-bold font-sans transition-all duration-500">
-                  {slides[currentIndex].label}
-                </span>
-                <h4 className="font-serif text-sm md:text-base text-green leading-snug font-medium mt-1 transition-all duration-500">
-                  {slides[currentIndex].title}
-                </h4>
-              </div>
-              <p className="font-sans text-[10px] text-gray-500 font-light leading-relaxed transition-all duration-500">
-                {slides[currentIndex].description}
-              </p>
-            </div>
-            
-            {/* Decorative Gold Rings */}
-            <div className="absolute top-[-20px] right-[-20px] w-24 h-24 rounded-full border border-gold/20 pointer-events-none hidden sm:block z-0" />
-            <div className="absolute top-20 right-[-30px] w-12 h-12 rounded-full border border-blue/30 pointer-events-none hidden sm:block z-0" />
+          <p className="font-sans text-sm md:text-base text-gray-200 font-light max-w-md leading-relaxed">
+            We design highly exclusive, privately guided expeditions through Vietnam. No templates, no schedules—simply the art of travel, recomposed for you.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
+            <a
+              href="#"
+              className="bg-gold hover:bg-gold/80 text-white text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase shadow-lg"
+            >
+              Design Your Journey
+            </a>
+            <a
+              href="#"
+              className="border border-white/40 hover:border-gold text-white hover:text-gold text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase bg-black/20 backdrop-blur-sm"
+            >
+              Explore Expeditions
+            </a>
           </div>
-
         </div>
+
+        {/* Right Side: Elegant Floating Card detailing current view */}
+        <div className="w-full lg:w-auto flex justify-center lg:justify-end self-end lg:self-center pb-8 lg:pb-0">
+          <div className="bg-black/45 backdrop-blur-md p-6 border border-white/10 shadow-2xl max-w-[280px] flex flex-col gap-2.5 text-white transition-all duration-500 hover:border-gold/30">
+            <div>
+              <span className="text-[9px] tracking-widest uppercase text-gold font-bold font-sans">
+                {slides[currentIndex].label}
+              </span>
+              <h4 className="font-serif text-sm md:text-base text-white leading-snug font-medium mt-1">
+                {slides[currentIndex].title}
+              </h4>
+            </div>
+            <p className="font-sans text-[10px] text-gray-300 font-light leading-relaxed">
+              {slides[currentIndex].description}
+            </p>
+          </div>
+        </div>
+
       </div>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              idx === currentIndex ? "bg-gold scale-125" : "bg-white/40"
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
     </section>
   );
 }
