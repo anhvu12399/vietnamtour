@@ -1,0 +1,2265 @@
+{
+  "header.hdr": [
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "You can find all your favorites in the menu"
+    },
+    {
+      "tag": "span",
+      "class": "burger-label",
+      "id": "",
+      "text": "MENU"
+    },
+    {
+      "tag": "span",
+      "class": "show-until-md",
+      "id": "",
+      "text": "Location:"
+    },
+    {
+      "tag": "span",
+      "class": "has-flag has-flag--us",
+      "id": "",
+      "text": "US"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Change location"
+    },
+    {
+      "tag": "a",
+      "class": "js-market-intent has-flag has-flag--gb",
+      "id": "",
+      "text": "UK / International"
+    },
+    {
+      "tag": "a",
+      "class": "js-market-intent has-flag has-flag--ca",
+      "id": "",
+      "text": "Canada"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "Favorites"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "MyAudley"
+    },
+    {
+      "tag": "span",
+      "class": "hide-until-lg",
+      "id": "",
+      "text": "until 8pm EDT"
+    },
+    {
+      "tag": "span",
+      "class": "RiQNumber InfinityNumber clickable telephone",
+      "id": "",
+      "text": "1-866-547-4745"
+    },
+    {
+      "tag": "span",
+      "class": " InfinityNumber clickable telephone",
+      "id": "",
+      "text": "1-866-520-8491"
+    },
+    {
+      "tag": "a",
+      "class": "btn btn--cta",
+      "id": "",
+      "text": "REQUEST A QUOTE"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Destinations"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2 show-until-md",
+      "id": "",
+      "text": "Destinations"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2 regions-heading hide-until-md",
+      "id": "",
+      "text": "Explore by region"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "All destinations A-Z"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Most popular"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Australia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Canada"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Costa Rica"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "France"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "French Polynesia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Greece"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Iceland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "India"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Ireland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Italy"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Japan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Morocco"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "New Zealand"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Peru"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Portugal"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "South Africa"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Spain"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Switzerland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Thailand"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "UK"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "US"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Vietnam"
+    },
+    {
+      "tag": "a",
+      "class": "btn btn--alt btn--white",
+      "id": "",
+      "text": "All destinations A-Z"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Africa"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Africa"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Africa overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Botswana"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Egypt"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Kenya"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Madagascar"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Morocco"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Mozambique"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Namibia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Rwanda"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "South Africa"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Tanzania"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Uganda"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Zambia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Zanzibar Archipelago"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Zimbabwe"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Australia & New Zealand"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Australia & New Zealand"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Australia & New Zealand overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Australia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cook Islands"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Fiji"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "French Polynesia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "New Zealand"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Canada & the USA"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Canada & the USA"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Canada & the USA overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Canada"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Hawaii"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "US"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Central America & Mexico"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Central America & Mexico"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Central America & Mexico overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Belize"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Costa Rica"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Guatemala"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Mexico"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Panama"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Europe"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Europe"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Europe overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Austria"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Belgium"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Croatia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cyprus"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Czechia (Czech Republic)"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Denmark"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "France"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Germany"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Greece"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Hungary"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Iceland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Ireland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Italy"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Luxembourg"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Netherlands"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Norway"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Portugal"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Scotland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Spain"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Sweden"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Switzerland"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Turkey"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "UK"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "India & the Himalaya"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "India & the Himalaya"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "India & the Himalaya overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Bhutan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "India"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Maldives"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Nepal"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Sri Lanka"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Indian Ocean"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Indian Ocean"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Indian Ocean overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Maldives"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Mauritius"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Seychelles"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Sri Lanka"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Zanzibar Archipelago"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Middle East"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Middle East"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Middle East overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Egypt"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Jordan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Oman"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Turkey"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "UAE"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "North Asia, China & Japan"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "North Asia, China & Japan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "North Asia, China & Japan overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "China"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Japan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Kyrgyzstan"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "South Korea"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Uzbekistan"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Polar Regions"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Polar Regions"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Polar Regions overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Antarctica"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Arctic"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "South America"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "South America"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "South America overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Argentina"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Bolivia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Brazil"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Chile"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Colombia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Ecuador"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Galapagos Islands"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Peru"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Uruguay"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "South Pacific"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "South Pacific"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "South Pacific overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cook Islands"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Fiji"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "French Polynesia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Samoa"
+    },
+    {
+      "tag": "a",
+      "class": "has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Southeast Asia"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Southeast Asia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Southeast Asia overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Borneo"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cambodia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Indonesia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Laos"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Malaysia"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Philippines"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Thailand"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Vietnam"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Recently added"
+    },
+    {
+      "tag": "a",
+      "class": "block-link",
+      "id": "",
+      "text": "China"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "China vacations 2026 & 2027"
+    },
+    {
+      "tag": "a",
+      "class": "block-link",
+      "id": "",
+      "text": "Turkey"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "Turkey vacations 2026 & 2027"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Vacation types"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2 ",
+      "id": "",
+      "text": "Vacation types"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Safari vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Safari vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "How we plan your safari"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Safari tours"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Safari travel guides"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Accommodation"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Best time to go on safari"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Family vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Family vacations overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Family tour ideas"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Family travel guides"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Family vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Safari vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Honeymoon ideas"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Luxury vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Beach vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cruises"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cultural vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Adventure vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Rail vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Off-the-beaten-track vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Food & wine vacations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Self-drive vacations"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Featured guides"
+    },
+    {
+      "tag": "a",
+      "class": "block-link",
+      "id": "",
+      "text": "Driving vacations in the US"
+    },
+    {
+      "tag": "a",
+      "class": "block-link",
+      "id": "",
+      "text": "Where\u2019s hot, when?"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary ",
+      "id": "",
+      "text": "Cruises"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "Inspiration"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2 ",
+      "id": "",
+      "text": "Inspiration"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2",
+      "id": "",
+      "text": "Ideas by month"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "January"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "February"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "March"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "April"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "May"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "June"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "July"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "August"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "September"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "October"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "November"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "December"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Best vacation destinations for 2026"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Short breaks"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Trip finder"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Where's hot, when?"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Audley Traveler magazine"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Private stays & experiences"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Travel videos"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Audley's Global Travel Service"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary has-subnav has-arrow-black has-arrow",
+      "id": "",
+      "text": "About us"
+    },
+    {
+      "tag": "p",
+      "class": "heading h2 ",
+      "id": "",
+      "text": "About us"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Overview"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Our specialists"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Responsible travel"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Reviews"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "History"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Video appointments"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Why book with us"
+    },
+    {
+      "tag": "a",
+      "class": "nav__primary-gray nav__primary ",
+      "id": "",
+      "text": "Brochures"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Contact us"
+    },
+    {
+      "tag": "span",
+      "class": "close-btn",
+      "id": "",
+      "text": "\u00d7"
+    }
+  ],
+  "section.brand-video-hero.brand-video-hero--replay-disabled": [
+    {
+      "tag": "h1",
+      "class": "brand-video-hero__title",
+      "id": "",
+      "text": "Find out where you're meant to be."
+    },
+    {
+      "tag": "a",
+      "class": "brand-video-hero__button brand-btn-wire js-brand-cta",
+      "id": "",
+      "text": "Feel the world differently"
+    }
+  ],
+  "section.brand-preamble-text": [
+    {
+      "tag": "h2",
+      "class": "brand-preamble-text__title",
+      "id": "",
+      "text": "We create extraordinary travel moments"
+    },
+    {
+      "tag": "p",
+      "class": "",
+      "id": "",
+      "text": "The best journeys don\u2019t feel booked, they feel discovered. As if they were waiting somehow. It seems like serendipity. But that\u2019s not coincidence, that\u2019s Audley Travel."
+    },
+    {
+      "tag": "a",
+      "class": "js-brand-cta brand-btn-primary brand-preamble-text__button",
+      "id": "",
+      "text": "Start your journey"
+    }
+  ],
+  "section.brand-destinations-tabbed": [
+    {
+      "tag": "h2",
+      "class": "brand-destinations-tabbed__title",
+      "id": "",
+      "text": "Where are you waiting to discover?"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "destinations-tab",
+      "text": "Destinations"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "themes-tab",
+      "text": "Themes"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "inspiration-tab",
+      "text": "Inspiration"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Japan"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I WANT TO EXPLORE"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Australia & New Zealand"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Egypt"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Italy"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Safari"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Rail"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Cruises"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Family"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Last-minute trips"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "30th anniversary"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Europe"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Summer trips"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "I want to explore"
+    },
+    {
+      "tag": "a",
+      "class": "js-brand-cta brand-btn-primary brand-destinations-tabbed__btn",
+      "id": "",
+      "text": "VIEW ALL DESTINATIONS"
+    }
+  ],
+  "section.brand-breaking-line": [],
+  "section.brand-journey-block": [
+    {
+      "tag": "h2",
+      "class": "brand-journey-block__title",
+      "id": "",
+      "text": "Journeys\u00a0that feel like they were waiting"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "We take time to understand you"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "We create your individual trip for you"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "We\u2019re there for you while you travel"
+    }
+  ],
+  "section.brand-carousel-block.js-carousel-container": [
+    {
+      "tag": "h2",
+      "class": "brand-carousel-block__box__title",
+      "id": "",
+      "text": "Possibilities, not packages"
+    },
+    {
+      "tag": "a",
+      "class": "brand-carousel-block__box__link js-brand-link",
+      "id": "",
+      "text": "View trip finder"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Cruising the Rhine NEW: vineyards & villages"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Netherlands & Belgium: AmaWaterways river cruise"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Southern Italy & Amalfi Coast"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Highlights of New Zealand self-drive tour"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Luxury Thailand"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Highlights of Australia: city, Outback & reef"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Panoramic Switzerland & Italy"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Athens & the Greek Islands tour"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    },
+    {
+      "tag": "a",
+      "class": "block-link js-brand-card-link",
+      "id": "",
+      "text": "Japan's cities: Tokyo & Kyoto"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-white js-brand-card-button",
+      "id": "",
+      "text": "View this idea"
+    }
+  ],
+  "section.brand-client-feedback-testimonial": [
+    {
+      "tag": "h2",
+      "class": "brand-client-feedback-testimonial__title",
+      "id": "",
+      "text": "Moments\u00a0we\u2019ve\u00a0created"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cWe have a particular picture of Nona in that park, looking so peaceful.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cIt was in the smaller moments that the city demanded my attention most. The green-and-yellow rickshaws, the cows placidly wandering the streets.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cThe feeling you get from being in the village where your grandparents were raised is unbelievable.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cWatching my child\u2019s eyes, when they see something spectacular,\u00a0I\u2019ve\u00a0got to experience that\u00a0over and over.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cOur eyes were darting everywhere. It was like the moment had been stage-managed.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cWe have a particular picture of Nona in that park, looking so peaceful.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cIt was in the smaller moments that the city demanded my attention most. The green-and-yellow rickshaws, the cows placidly wandering the streets.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cThe feeling you get from being in the village where your grandparents were raised is unbelievable.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cWatching my child\u2019s eyes, when they see something spectacular,\u00a0I\u2019ve\u00a0got to experience that\u00a0over and over.\u201d"
+    },
+    {
+      "tag": "span",
+      "class": "",
+      "id": "",
+      "text": "\u201cOur eyes were darting everywhere. It was like the moment had been stage-managed.\u201d"
+    }
+  ],
+  "section.brand-cta": [
+    {
+      "tag": "h2",
+      "class": "brand-cta__title",
+      "id": "",
+      "text": "Find out where you\u2019re meant to be."
+    },
+    {
+      "tag": "span",
+      "class": "RiQNumber InfinityNumber clickable telephone",
+      "id": "",
+      "text": "1-866-547-4745"
+    },
+    {
+      "tag": "span",
+      "class": " InfinityNumber clickable telephone",
+      "id": "",
+      "text": "1-866-520-8491"
+    },
+    {
+      "tag": "a",
+      "class": "js-brand-cta brand-btn-blue",
+      "id": "",
+      "text": "START YOUR JOURNEY"
+    }
+  ],
+  "section.brand-brochure-request": [
+    {
+      "tag": "h2",
+      "class": "brand-brochure-request__title",
+      "id": "",
+      "text": "Request our brochure"
+    },
+    {
+      "tag": "a",
+      "class": "brand-btn-primary js-brand-cta",
+      "id": "",
+      "text": "REQUEST A BROCHURE"
+    }
+  ],
+  "section.brand-why-us": [
+    {
+      "tag": "h2",
+      "class": "brand-why-us__title",
+      "id": "",
+      "text": "Why journey with us?"
+    },
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "",
+      "text": "A trip as individual as you"
+    },
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "",
+      "text": "A dedicated expert, from start to finish"
+    },
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "",
+      "text": "Meaningful experiences, real connections"
+    },
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "",
+      "text": "The travel experts you can trust"
+    }
+  ],
+  "footer.ftr.brand-footer": [
+    {
+      "tag": "h5",
+      "class": "brand-footer-newsletter__title",
+      "id": "",
+      "text": "A world of travel in your inbox"
+    },
+    {
+      "tag": "p",
+      "class": "brand-footer-newsletter__description",
+      "id": "",
+      "text": "Feed your love of travel by signing up for our emails. Every week, we deliver fresh travel inspiration straight to your inbox."
+    },
+    {
+      "tag": "p",
+      "class": "form__ctrl",
+      "id": "",
+      "text": "Subscribe"
+    },
+    {
+      "tag": "h5",
+      "class": "toggle-content-btn",
+      "id": "",
+      "text": "Website"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Our offices"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "MyAudley"
+    },
+    {
+      "tag": "a",
+      "class": "js-modal",
+      "id": "",
+      "text": "Website feedback"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Sitemap"
+    },
+    {
+      "tag": "h5",
+      "class": "toggle-content-btn",
+      "id": "",
+      "text": "Resources"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Useful information"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "US Government travel advice"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Supplier inquiries"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Travel advisors"
+    },
+    {
+      "tag": "h5",
+      "class": "toggle-content-btn",
+      "id": "",
+      "text": "Company"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Website conditions"
+    },
+    {
+      "tag": "a",
+      "class": "download-url",
+      "id": "",
+      "text": "Booking form & conditions"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "SMS terms & conditions"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Privacy policy"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Cookie policy"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Modern Slavery Act"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Tax strategy"
+    },
+    {
+      "tag": "a",
+      "class": "",
+      "id": "",
+      "text": "Media Center"
+    },
+    {
+      "tag": "p",
+      "class": "careers-promo__title",
+      "id": "",
+      "text": "Work for Audley"
+    },
+    {
+      "tag": "a",
+      "class": "careers-promo__link",
+      "id": "",
+      "text": "travel careers website"
+    },
+    {
+      "tag": "p",
+      "class": "",
+      "id": "",
+      "text": "All prices are in USD unless otherwise stated"
+    },
+    {
+      "tag": "p",
+      "class": "",
+      "id": "",
+      "text": "CST#2117258-20 | UBI#604-089-463 | Fla. Seller of Travel Ref. No. ST39468"
+    },
+    {
+      "tag": "p",
+      "class": "",
+      "id": "",
+      "text": "\u00a9 2026 Audley Travel \u00a0|\u00a0 Audley Travel US, Inc. (Delaware 5398866)"
+    }
+  ],
+  "section.ot-sdk-row.ot-cat-grp": [
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "ot-category-title",
+      "text": "Manage Consent Preferences"
+    },
+    {
+      "tag": "h4",
+      "class": "ot-cat-header",
+      "id": "ot-header-id-C0001",
+      "text": "Strictly Necessary Cookies"
+    },
+    {
+      "tag": "p",
+      "class": "ot-acc-grpdesc ot-category-desc",
+      "id": "ot-desc-id-C0001",
+      "text": "These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information."
+    },
+    {
+      "tag": "h4",
+      "class": "ot-cat-header",
+      "id": "ot-header-id-C0002",
+      "text": "Performance Cookies"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "Performance Cookies"
+    },
+    {
+      "tag": "p",
+      "class": "ot-acc-grpdesc ot-category-desc",
+      "id": "ot-desc-id-C0002",
+      "text": "These cookies allow us to count visits and traffic sources, so we can measure and improve the performance of our site. They help us know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies, we will not know when you have visited our site."
+    },
+    {
+      "tag": "h4",
+      "class": "ot-cat-header",
+      "id": "ot-header-id-C0003",
+      "text": "Functional Cookies"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "Functional Cookies"
+    },
+    {
+      "tag": "p",
+      "class": "ot-acc-grpdesc ot-category-desc",
+      "id": "ot-desc-id-C0003",
+      "text": "These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third-party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly."
+    },
+    {
+      "tag": "h4",
+      "class": "ot-cat-header",
+      "id": "ot-header-id-C0004",
+      "text": "Targeting Cookies"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "Targeting Cookies"
+    },
+    {
+      "tag": "p",
+      "class": "ot-acc-grpdesc ot-category-desc",
+      "id": "ot-desc-id-C0004",
+      "text": "These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites. They do not store directly personal information, but are based on uniquely identifying your browser and internet device. If you do not allow these cookies, you will experience less targeted advertising."
+    }
+  ],
+  "section.ot-hide.ot-hosts-ui.ot-pc-scrollbar#ot-pc-lst": [
+    {
+      "tag": "h3",
+      "class": "",
+      "id": "",
+      "text": "Cookie List"
+    }
+  ],
+  "section#ot-fltr-modal": [
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "checkbox label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-status",
+      "id": "",
+      "text": "label"
+    }
+  ],
+  "section.ot-host-cnt.ot-pc-scrollbar#ot-lst-cnt": [
+    {
+      "tag": "span",
+      "class": "ot-consent-hdr",
+      "id": "",
+      "text": "Consent"
+    },
+    {
+      "tag": "span",
+      "class": "ot-li-hdr",
+      "id": "",
+      "text": "Leg.Interest"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "checkbox label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-status",
+      "id": "",
+      "text": "label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "checkbox label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-status",
+      "id": "",
+      "text": "label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-txt",
+      "id": "",
+      "text": "checkbox label"
+    },
+    {
+      "tag": "span",
+      "class": "ot-label-status",
+      "id": "",
+      "text": "label"
+    }
+  ]
+}

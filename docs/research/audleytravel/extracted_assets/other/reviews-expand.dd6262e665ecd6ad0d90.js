@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([["reviews-expand"],{55:function(e,n,o){"use strict";o.r(n),n.default=function(){var e;null===(e=document.querySelector(".reviews button"))||void 0===e||e.addEventListener("click",()=>{document.querySelector(".reviews").classList.remove("reviews--overflow")})}}}]);

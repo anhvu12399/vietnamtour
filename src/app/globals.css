@@ -7,9 +7,27 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-green: #0e1628;
+  --color-dark-green: #070b14;
+  --color-dark: #080c16;
+  --color-dark-gray: #1b253b;
+  --color-lighter-gray: #a4a4a4;
+  --color-light-gray: #d8d8d8;
+  --color-bg-mid: #e9e5de;
+  --color-bg-light: #faf6f0;
+  --color-blue: #e27243;
+  --color-dark-blue: #cb5b2d;
+  --color-brown: #dec49b;
+  --color-light-brown: #f9f2e8;
+  --color-gold: #dec49b;
+  --color-white-footer: #e9e5de;
+
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair-display), ui-serif, Georgia, serif;
+  --font-heading: var(--font-playfair-display), ui-serif, Georgia, serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-heading: var(--font-sans);
+  
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
