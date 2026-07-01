@@ -85,10 +85,10 @@ export default function IdeasByMonthListingPage() {
                   <span className="text-[10px] uppercase tracking-widest text-[#9A4B33] font-bold block">
                     Vietnam Guide
                   </span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#343434] font-semibold leading-none group-hover:text-[#9A4B33] transition-colors">
+                  <h3 className="font-serif text-xl sm:text-2xl text-white font-semibold leading-none group-hover:text-gold transition-colors">
                     {item.breadcrumb}
                   </h3>
-                  <p className="text-[10px] text-[#343434]/75 font-light line-clamp-1 group-hover:text-white transition-colors">
+                  <p className="text-[10px] text-white/70 font-light line-clamp-1 group-hover:text-white transition-colors">
                     {item.heroSubtitle}
                   </p>
                 </div>

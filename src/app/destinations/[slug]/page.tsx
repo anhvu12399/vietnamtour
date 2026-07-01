@@ -89,7 +89,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             <span>•</span>
             <span>{destination.bestTimeToVisit}</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-white">
             {destination.name}
           </h1>
         </div>

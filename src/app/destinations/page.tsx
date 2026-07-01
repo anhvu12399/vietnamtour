@@ -77,10 +77,10 @@ export default async function DestinationsPage() {
 
                 {/* Content */}
                 <div className="relative z-20 space-y-3">
-                  <h3 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium">
+                  <h3 className="font-serif text-2xl lg:text-3xl text-white font-medium">
                     {dest.name}
                   </h3>
-                  <p className="text-xs text-[#545454] font-light leading-relaxed line-clamp-2 max-w-lg">
+                  <p className="text-xs text-white/80 font-light leading-relaxed line-clamp-2 max-w-lg">
                     {dest.description?.[0]?.children?.[0]?.text || ''}
                   </p>
                   <div className="pt-2">

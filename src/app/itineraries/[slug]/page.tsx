@@ -90,7 +90,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             <span>•</span>
             <span>From £{itinerary.priceFrom.toLocaleString('en-GB')} per person</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-white">
             {itinerary.title}
           </h1>
         </div>
