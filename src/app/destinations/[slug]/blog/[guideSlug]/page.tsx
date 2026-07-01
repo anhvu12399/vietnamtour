@@ -96,7 +96,7 @@ export default async function TravelGuidePage({ params }: PageProps) {
           <div className="text-[10px] uppercase tracking-widest text-luxury-gold/70 font-semibold">
             Travel Guide
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-luxury-linen">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
             {guide.title}
           </h1>
         </div>
@@ -112,7 +112,7 @@ export default async function TravelGuidePage({ params }: PageProps) {
             {guide.content && guide.content.length > 0 && (
               <div className="prose prose-invert prose-lg max-w-none space-y-6">
                 {guide.content.map((block: any, i: number) => (
-                  <p key={i} className="text-base font-light text-luxury-linen/80 leading-relaxed">
+                  <p key={i} className="text-base font-light text-[#545454] leading-relaxed">
                     {block.children?.map((c: any) => c.text).join('')}
                   </p>
                 ))}
@@ -126,10 +126,10 @@ export default async function TravelGuidePage({ params }: PageProps) {
                   <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">
                     Handpicked For You
                   </span>
-                  <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium">
                     Recommended Tours & Cruises
                   </h2>
-                  <p className="text-sm text-luxury-linen/60 font-light">
+                  <p className="text-sm text-[#545454] font-light">
                     Our specialists have selected these experiences to complement this guide.
                   </p>
                 </div>
@@ -165,11 +165,11 @@ export default async function TravelGuidePage({ params }: PageProps) {
                           </div>
                         )}
                         <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                          <h3 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">
+                          <h3 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">
                             {tour.title}
                           </h3>
                           <div className="flex items-center justify-between pt-4 border-t border-luxury-slate/50">
-                            <span className="text-xs text-luxury-linen/50 font-light">{meta}</span>
+                            <span className="text-xs text-[#545454] font-light">{meta}</span>
                             <Link
                               href={detailHref}
                               className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
@@ -187,8 +187,8 @@ export default async function TravelGuidePage({ params }: PageProps) {
                 {/* CTA strip */}
                 <div className="bg-luxury-moss/60 border border-luxury-gold/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <p className="font-serif text-base text-luxury-linen">Looking for something more bespoke?</p>
-                    <p className="text-xs text-luxury-linen/60 font-light">Our specialists craft journeys entirely around you.</p>
+                    <p className="font-serif text-base text-[#343434]">Looking for something more bespoke?</p>
+                    <p className="text-xs text-[#545454] font-light">Our specialists craft journeys entirely around you.</p>
                   </div>
                   <Link
                     href="/enquire"
@@ -203,9 +203,9 @@ export default async function TravelGuidePage({ params }: PageProps) {
 
           {/* Right sidebar */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6">
-              <h3 className="font-serif text-lg text-luxury-linen font-medium">Explore {guide.destination?.name}</h3>
-              <p className="text-sm text-luxury-linen/70 font-light leading-relaxed">
+            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6">
+              <h3 className="font-serif text-lg text-[#343434] font-medium">Explore {guide.destination?.name}</h3>
+              <p className="text-sm text-[#343434]/70 font-light leading-relaxed">
                 Discover all tours, cruises and travel guides curated for this region.
               </p>
               <Link

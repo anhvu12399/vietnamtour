@@ -14,7 +14,7 @@ export default async function AccommodationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
@@ -51,10 +51,10 @@ export default async function AccommodationsPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
               Elite Hideaways
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-luxury-linen font-medium leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
               Luxury Resorts & Lodges
             </h1>
-            <p className="text-base sm:text-lg text-luxury-linen/70 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#343434]/70 font-light leading-relaxed">
               We have handpicked only the finest properties in Vietnam. From remote clifftop pool villas overlooking Vinh Hy Bay to heritage palaces in Hanoi, these stays guarantee premium luxury.
             </p>
           </div>
@@ -76,15 +76,15 @@ export default async function AccommodationsPage() {
                   <div className="space-y-3">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">{acc.rating}</span>
-                      <h3 className="font-serif text-xl text-luxury-linen font-semibold">{acc.name}</h3>
-                      <p className="text-xs text-luxury-linen/50 italic">{acc.location}</p>
+                      <h3 className="font-serif text-xl text-[#343434] font-semibold">{acc.name}</h3>
+                      <p className="text-xs text-[#545454] italic">{acc.location}</p>
                     </div>
-                    <p className="text-xs text-luxury-linen/60 font-light leading-relaxed line-clamp-3">
+                    <p className="text-xs text-[#545454] font-light leading-relaxed line-clamp-3">
                       {acc.description?.[0]?.children?.[0]?.text || ''}
                     </p>
                     <ul className="flex flex-wrap gap-2 pt-2">
                       {acc.features.slice(0, 3).map((f, i) => (
-                        <li key={i} className="text-[10px] bg-luxury-slate text-luxury-linen/80 px-2.5 py-1 font-medium border border-luxury-gold/10">
+                        <li key={i} className="text-[10px] bg-[#faf8f5] text-[#343434]/80 px-2.5 py-1 font-medium border border-[#e6e2d6]">
                           {f}
                         </li>
                       ))}
@@ -103,7 +103,7 @@ export default async function AccommodationsPage() {
                         href={acc.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-luxury-linen/40 hover:underline hover:text-luxury-gold"
+                        className="text-xs text-[#343434]/40 hover:underline hover:text-luxury-gold"
                       >
                         Official Site ↗
                       </a>

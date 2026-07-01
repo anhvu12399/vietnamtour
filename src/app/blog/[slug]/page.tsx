@@ -76,7 +76,7 @@ const categoryColors: Record<string, string> = {
 };
 
 function getCategoryColor(cat: string) {
-  return categoryColors[cat] || 'bg-luxury-slate text-luxury-linen border-luxury-gold/30';
+  return categoryColors[cat] || 'bg-[#faf8f5] text-[#343434] border-[#e6e2d6]';
 }
 
 // ─── PortableText Custom Components ───────────────────────────────────────────
@@ -139,11 +139,11 @@ const portableTextComponents: PortableTextComponents = {
           
           <div className="flex items-start gap-4 lg:gap-6 relative z-10">
             {specialist?.image ? (
-              <div className="relative w-12 h-12 lg:w-16 lg:h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-luxury-gold/30">
+              <div className="relative w-12 h-12 lg:w-16 lg:h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#e6e2d6]">
                 <Image src={specialist.image} alt={specialist.name} fill className="object-cover" />
               </div>
             ) : (
-              <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border-2 border-luxury-gold/30">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border-2 border-[#e6e2d6]">
                 <span className="text-xl lg:text-2xl text-luxury-gold">💡</span>
               </div>
             )}
@@ -207,7 +207,7 @@ const portableTextComponents: PortableTextComponents = {
           href={value?.href} 
           target={target} 
           rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-          className="text-luxury-gold hover:text-white transition-colors border-b border-luxury-gold/30 hover:border-white/50 pb-0.5"
+          className="text-luxury-gold hover:text-white transition-colors border-b border-[#e6e2d6] hover:border-[#e6e2d6]0 pb-0.5"
         >
           {children}
         </a>
@@ -268,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </span>
               )}
               {post.tags?.slice(0,2).map((tag: string) => (
-                <span key={tag} className="text-[10px] uppercase tracking-wider text-white/50 border border-white/10 px-3 py-1 rounded-sm">
+                <span key={tag} className="text-[10px] uppercase tracking-wider text-white/50 border border-[#e6e2d6] px-3 py-1 rounded-sm">
                   #{tag}
                 </span>
               ))}
@@ -278,7 +278,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {post.title}
             </h1>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mt-12 pt-12 border-t border-white/10 w-full lg:w-3/4 mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mt-12 pt-12 border-t border-[#e6e2d6] w-full lg:w-3/4 mx-auto">
               {post.author && (
                 <div className="flex items-center gap-4">
                   {post.author.avatar ? (
@@ -287,10 +287,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                       alt={post.author.name}
                       width={48}
                       height={48}
-                      className="rounded-full border border-luxury-gold/30"
+                      className="rounded-full border border-[#e6e2d6]"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-white/10 border border-luxury-gold/30" />
+                    <div className="w-12 h-12 rounded-full bg-white/10 border border-[#e6e2d6]" />
                   )}
                   <div className="text-left">
                     <div className="text-sm font-medium text-white">{post.author.name}</div>
@@ -318,7 +318,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </section>
 
         {/* Categories Tab Bar placeholder */}
-        <div id="details" className="bg-[#18201d] border-b border-white/5">
+        <div id="details" className="bg-[#18201d] border-b border-[#e6e2d6]">
           <CategoriesTabBar activeTab="guides" />
         </div>
 
@@ -344,7 +344,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* ── Related Posts & CTA ── */}
         {(post.relatedPosts?.length > 0 || post.ctaHeading) && (
-          <section className="bg-[#18201d] py-24 border-t border-white/5">
+          <section className="bg-[#18201d] py-24 border-t border-[#e6e2d6]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
               {post.relatedPosts?.length > 0 && (
                 <div className="mb-24">
@@ -355,7 +355,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {post.relatedPosts.map((related: any) => (
                       <Link key={related._id} href={`/blog/${related.slug.current}`} className="group block">
-                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-white/5">
+                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-[#e6e2d6]">
                           {related.featuredImage ? (
                             <Image src={related.featuredImage} alt={related.imageAlt || related.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                           ) : (
@@ -371,7 +371,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               )}
 
               {post.ctaHeading && (
-                <div className="max-w-4xl mx-auto text-center bg-luxury-slate p-12 lg:p-20 rounded-2xl border border-white/5 relative overflow-hidden">
+                <div className="max-w-4xl mx-auto text-center bg-luxury-slate p-12 lg:p-20 rounded-2xl border border-[#e6e2d6] relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
                   <div className="relative z-10">
                     <span className="text-xs uppercase tracking-[0.3em] text-luxury-gold font-bold mb-4 block">DESIGN YOUR JOURNEY</span>

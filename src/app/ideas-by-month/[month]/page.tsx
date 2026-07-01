@@ -99,7 +99,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
       <Navbar />
 
-      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[480px] w-full flex items-center justify-center overflow-hidden">
@@ -113,7 +113,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
           <div className="absolute inset-0 bg-[#161C1A]/25" />
           
           <div className="relative z-10 text-center px-6 pt-24 sm:pt-32 lg:pt-36">
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#9A4B33] font-bold bg-slate-950/45 px-4 py-1.5 border border-white/10 rounded-sm mb-4 inline-block">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#9A4B33] font-bold bg-slate-950/45 px-4 py-1.5 border border-[#e6e2d6] rounded-sm mb-4 inline-block">
               {monthData.category}
             </span>
             
@@ -143,17 +143,17 @@ export default async function MonthSlugPage({ params }: PageProps) {
             <div className="lg:col-span-8 space-y-12">
               
               {/* Introduction Lead Paragraph */}
-              <div className="bg-luxury-slate/30 border-l-2 border-luxury-gold p-6 sm:p-8 shadow-md rounded-xs">
-                <p className="font-serif text-lg sm:text-xl font-medium text-luxury-linen leading-relaxed italic">
+              <div className="bg-white border-l-2 border-luxury-gold p-6 sm:p-8 shadow-md rounded-xs">
+                <p className="font-serif text-lg sm:text-xl font-medium text-[#343434] leading-relaxed italic">
                   {monthData.intro}
                 </p>
               </div>
 
               {/* Dynamic sections */}
-              <div className="space-y-12 font-light text-luxury-linen/85 leading-relaxed text-base">
+              <div className="space-y-12 font-light text-[#343434] leading-relaxed text-base">
                 {(monthData.sections || []).map((section: any, idx: number) => (
                   <div key={idx} className="space-y-6">
-                    <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-medium border-b border-luxury-gold/10 pb-3">
+                    <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-medium border-b border-[#e6e2d6] pb-3">
                       {section.heading}
                     </h2>
                     
@@ -163,7 +163,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
                     {/* Optional inline image */}
                     {section.image && (
-                      <div className="my-8 border border-luxury-gold/10 p-2.5 bg-luxury-slate/20 rounded-xs shadow-xs group">
+                      <div className="my-8 border border-[#e6e2d6] p-2.5 bg-[#f4efe6] rounded-xs shadow-xs group">
                         <div className="relative aspect-video w-full overflow-hidden rounded-xs">
                           <Image
                             src={section.image}
@@ -174,7 +174,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                           />
                         </div>
                         {section.imageCaption && (
-                          <span className="block text-[11px] text-luxury-linen/50 italic mt-3 text-center">
+                          <span className="block text-[11px] text-[#545454] italic mt-3 text-center">
                             {section.imageCaption}
                           </span>
                         )}
@@ -190,15 +190,15 @@ export default async function MonthSlugPage({ params }: PageProps) {
             <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-24">
               
               {/* Specialist Contact Box */}
-              <div className="bg-luxury-slate/30 border border-luxury-gold/15 p-8 shadow-md rounded-xs flex flex-col items-center text-center space-y-6">
+              <div className="bg-white border border-[#e6e2d6] p-8 shadow-md rounded-xs flex flex-col items-center text-center space-y-6">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9A4B33] block">
                   Season Specialist
                 </span>
-                <h3 className="font-serif text-xl font-medium text-luxury-linen leading-snug">
+                <h3 className="font-serif text-xl font-medium text-[#343434] leading-snug">
                   Let us plan your seasonal trip
                 </h3>
                 
-                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-luxury-gold/10 shadow-sm shrink-0">
+                <div className="relative w-28 h-28 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
                   <Image 
                     src="/images/specialist_alice.png"
                     alt="Alice Mercer"
@@ -208,19 +208,19 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 </div>
 
                 <div>
-                  <h4 className="font-sans text-sm font-bold text-luxury-linen uppercase tracking-wider">
+                  <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">
                     Alice Mercer
                   </h4>
-                  <span className="text-[10px] uppercase tracking-widest text-luxury-linen/50 font-semibold mt-0.5 block">
+                  <span className="text-[10px] uppercase tracking-widest text-[#545454] font-semibold mt-0.5 block">
                     Bespoke Holiday Designer
                   </span>
                 </div>
 
-                <p className="text-xs text-luxury-linen/70 font-light leading-relaxed">
+                <p className="text-xs text-[#343434]/70 font-light leading-relaxed">
                   "I know the weather patterns of Vietnam inside out. I will make sure you are in the right region at the absolute best time."
                 </p>
 
-                <div className="w-full pt-4 border-t border-luxury-gold/10 flex flex-col gap-3">
+                <div className="w-full pt-4 border-t border-[#e6e2d6] flex flex-col gap-3">
                   <Link 
                     href="/enquire"
                     className="bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate text-[11px] font-bold tracking-widest uppercase py-3 transition-colors duration-300 rounded-none w-full"
@@ -229,7 +229,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                   </Link>
                   <a 
                     href="tel:+442078459200" 
-                    className="text-xs font-semibold text-luxury-linen hover:text-[#9A4B33] transition-colors py-2 flex items-center justify-center gap-1.5"
+                    className="text-xs font-semibold text-[#343434] hover:text-[#9A4B33] transition-colors py-2 flex items-center justify-center gap-1.5"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -240,8 +240,8 @@ export default async function MonthSlugPage({ params }: PageProps) {
               </div>
 
               {/* Monthly Highlights Card */}
-              <div className="bg-[#161C1A] text-white p-8 rounded-xs shadow-md space-y-6 border border-luxury-gold/15">
-                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9A4B33] block border-b border-white/10 pb-3">
+              <div className="bg-[#faf8f5] text-[#343434] p-8 rounded-xs shadow-md space-y-6 border border-[#e6e2d6]">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9A4B33] block border-b border-[#e6e2d6] pb-3">
                   Best of {monthData.breadcrumb}
                 </span>
                 
@@ -268,17 +268,17 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 <span className="text-xs uppercase tracking-[0.35em] font-semibold text-[#9A4B33] block">
                   Recommended Journeys
                 </span>
-                <h3 className="font-serif text-3xl text-luxury-linen font-medium">
+                <h3 className="font-serif text-3xl text-[#343434] font-medium">
                   Signature Tours for {monthData.breadcrumb}
                 </h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {recommendedTours.map((tour) => (
-                  <div key={tour._id} className="group bg-luxury-slate/30 border border-luxury-gold/10 hover:border-luxury-gold/30 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full rounded-xs overflow-hidden">
+                  <div key={tour._id} className="group bg-white border border-[#e6e2d6] hover:border-[#e6e2d6] hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full rounded-xs overflow-hidden">
                     <div>
                       {/* Tour Image */}
-                      <div className="relative h-48 overflow-hidden bg-luxury-slate/20 border-b border-luxury-gold/10">
+                      <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-[#e6e2d6]">
                         <Image
                           src={tour.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                           alt={tour.title}
@@ -293,29 +293,29 @@ export default async function MonthSlugPage({ params }: PageProps) {
                           VIETNAM PRIVATE TOUR
                         </span>
                         
-                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-luxury-linen hover:text-[#9A4B33] transition-colors duration-200">
+                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-[#343434] hover:text-[#9A4B33] transition-colors duration-200">
                           <Link href={`/itineraries/${tour.slug?.current || ''}`}>
                             {tour.title}
                           </Link>
                         </h4>
 
-                        <p className="text-[12px] font-medium text-luxury-linen/70 tracking-wide pt-1">
+                        <p className="text-[12px] font-medium text-[#343434]/70 tracking-wide pt-1">
                           {tour.duration} Days from <span className="text-luxury-gold">£{tour.priceFrom?.toLocaleString('en-GB')}pp</span>
                         </p>
                       </div>
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="px-5 py-4 border-t border-luxury-gold/10 flex items-center justify-between text-xs font-semibold select-none bg-luxury-slate/50">
+                    <div className="px-5 py-4 border-t border-[#e6e2d6] flex items-center justify-between text-xs font-semibold select-none bg-luxury-slate/50">
                       <Link 
                         href={`/itineraries/${tour.slug?.current || ''}`}
-                        className="text-luxury-linen/70 hover:text-[#9A4B33] transition-colors"
+                        className="text-[#343434]/70 hover:text-[#9A4B33] transition-colors"
                       >
                         View Itinerary
                       </Link>
                       <Link 
                         href="/enquire" 
-                        className="text-[#9A4B33] hover:text-luxury-linen transition-colors"
+                        className="text-[#9A4B33] hover:text-[#343434] transition-colors"
                       >
                         Enquire
                       </Link>
@@ -329,13 +329,13 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
         {/* FAQs Accordion Section */}
         {monthData.faqs && monthData.faqs.length > 0 && (
-          <section className="py-16 px-6 lg:px-12 max-w-4xl mx-auto border-t border-luxury-gold/10">
+          <section className="py-16 px-6 lg:px-12 max-w-4xl mx-auto border-t border-[#e6e2d6]">
             <div className="space-y-10">
               <div className="text-center space-y-2">
                 <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#9A4B33] block">
                   Seasonal Insights
                 </span>
-                <h3 className="font-serif text-3xl text-luxury-linen font-medium">
+                <h3 className="font-serif text-3xl text-[#343434] font-medium">
                   Frequently Asked Questions
                 </h3>
               </div>
@@ -347,7 +347,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
         {/* Cross-linking Related Months */}
         {crossLinks.length > 0 && (
-          <section className="bg-[#161C1A] text-white py-16 px-6 lg:px-12 border-t border-white/5">
+          <section className="bg-[#faf8f5] text-[#343434] py-16 px-6 lg:px-12 border-t border-[#e6e2d6]">
             <div className="max-w-7xl mx-auto space-y-10">
               <div className="text-center md:text-left space-y-2">
                 <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#9A4B33] block">
@@ -363,7 +363,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                   <Link 
                     key={item.slug} 
                     href={`/ideas-by-month/${item.slug}`}
-                    className="group relative h-64 overflow-hidden rounded-xs border border-white/10 p-6 flex flex-col justify-end bg-luxury-slate/50"
+                    className="group relative h-64 overflow-hidden rounded-xs border border-[#e6e2d6] p-6 flex flex-col justify-end bg-luxury-slate/50"
                   >
                     <Image
                       src={item.heroImage}
@@ -389,7 +389,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
         )}
 
         {/* Bottom CTA Block */}
-        <section className="bg-[#161C1A] text-white py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
+        <section className="bg-[#faf8f5] text-[#343434] py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#9A4B33_1px,transparent_1px)] [background-size:16px_16px]" />
           <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
             <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#9A4B33] block">
@@ -398,7 +398,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
             <h3 className="font-serif text-3xl sm:text-5xl text-[#EDE9E3] font-medium leading-tight">
               {monthData.ctaHeading}
             </h3>
-            <p className="text-base sm:text-lg text-luxury-linen/80 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-[#545454] font-light max-w-2xl mx-auto leading-relaxed">
               {monthData.ctaBody}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -410,7 +410,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
               </Link>
               <Link
                 href="/specialists"
-                className="w-full sm:w-auto border border-white/25 hover:border-[#9A4B33] hover:text-[#9A4B33] text-white text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
+                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-white text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Speak to a Specialist
               </Link>

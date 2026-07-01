@@ -254,7 +254,7 @@ export default async function ItinerariesPage() {
 
                   <div>
                     {/* Tour Image */}
-                    <div className="relative h-48 overflow-hidden bg-[#0e1628]/10 border-b border-[#d8d8d8]">
+                    <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-[#d8d8d8]">
                       <Image
                         src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                         alt={it.title}
@@ -367,7 +367,7 @@ export default async function ItinerariesPage() {
                   description: "Hike through mist-shrouded green terraces and encounter authentic local Hmong and Dao hilltribe hospitality."
                 }
               ].map((act, index) => (
-                <div key={index} className="group relative flex flex-col justify-between h-[420px] overflow-hidden border border-[#d8d8d8] bg-[#0e1628]">
+                <div key={index} className="group relative flex flex-col justify-between h-[420px] overflow-hidden border border-[#d8d8d8] bg-[#faf8f5]">
                   
                   {/* Photo Background */}
                   <div className="absolute inset-0 z-0">
@@ -378,7 +378,7 @@ export default async function ItinerariesPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#080c16] via-[#080c16]/30 to-transparent z-10" />
-                    <div className="absolute inset-0 bg-[#0e1628]/35 z-10 transition-opacity group-hover:opacity-10" />
+                    <div className="absolute inset-0 bg-black/10 z-10 transition-opacity group-hover:opacity-10" />
                   </div>
 
                   {/* Overlapping Info Panel */}
@@ -465,7 +465,7 @@ export default async function ItinerariesPage() {
                       />
                       
                       {/* Duration Overlay */}
-                      <div className="absolute bottom-4 left-4 bg-[#0e1628]/85 border border-[#d8d8d8] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-none">
+                      <div className="absolute bottom-4 left-4 bg-white border border-[#e6e2d6] text-[#343434] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-none">
                         <span>🕒</span>
                         <span>{getReadingTime(post.content)} minutes read</span>
                       </div>

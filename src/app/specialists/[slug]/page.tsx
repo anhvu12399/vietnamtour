@@ -50,21 +50,21 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
                 <span className="text-xs uppercase tracking-widest text-luxury-gold font-semibold block">
                   {specialist.role}
                 </span>
-                <h1 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-semibold">
+                <h1 className="font-serif text-2xl lg:text-3xl text-[#343434] font-semibold">
                   {specialist.name}
                 </h1>
               </div>
 
-              <div className="pt-6 border-t border-luxury-moss/50 space-y-3 text-sm text-luxury-linen/80">
+              <div className="pt-6 border-t border-luxury-moss/50 space-y-3 text-sm text-[#545454]">
                 <p className="flex items-center justify-center md:justify-start space-x-2">
                   <span>📞 UK:</span>
-                  <a href={`tel:${specialist.phone?.replace(/\s+/g, '')}`} className="font-semibold text-luxury-linen hover:underline">
+                  <a href={`tel:${specialist.phone?.replace(/\s+/g, '')}`} className="font-semibold text-[#343434] hover:underline">
                     {specialist.phone}
                   </a>
                 </p>
                 <p className="flex items-center justify-center md:justify-start space-x-2">
                   <span>✉ Email:</span>
-                  <a href={`mailto:${specialist.email}`} className="font-semibold text-luxury-linen hover:underline break-all">
+                  <a href={`mailto:${specialist.email}`} className="font-semibold text-[#343434] hover:underline break-all">
                     {specialist.email}
                   </a>
                 </p>
@@ -86,24 +86,24 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
             
             {/* Bio */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                 My Travel Story
               </h2>
-              <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
+              <p className="text-base font-light text-[#545454] leading-relaxed">
                 {specialist.bio[0]?.children[0]?.text}
               </p>
             </div>
 
             {/* Favorite Destinations */}
             <div className="space-y-4">
-              <h3 className="font-serif text-lg text-luxury-linen font-medium">
+              <h3 className="font-serif text-lg text-[#343434] font-medium">
                 My Favorite Places in Vietnam
               </h3>
               <div className="flex flex-wrap gap-3">
                 {specialist.favoriteDestinations.map((dest, idx) => (
                   <span
                     key={idx}
-                    className="text-xs bg-luxury-moss text-luxury-linen px-4 py-2 font-medium tracking-wide border border-luxury-gold/30"
+                    className="text-xs bg-luxury-moss text-[#343434] px-4 py-2 font-medium tracking-wide border border-[#e6e2d6]"
                   >
                     {dest}
                   </span>
@@ -113,14 +113,14 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
 
             {/* Expert Tips */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 My Insider Expert Tips
               </h3>
               <div className="space-y-6">
                 {specialist.expertTips.map((tip, idx) => (
                   <div key={idx} className="relative bg-luxury-moss/30 border border-luxury-moss/50 p-6 space-y-3">
                     <span className="absolute -top-3.5 left-4 text-4xl text-luxury-gold font-serif select-none">“</span>
-                    <p className="text-sm sm:text-base font-light text-luxury-linen/75 italic leading-relaxed pt-2">
+                    <p className="text-sm sm:text-base font-light text-[#343434]/75 italic leading-relaxed pt-2">
                       {tip}
                     </p>
                   </div>

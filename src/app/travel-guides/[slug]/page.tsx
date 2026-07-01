@@ -74,7 +74,7 @@ const portableTextComponents: PortableTextComponents = {
     image: ({ value }: any) => {
       if (!value?.url) return null;
       return (
-        <div className="my-10 relative w-full border border-luxury-gold/10 p-1.5 bg-luxury-slate/20 rounded-sm group">
+        <div className="my-10 relative w-full border border-[#e6e2d6] p-1.5 bg-[#f4efe6] rounded-sm group">
           <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xs">
             <Image
               src={value.url}
@@ -85,7 +85,7 @@ const portableTextComponents: PortableTextComponents = {
             />
           </div>
           {value.caption && (
-            <span className="block text-[10px] text-luxury-linen/50 uppercase tracking-widest font-light mt-3 text-center">
+            <span className="block text-[10px] text-[#545454] uppercase tracking-widest font-light mt-3 text-center">
               {value.caption}
             </span>
           )}
@@ -98,7 +98,7 @@ const portableTextComponents: PortableTextComponents = {
       return (
         <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           {images.map((item: any, idx: number) => (
-            <div key={idx} className="relative aspect-[4/3] overflow-hidden border border-luxury-gold/10 rounded-sm group">
+            <div key={idx} className="relative aspect-[4/3] overflow-hidden border border-[#e6e2d6] rounded-sm group">
               {item.url && (
                 <Image src={item.url} alt={item.caption || 'Gallery photo'} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
               )}
@@ -121,16 +121,16 @@ const portableTextComponents: PortableTextComponents = {
           <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#9A4B33] block mb-3">
             Specialist Insider Tip
           </span>
-          <p className="text-sm text-luxury-linen/80 font-light leading-relaxed italic border-l-2 border-[#9A4B33]/40 pl-4">
+          <p className="text-sm text-[#545454] font-light leading-relaxed italic border-l-2 border-[#9A4B33]/40 pl-4">
             &ldquo;{value.tip}&rdquo;
           </p>
-          <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-luxury-gold/10">
+          <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-[#e6e2d6]">
             <div className="w-9 h-9 rounded-full overflow-hidden relative flex-shrink-0 border border-[#9A4B33]/30">
               <Image src={avatar} alt={name} fill className="object-cover grayscale" />
             </div>
             <div>
-              <span className="block text-xs font-serif text-luxury-linen font-semibold">{name}</span>
-              <span className="block text-[9px] uppercase tracking-wider text-luxury-linen/50 font-light">{role}</span>
+              <span className="block text-xs font-serif text-[#343434] font-semibold">{name}</span>
+              <span className="block text-[9px] uppercase tracking-wider text-[#545454] font-light">{role}</span>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ const portableTextComponents: PortableTextComponents = {
     pullQuote: ({ value }: any) => (
       <blockquote className="clear-both border-y border-[#9A4B33]/30 py-10 my-12 text-center relative max-w-3xl mx-auto px-6">
         <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-serif text-[#9A4B33]/30 leading-none select-none">&ldquo;</span>
-        <p className="font-serif text-xl sm:text-3xl text-luxury-linen font-light italic leading-relaxed">
+        <p className="font-serif text-xl sm:text-3xl text-[#343434] font-light italic leading-relaxed">
           {value.quote}
         </p>
         {value.author && (
@@ -152,12 +152,12 @@ const portableTextComponents: PortableTextComponents = {
   },
   block: {
     normal: ({ children }: any) => (
-      <p className="text-base sm:text-[17px] font-light text-luxury-linen/90 leading-relaxed mb-6 max-w-3xl">
+      <p className="text-base sm:text-[17px] font-light text-[#343434]/90 leading-relaxed mb-6 max-w-3xl">
         {children}
       </p>
     ),
     h2: ({ children }: any) => (
-      <h2 className="clear-both font-serif text-2xl sm:text-4xl text-luxury-linen font-semibold leading-tight mt-16 mb-8 pb-4 border-b border-luxury-gold/10 max-w-3xl">
+      <h2 className="clear-both font-serif text-2xl sm:text-4xl text-[#343434] font-semibold leading-tight mt-16 mb-8 pb-4 border-b border-[#e6e2d6] max-w-3xl">
         {children}
       </h2>
     ),
@@ -167,7 +167,7 @@ const portableTextComponents: PortableTextComponents = {
       </h3>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-2 border-[#9A4B33] pl-6 py-1 my-8 text-lg font-light italic text-luxury-linen/70 max-w-3xl">
+      <blockquote className="border-l-2 border-[#9A4B33] pl-6 py-1 my-8 text-lg font-light italic text-[#343434]/70 max-w-3xl">
         {children}
       </blockquote>
     ),
@@ -247,7 +247,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
 
         {/* ════════════════════════════════════════════
             1. SCENIC HERO BANNER
@@ -306,18 +306,18 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             {/* ── LEFT: Main article content ── */}
             <div className="lg:col-span-8">
               {/* Published metadata bar */}
-              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-luxury-gold/10">
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-[#e6e2d6]">
                 {post.publishedAt && (
-                  <span className="text-[11px] text-luxury-linen/50 uppercase tracking-widest font-medium">
+                  <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">
                     Published {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
                 )}
                 <span className="text-luxury-gold/25">|</span>
-                <span className="text-[11px] text-luxury-linen/50 uppercase tracking-widest font-medium">{readingTime} min read</span>
+                <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">{readingTime} min read</span>
                 {post.heroAuthor?.name && (
                   <>
                     <span className="text-luxury-gold/25">|</span>
-                    <span className="text-[11px] text-luxury-linen/50 uppercase tracking-widest font-medium">By {post.heroAuthor.name}</span>
+                    <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">By {post.heroAuthor.name}</span>
                   </>
                 )}
               </div>
@@ -340,14 +340,14 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                   <PortableText value={post.content} components={portableTextComponents} />
                 </div>
               ) : (
-                <p className="text-luxury-linen/40 italic">Full article content coming soon.</p>
+                <p className="text-[#343434]/40 italic">Full article content coming soon.</p>
               )}
 
               {/* Social share strip */}
-              <div className="mt-12 pt-8 border-t border-luxury-gold/10 flex items-center gap-4">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-luxury-linen/40">Share this guide</span>
+              <div className="mt-12 pt-8 border-t border-[#e6e2d6] flex items-center gap-4">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-[#343434]/40">Share this guide</span>
                 {['Facebook', 'X (Twitter)', 'Email'].map((sn) => (
-                  <span key={sn} className="text-[10px] uppercase tracking-widest font-bold text-[#ba996a] hover:text-luxury-linen transition-colors cursor-pointer">{sn}</span>
+                  <span key={sn} className="text-[10px] uppercase tracking-widest font-bold text-[#ba996a] hover:text-[#343434] transition-colors cursor-pointer">{sn}</span>
                 ))}
               </div>
             </div>
@@ -356,15 +356,15 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             <div className="lg:col-span-4 space-y-8">
 
               {/* Specialist contact card */}
-              <div className="bg-luxury-slate/30 border border-luxury-gold/10 p-8 shadow-xl flex flex-col items-center text-center space-y-5 sticky top-28">
+              <div className="bg-white border border-[#e6e2d6] p-8 shadow-xl flex flex-col items-center text-center space-y-5 sticky top-28">
                 <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">
                   Plan this journey
                 </span>
-                <h3 className="font-serif text-lg font-semibold text-luxury-linen leading-snug">
+                <h3 className="font-serif text-lg font-semibold text-[#343434] leading-snug">
                   Speak to a Vietnam specialist
                 </h3>
 
-                <div className="relative w-24 h-24 rounded-full overflow-hidden border border-luxury-gold/15 shadow-sm shrink-0">
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
                   <Image
                     src="/images/specialist_alice.png"
                     alt="Alice Mercer"
@@ -374,8 +374,8 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="font-sans text-sm font-bold text-luxury-linen uppercase tracking-wider">Alice Mercer</h4>
-                  <p className="text-xs text-luxury-linen/60 leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
+                  <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">Alice Mercer</h4>
+                  <p className="text-xs text-[#545454] leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
                 </div>
 
                 <Link
@@ -385,9 +385,9 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                   MAKE AN INQUIRY
                 </Link>
 
-                <div className="pt-2 border-t border-luxury-gold/10 w-full flex flex-col items-center">
-                  <span className="text-[10px] uppercase text-luxury-linen/40 font-bold tracking-widest block mb-1">Or call us directly</span>
-                  <a href="tel:+442078459200" className="text-base font-bold text-luxury-linen hover:text-luxury-gold transition-colors">
+                <div className="pt-2 border-t border-[#e6e2d6] w-full flex flex-col items-center">
+                  <span className="text-[10px] uppercase text-[#343434]/40 font-bold tracking-widest block mb-1">Or call us directly</span>
+                  <a href="tel:+442078459200" className="text-base font-bold text-[#343434] hover:text-luxury-gold transition-colors">
                     +44 (0) 20 7845 9200
                   </a>
                 </div>
@@ -402,23 +402,23 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             3. RECOMMENDED TOURS SECTION
         ════════════════════════════════════════════ */}
         {recommendedTours.length > 0 && (
-          <section className="bg-luxury-slate/10 border-t border-luxury-gold/10 py-16 px-6 lg:px-12">
+          <section className="bg-luxury-slate/10 border-t border-[#e6e2d6] py-16 px-6 lg:px-12">
             <div className="max-w-7xl mx-auto">
 
               {/* Section header */}
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-luxury-gold/10 pb-10 mb-12">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#e6e2d6] pb-10 mb-12">
                 <div className="space-y-3 text-left">
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">Signature Journeys</span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-medium">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-medium">
                     Highly Recommended Tours
                   </h2>
-                  <p className="text-sm text-luxury-linen/60 font-light">
+                  <p className="text-sm text-[#545454] font-light">
                     Itineraries that pair perfectly with this travel guide.
                   </p>
                 </div>
                 <Link
                   href="/itineraries"
-                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-luxury-linen transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
+                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-[#343434] transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
                 >
                   View all tours
                 </Link>
@@ -427,7 +427,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
               {/* Tours grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recommendedTours.map((it) => (
-                  <div key={it._id} className="group bg-luxury-slate/30 border border-luxury-gold/10 hover:border-luxury-gold/30 transition-all duration-300 hover:shadow-xl flex flex-col h-full relative">
+                  <div key={it._id} className="group bg-white border border-[#e6e2d6] hover:border-[#e6e2d6] transition-all duration-300 hover:shadow-xl flex flex-col h-full relative">
 
                     {/* Featured badge */}
                     {it.featured && (
@@ -439,7 +439,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                     <div>
                       {/* Tour image */}
-                      <div className="relative h-52 overflow-hidden bg-luxury-slate/20 border-b border-luxury-gold/10">
+                      <div className="relative h-52 overflow-hidden bg-[#f4efe6] border-b border-[#e6e2d6]">
                         <Image
                           src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                           alt={it.title}
@@ -451,11 +451,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                       {/* Card content */}
                       <div className="p-5 text-left space-y-2">
                         <span className="text-[10px] text-[#9A4B33] tracking-widest uppercase font-bold block">VIETNAM</span>
-                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-luxury-linen group-hover:text-luxury-gold transition-colors duration-200">
+                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-[#343434] group-hover:text-luxury-gold transition-colors duration-200">
                           <Link href={`/itineraries/${it.slug?.current || ''}`}>{it.title}</Link>
                         </h4>
                         {it.duration && it.priceFrom && (
-                          <p className="text-[12px] font-medium text-luxury-linen/60 tracking-wide pt-1">
+                          <p className="text-[12px] font-medium text-[#545454] tracking-wide pt-1">
                             {it.duration} Days from £{it.priceFrom?.toLocaleString('en-GB')}pp
                           </p>
                         )}
@@ -463,11 +463,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                     </div>
 
                     {/* Card footer */}
-                    <div className="px-5 py-4 border-t border-luxury-gold/10 flex items-center justify-between text-xs font-semibold bg-luxury-slate/40 mt-auto">
-                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-luxury-linen/70 hover:text-luxury-gold transition-colors">
+                    <div className="px-5 py-4 border-t border-[#e6e2d6] flex items-center justify-between text-xs font-semibold bg-luxury-slate/40 mt-auto">
+                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-[#343434]/70 hover:text-luxury-gold transition-colors">
                         View detail
                       </Link>
-                      <Link href="/enquire" className="text-luxury-gold hover:text-luxury-linen transition-colors">
+                      <Link href="/enquire" className="text-luxury-gold hover:text-[#343434] transition-colors">
                         Request a quote
                       </Link>
                     </div>
@@ -485,7 +485,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
         <section id="faq-section" className="py-20 px-6 lg:px-12 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">Expert Knowledge</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight">
               Useful information for planning your holiday in Vietnam
             </h2>
             <div className="h-[1.5px] w-12 bg-[#9A4B33] mx-auto mt-4" />
@@ -500,7 +500,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             5. MORE TRAVEL GUIDES
         ════════════════════════════════════════════ */}
         {relatedPosts.length > 0 && (
-          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-luxury-slate/10 border-t border-luxury-gold/10">
+          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-luxury-slate/10 border-t border-[#e6e2d6]">
             <div className="max-w-7xl mx-auto">
 
               {/* Header */}
@@ -509,13 +509,13 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">
                     Travel Journal
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-luxury-linen font-semibold leading-tight">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight">
                     More Vietnam Travel Guides
                   </h2>
                 </div>
                 <Link
                   href="/travel-guides"
-                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-luxury-linen transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
+                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-[#343434] transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
                 >
                   View all guides
                 </Link>
@@ -525,14 +525,14 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {relatedPosts.map((rp, idx) => (
                   <article key={rp._id} className="group flex flex-col space-y-4 text-left h-full">
-                    <div className="relative h-64 overflow-hidden rounded-sm bg-luxury-slate/20 border border-luxury-gold/10">
+                    <div className="relative h-64 overflow-hidden rounded-sm bg-[#f4efe6] border border-[#e6e2d6]">
                       <Image
                         src={rp.mainImage || FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]}
                         alt={rp.title}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-luxury-gold/10 backdrop-blur-[2px] text-luxury-linen text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
+                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-[#e6e2d6] backdrop-blur-[2px] text-[#343434] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(rp.content)} minutes read</span>
                       </div>
@@ -540,11 +540,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                     <div className="space-y-2">
                       {rp.publishedAt && (
-                        <span className="text-[9px] text-luxury-linen/50 uppercase tracking-widest block font-bold">
+                        <span className="text-[9px] text-[#545454] uppercase tracking-widest block font-bold">
                           {new Date(rp.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </span>
                       )}
-                      <h4 className="font-serif text-lg leading-snug font-semibold text-luxury-linen group-hover:text-[#9A4B33] transition-colors duration-200">
+                      <h4 className="font-serif text-lg leading-snug font-semibold text-[#343434] group-hover:text-[#9A4B33] transition-colors duration-200">
                         <Link href={`/travel-guides/${rp.slug?.current || ''}`}>
                           {rp.title}
                         </Link>
@@ -562,19 +562,19 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             6. BOTTOM CTA
         ════════════════════════════════════════════ */}
         <section className="py-20 px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto bg-luxury-slate/30 border border-luxury-gold/10 p-10 sm:p-16 text-center space-y-8 shadow-xl">
+          <div className="max-w-3xl mx-auto bg-white border border-[#e6e2d6] p-10 sm:p-16 text-center space-y-8 shadow-xl">
             {post.ctaLabel && (
               <div className="inline-block border border-[#9A4B33]/40 px-6 py-2 text-[10px] uppercase tracking-[0.25em] font-semibold text-[#9A4B33]">
                 {post.ctaLabel}
               </div>
             )}
 
-            <h3 className="font-serif text-2xl sm:text-4xl text-luxury-linen font-medium leading-tight">
+            <h3 className="font-serif text-2xl sm:text-4xl text-[#343434] font-medium leading-tight">
               {post.ctaHeading || 'Ready to Start Planning?'}
             </h3>
 
             {post.ctaDescription && (
-              <p className="text-base text-luxury-linen/60 font-light max-w-xl mx-auto leading-relaxed">
+              <p className="text-base text-[#545454] font-light max-w-xl mx-auto leading-relaxed">
                 {post.ctaDescription}
               </p>
             )}
@@ -588,7 +588,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
               </Link>
               <Link
                 href="/itineraries"
-                className="w-full sm:w-auto border border-luxury-gold/30 hover:border-luxury-gold hover:text-luxury-gold text-luxury-linen text-xs uppercase tracking-widest font-semibold px-10 py-4 transition-colors"
+                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-luxury-gold hover:text-luxury-gold text-[#343434] text-xs uppercase tracking-widest font-semibold px-10 py-4 transition-colors"
               >
                 View Vietnam Tours
               </Link>

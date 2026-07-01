@@ -14,7 +14,7 @@ export default async function DestinationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
@@ -51,10 +51,10 @@ export default async function DestinationsPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
               Regions & Landscapes
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-luxury-linen font-medium leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
               Vietnam Destinations
             </h1>
-            <p className="text-base sm:text-lg text-luxury-linen/70 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#343434]/70 font-light leading-relaxed">
               From the high Sapa highlands to the tropical beaches of Phu Quoc, explore our key regions to inspire your custom journey.
             </p>
           </div>
@@ -77,10 +77,10 @@ export default async function DestinationsPage() {
 
                 {/* Content */}
                 <div className="relative z-20 space-y-3">
-                  <h3 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium">
+                  <h3 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium">
                     {dest.name}
                   </h3>
-                  <p className="text-xs text-luxury-linen/80 font-light leading-relaxed line-clamp-2 max-w-lg">
+                  <p className="text-xs text-[#545454] font-light leading-relaxed line-clamp-2 max-w-lg">
                     {dest.description?.[0]?.children?.[0]?.text || ''}
                   </p>
                   <div className="pt-2">

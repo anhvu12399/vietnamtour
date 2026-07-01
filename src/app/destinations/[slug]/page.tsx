@@ -89,7 +89,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             <span>•</span>
             <span>{destination.bestTimeToVisit}</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-luxury-linen">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
             {destination.name}
           </h1>
         </div>
@@ -104,24 +104,24 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                 Region Overview
               </h2>
-              <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
+              <p className="text-base font-light text-[#545454] leading-relaxed">
                 {destination.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 
             {/* Highlights */}
-            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 animate-fade-in">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 animate-fade-in">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 Key Region Highlights
               </h3>
               <ul className="space-y-4">
                 {destination.highlights.map((hl, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-luxury-linen/75 font-light leading-relaxed">
+                    <span className="text-sm sm:text-base text-[#343434]/75 font-light leading-relaxed">
                       {hl}
                     </span>
                   </li>
@@ -132,7 +132,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Featured Tours from Sanity reference */}
             {featuredTours.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                   Signature Land Tours
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -149,11 +149,11 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">
+                        <h4 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">
                           {it.title}
                         </h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-luxury-linen/60 font-semibold">{it.duration} Days</span>
+                          <span className="text-xs text-[#545454] font-semibold">{it.duration} Days</span>
                           <Link
                             href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
                             className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
@@ -172,7 +172,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Cruises for this destination */}
             {cruises.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                   Luxury Cruises
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -184,9 +184,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
+                        <h4 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-luxury-linen/60 font-semibold">{cruise.duration}</span>
+                          <span className="text-xs text-[#545454] font-semibold">{cruise.duration}</span>
                           <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
                             <span>View Cruise</span><span>→</span>
                           </Link>
@@ -201,7 +201,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Travel Guides for this destination */}
             {guides.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                   Travel Guides & Articles
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -218,7 +218,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                       )}
                       <div className="p-5 space-y-2">
                         <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold">Travel Guide</span>
-                        <h4 className="font-serif text-sm font-medium text-luxury-linen group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
+                        <h4 className="font-serif text-sm font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
                       </div>
                     </Link>
                   ))}
@@ -229,11 +229,11 @@ export default async function DestinationDetailPage({ params }: PageProps) {
 
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 Tailormade Travel Planning
               </h3>
-              <p className="text-sm text-luxury-linen/75 font-light leading-relaxed">
+              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
                 Want to combine {destination.name} with other regions? We will draft an itinerary from scratch tailored to you.
               </p>
               <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
@@ -247,10 +247,10 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             </div>
 
             <div className="border border-luxury-moss p-8 space-y-4">
-              <h4 className="font-serif text-sm tracking-widest uppercase text-luxury-linen font-semibold">
+              <h4 className="font-serif text-sm tracking-widest uppercase text-[#343434] font-semibold">
                 Best time to travel
               </h4>
-              <p className="text-xs sm:text-sm font-light text-luxury-linen/80 leading-relaxed">
+              <p className="text-xs sm:text-sm font-light text-[#545454] leading-relaxed">
                 {destination.bestTimeToVisit}. Travel pacing can be adjusted based on local weather conditions.
               </p>
             </div>

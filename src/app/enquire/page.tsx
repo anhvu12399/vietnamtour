@@ -134,11 +134,11 @@ export default function EnquiryPage() {
                   <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
                     Bespoke Planning
                   </span>
-                  <h1 className="font-serif text-3xl md:text-4xl text-luxury-linen font-medium">
+                  <h1 className="font-serif text-3xl md:text-4xl text-[#343434] font-medium">
                     Start Your Enquiry
                   </h1>
                   <div className="h-[1px] w-12 bg-luxury-gold mx-auto" />
-                  <p className="text-xs sm:text-sm text-luxury-linen/60 font-light">
+                  <p className="text-xs sm:text-sm text-[#545454] font-light">
                     Step {step} of 3: {step === 1 && 'Destinations & Styles'} {step === 2 && 'Party Size & Budget'} {step === 3 && 'Contact Details'}
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export default function EnquiryPage() {
                   <div className="space-y-8 animate-fade-in">
                     {/* Destination Selection */}
                     <div className="space-y-4">
-                      <label className="font-serif text-base text-luxury-linen font-medium block">
+                      <label className="font-serif text-base text-[#343434] font-medium block">
                         Which areas in Vietnam are you interested in?
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -177,7 +177,7 @@ export default function EnquiryPage() {
                               className={`p-3.5 border text-xs tracking-wider uppercase font-medium text-left transition-all duration-200 rounded-none bg-luxury-slate ${
                                 isSelected
                                   ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
-                                  : 'border-luxury-moss hover:border-luxury-gold/60 text-luxury-linen/70'
+                                  : 'border-luxury-moss hover:border-luxury-gold/60 text-[#343434]/70'
                               }`}
                             >
                               {dest}
@@ -189,7 +189,7 @@ export default function EnquiryPage() {
 
                     {/* Travel Style */}
                     <div className="space-y-4">
-                      <label className="font-serif text-base text-luxury-linen font-medium block">
+                      <label className="font-serif text-base text-[#343434] font-medium block">
                         What is your preferred style of travel?
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -203,7 +203,7 @@ export default function EnquiryPage() {
                               className={`p-3.5 border text-xs tracking-wider uppercase font-medium text-left transition-all duration-200 rounded-none bg-luxury-slate ${
                                 isSelected
                                   ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
-                                  : 'border-luxury-moss hover:border-luxury-gold/60 text-luxury-linen/70'
+                                  : 'border-luxury-moss hover:border-luxury-gold/60 text-[#343434]/70'
                               }`}
                             >
                               {style}
@@ -221,7 +221,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Adults */}
                       <div className="space-y-2">
-                        <label htmlFor="adults" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="adults" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           Number of Adults
                         </label>
                         <select
@@ -229,7 +229,7 @@ export default function EnquiryPage() {
                           name="adults"
                           value={formData.adults}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-luxury-slate bg-luxury-slate text-luxury-linen focus:outline-none focus:border-luxury-gold text-sm rounded-none"
+                          className="w-full p-3 border border-luxury-slate bg-[#faf8f5] text-[#343434] focus:outline-none focus:border-luxury-gold text-sm rounded-none"
                         >
                           {[1, 2, 3, 4, 5, 6, '7+'].map((num) => (
                             <option key={num} value={num}>
@@ -241,7 +241,7 @@ export default function EnquiryPage() {
 
                       {/* Children */}
                       <div className="space-y-2">
-                        <label htmlFor="children" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="children" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           Number of Children
                         </label>
                         <select
@@ -249,7 +249,7 @@ export default function EnquiryPage() {
                           name="children"
                           value={formData.children}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-luxury-slate bg-luxury-slate text-luxury-linen focus:outline-none focus:border-luxury-gold text-sm rounded-none"
+                          className="w-full p-3 border border-luxury-slate bg-[#faf8f5] text-[#343434] focus:outline-none focus:border-luxury-gold text-sm rounded-none"
                         >
                           {[0, 1, 2, 3, 4, '5+'].map((num) => (
                             <option key={num} value={num}>
@@ -263,7 +263,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Duration */}
                       <div className="space-y-2">
-                        <label htmlFor="duration" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="duration" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           Preferred Duration
                         </label>
                         <select
@@ -271,7 +271,7 @@ export default function EnquiryPage() {
                           name="duration"
                           value={formData.duration}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-luxury-slate bg-luxury-slate text-luxury-linen focus:outline-none focus:border-luxury-gold text-sm rounded-none"
+                          className="w-full p-3 border border-luxury-slate bg-[#faf8f5] text-[#343434] focus:outline-none focus:border-luxury-gold text-sm rounded-none"
                           required
                         >
                           <option value="">Please Select</option>
@@ -284,7 +284,7 @@ export default function EnquiryPage() {
 
                       {/* Travel Month */}
                       <div className="space-y-2">
-                        <label htmlFor="travelMonth" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="travelMonth" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           When do you plan to travel?
                         </label>
                         <select
@@ -292,7 +292,7 @@ export default function EnquiryPage() {
                           name="travelMonth"
                           value={formData.travelMonth}
                           onChange={handleInputChange}
-                          className="w-full p-3 border border-luxury-slate bg-luxury-slate text-luxury-linen focus:outline-none focus:border-luxury-gold text-sm rounded-none"
+                          className="w-full p-3 border border-luxury-slate bg-[#faf8f5] text-[#343434] focus:outline-none focus:border-luxury-gold text-sm rounded-none"
                           required
                         >
                           <option value="">Please Select</option>
@@ -307,7 +307,7 @@ export default function EnquiryPage() {
                     {/* Budget slider */}
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
-                        <label htmlFor="budgetPerPerson" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold">
+                        <label htmlFor="budgetPerPerson" className="text-xs uppercase tracking-wider text-[#545454] font-semibold">
                           Budget Per Person (£ GBP)
                         </label>
                         <span className="text-base font-semibold text-luxury-gold">
@@ -325,7 +325,7 @@ export default function EnquiryPage() {
                         onChange={handleInputChange}
                         className="w-full accent-luxury-gold cursor-pointer"
                       />
-                      <p className="text-[11px] text-luxury-linen/50 font-light">
+                      <p className="text-[11px] text-[#545454] font-light">
                         Note: As a bespoke luxury travel operator, our custom journeys typically start at £3,000 per person, excluding international flights.
                       </p>
                     </div>
@@ -337,7 +337,7 @@ export default function EnquiryPage() {
                   <div className="space-y-6 animate-fade-in">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                      <label htmlFor="name" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                         Full Name *
                       </label>
                       <input
@@ -347,7 +347,7 @@ export default function EnquiryPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="e.g. John Smith"
-                        className={`w-full p-3 border text-sm focus:outline-none bg-luxury-slate text-luxury-linen rounded-none ${
+                        className={`w-full p-3 border text-sm focus:outline-none bg-[#faf8f5] text-[#343434] rounded-none ${
                           errors.name ? 'border-red-500 focus:border-red-500' : 'border-luxury-slate focus:border-luxury-gold'
                         }`}
                       />
@@ -357,7 +357,7 @@ export default function EnquiryPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Email */}
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="email" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           Email Address *
                         </label>
                         <input
@@ -367,7 +367,7 @@ export default function EnquiryPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="e.g. john@example.com"
-                          className={`w-full p-3 border text-sm focus:outline-none bg-luxury-slate text-luxury-linen rounded-none ${
+                          className={`w-full p-3 border text-sm focus:outline-none bg-[#faf8f5] text-[#343434] rounded-none ${
                             errors.email ? 'border-red-500 focus:border-red-500' : 'border-luxury-slate focus:border-luxury-gold'
                           }`}
                         />
@@ -376,7 +376,7 @@ export default function EnquiryPage() {
 
                       {/* Phone */}
                       <div className="space-y-2">
-                        <label htmlFor="phone" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                        <label htmlFor="phone" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                           Contact Phone Number *
                         </label>
                         <input
@@ -386,7 +386,7 @@ export default function EnquiryPage() {
                           value={formData.phone}
                           onChange={handleInputChange}
                           placeholder="e.g. +44 7911 123456"
-                          className={`w-full p-3 border text-sm focus:outline-none bg-luxury-slate text-luxury-linen rounded-none ${
+                          className={`w-full p-3 border text-sm focus:outline-none bg-[#faf8f5] text-[#343434] rounded-none ${
                             errors.phone ? 'border-red-500 focus:border-red-500' : 'border-luxury-slate focus:border-luxury-gold'
                           }`}
                         />
@@ -396,7 +396,7 @@ export default function EnquiryPage() {
 
                     {/* Notes */}
                     <div className="space-y-2">
-                      <label htmlFor="notes" className="text-xs uppercase tracking-wider text-luxury-linen/60 font-semibold block">
+                      <label htmlFor="notes" className="text-xs uppercase tracking-wider text-[#545454] font-semibold block">
                         Tell us about your dream trip (preferred pacing, locations, key experiences)
                       </label>
                       <textarea
@@ -406,7 +406,7 @@ export default function EnquiryPage() {
                         value={formData.notes}
                         onChange={handleInputChange}
                         placeholder="e.g. We want to celebrate our 10th anniversary. We love fresh local food, private boats, and want a very relaxing pace with lots of spa treatments..."
-                        className="w-full p-3 border border-luxury-slate bg-luxury-slate text-luxury-linen rounded-none focus:outline-none focus:border-luxury-gold"
+                        className="w-full p-3 border border-luxury-slate bg-[#faf8f5] text-[#343434] rounded-none focus:outline-none focus:border-luxury-gold"
                       />
                     </div>
                   </div>
@@ -419,7 +419,7 @@ export default function EnquiryPage() {
                       type="button"
                       disabled={isLoading}
                       onClick={handleBack}
-                      className="px-6 py-2.5 border border-luxury-slate text-luxury-linen/70 font-semibold text-xs tracking-widest uppercase transition-all duration-300 hover:bg-luxury-slate/40 rounded-none disabled:opacity-50"
+                      className="px-6 py-2.5 border border-luxury-slate text-[#343434]/70 font-semibold text-xs tracking-widest uppercase transition-all duration-300 hover:bg-luxury-slate/40 rounded-none disabled:opacity-50"
                     >
                       Back
                     </button>
@@ -469,15 +469,15 @@ export default function EnquiryPage() {
                   <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold">
                     Enquiry Received
                   </span>
-                  <h2 className="font-serif text-3xl text-luxury-linen font-medium">
+                  <h2 className="font-serif text-3xl text-[#343434] font-medium">
                     Thank You, {formData.name.split(' ')[0]}
                   </h2>
                   <div className="h-[1px] w-12 bg-luxury-gold mx-auto" />
-                  <p className="text-sm text-luxury-linen/80 font-light max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm text-[#545454] font-light max-w-md mx-auto leading-relaxed">
                     Your bespoke travel enquiry has been registered and saved. An automatic confirmation email has been dispatched, and our lead Vietnam Specialist, **Alice Mercer**, will contact you within 24 hours.
                   </p>
                 </div>
-                <div className="pt-6 space-y-2 text-xs text-luxury-linen/50">
+                <div className="pt-6 space-y-2 text-xs text-[#545454]">
                   <p>A copy of your enquiry details was sent to: <span className="font-medium text-luxury-gold">{formData.email}</span></p>
                   <p>Direct UK assistance: <span className="font-medium text-luxury-gold font-semibold">+44 (0) 20 7845 9200</span></p>
                 </div>

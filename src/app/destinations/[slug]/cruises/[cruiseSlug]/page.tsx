@@ -79,7 +79,7 @@ export default async function DestinationCruisePage({ params }: PageProps) {
             <span className="opacity-50">›</span>
             <span className="opacity-70">Cruises</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-luxury-linen">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
             {cruise.title}
           </h1>
           <div className="flex flex-wrap gap-4 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
@@ -96,19 +96,19 @@ export default async function DestinationCruisePage({ params }: PageProps) {
           <div className="lg:col-span-2 space-y-10">
             {cruise.description && (
               <div className="space-y-6">
-                <h2 className="font-serif text-2xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                   About This Cruise
                 </h2>
-                <p className="text-base font-light text-luxury-linen/80 leading-relaxed">{cruise.description}</p>
+                <p className="text-base font-light text-[#545454] leading-relaxed">{cruise.description}</p>
               </div>
             )}
           </div>
 
           {/* Right CTA */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">Enquire About This Cruise</h3>
-              <p className="text-sm text-luxury-linen/75 font-light leading-relaxed">
+            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">Enquire About This Cruise</h3>
+              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
                 Our specialists can build a complete luxury itinerary around this cruise experience.
               </p>
               <Link

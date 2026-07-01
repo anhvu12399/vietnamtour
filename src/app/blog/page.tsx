@@ -24,7 +24,7 @@ const categoryColors: Record<string, string> = {
 };
 
 function getCategoryColor(cat: string) {
-  return categoryColors[cat] || 'bg-luxury-slate text-luxury-linen border-luxury-gold/30';
+  return categoryColors[cat] || 'bg-[#faf8f5] text-[#343434] border-[#e6e2d6]';
 }
 
 export default async function BlogListingPage() {
@@ -38,9 +38,9 @@ export default async function BlogListingPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-luxury-slate text-luxury-linen">
+      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
         {/* ── Hero Header ── */}
-        <section className="pt-32 pb-16 px-6 lg:px-12 bg-luxury-slate relative border-b border-white/5">
+        <section className="pt-32 pb-16 px-6 lg:px-12 bg-luxury-slate relative border-b border-[#e6e2d6]">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
           <div className="max-w-7xl mx-auto text-center relative z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-normal tracking-tight text-white mb-6">
@@ -60,7 +60,7 @@ export default async function BlogListingPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
           
           {posts.length === 0 ? (
-            <div className="text-center py-24 border border-white/10 rounded-xl bg-white/5">
+            <div className="text-center py-24 border border-[#e6e2d6] rounded-xl bg-white/5">
               <h2 className="text-2xl font-playfair text-white mb-3">No articles yet</h2>
               <p className="text-white/60">Our specialists are currently writing new travel stories. Check back soon!</p>
             </div>
@@ -74,7 +74,7 @@ export default async function BlogListingPage() {
                     <span className="h-[1px] flex-1 bg-gradient-to-r from-luxury-gold/50 to-transparent"></span>
                   </h2>
                   
-                  <Link href={`/blog/${featuredPost.slug.current}`} className="group block relative rounded-2xl overflow-hidden bg-[#18201d] border border-white/5 hover:border-luxury-gold/30 transition-all duration-500 shadow-2xl">
+                  <Link href={`/blog/${featuredPost.slug.current}`} className="group block relative rounded-2xl overflow-hidden bg-[#18201d] border border-[#e6e2d6] hover:border-[#e6e2d6] transition-all duration-500 shadow-2xl">
                     <div className="flex flex-col lg:flex-row">
                       {/* Image side */}
                       <div className="relative h-[300px] lg:h-[500px] lg:w-[60%] overflow-hidden">
@@ -141,7 +141,7 @@ export default async function BlogListingPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {standardPosts.map((post: any) => (
-                      <Link key={post._id} href={`/blog/${post.slug.current}`} className="group flex flex-col bg-[#18201d] border border-white/5 rounded-2xl overflow-hidden hover:border-luxury-gold/30 transition-all duration-500 hover:-translate-y-1 shadow-xl">
+                      <Link key={post._id} href={`/blog/${post.slug.current}`} className="group flex flex-col bg-[#18201d] border border-[#e6e2d6] rounded-2xl overflow-hidden hover:border-[#e6e2d6] transition-all duration-500 hover:-translate-y-1 shadow-xl">
                         
                         {/* Card Image */}
                         <div className="relative h-[240px] overflow-hidden">
@@ -181,7 +181,7 @@ export default async function BlogListingPage() {
                           </p>
 
                           {post.author && (
-                            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/5">
+                            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-[#e6e2d6]">
                               {post.author.avatar ? (
                                 <Image
                                   src={post.author.avatar}

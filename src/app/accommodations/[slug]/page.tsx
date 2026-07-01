@@ -56,7 +56,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
             <span>•</span>
             <span>{accommodation.location}</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-luxury-linen">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
             {accommodation.name}
           </h1>
         </div>
@@ -70,24 +70,24 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
             
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
                 About the Resort
               </h2>
-              <p className="text-base font-light text-luxury-linen/80 leading-relaxed">
+              <p className="text-base font-light text-[#545454] leading-relaxed">
                 {accommodation.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 
             {/* Features list */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 Resort Features & Signature Experiences
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {accommodation.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center space-x-3 p-4 bg-luxury-moss/30 border border-luxury-moss/50">
                     <span className="w-2.5 h-2.5 bg-luxury-gold rounded-full shrink-0" />
-                    <span className="text-sm text-luxury-linen/80 font-medium">{feature}</span>
+                    <span className="text-sm text-[#545454] font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -95,7 +95,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
 
             {/* Gallery Grid */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 Photo Gallery
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -116,11 +116,11 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
 
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-luxury-gold/30 space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-luxury-linen font-medium">
+            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+              <h3 className="font-serif text-xl text-[#343434] font-medium">
                 Plan a Luxury Escape
               </h3>
-              <p className="text-sm text-luxury-linen/75 font-light leading-relaxed">
+              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
                 Stay at {accommodation.name} as part of your tailor-made Vietnam itinerary. Speak to a travel specialist today.
               </p>
               <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
@@ -135,7 +135,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
                     href={accommodation.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 border border-luxury-linen text-luxury-linen font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-luxury-linen hover:text-luxury-slate"
+                    className="block w-full py-3 border border-luxury-linen text-[#343434] font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-luxury-linen hover:text-luxury-slate"
                   >
                     Visit Official Site ↗
                   </a>
@@ -143,8 +143,8 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
               </div>
             </div>
             
-            <div className="border border-luxury-moss p-8 space-y-4 text-xs font-light text-luxury-linen/70">
-              <h4 className="font-serif text-xs tracking-widest uppercase text-luxury-linen font-semibold">
+            <div className="border border-luxury-moss p-8 space-y-4 text-xs font-light text-[#343434]/70">
+              <h4 className="font-serif text-xs tracking-widest uppercase text-[#343434] font-semibold">
                 Why book with us?
               </h4>
               <ul className="space-y-2">
