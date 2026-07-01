@@ -90,13 +90,13 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
               <a
-                href="#"
+                href="/enquire"
                 className="bg-gold hover:bg-gold/80 text-white text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase shadow-md"
               >
                 Design Your Journey
               </a>
               <a
-                href="#"
+                href="/itineraries"
                 className="border border-white/30 hover:border-gold text-white hover:text-gold text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase bg-black/10 backdrop-blur-sm"
               >
                 Explore Expeditions

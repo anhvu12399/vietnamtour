@@ -29,14 +29,14 @@ export default function DestinationsTabbed() {
           title: "Sapa Valley",
           description: "Trek through cascading emerald rice terraces and encounter local hilltribe cultures.",
           image: "/images/sapa.jpg",
-          link: "#",
+          link: "/destinations/hanoi-and-the-north",
           btnText: "Explore Sapa",
         },
         {
           title: "Ha Long Bay",
           description: "Sail past towering limestone pillars on a boutique traditional wooden junk boat.",
           image: "/images/halong_card.jpg",
-          link: "#",
+          link: "/destinations/hanoi-and-the-north",
           btnText: "Explore Ha Long",
         },
       ],
@@ -49,14 +49,14 @@ export default function DestinationsTabbed() {
           title: "Hoi An Ancient Town",
           description: "Wander through lantern-lit merchant streets and taste signature culinary secrets.",
           image: "/images/hoian.jpg",
-          link: "#",
+          link: "/destinations/central-coast-and-hoi-an",
           btnText: "Explore Hoi An",
         },
         {
           title: "Phong Nha Caves",
           description: "Venture deep into the world's largest cave systems and pristine primary jungles.",
           image: "/images/phongnha.jpg",
-          link: "#",
+          link: "/destinations/central-coast-and-hoi-an",
           btnText: "Explore Phong Nha",
         },
       ],
@@ -69,14 +69,14 @@ export default function DestinationsTabbed() {
           title: "Mekong Delta",
           description: "Float down peaceful coconut canals and witness colorful floating market trades.",
           image: "/images/mekong.jpg",
-          link: "#",
+          link: "/destinations/saigon-and-mekong-delta",
           btnText: "Explore Mekong",
         },
         {
           title: "Phu Quoc Island",
           description: "Unwind on powdery white sands and swim in turquoise waters at luxury beach retreats.",
           image: "/images/phuquoc.jpg",
-          link: "#",
+          link: "/destinations/phu-quoc-island",
           btnText: "Explore Phu Quoc",
         },
       ],
@@ -155,7 +155,7 @@ export default function DestinationsTabbed() {
         {/* Explore All CTA */}
         <div className="text-center mt-16">
           <a
-            href="#"
+            href="/destinations"
             className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 transition-colors text-[10px] tracking-widest uppercase"
           >
             VIEW ALL EXPEDITIONS

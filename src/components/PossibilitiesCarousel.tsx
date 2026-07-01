@@ -8,6 +8,7 @@ interface Slide {
   destinations: string;
   price: string;
   image: string;
+  link: string;
 }
 
 export default function PossibilitiesCarousel() {
@@ -17,32 +18,37 @@ export default function PossibilitiesCarousel() {
     {
       title: "Grand Vietnam Heritage Overland",
       destinations: "Hanoi, Ha Long Bay, Hue, Hoi An, and Ho Chi Minh City",
-      price: "15 days from $9,850pp",
+      price: "15 days from £9,850pp",
       image: "/images/vietnam_hero.jpg",
+      link: "/itineraries/the-grand-tour-of-vietnam",
     },
     {
       title: "Northern Peaks & Cascade Terraces",
       destinations: "Hanoi, Sapa, and local ethnic villages",
-      price: "9 days from $4,560pp",
+      price: "9 days from £4,560pp",
       image: "/images/sapa.jpg",
+      link: "/itineraries/vietnamese-culinary-and-culture-journey",
     },
     {
       title: "Luxury Mekong Cruise & Phu Quoc Escape",
       destinations: "Mekong River delta and Phu Quoc tropical beaches",
-      price: "12 days from $7,410pp",
+      price: "12 days from £7,410pp",
       image: "/images/mekong.jpg",
+      link: "/itineraries/indochine-romance-and-beach-escape",
     },
     {
       title: "Lanterns & Imperial Culinary Secrets",
       destinations: "Hue and Hoi An Ancient Town",
-      price: "8 days from $3,960pp",
+      price: "8 days from £3,960pp",
       image: "/images/hoian.jpg",
+      link: "/itineraries/vietnamese-culinary-and-culture-journey",
     },
     {
       title: "Exclusive Cave & Jungle Expedition",
       destinations: "Phong Nha-Ke Bang National Park",
-      price: "7 days from $5,850pp",
+      price: "7 days from £5,850pp",
       image: "/images/phongnha.jpg",
+      link: "/itineraries/the-grand-tour-of-vietnam",
     },
   ];
 
@@ -73,7 +79,7 @@ export default function PossibilitiesCarousel() {
             Only you decide where your journey will take you. These custom curated itineraries are just possibilities to inspire you for an expedition that is as individual as you.
           </p>
           <a
-            href="#"
+            href="/itineraries"
             className="text-green hover:text-gold font-semibold underline text-xs tracking-wider uppercase transition-colors mt-2"
           >
             Open Trip Finder
@@ -127,7 +133,7 @@ export default function PossibilitiesCarousel() {
                       {slide.destinations.split(",")[0]}
                     </span>
                     <h3 className="font-serif text-lg text-[#343434] leading-snug font-normal hover:text-green transition-colors">
-                      <a href="#">{slide.title}</a>
+                      <a href={slide.link}>{slide.title}</a>
                     </h3>
                   </div>
                   
@@ -137,7 +143,7 @@ export default function PossibilitiesCarousel() {
                       <strong className="text-xs font-semibold text-green block">{slide.price.split("from")[1]}</strong>
                     </span>
                     <a
-                      href="#"
+                      href={slide.link}
                       className="border border-green hover:bg-[#f5f0e6] text-green font-bold py-2 px-4 transition-colors text-[9px] tracking-widest uppercase"
                     >
                       View Journey
