@@ -6,11 +6,31 @@ import Image from "next/image";
 export default function Footer() {
   const [email, setEmail] = useState("");
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      alert(`Thank you for subscribing: ${email}`);
-      setEmail("");
+      setIsSubmitting(true);
+      try {
+        await fetch("https://formsubmit.co/ajax/mywaytravelinc@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            _subject: "New Newsletter Subscription - Vietnam Tours",
+          }),
+        });
+        alert(`Thank you for subscribing!`);
+        setEmail("");
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -74,9 +94,10 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="bg-gold hover:bg-gold/80 text-white font-bold py-3.5 px-8 rounded-none transition-colors text-[10px] tracking-widest uppercase"
+              disabled={isSubmitting}
+              className="bg-gold hover:bg-gold/80 disabled:opacity-50 text-white font-bold py-3.5 px-8 rounded-none transition-colors text-[10px] tracking-widest uppercase"
             >
-              Subscribe
+              {isSubmitting ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
         </div>

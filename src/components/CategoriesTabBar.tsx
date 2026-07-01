@@ -34,7 +34,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
   ];
 
   return (
-    <section className="w-full bg-[#161C1A] text-white sticky top-[80px] md:top-[88px] z-30 shadow-sm border-b border-white/5">
+    <section className="w-full bg-[#faf8f5] text-[#343434] sticky top-[80px] md:top-[88px] z-30 shadow-sm border-b border-[#e6e2d6]">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 overflow-x-auto scrollbar-none">
         <div className="flex items-center space-x-6 lg:space-x-8 min-w-max h-11">
           {tabs.map((tab) => {
@@ -43,27 +43,27 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
               <Link
                 key={tab.id}
                 href={tab.href}
-                className="relative h-full flex items-center gap-1.5 hover:text-[#9A4B33] transition-colors duration-200 cursor-pointer"
+                className="relative h-full flex items-center gap-1.5 hover:text-gold transition-colors duration-200 cursor-pointer"
               >
                 <span
                   className={`inline-flex items-center justify-center text-[8px] font-bold rounded-full w-4.5 h-4.5 transition-colors duration-200 ${
                     isActive
-                      ? 'bg-[#9A4B33] text-[#161C1A]'
-                      : 'bg-white/10 text-white/60'
+                      ? 'bg-gold text-white'
+                      : 'bg-[#e6e2d6] text-[#545454]'
                   }`}
                 >
                   {tab.count}
                 </span>
                 <span
                   className={`text-[10px] lg:text-[11px] font-sans font-bold uppercase tracking-[0.12em] transition-colors duration-200 ${
-                    isActive ? 'text-white' : 'text-white/75'
+                    isActive ? 'text-gold' : 'text-[#545454]'
                   }`}
                 >
                   {tab.label}
                 </span>
                 {isActive && (
                   /* Downward triangle caret */
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-[#161C1A] z-10" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-gold z-10" />
                 )}
               </Link>
             );

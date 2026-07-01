@@ -89,21 +89,24 @@ export default function EnquiryPage() {
     setServerError('');
 
     try {
-      const response = await fetch('/api/enquire', {
+      const response = await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          _subject: `New Tailor-Made Enquiry from ${formData.name}`,
+          _template: "table"
+        }),
       });
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        setSubmitted(true);
-      } else {
-        setServerError(result.error || 'Failed to submit enquiry. Please try again.');
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
       }
+
+      setSubmitted(true);
     } catch (err: any) {
       console.error('Submission error:', err);
       setServerError('An error occurred during submission. Please try again.');
