@@ -42,7 +42,10 @@ export default function Hero() {
   }, [slides.length]);
 
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center bg-[#0e1628] overflow-hidden pt-36 pb-16 px-4 lg:px-12 mt-[80px]">
+    <section
+      aria-label="Bespoke luxury private Vietnam tours from the UK"
+      className="relative w-full min-h-[90vh] flex items-center bg-[#0e1628] overflow-hidden pt-36 pb-16 px-4 lg:px-12 mt-[80px]"
+    >
       
       {/* 1. Full-Screen Sharp Background Slideshow (Matches active slide) */}
       <div className="absolute inset-0 z-0">
@@ -55,9 +58,10 @@ export default function Hero() {
           >
             <Image
               src={slide.src}
-              alt=""
+              alt={idx === 0 ? slide.title + " — luxury private Vietnam tours from the UK" : ""}
               fill
-              priority
+              priority={idx === 0}
+              sizes="100vw"
               className="object-cover object-center transition-transform duration-[6000ms] ease-out"
             />
           </div>

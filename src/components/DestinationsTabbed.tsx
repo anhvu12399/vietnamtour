@@ -28,14 +28,14 @@ export default function DestinationsTabbed() {
         {
           title: "Sapa Valley",
           description: "Trek through cascading emerald rice terraces and encounter local hilltribe cultures.",
-          image: "/images/sapa.jpg",
+          image: "/images/dest_sapa_highland.png",
           link: "/destinations/hanoi-and-the-north",
           btnText: "Explore Sapa",
         },
         {
           title: "Ha Long Bay",
           description: "Sail past towering limestone pillars on a boutique traditional wooden junk boat.",
-          image: "/images/halong_card.jpg",
+          image: "/images/dest_halong_limestone.png",
           link: "/destinations/hanoi-and-the-north",
           btnText: "Explore Ha Long",
         },
@@ -48,14 +48,14 @@ export default function DestinationsTabbed() {
         {
           title: "Hoi An Ancient Town",
           description: "Wander through lantern-lit merchant streets and taste signature culinary secrets.",
-          image: "/images/hoian.jpg",
+          image: "/images/dest_hoian_lanterns.png",
           link: "/destinations/central-coast-and-hoi-an",
           btnText: "Explore Hoi An",
         },
         {
           title: "Phong Nha Caves",
           description: "Venture deep into the world's largest cave systems and pristine primary jungles.",
-          image: "/images/phongnha.jpg",
+          image: "/images/dest_phongnha_cave.png",
           link: "/destinations/central-coast-and-hoi-an",
           btnText: "Explore Phong Nha",
         },
@@ -67,15 +67,15 @@ export default function DestinationsTabbed() {
       cards: [
         {
           title: "Mekong Delta",
-          description: "Float down peaceful coconut canals and witness colorful floating market trades.",
-          image: "/images/mekong.jpg",
+          description: "Float down peaceful coconut canals and witness colourful floating market trades.",
+          image: "/images/dest_mekong_canal.png",
           link: "/destinations/saigon-and-mekong-delta",
           btnText: "Explore Mekong",
         },
         {
           title: "Phu Quoc Island",
           description: "Unwind on powdery white sands and swim in turquoise waters at luxury beach retreats.",
-          image: "/images/phuquoc.jpg",
+          image: "/images/dest_phuquoc_beach.png",
           link: "/destinations/phu-quoc-island",
           btnText: "Explore Phu Quoc",
         },
@@ -125,8 +125,10 @@ export default function DestinationsTabbed() {
               <div className="absolute inset-0 z-0">
                 <Image
                   src={card.image}
-                  alt={card.title}
+                  alt={`${card.title} — luxury private Vietnam tours UK`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#121615] via-transparent to-transparent z-10" />

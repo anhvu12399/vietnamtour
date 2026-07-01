@@ -12,9 +12,11 @@ export default function BrochureRequest() {
         <div className="w-full md:w-1/3 flex justify-center">
           <div className="relative w-[180px] h-[250px] shadow-lg transform hover:scale-105 transition-transform duration-300">
             <Image
-              src="/images/brochure_cover.webp"
-              alt="Audley Travel Brochure Cover"
+              src="/images/brochure_vietnam_cover.png"
+              alt="Vietnam Private Tours Luxury Lookbook 2024 — request your free copy"
               fill
+              sizes="180px"
+              loading="lazy"
               className="object-cover rounded-sm"
             />
           </div>
@@ -26,13 +28,13 @@ export default function BrochureRequest() {
             Inspirations
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-[#343434] font-light tracking-wide">
-            Request our lookbook
+            Request our Vietnam lookbook
           </h2>
           <p className="font-sans text-sm text-[#545454] leading-relaxed max-w-lg font-light">
-            Our private edition lookbook contains curated itineraries, boutique vessel profiles, and heritage guides to help you start mapping your customizable journey.
+            Our private edition Vietnam lookbook contains curated tailor-made itineraries, boutique cruise vessel profiles, and heritage destination guides to help you start planning your bespoke Vietnam holiday from the UK.
           </p>
           <a
-            href="#"
+            href="/enquire"
             className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase mt-4 shadow-sm"
           >
             REQUEST A LOOKBOOK

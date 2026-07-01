@@ -10,13 +10,15 @@ export default function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/cta.webp"
-          alt="CTA Background"
+          src="/images/cta_vietnam_sapa_aerial.png"
+          alt="Aerial view of Sa Pa rice terraces in Vietnam — design your bespoke private tour"
           fill
+          sizes="100vw"
+          loading="lazy"
           className="object-cover"
         />
         {/* Dark Tint Overlay */}
-        <div className="absolute inset-0 bg-black/35 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
       {/* Content Card */}
@@ -34,13 +36,13 @@ export default function CTASection() {
 
         <div className="flex items-center gap-2 text-lg md:text-xl font-bold font-sans text-green">
           <PhoneIcon className="w-5 h-5 text-gold" />
-          <a href="tel:1-800-555-VIET" className="hover:underline hover:text-gold transition-colors">
-            1-800-555-VIET
+          <a href="tel:+442000000000" className="hover:underline hover:text-gold transition-colors">
+            +44 (0)20 0000 0000
           </a>
         </div>
 
         <a
-          href="#"
+          href="/enquire"
           className="bg-gold hover:bg-gold/80 text-white font-bold py-3.5 px-8 rounded-none transition-colors text-[10px] tracking-widest uppercase mt-4 shadow-md"
         >
           BEGIN YOUR EXPEDITION

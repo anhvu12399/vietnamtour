@@ -19,7 +19,7 @@ export default function PossibilitiesCarousel() {
       title: "Grand Vietnam Heritage Overland",
       destinations: "Hanoi, Ha Long Bay, Hue, Hoi An, and Ho Chi Minh City",
       price: "15 days from £9,850pp",
-      image: "/images/vietnam_hero.jpg",
+      image: "/images/insp_heritage_overland.png",
       link: "/itineraries/the-grand-tour-of-vietnam",
     },
     {
@@ -33,7 +33,7 @@ export default function PossibilitiesCarousel() {
       title: "Luxury Mekong Cruise & Phu Quoc Escape",
       destinations: "Mekong River delta and Phu Quoc tropical beaches",
       price: "12 days from £7,410pp",
-      image: "/images/mekong.jpg",
+      image: "/images/insp_mekong_cruise.png",
       link: "/itineraries/indochine-romance-and-beach-escape",
     },
     {
@@ -120,8 +120,10 @@ export default function PossibilitiesCarousel() {
                 <div className="relative h-[220px] w-full bg-[#121615]">
                   <Image
                     src={slide.image}
-                    alt={slide.title}
+                    alt={`${slide.title} — bespoke Vietnam holiday UK`}
                     fill
+                    sizes="320px"
+                    loading="lazy"
                     className="object-cover"
                   />
                 </div>

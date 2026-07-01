@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.vietnamtours.co.uk/sitemap.xml
+
+# Disallow admin/studio paths from search engines
+User-agent: *
+Disallow: /studio/
