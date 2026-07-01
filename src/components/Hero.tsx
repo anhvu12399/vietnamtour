@@ -13,19 +13,19 @@ interface SlideData {
 export default function Hero() {
   const slides: SlideData[] = [
     {
-      src: "/images/hero_halong_bay.png",
+      src: "/images/hero_halong_luxury.png",
       label: "Signature Cruise",
       title: "Traditional Luxury Junks in Ha Long Bay",
       description: "Spend a quiet night sailing past limestone towers on a private, single-cabin wooden junk.",
     },
     {
-      src: "/images/hero_sapa.png",
+      src: "/images/hero_sapa_luxury.png",
       label: "Highland Trekking",
       title: "Misty Valleys & Terraces in Sa Pa",
       description: "Trek through cascading rice fields and meet local Hmong villagers in private valleys.",
     },
     {
-      src: "/images/hero_hoian.png",
+      src: "/images/hero_hoian_luxury.png",
       label: "Heritage Town",
       title: "Ancient Lantern Streets of Hoi An",
       description: "Wander through beautifully preserved merchant streets under the soft glow of silk lanterns.",
@@ -44,13 +44,13 @@ export default function Hero() {
   return (
     <section className="relative w-full min-h-[90vh] flex items-center bg-[#0e1628] overflow-hidden pt-36 pb-16 px-4 lg:px-12 mt-[80px]">
       
-      {/* 1. Full-Screen Blurred Background Slideshow (Matches active slide) */}
+      {/* 1. Full-Screen Sharp Background Slideshow (Matches active slide) */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, idx) => (
           <div
             key={idx}
             className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
-              idx === currentIndex ? "opacity-35 scale-100" : "opacity-0 scale-105"
+              idx === currentIndex ? "opacity-60 scale-100" : "opacity-0 scale-105"
             }`}
           >
             <Image
@@ -58,12 +58,12 @@ export default function Hero() {
               alt=""
               fill
               priority
-              className="object-cover object-center filter blur-lg scale-110"
+              className="object-cover object-center transition-transform duration-[6000ms] ease-out"
             />
           </div>
         ))}
-        {/* Dark Indigo Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0e1628] via-[#0e1628]/70 to-[#0e1628]/80 z-10" />
+        {/* Asymmetrical Gradient Vignette: Darker on the left for text readability, clear in the middle, dark on right edges */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0e1628]/95 via-[#0e1628]/40 to-[#0e1628]/60 z-10" />
       </div>
 
       {/* 2. Main Content Wrapper */}
