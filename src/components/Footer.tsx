@@ -36,20 +36,38 @@ export default function Footer() {
 
   const footerLinks = [
     {
-      title: "Expeditions",
-      links: ["Northern Highlands", "Central Heritage", "Southern Pulse", "Beach Escapes"],
+      title: "Destinations",
+      links: [
+        { label: "Northern Highlands", href: "/itineraries?region=north" },
+        { label: "Central Heritage", href: "/itineraries?region=central" },
+        { label: "Southern Pulse", href: "/itineraries?region=south" },
+        { label: "Beach Escapes", href: "/trip-ideas/beach-escapes" },
+        { label: "All Itineraries", href: "/itineraries" },
+      ],
     },
     {
       title: "Resources",
-      links: ["Visa Guide", "Best Time to Visit", "Bespoke Services", "Agent Portal"],
+      links: [
+        { label: "Visa Guide", href: "/visa-guide" },
+        { label: "Best Time to Visit", href: "/best-time-to-visit" },
+        { label: "Travel Guides", href: "/travel-guides" },
+        { label: "Enquire Now", href: "/enquire" },
+      ],
     },
     {
-      title: "Philosophy",
-      links: ["Our Story", "Handpicked Scholars", "Green ecolodges", "Social Impact"],
+      title: "About Us",
+      links: [
+        { label: "Our Story", href: "/our-story" },
+        { label: "Our Specialists", href: "/specialists" },
+        { label: "Tailor-Made Tours", href: "/enquire" },
+      ],
     },
     {
       title: "Legal",
-      links: ["Terms & Conditions", "Privacy Policy", "Accessibility Statement"],
+      links: [
+        { label: "Terms & Conditions", href: "/terms" },
+        { label: "Privacy Policy", href: "/privacy-policy" },
+      ],
     },
   ];
 
@@ -112,8 +130,8 @@ export default function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {col.links.map((link, lIdx) => (
                   <li key={lIdx}>
-                    <a href="#" className="hover:text-gold transition-colors">
-                      {link}
+                    <a href={link.href} className="hover:text-gold transition-colors">
+                      {link.label}
                     </a>
                   </li>
                 ))}
