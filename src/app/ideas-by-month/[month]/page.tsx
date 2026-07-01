@@ -247,7 +247,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 
                 <ul className="space-y-4">
                   {(monthData.highlights || []).map((item: any, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3 text-xs text-slate-300 leading-relaxed">
+                    <li key={idx} className="flex items-start gap-3 text-xs text-[#545454] leading-relaxed">
                       <span className="text-[#9A4B33] font-bold text-sm shrink-0 leading-none">✓</span>
                       <span>{item}</span>
                     </li>
@@ -395,7 +395,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
             <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#9A4B33] block">
               Bespoke Travel Design
             </span>
-            <h3 className="font-serif text-3xl sm:text-5xl text-[#EDE9E3] font-medium leading-tight">
+            <h3 className="font-serif text-3xl sm:text-5xl text-[#0e1628] font-medium leading-tight">
               {monthData.ctaHeading}
             </h3>
             <p className="text-base sm:text-lg text-[#545454] font-light max-w-2xl mx-auto leading-relaxed">
@@ -410,7 +410,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
               </Link>
               <Link
                 href="/specialists"
-                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-white text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
+                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-[#343434] text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Speak to a Specialist
               </Link>

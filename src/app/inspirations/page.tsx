@@ -148,7 +148,7 @@ export default function InspirationsListingPage() {
               </Link>
               <Link
                 href="/specialists"
-                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-white text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
+                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-[#343434] text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Speak to a Specialist
               </Link>
