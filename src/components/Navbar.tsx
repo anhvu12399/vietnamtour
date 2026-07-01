@@ -94,7 +94,7 @@ export default function Navbar() {
     setMobileExpanded(mobileExpanded === menu ? null : menu);
   };
 
-  const isTransparent = isHeroPage && !isScrolled;
+  const isTransparent = false;
 
   // Top Bar Classes
   const topBarBgClass = isTransparent
