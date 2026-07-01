@@ -13,19 +13,19 @@ interface SlideData {
 export default function Hero() {
   const slides: SlideData[] = [
     {
-      src: "/images/vietnam_hero.jpg",
+      src: "/images/hero_halong_bay.png",
       label: "Signature Cruise",
       title: "Traditional Luxury Junks in Ha Long Bay",
       description: "Spend a quiet night sailing past limestone towers on a private, single-cabin wooden junk.",
     },
     {
-      src: "/images/sapa.jpg",
+      src: "/images/hero_sapa.png",
       label: "Highland Trekking",
       title: "Misty Valleys & Terraces in Sa Pa",
       description: "Hike through emerald green rice paddies and meet local Hmong villagers in private valleys.",
     },
     {
-      src: "/images/hoian.jpg",
+      src: "/images/hero_hoian.png",
       label: "Heritage Town",
       title: "Ancient Lantern Streets of Hoi An",
       description: "Wander through beautifully preserved merchant streets under the soft glow of silk lanterns.",
