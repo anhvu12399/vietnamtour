@@ -177,8 +177,8 @@ export default async function ItinerariesPage() {
 
                 <div className="pt-4 border-t border-[#d8d8d8] w-full flex flex-col items-center">
                   <span className="text-[9px] uppercase text-gray-400 font-bold tracking-widest block mb-1">Or call us directly</span>
-                  <a href="tel:+442078459200" className="text-sm font-bold text-green hover:text-blue transition-colors">
-                    +44 (0) 20 7845 9200
+                  <a href="tel:+84988600388" className="text-sm font-bold text-green hover:text-blue transition-colors">
+                    +84 988600388
                   </a>
                 </div>
               </div>

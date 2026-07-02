@@ -184,8 +184,8 @@ export default async function TravelGuidesPage() {
 
                 <div className="pt-2 border-t border-[#e6e2d6] w-full flex flex-col items-center">
                   <span className="text-[10px] uppercase text-[#545454] font-bold tracking-widest block mb-0.5">Or call us directly</span>
-                  <a href="tel:+442078459200" className="text-base font-bold text-[#343434] hover:text-[#9A4B33] transition-colors duration-200">
-                    +44 (0) 20 7845 9200
+                  <a href="tel:+84988600388" className="text-base font-bold text-[#343434] hover:text-[#9A4B33] transition-colors duration-200">
+                    +84 988600388
                   </a>
                 </div>
               </div>

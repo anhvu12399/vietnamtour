@@ -379,7 +379,7 @@ export const homepage = defineType({
       name: 'finalCtaPhone',
       title: 'CTA Phone Number',
       type: 'string',
-      description: 'e.g. "+44 (0) 20 7845 9200"',
+      description: 'e.g. "+84 988600388"',
       group: 'cta',
     }),
 

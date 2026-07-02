@@ -111,7 +111,7 @@ export const mockSpecialists: Specialist[] = [
     image: '/images/specialist_alice.png',
     role: 'Senior Indochina Specialist',
     email: 'alice.mercer@vietnamtour.co.uk',
-    phone: '+44 (0) 20 7845 9210',
+    phone: '+84 988600388',
     bio: [
       {
         _key: 'b1',
@@ -137,7 +137,7 @@ export const mockSpecialists: Specialist[] = [
     image: '/images/specialist_james.png',
     role: 'Vietnam & Expedition Consultant',
     email: 'james.harrison@vietnamtour.co.uk',
-    phone: '+44 (0) 20 7845 9214',
+    phone: '+84 988600388',
     bio: [
       {
         _key: 'b1',

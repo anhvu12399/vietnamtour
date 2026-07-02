@@ -14,7 +14,7 @@ export function OrganizationJsonLd({
   name = 'VietnamTours',
   url = 'https://www.vietnamtours.co.uk',
   logo = 'https://www.vietnamtours.co.uk/logo-dark.png',
-  phone = '+442078459200',
+  phone = '+84988600388',
   email = 'info@vietnamtours.co.uk',
   sameAs = [],
 }: OrganizationProps) {

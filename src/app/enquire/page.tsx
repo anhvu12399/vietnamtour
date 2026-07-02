@@ -510,8 +510,8 @@ export default function EnquiryPage() {
                   </p>
                   <div className="pt-2 border-t border-gray-800 flex flex-col items-center justify-center gap-1.5">
                     <Phone className="w-5 h-5 text-gold" />
-                    <a href="tel:02046005398" className="text-xl md:text-2xl font-bold font-sans tracking-wide hover:text-gold transition-colors block">
-                      020 4600 5398
+                    <a href="tel:+84988600388" className="text-xl md:text-2xl font-bold font-sans tracking-wide hover:text-gold transition-colors block">
+                      +84 988600388
                     </a>
                   </div>
                 </div>
@@ -608,7 +608,7 @@ export default function EnquiryPage() {
 
               <div className="pt-6 border-t border-gray-100 space-y-2 text-xs text-[#545454]">
                 <p>Enquiry copy dispatched to: <span className="font-medium text-[#0e1628]">{formData.email}</span></p>
-                <p>Direct UK Assistance: <span className="font-semibold text-[#0e1628]">020 4600 5398</span></p>
+                <p>Direct UK Assistance: <span className="font-semibold text-[#0e1628]">+84 988600388</span></p>
               </div>
 
               <div className="pt-6">

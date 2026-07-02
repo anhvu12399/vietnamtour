@@ -112,7 +112,7 @@ const jsonLd = {
         name: "Vietnam",
       },
       priceRange: "£££",
-      telephone: "+44-20-0000-0000",
+      telephone: "+84-98-8600-388",
       sameAs: [
         "https://www.facebook.com/vietnamtoursuk",
         "https://www.instagram.com/vietnamtoursuk",
@@ -160,6 +160,8 @@ const jsonLd = {
   ],
 };
 
+import WhatsAppFloating from "@/components/WhatsAppFloating";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -181,7 +183,10 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#faf8f5] text-[#343434]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#faf8f5] text-[#343434]">
+        {children}
+        <WhatsAppFloating />
+      </body>
     </html>
   );
 }

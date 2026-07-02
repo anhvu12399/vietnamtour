@@ -179,7 +179,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-[10px] text-gray-500 mt-16 border-t border-gray-900 pt-6 uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} Vietnam Heritage Tours. All rights reserved. Handcrafted Luxury Travels in Indochina.
+          &copy; 2026 VIETNAM TOURS. ALL RIGHTS RESERVED. HANDCRAFTED LUXURY TRAVELS IN INDOCHINA.
         </div>
 
       </div>
