@@ -116,6 +116,49 @@ export default function OurStoryPage() {
         </div>
       </section>
 
+      {/* Corporate Credentials */}
+      <section className="bg-white border-t border-b border-[#e6e2d6] py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9A4B33] font-semibold text-center mb-4">Official Credentials</p>
+          <h2 className="font-serif text-2xl md:text-3xl font-light text-center mb-10">Licensing &amp; Registration</h2>
+          <p className="text-xs text-[#545454]/80 font-light text-center max-w-xl mx-auto mb-12 leading-relaxed">
+            Vietnam Tours is a premier brand operated by My Way Travel. We are fully registered and licensed by the Vietnam National Authority of Tourism (VNAT) as an International Tour Operator.
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 text-xs text-[#545454] font-light">
+            <div className="space-y-4">
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Registered Company</span>
+                <p className="font-medium">My Way Travel Co., Ltd</p>
+              </div>
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Head Office Address</span>
+                <p>139/5 Nguyen Cu Trinh Street, Nguyen Cu Trinh Ward, District 1, Ho Chi Minh City, Vietnam</p>
+              </div>
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">International Tour Operator License</span>
+                <p>No. 79-0743/2017/TCDL (Issued by the Vietnam National Authority of Tourism)</p>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Travel Service Scope</span>
+                <p>International Tour Operator (Inbound and Outbound Tourism Services)</p>
+              </div>
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Legal Representative</span>
+                <p className="font-medium">Mr. Vu Duy Truong (Director)</p>
+              </div>
+              <div>
+                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Bonded Deposit Account</span>
+                <p>Account No. 1046429987 at Joint Stock Commercial Bank for Foreign Trade of Vietnam (Vietcombank) - Nguyen Trai Transaction Office</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-[#9A4B33] py-20 px-6 text-center text-white">
         <h2 className="font-serif text-3xl md:text-4xl font-light mb-4">

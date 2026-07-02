@@ -178,8 +178,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center text-[10px] text-gray-500 mt-16 border-t border-gray-900 pt-6 uppercase tracking-widest">
-          &copy; 2026 VIETNAM TOURS. ALL RIGHTS RESERVED. HANDCRAFTED LUXURY TRAVELS IN INDOCHINA.
+        <div className="text-center text-[9px] text-gray-500 mt-16 border-t border-gray-900 pt-6 uppercase tracking-widest leading-relaxed">
+          &copy; 2026 VIETNAM TOURS. OPERATED BY MY WAY TRAVEL. INTERNATIONAL TOUR OPERATOR LICENSE NO. 79-0743/2017/TCDL. ALL RIGHTS RESERVED. HANDCRAFTED LUXURY TRAVELS IN INDOCHINA.
         </div>
 
       </div>
