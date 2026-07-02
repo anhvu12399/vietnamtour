@@ -37,7 +37,7 @@ export default function CTASection() {
         <div className="flex items-center gap-2 text-lg md:text-xl font-bold font-sans text-green">
           <PhoneIcon className="w-5 h-5 text-gold" />
           <a href="tel:+84988600388" className="hover:underline hover:text-gold transition-colors">
-            +44 (0)20 0000 0000
+            +84 988600388
           </a>
         </div>
 
