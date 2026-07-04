@@ -362,6 +362,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_luxury.png",
+      "/images/hero_hoian_luxury.png",
+      "/images/vietnamtour_halong_yacht_luxury.png"
     ]
   },
   "vietnam-caves-karsts-and-trekking-tour": {
@@ -717,6 +722,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/tour_phongnha_cave_dining.png",
+      "/images/dest_phongnha_cave.png",
+      "/images/things_sapa_trekking.png"
     ]
   },
   "highlights-of-vietnam-tour": {
@@ -963,6 +973,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_luxury.png",
+      "/images/dest_halong_limestone.png",
+      "/images/hero_hoian_luxury.png"
     ]
   },
   "uncover-vietnam-from-south-to-north": {
@@ -1195,6 +1210,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_luxury.png",
+      "/images/hero_hoian_luxury.png",
+      "/images/vietnamtour_halong_yacht_luxury.png"
     ]
   },
   "the-essence-of-vietnam-north-to-south": {
@@ -1411,6 +1431,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_luxury.png",
+      "/images/hero_hoian_luxury.png",
+      "/images/vietnamtour_halong_yacht_luxury.png"
     ]
   },
   "gourmet-vietnam-tour": {
@@ -1628,6 +1653,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/trip_culinary_street_food.png",
+      "/images/things_cooking_class_hue.png",
+      "/images/things_mekong_sampan.png"
     ]
   },
   "trekking-adventure-in-vietnam-s-remote-north": {
@@ -1837,6 +1867,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_sapa_luxury.png",
+      "/images/things_sapa_trekking.png",
+      "/images/dest_sapa_highland.png"
     ]
   },
   "mekong-delta-le-jarai-cruise": {
@@ -1885,6 +1920,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/insp_mekong_cruise.png",
+      "/images/dest_mekong_canal.png",
+      "/images/mekong.jpg",
+      "/images/things_mekong_sampan.png",
+      "/images/vietnamtour_mekong_sampan.png"
     ]
   },
   "a-local-s-story-from-north-to-south": {
@@ -2093,6 +2135,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/vietnamtour_halong_yacht_luxury.png",
+      "/images/hero_hoian_luxury.png",
+      "/images/vietnamtour_mekong_sampan.png"
     ]
   },
   "discover-vietnam-home-of-kong-skull-island": {
@@ -2285,6 +2332,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/dest_phongnha_cave.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "sapa-in-style-tour": {
@@ -2411,6 +2463,12 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_sapa_luxury.png",
+      "/images/dest_sapa_highland.png",
+      "/images/things_sapa_trekking.png",
+      "/images/trip_bike_rice_paddies.png"
     ]
   },
   "sapa-adventure-tour": {
@@ -2508,6 +2566,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_sapa_luxury.png",
+      "/images/dest_sapa_highland.png",
+      "/images/things_sapa_trekking.png"
     ]
   },
   "luxury-ha-long-bay-tour": {
@@ -2593,6 +2656,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png",
+      "/images/things_halong_sunrise.png",
+      "/images/halong_night.png"
     ]
   },
   "off-beaten-track-in-halong-bay": {
@@ -2675,6 +2745,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png",
+      "/images/things_halong_sunrise.png",
+      "/images/halong_night.png"
     ]
   },
   "explore-the-nature-and-culture-of-untouched-da-bac": {
@@ -2762,6 +2839,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/tour_phongnha_cave_dining.png",
+      "/images/trip_adventure_jungle.png",
+      "/images/dest_phongnha_cave.png"
     ]
   },
   "lazalee-halong-bay-2-day-cruise": {
@@ -2831,6 +2913,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png",
+      "/images/things_halong_sunrise.png",
+      "/images/halong_night.png"
     ]
   },
   "halong-bay-by-seaplane": {
@@ -2931,6 +3020,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png",
+      "/images/things_halong_sunrise.png",
+      "/images/halong_night.png"
     ]
   },
   "halong-lazalee-classic-cruise": {
@@ -2983,6 +3079,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png",
+      "/images/things_halong_sunrise.png",
+      "/images/halong_night.png"
     ]
   },
   "cai-be-princess-mekong-delta-boat-trip": {
@@ -3028,6 +3131,13 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/insp_mekong_cruise.png",
+      "/images/dest_mekong_canal.png",
+      "/images/mekong.jpg",
+      "/images/things_mekong_sampan.png",
+      "/images/vietnamtour_mekong_sampan.png"
     ]
   },
   "hanoi-city-tour": {
@@ -3075,6 +3185,12 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_water_puppets_hanoi.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_cooking_class_hue.png"
     ]
   },
   "discover-the-legend-of-ninh-binh": {
@@ -3119,6 +3235,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/tour_ninhbinh_landscape.png",
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_mekong_sampan.png"
     ]
   },
   "ho-chi-minh-city-tour": {
@@ -3174,6 +3295,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/press_hero_colonial.png",
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/trip_culinary_street_food.png"
     ]
   },
   "hoa-lu-and-trang-an-day-tour": {
@@ -3225,6 +3351,10 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/tour_ninhbinh_landscape.png",
+      "/images/vietnamtour_hanoi_colonial.png"
     ]
   },
   "hoi-an-farming-fishing": {
@@ -3270,6 +3400,12 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
     ]
   },
   "essence-of-hoi-an-highlights-hidden-charms": {
@@ -3316,6 +3452,12 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
     ]
   },
   "saigon-street-eats": {
@@ -3364,6 +3506,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/tour_saigon_vespa_night.png",
+      "/images/trip_culinary_street_food.png",
+      "/images/press_hero_colonial.png"
     ]
   },
   "classic-cu-chi-tunnels-tour": {
@@ -3411,6 +3558,11 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/press_hero_colonial.png",
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/trip_culinary_street_food.png"
     ]
   },
   "hidden-hanoi-walking-tour": {
@@ -3460,6 +3612,12 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_water_puppets_hanoi.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_cooking_class_hue.png"
     ]
   },
   "cu-chi-tunnels-by-saigon-river": {
@@ -3510,6 +3668,962 @@
         ],
         "accommodation": "Luxury Selected Hotel"
       }
+    ],
+    "gallery": [
+      "/images/press_hero_colonial.png",
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/trip_culinary_street_food.png"
+    ]
+  },
+  "hanoi-street-eats": {
+    "title": "Hanoi Street Eats",
+    "slug": "hanoi-street-eats",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Savour the flavours of the North on an evening culinary exploration of the Old Quarter. Explore the labyrinth of alleyways and flavours that make Hanoi such an iconic gastronomic destination. Discover the tastes of classic Vietnamese food like Pho and Banh Mi, and observe the city come to life in the evening.",
+    "highlights": [
+      "Explore the culinary treats on offer throughout the narrow streets of Hanoi\u2019s Old Quarter",
+      "Wander through the bustling night market",
+      "Immerse in the colourful and fun-filled nightlife of Hanoi"
+    ],
+    "inclusions": [
+      "Sightseeing and permit fees during guided times",
+      "Meals listed in the itinerary",
+      "Expert English-speaking local guide",
+      "Service charges and government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Street Eats",
+        "description": [
+          "Embark on a culinary whirlwind, biting into the flavours of northern Vietnam on this evening street food tour through the alleys of Hanoi\u2019s Old Quarter. Meet a local guide at the quaint Caf\u00e9 Nang, before wandering to a local night market. Get engrossed in the bustling vibe and array of goods on display, before setting off into the maze of alleys. Stop by a stall selling one of Vietnam\u2019s most iconic dishes \u2013 Pho. Slurp up a bowl of beefy goodness before grabbing a stool at neighbouring Bia Corner; enjoy sipping on fresh draft beer and watch as the commotion of this spot comes to life in the evening.",
+          "Continue meandering through the Old Quarter and watch as the whole area transforms into a place of vibrance with stalls of all types popping up for the night time trade. Try local delicacies such as Banh Cuon - savoury steamed rice rolls with woodear mushroom and pork, Banh Mi - a classic Vietnamese sandwich, freshly grilled chicken wings and other snacks to satisfy all types of cravings.Finish off an evening of culinary decadence by devouring fresh tropical fruits and shaved ice drizzled with condensed milk \u2013 delish!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Street Eats",
+        "description": [
+          "Embark on a culinary whirlwind, biting into the flavours of northern Vietnam on this evening street food tour through the alleys of Hanoi\u2019s Old Quarter. Meet a local guide at the quaint Caf\u00e9 Nang, before wandering to a local night market. Get engrossed in the bustling vibe and array of goods on display, before setting off into the maze of alleys. Stop by a stall selling one of Vietnam\u2019s most iconic dishes \u2013 Pho. Slurp up a bowl of beefy goodness before grabbing a stool at neighbouring Bia Corner; enjoy sipping on fresh draft beer and watch as the commotion of this spot comes to life in the evening.",
+          "Continue meandering through the Old Quarter and watch as the whole area transforms into a place of vibrance with stalls of all types popping up for the night time trade. Try local delicacies such as Banh Cuon - savoury steamed rice rolls with woodear mushroom and pork, Banh Mi - a classic Vietnamese sandwich, freshly grilled chicken wings and other snacks to satisfy all types of cravings.Finish off an evening of culinary decadence by devouring fresh tropical fruits and shaved ice drizzled with condensed milk \u2013 delish!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Street Eats",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Hanoi Street Eats on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_water_puppets_hanoi.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_cooking_class_hue.png"
+    ]
+  },
+  "hoi-an-countryside-cycling": {
+    "title": "Hoi An Countryside Cycling",
+    "slug": "hoi-an-countryside-cycling",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Hop on a bicycle for a picturesque half-day tour exploring the idyllic countryside surrounding Hoi An. Pass rows of serene rice paddy fields en route to Cam Thanh Village, a charming local community famous for thatched roof cottages and friendly locals.",
+    "highlights": [
+      "Going on a cycling journey into Hoi An's scenic and rural outskirts for a taste of local life",
+      "Experiencing the timeless charm of Cam Thanh Village and visiting a local's home",
+      "Boarding a traditional bamboo basket boat and learning how local fishermen go about their lives",
+      "Learning how paper lanterns that the area is famous for are made and making your own"
+    ],
+    "inclusions": [
+      "Tours as mentioned and air-conditioned transfers",
+      "Sightseeing and permit fees during guided times",
+      "Meals listed in the itinerary",
+      "Expert English-speaking local guide",
+      "Boat cruises and rides while on tour",
+      "Service charges and government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Cycling",
+        "description": [
+          "Go beyond the ordinary in beautiful Hoi An with a cycling journey into the city's idyllic rural outskirts. Set off from central Hoi An for a leisurely pedal out of town, weaving through rice paddy fields and along dusty country lanes bound for Cam Thanh Village. This charming community not far from Hoi An still boasts a timeless charm otherwise vanishing in other parts of Vietnam. Arrive at the home of a local family here and learn about their day-to-day lives in rural Vietnam.",
+          "Then, leave your bicycle behind and board a bamboo basket boat that local crab fishermen still use to haul in their daily catch. Learn the tricks behind the trade from friendly local fishing experts, and get a hands-on look at the livelihoods that keep this community thriving. Afterwards, take a well-earned rest with a fresh coconut water in hand, before cycling onward to Ha Linh lantern workshop. As one of the most iconic traditional crafts in Hoi An - so iconic that a monthly festival in the sleepy town revolves around lanterns and the full moon - learn how these delicate creations are made. Roll up your sleeves and make your own in a master class before heading back toward central Hoi An by bicycle."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Cycling",
+        "description": [
+          "Go beyond the ordinary in beautiful Hoi An with a cycling journey into the city's idyllic rural outskirts. Set off from central Hoi An for a leisurely pedal out of town, weaving through rice paddy fields and along dusty country lanes bound for Cam Thanh Village. This charming community not far from Hoi An still boasts a timeless charm otherwise vanishing in other parts of Vietnam. Arrive at the home of a local family here and learn about their day-to-day lives in rural Vietnam.",
+          "Then, leave your bicycle behind and board a bamboo basket boat that local crab fishermen still use to haul in their daily catch. Learn the tricks behind the trade from friendly local fishing experts, and get a hands-on look at the livelihoods that keep this community thriving. Afterwards, take a well-earned rest with a fresh coconut water in hand, before cycling onward to Ha Linh lantern workshop. As one of the most iconic traditional crafts in Hoi An - so iconic that a monthly festival in the sleepy town revolves around lanterns and the full moon - learn how these delicate creations are made. Roll up your sleeves and make your own in a master class before heading back toward central Hoi An by bicycle."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Cycling",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Hoi An Countryside Cycling on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
+    ]
+  },
+  "hoi-an-countryside-adventure-by-vespa-tour": {
+    "title": "Hoi An Countryside Adventure by Vespa Tour",
+    "slug": "hoi-an-countryside-adventure-by-vespa-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Explore the rural beauty of the Hoi An countryside on this action-packed, half-day escapade. On the back of a vintage Vespa, travel through verdant farmlands to charming villages. Get to know locals who make their livelihood from traditional crafts and sample Vietnamese coffee amongst other local delicacies before whizzing back to Hoi An.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Hoi An Countryside Adventure by Vespa Tour.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Adventure by Vespa Tour",
+        "description": [
+          "An exhilarating day of exploration and adventure on two wheels.Board a vintage Vespa and get ready to see the most exquisite sights that the area has to offer. Leave the hustle and bustle of Hoi An and head into the glorious rural countryside. Gaze in awe at the stunning vistas of Hoi An Old Town and Thu Bon River before the first stop of the day at the vibrant Duy Hai fishing village. Speak with locals and learn how they craft bamboo into basket boats fit for river travel. Enjoy a quick, invigorating Vietnamese coffee before boarding the motorbike for the next destination.Whizz through serene villages, across a remarkable bamboo bridge and amongst magnificent vibrant green fields and verdant farmlands. At the next stop of the tour, learn how local rice wine and crispy rice crackers are made and get the chance to sample them too.Enjoy a delicious dinner of My Quang, a local dish made with fresh noodles. Chat to the local villagers and learn about their daily life before climbing aboard the scooter once more. Finally, drive over Cam Kim Bridge as the sun sets and the iconic lantern lights of Hoi An begin to fill the skyline."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Adventure by Vespa Tour",
+        "description": [
+          "An exhilarating day of exploration and adventure on two wheels.Board a vintage Vespa and get ready to see the most exquisite sights that the area has to offer. Leave the hustle and bustle of Hoi An and head into the glorious rural countryside. Gaze in awe at the stunning vistas of Hoi An Old Town and Thu Bon River before the first stop of the day at the vibrant Duy Hai fishing village. Speak with locals and learn how they craft bamboo into basket boats fit for river travel. Enjoy a quick, invigorating Vietnamese coffee before boarding the motorbike for the next destination.Whizz through serene villages, across a remarkable bamboo bridge and amongst magnificent vibrant green fields and verdant farmlands. At the next stop of the tour, learn how local rice wine and crispy rice crackers are made and get the chance to sample them too.Enjoy a delicious dinner of My Quang, a local dish made with fresh noodles. Chat to the local villagers and learn about their daily life before climbing aboard the scooter once more. Finally, drive over Cam Kim Bridge as the sun sets and the iconic lantern lights of Hoi An begin to fill the skyline."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hoi An Countryside Adventure by Vespa Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Hoi An Countryside Adventure by Vespa Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/trip_bike_rice_paddies.png"
+    ]
+  },
+  "hanoi-highlights-afternoon-tour": {
+    "title": "Hanoi Highlights Afternoon Tour",
+    "slug": "hanoi-highlights-afternoon-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Experience the very best of Hanoi\u2019s cultural highlights!\u202fStart at the iconic Ba Dinh Square, where Ho Chi Minh proclaimed the country\u2019s independence, and visit the Temple of Literature before heading to the remarkable Vietnamese Women\u2019s Museum. On this half-day tour, explore Hanoi\u2019s fascinating history and end the day with a cup of creamy egg coffee.",
+    "highlights": [
+      "Visit some of Hanoi\u2019s historical highlights, including Ba Dinh square and the Temple of Literature",
+      "Learn about Vietnamese women throughout history at the extraordinary Vietnamese Women\u2019s Museum",
+      "Experience a demonstration of the famous egg coffee before relaxing with a cup of creamy goodness"
+    ],
+    "inclusions": [
+      "Tours as mentioned and air-conditioned transfers",
+      "Sightseeing and permit fees during guided times",
+      "Meals listed in the itinerary",
+      "Expert English-speaking local guide",
+      "Service charges and government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh Mausoleum - One Pillar Pagoda - Temple of Literature",
+        "description": [
+          "Start the afternoon with a visit to historically important Ba Dinh Square, the very place where Ho Chi Minh read the Proclamation of Independence and where the Ho Chi Minh Mausoleum was built. Uncle Ho\u2019s final resting place, witness the imposing structure from outside and hear about the man who led Vietnam\u2019s campaign for independence from French colonial rule.",
+          "Afterward, set off through central Hanoi toward the Temple of Literature, the oldest university in Hanoi and a perfect example of ancient architecture built in homage to the Chinese scholar Confucius.",
+          "Next, head to the fascinating Vietnamese Women\u2019s Museum and view an extensive collection from all over the country. Listed among the 25 most interesting museums in Asia by TripAdvisor, get insight into the role women in Vietnamese society throughout history.",
+          "Finish the tour of Hanoi\u2019s highlights on a sweet note and watch a demonstration of the iconic egg coffee before indulging in a cup of the creamy drink-cum-dessert at one of the city\u2019s quaint coffee shops."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh Mausoleum - One Pillar Pagoda - Temple of Literature",
+        "description": [
+          "Start the afternoon with a visit to historically important Ba Dinh Square, the very place where Ho Chi Minh read the Proclamation of Independence and where the Ho Chi Minh Mausoleum was built. Uncle Ho\u2019s final resting place, witness the imposing structure from outside and hear about the man who led Vietnam\u2019s campaign for independence from French colonial rule.",
+          "Afterward, set off through central Hanoi toward the Temple of Literature, the oldest university in Hanoi and a perfect example of ancient architecture built in homage to the Chinese scholar Confucius.",
+          "Next, head to the fascinating Vietnamese Women\u2019s Museum and view an extensive collection from all over the country. Listed among the 25 most interesting museums in Asia by TripAdvisor, get insight into the role women in Vietnamese society throughout history.",
+          "Finish the tour of Hanoi\u2019s highlights on a sweet note and watch a demonstration of the iconic egg coffee before indulging in a cup of the creamy drink-cum-dessert at one of the city\u2019s quaint coffee shops."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh Mausoleum - One Pillar Pagoda - Temple of Literature",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Ho Chi Minh Mausoleum - One Pillar Pagoda - Temple of Literature on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_water_puppets_hanoi.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_cooking_class_hue.png"
+    ]
+  },
+  "the-story-of-saigon": {
+    "title": "The Story of Saigon",
+    "slug": "the-story-of-saigon",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Discover the story of Saigon, from a city of conflict to a modern metropolis on this fascinating half-day tour. You\u2019ll visit key locations such as theCentral Post Office,Notre Dame Cathedraland theWar Remnants Museum, to learn about the city\u2019s transition from war-tornSaigonto urbanHo Chi Minh City,\u00a0and end your day with a sunset speedboat ride along the Saigon River.",
+    "highlights": [
+      "Discovering the story of Saigon, from city of conflict to a modern metropolis",
+      "Visiting the city's historical highlights, from the Central Post Office and Notre Dame Cathedral to the War Remnants Museum",
+      "Enjoying a cruise down the Saigon river by speedboat at sunset"
+    ],
+    "inclusions": [
+      "Tours as mentioned and air-conditioned transfers",
+      "Sightseeing and permit fees during guided times",
+      "Meals listed in the itinerary",
+      "Expert English-speaking local guide",
+      "Boat cruises and rides while on tour",
+      "Service charges and government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "The Story of Saigon",
+        "description": [
+          "Start your Story of Saigon with a visit to the War Remnants Museum. Here, your guide will tell the story of the city\u2019s darkest and most tragic hours during the Vietnam War. The museum contains displays of military aircraft, weaponry and many photographs \u2013 some that are quite graphic in nature. Although many of Vietnam\u2019s 90 million people are now too young to remember the war, its legacy is still felt strongly across Vietnamese society.",
+          "Next, visit the Reunification Palace, once a symbol of the South Vietnamese Government. It was here on 30 April 1975, that the war ended when a North Vietnamese Army tank crashed through its gates. See the war room, the banquet hall and the presidential office with the unusual gifts which have been received. Then, continue to the Central Post Office, designed and constructed by the renowned architect Gustave Eiffel, and take a moment to send a postcard! Just behind the post office is the Notre Dame Cathedral, an iconic Saigon landmark built in neo-Romanesque style by the French between 1863 and 1880. Today it\u2019s a favoured backdrop for Vietnamese wedding photographs.",
+          "Next, stroll down follow Dong Khoi Street, which figured prominently in Graham Greene\u2019s famous Vietnam novel, The Quiet American, as Rue Catinat. The walk ends at the Saigon Opera House. From a bomb shelter to housing the parliamentary Lower House, the Opera House has had an interesting history.",
+          "End your day with a speedboat trip along the city\u2019s ancient canals where life carries on unchanged. Return to your hotel as the sun sets on this fascinating city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "The Story of Saigon",
+        "description": [
+          "Start your Story of Saigon with a visit to the War Remnants Museum. Here, your guide will tell the story of the city\u2019s darkest and most tragic hours during the Vietnam War. The museum contains displays of military aircraft, weaponry and many photographs \u2013 some that are quite graphic in nature. Although many of Vietnam\u2019s 90 million people are now too young to remember the war, its legacy is still felt strongly across Vietnamese society.",
+          "Next, visit the Reunification Palace, once a symbol of the South Vietnamese Government. It was here on 30 April 1975, that the war ended when a North Vietnamese Army tank crashed through its gates. See the war room, the banquet hall and the presidential office with the unusual gifts which have been received. Then, continue to the Central Post Office, designed and constructed by the renowned architect Gustave Eiffel, and take a moment to send a postcard! Just behind the post office is the Notre Dame Cathedral, an iconic Saigon landmark built in neo-Romanesque style by the French between 1863 and 1880. Today it\u2019s a favoured backdrop for Vietnamese wedding photographs.",
+          "Next, stroll down follow Dong Khoi Street, which figured prominently in Graham Greene\u2019s famous Vietnam novel, The Quiet American, as Rue Catinat. The walk ends at the Saigon Opera House. From a bomb shelter to housing the parliamentary Lower House, the Opera House has had an interesting history.",
+          "End your day with a speedboat trip along the city\u2019s ancient canals where life carries on unchanged. Return to your hotel as the sun sets on this fascinating city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "The Story of Saigon",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of The Story of Saigon on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/tour_saigon_vespa_night.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_water_puppets_hanoi.png"
+    ]
+  },
+  "sapa-bac-ha-market-tour": {
+    "title": "Sapa Bac Ha Market Tour",
+    "slug": "sapa-bac-ha-market-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "A trip into the mountains to the bustling local market of Bac Ha. Many ethnic minorities converge here to buy and sell their goods in a real local experience. It\u2019s the best place to experience the unique ethnic vibe of the region. Visit a local palace \u2013 a throwback to 20th century feudalism in the area and have lunch with a local Tay minority family before taking a boat trip down the river to finish the tour.",
+    "highlights": [
+      "Enjoying the scenery on a drive to the sleepy village of Bac Ha",
+      "Meandering through the vibrant stalls of Bac Ha Market",
+      "Witnessing the bewildering array of ethnic minorities that frequent the market",
+      "Visiting the charming Trung Do Village, inhabited by the Tay ethnic minority",
+      "Enjoying a tasty lunch prepared by a Tay family",
+      "Embarking on a scenic ride along the Chay River by boat"
+    ],
+    "inclusions": [
+      "Tours as mentioned and air-conditioned transfers",
+      "Sightseeing and permit fees during guided times",
+      "Meals listed in the itinerary",
+      "Expert English-speaking local guide",
+      "Boat cruises and rides while on tour",
+      "Service charges and government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Sapa Bac Ha Market Tour",
+        "description": [
+          "From Lao Cai, embark on the scenic drive up to Bac Ha, a sleepy village where the region\u2019s various hill drives converge at the colourful Bac Ha Sunday Market. Meander through the market\u2019s vibrant stalls and witness the lively gathering as people from all over the region hawk a variety of homegrown and handcrafted products.",
+          "Visit the charming Trung Do Village, home to the Tay ethnic minority group. Settle down for a tasty lunch prepared by a local Tay family and get a glimpse of village life, before embarking on scenic boat ride down the Chay River."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Sapa Bac Ha Market Tour",
+        "description": [
+          "From Lao Cai, embark on the scenic drive up to Bac Ha, a sleepy village where the region\u2019s various hill drives converge at the colourful Bac Ha Sunday Market. Meander through the market\u2019s vibrant stalls and witness the lively gathering as people from all over the region hawk a variety of homegrown and handcrafted products.",
+          "Visit the charming Trung Do Village, home to the Tay ethnic minority group. Settle down for a tasty lunch prepared by a local Tay family and get a glimpse of village life, before embarking on scenic boat ride down the Chay River."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Sapa Bac Ha Market Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Sapa Bac Ha Market Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_sapa_luxury.png",
+      "/images/dest_sapa_highland.png",
+      "/images/things_sapa_trekking.png",
+      "/images/trip_bike_rice_paddies.png"
+    ]
+  },
+  "culture-creativity-in-saigon": {
+    "title": "Culture & Creativity in Saigon",
+    "slug": "culture-creativity-in-saigon",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Take in the stunning architecture of the famous Ho Chi Minh Museum of Fine Art and peruse some of the finest artworks of the region. Visit a local artist\u2019s house which she has transformed into a unique art gallery with the mission of encouraging young people to create. Try the colourful and creative artform of glass bottle decorating and take a masterpiece away as a souvenir. A wonderfully creative day that is perfect for art lovers.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Culture & Creativity in Saigon.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Experience the culture and creativity of Saigon in this wonderfully artistic half-day tour.",
+          "Begin the day at the fascinating Ho Chi Minh Museum of Fine Arts. This French-inspired mansion features impressive architectural designs and is home to some of the finest artworks in Saigon. Enjoy a walk around the museum and take in the colours, curves and artistic endeavours of some of the regions most talented artists. From here, continue the creative journey with a visit to a local artist\u2019s house which has been turned into an art gallery. Talk with the artist to uncover her story and the passion she has for teaching youth to paint. Next, try the colourful and creative artform of glass bottle painting and receive the creation to take away as a souvenir.",
+          "After a morning of artistic excellence, enjoy a homemade Vietnamese lunch before returning to the hotel."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Experience the culture and creativity of Saigon in this wonderfully artistic half-day tour.",
+          "Begin the day at the fascinating Ho Chi Minh Museum of Fine Arts. This French-inspired mansion features impressive architectural designs and is home to some of the finest artworks in Saigon. Enjoy a walk around the museum and take in the colours, curves and artistic endeavours of some of the regions most talented artists. From here, continue the creative journey with a visit to a local artist\u2019s house which has been turned into an art gallery. Talk with the artist to uncover her story and the passion she has for teaching youth to paint. Next, try the colourful and creative artform of glass bottle painting and receive the creation to take away as a souvenir.",
+          "After a morning of artistic excellence, enjoy a homemade Vietnamese lunch before returning to the hotel."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Culture & Creativity in Saigon on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/tour_saigon_vespa_night.png",
+      "/images/trip_culinary_street_food.png"
+    ]
+  },
+  "explore-hue-countryside-culture-by-vespa": {
+    "title": "Explore Hue Countryside & Culture by Vespa",
+    "slug": "explore-hue-countryside-culture-by-vespa",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Explore the magnificent city of Hue by foot and on two wheels on this action-packed, half-day tour of one of Vietnam\u2019s most historic cities. Stroll through the picturesque streets, haggle at a local market and ride into the countryside on the back of a vintage Vespa before rounding off the day with a unique folk-art printing workshop.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Explore Hue Countryside & Culture by Vespa.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Explore Hue\u2019s countryside and culture on this action-packed half-day tour. Start the tour at a local cafe and enjoy a cup of traditional Vietnamese coffee before visiting the fascinating Commune House. Get a glimpse of the strong traditions and responsibilities that go hand in hand with Vietnamese life. Leave the house and walk along winding streets as the tour guide explains the history and culture behind the pretty French Colonial architecture. Visit a bustling market and see how some of the locals make their livelihoods through haggling and selling religious artefacts.",
+          "Leave the market and hop on a small river boat across the Perfume River to meet a waiting vintage Vespa and the chauffeur for the day. Leave the city and zip along quiet country lanes en route a small workshop producing religious artefacts. Here, sip green tea and enjoy a hands-on folk-art printing session.",
+          "Mount the vintage Vespa once more and zoom through verdant rice paddies, across an ancient bridge hangout where locals come to relax, before returning to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Explore Hue\u2019s countryside and culture on this action-packed half-day tour. Start the tour at a local cafe and enjoy a cup of traditional Vietnamese coffee before visiting the fascinating Commune House. Get a glimpse of the strong traditions and responsibilities that go hand in hand with Vietnamese life. Leave the house and walk along winding streets as the tour guide explains the history and culture behind the pretty French Colonial architecture. Visit a bustling market and see how some of the locals make their livelihoods through haggling and selling religious artefacts.",
+          "Leave the market and hop on a small river boat across the Perfume River to meet a waiting vintage Vespa and the chauffeur for the day. Leave the city and zip along quiet country lanes en route a small workshop producing religious artefacts. Here, sip green tea and enjoy a hands-on folk-art printing session.",
+          "Mount the vintage Vespa once more and zoom through verdant rice paddies, across an ancient bridge hangout where locals come to relax, before returning to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Culture & Creativity in Saigon",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Culture & Creativity in Saigon on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
+    ]
+  },
+  "saigon-craft-beer-evening-vespa-tour": {
+    "title": "Saigon Craft Beer Evening Vespa Tour",
+    "slug": "saigon-craft-beer-evening-vespa-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "A half-day adventure on two wheels. Clamber aboard a chauffeur-driven vintage Vespa and explore Ho Chi Minh City\u2019s burgeoning craft beer scene. Whizz through the bustling streets and visit everything from tiny establishments to large, well-recognised brands, sampling a plethora of craft beers and ciders whilst learning about the unique processes employed to produce the drinks. A fun-filled evening that shines a light on modern life in Saigon.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Saigon Craft Beer Evening Vespa Tour.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Saigon Craft Beer Evening Vespa Tour",
+        "description": [
+          "An action-packed craft beer adventure awaits. Get ready to visit the best craft breweries that Saigon has to offer on the back of a vintage Vespa. Ride through the bustling streets of the city and explore four new breweries that are taking flavour to the next level by merging international brews with local flavours. Each beer has been carefully selected by a master brewer and guests will taste a broad range of flavours. The local brewers will share their expert knowledge and discuss the unique brewing process that creates such delicious flavours. Stop at a selection of breweries from independent brewers, producing small batches, to some of the most widely recognised brands on the market. As well as plenteous samples, each place also offers a variety of delicious and elaborate food pairings, including gourmet tapas and some Vietnamese-inspired bites.",
+          "A fun-filled evening tour that combines adventure with local craft beers."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Saigon Craft Beer Evening Vespa Tour",
+        "description": [
+          "An action-packed craft beer adventure awaits. Get ready to visit the best craft breweries that Saigon has to offer on the back of a vintage Vespa. Ride through the bustling streets of the city and explore four new breweries that are taking flavour to the next level by merging international brews with local flavours. Each beer has been carefully selected by a master brewer and guests will taste a broad range of flavours. The local brewers will share their expert knowledge and discuss the unique brewing process that creates such delicious flavours. Stop at a selection of breweries from independent brewers, producing small batches, to some of the most widely recognised brands on the market. As well as plenteous samples, each place also offers a variety of delicious and elaborate food pairings, including gourmet tapas and some Vietnamese-inspired bites.",
+          "A fun-filled evening tour that combines adventure with local craft beers."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Saigon Craft Beer Evening Vespa Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Saigon Craft Beer Evening Vespa Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/tour_saigon_vespa_night.png",
+      "/images/trip_culinary_street_food.png"
+    ]
+  },
+  "ho-chi-minh-city-evening-tour": {
+    "title": "Ho Chi Minh City Evening Tour",
+    "slug": "ho-chi-minh-city-evening-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Enjoy an evening amidst the bright lights and pulsating energy of Ho Chi Minh City. Relax with a soothing hand massage, enjoy a selection of mouth-watering Vietnamese dishes and energise with an exquisite Vietnamese coffee before a night of dancing to wonderful live music.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Ho Chi Minh City Evening Tour.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh City Evening Tour",
+        "description": [
+          "Prepare for sheer indulgence surrounded by the energy and frantic beauty of Saigon on this magical evening tour.",
+          "Sit back and prepare to be pampered as a skilled masseuse carries out a hand massage designed to relax and invigorate. Next, indulge in a wholly different pleasure with a delicious, authentic Vietnamese meal in an upmarket local restaurant. Try a selection of dishes each with a uniquely Vietnamese flavour and watch the city comes to life as the sun goes down. Once sated, enjoy a traditional Vietnamese coffee as a live band plays and choose to enjoy the music from your seat or take to the floor and dance the night away.",
+          "A magical evening of food, music and relaxation that gives an authentic insight into Vietnamese night life."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh City Evening Tour",
+        "description": [
+          "Prepare for sheer indulgence surrounded by the energy and frantic beauty of Saigon on this magical evening tour.",
+          "Sit back and prepare to be pampered as a skilled masseuse carries out a hand massage designed to relax and invigorate. Next, indulge in a wholly different pleasure with a delicious, authentic Vietnamese meal in an upmarket local restaurant. Try a selection of dishes each with a uniquely Vietnamese flavour and watch the city comes to life as the sun goes down. Once sated, enjoy a traditional Vietnamese coffee as a live band plays and choose to enjoy the music from your seat or take to the floor and dance the night away.",
+          "A magical evening of food, music and relaxation that gives an authentic insight into Vietnamese night life."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Ho Chi Minh City Evening Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Ho Chi Minh City Evening Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/tour_saigon_vespa_night.png",
+      "/images/press_hero_colonial.png"
+    ]
+  },
+  "hanoi-countryside-vespa-tour": {
+    "title": "Hanoi Countryside Vespa Tour",
+    "slug": "hanoi-countryside-vespa-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Swap the tourist crowds and chaos of the capital for a half-day road trip on the back of a vintage Vespa. Get a glimpse of the real Vietnam whilst travelling through the charming countryside of Hanoi. From visiting important historic sites and meeting locals to learning about about traditional crafts and lifestyles \u2013 this tour takes visitors off the beaten path.",
+    "highlights": [
+      "Handcrafted custom itinerary exploring the best of Hanoi Countryside Vespa Tour.",
+      "Private guided excursions with experienced English-speaking specialists.",
+      "Handpicked luxury accommodations matching your personal style.",
+      "Seamless private transfers and dedicated ground concierge services."
+    ],
+    "inclusions": [],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Countryside Vespa Tour",
+        "description": [
+          "Discover a different side to the Vietnamese capital on this half-day tour of Hanoi\u2019s charming countryside. From the passenger\u2019s seat of a vintage Vespa, travel past the impressive Long Bien Bridge, leaving behind the traffic and commotion of the city. Spanning across the Red River, this cantilever bridge was built during French colonial times and became a symbol of courage and resilience of the Vietnamese people.",
+          "Whizz through the lush scenery until reaching the ancient Co Loa citadel. Once the national capital (AD 939 \u2013 944), the spiral-shaped structure was the first fortified citadel in Vietnam and, despite only vestiges of the ancient ramparts remaining, is an important historical site.Next, follow some back roads and head to a local farm. Surrounded by nothing but lush rice paddies, learn about the rural lifestyle of the farmers before hitting the road again.",
+          "Enjoy the refreshing breeze and picturesque scenery whilst cruising through the valley and stop at a hidden wood carving village. Meet the local craftsmen and discover the ancient techniques used for producing traditional Buddhist statues.",
+          "Finish this outdoor adventure with a visit to a bustling market. Accompanied by a local family, peruse the different stalls and pick up a couple of delicious snacks before driving back to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Countryside Vespa Tour",
+        "description": [
+          "Discover a different side to the Vietnamese capital on this half-day tour of Hanoi\u2019s charming countryside. From the passenger\u2019s seat of a vintage Vespa, travel past the impressive Long Bien Bridge, leaving behind the traffic and commotion of the city. Spanning across the Red River, this cantilever bridge was built during French colonial times and became a symbol of courage and resilience of the Vietnamese people.",
+          "Whizz through the lush scenery until reaching the ancient Co Loa citadel. Once the national capital (AD 939 \u2013 944), the spiral-shaped structure was the first fortified citadel in Vietnam and, despite only vestiges of the ancient ramparts remaining, is an important historical site.Next, follow some back roads and head to a local farm. Surrounded by nothing but lush rice paddies, learn about the rural lifestyle of the farmers before hitting the road again.",
+          "Enjoy the refreshing breeze and picturesque scenery whilst cruising through the valley and stop at a hidden wood carving village. Meet the local craftsmen and discover the ancient techniques used for producing traditional Buddhist statues.",
+          "Finish this outdoor adventure with a visit to a bustling market. Accompanied by a local family, peruse the different stalls and pick up a couple of delicious snacks before driving back to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hanoi Countryside Vespa Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Hanoi Countryside Vespa Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/trip_bike_rice_paddies.png",
+      "/images/things_sapa_trekking.png"
+    ]
+  },
+  "a-cultural-tour-of-hanoi": {
+    "title": "A Cultural Tour of Hanoi",
+    "slug": "a-cultural-tour-of-hanoi",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Get insight into Vietnam\u2019s diverse culture on this fascinating half-day tour of Hanoi. Learn about the rich heritage of the country\u2019s numerous ethnic minority groups at the Museum of Ethnology, find out where Hanoians buy the most beautiful flowers and trees, and enter the world of tea on a meditative experience with a local tea master. Enchanting, engaging and educational, discover Vietnam\u2019s capital beyond the main sites.",
+    "highlights": [
+      "Visit the excellent Vietnam Museum of Ethnology to learn about the country\u2019s diverse ethnic groups",
+      "Walk along colourful Hoang Hoa Tham Street and witness the bustle of vendors selling flowers and bonsai trees",
+      "Learn the secrets of tea in an in-depth tea experience with a local tea master"
+    ],
+    "inclusions": [
+      "Transfers as stated in program",
+      "English-speaking guide",
+      "Entrance fee",
+      "Tea tasting experience at Hien Minh Tea House",
+      "Drinking water"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "A Cultural Tour of Hanoi",
+        "description": [
+          "Start this cultural half-day tour of charming Hanoi at the Vietnam Museum of Ethnology. With the aim to preserve cultural heritage, the museum showcases an extensive collection dedicated to Vietnam\u2019s 54 different minority groups. From tribal art, artefacts and everyday objects to full-scale replicas of traditional villages, examine the fascinating display collected from across the country, and get insight into the culture, heritage and history of Vietnam\u2019s numerous ethnic groups.",
+          "Continue to Hoang Hoa Tham Street and stroll along this lively route, lined with professional flower shops and local vendors. Take in the fragrance of the seasonal blossoms and marvel at the uniquely-shaped bonsai trees before turning into a smaller street. Stop at a local market, taking a closer look at the products on offer, and head on to a small and cosy tea house for an engaging introduction to the world of tea. Mr. Nguyen Viet Hung, the owner and former winner of the Tea Master Cup competition, and his wife travel to plantations across the country to pick high-quality white, green or oolong tea from ancient Vietnamese tea trees. Be captivated by their stories and sample different types of tea before learning the secrets of brewing a delicious cup of the hot beverage.",
+          "After this marvellous experience, say goodbye to the passionate tea masters and travel back to the hotel, marking the end of this fascinating journey into Vietnamese culture."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "A Cultural Tour of Hanoi",
+        "description": [
+          "Start this cultural half-day tour of charming Hanoi at the Vietnam Museum of Ethnology. With the aim to preserve cultural heritage, the museum showcases an extensive collection dedicated to Vietnam\u2019s 54 different minority groups. From tribal art, artefacts and everyday objects to full-scale replicas of traditional villages, examine the fascinating display collected from across the country, and get insight into the culture, heritage and history of Vietnam\u2019s numerous ethnic groups.",
+          "Continue to Hoang Hoa Tham Street and stroll along this lively route, lined with professional flower shops and local vendors. Take in the fragrance of the seasonal blossoms and marvel at the uniquely-shaped bonsai trees before turning into a smaller street. Stop at a local market, taking a closer look at the products on offer, and head on to a small and cosy tea house for an engaging introduction to the world of tea. Mr. Nguyen Viet Hung, the owner and former winner of the Tea Master Cup competition, and his wife travel to plantations across the country to pick high-quality white, green or oolong tea from ancient Vietnamese tea trees. Be captivated by their stories and sample different types of tea before learning the secrets of brewing a delicious cup of the hot beverage.",
+          "After this marvellous experience, say goodbye to the passionate tea masters and travel back to the hotel, marking the end of this fascinating journey into Vietnamese culture."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "A Cultural Tour of Hanoi",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of A Cultural Tour of Hanoi on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/vietnamtour_hanoi_colonial.png",
+      "/images/things_water_puppets_hanoi.png",
+      "/images/press_hero_colonial.png",
+      "/images/things_cooking_class_hue.png"
+    ]
+  },
+  "da-nang-discovery": {
+    "title": "Da Nang Discovery",
+    "slug": "da-nang-discovery",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "History, ancient ingenuity and natural beauty await on this wonderful half-day tour of Da Nang. Explore the awe-inspiring cave temples of the majestic Marble Mountains, witness the giant Buddha statue on a trip to Monkey Mountain and enjoy spectacular views of Da Nang\u2019s coast and stunning countryside along the way.",
+    "highlights": [
+      "Visit the natural caves within Marble Mountain",
+      "See the sights of battle from the Vietnamese war",
+      "Travel to Monkey Mountain and Vietnam\u2019s Biggest Buddha Statue"
+    ],
+    "inclusions": [
+      "Meals as mentioned",
+      "English-speaking guide",
+      "Tours and transfers as mentioned by air-conditioned vehicle",
+      "Sightseeing fees and permits during guided time"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Da Nang Discovery",
+        "description": [
+          "Leave the hustle and bustle of Central Vietnam\u2019s most frenetic city with a visit to the stunning Marble Mountains. Consisting of a cluster of five craggy marble and limestone cliffs, they were named to honour the five elements of earth, fire, water, metal and wood. During the unsettled years of the Vietnam War, these cliffs served as battlegrounds and hospitals. Explore the battle-scarred crevices before taking in the beauty of the Buddhist temples and statues that fill the wide caves. Discover and learn how this beautiful natural landmark has entrenched itself in the rich history of Vietnam.Next stop is the Son Tra Peninsula to visit Vietnam\u2019s tallest statue. Standing proudly on Monkey Mountain is the magnificent standing Buddha statue at Linh Ung Pagoda. The lofty vantage point offers unbeatable views of the Da Nang coast all the way over to Hoi An.",
+          "Experience the cool, misty climate and marvel as visitors from far and wide come to pay homage to this amazing spot. Leave Son Tra and travel alongside the beautiful beaches of Central Vietnam back to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Da Nang Discovery",
+        "description": [
+          "Leave the hustle and bustle of Central Vietnam\u2019s most frenetic city with a visit to the stunning Marble Mountains. Consisting of a cluster of five craggy marble and limestone cliffs, they were named to honour the five elements of earth, fire, water, metal and wood. During the unsettled years of the Vietnam War, these cliffs served as battlegrounds and hospitals. Explore the battle-scarred crevices before taking in the beauty of the Buddhist temples and statues that fill the wide caves. Discover and learn how this beautiful natural landmark has entrenched itself in the rich history of Vietnam.Next stop is the Son Tra Peninsula to visit Vietnam\u2019s tallest statue. Standing proudly on Monkey Mountain is the magnificent standing Buddha statue at Linh Ung Pagoda. The lofty vantage point offers unbeatable views of the Da Nang coast all the way over to Hoi An.",
+          "Experience the cool, misty climate and marvel as visitors from far and wide come to pay homage to this amazing spot. Leave Son Tra and travel alongside the beautiful beaches of Central Vietnam back to the city."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Da Nang Discovery",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Da Nang Discovery on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/insp_heritage_overland.png"
+    ]
+  },
+  "hue-city-tour": {
+    "title": "Hue City Tour",
+    "slug": "hue-city-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Discover the historic landmarks of one of Vietnam\u2019s ancient cities on this captivating full-day tour of Hue. Visit the walled citadel and learn about the country\u2019s fascinating imperial history, explore the stunning Royal Tombs along the Perfume River, and round off this wonderful day with a boat trip to Vietnam\u2019s tallest pagoda.",
+    "highlights": [
+      "Visit the historic walled Citadel of Hue",
+      "Explore the fascinating Royal Tombs and see how Vietnam\u2019s Emperors created these magnificent feats before their death",
+      "Take a riverboat ride down the scenic Perfume River"
+    ],
+    "inclusions": [
+      "Meals as mentioned",
+      "English speaking guide",
+      "Tours and transfers as mentioned by air-conditioned vehicle",
+      "Sightseeing fees and permits during guided time",
+      "Service charge and current government VAT tax"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Hue City Tour",
+        "description": [
+          "Begin a day of exploration within the walled Citadel of Hue and take in the ruins of the city\u2019s regal past. Created in the 19th century, the Imperial City is known for its impressive architecture and beautiful landscaping. Once used by the royal family and their staff, this citadel is full of temples, palaces, offices and gardens. Many of the monuments bear the scars of the war while many more have been restored to their former glory.Spend time exploring the historic streets before a short journey from the old town to the surrounding countryside. Here, visit the impressive Royal Tombs, the final resting place of the Emperors. Surrounded by nature, with a tranquil atmosphere, this series of impressive mausoleums are dotted along the Perfume River. The beautiful tombs are set amongst temples, courtyards and pavilions. After time to explore and take photos, board a small river boat for a delightful journey up river to the tallest Pagoda in Vietnam, the Pagoda of the Celestial Lady or Thien Mu. This iconic, seven-storey pagoda stands on the bank of the Perfume River and is the unofficial symbol of the city of Hue.An experience not to be missed!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hue City Tour",
+        "description": [
+          "Begin a day of exploration within the walled Citadel of Hue and take in the ruins of the city\u2019s regal past. Created in the 19th century, the Imperial City is known for its impressive architecture and beautiful landscaping. Once used by the royal family and their staff, this citadel is full of temples, palaces, offices and gardens. Many of the monuments bear the scars of the war while many more have been restored to their former glory.Spend time exploring the historic streets before a short journey from the old town to the surrounding countryside. Here, visit the impressive Royal Tombs, the final resting place of the Emperors. Surrounded by nature, with a tranquil atmosphere, this series of impressive mausoleums are dotted along the Perfume River. The beautiful tombs are set amongst temples, courtyards and pavilions. After time to explore and take photos, board a small river boat for a delightful journey up river to the tallest Pagoda in Vietnam, the Pagoda of the Celestial Lady or Thien Mu. This iconic, seven-storey pagoda stands on the bank of the Perfume River and is the unofficial symbol of the city of Hue.An experience not to be missed!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Hue City Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Hue City Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/insp_heritage_overland.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hero_hoian.png"
+    ]
+  },
+  "cooking-class-in-hoi-an": {
+    "title": "Cooking Class in Hoi An",
+    "slug": "cooking-class-in-hoi-an",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Food in Hoi An is light, fresh and delicious. Learn the tricks of the trade on this half-day, cookery experience. Pick the finest ingredients at a thriving food market, learn to prepare a variety of local staples and master the art of food carving, before sitting down to enjoy the culinary creations.",
+    "highlights": [
+      "Shop at the bustling Central Market with a knowledgeable local chef",
+      "Enjoy a short, scenic boat trip",
+      "Take part in a cookery masterclass and learn skills to impress friends back home."
+    ],
+    "inclusions": [
+      "Meals as mentioned",
+      "English-speaking guide",
+      "Tours and transfers as mentioned by air-conditioned vehicle",
+      "Sightseeing fees and permits during guided time"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Cooking Class in Hoi An",
+        "description": [
+          "Meet with a local, English-speaking chef and head to a thriving food market. Peruse the herbs and spices and receive hints and tips for choosing the best ingredients to make classically Hoi An cuisine.With the selected ingredients board a boat and take a short, scenic journey over the water to a much-respected cooking school. Here, learn how to roll rice paper into spring rolls, prepare a clay pot meal and make the most beautiful vegetable garnishes.Once the dish is complete, enjoy a delicious lunch and get the chance to sample the creations made throughout the workshop.A fun-filled culinary journey that provides visitors with skills that they can use again and again."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Cooking Class in Hoi An",
+        "description": [
+          "Meet with a local, English-speaking chef and head to a thriving food market. Peruse the herbs and spices and receive hints and tips for choosing the best ingredients to make classically Hoi An cuisine.With the selected ingredients board a boat and take a short, scenic journey over the water to a much-respected cooking school. Here, learn how to roll rice paper into spring rolls, prepare a clay pot meal and make the most beautiful vegetable garnishes.Once the dish is complete, enjoy a delicious lunch and get the chance to sample the creations made throughout the workshop.A fun-filled culinary journey that provides visitors with skills that they can use again and again."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Cooking Class in Hoi An",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Cooking Class in Hoi An on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
+    ]
+  },
+  "my-son-morning-tour": {
+    "title": "My Son Morning Tour",
+    "slug": "my-son-morning-tour",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Explore the magnificent temples of My Son on this half-day tour from Hoi An. An important temple complex built by the Champa Kingdom over many centuries, My Son is located in a lush valley surrounded by high mountains \u2013 a spectacular sight! Walk through the stunning temple grounds and learn about their architectural, religious and cultural significance.",
+    "highlights": [
+      "Explore the magnificent temple complex of My Son, surrounded by spectacular countryside",
+      "Discover the architectural styles and under the cultural significance of the UNESCO site",
+      "Learn about the ancient Champa Kingdom and its Hindu heritage"
+    ],
+    "inclusions": [
+      "Meals as mentioned",
+      "English-speaking guide",
+      "Sightseeing fees and permits during guided time"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "My Son Morning Tour",
+        "description": [
+          "From the 4th to the 13th centuries, the Champa Kingdom flourished on the coast of Vietnam with My Son as its religious and intellectual centre. Get picked up at the hotel and head out on a 50-kilometre (30-mile) drive to the stunning ancient temple complex. Located in a valley of dramatic beauty, the monuments of My Son are the most important constructions of the Champa Kingdom and were declared a UNESCO World Heritage Site in 1999.Whilst walking through the complex, learn about the history, architectural styles and cultural significance of the temples. Out of more than 70 temples that once spread out over this beautiful valley only some 20 remain; several are well-preserved while others are in ruins, damaged during the Vietnam War.Take in the stunning temples against the dramatic mountain backdrop and listen to the knowledgeable guide explain the influence of Hinduism on the Champa people; even pointing out the Hindu deities memorialised at My Son.After a fascinating morning of exploring the My Son temples, depart around noon to return to Hoi An."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "My Son Morning Tour",
+        "description": [
+          "From the 4th to the 13th centuries, the Champa Kingdom flourished on the coast of Vietnam with My Son as its religious and intellectual centre. Get picked up at the hotel and head out on a 50-kilometre (30-mile) drive to the stunning ancient temple complex. Located in a valley of dramatic beauty, the monuments of My Son are the most important constructions of the Champa Kingdom and were declared a UNESCO World Heritage Site in 1999.Whilst walking through the complex, learn about the history, architectural styles and cultural significance of the temples. Out of more than 70 temples that once spread out over this beautiful valley only some 20 remain; several are well-preserved while others are in ruins, damaged during the Vietnam War.Take in the stunning temples against the dramatic mountain backdrop and listen to the knowledgeable guide explain the influence of Hinduism on the Champa people; even pointing out the Hindu deities memorialised at My Son.After a fascinating morning of exploring the My Son temples, depart around noon to return to Hoi An."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "My Son Morning Tour",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of My Son Morning Tour on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/insp_heritage_overland.png"
+    ]
+  },
+  "local-life-hoi-an-street-eats": {
+    "title": "Local Life: Hoi An Street Eats",
+    "slug": "local-life-hoi-an-street-eats",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Highlighting the flavours and dishes unique to Hoi An, this street food walking tour leads through a series of the town\u2019s best eateries. Sample the beautiful white rose dumplings, taste banh can crackers topped with pork and salad, and dig into a bowl of aromatic cao lau noodles whilst getting a glimpse of life in the picturesque coastal town.",
+    "highlights": [
+      "Explore Vietnam's distinct flavours and experience its culinary heritage with this walking food tour in Hoi An",
+      "Sample a selection of authentic Vietnamese dishes",
+      "Discover the busy city's best street food stalls, some of which are not easily visible to travellers"
+    ],
+    "inclusions": [
+      "English-speaking guide",
+      "Food items as indicated in the itinerary",
+      "Drinking water",
+      "1x coffee or beer"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life: Hoi An Street Eats",
+        "description": [
+          "Set off on a culinary adventure in Hoi An to discover the flavours and dishes that make this coastal town unique. Alongside an expert local guide, be introduced to the stories behind Hoi An\u2019s most iconic dishes at the town\u2019s most famous eateries.",
+          "Start the tour at a local restaurant famous for white rose dumplings. Found exclusively in Hoi An, enjoy these delicacies while marvelling at the work that goes into them. The staff churn out up to 6000 of these dumplings every day and each one is as beautiful as the last. Try and prepare a few of these delicate, filled dumplings before heading onwards to visit a 250-year-old house.",
+          "Take the chance to step inside a traditional Hoi An home and see how the locals live (and eat). Stroll around the house, spending time with the host to learn about his daily life. Before moving on, visit his workshop where his skilful hands spend hours creating sophisticated and creative silver jewellery. Marvel at his beautiful creations and, maybe, take home a unique and personal souvenir.",
+          "Continue on to find another local staple: banh can. These crackers are served with quail eggs, pork and a tasty salad and are a Hoi An street food favourite. Pull up a small street side stool and dig in. Alternatively, try an authentic banh mi \u201cVietnamese baguette\u201d.",
+          "Some more specialities await, including grilled pork satay and the famous Cao Lau noodles, before wrapping up the tour with a local Vietnamese coffee \u2013 the perfect ending to any meal!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life: Hoi An Street Eats",
+        "description": [
+          "Set off on a culinary adventure in Hoi An to discover the flavours and dishes that make this coastal town unique. Alongside an expert local guide, be introduced to the stories behind Hoi An\u2019s most iconic dishes at the town\u2019s most famous eateries.",
+          "Start the tour at a local restaurant famous for white rose dumplings. Found exclusively in Hoi An, enjoy these delicacies while marvelling at the work that goes into them. The staff churn out up to 6000 of these dumplings every day and each one is as beautiful as the last. Try and prepare a few of these delicate, filled dumplings before heading onwards to visit a 250-year-old house.",
+          "Take the chance to step inside a traditional Hoi An home and see how the locals live (and eat). Stroll around the house, spending time with the host to learn about his daily life. Before moving on, visit his workshop where his skilful hands spend hours creating sophisticated and creative silver jewellery. Marvel at his beautiful creations and, maybe, take home a unique and personal souvenir.",
+          "Continue on to find another local staple: banh can. These crackers are served with quail eggs, pork and a tasty salad and are a Hoi An street food favourite. Pull up a small street side stool and dig in. Alternatively, try an authentic banh mi \u201cVietnamese baguette\u201d.",
+          "Some more specialities await, including grilled pork satay and the famous Cao Lau noodles, before wrapping up the tour with a local Vietnamese coffee \u2013 the perfect ending to any meal!"
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life: Hoi An Street Eats",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Local Life: Hoi An Street Eats on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
+    ]
+  },
+  "local-life-river-cruise-in-hoi-an": {
+    "title": "Local Life River Cruise in Hoi An",
+    "slug": "local-life-river-cruise-in-hoi-an",
+    "duration": 1,
+    "durationText": "1 Days",
+    "priceFrom": 1850,
+    "intro": "Get a glimpse of the fascinating local life along the Thu Bon River on this afternoon boat tour in Hoi An. Learn about local traditions and beliefs, try traditional fishing techniques, and gain insight into life in a fishing village before reaching the river mouth where it debouches into the sea.",
+    "highlights": [
+      "Enjoy a scenic and captivating boat cruise along Thu Bon River",
+      "Gain insight into the traditions of local fishing communities at several stops",
+      "Learn to use drift nets and lift nets and, if lucky, catch some fish"
+    ],
+    "inclusions": [
+      "Transportation",
+      "English speaking guide",
+      "Entrance fees",
+      "Boat trip as itinerary",
+      "Fresh coconut water and water bottles"
+    ],
+    "timeline": [
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life River Cruise in Hoi An",
+        "description": [
+          "At a local pier, hop aboard a boat and set off along the tranquil waterways of Thu Bon River. Travel to Kim Bong Village \u2013 the first stop of this cultural exploration \u2013 and visit a couple of workshops to hear about Vietnamese seamanship and traditional craftsmanship.",
+          "Continue the river journey, passing by large lift nets located along the shore of Duy Vinh Commune, until reaching the fishing village of Tra Nhieu. Upon arrival, stop by the Temple of the Whale and learn about the important role ascribed to the giant marine mammal in the local culture. Take a break at the house of a local family and enjoy an interesting conversation about life in the village.",
+          "Next, return to the water in small fishing rowing boats and learn using drift nets and lift nets. Try catch some fish before swapping boats again and cruising to the point where the Thu Bon River flows into the sea. Witness the many fishing boats return from a day at sea before kicking back with a refreshing coconut water and travelling back to the pier in Hoi An. Along the way, soak up the peaceful atmosphere and take in the beautiful riverside scenery as the sun slowly sets behind the river."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life River Cruise in Hoi An",
+        "description": [
+          "At a local pier, hop aboard a boat and set off along the tranquil waterways of Thu Bon River. Travel to Kim Bong Village \u2013 the first stop of this cultural exploration \u2013 and visit a couple of workshops to hear about Vietnamese seamanship and traditional craftsmanship.",
+          "Continue the river journey, passing by large lift nets located along the shore of Duy Vinh Commune, until reaching the fishing village of Tra Nhieu. Upon arrival, stop by the Temple of the Whale and learn about the important role ascribed to the giant marine mammal in the local culture. Take a break at the house of a local family and enjoy an interesting conversation about life in the village.",
+          "Next, return to the water in small fishing rowing boats and learn using drift nets and lift nets. Try catch some fish before swapping boats again and cruising to the point where the Thu Bon River flows into the sea. Witness the many fishing boats return from a day at sea before kicking back with a refreshing coconut water and travelling back to the pier in Hoi An. Along the way, soak up the peaceful atmosphere and take in the beautiful riverside scenery as the sun slowly sets behind the river."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      },
+      {
+        "dayRange": "Day 1",
+        "title": "Local Life River Cruise in Hoi An",
+        "description": [
+          "Enjoy your day exploring the beautiful highlights of Local Life River Cruise in Hoi An on your custom itinerary."
+        ],
+        "accommodation": "Luxury Selected Hotel"
+      }
+    ],
+    "gallery": [
+      "/images/hero_hoian_luxury.png",
+      "/images/dest_hoian_lanterns.png",
+      "/images/things_hoi_an_lanterns.png",
+      "/images/hoian.jpg"
     ]
   }
 }
