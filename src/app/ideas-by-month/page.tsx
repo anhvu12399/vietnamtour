@@ -3,13 +3,208 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
-import { ideasByMonthData } from '@/lib/ideasByMonthData';
+import BestTimeInteractive from '@/components/BestTimeInteractive';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Best Time to Visit Vietnam | Travel Ideas by Month | Vietnam Tour',
-  description: 'Find the best time to visit Vietnam. Explore weather forecasts and top recommendations month-by-month, from January to December.',
+  description: 'Find the best time to visit Vietnam. Explore weather forecasts, regional climate zones, month-by-month recommendations, and detailed temperature guides.',
+  keywords: ['best time to visit Vietnam', 'Vietnam weather', 'Vietnam climate zones', 'when to go to Vietnam', 'Vietnam weather table'],
 };
+
+const regionsData = [
+  {
+    name: 'Northern Vietnam',
+    subtitle: 'Hanoi, Halong Bay, Sapa, Ha Giang',
+    description: 'There are two distinct seasons. It\'s hot and humid from May to October with high rainfall, but the weather cools down from November to April and it\'s much drier. December and January can be quite cold in the highlands, with temperatures dropping below 10°C (50°F) in Sapa.',
+    bestMonths: 'October – April',
+  },
+  {
+    name: 'Central Vietnam',
+    subtitle: 'Hoi An, Hue, Da Nang, Nha Trang',
+    description: 'Central Vietnam\'s summer season lasts from January until the end of August. The weather is hot and dry, with temperatures ranging between 26°C and 35°C. Conditions between September and December are much wetter, with high rainfall and occasional tropical storms.',
+    bestMonths: 'February – May',
+  },
+  {
+    name: 'Southern Vietnam',
+    subtitle: 'Ho Chi Minh City, Mekong Delta, Phu Quoc',
+    description: 'Southern Vietnam\'s hot and dry season starts in November and finishes at the end of April, with temperatures often reaching 32°C - 35°C. Rain falls regularly between May and October, but the weather still remains warm, usually between 28°C and 32°C, with rainfall typically limited to brief afternoon downpours.',
+    bestMonths: 'November – April',
+  },
+];
+
+const climateGuide = [
+  {
+    name: 'Con Dao Islands',
+    months: [
+      { temp: '28°', rain: '1"' },
+      { temp: '28°', rain: '0"' },
+      { temp: '30°', rain: '0"' },
+      { temp: '31°', rain: '2"' },
+      { temp: '31°', rain: '9"' },
+      { temp: '31°', rain: '12"' },
+      { temp: '30°', rain: '10"' },
+      { temp: '30°', rain: '13"' },
+      { temp: '30°', rain: '13"' },
+      { temp: '29°', rain: '12"' },
+      { temp: '29°', rain: '7"' },
+      { temp: '28°', rain: '2"' },
+    ]
+  },
+  {
+    name: 'Halong Bay',
+    months: [
+      { temp: '21°', rain: '1"' },
+      { temp: '20°', rain: '1"' },
+      { temp: '23°', rain: '2"' },
+      { temp: '27°', rain: '3"' },
+      { temp: '31°', rain: '6"' },
+      { temp: '32°', rain: '8"' },
+      { temp: '32°', rain: '11"' },
+      { temp: '32°', rain: '13"' },
+      { temp: '31°', rain: '13"' },
+      { temp: '29°', rain: '4"' },
+      { temp: '26°', rain: '1"' },
+      { temp: '22°', rain: '1"' },
+    ]
+  },
+  {
+    name: 'Hanoi',
+    months: [
+      { temp: '20°', rain: '1"' },
+      { temp: '21°', rain: '1"' },
+      { temp: '23°', rain: '1"' },
+      { temp: '28°', rain: '3"' },
+      { temp: '32°', rain: '8"' },
+      { temp: '33°', rain: '9"' },
+      { temp: '33°', rain: '12"' },
+      { temp: '32°', rain: '13"' },
+      { temp: '31°', rain: '10"' },
+      { temp: '29°', rain: '5"' },
+      { temp: '26°', rain: '2"' },
+      { temp: '22°', rain: '1"' },
+    ]
+  },
+  {
+    name: 'Ho Chi Minh City',
+    months: [
+      { temp: '32°', rain: '1"' },
+      { temp: '33°', rain: '0"' },
+      { temp: '34°', rain: '0"' },
+      { temp: '35°', rain: '2"' },
+      { temp: '33°', rain: '8"' },
+      { temp: '32°', rain: '12"' },
+      { temp: '31°', rain: '11"' },
+      { temp: '31°', rain: '10"' },
+      { temp: '31°', rain: '12"' },
+      { temp: '31°', rain: '10"' },
+      { temp: '31°', rain: '4"' },
+      { temp: '31°', rain: '2"' },
+    ]
+  },
+  {
+    name: 'Hoi An',
+    months: [
+      { temp: '25°', rain: '4"' },
+      { temp: '26°', rain: '2"' },
+      { temp: '28°', rain: '1"' },
+      { temp: '31°', rain: '1"' },
+      { temp: '33°', rain: '2"' },
+      { temp: '34°', rain: '4"' },
+      { temp: '34°', rain: '3"' },
+      { temp: '34°', rain: '4"' },
+      { temp: '31°', rain: '13"' },
+      { temp: '29°', rain: '21"' },
+      { temp: '27°', rain: '15"' },
+      { temp: '25°', rain: '8"' },
+    ]
+  },
+  {
+    name: 'Hue',
+    months: [
+      { temp: '24°', rain: '6"' },
+      { temp: '25°', rain: '3"' },
+      { temp: '27°', rain: '3"' },
+      { temp: '30°', rain: '2"' },
+      { temp: '33°', rain: '4"' },
+      { temp: '34°', rain: '3"' },
+      { temp: '34°', rain: '3"' },
+      { temp: '34°', rain: '5"' },
+      { temp: '31°', rain: '14"' },
+      { temp: '29°', rain: '24"' },
+      { temp: '27°', rain: '25"' },
+      { temp: '24°', rain: '13"' },
+    ]
+  },
+  {
+    name: 'Mekong Delta',
+    months: [
+      { temp: '30°', rain: '0"' },
+      { temp: '30°', rain: '0"' },
+      { temp: '31°', rain: '0"' },
+      { temp: '32°', rain: '2"' },
+      { temp: '31°', rain: '7"' },
+      { temp: '31°', rain: '8"' },
+      { temp: '30°', rain: '9"' },
+      { temp: '30°', rain: '9"' },
+      { temp: '30°', rain: '8"' },
+      { temp: '30°', rain: '10"' },
+      { temp: '30°', rain: '6"' },
+      { temp: '30°', rain: '2"' },
+    ]
+  },
+  {
+    name: 'Nha Trang',
+    months: [
+      { temp: '28°', rain: '2"' },
+      { temp: '29°', rain: '1"' },
+      { temp: '30°', rain: '1"' },
+      { temp: '32°', rain: '2"' },
+      { temp: '33°', rain: '2"' },
+      { temp: '33°', rain: '2"' },
+      { temp: '33°', rain: '1"' },
+      { temp: '33°', rain: '2"' },
+      { temp: '32°', rain: '5"' },
+      { temp: '30°', rain: '11"' },
+      { temp: '29°', rain: '11"' },
+      { temp: '28°', rain: '6"' },
+    ]
+  },
+  {
+    name: 'Phu Quoc',
+    months: [
+      { temp: '30°', rain: '1"' },
+      { temp: '30°', rain: '1"' },
+      { temp: '31°', rain: '3"' },
+      { temp: '32°', rain: '6"' },
+      { temp: '31°', rain: '8"' },
+      { temp: '31°', rain: '13"' },
+      { temp: '30°', rain: '18"' },
+      { temp: '30°', rain: '24"' },
+      { temp: '30°', rain: '18"' },
+      { temp: '30°', rain: '12"' },
+      { temp: '30°', rain: '7"' },
+      { temp: '30°', rain: '2"' },
+    ]
+  },
+  {
+    name: 'Sapa & Tonkinese Alps',
+    months: [
+      { temp: '13°', rain: '1"' },
+      { temp: '15°', rain: '2"' },
+      { temp: '19°', rain: '2"' },
+      { temp: '22°', rain: '5"' },
+      { temp: '25°', rain: '10"' },
+      { temp: '24°', rain: '11"' },
+      { temp: '25°', rain: '18"' },
+      { temp: '25°', rain: '16"' },
+      { temp: '23°', rain: '10"' },
+      { temp: '21°', rain: '5"' },
+      { temp: '18°', rain: '1"' },
+      { temp: '16°', rain: '0"' },
+    ]
+  }
+];
 
 export default function IdeasByMonthListingPage() {
   return (
@@ -38,7 +233,7 @@ export default function IdeasByMonthListingPage() {
             <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#9A4B33] font-semibold">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">&gt;</span>
-              <span className="text-white/80">Ideas by Month</span>
+              <span className="text-white/80">Best Time to Visit</span>
             </div>
           </div>
         </section>
@@ -46,84 +241,211 @@ export default function IdeasByMonthListingPage() {
         {/* Categories Tab Bar */}
         <CategoriesTabBar activeTab="weather" />
 
-        {/* Content Section */}
-        <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto space-y-16">
-          
-          {/* Header Introduction */}
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-[#9A4B33] block">
-              Monthly Weather & Guides
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#343434] font-medium leading-tight">
-              When Will Your Journey Begin?
-            </h2>
-            <p className="text-base text-[#545454] font-light leading-relaxed">
-              Vietnam is a year-round destination, but weather varies significantly by region and season. Click on any month below to read our detailed travel guide, weather analysis (North, Central, South), and recommended travel spots.
-            </p>
-            <div className="h-[2px] w-20 bg-[#9A4B33] mx-auto mt-6" />
-          </div>
+        {/* Regional Breakdown & Sidebar */}
+        <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+          <div className="grid lg:grid-cols-12 gap-12">
+            
+            {/* Left Content (Regions) */}
+            <div className="lg:col-span-8 space-y-12">
+              <p className="text-base text-[#545454] leading-relaxed font-light">
+                The best time to visit Vietnam is between <strong className="font-semibold text-[#343434]">November and April</strong>. This is when the country experiences the least amount of rain and temperatures are highly comfortable.
+              </p>
 
-          {/* Grid of 12 Months */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
-            {ideasByMonthData.map((item) => (
-              <Link 
-                key={item.slug} 
-                href={`/ideas-by-month/${item.slug}`}
-                className="group relative h-48 sm:h-56 overflow-hidden rounded-xs border border-[#e6e2d6] shadow-md flex flex-col justify-end p-6 bg-luxury-slate transition-all duration-300 hover:shadow-xl hover:border-[#e6e2d6]"
-              >
-                <Image
-                  src={item.heroImage}
-                  alt={item.title}
-                  fill
-                  className="object-cover brightness-[0.45] group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
+              <div className="space-y-10 pt-4">
+                {regionsData.map((reg) => (
+                  <div key={reg.name} className="border-b border-[#e6e2d6] pb-8 last:border-0 last:pb-0">
+                    <h3 className="font-serif text-2xl font-light text-[#343434] mb-1">
+                      {reg.name}
+                    </h3>
+                    <p className="text-[10px] uppercase tracking-widest text-[#9A4B33] font-semibold mb-4">
+                      {reg.subtitle}
+                    </p>
+                    <p className="text-sm text-[#545454] leading-relaxed font-light mb-4">
+                      {reg.description}
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-[#faf8f5] border border-[#e6e2d6] px-4 py-2 text-xs">
+                      <span className="font-semibold text-[#343434]">Recommended Months:</span>
+                      <span className="text-[#9A4B33] font-bold">{reg.bestMonths}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Sidebar */}
+            <div className="lg:col-span-4 space-y-6">
+              <div className="bg-white border border-[#e6e2d6] p-8 text-center space-y-6">
+                <h4 className="font-serif text-lg font-light text-[#343434] leading-snug">
+                  Creating tailor-made tours for over 15 years
+                </h4>
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-
-                <div className="relative z-10 space-y-1.5 text-left">
-                  <span className="text-[10px] uppercase tracking-widest text-[#9A4B33] font-bold block">
-                    Vietnam Guide
-                  </span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-white font-semibold leading-none group-hover:text-gold transition-colors">
-                    {item.breadcrumb}
-                  </h3>
-                  <p className="text-[10px] text-white/70 font-light line-clamp-1 group-hover:text-white transition-colors">
-                    {item.heroSubtitle}
-                  </p>
+                {/* Badges */}
+                <div className="flex justify-center items-center gap-4 py-2 border-t border-b border-[#faf8f5]">
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#BC986A] flex items-center justify-center text-[10px] font-bold text-[#BC986A] bg-[#faf8f5] shadow-sm">
+                      TA
+                    </div>
+                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">A-List</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#9A4B33] flex items-center justify-center text-[10px] font-bold text-[#9A4B33] bg-[#faf8f5] shadow-sm">
+                      ★ 5.0
+                    </div>
+                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">TrustScore</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#343434] flex items-center justify-center text-[10px] font-bold text-[#343434] bg-[#faf8f5] shadow-sm">
+                      LIC
+                    </div>
+                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">Licensed</span>
+                  </div>
                 </div>
-              </Link>
-            ))}
-          </div>
 
+                <div className="space-y-3 pt-2">
+                  <Link
+                    href="/enquire"
+                    className="block w-full bg-[#9A4B33] text-white text-[10px] uppercase tracking-widest font-bold py-3.5 hover:bg-[#7e3c28] transition-colors"
+                  >
+                    Make an Inquiry
+                  </Link>
+                  <a
+                    href="https://wa.me/84988600388"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-white text-[#343434] border border-[#e6e2d6] text-[10px] uppercase tracking-widest font-bold py-3.5 hover:bg-[#faf8f5] transition-colors"
+                  >
+                    Request a Callback
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </section>
 
-        {/* Bottom CTA Block */}
-        <section className="bg-[#faf8f5] text-[#343434] py-16 sm:py-24 px-6 lg:px-12 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#9A4B33_1px,transparent_1px)] [background-size:16px_16px]" />
-          <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-            <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#9A4B33] block">
-              Tailor-Made Planning
-            </span>
-            <h3 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
-              Ready to Plan Your Seasonal Escape?
-            </h3>
-            <p className="text-base sm:text-lg text-[#545454] font-light max-w-2xl mx-auto leading-relaxed">
-              No matter what month you travel, our specialists will craft the perfect itinerary to match the best climates and festivals in Vietnam.
+        {/* Month-by-month Interactive Tab Section */}
+        <BestTimeInteractive />
+
+        {/* Climate Table Section */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <h2 className="font-serif text-3xl font-light text-center text-[#343434] mb-4">
+              Vietnam Climate Guide
+            </h2>
+            <p className="text-center text-xs text-[#545454] font-light max-w-lg mx-auto mb-16 leading-relaxed">
+              Explore the detailed average temperature and monthly rainfall (inches) guide across Vietnam's main destinations.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Link
-                href="/enquire"
-                className="w-full sm:w-auto bg-[#9A4B33] hover:bg-luxury-gold hover:text-luxury-slate text-slate-950 text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
-              >
-                Request a Custom Quote
-              </Link>
-              <Link
-                href="/specialists"
-                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-[#9A4B33] hover:text-[#9A4B33] text-[#343434] text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
-              >
-                Speak to a Specialist
-              </Link>
+
+            <div className="overflow-x-auto border border-[#e6e2d6]">
+              <table className="w-full text-xs text-left min-w-[1000px]">
+                <thead>
+                  <tr className="bg-[#343434] text-white border-b border-[#e6e2d6]">
+                    <th className="py-4 px-6 font-semibold uppercase tracking-wider text-[9px] w-[18%]">Destination</th>
+                    {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((m) => (
+                      <th key={m} className="py-4 px-2 font-semibold uppercase tracking-wider text-[9px] text-center">{m}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {climateGuide.map((dest, i) => (
+                    <tr
+                      key={dest.name}
+                      className={`border-b border-[#e6e2d6] transition-colors hover:bg-[#faf8f5] ${
+                        i % 2 === 0 ? 'bg-white' : 'bg-[#faf8f5]/40'
+                      }`}
+                    >
+                      <td className="py-4 px-6 font-medium text-[#343434]">{dest.name}</td>
+                      {dest.months.map((m, mIdx) => (
+                        <td key={mIdx} className="py-3 px-1 text-center">
+                          <div className="font-semibold text-[#343434]">{m.temp}</div>
+                          <div className="text-[10px] text-[#9A4B33] font-light mt-0.5">{m.rain}</div>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Us and Advice Columns */}
+        <section className="py-20 bg-[#faf8f5] border-t border-[#e6e2d6]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+              
+              {/* Left Column: Why travel with us */}
+              <div className="bg-white border border-[#e6e2d6] p-8 lg:p-12 space-y-6">
+                <h3 className="font-serif text-2xl font-light text-[#343434] border-b border-[#e6e2d6] pb-4">
+                  Why travel with Vietnam Tours?
+                </h3>
+                <ul className="space-y-4 text-sm text-[#545454] font-light leading-relaxed">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <div>
+                      <strong className="font-semibold text-[#343434]">100% custom and private:</strong> Every itinerary is handcrafted from scratch matching your travel pace and style.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <div>
+                      <strong className="font-semibold text-[#343434]">Official Registration:</strong> Operated by My Way Travel Co., Ltd with International Tour Operator License No. 79-0743/2017/TCDL.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <div>
+                      <strong className="font-semibold text-[#343434]">Financial Protection:</strong> Bounded security deposit under Government regulations at Vietcombank.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <div>
+                      <strong className="font-semibold text-[#343434]">Expert Specialists:</strong> Dedicated local specialists providing 24/7 on-ground assistance during your journey.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Right Column: Travel Advice & Brochure */}
+              <div className="space-y-8">
+                
+                {/* Block 1 */}
+                <div className="bg-white border border-[#e6e2d6] p-8 space-y-4">
+                  <span className="text-[9px] uppercase tracking-wider text-[#9A4B33] font-bold">Travel Advice</span>
+                  <h4 className="font-serif text-lg font-light text-[#343434]">
+                    Practical tips for traveling in Vietnam
+                  </h4>
+                  <p className="text-xs text-[#545454] leading-relaxed font-light">
+                    From visas, health requirements, packaging guides, and local currencies, read our comprehensive travel guidelines to make your holiday seamless.
+                  </p>
+                  <Link
+                    href="/visa-guide"
+                    className="inline-flex items-center text-xs font-bold text-[#9A4B33] hover:text-[#7e3c28] pt-2"
+                  >
+                    View Visa & Travel Advice →
+                  </Link>
+                </div>
+
+                {/* Block 2 */}
+                <div className="bg-white border border-[#e6e2d6] p-8 space-y-4">
+                  <span className="text-[9px] uppercase tracking-wider text-[#9A4B33] font-bold">Tailor-Made Brochure</span>
+                  <h4 className="font-serif text-lg font-light text-[#343434]">
+                    Download or request our luxury brochures
+                  </h4>
+                  <p className="text-xs text-[#545454] leading-relaxed font-light">
+                    Packed with inspiring trip ideas, destination guides, and luxury hotel listings recommended by our travel experts.
+                  </p>
+                  <Link
+                    href="/enquire"
+                    className="inline-flex items-center text-xs font-bold text-[#9A4B33] hover:text-[#7e3c28] pt-2"
+                  >
+                    Request a Custom Brochure →
+                  </Link>
+                </div>
+
+              </div>
+
             </div>
           </div>
         </section>
