@@ -769,10 +769,10 @@ export async function getMonthGuideFromSanity(slug: string): Promise<any | null>
 
 export async function getBlogPostsFromSanity(): Promise<any[]> {
   if (useMock) return [];
-  const query = `*[_type == "blogPost"] | order(publishedAt desc){
+  const query = `*[_type in ["blogPost", "post"]] | order(publishedAt desc){
     _id, title, slug, publishedAt, category, excerpt,
-    "featuredImage": featuredImage.asset->url,
-    "imageAlt": featuredImage.alt,
+    "featuredImage": coalesce(featuredImage.asset->url, featuredImage, mainImage.asset->url, mainImage),
+    "imageAlt": coalesce(featuredImage.alt, imageAlt, title),
     author->{
       name, role,
       "avatar": image.asset->url

@@ -259,7 +259,10 @@ function getFallbackImage(slug: string): string {
 // ─── Main Page Component ──────────────────────────────────────────────────────
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = await getBlogPostBySlugFromSanity(slug);
+  const [post, allPosts] = await Promise.all([
+    getBlogPostBySlugFromSanity(slug),
+    getBlogPostsFromSanity(),
+  ]);
 
   if (!post) {
     notFound();
@@ -280,6 +283,10 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   const featuredImage = post.featuredImage || getFallbackImage(slug);
+
+  const relatedPosts = post.relatedPosts?.length > 0
+    ? post.relatedPosts
+    : allPosts.filter((p) => p.slug?.current !== slug).slice(0, 3);
 
   return (
     <>
@@ -477,29 +484,32 @@ export default async function BlogPostPage({ params }: PageProps) {
         </section>
 
         {/* ── Related Posts & CTA ── */}
-        {(post.relatedPosts?.length > 0 || post.ctaHeading) && (
+        {(relatedPosts.length > 0 || post.ctaHeading) && (
           <section className="bg-[#f4efe6] py-24 border-t border-[#e6e2d6]">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-              {post.relatedPosts?.length > 0 && (
+              {relatedPosts.length > 0 && (
                 <div className="mb-24">
-                  <h2 className="text-sm tracking-[0.2em] text-luxury-gold font-bold uppercase mb-12 flex items-center gap-4">
+                  <h2 className="text-sm tracking-[0.2em] text-[#ba996a] font-bold uppercase mb-12 flex items-center gap-4">
                     <span>Keep Reading</span>
-                    <span className="h-[1px] flex-1 bg-gradient-to-r from-luxury-gold/50 to-transparent"></span>
+                    <span className="h-[1px] flex-1 bg-gradient-to-r from-[#ba996a]/50 to-transparent"></span>
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {post.relatedPosts.map((related: any) => (
-                      <Link key={related._id} href={`/blog/${related.slug.current}`} className="group block">
-                        <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-[#e6e2d6]">
-                          {related.featuredImage ? (
-                            <Image src={related.featuredImage} alt={related.imageAlt || related.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                          ) : (
-                            <div className="absolute inset-0 bg-white/5" />
-                          )}
-                        </div>
-                        <div className="text-xs text-luxury-gold tracking-wider uppercase mb-3">{related.category}</div>
-                        <h3 className="text-xl font-playfair text-[#343434] group-hover:text-[#9A4B33] transition-colors">{related.title}</h3>
-                      </Link>
-                    ))}
+                    {relatedPosts.map((related: any) => {
+                      const relatedImg = related.featuredImage || getFallbackImage(related.slug?.current || '');
+                      return (
+                        <Link key={related._id} href={`/blog/${related.slug?.current || ''}`} className="group block">
+                          <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 border border-[#e6e2d6]">
+                            {relatedImg ? (
+                              <Image src={relatedImg} alt={related.imageAlt || related.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                            ) : (
+                              <div className="absolute inset-0 bg-[#343434]/5" />
+                            )}
+                          </div>
+                          <div className="text-xs text-[#ba996a] tracking-wider uppercase mb-3">{related.category || 'Travel Guide'}</div>
+                          <h3 className="text-xl font-playfair text-[#343434] group-hover:text-[#9A4B33] transition-colors">{related.title}</h3>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               )}
