@@ -160,75 +160,80 @@ function loadScrapedItineraries(): Itinerary[] {
 }
 
 export async function getItineraries(): Promise<Itinerary[]> {
-  if (useMock) {
-    return loadScrapedItineraries();
-  }
-  const query = `*[_type == "itinerary"]{
-    ...,
-    "gallery": gallery[].asset->url,
-    accommodations[]->{
+  let sanityTours: Itinerary[] = [];
+  if (!useMock) {
+    const query = `*[_type == "itinerary"]{
       ...,
-      "gallery": gallery[].asset->url
-    },
-    specialist->{
-      ...,
-      "image": image.asset->url
-    },
-    destination->{ _id, name, slug, "image": image.asset->url },
-    "seo": seo{
-      metaTitle, metaDescription, keywords,
-      "ogImage": ogImage.asset->url
+      "gallery": gallery[].asset->url,
+      accommodations[]->{
+        ...,
+        "gallery": gallery[].asset->url
+      },
+      specialist->{
+        ...,
+        "image": image.asset->url
+      },
+      destination->{ _id, name, slug, "image": image.asset->url },
+      "seo": seo{
+        metaTitle, metaDescription, keywords,
+        "ogImage": ogImage.asset->url
+      }
+    }`;
+    try {
+      sanityTours = await fetchSanity<Itinerary[]>(query) || [];
+    } catch (e) {
+      console.error('Error fetching Sanity itineraries:', e);
     }
-  }`;
-  return await fetchSanity<Itinerary[]>(query);
+  }
+
+  // Load scraped itineraries
+  const scrapedTours = loadScrapedItineraries();
+
+  // Merge: start with Sanity tours, and append scraped ones that don't have the same slug
+  const combined = [...sanityTours];
+  for (const s of scrapedTours) {
+    if (!combined.some(c => c.slug.current === s.slug.current)) {
+      combined.push(s);
+    }
+  }
+  return combined;
 }
 
 export async function getFeaturedItineraries(): Promise<Itinerary[]> {
-  if (useMock) {
-    return loadScrapedItineraries().filter(it => it.featured);
-  }
-  const query = `*[_type == "itinerary" && featured == true]{
-    ...,
-    "gallery": gallery[].asset->url,
-    accommodations[]->{
-      ...,
-      "gallery": gallery[].asset->url
-    },
-    specialist->{
-      ...,
-      "image": image.asset->url
-    },
-    destination->{ _id, name, slug, "image": image.asset->url },
-    "seo": seo{
-      metaTitle, metaDescription, keywords,
-      "ogImage": ogImage.asset->url
-    }
-  }`;
-  return await fetchSanity<Itinerary[]>(query);
+  const all = await getItineraries();
+  return all.filter(it => it.featured);
 }
 
 export async function getItineraryBySlug(slug: string): Promise<Itinerary | null> {
-  if (useMock) {
-    return loadScrapedItineraries().find(it => it.slug.current === slug) || null;
-  }
-  const query = `*[_type == "itinerary" && slug.current == $slug][0]{
-    ...,
-    "gallery": gallery[].asset->url,
-    accommodations[]->{
+  if (!useMock) {
+    const query = `*[_type == "itinerary" && slug.current == $slug][0]{
       ...,
-      "gallery": gallery[].asset->url
-    },
-    specialist->{
-      ...,
-      "image": image.asset->url
-    },
-    destination->{ _id, name, slug, "image": image.asset->url },
-    "seo": seo{
-      metaTitle, metaDescription, keywords,
-      "ogImage": ogImage.asset->url
+      "gallery": gallery[].asset->url,
+      accommodations[]->{
+        ...,
+        "gallery": gallery[].asset->url
+      },
+      specialist->{
+        ...,
+        "image": image.asset->url
+      },
+      destination->{ _id, name, slug, "image": image.asset->url },
+      "seo": seo{
+        metaTitle, metaDescription, keywords,
+        "ogImage": ogImage.asset->url
+      }
+    }`;
+    try {
+      const tour = await fetchSanity<Itinerary | null>(query, { slug });
+      if (tour) return tour;
+    } catch (e) {
+      console.error('Error fetching Sanity itinerary by slug:', e);
     }
-  }`;
-  return await fetchSanity<Itinerary | null>(query, { slug });
+  }
+
+  // Fallback to scraped itineraries
+  const scraped = loadScrapedItineraries();
+  return scraped.find(it => it.slug.current === slug) || null;
 }
 
 // --- Accommodations ---
