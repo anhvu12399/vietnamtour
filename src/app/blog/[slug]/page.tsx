@@ -134,7 +134,7 @@ const portableTextComponents: PortableTextComponents = {
       if (!tipText) return null;
       
       return (
-        <div className="my-10 p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-[#1c2622] to-[#141b18] border border-luxury-gold/20 shadow-xl relative overflow-hidden group">
+        <div className="my-10 p-6 lg:p-8 rounded-2xl bg-white border border-[#e6e2d6] border-t-2 border-t-[#9A4B33] shadow-md relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-luxury-gold/5 rounded-bl-full -mr-8 -mt-8" />
           
           <div className="flex items-start gap-4 lg:gap-6 relative z-10">
@@ -143,22 +143,22 @@ const portableTextComponents: PortableTextComponents = {
                 <Image src={specialist.image} alt={specialist.name} fill className="object-cover" />
               </div>
             ) : (
-              <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 border-2 border-[#e6e2d6]">
+              <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#343434]/10 flex items-center justify-center flex-shrink-0 border-2 border-[#e6e2d6]">
                 <span className="text-xl lg:text-2xl text-luxury-gold">💡</span>
               </div>
             )}
             
             <div>
-              <h4 className="text-xs uppercase tracking-[0.2em] text-luxury-gold font-bold mb-2">
+              <h4 className="text-xs uppercase tracking-[0.2em] text-[#9A4B33] font-bold mb-2">
                 Specialist Insight
               </h4>
-              <div className="text-white/80 font-playfair text-lg lg:text-xl leading-relaxed italic mb-4">
+              <div className="text-[#343434] font-playfair text-lg lg:text-xl leading-relaxed italic mb-4">
                 &ldquo;{tipText}&rdquo;
               </div>
               {specialist && (
                 <div className="flex items-center gap-2">
                   <span className="w-4 h-[1px] bg-luxury-gold/50" />
-                  <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
+                  <span className="text-xs text-[#343434]/60 tracking-wider uppercase font-medium">
                     {specialist.name} {specialist.role ? `• ${specialist.role}` : ''}
                   </span>
                 </div>
@@ -172,20 +172,20 @@ const portableTextComponents: PortableTextComponents = {
     insiderTip: ({ value }) => {
       if (!value?.tip) return null;
       return (
-        <div className="my-10 p-5 lg:p-7 border-l-4 border-luxury-gold bg-[#1c2622]/80 rounded-r-xl relative overflow-hidden">
+        <div className="my-10 p-5 lg:p-7 border-l-4 border-luxury-gold bg-white border-y border-r border-[#e6e2d6] rounded-r-xl relative overflow-hidden shadow-sm">
           <div className="flex items-start gap-4">
             <div className="shrink-0 mt-0.5">
               <span className="text-2xl">📍</span>
             </div>
             <div className="space-y-2">
-              <div className="text-[10px] uppercase tracking-[0.25em] text-luxury-gold font-bold">
+              <div className="text-[10px] uppercase tracking-[0.25em] text-[#9A4B33] font-bold">
                 Local Insider — Only Locals Know This
               </div>
-              <p className="text-white/80 text-sm lg:text-base leading-relaxed font-light">
+              <p className="text-[#343434]/85 text-sm lg:text-base leading-relaxed font-light">
                 {value.tip}
               </p>
               {value.source && (
-                <p className="text-[10px] text-white/35 uppercase tracking-wider font-medium">
+                <p className="text-[10px] text-[#343434]/50 uppercase tracking-wider font-medium">
                   — {value.source}
                 </p>
               )}
@@ -198,12 +198,12 @@ const portableTextComponents: PortableTextComponents = {
       if (!value?.quote) return null;
       return (
         <blockquote className="my-12 lg:my-16 pl-6 lg:pl-10 border-l-2 border-luxury-gold relative">
-          <span className="absolute -left-2 -top-4 text-6xl text-luxury-gold/20 font-serif leading-none">"</span>
-          <p className="text-2xl lg:text-3xl font-playfair text-white leading-snug italic relative z-10">
+          <span className="absolute -left-2 -top-4 text-6xl text-[#9A4B33]/20 font-serif leading-none">&ldquo;</span>
+          <p className="text-2xl lg:text-3xl font-playfair text-[#343434] leading-snug italic relative z-10">
             {value.quote}
           </p>
           {value.source && (
-            <footer className="mt-6 text-xs tracking-wider uppercase text-white/50 flex items-center gap-3">
+            <footer className="mt-6 text-xs tracking-wider uppercase text-[#343434]/60 flex items-center gap-3">
               <span className="w-6 h-[1px] bg-luxury-gold/40" />
               {value.source}
             </footer>
@@ -213,19 +213,19 @@ const portableTextComponents: PortableTextComponents = {
     },
   },
   block: {
-    normal: ({ children }) => <p className="mb-6 lg:mb-8 text-white/70 leading-relaxed text-base lg:text-lg font-light">{children}</p>,
-    h2: ({ children }) => <h2 className="text-2xl lg:text-3xl font-playfair text-white mt-14 mb-6 leading-tight">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-xl lg:text-2xl font-playfair text-white mt-10 mb-4 leading-snug">{children}</h3>,
-    h4: ({ children }) => <h4 className="text-lg text-luxury-gold font-medium uppercase tracking-wider mt-8 mb-4">{children}</h4>,
+    normal: ({ children }) => <p className="mb-6 lg:mb-8 text-[#343434]/85 leading-relaxed text-base lg:text-lg font-light">{children}</p>,
+    h2: ({ children }) => <h2 className="text-2xl lg:text-3xl font-playfair text-[#343434] mt-14 mb-6 leading-tight font-medium">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-xl lg:text-2xl font-playfair text-[#343434] mt-10 mb-4 leading-snug font-medium">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-lg text-[#9A4B33] font-medium uppercase tracking-wider mt-8 mb-4">{children}</h4>,
     blockquote: ({ children }) => (
-      <blockquote className="my-8 pl-6 border-l-2 border-luxury-gold/50 text-xl font-playfair italic text-white/80">
+      <blockquote className="my-8 pl-6 border-l-2 border-luxury-gold/50 text-xl font-playfair italic text-[#343434]/80">
         {children}
       </blockquote>
     ),
   },
   marks: {
-    strong: ({ children }) => <strong className="font-medium text-white/90">{children}</strong>,
-    em: ({ children }) => <em className="italic text-white/80">{children}</em>,
+    strong: ({ children }) => <strong className="font-semibold text-[#9A4B33]">{children}</strong>,
+    em: ({ children }) => <em className="italic text-[#343434]">{children}</em>,
     link: ({ value, children }) => {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined;
       return (
@@ -233,7 +233,7 @@ const portableTextComponents: PortableTextComponents = {
           href={value?.href} 
           target={target} 
           rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-          className="text-luxury-gold hover:text-white transition-colors border-b border-[#e6e2d6] hover:border-[#e6e2d6]0 pb-0.5"
+          className="text-[#9A4B33] hover:text-[#343434] transition-colors border-b border-[#9A4B33]/40 hover:border-[#343434] pb-0.5"
         >
           {children}
         </a>
