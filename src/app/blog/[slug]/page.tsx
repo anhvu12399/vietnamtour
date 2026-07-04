@@ -242,6 +242,20 @@ const portableTextComponents: PortableTextComponents = {
   },
 };
 
+// Helper to get fallback background image based on slug or title
+function getFallbackImage(slug: string): string {
+  const s = slug.toLowerCase();
+  if (s.includes('sapa')) return '/images/dest_sapa_highland.png';
+  if (s.includes('halong') || s.includes('lan-ha') || s.includes('bay')) return '/images/dest_halong_limestone.png';
+  if (s.includes('hoi-an') || s.includes('hoian')) return '/images/dest_hoian_lanterns.png';
+  if (s.includes('mekong')) return '/images/dest_mekong_canal.png';
+  if (s.includes('phu-quoc') || s.includes('phuquoc')) return '/images/dest_phuquoc_beach.png';
+  if (s.includes('da-nang') || s.includes('danang')) return '/images/dest_danang_beach_bridge.png';
+  if (s.includes('da-lat') || s.includes('dalat')) return '/images/dest_dalat_pine_villas.png';
+  if (s.includes('phong-nha') || s.includes('phongnha')) return '/images/dest_phongnha_cave.png';
+  return '/images/dest_halong_limestone.png'; // default fallback banner
+}
+
 // ─── Main Page Component ──────────────────────────────────────────────────────
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
@@ -265,13 +279,15 @@ export default async function BlogPostPage({ params }: PageProps) {
     instagram: post.author?.instagram || 'https://instagram.com/vietnamtours',
   };
 
+  const featuredImage = post.featuredImage || getFallbackImage(slug);
+
   return (
     <>
       <ArticleJsonLd
         title={post.title}
         description={post.excerpt || post.seo?.metaDescription || post.title}
         url={`https://www.vietnamtours.co.uk/blog/${post.slug?.current}`}
-        image={post.seo?.ogImage || post.featuredImage || 'https://www.vietnamtours.co.uk/images/things_halong_kayaking.png'}
+        image={post.seo?.ogImage || featuredImage || 'https://www.vietnamtours.co.uk/images/things_halong_kayaking.png'}
         publishedAt={post.publishedAt}
         author={post.author?.name || 'Vietnam Tour Specialists'}
         section={post.category || 'Travel'}
@@ -281,11 +297,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <main className="bg-[#faf8f5] text-[#343434] min-h-screen">
         {/* ── Hero Section ── */}
-        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden min-h-[60vh]">
-          {post.featuredImage && (
+        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden min-h-[60vh] bg-[#161C1A]">
+          {featuredImage && (
             <>
               <Image
-                src={post.featuredImage}
+                src={featuredImage}
                 alt={post.imageAlt || post.title}
                 fill
                 className="object-cover opacity-40 brightness-75 mix-blend-overlay"
