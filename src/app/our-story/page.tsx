@@ -5,9 +5,18 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Story | Vietnam Heritage Tours',
-  description: 'Discover how Vietnam Heritage Tours was founded — a passion-led journey to share the authentic soul of Vietnam with discerning travellers from around the world.',
-  keywords: ['Vietnam travel company', 'luxury Vietnam tours', 'about us', 'Vietnam Heritage Tours story'],
+  title: 'Our Story | VietnamTours.co.uk',
+  description: 'Discover how VietnamTours.co.uk was founded — a passion-led journey to share the authentic soul of Vietnam with discerning travellers from around the world.',
+  keywords: ['Vietnam travel company', 'luxury Vietnam tours', 'about us', 'VietnamTours.co.uk story'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/our-story',
+  },
+  openGraph: {
+    title: 'Our Story | VietnamTours.co.uk',
+    description: 'A passion-led journey to share the authentic soul of Vietnam with discerning travellers.',
+    url: 'https://www.vietnamtours.co.uk/our-story',
+    images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Our Story - VietnamTours.co.uk' }],
+  },
 };
 
 export default function OurStoryPage() {

@@ -1,11 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getAccommodations } from '@/sanity/client';
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: 'Luxury Hotels & Resorts in Vietnam | Handpicked Accommodation | VietnamTours.co.uk',
+  description: 'Our handpicked collection of Vietnam\'s finest hotels, boutique resorts, and luxury lodges — personally inspected by our specialists. From heritage properties in Hoi An to overwater villas in Ha Long Bay.',
+  keywords: ['luxury hotels Vietnam', 'Vietnam resorts', 'boutique hotels Vietnam', 'best hotels Ha Long Bay', 'Hoi An luxury hotels', 'Vietnam accommodation', 'five star hotels Vietnam'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/accommodations',
+  },
+  openGraph: {
+    title: 'Luxury Hotels & Resorts in Vietnam | Handpicked Accommodation',
+    description: 'Vietnam\'s finest hotels and resorts — personally inspected heritage properties, boutique lodges, and luxury villas.',
+    url: 'https://www.vietnamtours.co.uk/accommodations',
+    images: [{ url: '/images/dest_phuquoc_beach.png', width: 1200, height: 630, alt: 'Luxury beach resort in Phu Quoc, Vietnam' }],
+  },
+};
+
 
 export default async function AccommodationsPage() {
   const accommodations = await getAccommodations();

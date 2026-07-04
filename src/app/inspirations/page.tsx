@@ -7,8 +7,18 @@ import { inspirationsData } from '@/lib/inspirationsData';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Travel Inspiration & Curated Styles | Vietnam Tour',
+  title: 'Travel Inspiration & Curated Styles | VietnamTours.co.uk',
   description: 'Immerse yourself in our collection of curated travel inspirations. Discover luxury pool villas, adventure expeditions, and family tours to Vietnam.',
+  keywords: ['Vietnam travel inspiration', 'luxury Vietnam tours', 'Vietnam pool villas', 'Vietnam family tours', 'Vietnam adventure expeditions'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/inspirations',
+  },
+  openGraph: {
+    title: 'Travel Inspiration & Curated Styles',
+    description: 'Discover curated travel styles — luxury pool villas, adventure expeditions, and family tours to Vietnam.',
+    url: 'https://www.vietnamtours.co.uk/inspirations',
+    images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Vietnam travel inspiration — Hoi An lanterns' }],
+  },
 };
 
 export default function InspirationsListingPage() {

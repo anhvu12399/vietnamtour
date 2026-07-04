@@ -7,8 +7,18 @@ import { tripIdeasData } from '@/lib/tripIdeasData';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration | Vietnam Tour',
+  title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration | VietnamTours.co.uk',
   description: 'Explore our curated Vietnam trip ideas. From culinary street food adventures and motorcycle loop tours to classic luxury journeys and family holidays.',
+  keywords: ['Vietnam trip ideas', 'Vietnam holiday inspiration', 'Vietnam itinerary ideas', 'Vietnam travel themes', 'Vietnam family holidays', 'Vietnam adventure tours'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/trip-ideas',
+  },
+  openGraph: {
+    title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration',
+    description: 'Curated trip ideas — from street food tours and motorcycle loops to classic luxury journeys.',
+    url: 'https://www.vietnamtours.co.uk/trip-ideas',
+    images: [{ url: '/images/dest_hanoi_train.png', width: 1200, height: 630, alt: 'Vietnam trip inspiration — Hanoi Train Street' }],
+  },
 };
 
 export default function TripIdeasListingPage() {

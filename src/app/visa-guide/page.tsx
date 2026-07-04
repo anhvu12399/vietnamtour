@@ -5,9 +5,18 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Vietnam Visa Guide 2024 | Vietnam Heritage Tours',
+  title: 'Vietnam Visa Guide 2026 | VietnamTours.co.uk',
   description: 'Everything you need to know about obtaining a visa for Vietnam — e-visa applications, visa on arrival, entry requirements, and expert tips for UK, EU, and international travellers.',
-  keywords: ['Vietnam visa', 'e-visa Vietnam', 'Vietnam visa on arrival', 'Vietnam entry requirements', 'UK passport Vietnam visa'],
+  keywords: ['Vietnam visa', 'e-visa Vietnam', 'Vietnam visa on arrival', 'Vietnam entry requirements', 'UK passport Vietnam visa', 'Vietnam visa 2026'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/visa-guide',
+  },
+  openGraph: {
+    title: 'Vietnam Visa Guide 2026 | Entry Requirements & Tips',
+    description: 'Everything you need to know about obtaining a visa for Vietnam — e-visa applications, entry requirements, and expert tips for UK travellers.',
+    url: 'https://www.vietnamtours.co.uk/visa-guide',
+    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam visa guide' }],
+  },
 };
 
 const visaTypes = [

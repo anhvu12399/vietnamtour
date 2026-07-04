@@ -1,10 +1,25 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getSpecialists } from '@/sanity/client';
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: 'Meet Our Vietnam Travel Specialists | VietnamTours.co.uk',
+  description: 'Meet the Vietnam specialists behind your journey. Our team of local experts, each with years of in-country experience, craft every itinerary from first-hand knowledge.',
+  keywords: ['Vietnam travel specialists', 'Vietnam tour experts', 'Vietnam travel consultants UK', 'Vietnam holiday advisors', 'meet our team'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/specialists',
+  },
+  openGraph: {
+    title: 'Meet Our Vietnam Travel Specialists',
+    description: 'Local experts with years of in-country experience. Every itinerary crafted from first-hand knowledge of Vietnam.',
+    url: 'https://www.vietnamtours.co.uk/specialists',
+  },
+};
 
 export default async function SpecialistsPage() {
   const specialists = await getSpecialists();

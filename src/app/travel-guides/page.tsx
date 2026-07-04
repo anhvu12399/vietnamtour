@@ -9,8 +9,18 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Travel Guides | Expert Tips & Insider Insights | Vietnam Tour',
+  title: 'Vietnam Travel Guides | Expert Tips & Insider Insights | VietnamTours.co.uk',
   description: 'Expert-written Vietnam travel guides. Real experiences, authentic advice on Hanoi, Halong Bay, Hoi An, Sapa, Mekong Delta and every region in between.',
+  keywords: ['Vietnam travel guide', 'Vietnam travel tips', 'Vietnam first time visit', 'Vietnam insider tips', 'Hanoi guide', 'Ha Long Bay guide', 'Hoi An travel guide', 'Sapa trekking guide'],
+  alternates: {
+    canonical: 'https://www.vietnamtours.co.uk/travel-guides',
+  },
+  openGraph: {
+    title: 'Vietnam Travel Guides | Expert Tips & Insider Insights',
+    description: 'Expert-written guides with real experiences and authentic local advice for every region of Vietnam.',
+    url: 'https://www.vietnamtours.co.uk/travel-guides',
+    images: [{ url: '/images/dest_sapa_highland.png', width: 1200, height: 630, alt: 'Sapa rice terraces — Vietnam travel guide' }],
+  },
 };
 
 // Helper function to calculate reading time based on block content
