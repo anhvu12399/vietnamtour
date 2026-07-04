@@ -23,21 +23,21 @@ export default function DestinationsTabbed() {
   const tabData: TabData[] = [
     {
       id: "northern",
-      label: "Northern Highlands",
+      label: "North Inspiration",
       cards: [
         {
-          title: "Sapa Valley",
-          description: "Trek through cascading emerald rice terraces and encounter local hilltribe cultures.",
+          title: "Trekking in Sapa",
+          description: "A first-hand guide to Sapa's mountain kingdom, ethnic minority villages, and golden terraced rice fields.",
           image: "/images/dest_sapa_highland.png",
-          link: "/destinations/hanoi-and-the-north",
-          btnText: "Explore Sapa",
+          link: "/blog/sapa-trekking-guide-vietnam",
+          btnText: "Read Trekking Guide",
         },
         {
-          title: "Ha Long Bay",
-          description: "Sail past towering limestone pillars on a boutique traditional wooden junk boat.",
+          title: "Halong Bay vs Lan Ha Bay",
+          description: "An honest comparison between the iconic Halong Bay and the pristine Lan Ha Bay to help you choose the best voyage.",
           image: "/images/dest_halong_limestone.png",
-          link: "/destinations/hanoi-and-the-north",
-          btnText: "Explore Ha Long",
+          link: "/blog/halong-bay-vs-lan-ha-bay-guide",
+          btnText: "Read Cruise Guide",
         },
       ],
     },
@@ -47,37 +47,37 @@ export default function DestinationsTabbed() {
       cards: [
         {
           title: "Hoi An Ancient Town",
-          description: "Wander through lantern-lit merchant streets and taste signature culinary secrets.",
+          description: "Discover Hoi An's lantern-lit ancient streets, the best local tailors, and hidden culinary secrets.",
           image: "/images/dest_hoian_lanterns.png",
-          link: "/destinations/central-coast-and-hoi-an",
-          btnText: "Explore Hoi An",
+          link: "/blog/hoi-an-complete-travel-guide",
+          btnText: "Read Town Guide",
         },
         {
-          title: "Phong Nha Caves",
-          description: "Venture deep into the world's largest cave systems and pristine primary jungles.",
+          title: "Best Places to Visit in Vietnam",
+          description: "Our Ho Chi Minh City-based specialists share a definitive, field-verified list of destinations for 2026.",
           image: "/images/dest_phongnha_cave.png",
-          link: "/destinations/central-coast-and-hoi-an",
-          btnText: "Explore Phong Nha",
+          link: "/blog/best-places-to-visit-in-vietnam-2026",
+          btnText: "Read Operator Guide",
         },
       ],
     },
     {
       id: "southern",
-      label: "Southern Pulse",
+      label: "Southern & Food",
       cards: [
         {
-          title: "Mekong Delta",
-          description: "Float down peaceful coconut canals and witness colourful floating market trades.",
+          title: "Mekong Delta Done Right",
+          description: "How to explore peaceful canals and floating markets properly on a private tour, without the crowds.",
           image: "/images/dest_mekong_canal.png",
-          link: "/destinations/saigon-and-mekong-delta",
-          btnText: "Explore Mekong",
+          link: "/blog/mekong-delta-private-tour-guide",
+          btnText: "Read Delta Guide",
         },
         {
-          title: "Phu Quoc Island",
-          description: "Unwind on powdery white sands and swim in turquoise waters at luxury beach retreats.",
-          image: "/images/dest_phuquoc_beach.png",
-          link: "/destinations/phu-quoc-island",
-          btnText: "Explore Phu Quoc",
+          title: "Vietnam Culinary Tour",
+          description: "A foodie's dream journey through culinary secrets from the streets of Hanoi to the bustling food stalls of Saigon.",
+          image: "/images/things_cooking_class_hue.png",
+          link: "/blog/vietnam-culinary-food-tour-guide",
+          btnText: "Read Foodie Guide",
         },
       ],
     },
@@ -90,7 +90,7 @@ export default function DestinationsTabbed() {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center flex flex-col items-center gap-4 mb-12">
           <span className="text-[10px] tracking-widest uppercase text-gold font-sans font-semibold">
-            Bespoke Regions
+            Travel Inspiration
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-[#343434] font-light tracking-wide">
             Where are you waiting to discover?
@@ -157,10 +157,10 @@ export default function DestinationsTabbed() {
         {/* Explore All CTA */}
         <div className="text-center mt-16">
           <a
-            href="/destinations"
+            href="/blog"
             className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 transition-colors text-[10px] tracking-widest uppercase"
           >
-            VIEW ALL EXPEDITIONS
+            VIEW ALL TRAVEL GUIDES
           </a>
         </div>
       </div>
