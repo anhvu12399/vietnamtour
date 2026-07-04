@@ -118,11 +118,11 @@ const portableTextComponents: PortableTextComponents = {
       const name = value.customName || value.specialist?.name || 'Travel Specialist';
       const role = value.customRole || value.specialist?.role || 'Expert';
       return (
-        <div className="my-8 float-none lg:float-right lg:w-[42%] lg:ml-10 p-7 bg-luxury-slate/50 border border-luxury-gold/20 border-t-2 border-t-[#9A4B33]/80 shadow-xl rounded-xs relative z-10">
+        <div className="my-8 float-none lg:float-right lg:w-[42%] lg:ml-10 p-7 bg-[#f4efe6] border border-[#e6e2d6] border-t-2 border-t-[#9A4B33] shadow-md rounded-xs relative z-10">
           <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#9A4B33] block mb-3">
             Specialist Insider Tip
           </span>
-          <p className="text-sm text-[#545454] font-light leading-relaxed italic border-l-2 border-[#9A4B33]/40 pl-4">
+          <p className="text-sm text-[#343434]/90 font-light leading-relaxed italic border-l-2 border-[#9A4B33]/40 pl-4">
             &ldquo;{value.tip}&rdquo;
           </p>
           <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-[#e6e2d6]">
@@ -163,7 +163,7 @@ const portableTextComponents: PortableTextComponents = {
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="clear-both font-serif text-xl sm:text-2xl text-luxury-gold font-medium leading-tight mt-10 mb-5 max-w-3xl">
+      <h3 className="clear-both font-serif text-xl sm:text-2xl text-[#343434] font-medium leading-tight mt-10 mb-5 max-w-3xl">
         {children}
       </h3>
     ),
@@ -174,8 +174,8 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
   marks: {
-    strong: ({ children }: any) => <strong className="font-semibold text-luxury-gold">{children}</strong>,
-    em: ({ children }: any) => <em className="italic text-luxury-gold/90">{children}</em>,
+    strong: ({ children }: any) => <strong className="font-semibold text-[#9A4B33]">{children}</strong>,
+    em: ({ children }: any) => <em className="italic text-[#343434]">{children}</em>,
   },
 };
 
