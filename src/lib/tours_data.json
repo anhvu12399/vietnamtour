@@ -364,9 +364,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_luxury.png",
-      "/images/hero_hoian_luxury.png",
-      "/images/vietnamtour_halong_yacht_luxury.png"
+      "/images/trip_golf_vietnam.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "vietnam-caves-karsts-and-trekking-tour": {
@@ -725,8 +725,8 @@
     ],
     "gallery": [
       "/images/tour_phongnha_cave_dining.png",
-      "/images/dest_phongnha_cave.png",
-      "/images/things_sapa_trekking.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "highlights-of-vietnam-tour": {
@@ -975,9 +975,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_luxury.png",
-      "/images/dest_halong_limestone.png",
-      "/images/hero_hoian_luxury.png"
+      "/images/trip_bike_rice_paddies.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "uncover-vietnam-from-south-to-north": {
@@ -1212,9 +1212,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_luxury.png",
-      "/images/hero_hoian_luxury.png",
-      "/images/vietnamtour_halong_yacht_luxury.png"
+      "/images/trip_motorcycle_hagiang.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "the-essence-of-vietnam-north-to-south": {
@@ -1433,9 +1433,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_luxury.png",
-      "/images/hero_hoian_luxury.png",
-      "/images/vietnamtour_halong_yacht_luxury.png"
+      "/images/trip_luxury_villa.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "gourmet-vietnam-tour": {
@@ -1655,9 +1655,9 @@
       }
     ],
     "gallery": [
-      "/images/trip_culinary_street_food.png",
-      "/images/things_cooking_class_hue.png",
-      "/images/things_mekong_sampan.png"
+      "/images/homepage_letterbox.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "trekking-adventure-in-vietnam-s-remote-north": {
@@ -1870,8 +1870,8 @@
     ],
     "gallery": [
       "/images/hero_sapa_luxury.png",
-      "/images/things_sapa_trekking.png",
-      "/images/dest_sapa_highland.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "mekong-delta-le-jarai-cruise": {
@@ -1923,10 +1923,8 @@
     ],
     "gallery": [
       "/images/insp_mekong_cruise.png",
-      "/images/dest_mekong_canal.png",
-      "/images/mekong.jpg",
-      "/images/things_mekong_sampan.png",
-      "/images/vietnamtour_mekong_sampan.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "a-local-s-story-from-north-to-south": {
@@ -2137,9 +2135,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_halong_yacht_luxury.png",
-      "/images/hero_hoian_luxury.png",
-      "/images/vietnamtour_mekong_sampan.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png",
+      "/images/things_halong_kayaking.png"
     ]
   },
   "discover-vietnam-home-of-kong-skull-island": {
@@ -2334,7 +2332,7 @@
       }
     ],
     "gallery": [
-      "/images/dest_phongnha_cave.png",
+      "/images/dest_phuquoc_beach.png",
       "/images/hero_halong_bay.png",
       "/images/dest_halong_limestone.png"
     ]
@@ -2465,10 +2463,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_sapa_luxury.png",
       "/images/dest_sapa_highland.png",
-      "/images/things_sapa_trekking.png",
-      "/images/trip_bike_rice_paddies.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "sapa-adventure-tour": {
@@ -2568,9 +2565,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_sapa_luxury.png",
-      "/images/dest_sapa_highland.png",
-      "/images/things_sapa_trekking.png"
+      "/images/things_sapa_trekking.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "luxury-ha-long-bay-tour": {
@@ -2658,11 +2655,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_bay.png",
       "/images/dest_halong_limestone.png",
-      "/images/things_halong_kayaking.png",
-      "/images/things_halong_sunrise.png",
-      "/images/halong_night.png"
+      "/images/hero_halong_bay.png",
+      "/images/things_halong_kayaking.png"
     ]
   },
   "off-beaten-track-in-halong-bay": {
@@ -2747,11 +2742,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_bay.png",
-      "/images/dest_halong_limestone.png",
       "/images/things_halong_kayaking.png",
-      "/images/things_halong_sunrise.png",
-      "/images/halong_night.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "explore-the-nature-and-culture-of-untouched-da-bac": {
@@ -2841,9 +2834,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_phongnha_cave_dining.png",
-      "/images/trip_adventure_jungle.png",
-      "/images/dest_phongnha_cave.png"
+      "/images/dest_phongnha_cave.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "lazalee-halong-bay-2-day-cruise": {
@@ -2915,11 +2908,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_halong_bay.png",
-      "/images/dest_halong_limestone.png",
-      "/images/things_halong_kayaking.png",
       "/images/things_halong_sunrise.png",
-      "/images/halong_night.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "halong-bay-by-seaplane": {
@@ -3022,11 +3013,9 @@
       }
     ],
     "gallery": [
+      "/images/halong_night.png",
       "/images/hero_halong_bay.png",
-      "/images/dest_halong_limestone.png",
-      "/images/things_halong_kayaking.png",
-      "/images/things_halong_sunrise.png",
-      "/images/halong_night.png"
+      "/images/dest_halong_limestone.png"
     ]
   },
   "halong-lazalee-classic-cruise": {
@@ -3081,11 +3070,9 @@
       }
     ],
     "gallery": [
+      "/images/trip_family_halong.png",
       "/images/hero_halong_bay.png",
-      "/images/dest_halong_limestone.png",
-      "/images/things_halong_kayaking.png",
-      "/images/things_halong_sunrise.png",
-      "/images/halong_night.png"
+      "/images/dest_halong_limestone.png"
     ]
   },
   "cai-be-princess-mekong-delta-boat-trip": {
@@ -3133,11 +3120,9 @@
       }
     ],
     "gallery": [
-      "/images/insp_mekong_cruise.png",
       "/images/dest_mekong_canal.png",
-      "/images/mekong.jpg",
-      "/images/things_mekong_sampan.png",
-      "/images/vietnamtour_mekong_sampan.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hanoi-city-tour": {
@@ -3187,10 +3172,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_water_puppets_hanoi.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_cooking_class_hue.png"
+      "/images/tour_ninhbinh_landscape.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "discover-the-legend-of-ninh-binh": {
@@ -3237,9 +3221,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_ninhbinh_landscape.png",
       "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_mekong_sampan.png"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "ho-chi-minh-city-tour": {
@@ -3297,9 +3281,9 @@
       }
     ],
     "gallery": [
-      "/images/press_hero_colonial.png",
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/trip_culinary_street_food.png"
+      "/images/tour_saigon_vespa_night.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hoa-lu-and-trang-an-day-tour": {
@@ -3353,8 +3337,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_ninhbinh_landscape.png",
-      "/images/vietnamtour_hanoi_colonial.png"
+      "/images/things_water_puppets_hanoi.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hoi-an-farming-fishing": {
@@ -3403,9 +3388,8 @@
     ],
     "gallery": [
       "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "essence-of-hoi-an-highlights-hidden-charms": {
@@ -3454,10 +3438,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
       "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "saigon-street-eats": {
@@ -3508,9 +3491,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_saigon_vespa_night.png",
-      "/images/trip_culinary_street_food.png",
-      "/images/press_hero_colonial.png"
+      "/images/press_hero_colonial.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "classic-cu-chi-tunnels-tour": {
@@ -3560,9 +3543,9 @@
       }
     ],
     "gallery": [
-      "/images/press_hero_colonial.png",
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/trip_culinary_street_food.png"
+      "/images/trip_culinary_street_food.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hidden-hanoi-walking-tour": {
@@ -3614,10 +3597,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_water_puppets_hanoi.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_cooking_class_hue.png"
+      "/images/vietnam_hero.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "cu-chi-tunnels-by-saigon-river": {
@@ -3670,9 +3652,9 @@
       }
     ],
     "gallery": [
-      "/images/press_hero_colonial.png",
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/trip_culinary_street_food.png"
+      "/images/vietnamtour_halong_yacht_luxury.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hanoi-street-eats": {
@@ -3722,10 +3704,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_water_puppets_hanoi.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_cooking_class_hue.png"
+      "/images/our-story-hero.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hoi-an-countryside-cycling": {
@@ -3778,10 +3759,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
       "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hoi-an-countryside-adventure-by-vespa-tour": {
@@ -3825,9 +3805,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/trip_bike_rice_paddies.png"
+      "/images/hoian.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hanoi-highlights-afternoon-tour": {
@@ -3882,10 +3862,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_water_puppets_hanoi.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_cooking_class_hue.png"
+      "/images/visa-guide-hero.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "the-story-of-saigon": {
@@ -3941,9 +3920,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_saigon_vespa_night.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_water_puppets_hanoi.png"
+      "/images/halong_card.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "sapa-bac-ha-market-tour": {
@@ -3998,10 +3977,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_sapa_luxury.png",
-      "/images/dest_sapa_highland.png",
-      "/images/things_sapa_trekking.png",
-      "/images/trip_bike_rice_paddies.png"
+      "/images/vietnamtour_sapa_lodge.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "culture-creativity-in-saigon": {
@@ -4049,8 +4027,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_saigon_vespa_night.png",
-      "/images/trip_culinary_street_food.png"
+      "/images/sapa.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "explore-hue-countryside-culture-by-vespa": {
@@ -4098,10 +4077,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/sapa_night.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "saigon-craft-beer-evening-vespa-tour": {
@@ -4147,8 +4125,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_saigon_vespa_night.png",
-      "/images/trip_culinary_street_food.png"
+      "/images/hero_sapa.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "ho-chi-minh-city-evening-tour": {
@@ -4196,8 +4175,9 @@
       }
     ],
     "gallery": [
-      "/images/tour_saigon_vespa_night.png",
-      "/images/press_hero_colonial.png"
+      "/images/hero_hoian.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hanoi-countryside-vespa-tour": {
@@ -4247,9 +4227,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/trip_bike_rice_paddies.png",
-      "/images/things_sapa_trekking.png"
+      "/images/vietnamtour_mekong_sampan.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "a-cultural-tour-of-hanoi": {
@@ -4302,10 +4282,9 @@
       }
     ],
     "gallery": [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/things_water_puppets_hanoi.png",
-      "/images/press_hero_colonial.png",
-      "/images/things_cooking_class_hue.png"
+      "/images/things_mekong_sampan.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "da-nang-discovery": {
@@ -4355,9 +4334,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/insp_heritage_overland.png"
+      "/images/mekong.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "hue-city-tour": {
@@ -4406,9 +4385,9 @@
       }
     ],
     "gallery": [
-      "/images/insp_heritage_overland.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hero_hoian.png"
+      "/images/vietnamtour_cave_dining.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "cooking-class-in-hoi-an": {
@@ -4456,10 +4435,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/trip_adventure_jungle.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "my-son-morning-tour": {
@@ -4506,9 +4484,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/insp_heritage_overland.png"
+      "/images/phongnha.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "local-life-hoi-an-street-eats": {
@@ -4564,10 +4542,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/phuquoc.jpg",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   },
   "local-life-river-cruise-in-hoi-an": {
@@ -4620,10 +4597,9 @@
       }
     ],
     "gallery": [
-      "/images/hero_hoian_luxury.png",
-      "/images/dest_hoian_lanterns.png",
-      "/images/things_hoi_an_lanterns.png",
-      "/images/hoian.jpg"
+      "/images/vietnamtour_phu_quoc_beach.png",
+      "/images/hero_halong_bay.png",
+      "/images/dest_halong_limestone.png"
     ]
   }
 }
