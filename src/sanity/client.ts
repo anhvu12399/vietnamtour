@@ -1,6 +1,8 @@
 import { createClient } from '@sanity/client';
 import { defineLive } from 'next-sanity/live';
 import { draftMode } from 'next/headers';
+import fs from 'fs';
+import path from 'path';
 import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
 import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post } from './types';
 
@@ -74,9 +76,92 @@ async function fetchSanity<T>(query: string, params: Record<string, any> = {}): 
 
 // --- Itineraries ---
 
+function loadScrapedItineraries(): Itinerary[] {
+  try {
+    const filePath = path.join(process.cwd(), 'src/lib/tours_data.json');
+    if (fs.existsSync(filePath)) {
+      const data = fs.readFileSync(filePath, 'utf-8');
+      const toursMap = JSON.parse(data);
+      
+      const scraped = Object.values(toursMap).map((t: any, idx: number) => {
+        // Map rich timeline blocks
+        const timelineMapped = (t.timeline || []).map((day: any, dIdx: number) => {
+          const rawDesc = Array.isArray(day.description) ? day.description : [day.description || ''];
+          return {
+            dayRange: day.dayRange,
+            title: day.title,
+            description: [
+              {
+                _key: `timeline-desc-${dIdx}`,
+                _type: 'block',
+                children: rawDesc.map((para: string, pIdx: number) => ({
+                  _key: `timeline-desc-span-${dIdx}-${pIdx}`,
+                  _type: 'span',
+                  text: para
+                }))
+              }
+            ],
+            accommodation: day.accommodation || 'Luxury Selected Hotel'
+          };
+        });
+
+        // Map rich body description blocks
+        const descText = t.intro || '';
+        const descriptionMapped = [
+          {
+            _key: 'desc-1',
+            _type: 'block',
+            children: [
+              {
+                _type: 'span',
+                text: descText
+              }
+            ]
+          }
+        ];
+
+        // Choose images from gallery (fallbacks to preset high-quality images)
+        const gallery = t.gallery && t.gallery.length > 0 ? t.gallery : [
+          '/images/vietnamtour_hanoi_colonial.png',
+          '/images/hero_halong_bay.png',
+          '/images/hero_hoian.png'
+        ];
+
+        return {
+          _id: `itinerary-scraped-${t.slug}`,
+          title: t.title,
+          slug: { current: t.slug },
+          duration: t.duration || 1,
+          priceFrom: t.priceFrom || 1500,
+          intro: t.intro || '',
+          description: descriptionMapped,
+          highlights: t.highlights || [],
+          gallery: gallery,
+          timeline: timelineMapped,
+          accommodations: [],
+          specialist: mockSpecialists[0], // Alice Mercer
+          featured: true
+        } as any;
+      });
+      
+      // Merge with static ones, preventing duplicate slugs
+      const combined = [...scraped];
+      for (const mock of mockItineraries) {
+        if (!combined.some(c => c.slug.current === mock.slug.current)) {
+          combined.push(mock);
+        }
+      }
+      return combined;
+    }
+  } catch (err) {
+    console.error('Error loading scraped tours:', err);
+  }
+  return mockItineraries;
+}
+
 export async function getItineraries(): Promise<Itinerary[]> {
   if (useMock) {
-    return mockItineraries;
+    return loadScrapedItineraries();
   }
   const query = `*[_type == "itinerary"]{
     ...,
@@ -100,7 +185,7 @@ export async function getItineraries(): Promise<Itinerary[]> {
 
 export async function getFeaturedItineraries(): Promise<Itinerary[]> {
   if (useMock) {
-    return mockItineraries.filter(it => it.featured);
+    return loadScrapedItineraries().filter(it => it.featured);
   }
   const query = `*[_type == "itinerary" && featured == true]{
     ...,
@@ -124,7 +209,7 @@ export async function getFeaturedItineraries(): Promise<Itinerary[]> {
 
 export async function getItineraryBySlug(slug: string): Promise<Itinerary | null> {
   if (useMock) {
-    return mockItineraries.find(it => it.slug.current === slug) || null;
+    return loadScrapedItineraries().find(it => it.slug.current === slug) || null;
   }
   const query = `*[_type == "itinerary" && slug.current == $slug][0]{
     ...,
