@@ -76,10 +76,10 @@ export default async function AccommodationsPage() {
                   <div className="space-y-3">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">{acc.rating}</span>
-                      <h3 className="font-serif text-xl text-[#343434] font-semibold">{acc.name}</h3>
-                      <p className="text-xs text-[#545454] italic">{acc.location}</p>
+                      <h3 className="font-serif text-xl text-white font-semibold">{acc.name}</h3>
+                      <p className="text-xs text-luxury-linen/70 italic">{acc.location}</p>
                     </div>
-                    <p className="text-xs text-[#545454] font-light leading-relaxed line-clamp-3">
+                    <p className="text-xs text-luxury-linen/90 font-light leading-relaxed line-clamp-3">
                       {acc.description?.[0]?.children?.[0]?.text || ''}
                     </p>
                     <ul className="flex flex-wrap gap-2 pt-2">
@@ -103,7 +103,7 @@ export default async function AccommodationsPage() {
                         href={acc.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-[#343434]/40 hover:underline hover:text-luxury-gold"
+                        className="text-xs text-luxury-linen/50 hover:underline hover:text-luxury-gold"
                       >
                         Official Site ↗
                       </a>
