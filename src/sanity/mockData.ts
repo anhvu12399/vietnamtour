@@ -258,7 +258,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-danang',
     name: 'Da Nang',
     slug: { current: 'da-nang' },
-    image: '/images/trip_adventure_jungle.png',
+    image: '/images/dest_danang_beach_bridge.png',
     description: [
       {
         _key: 'b1',
@@ -315,7 +315,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-dalat',
     name: 'Da Lat',
     slug: { current: 'da-lat' },
-    image: '/images/trip_bike_rice_paddies.png',
+    image: '/images/dest_dalat_pine_villas.png',
     description: [
       {
         _key: 'b1',

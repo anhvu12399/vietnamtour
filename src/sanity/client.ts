@@ -286,14 +286,15 @@ export async function getDestinations(): Promise<Destination[]> {
   if (useMock) {
     return mockDestinations;
   }
-  return await fetchSanity<Destination[]>(`*[_type == "destination"]{
+  const results = await fetchSanity<Destination[]>(`*[_type == "destination"] | order(_createdAt asc){
     ...,
-    "image": image.asset->url,
+    "image": coalesce(image.asset->url, image),
     "seo": seo{
       metaTitle, metaDescription, keywords,
       "ogImage": ogImage.asset->url
     }
   }`);
+  return results;
 }
 
 export async function getDestinationBySlug(slug: string): Promise<Destination | null> {
@@ -302,7 +303,7 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
   }
   const query = `*[_type == "destination" && slug.current == $slug][0]{
     ...,
-    "image": image.asset->url,
+    "image": coalesce(image.asset->url, image),
     featuredTours[]->{
       _id, title, slug, duration, priceFrom, intro, featured,
       "gallery": gallery[].asset->url
@@ -783,15 +784,27 @@ export async function getBlogPostsFromSanity(): Promise<any[]> {
 
 export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | null> {
   if (useMock) return null;
-  const query = `*[_type == "blogPost" && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, category, excerpt,
-    "featuredImage": featuredImage.asset->url,
-    "imageAlt": featuredImage.alt,
-    author->{
-      name, role,
-      "avatar": image.asset->url
-    },
-    tags,
+  const query = `*[_type in ["blogPost", "post"] && slug.current == $slug][0]{
+    _id, title, slug, publishedAt, category, excerpt, tags,
+    "featuredImage": coalesce(featuredImage.asset->url, featuredImage),
+    "imageAlt": coalesce(featuredImage.alt, imageAlt, title),
+    "author": coalesce(
+      author->{
+        name, role, bio,
+        "avatar": image.asset->url,
+        facebook, instagram
+      },
+      select(
+        defined(author.name) => {
+          "name": author.name,
+          "role": author.role,
+          "bio": author.bio,
+          "avatar": coalesce(author.avatar.asset->url, author.avatar),
+          "facebook": author.facebook,
+          "instagram": author.instagram
+        }
+      )
+    ),
     content[]{
       ...,
       _type == "image" => {
@@ -816,7 +829,7 @@ export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | n
     },
     relatedPosts[]->{
       _id, title, slug, publishedAt, category, excerpt,
-      "featuredImage": featuredImage.asset->url,
+      "featuredImage": coalesce(featuredImage.asset->url, featuredImage),
       "imageAlt": featuredImage.alt
     },
     relatedTours[]->{
