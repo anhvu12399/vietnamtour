@@ -23,6 +23,11 @@
   --color-gold: #dec49b;
   --color-white-footer: #e9e5de;
 
+  --color-luxury-gold: #dec49b;
+  --color-luxury-slate: #0e1628;
+  --color-luxury-linen: #faf6f0;
+  --color-luxury-moss: #0e1815;
+
   --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair-display), ui-serif, Georgia, serif;
   --font-heading: var(--font-playfair-display), ui-serif, Georgia, serif;

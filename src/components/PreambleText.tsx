@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function PreambleText() {
   return (
@@ -21,12 +22,12 @@ export default function PreambleText() {
             of the Mekong, we curate travel that feels entirely, fortuitously yours.
           </p>
         </div>
-        <a
-          href="#"
+        <Link
+          href="/enquire"
           className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase mt-4"
         >
           Begin Your Tale
-        </a>
+        </Link>
       </div>
     </section>
   );

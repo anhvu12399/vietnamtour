@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 };
 
 const categoryColors: Record<string, string> = {
-  'Travel Tips':          'bg-blue-900/30 text-blue-300/90 border-blue-700/30',
-  'Culture & History':    'bg-amber-900/30 text-luxury-gold border-amber-700/30',
-  'Food & Drink':         'bg-orange-900/30 text-orange-300/90 border-orange-700/30',
-  'Adventure':            'bg-green-900/30 text-green-300/90 border-green-700/30',
-  'Planning & Logistics': 'bg-teal-900/30 text-teal-300/90 border-teal-700/30',
-  'News & Updates':       'bg-pink-900/30 text-pink-300/90 border-pink-700/30',
+  'Travel Tips':          'bg-blue-50 text-blue-700 border border-blue-200',
+  'Culture & History':    'bg-amber-50 text-amber-800 border border-amber-200',
+  'Food & Drink':         'bg-orange-50 text-orange-800 border border-orange-200',
+  'Adventure':            'bg-emerald-50 text-emerald-800 border border-emerald-200',
+  'Planning & Logistics': 'bg-teal-50 text-teal-800 border border-teal-200',
+  'News & Updates':       'bg-rose-50 text-rose-800 border border-rose-200',
 };
 
 function getCategoryColor(cat: string) {

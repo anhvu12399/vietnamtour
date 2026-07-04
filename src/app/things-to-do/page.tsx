@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 };
 
 const categoryColors: Record<string, string> = {
-  'WATER ADVENTURES':    'bg-blue-900/30 text-blue-300/90 border-blue-700/30',
-  'CULTURE & HERITAGE':  'bg-amber-900/30 text-luxury-gold border-amber-700/30',
-  'TREKKING & HIKING':   'bg-green-900/30 text-green-300/90 border-green-700/30',
-  'FESTIVALS & CULTURE': 'bg-pink-900/30 text-pink-300/90 border-pink-700/30',
-  'CULINARY EXPERIENCES':'bg-orange-900/30 text-orange-300/90 border-orange-700/30',
-  'RIVER JOURNEYS':      'bg-teal-900/30 text-teal-300/90 border-teal-700/30',
+  'WATER ADVENTURES':    'bg-blue-50 text-blue-700 border border-blue-200',
+  'CULTURE & HERITAGE':  'bg-amber-50 text-amber-800 border border-amber-200',
+  'TREKKING & HIKING':   'bg-emerald-50 text-emerald-800 border border-emerald-200',
+  'FESTIVALS & CULTURE': 'bg-rose-50 text-rose-800 border border-rose-200',
+  'CULINARY EXPERIENCES':'bg-orange-50 text-orange-800 border border-orange-200',
+  'RIVER JOURNEYS':      'bg-teal-50 text-teal-800 border border-teal-200',
 };
 
 export default function ThingsToDoListingPage() {

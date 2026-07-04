@@ -95,10 +95,10 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
 
           <div className="relative z-10 w-full max-w-4xl mx-auto px-6 pb-12 sm:pb-16">
             {/* Breadcrumbs */}
-            <div className="flex items-center space-x-2 text-[10px] uppercase tracking-widest text-luxury-gold font-semibold mb-4">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <div className="flex items-center space-x-2 text-[10px] uppercase tracking-widest font-semibold mb-4">
+              <Link href="/" className="text-luxury-gold hover:text-white transition-colors">Home</Link>
               <span className="text-white/30">›</span>
-              <Link href="/things-to-do" className="hover:text-white transition-colors">Things To Do</Link>
+              <Link href="/things-to-do" className="text-luxury-gold hover:text-white transition-colors">Things To Do</Link>
               <span className="text-white/30">›</span>
               <span className="text-white/70">{thing.breadcrumb}</span>
             </div>
