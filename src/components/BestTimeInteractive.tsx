@@ -25,8 +25,8 @@ export default function BestTimeInteractive() {
   const currentMonthData = ideasByMonthData.find(m => m.slug === activeMonthSlug) || ideasByMonthData[0];
 
   return (
-    <section className="py-20 bg-[#faf8f5] border-t border-b border-[#e6e2d6]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-10 md:py-20 bg-[#faf8f5] border-t border-b border-[#e6e2d6]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         <h2 className="font-serif text-3xl font-light text-center text-[#343434] mb-4">
           Month-by-month guide for traveling in Vietnam
         </h2>
@@ -35,7 +35,7 @@ export default function BestTimeInteractive() {
         </p>
 
         {/* Month Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-12 max-w-4xl mx-auto">
           {monthsList.map((m) => {
             const isActive = activeMonthSlug === m.slug;
             return (
@@ -55,8 +55,8 @@ export default function BestTimeInteractive() {
         </div>
 
         {/* Selected Month Content */}
-        <div className="bg-white border border-[#e6e2d6] rounded-sm shadow-sm overflow-hidden p-8 md:p-12 transition-all duration-500">
-          <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="bg-white border border-[#e6e2d6] rounded-sm shadow-sm overflow-hidden p-5 md:p-12 transition-all duration-500">
+          <div className="grid md:grid-cols-12 gap-6 md:gap-12 items-center">
             
             {/* Left Content */}
             <div className="md:col-span-7 space-y-6">

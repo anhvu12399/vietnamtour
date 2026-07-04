@@ -63,7 +63,7 @@ export default function ThingsToDoListingPage() {
         <CategoriesTabBar activeTab="things" />
 
         {/* ── Intro ── */}
-        <section className="py-16 px-6 lg:px-12 max-w-4xl mx-auto text-center">
+        <section className="py-10 md:py-16 px-4 md:px-6 lg:px-12 max-w-4xl mx-auto text-center">
           <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-luxury-gold block mb-4">
             Curated Experiences
           </span>
@@ -77,7 +77,7 @@ export default function ThingsToDoListingPage() {
         </section>
 
         {/* ── Articles Grid ── */}
-        <section className="pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
+        <section className="pb-12 md:pb-24 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
 
           {/* Featured (first article) */}
           <div className="mb-10">
@@ -215,8 +215,8 @@ export default function ThingsToDoListingPage() {
           </div>
         </section>
 
-        {/* ── Bottom CTA ── */}
-        <section className="bg-[#faf8f5] py-20 px-6 lg:px-12 relative overflow-hidden">
+        {/* ── CTA Block ── */}
+        <section className="bg-[#faf8f5] py-12 md:py-24 border-t border-[#e6e2d6] relative overflow-hidden px-6">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#9A4B33_1px,transparent_1px)] [background-size:16px_16px]" />
           <div className="max-w-3xl mx-auto text-center space-y-8 relative z-10">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-luxury-gold block">

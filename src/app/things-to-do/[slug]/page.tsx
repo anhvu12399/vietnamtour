@@ -133,7 +133,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
         {/* ════════════════════════════════════════════
             2. ARTICLE BODY + SIDEBAR
         ════════════════════════════════════════════ */}
-        <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
+        <section className="py-8 md:py-16 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
             {/* ── MAIN CONTENT ── */}
@@ -398,8 +398,8 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
         {/* ════════════════════════════════════════════
             6. BOTTOM CTA
         ════════════════════════════════════════════ */}
-        <section className="py-20 px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto bg-white border border-[#e6e2d6] p-10 sm:p-16 text-center space-y-8 shadow-xl">
+        <section className="py-10 md:py-20 px-4 md:px-6 lg:px-12">
+          <div className="max-w-3xl mx-auto bg-white border border-[#e6e2d6] p-6 sm:p-16 text-center space-y-8 shadow-xl">
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-luxury-gold block">Plan Your Journey</span>
             <h3 className="font-serif text-2xl sm:text-4xl text-[#343434] font-medium leading-tight">
               {thing.ctaHeading}

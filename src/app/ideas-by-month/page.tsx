@@ -242,7 +242,7 @@ export default function IdeasByMonthListingPage() {
         <CategoriesTabBar activeTab="weather" />
 
         {/* Regional Breakdown & Sidebar */}
-        <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12 py-10 md:py-16">
           <div className="grid lg:grid-cols-12 gap-12">
             
             {/* Left Content (Regions) */}
@@ -327,12 +327,12 @@ export default function IdeasByMonthListingPage() {
         <BestTimeInteractive />
 
         {/* Climate Table Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <section className="py-12 md:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
             <h2 className="font-serif text-3xl font-light text-center text-[#343434] mb-4">
               Vietnam Climate Guide
             </h2>
-            <p className="text-center text-xs text-[#545454] font-light max-w-lg mx-auto mb-16 leading-relaxed">
+            <p className="text-center text-xs text-[#545454] font-light max-w-lg mx-auto mb-8 md:mb-16 leading-relaxed">
               Explore the detailed average temperature and monthly rainfall (inches) guide across Vietnam's main destinations.
             </p>
 
@@ -370,9 +370,9 @@ export default function IdeasByMonthListingPage() {
         </section>
 
         {/* Why Us and Advice Columns */}
-        <section className="py-20 bg-[#faf8f5] border-t border-[#e6e2d6]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <section className="py-10 md:py-20 bg-[#faf8f5] border-t border-[#e6e2d6]">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
               
               {/* Left Column: Why travel with us */}
               <div className="bg-white border border-[#e6e2d6] p-8 lg:p-12 space-y-6">
