@@ -433,7 +433,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <a href="/about" className="flex items-center gap-1.5 text-[11px] text-[#343434]/50 hover:text-[#9A4B33] transition-colors uppercase tracking-wider font-semibold">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     About Us
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
