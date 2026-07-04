@@ -160,100 +160,213 @@ export const mockSpecialists: Specialist[] = [
 
 export const mockDestinations: Destination[] = [
   {
-    _id: 'dest-1',
-    name: 'Hanoi & The North',
-    slug: { current: 'hanoi-and-the-north' },
-    image: '/images/vietnamtour_sapa_lodge.png',
+    _id: 'dest-hanoi',
+    name: 'Hanoi',
+    slug: { current: 'hanoi' },
+    image: '/images/vietnamtour_hanoi_colonial.png',
     description: [
       {
         _key: 'b1',
         _type: 'block',
-        children: [
-          {
-            _type: 'span',
-            text: "Home to the historic capital of Hanoi, the breathtaking limestone karsts of Halong Bay, and the misty terrace rice fields of Sapa's highlands. North Vietnam offers an unparalleled blend of culture, history, and raw scenic beauty. Wander the atmospheric streets of Hanoi's Old Quarter, cruise past towering stone monoliths on a private catamaran, and hike through ethnic minority villages high in the mountains."
-          }
-        ]
+        children: [{ _type: 'span', text: "Hanoi, the historic capital, is famed for its tree-lined boulevards, busy Old Quarter streets, and unique colonial architecture. It represents the cultural heart of northern Vietnam." }]
       }
     ],
     highlights: [
-      "Explore Hanoi's French Quarter in a vintage sidecar at chao-time.",
-      "Private overnight junk boat cruise in Lan Ha Bay and secluded lagoons.",
-      "Hike through the terraced rice fields of Sapa and stay in luxury mountain lodges."
+      "Explore the 36 guild streets of the Old Quarter",
+      "Visit the historic Temple of Literature",
+      "Sip egg coffee overlooking Hoan Kiem Lake at sunrise"
     ],
-    bestTimeToVisit: 'October to April (cool, dry season)'
+    bestTimeToVisit: 'October to April'
   },
   {
-    _id: 'dest-2',
-    name: 'Central Coast & Hoi An',
-    slug: { current: 'central-coast-and-hoi-an' },
-    image: '/images/vietnamtour_cave_dining.png',
+    _id: 'dest-halong',
+    name: 'Ha Long Bay',
+    slug: { current: 'ha-long-bay' },
+    image: '/images/dest_halong_limestone.png',
     description: [
       {
         _key: 'b1',
         _type: 'block',
-        children: [
-          {
-            _type: 'span',
-            text: "The cultural and historical heart of Vietnam. Here you will discover the majestic imperial city and royal tombs of Hue, the charming lantern-lit streets of Hoi An Ancient Town (a UNESCO World Heritage Site), and the pristine white-sand coastline of Danang and Nha Trang. Ideal for a relaxed mix of heritage exploration and luxury beach relaxation."
-          }
-        ]
+        children: [{ _type: 'span', text: "A UNESCO World Heritage Site renowned for its emerald waters and thousands of towering limestone islands topped by rainforests." }]
       }
     ],
     highlights: [
-      "Exclusive private access to Hue's Forbidden Purple City with a local historian.",
-      "Organic gardening and masterclass cooking session in a Hoi An garden home.",
-      "Relax on the golden sands of An Bang beach or stay in private bay villas."
+      "Cruise on a traditional wooden junk boat",
+      "Kayak through Luon Cave and hidden lagoons",
+      "Trek up Ti Top Island for panoramic views"
     ],
-    bestTimeToVisit: 'February to August (sunny and warm)'
+    bestTimeToVisit: 'October to April'
   },
   {
-    _id: 'dest-3',
-    name: 'Saigon & Mekong Delta',
-    slug: { current: 'saigon-and-mekong-delta' },
-    image: '/images/vietnamtour_mekong_sampan.png',
+    _id: 'dest-sapa',
+    name: 'Sapa',
+    slug: { current: 'sapa' },
+    image: '/images/dest_sapa_highland.png',
     description: [
       {
         _key: 'b1',
         _type: 'block',
-        children: [
-          {
-            _type: 'span',
-            text: "A fascinating contrast of modern urban energy and peaceful rural life. Ho Chi Minh City (formerly Saigon) sparkles with French colonial architecture, high-end rooftop lounges, and Michelin-starred dining. Just a short journey away lies the Mekong Delta, a fertile maze of rivers, floating markets, fruit orchards, and traditional villages."
-          }
-        ]
+        children: [{ _type: 'span', text: "Nestled in the Hoang Lien Son mountains, Sapa is famous for its cascading golden rice terraces, ethnic minority cultures, and misty peaks." }]
       }
     ],
     highlights: [
-      "Vespa culinary tour through Saigon's night markets with a private guide.",
-      "Private luxury sampan cruise along the floating markets of the Mekong Delta.",
-      "Exclusive tour of the Cu Chi Tunnels with a retired military historian."
+      "Trek through bamboo forests and terraced paddies",
+      "Stay overnight in a H'Mong family homestay",
+      "Explore vibrant weekend ethnic markets"
     ],
-    bestTimeToVisit: 'November to April (dry, warm season)'
+    bestTimeToVisit: 'September to October'
   },
   {
-    _id: 'dest-4',
-    name: 'Phu Quoc Island',
-    slug: { current: 'phu-quoc-island' },
-    image: '/images/vietnamtour_phu_quoc_beach.png',
+    _id: 'dest-ninhbinh',
+    name: 'Ninh Binh',
+    slug: { current: 'ninh-binh' },
+    image: '/images/tour_ninhbinh_landscape.png',
     description: [
       {
         _key: 'b1',
         _type: 'block',
-        children: [
-          {
-            _type: 'span',
-            text: "A tropical island paradise situated in the Gulf of Thailand. Boasting turquoise waters, fine white sand beaches, and lush tropical national parks, Phu Quoc is Vietnam's premier beach getaway. Home to spectacular ultra-luxury resorts like Regent Phu Quoc, it is the perfect spot to end a tour of Vietnam in complete comfort."
-          }
-        ]
+        children: [{ _type: 'span', text: "Known as 'Ha Long Bay on land', Ninh Binh features spectacular karst mountains rising out of green rice paddies and winding rivers." }]
       }
     ],
     highlights: [
-      "Private luxury catamaran charter to the deserted islands of the southern archipelago.",
-      "Snorkeling and coral reef diving in remote marine reserves.",
-      "Private sunset beach barbecue with your personal chef and butler."
+      "Rowboat excursion through Trang An caves",
+      "Climb 500 steps to Hang Mua viewpoint",
+      "Explore the ancient capital of Hoa Lu"
     ],
-    bestTimeToVisit: 'November to March (ideal beach weather)'
+    bestTimeToVisit: 'March to May, September to November'
+  },
+  {
+    _id: 'dest-hue',
+    name: 'Hue',
+    slug: { current: 'hue' },
+    image: '/images/things_cooking_class_hue.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "The former imperial capital of Vietnam, Hue holds the grand Imperial Citadel, royal tombs, and a rich culinary heritage." }]
+      }
+    ],
+    highlights: [
+      "Tour the UNESCO-listed Imperial Citadel",
+      "Cruise the Perfume River to Thien Mu Pagoda",
+      "Savor refined imperial multi-course cuisine"
+    ],
+    bestTimeToVisit: 'February to August'
+  },
+  {
+    _id: 'dest-danang',
+    name: 'Da Nang',
+    slug: { current: 'da-nang' },
+    image: '/images/trip_adventure_jungle.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "A modern coastal city boasting long sandy beaches, bridging the gap between the imperial city of Hue and the ancient town of Hoi An." }]
+      }
+    ],
+    highlights: [
+      "Walk on the famous Golden Bridge in Ba Na Hills",
+      "Explore the caves of the Marble Mountains",
+      "Relax on clean, white-sand My Khe beach"
+    ],
+    bestTimeToVisit: 'February to August'
+  },
+  {
+    _id: 'dest-hoian',
+    name: 'Hoi An',
+    slug: { current: 'hoi-an' },
+    image: '/images/dest_hoian_lanterns.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "A beautifully preserved UNESCO ancient merchant town, famous for its lantern-lit canals, historic wooden houses, and expert tailors." }]
+      }
+    ],
+    highlights: [
+      "Wander the car-free streets of the ancient town",
+      "Commission custom tailored clothing",
+      "Take a bicycle tour to Tra Que village"
+    ],
+    bestTimeToVisit: 'February to August'
+  },
+  {
+    _id: 'dest-phongnha',
+    name: 'Phong Nha',
+    slug: { current: 'phong-nha' },
+    image: '/images/dest_phongnha_cave.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "A national park holding some of the world's largest caves, underground rivers, and untouched tropical jungles." }]
+      }
+    ],
+    highlights: [
+      "Explore the massive chambers of Paradise Cave",
+      "Take a boat ride into Phong Nha water cave",
+      "Zipline and mudbath inside Dark Cave"
+    ],
+    bestTimeToVisit: 'February to August'
+  },
+  {
+    _id: 'dest-dalat',
+    name: 'Da Lat',
+    slug: { current: 'da-lat' },
+    image: '/images/trip_bike_rice_paddies.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "The city of eternal spring, nestled in the southern highlands, famous for its pine forests, French villas, and cool mountain climate." }]
+      }
+    ],
+    highlights: [
+      "Visit beautiful colonial-era villas",
+      "Explore local flower farms and coffee plantations",
+      "Hike through lush pine forests"
+    ],
+    bestTimeToVisit: 'November to March'
+  },
+  {
+    _id: 'dest-hcmc',
+    name: 'Ho Chi Minh City',
+    slug: { current: 'ho-chi-minh-city' },
+    image: '/images/tour_saigon_vespa_night.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "Formerly Saigon, this buzzing economic metropolis blends modern skyscrapers with historic French landmarks and vibrant street markets." }]
+      }
+    ],
+    highlights: [
+      "Explore the War Remnants Museum & Central Post Office",
+      "Vespa evening street food tour of local districts",
+      "Half-day excursion to the historic Cu Chi Tunnels"
+    ],
+    bestTimeToVisit: 'November to April'
+  },
+  {
+    _id: 'dest-mekong',
+    name: 'Mekong Delta',
+    slug: { current: 'mekong-delta' },
+    image: '/images/dest_mekong_canal.png',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [{ _type: 'span', text: "Vietnam's rice bowl, a vast labyrinth of rivers, canals, fruit orchards, and floating markets reflecting traditional river life." }]
+      }
+    ],
+    highlights: [
+      "Visit the Cai Rang floating market at sunrise",
+      "Cruise narrow palm-shaded canals on a wooden sampan",
+      "Cycle through local fruit orchards on rustic paths"
+    ],
+    bestTimeToVisit: 'November to April'
   }
 ];
 

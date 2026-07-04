@@ -114,14 +114,14 @@ export default async function DestinationDetailPage({ params }: PageProps) {
 
             {/* Highlights */}
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 animate-fade-in">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-white font-medium">
                 Key Region Highlights
               </h3>
               <ul className="space-y-4">
                 {destination.highlights.map((hl, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-[#343434]/75 font-light leading-relaxed">
+                    <span className="text-sm sm:text-base text-luxury-linen/90 font-light leading-relaxed">
                       {hl}
                     </span>
                   </li>
@@ -149,11 +149,11 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">
+                        <h4 className="font-serif text-base font-medium text-white group-hover:text-luxury-gold transition-colors">
                           {it.title}
                         </h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-[#545454] font-semibold">{it.duration} Days</span>
+                          <span className="text-xs text-luxury-linen/70 font-semibold">{it.duration} Days</span>
                           <Link
                             href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
                             className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
@@ -184,9 +184,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
+                        <h4 className="font-serif text-base font-medium text-white group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-[#545454] font-semibold">{cruise.duration}</span>
+                          <span className="text-xs text-luxury-linen/70 font-semibold">{cruise.duration}</span>
                           <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
                             <span>View Cruise</span><span>→</span>
                           </Link>
