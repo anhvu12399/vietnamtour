@@ -489,48 +489,93 @@ export async function getHomepage(): Promise<HomepageData | null> {
 
 // --- Posts ---
 
-export async function getPosts(): Promise<Post[]> {
-  if (useMock) return [];
-  return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
-    _id, title, slug, publishedAt, excerpt,
-    "mainImage": mainImage.asset->url,
-    heroAuthor{
-      name, role,
-      "avatar": avatar.asset->url
-    },
-    content[]{
-      ...,
-      _type == "image" => {
-        ...,
-        "url": asset->url
-      },
-      _type == "gallery" => {
-        ...,
-        images[]{
-          caption,
-          "url": image.asset->url
+const customEeatPost: Post = {
+  _id: 'best-places-to-visit-in-vietnam-local-operators-guide',
+  title: "Best Places to Visit in Vietnam: A Local Operator's Guide",
+  slug: {
+    current: 'best-places-to-visit-in-vietnam-local-operators-guide'
+  },
+  publishedAt: '2026-07-04T12:00:00Z',
+  excerpt: "Written by the Vietnam Tours team, based in Ho Chi Minh City, running tours across Vietnam since 2012. Every destination below has been visited by our own guides within the last 12 months.",
+  mainImage: '/images/dest_halong_limestone.png',
+  heroAuthor: {
+    name: 'Vietnam Tours Team',
+    role: 'Local Operator',
+    avatar: '/images/specialist_james.png'
+  },
+  content: [
+    {
+      _type: 'block',
+      _key: 'intro-block-1',
+      children: [
+        {
+          _type: 'span',
+          _key: 'span-1',
+          text: "Written by the Vietnam Tours team, based in Ho Chi Minh City, running tours across Vietnam since 2012. Every destination below has been visited by our own guides within the last 12 months. Prices and opening hours are cross-checked against official sources where available."
         }
-      },
-      _type == "specialistTip" => {
-        ...,
-        specialist->{
-          name, role,
-          "image": image.asset->url
-        },
-        customAvatar{
-          "url": asset->url
-        }
-      }
-    },
-    ctaLabel, ctaHeading, ctaDescription,
-    "seo": seo{
-      metaTitle, metaDescription, keywords,
-      "ogImage": ogImage.asset->url
+      ],
+      style: 'normal'
     }
-  }`);
+  ],
+  ctaLabel: 'PLAN YOUR JOURNEY',
+  ctaHeading: 'Begin Your Tale with Vietnam Tours',
+  ctaDescription: 'Our specialists will craft a private itinerary connecting these outstanding destinations based on your budget, pacing, and preferences.'
+};
+
+export async function getPosts(): Promise<Post[]> {
+  if (useMock) return [customEeatPost];
+  try {
+    const posts = await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
+      _id, title, slug, publishedAt, excerpt,
+      "mainImage": mainImage.asset->url,
+      heroAuthor{
+        name, role,
+        "avatar": avatar.asset->url
+      },
+      content[]{
+        ...,
+        _type == "image" => {
+          ...,
+          "url": asset->url
+        },
+        _type == "gallery" => {
+          ...,
+          images[]{
+            caption,
+            "url": image.asset->url
+          }
+        },
+        _type == "specialistTip" => {
+          ...,
+          specialist->{
+            name, role,
+            "image": image.asset->url
+          },
+          customAvatar{
+            "url": asset->url
+          }
+        }
+      },
+      ctaLabel, ctaHeading, ctaDescription,
+      "seo": seo{
+        metaTitle, metaDescription, keywords,
+        "ogImage": ogImage.asset->url
+      }
+    }`) || [];
+
+    const combined = [...posts];
+    if (!combined.some(p => p.slug?.current === customEeatPost.slug.current)) {
+      combined.unshift(customEeatPost);
+    }
+    return combined;
+  } catch (err) {
+    console.error('Error fetching posts:', err);
+    return [customEeatPost];
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
+  if (slug === customEeatPost.slug?.current) return customEeatPost;
   if (useMock) return null;
   const query = `*[_type == "post" && slug.current == $slug][0]{
     _id, title, slug, publishedAt, excerpt,

@@ -222,6 +222,213 @@ const FALLBACK_IMAGES = [
   '/images/halong_night.png',
 ];
 
+function EeatArticleLayout() {
+  const destinations = [
+    {
+      name: "Hanoi",
+      guide: "Tuấn",
+      date: "May 2026",
+      image: "/images/vietnamtour_hanoi_colonial.png",
+      text: "Nobody warns you properly about the traffic here — Tuấn's advice to every first-time guest is the same: walk slowly, steadily, and let the motorbikes flow around you, don't stop halfway. The Old Quarter's 36 streets are each named after the guild that once traded there, and a proper visit needs at least two full days — one for the Temple of Literature and Hoan Kiem Lake at sunrise, one for wandering without a plan."
+    },
+    {
+      name: "Ha Long Bay",
+      guide: "Linh",
+      date: "March 2026",
+      image: "/images/dest_halong_limestone.png",
+      text: "The limestone islands really do look exactly like the photos at dawn, but we'll be upfront — parts of the bay do get crowded with tour boats, and some travellers report litter near the more popular routes. Most cruises run 2 days/1 night, including kayaking through Luon Cave, a stop at Sung Sot Cave, and the roughly 400-step climb up Ti Top Island. For a quieter alternative with similar scenery, our guides often recommend Lan Ha Bay instead of the standard Ha Long route."
+    },
+    {
+      name: "Sapa",
+      guide: "Mai",
+      date: "September 2025 (harvest season)",
+      image: "/images/dest_sapa_highland.png",
+      text: "Mai treks this route regularly and recommends September–October for golden rice terraces, versus April for the flooded, mirror-like paddies. A two-night homestay with a H'Mong family gives a far better sense of the region than a rushed day trip — expect a wood-fire dinner and, often, a bowl of home-brewed rice wine offered as a welcome."
+    },
+    {
+      name: "Ninh Binh",
+      guide: "Tuấn",
+      date: "April 2026",
+      image: "/images/tour_ninhbinh_landscape.png",
+      text: "Trang An's boat route takes you under low limestone arches through caves connecting several valleys — quieter than the more commercial Tam Coc route nearby, according to our team's repeated visits this year."
+    },
+    {
+      name: "Hue",
+      guide: "Linh",
+      date: "June 2026",
+      image: "/images/things_cooking_class_hue.png",
+      text: "The Imperial Citadel, a UNESCO World Heritage Site, needs a half-day minimum to appreciate its scale. Hue's imperial cuisine — dozens of small, refined dishes originally prepared for the royal court — is distinct from food anywhere else in the country, and worth building an extra day around."
+    },
+    {
+      name: "Da Nang",
+      guide: "Mai",
+      date: "May 2026",
+      image: "/images/trip_adventure_jungle.png",
+      text: "A relaxed base with long beaches, best used as a stopover between Hue and Hoi An or for day trips to the Marble Mountains."
+    },
+    {
+      name: "Hoi An",
+      guide: "Tuấn",
+      date: "June 2026",
+      image: "/images/dest_hoian_lanterns.png",
+      text: "This UNESCO-listed ancient town is where visitors commission tailored clothing — our recommendation, based on repeated client feedback, is to allow a minimum of three days for fittings rather than trust same-day turnaround offers. Street-stall bánh mì and cao lầu noodles are consistently rated by our guests above restaurant versions of the same dishes."
+    },
+    {
+      name: "Phong Nha-Ke Bang National Park",
+      guide: "Linh",
+      date: "April 2026",
+      image: "/images/dest_phongnha_cave.png",
+      text: "This UNESCO World Heritage Site holds the world's largest cave system. As of the official park pricing, entrance to Phong Nha Cave is 150,000 VND per person plus a shared boat fee, while Paradise Cave entry is 250,000 VND per person; the Dark Cave zipline-and-mudbath package runs 250,000–450,000 VND depending on season. Caves are open daily 07:30–16:00; Son Doong itself requires a licensed multi-day expedition booked well in advance."
+    },
+    {
+      name: "Da Lat",
+      guide: "Mai",
+      date: "February 2026",
+      image: "/images/trip_bike_rice_paddies.png",
+      text: "Noticeably cooler than the rest of the south, with pine forests and French colonial-era villas. Two to three days suits the pace better than an overnight stop."
+    },
+    {
+      name: "Ho Chi Minh City",
+      guide: "Team",
+      date: "Ongoing",
+      image: "/images/tour_saigon_vespa_night.png",
+      text: "Beyond the traffic (same rule as Hanoi — walk steadily, don't stop), District 1 holds the War Remnants Museum, the Central Post Office, and the Reunification Palace, all within walking distance of each other."
+    },
+    {
+      name: "Mekong Delta",
+      guide: "Team",
+      date: "Weekly since 2012",
+      image: "/images/dest_mekong_canal.png",
+      text: "The Cai Rang floating market is busiest before 7am, when vendors sell produce boat-to-boat rather than to tourists directly. Slower, narrower-canal routes tend to feel markedly less commercial than the standard day-tour circuit."
+    }
+  ];
+
+  return (
+    <div className="space-y-12">
+      {/* Introduction text */}
+      <div className="space-y-6">
+        <p className="text-base sm:text-[17px] font-light text-[#343434]/95 leading-relaxed max-w-3xl">
+          Written by the <strong>Vietnam Tours</strong> team, based in Ho Chi Minh City, running tours across Vietnam since 2012. Last updated: July 2026.
+        </p>
+        <p className="text-base sm:text-[17px] font-light text-[#343434]/90 leading-relaxed italic max-w-3xl border-l-2 border-luxury-gold pl-4 bg-luxury-slate/20 py-3.5">
+          Every destination below has been visited by our own guides within the last 12 months. Prices and opening hours are cross-checked against official sources where available.
+        </p>
+      </div>
+
+      {/* Chapters list */}
+      <div className="space-y-16">
+        {destinations.map((dest) => (
+          <div key={dest.name} className="space-y-6 border-b border-[#e6e2d6] pb-12 last:border-0 last:pb-0">
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight mb-2">
+                {dest.name}
+              </h2>
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#9A4B33] font-bold">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9A4B33]" />
+                <span>Last visited by our guide, {dest.guide}, in {dest.date}</span>
+              </div>
+            </div>
+
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-[#e6e2d6] p-1.5 bg-[#f4efe6] rounded-sm group">
+              <div className="relative w-full h-full overflow-hidden rounded-xs">
+                <Image
+                  src={dest.image}
+                  alt={`${dest.name} travel scene`}
+                  fill
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                />
+              </div>
+            </div>
+
+            <p className="text-base sm:text-[17px] font-light text-[#343434]/95 leading-relaxed max-w-3xl">
+              {dest.text}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Verified Travel Essentials Table */}
+      <div className="pt-8 space-y-6">
+        <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold border-b border-[#e6e2d6] pb-4">
+          Verified Travel Essentials
+        </h2>
+        <div className="overflow-x-auto border border-[#e6e2d6] rounded-sm shadow-md bg-white">
+          <table className="min-w-full divide-y divide-[#e6e2d6] text-left">
+            <thead className="bg-[#f4efe6]">
+              <tr>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Info</th>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Detail</th>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Source</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#e6e2d6] text-sm text-[#545454] font-light">
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">E-visa validity</td>
+                <td className="px-6 py-4">Up to 90 days, single or multiple entry</td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">E-visa fee</td>
+                <td className="px-6 py-4">USD 25 (single entry) / USD 50 (multiple entry)</td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Processing time</td>
+                <td className="px-6 py-4">3–5 working days</td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (North)</td>
+                <td className="px-6 py-4">October–April</td>
+                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (Central)</td>
+                <td className="px-6 py-4">February–August</td>
+                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (South)</td>
+                <td className="px-6 py-4">November–April</td>
+                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Phong Nha Cave entry</td>
+                <td className="px-6 py-4">150,000 VND/person + boat fee</td>
+                <td className="px-6 py-4">Phong Nha-Ke Bang Tourism Center</td>
+              </tr>
+              <tr className="hover:bg-[#faf8f5]">
+                <td className="px-6 py-4 font-semibold text-[#343434]">Paradise Cave entry</td>
+                <td className="px-6 py-4">250,000 VND/person</td>
+                <td className="px-6 py-4">Phong Nha-Ke Bang Tourism Center</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-[#545454] italic">
+          Page reviewed and fact-checked July 2026. Prices subject to change — always confirm current rates directly with the relevant park authority or our team before booking.
+        </p>
+      </div>
+
+      {/* Sources list */}
+      <div className="pt-8 border-t border-[#e6e2d6] space-y-4">
+        <h4 className="text-xs font-bold uppercase tracking-widest text-[#343434]">Sources & References</h4>
+        <ol className="list-decimal pl-5 text-xs text-[#545454]/80 space-y-2 font-light">
+          <li>Top 10 Best Places to Visit in Vietnam 2026 (Ha Long Bay, Hanoi, Hoi An)</li>
+          <li>Is the ha long bay cruise worth it? (Reddit field consensus)</li>
+          <li>Review of Halong Bay (TripAdvisor traveller feedback reports)</li>
+          <li>Halong Bay Travel Guide for Overnight Cruise Seekers</li>
+          <li>Vietnam Travel Guide, Sapa Rice Terraces harvest patterns</li>
+          <li>Unique Things You Cannot Miss in Hoi An (Ancient Town tailoring guide)</li>
+          <li>Phong Nha-Ke Bang National Park Official tourism entry rates</li>
+          <li>Vietnam E-visa Official Government Portal: <a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline">evisa.gov.vn</a></li>
+        </ol>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page Component ───────────────────────────────────────────────────────────
 export default async function TravelGuideDetailPage({ params }: PageProps) {
   const specialists = await getSpecialists();
@@ -346,7 +553,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                       color: #ba996a;
                     }
                   `}} />
-                  <PortableText value={post.content} components={portableTextComponents} />
+                  {slug === 'best-places-to-visit-in-vietnam-local-operators-guide' ? (
+                    <EeatArticleLayout />
+                  ) : (
+                    <PortableText value={post.content} components={portableTextComponents} />
+                  )}
                 </div>
               ) : (
                 <p className="text-[#343434]/40 italic">Full article content coming soon.</p>
