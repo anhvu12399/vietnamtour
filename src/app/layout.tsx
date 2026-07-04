@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -186,6 +187,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#faf8f5] text-[#343434]">
         {children}
         <WhatsAppFloating />
+        <Analytics />
       </body>
     </html>
   );
