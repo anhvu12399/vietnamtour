@@ -154,7 +154,7 @@ export const mockSpecialists: Specialist[] = [
     slug: { current: 'alice-mercer' },
     image: '/images/specialist_alice.png',
     role: 'Senior Indochina Specialist',
-    email: 'alice.mercer@vietnamtour.co.uk',
+    email: 'info@vietnamtours.co.uk',
     phone: '+84 988600388',
     bio: [
       {
@@ -180,7 +180,7 @@ export const mockSpecialists: Specialist[] = [
     slug: { current: 'james-harrison' },
     image: '/images/specialist_james.png',
     role: 'Vietnam & Expedition Consultant',
-    email: 'james.harrison@vietnamtour.co.uk',
+    email: 'info@vietnamtours.co.uk',
     phone: '+84 988600388',
     bio: [
       {

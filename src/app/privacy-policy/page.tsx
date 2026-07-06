@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">9. Contact &amp; Complaints</h2>
-          <p>For any data protection queries, please contact us at <a href="mailto:mywaytravelinc@gmail.com" className="text-copper underline underline-offset-2">mywaytravelinc@gmail.com</a>. If you are unsatisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk.</p>
+          <p>For any data protection queries, please contact us at <a href="mailto:info@vietnamtours.co.uk" className="text-copper underline underline-offset-2">info@vietnamtours.co.uk</a>. If you are unsatisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk.</p>
         </div>
 
       </section>

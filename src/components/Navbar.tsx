@@ -933,8 +933,8 @@ export default function Navbar() {
             </div>
             <div>
               <span className="text-[9px] uppercase tracking-widest text-gold-soft font-bold block mb-1">Email</span>
-              <a href="mailto:inspire@vietnamtour.co.uk" className="text-xs text-paper block font-semibold truncate hover:text-gold">
-                inspire@vietnamtour.co.uk
+              <a href="mailto:info@vietnamtours.co.uk" className="text-xs text-paper block font-semibold truncate hover:text-gold">
+                info@vietnamtours.co.uk
               </a>
             </div>
           </div>

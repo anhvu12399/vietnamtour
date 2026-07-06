@@ -64,7 +64,7 @@ export default function TermsPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">8. Contact</h2>
-          <p>For any queries regarding these terms, please contact us at <a href="mailto:mywaytravelinc@gmail.com" className="text-copper underline underline-offset-2">mywaytravelinc@gmail.com</a>.</p>
+          <p>For any queries regarding these terms, please contact us at <a href="mailto:info@vietnamtours.co.uk" className="text-copper underline underline-offset-2">info@vietnamtours.co.uk</a>.</p>
         </div>
 
       </section>
