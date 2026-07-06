@@ -86,17 +86,17 @@ export default async function TravelGuidePage({ params }: PageProps) {
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full space-y-4">
           {/* Breadcrumb */}
-          <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-luxury-gold font-semibold">
+          <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-gold font-semibold">
             <Link href={`/destinations/${slug}`} className="hover:underline">
               {guide.destination?.name || slug}
             </Link>
             <span className="opacity-50">›</span>
             <span className="opacity-70">Travel Guides</span>
           </div>
-          <div className="text-[10px] uppercase tracking-widest text-luxury-gold/70 font-semibold">
+          <div className="text-[10px] uppercase tracking-widest text-gold/70 font-semibold">
             Travel Guide
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-ink">
             {guide.title}
           </h1>
         </div>
@@ -112,7 +112,7 @@ export default async function TravelGuidePage({ params }: PageProps) {
             {guide.content && guide.content.length > 0 && (
               <div className="prose prose-invert prose-lg max-w-none space-y-6">
                 {guide.content.map((block: any, i: number) => (
-                  <p key={i} className="text-base font-light text-[#545454] leading-relaxed">
+                  <p key={i} className="text-base font-light text-ink-soft leading-relaxed">
                     {block.children?.map((c: any) => c.text).join('')}
                   </p>
                 ))}
@@ -121,15 +121,15 @@ export default async function TravelGuidePage({ params }: PageProps) {
 
             {/* Related Tours Cross-sell */}
             {relatedTours.length > 0 && (
-              <section className="space-y-8 pt-8 border-t border-luxury-moss/50">
+              <section className="space-y-8 pt-8 border-t border-jade-deep/50">
                 <div className="space-y-2">
-                  <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold block">
+                  <span className="text-[10px] uppercase tracking-widest text-gold font-semibold block">
                     Handpicked For You
                   </span>
-                  <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium">
+                  <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium">
                     Recommended Tours & Cruises
                   </h2>
-                  <p className="text-sm text-[#545454] font-light">
+                  <p className="text-sm text-ink-soft font-light">
                     Our specialists have selected these experiences to complement this guide.
                   </p>
                 </div>
@@ -149,7 +149,7 @@ export default async function TravelGuidePage({ params }: PageProps) {
                     return (
                       <div
                         key={tour._id}
-                        className="bg-luxury-moss border border-luxury-gold/20 overflow-hidden flex flex-col group hover:shadow-xl hover:border-luxury-gold/40 transition-all duration-300"
+                        className="bg-jade-deep border border-gold/20 overflow-hidden flex flex-col group hover:shadow-xl hover:border-gold/40 transition-all duration-300"
                       >
                         {image && (
                           <div className="relative h-48 overflow-hidden">
@@ -159,20 +159,20 @@ export default async function TravelGuidePage({ params }: PageProps) {
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div className="absolute top-3 left-3 bg-luxury-slate/80 text-luxury-gold text-[9px] uppercase tracking-widest px-2 py-1 font-semibold">
+                            <div className="absolute top-3 left-3 bg-luxury-slate/80 text-gold text-[9px] uppercase tracking-widest px-2 py-1 font-semibold">
                               {label}
                             </div>
                           </div>
                         )}
                         <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                          <h3 className="font-serif text-base font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">
+                          <h3 className="font-serif text-base font-medium text-ink group-hover:text-gold transition-colors">
                             {tour.title}
                           </h3>
                           <div className="flex items-center justify-between pt-4 border-t border-luxury-slate/50">
-                            <span className="text-xs text-[#545454] font-light">{meta}</span>
+                            <span className="text-xs text-ink-soft font-light">{meta}</span>
                             <Link
                               href={detailHref}
-                              className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
+                              className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1"
                             >
                               <span>View Details</span>
                               <span>→</span>
@@ -185,14 +185,14 @@ export default async function TravelGuidePage({ params }: PageProps) {
                 </div>
 
                 {/* CTA strip */}
-                <div className="bg-luxury-moss/60 border border-luxury-gold/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="bg-jade-deep/60 border border-gold/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <p className="font-serif text-base text-[#343434]">Looking for something more bespoke?</p>
-                    <p className="text-xs text-[#545454] font-light">Our specialists craft journeys entirely around you.</p>
+                    <p className="font-serif text-base text-ink">Looking for something more bespoke?</p>
+                    <p className="text-xs text-ink-soft font-light">Our specialists craft journeys entirely around you.</p>
                   </div>
                   <Link
                     href="/enquire"
-                    className="shrink-0 py-2.5 px-8 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
+                    className="shrink-0 py-2.5 px-8 bg-gold hover:bg-gold/90 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
                   >
                     Plan My Journey
                   </Link>
@@ -203,20 +203,20 @@ export default async function TravelGuidePage({ params }: PageProps) {
 
           {/* Right sidebar */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6">
+            <div className="bg-jade-deep p-8 border border-line space-y-6">
               <h3 className="font-serif text-lg text-white font-medium">Explore {guide.destination?.name}</h3>
-              <p className="text-sm text-luxury-linen/80 font-light leading-relaxed">
+              <p className="text-sm text-paper/80 font-light leading-relaxed">
                 Discover all tours, cruises and travel guides curated for this region.
               </p>
               <Link
                 href={`/destinations/${slug}`}
-                className="block w-full py-3 border border-luxury-gold text-luxury-gold font-semibold text-xs tracking-widest uppercase hover:bg-luxury-gold hover:text-luxury-slate transition-all duration-300 text-center"
+                className="block w-full py-3 border border-gold text-gold font-semibold text-xs tracking-widest uppercase hover:bg-gold hover:text-ink transition-all duration-300 text-center"
               >
                 View Destination
               </Link>
               <Link
                 href="/enquire"
-                className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
+                className="block w-full py-3 bg-gold hover:bg-gold/90 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
               >
                 Plan This Journey
               </Link>

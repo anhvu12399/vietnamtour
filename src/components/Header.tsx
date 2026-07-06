@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full bg-white z-[100] transition-all duration-300 border-b border-[#d8d8d8]",
+        "fixed top-0 left-0 w-full bg-white z-[100] transition-all duration-300 border-b border-line",
         scrolled ? "py-2 shadow-md" : "py-4"
       )}
     >
@@ -39,7 +39,7 @@ export default function Header() {
           </a>
 
           {/* Right items - Desktop */}
-          <div className="hidden lg:flex items-center gap-8 text-[#343434] font-sans text-xs tracking-wider uppercase">
+          <div className="hidden lg:flex items-center gap-8 text-ink font-sans text-xs tracking-wider uppercase">
             <a href="#" className="hover:text-gold transition-colors font-semibold">Philosophy</a>
             <a href="#" className="hover:text-gold transition-colors font-semibold">Curating</a>
             <a href="#" className="hover:text-gold transition-colors font-semibold">Expeditions</a>
@@ -57,7 +57,7 @@ export default function Header() {
           {/* Hamburger Mobile Trigger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 border border-[#d8d8d8] rounded-full hover:bg-[#f5f0e6] transition-colors"
+            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 border border-line rounded-full hover:bg-[#f5f0e6] transition-colors"
           >
             <span className={cn("w-5 h-0.5 bg-[#343434] transition-all duration-300", isOpen && "transform rotate-45 translate-y-1")} />
             <span className={cn("w-5 h-0.5 bg-[#343434] my-1 transition-all duration-300", isOpen && "opacity-0")} />
@@ -67,13 +67,13 @@ export default function Header() {
 
         {/* Mobile Menu Dropdown */}
         {isOpen && (
-          <div className="lg:hidden mt-4 pb-6 border-t border-[#d8d8d8] flex flex-col gap-4 font-sans text-xs tracking-wider uppercase text-[#343434] pt-4">
+          <div className="lg:hidden mt-4 pb-6 border-t border-line flex flex-col gap-4 font-sans text-xs tracking-wider uppercase text-ink pt-4">
             <a href="#" className="font-semibold py-1 hover:text-gold transition-colors">Philosophy</a>
             <a href="#" className="font-semibold py-1 hover:text-gold transition-colors">Curating</a>
             <a href="#" className="font-semibold py-1 hover:text-gold transition-colors">Expeditions</a>
             <a href="#" className="font-semibold py-1 hover:text-gold transition-colors">Concierge</a>
             
-            <hr className="border-[#d8d8d8] my-2" />
+            <hr className="border-line my-2" />
 
             <div className="flex flex-col gap-3">
               <a

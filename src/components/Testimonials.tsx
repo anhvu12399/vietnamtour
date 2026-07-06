@@ -23,7 +23,7 @@ export default function Testimonials() {
   return (
     <section className="bg-white py-16 px-4 border-t border-[#e1e3e4]">
       <div className="container mx-auto max-w-4xl text-center flex flex-col items-center gap-8">
-        <h2 className="font-serif text-3xl md:text-4xl text-[#343434] font-light tracking-wide">
+        <h2 className="font-serif text-3xl md:text-4xl text-ink font-light tracking-wide">
           Moments we’ve created
         </h2>
 
@@ -38,7 +38,7 @@ export default function Testimonials() {
                   : "opacity-0 transform -translate-y-4 pointer-events-none"
               }`}
             >
-              <p className="font-merriweather italic text-lg md:text-2xl text-[#4d726d] leading-relaxed max-w-2xl px-6">
+              <p className="font-serif italic text-lg md:text-2xl text-celadon leading-relaxed max-w-2xl px-6">
                 {quote}
               </p>
             </div>

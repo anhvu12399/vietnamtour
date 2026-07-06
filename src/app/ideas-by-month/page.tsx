@@ -220,7 +220,7 @@ export default function IdeasByMonthListingPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen bg-paper text-ink">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
@@ -231,7 +231,7 @@ export default function IdeasByMonthListingPage() {
             className="object-cover brightness-[0.55]"
             priority
           />
-          <div className="absolute inset-0 bg-[#161C1A]/25" />
+          <div className="absolute inset-0 bg-ink/25" />
           
           <div className="relative z-10 text-center px-6 pt-24 sm:pt-32">
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-medium leading-tight tracking-wide drop-shadow-sm">
@@ -239,7 +239,7 @@ export default function IdeasByMonthListingPage() {
             </h1>
             
             {/* Breadcrumbs */}
-            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#9A4B33] font-semibold">
+            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-copper font-semibold">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">&gt;</span>
               <span className="text-white/80">Best Time to Visit</span>
@@ -256,25 +256,25 @@ export default function IdeasByMonthListingPage() {
             
             {/* Left Content (Regions) */}
             <div className="lg:col-span-8 space-y-12">
-              <p className="text-base text-[#545454] leading-relaxed font-light">
-                The best time to visit Vietnam is between <strong className="font-semibold text-[#343434]">November and April</strong>. This is when the country experiences the least amount of rain and temperatures are highly comfortable.
+              <p className="text-base text-ink-soft leading-relaxed font-light">
+                The best time to visit Vietnam is between <strong className="font-semibold text-ink">November and April</strong>. This is when the country experiences the least amount of rain and temperatures are highly comfortable.
               </p>
 
               <div className="space-y-10 pt-4">
                 {regionsData.map((reg) => (
-                  <div key={reg.name} className="border-b border-[#e6e2d6] pb-8 last:border-0 last:pb-0">
-                    <h3 className="font-serif text-2xl font-light text-[#343434] mb-1">
+                  <div key={reg.name} className="border-b border-line pb-8 last:border-0 last:pb-0">
+                    <h3 className="font-serif text-2xl font-light text-ink mb-1">
                       {reg.name}
                     </h3>
-                    <p className="text-[10px] uppercase tracking-widest text-[#9A4B33] font-semibold mb-4">
+                    <p className="text-[10px] uppercase tracking-widest text-copper font-semibold mb-4">
                       {reg.subtitle}
                     </p>
-                    <p className="text-sm text-[#545454] leading-relaxed font-light mb-4">
+                    <p className="text-sm text-ink-soft leading-relaxed font-light mb-4">
                       {reg.description}
                     </p>
-                    <div className="inline-flex items-center gap-2 bg-[#faf8f5] border border-[#e6e2d6] px-4 py-2 text-xs">
-                      <span className="font-semibold text-[#343434]">Recommended Months:</span>
-                      <span className="text-[#9A4B33] font-bold">{reg.bestMonths}</span>
+                    <div className="inline-flex items-center gap-2 bg-paper border border-line px-4 py-2 text-xs">
+                      <span className="font-semibold text-ink">Recommended Months:</span>
+                      <span className="text-copper font-bold">{reg.bestMonths}</span>
                     </div>
                   </div>
                 ))}
@@ -283,30 +283,30 @@ export default function IdeasByMonthListingPage() {
 
             {/* Right Sidebar */}
             <div className="lg:col-span-4 space-y-6">
-              <div className="bg-white border border-[#e6e2d6] p-8 text-center space-y-6">
-                <h4 className="font-serif text-lg font-light text-[#343434] leading-snug">
+              <div className="bg-white border border-line p-8 text-center space-y-6">
+                <h4 className="font-serif text-lg font-light text-ink leading-snug">
                   Creating tailor-made tours for over 15 years
                 </h4>
                 
                 {/* Badges */}
                 <div className="flex justify-center items-center gap-4 py-2 border-t border-b border-[#faf8f5]">
                   <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#BC986A] flex items-center justify-center text-[10px] font-bold text-[#BC986A] bg-[#faf8f5] shadow-sm">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#BC986A] flex items-center justify-center text-[10px] font-bold text-gold bg-paper shadow-sm">
                       TA
                     </div>
-                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">A-List</span>
+                    <span className="text-[8px] uppercase tracking-widest text-ink-soft mt-1 font-semibold">A-List</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#9A4B33] flex items-center justify-center text-[10px] font-bold text-[#9A4B33] bg-[#faf8f5] shadow-sm">
+                    <div className="w-12 h-12 rounded-full border-2 border-copper flex items-center justify-center text-[10px] font-bold text-copper bg-paper shadow-sm">
                       ★ 5.0
                     </div>
-                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">TrustScore</span>
+                    <span className="text-[8px] uppercase tracking-widest text-ink-soft mt-1 font-semibold">TrustScore</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#343434] flex items-center justify-center text-[10px] font-bold text-[#343434] bg-[#faf8f5] shadow-sm">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#343434] flex items-center justify-center text-[10px] font-bold text-ink bg-paper shadow-sm">
                       LIC
                     </div>
-                    <span className="text-[8px] uppercase tracking-widest text-[#545454] mt-1 font-semibold">Licensed</span>
+                    <span className="text-[8px] uppercase tracking-widest text-ink-soft mt-1 font-semibold">Licensed</span>
                   </div>
                 </div>
 
@@ -321,7 +321,7 @@ export default function IdeasByMonthListingPage() {
                     href="https://wa.me/84988600388"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-white text-[#343434] border border-[#e6e2d6] text-[10px] uppercase tracking-widest font-bold py-3.5 hover:bg-[#faf8f5] transition-colors"
+                    className="block w-full bg-white text-ink border border-line text-[10px] uppercase tracking-widest font-bold py-3.5 hover:bg-paper transition-colors"
                   >
                     Request a Callback
                   </a>
@@ -338,17 +338,17 @@ export default function IdeasByMonthListingPage() {
         {/* Climate Table Section */}
         <section className="py-12 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
-            <h2 className="font-serif text-3xl font-light text-center text-[#343434] mb-4">
+            <h2 className="font-serif text-3xl font-light text-center text-ink mb-4">
               Vietnam Climate Guide
             </h2>
-            <p className="text-center text-xs text-[#545454] font-light max-w-lg mx-auto mb-8 md:mb-16 leading-relaxed">
+            <p className="text-center text-xs text-ink-soft font-light max-w-lg mx-auto mb-8 md:mb-16 leading-relaxed">
               Explore the detailed average temperature and monthly rainfall (inches) guide across Vietnam's main destinations.
             </p>
 
-            <div className="overflow-x-auto border border-[#e6e2d6]">
+            <div className="overflow-x-auto border border-line">
               <table className="w-full text-xs text-left min-w-[1000px]">
                 <thead>
-                  <tr className="bg-[#343434] text-white border-b border-[#e6e2d6]">
+                  <tr className="bg-[#343434] text-white border-b border-line">
                     <th className="py-4 px-6 font-semibold uppercase tracking-wider text-[9px] w-[18%]">Destination</th>
                     {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((m) => (
                       <th key={m} className="py-4 px-2 font-semibold uppercase tracking-wider text-[9px] text-center">{m}</th>
@@ -359,15 +359,15 @@ export default function IdeasByMonthListingPage() {
                   {climateGuide.map((dest, i) => (
                     <tr
                       key={dest.name}
-                      className={`border-b border-[#e6e2d6] transition-colors hover:bg-[#faf8f5] ${
-                        i % 2 === 0 ? 'bg-white' : 'bg-[#faf8f5]/40'
+                      className={`border-b border-line transition-colors hover:bg-paper ${
+                        i % 2 === 0 ? 'bg-white' : 'bg-paper/40'
                       }`}
                     >
-                      <td className="py-4 px-6 font-medium text-[#343434]">{dest.name}</td>
+                      <td className="py-4 px-6 font-medium text-ink">{dest.name}</td>
                       {dest.months.map((m, mIdx) => (
                         <td key={mIdx} className="py-3 px-1 text-center">
-                          <div className="font-semibold text-[#343434]">{m.temp}</div>
-                          <div className="text-[10px] text-[#9A4B33] font-light mt-0.5">{m.rain}</div>
+                          <div className="font-semibold text-ink">{m.temp}</div>
+                          <div className="text-[10px] text-copper font-light mt-0.5">{m.rain}</div>
                         </td>
                       ))}
                     </tr>
@@ -379,38 +379,38 @@ export default function IdeasByMonthListingPage() {
         </section>
 
         {/* Why Us and Advice Columns */}
-        <section className="py-10 md:py-20 bg-[#faf8f5] border-t border-[#e6e2d6]">
+        <section className="py-10 md:py-20 bg-paper border-t border-line">
           <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
             <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
               
               {/* Left Column: Why travel with us */}
-              <div className="bg-white border border-[#e6e2d6] p-8 lg:p-12 space-y-6">
-                <h3 className="font-serif text-2xl font-light text-[#343434] border-b border-[#e6e2d6] pb-4">
+              <div className="bg-white border border-line p-8 lg:p-12 space-y-6">
+                <h3 className="font-serif text-2xl font-light text-ink border-b border-line pb-4">
                   Why travel with Vietnam Tours?
                 </h3>
-                <ul className="space-y-4 text-sm text-[#545454] font-light leading-relaxed">
+                <ul className="space-y-4 text-sm text-ink-soft font-light leading-relaxed">
                   <li className="flex items-start gap-3">
-                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-[#343434]">100% custom and private:</strong> Every itinerary is handcrafted from scratch matching your travel pace and style.
+                      <strong className="font-semibold text-ink">100% custom and private:</strong> Every itinerary is handcrafted from scratch matching your travel pace and style.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-[#343434]">Official Registration:</strong> Operated by My Way Travel Co., Ltd with International Tour Operator License No. 79-0743/2017/TCDL.
+                      <strong className="font-semibold text-ink">Official Registration:</strong> Operated by My Way Travel Co., Ltd with International Tour Operator License No. 79-0743/2017/TCDL.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-[#343434]">Financial Protection:</strong> Bounded security deposit under Government regulations at Vietcombank.
+                      <strong className="font-semibold text-ink">Financial Protection:</strong> Bounded security deposit under Government regulations at Vietcombank.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-[#BC986A] text-lg font-bold">✓</span>
+                    <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-[#343434]">Expert Specialists:</strong> Dedicated local specialists providing 24/7 on-ground assistance during your journey.
+                      <strong className="font-semibold text-ink">Expert Specialists:</strong> Dedicated local specialists providing 24/7 on-ground assistance during your journey.
                     </div>
                   </li>
                 </ul>
@@ -420,34 +420,34 @@ export default function IdeasByMonthListingPage() {
               <div className="space-y-8">
                 
                 {/* Block 1 */}
-                <div className="bg-white border border-[#e6e2d6] p-8 space-y-4">
-                  <span className="text-[9px] uppercase tracking-wider text-[#9A4B33] font-bold">Travel Advice</span>
-                  <h4 className="font-serif text-lg font-light text-[#343434]">
+                <div className="bg-white border border-line p-8 space-y-4">
+                  <span className="text-[9px] uppercase tracking-wider text-copper font-bold">Travel Advice</span>
+                  <h4 className="font-serif text-lg font-light text-ink">
                     Practical tips for traveling in Vietnam
                   </h4>
-                  <p className="text-xs text-[#545454] leading-relaxed font-light">
+                  <p className="text-xs text-ink-soft leading-relaxed font-light">
                     From visas, health requirements, packaging guides, and local currencies, read our comprehensive travel guidelines to make your holiday seamless.
                   </p>
                   <Link
                     href="/visa-guide"
-                    className="inline-flex items-center text-xs font-bold text-[#9A4B33] hover:text-[#7e3c28] pt-2"
+                    className="inline-flex items-center text-xs font-bold text-copper hover:text-[#7e3c28] pt-2"
                   >
                     View Visa & Travel Advice →
                   </Link>
                 </div>
 
                 {/* Block 2 */}
-                <div className="bg-white border border-[#e6e2d6] p-8 space-y-4">
-                  <span className="text-[9px] uppercase tracking-wider text-[#9A4B33] font-bold">Tailor-Made Brochure</span>
-                  <h4 className="font-serif text-lg font-light text-[#343434]">
+                <div className="bg-white border border-line p-8 space-y-4">
+                  <span className="text-[9px] uppercase tracking-wider text-copper font-bold">Tailor-Made Brochure</span>
+                  <h4 className="font-serif text-lg font-light text-ink">
                     Download or request our luxury brochures
                   </h4>
-                  <p className="text-xs text-[#545454] leading-relaxed font-light">
+                  <p className="text-xs text-ink-soft leading-relaxed font-light">
                     Packed with inspiring trip ideas, destination guides, and luxury hotel listings recommended by our travel experts.
                   </p>
                   <Link
                     href="/enquire"
-                    className="inline-flex items-center text-xs font-bold text-[#9A4B33] hover:text-[#7e3c28] pt-2"
+                    className="inline-flex items-center text-xs font-bold text-copper hover:text-[#7e3c28] pt-2"
                   >
                     Request a Custom Brochure →
                   </Link>

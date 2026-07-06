@@ -27,15 +27,15 @@ export default function BrochureRequest() {
           <span className="text-[10px] tracking-widest uppercase text-gold font-sans font-semibold">
             Inspirations
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl text-[#343434] font-light tracking-wide">
+          <h2 className="font-serif text-3xl md:text-4xl text-ink font-light tracking-wide">
             Request our Vietnam lookbook
           </h2>
-          <p className="font-sans text-sm text-[#545454] leading-relaxed max-w-lg font-light">
+          <p className="font-sans text-sm text-ink-soft leading-relaxed max-w-lg font-light">
             Our private edition Vietnam lookbook contains curated tailor-made itineraries, boutique cruise vessel profiles, and heritage destination guides to help you start planning your bespoke Vietnam holiday from the UK.
           </p>
           <a
             href="/enquire"
-            className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase mt-4 shadow-sm"
+            className="border border-green hover:bg-green hover:text-white text-jade font-bold py-3.5 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase mt-4 shadow-sm"
           >
             REQUEST A LOOKBOOK
           </a>

@@ -71,16 +71,16 @@ export default function PossibilitiesCarousel() {
           <span className="text-[10px] tracking-widest uppercase text-gold font-sans font-semibold">
             Inspirations
           </span>
-          <h2 className="font-serif text-3xl md:text-5xl text-[#343434] font-light tracking-wide leading-tight">
+          <h2 className="font-serif text-3xl md:text-5xl text-ink font-light tracking-wide leading-tight">
             Possibilities, <br />
-            <span className="italic text-green font-light font-serif">not packages</span>
+            <span className="italic text-jade font-light font-serif">not packages</span>
           </h2>
-          <p className="font-sans text-sm text-[#545454] leading-relaxed font-light">
+          <p className="font-sans text-sm text-ink-soft leading-relaxed font-light">
             Only you decide where your journey will take you. These custom curated itineraries are just possibilities to inspire you for an expedition that is as individual as you.
           </p>
           <a
             href="/itineraries"
-            className="text-green hover:text-gold font-semibold underline text-xs tracking-wider uppercase transition-colors mt-2"
+            className="text-jade hover:text-gold font-semibold underline text-xs tracking-wider uppercase transition-colors mt-2"
           >
             Open Trip Finder
           </a>
@@ -89,14 +89,14 @@ export default function PossibilitiesCarousel() {
           <div className="hidden lg:flex gap-4 mt-8">
             <button
               onClick={() => handleScroll("left")}
-              className="w-10 h-10 border border-[#d8d8d8] rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-[#343434] transition-colors"
+              className="w-10 h-10 border border-line rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-ink transition-colors"
               aria-label="Previous"
             >
               &#8592;
             </button>
             <button
               onClick={() => handleScroll("right")}
-              className="w-10 h-10 border border-[#d8d8d8] rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-[#343434] transition-colors"
+              className="w-10 h-10 border border-line rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-ink transition-colors"
               aria-label="Next"
             >
               &#8594;
@@ -134,19 +134,19 @@ export default function PossibilitiesCarousel() {
                     <span className="text-[10px] text-gold font-sans tracking-widest uppercase block mb-1">
                       {slide.destinations.split(",")[0]}
                     </span>
-                    <h3 className="font-serif text-lg text-[#343434] leading-snug font-normal hover:text-green transition-colors">
+                    <h3 className="font-serif text-lg text-ink leading-snug font-normal hover:text-jade transition-colors">
                       <a href={slide.link}>{slide.title}</a>
                     </h3>
                   </div>
                   
                   <div className="mt-2 pt-4 border-t border-[#e1e3e4] flex items-center justify-between">
-                    <span className="text-[10px] text-[#545454] font-sans tracking-wide uppercase">
+                    <span className="text-[10px] text-ink-soft font-sans tracking-wide uppercase">
                       {slide.price.split("from")[0]} from{" "}
-                      <strong className="text-xs font-semibold text-green block">{slide.price.split("from")[1]}</strong>
+                      <strong className="text-xs font-semibold text-jade block">{slide.price.split("from")[1]}</strong>
                     </span>
                     <a
                       href={slide.link}
-                      className="border border-green hover:bg-[#f5f0e6] text-green font-bold py-2 px-4 transition-colors text-[9px] tracking-widest uppercase"
+                      className="border border-green hover:bg-[#f5f0e6] text-jade font-bold py-2 px-4 transition-colors text-[9px] tracking-widest uppercase"
                     >
                       View Journey
                     </a>
@@ -160,13 +160,13 @@ export default function PossibilitiesCarousel() {
           <div className="flex lg:hidden justify-center gap-4 mt-6">
             <button
               onClick={() => handleScroll("left")}
-              className="w-10 h-10 border border-[#d8d8d8] rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-[#343434] transition-colors"
+              className="w-10 h-10 border border-line rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-ink transition-colors"
             >
               &#8592;
             </button>
             <button
               onClick={() => handleScroll("right")}
-              className="w-10 h-10 border border-[#d8d8d8] rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-[#343434] transition-colors"
+              className="w-10 h-10 border border-line rounded-full flex items-center justify-center bg-white hover:bg-light-brown text-ink transition-colors"
             >
               &#8594;
             </button>

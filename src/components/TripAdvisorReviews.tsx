@@ -103,10 +103,10 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
             <span className="text-[11px] uppercase tracking-[0.35em] font-semibold text-[#34E0A1]/80 block">
               Guest Chronicles
             </span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-luxury-linen leading-tight font-medium">
+            <h2 className="font-serif text-4xl lg:text-5xl text-paper leading-tight font-medium">
               What Our Travellers
               <br />
-              <span className="text-luxury-gold font-light italic">Are Saying</span>
+              <span className="text-gold font-light italic">Are Saying</span>
             </h2>
           </div>
 
@@ -123,7 +123,7 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
                   ))}
                   <span className="text-white font-bold text-sm ml-1">5.0</span>
                 </div>
-                <p className="text-[10px] text-luxury-linen/50 font-light leading-snug max-w-[140px]">
+                <p className="text-[10px] text-paper/50 font-light leading-snug max-w-[140px]">
                   #1 Tour Operator in Vietnam on TripAdvisor
                 </p>
               </div>
@@ -142,8 +142,8 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
                 onClick={() => goTo(i)}
                 className={`transition-all duration-500 rounded-full cursor-pointer ${
                   i === activeIndex
-                    ? 'w-1.5 h-10 bg-luxury-gold'
-                    : 'w-1.5 h-3 bg-luxury-linen/20 hover:bg-luxury-linen/40'
+                    ? 'w-1.5 h-10 bg-gold'
+                    : 'w-1.5 h-3 bg-paper/20 hover:bg-paper/40'
                 }`}
                 aria-label={`Go to review ${i + 1}`}
               />
@@ -156,17 +156,17 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
               className={`transition-all duration-300 ${isAnimating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
             >
               {/* Big quote mark */}
-              <div className="text-[120px] leading-none text-luxury-gold/15 font-serif -mb-8 -ml-2 select-none">
+              <div className="text-[120px] leading-none text-gold/15 font-serif -mb-8 -ml-2 select-none">
                 "
               </div>
 
               {/* Review title */}
-              <h3 className="font-serif text-2xl lg:text-3xl text-luxury-linen font-medium leading-tight mb-6">
+              <h3 className="font-serif text-2xl lg:text-3xl text-paper font-medium leading-tight mb-6">
                 {review.title}
               </h3>
 
               {/* Review body */}
-              <p className="text-base text-luxury-linen/75 font-light leading-relaxed mb-8 max-w-2xl">
+              <p className="text-base text-paper/75 font-light leading-relaxed mb-8 max-w-2xl">
                 {review.text}
               </p>
 
@@ -175,7 +175,7 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
                 {review.highlights.map((h, i) => (
                   <span
                     key={i}
-                    className="text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 border border-luxury-gold/25 text-luxury-gold/80 font-semibold hover:border-luxury-gold/60 transition-colors"
+                    className="text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 border border-gold/25 text-gold/80 font-semibold hover:border-gold/60 transition-colors"
                   >
                     {h}
                   </span>
@@ -185,20 +185,20 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
               {/* Author row */}
               <div className="flex items-center gap-4 pt-6 border-t border-luxury-linen/10">
                 {/* Avatar initials */}
-                <div className="w-12 h-12 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 flex items-center justify-center flex-shrink-0">
-                  <span className="font-serif text-luxury-gold font-semibold text-sm">
+                <div className="w-12 h-12 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                  <span className="font-serif text-gold font-semibold text-sm">
                     {review.author.split(' ').map(w => w[0]).slice(0, 2).join('')}
                   </span>
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-serif text-luxury-linen font-medium">{review.author}</span>
-                    <span className="text-luxury-linen/30 text-xs">·</span>
-                    <span className="text-luxury-linen/50 text-xs">{review.location}</span>
+                    <span className="font-serif text-paper font-medium">{review.author}</span>
+                    <span className="text-paper/30 text-xs">·</span>
+                    <span className="text-paper/50 text-xs">{review.location}</span>
                   </div>
                   <div className="flex items-center gap-3 mt-1.5">
                     <StarRating rating={review.rating} />
-                    <span className="text-[10px] uppercase tracking-widest text-luxury-linen/40 font-medium">{review.date}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-paper/40 font-medium">{review.date}</span>
                     <span className="text-[10px] uppercase tracking-widest text-[#34E0A1]/70 font-semibold border border-[#34E0A1]/25 px-2 py-0.5">
                       Verified ✓
                     </span>
@@ -216,13 +216,13 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
                 <button
                   key={i}
                   onClick={() => goTo(i)}
-                  className="text-left p-4 border border-luxury-linen/8 hover:border-luxury-gold/30 bg-luxury-linen/3 hover:bg-luxury-gold/5 transition-all duration-300 group cursor-pointer"
+                  className="text-left p-4 border border-luxury-linen/8 hover:border-gold/30 bg-paper/3 hover:bg-gold/5 transition-all duration-300 group cursor-pointer"
                 >
                   <StarRating rating={rev.rating} />
-                  <p className="text-xs text-luxury-linen/60 font-light leading-relaxed mt-2 line-clamp-2 group-hover:text-luxury-linen/80 transition-colors">
+                  <p className="text-xs text-paper/60 font-light leading-relaxed mt-2 line-clamp-2 group-hover:text-paper/80 transition-colors">
                     "{rev.title}"
                   </p>
-                  <span className="text-[10px] text-luxury-gold/60 mt-2 block font-medium">{rev.author}</span>
+                  <span className="text-[10px] text-gold/60 mt-2 block font-medium">{rev.author}</span>
                 </button>
               );
             })}
@@ -231,17 +231,17 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
             <div className="flex gap-3 mt-auto pt-2">
               <button
                 onClick={() => goTo(activeIndex - 1)}
-                className="flex-1 h-11 border border-luxury-gold/25 hover:border-luxury-gold text-luxury-gold hover:bg-luxury-gold/10 transition-all duration-300 cursor-pointer flex items-center justify-center text-lg active:scale-95"
+                className="flex-1 h-11 border border-gold/25 hover:border-gold text-gold hover:bg-gold/10 transition-all duration-300 cursor-pointer flex items-center justify-center text-lg active:scale-95"
                 aria-label="Previous"
               >
                 ←
               </button>
-              <span className="flex items-center justify-center text-xs font-serif text-luxury-linen/50 tracking-widest min-w-[44px] text-center">
+              <span className="flex items-center justify-center text-xs font-serif text-paper/50 tracking-widest min-w-[44px] text-center">
                 {String(activeIndex + 1).padStart(2, '0')}/{String(reviews.length).padStart(2, '0')}
               </span>
               <button
                 onClick={() => goTo(activeIndex + 1)}
-                className="flex-1 h-11 border border-luxury-gold/25 hover:border-luxury-gold text-luxury-gold hover:bg-luxury-gold/10 transition-all duration-300 cursor-pointer flex items-center justify-center text-lg active:scale-95"
+                className="flex-1 h-11 border border-gold/25 hover:border-gold text-gold hover:bg-gold/10 transition-all duration-300 cursor-pointer flex items-center justify-center text-lg active:scale-95"
                 aria-label="Next"
               >
                 →
@@ -260,9 +260,9 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
             { num: '100%', label: 'Tailor-Made Itineraries', sub: 'No two trips alike' },
           ].map((stat, i) => (
             <div key={i} className="space-y-1">
-              <div className="font-serif text-3xl text-luxury-gold font-light">{stat.num}</div>
-              <div className="text-xs text-luxury-linen/80 font-medium leading-tight">{stat.label}</div>
-              <div className="text-[10px] text-luxury-linen/40 font-light">{stat.sub}</div>
+              <div className="font-serif text-3xl text-gold font-light">{stat.num}</div>
+              <div className="text-xs text-paper/80 font-medium leading-tight">{stat.label}</div>
+              <div className="text-[10px] text-paper/40 font-light">{stat.sub}</div>
             </div>
           ))}
         </div>

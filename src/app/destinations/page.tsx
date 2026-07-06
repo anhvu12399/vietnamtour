@@ -30,7 +30,7 @@ export default async function DestinationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen bg-paper text-ink">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
@@ -41,7 +41,7 @@ export default async function DestinationsPage() {
             className="object-cover brightness-[0.5]"
             priority
           />
-          <div className="absolute inset-0 bg-[#161C1A]/25" />
+          <div className="absolute inset-0 bg-ink/25" />
           
           <div className="relative z-10 text-center px-6 pt-24 sm:pt-32">
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-medium leading-tight tracking-wide">
@@ -49,7 +49,7 @@ export default async function DestinationsPage() {
             </h1>
             
             {/* Breadcrumbs */}
-            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#9A4B33] font-semibold">
+            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-copper font-semibold">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">&gt;</span>
               <span className="text-white/80">Destinations</span>
@@ -64,13 +64,13 @@ export default async function DestinationsPage() {
           
           {/* Header */}
           <div className="space-y-4 max-w-3xl animate-fade-in">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Regions & Landscapes
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Vietnam Destinations
             </h1>
-            <p className="text-base sm:text-lg text-[#343434]/70 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               From the high Sapa highlands to the tropical beaches of Phu Quoc, explore our key regions to inspire your custom journey.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default async function DestinationsPage() {
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {destinations.map((dest, idx) => (
-              <div key={dest._id} className="group relative h-[350px] overflow-hidden flex items-end justify-start p-8 border border-luxury-moss/50 shadow-lg">
+              <div key={dest._id} className="group relative h-[350px] overflow-hidden flex items-end justify-start p-8 border border-jade-deep/50 shadow-lg">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                   <Image
@@ -102,7 +102,7 @@ export default async function DestinationsPage() {
                   <div className="pt-2">
                     <Link
                       href={`/destinations/${dest.slug?.current || ''}`}
-                      className="text-xs uppercase tracking-widest font-semibold text-luxury-gold hover:underline flex items-center space-x-1.5"
+                      className="text-xs uppercase tracking-widest font-semibold text-gold hover:underline flex items-center space-x-1.5"
                     >
                       <span>Explore Region</span>
                       <span>→</span>

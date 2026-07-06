@@ -34,7 +34,7 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
   ];
 
   return (
-    <section className="w-full bg-[#faf8f5] text-[#343434] sticky top-[80px] md:top-[88px] z-30 shadow-sm border-b border-[#e6e2d6]">
+    <section className="w-full bg-paper text-ink sticky top-[80px] md:top-[88px] z-30 shadow-sm border-b border-line">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 overflow-x-auto scrollbar-none">
         <div className="flex items-center space-x-6 lg:space-x-8 min-w-max h-11">
           {tabs.map((tab) => {
@@ -49,14 +49,14 @@ export default async function CategoriesTabBar({ activeTab }: CategoriesTabBarPr
                   className={`inline-flex items-center justify-center text-[8px] font-bold rounded-full w-4.5 h-4.5 transition-colors duration-200 ${
                     isActive
                       ? 'bg-gold text-white'
-                      : 'bg-[#e6e2d6] text-[#545454]'
+                      : 'bg-paper-dim text-ink-soft'
                   }`}
                 >
                   {tab.count}
                 </span>
                 <span
                   className={`text-[10px] lg:text-[11px] font-sans font-bold uppercase tracking-[0.12em] transition-colors duration-200 ${
-                    isActive ? 'text-gold' : 'text-[#545454]'
+                    isActive ? 'text-gold' : 'text-ink-soft'
                   }`}
                 >
                   {tab.label}

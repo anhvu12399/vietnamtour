@@ -35,7 +35,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
           
           {/* Left Column: Portrait & Details */}
           <div className="space-y-8 md:sticky md:top-32">
-            <div className="relative aspect-square w-full max-w-sm mx-auto overflow-hidden border border-luxury-moss/50">
+            <div className="relative aspect-square w-full max-w-sm mx-auto overflow-hidden border border-jade-deep/50">
               <Image
                 src={specialist.image}
                 alt={specialist.name}
@@ -47,24 +47,24 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
             
             <div className="text-center md:text-left space-y-4">
               <div>
-                <span className="text-xs uppercase tracking-widest text-luxury-gold font-semibold block">
+                <span className="text-xs uppercase tracking-widest text-gold font-semibold block">
                   {specialist.role}
                 </span>
-                <h1 className="font-serif text-2xl lg:text-3xl text-[#343434] font-semibold">
+                <h1 className="font-serif text-2xl lg:text-3xl text-ink font-semibold">
                   {specialist.name}
                 </h1>
               </div>
 
-              <div className="pt-6 border-t border-luxury-moss/50 space-y-3 text-sm text-[#545454]">
+              <div className="pt-6 border-t border-jade-deep/50 space-y-3 text-sm text-ink-soft">
                 <p className="flex items-center justify-center md:justify-start space-x-2">
                   <span>📞 UK:</span>
-                  <a href={`tel:${specialist.phone?.replace(/\s+/g, '')}`} className="font-semibold text-[#343434] hover:underline">
+                  <a href={`tel:${specialist.phone?.replace(/\s+/g, '')}`} className="font-semibold text-ink hover:underline">
                     {specialist.phone}
                   </a>
                 </p>
                 <p className="flex items-center justify-center md:justify-start space-x-2">
                   <span>✉ Email:</span>
-                  <a href={`mailto:${specialist.email}`} className="font-semibold text-[#343434] hover:underline break-all">
+                  <a href={`mailto:${specialist.email}`} className="font-semibold text-ink hover:underline break-all">
                     {specialist.email}
                   </a>
                 </p>
@@ -73,7 +73,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
               <div className="pt-6">
                 <Link
                   href="/enquire"
-                  className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/95 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center shadow-md"
+                  className="block w-full py-3 bg-gold hover:bg-gold/95 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center shadow-md"
                 >
                   Plan A Trip With {specialist.name.split(' ')[0]}
                 </Link>
@@ -86,24 +86,24 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
             
             {/* Bio */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl sm:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 My Travel Story
               </h2>
-              <p className="text-base font-light text-[#545454] leading-relaxed">
+              <p className="text-base font-light text-ink-soft leading-relaxed">
                 {specialist.bio[0]?.children[0]?.text}
               </p>
             </div>
 
             {/* Favorite Destinations */}
             <div className="space-y-4">
-              <h3 className="font-serif text-lg text-[#343434] font-medium">
+              <h3 className="font-serif text-lg text-ink font-medium">
                 My Favorite Places in Vietnam
               </h3>
               <div className="flex flex-wrap gap-3">
                 {specialist.favoriteDestinations.map((dest, idx) => (
                   <span
                     key={idx}
-                    className="text-xs bg-luxury-moss text-white px-4 py-2 font-medium tracking-wide border border-[#e6e2d6]"
+                    className="text-xs bg-jade-deep text-white px-4 py-2 font-medium tracking-wide border border-line"
                   >
                     {dest}
                   </span>
@@ -113,14 +113,14 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
 
             {/* Expert Tips */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-ink font-medium">
                 My Insider Expert Tips
               </h3>
               <div className="space-y-6">
                 {specialist.expertTips.map((tip, idx) => (
-                  <div key={idx} className="relative bg-[#f4efe6] border border-[#e6e2d6] p-6 space-y-3">
-                    <span className="absolute -top-3.5 left-4 text-4xl text-luxury-gold font-serif select-none">“</span>
-                    <p className="text-sm sm:text-base font-light text-[#343434]/75 italic leading-relaxed pt-2">
+                  <div key={idx} className="relative bg-[#f4efe6] border border-line p-6 space-y-3">
+                    <span className="absolute -top-3.5 left-4 text-4xl text-gold font-serif select-none">“</span>
+                    <p className="text-sm sm:text-base font-light text-ink/75 italic leading-relaxed pt-2">
                       {tip}
                     </p>
                   </div>

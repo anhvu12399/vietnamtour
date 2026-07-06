@@ -119,14 +119,14 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
   };
 
   return (
-    <section className="py-24 bg-luxury-moss relative overflow-hidden border-t border-luxury-gold/20">
+    <section className="py-24 bg-jade-deep relative overflow-hidden border-t border-gold/20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(197,168,128,0.03),transparent_40%)]" />
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {/* Title */}
         <div className="text-center mb-16 space-y-4">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-4.5xl text-luxury-linen leading-tight font-medium">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-4.5xl text-paper leading-tight font-medium">
             Meet Our Luxury Travel Specialists
           </h2>
         </div>
@@ -137,7 +137,7 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
           {/* Left Navigation Arrow */}
           <button 
             onClick={handlePrev}
-            className="absolute left-0 z-20 w-8 h-8 flex items-center justify-center text-luxury-linen/50 hover:text-luxury-gold transition-colors cursor-pointer"
+            className="absolute left-0 z-20 w-8 h-8 flex items-center justify-center text-paper/50 hover:text-gold transition-colors cursor-pointer"
             aria-label="Previous Specialist"
           >
             <span className="text-3xl font-light select-none">‹</span>
@@ -165,7 +165,7 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
                   >
                     <div className="flex items-start space-x-4 group h-full">
                       {/* Avatar */}
-                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-luxury-gold/20 group-hover:border-luxury-gold/50 transition-colors duration-500 shadow-lg bg-black/20">
+                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold/20 group-hover:border-gold/50 transition-colors duration-500 shadow-lg bg-black/20">
                         <Image
                           src={spec.image || '/images/specialist_alice.png'}
                           alt={spec.name}
@@ -178,17 +178,17 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
                       {/* Info */}
                       <div className="flex flex-col justify-between py-1 h-full min-h-[96px] sm:min-h-[112px]">
                         <div>
-                          <h3 className="font-serif text-lg sm:text-xl text-luxury-linen font-medium group-hover:text-luxury-gold transition-colors duration-300">
+                          <h3 className="font-serif text-lg sm:text-xl text-paper font-medium group-hover:text-gold transition-colors duration-300">
                             {spec.name}
                           </h3>
-                          <p className="text-xs sm:text-sm text-luxury-linen/70 font-light leading-relaxed mt-2 line-clamp-3">
+                          <p className="text-xs sm:text-sm text-paper/70 font-light leading-relaxed mt-2 line-clamp-3">
                             {bioText}
                           </p>
                         </div>
                         <div className="mt-2">
                           <Link
                             href={`/specialists/${spec.slug?.current || ''}`}
-                            className="text-xs text-luxury-linen/80 hover:text-luxury-gold underline hover:no-underline transition-all font-light"
+                            className="text-xs text-paper/80 hover:text-gold underline hover:no-underline transition-all font-light"
                           >
                             Read more
                           </Link>
@@ -204,7 +204,7 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
           {/* Right Navigation Arrow */}
           <button 
             onClick={handleNext}
-            className="absolute right-0 z-20 w-8 h-8 flex items-center justify-center text-luxury-linen/50 hover:text-luxury-gold transition-colors cursor-pointer"
+            className="absolute right-0 z-20 w-8 h-8 flex items-center justify-center text-paper/50 hover:text-gold transition-colors cursor-pointer"
             aria-label="Next Specialist"
           >
             <span className="text-3xl font-light select-none">›</span>
@@ -215,7 +215,7 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
         <div className="text-center mt-16">
           <Link
             href="/specialists"
-            className="inline-block px-8 py-3 bg-luxury-gold text-luxury-slate hover:bg-transparent hover:text-luxury-gold border border-luxury-gold font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
+            className="inline-block px-8 py-3 bg-gold text-ink hover:bg-transparent hover:text-gold border border-gold font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
           >
             Explore Our Experts
           </Link>

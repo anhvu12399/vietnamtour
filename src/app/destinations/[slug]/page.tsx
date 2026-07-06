@@ -79,12 +79,12 @@ export default async function DestinationDetailPage({ params }: PageProps) {
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full text-white space-y-4">
           <Link
             href="/destinations"
-            className="text-xs uppercase tracking-widest text-luxury-gold font-semibold hover:underline flex items-center space-x-1.5"
+            className="text-xs uppercase tracking-widest text-gold font-semibold hover:underline flex items-center space-x-1.5"
           >
             <span>←</span>
             <span>All Destinations</span>
           </Link>
-          <div className="flex items-center space-x-3 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
+          <div className="flex items-center space-x-3 text-xs font-semibold tracking-wider text-gold uppercase">
             <span>Vietnam</span>
             <span>•</span>
             <span>{destination.bestTimeToVisit}</span>
@@ -104,24 +104,24 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 Region Overview
               </h2>
-              <p className="text-base font-light text-[#545454] leading-relaxed">
+              <p className="text-base font-light text-ink-soft leading-relaxed">
                 {destination.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 
             {/* Highlights */}
-            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 animate-fade-in">
+            <div className="bg-jade-deep p-8 border border-line space-y-6 animate-fade-in">
               <h3 className="font-serif text-xl text-white font-medium">
                 Key Region Highlights
               </h3>
               <ul className="space-y-4">
                 {destination.highlights.map((hl, index) => (
                   <li key={index} className="flex items-start space-x-3">
-                    <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-luxury-linen/90 font-light leading-relaxed">
+                    <span className="text-gold font-semibold text-lg leading-none">✓</span>
+                    <span className="text-sm sm:text-base text-paper/90 font-light leading-relaxed">
                       {hl}
                     </span>
                   </li>
@@ -132,12 +132,12 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Featured Tours from Sanity reference */}
             {featuredTours.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                   Signature Land Tours
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {featuredTours.map((it) => (
-                    <div key={it._id} className="bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                    <div key={it._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
                       {it.gallery?.[0] && (
                         <div className="relative h-48 overflow-hidden">
                           <Image
@@ -149,14 +149,14 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-white group-hover:text-luxury-gold transition-colors">
+                        <h4 className="font-serif text-base font-medium text-white group-hover:text-gold transition-colors">
                           {it.title}
                         </h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-luxury-linen/70 font-semibold">{it.duration} Days</span>
+                          <span className="text-xs text-paper/70 font-semibold">{it.duration} Days</span>
                           <Link
                             href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
-                            className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
+                            className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1"
                           >
                             <span>Explore Trip</span>
                             <span>→</span>
@@ -172,22 +172,22 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Cruises for this destination */}
             {cruises.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                   Luxury Cruises
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {cruises.map((cruise) => (
-                    <div key={cruise._id} className="bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                    <div key={cruise._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
                       {cruise.mainImage && (
                         <div className="relative h-48 overflow-hidden">
                           <Image src={cruise.mainImage} alt={cruise.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
                       <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-white group-hover:text-luxury-gold transition-colors">{cruise.title}</h4>
+                        <h4 className="font-serif text-base font-medium text-white group-hover:text-gold transition-colors">{cruise.title}</h4>
                         <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-luxury-linen/70 font-semibold">{cruise.duration}</span>
-                          <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1">
+                          <span className="text-xs text-paper/70 font-semibold">{cruise.duration}</span>
+                          <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1">
                             <span>View Cruise</span><span>→</span>
                           </Link>
                         </div>
@@ -201,7 +201,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
             {/* Travel Guides for this destination */}
             {guides.length > 0 && (
               <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                   Travel Guides & Articles
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -209,7 +209,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                     <Link
                       key={guide._id}
                       href={`/destinations/${slug}/blog/${guide.slug?.current || ''}`}
-                      className="group bg-luxury-moss border border-luxury-moss overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
+                      className="group bg-jade-deep border border-jade-deep overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
                     >
                       {guide.mainImage && (
                         <div className="relative h-40 overflow-hidden">
@@ -217,8 +217,8 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                         </div>
                       )}
                       <div className="p-5 space-y-2">
-                        <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold">Travel Guide</span>
-                        <h4 className="font-serif text-sm font-medium text-white group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
+                        <span className="text-[10px] uppercase tracking-widest text-gold font-semibold">Travel Guide</span>
+                        <h4 className="font-serif text-sm font-medium text-white group-hover:text-gold transition-colors">{guide.title}</h4>
                       </div>
                     </Link>
                   ))}
@@ -229,28 +229,28 @@ export default async function DestinationDetailPage({ params }: PageProps) {
 
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+            <div className="bg-jade-deep p-8 border border-line space-y-6 shadow-sm">
               <h3 className="font-serif text-xl text-white font-medium">
                 Tailormade Travel Planning
               </h3>
-              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
+              <p className="text-sm text-paper/90 font-light leading-relaxed">
                 Want to combine {destination.name} with other regions? We will draft an itinerary from scratch tailored to you.
               </p>
-              <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
+              <div className="pt-4 border-t border-gold/20 space-y-4">
                 <Link
                   href="/enquire"
-                  className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
+                  className="block w-full py-3 bg-gold hover:bg-gold/90 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
                 >
                   Plan this Journey
                 </Link>
               </div>
             </div>
 
-            <div className="border border-luxury-moss p-8 space-y-4">
-              <h4 className="font-serif text-sm tracking-widest uppercase text-[#343434] font-semibold">
+            <div className="border border-jade-deep p-8 space-y-4">
+              <h4 className="font-serif text-sm tracking-widest uppercase text-ink font-semibold">
                 Best time to travel
               </h4>
-              <p className="text-xs sm:text-sm font-light text-[#545454] leading-relaxed">
+              <p className="text-xs sm:text-sm font-light text-ink-soft leading-relaxed">
                 {destination.bestTimeToVisit}. Travel pacing can be adjusted based on local weather conditions.
               </p>
             </div>

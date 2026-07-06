@@ -92,21 +92,21 @@ export default function DestinationsTabbed() {
           <span className="text-[10px] tracking-widest uppercase text-gold font-sans font-semibold">
             Travel Inspiration
           </span>
-          <h2 className="font-serif text-3xl md:text-5xl text-[#343434] font-light tracking-wide">
+          <h2 className="font-serif text-3xl md:text-5xl text-ink font-light tracking-wide">
             Where are you waiting to discover?
           </h2>
         </div>
 
         {/* Tab Nav */}
-        <div className="flex justify-center border-b border-[#d8d8d8] mb-12 max-w-lg mx-auto">
+        <div className="flex justify-center border-b border-line mb-12 max-w-lg mx-auto">
           {tabData.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 text-center py-4 text-xs font-sans tracking-widest uppercase font-semibold transition-all duration-200 border-b-2 ${
                 activeTab === tab.id
-                  ? "border-green text-green"
-                  : "border-transparent text-[#747474] hover:text-[#343434]"
+                  ? "border-green text-jade"
+                  : "border-transparent text-ink-soft hover:text-ink"
               }`}
             >
               {tab.label}
@@ -158,7 +158,7 @@ export default function DestinationsTabbed() {
         <div className="text-center mt-16">
           <a
             href="/blog"
-            className="border border-green hover:bg-green hover:text-white text-green font-bold py-3.5 px-8 transition-colors text-[10px] tracking-widest uppercase"
+            className="border border-green hover:bg-green hover:text-white text-jade font-bold py-3.5 px-8 transition-colors text-[10px] tracking-widest uppercase"
           >
             VIEW ALL TRAVEL GUIDES
           </a>

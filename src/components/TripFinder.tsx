@@ -102,14 +102,14 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
   };
 
   return (
-    <div className="w-full bg-[#161C1A] py-16 px-6 sm:px-12 relative overflow-hidden transition-all duration-500 text-[#EDE9E3]">
+    <div className="w-full bg-ink py-16 px-6 sm:px-12 relative overflow-hidden transition-all duration-500 text-paper-dim">
       {/* Background soft lighting */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#9A4B33]/5 rounded-full blur-3xl pointer-events-none" />
 
       {step <= 3 ? (
         <div className="space-y-10 max-w-4xl mx-auto">
           {/* Progress bar */}
-          <div className="flex items-center justify-between text-[9px] tracking-[0.25em] uppercase font-medium text-[#9A4B33]">
+          <div className="flex items-center justify-between text-[9px] tracking-[0.25em] uppercase font-medium text-copper">
             <span>Curating Your Journey</span>
             <span>Step {step} of 3</span>
           </div>
@@ -125,7 +125,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
             <h3 className="font-serif text-3xl sm:text-4xl font-light text-white leading-tight tracking-wide">
               {steps[step - 1].title}
             </h3>
-            <p className="text-xs sm:text-sm font-light text-[#EDE9E3]/60 tracking-wider">
+            <p className="text-xs sm:text-sm font-light text-paper-dim/60 tracking-wider">
               {steps[step - 1].description}
             </p>
           </div>
@@ -136,12 +136,12 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
               <button
                 key={opt.value}
                 onClick={() => handleSelect(opt.value)}
-                className="group w-full py-4 text-left border-b border-white/10 hover:border-[#9A4B33] transition-all duration-300 flex items-center justify-between cursor-pointer"
+                className="group w-full py-4 text-left border-b border-white/10 hover:border-copper transition-all duration-300 flex items-center justify-between cursor-pointer"
               >
-                <span className="font-serif text-lg tracking-wider text-white/90 group-hover:text-[#9A4B33] transition-colors">
+                <span className="font-serif text-lg tracking-wider text-white/90 group-hover:text-copper transition-colors">
                   {opt.label}
                 </span>
-                <span className="text-xs text-[#9A4B33] translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                <span className="text-xs text-copper translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   &rarr;
                 </span>
               </button>
@@ -152,7 +152,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
           {step > 1 && (
             <button
               onClick={() => setStep(step - 1)}
-              className="text-[9px] text-[#EDE9E3]/55 hover:text-[#9A4B33] transition-colors font-medium uppercase tracking-[0.2em] pt-6 block cursor-pointer"
+              className="text-[9px] text-paper-dim/55 hover:text-copper transition-colors font-medium uppercase tracking-[0.2em] pt-6 block cursor-pointer"
             >
               &larr; Back to previous question
             </button>
@@ -161,18 +161,18 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
       ) : (
         <div className="space-y-10 max-w-5xl mx-auto">
           <div className="flex items-center justify-between border-b border-white/10 pb-6">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#9A4B33] font-semibold">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-copper font-semibold">
               Your Recommended Journeys
             </span>
             <button
               onClick={resetFinder}
-              className="text-[9px] text-[#EDE9E3]/50 hover:text-[#9A4B33] transition-colors font-semibold uppercase tracking-[0.25em] underline underline-offset-4 cursor-pointer"
+              className="text-[9px] text-paper-dim/50 hover:text-copper transition-colors font-semibold uppercase tracking-[0.25em] underline underline-offset-4 cursor-pointer"
             >
               Reset Quiz
             </button>
           </div>
 
-          <p className="text-xs sm:text-sm font-light text-[#EDE9E3]/70 leading-relaxed max-w-2xl tracking-wide">
+          <p className="text-xs sm:text-sm font-light text-paper-dim/70 leading-relaxed max-w-2xl tracking-wide">
             Based on your party composition, styling, and duration preferences, we have curated the following signature journeys for you.
           </p>
 
@@ -181,7 +181,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
             {results.map((it) => (
               <div 
                 key={it._id} 
-                className="group flex flex-col justify-between border border-[#EDE9E3]/5 bg-[#222927]/40 overflow-hidden hover:border-[#9A4B33]/40 transition-all duration-500"
+                className="group flex flex-col justify-between border border-[#EDE9E3]/5 bg-[#222927]/40 overflow-hidden hover:border-copper/40 transition-all duration-500"
               >
                 {/* Image 70% Height */}
                 <div className="relative h-80 w-full overflow-hidden">
@@ -197,24 +197,24 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
                 </div>
 
                 {/* Text 30% Height */}
-                <div className="p-6 space-y-4 bg-[#161C1A] flex-grow flex flex-col justify-between">
+                <div className="p-6 space-y-4 bg-ink flex-grow flex flex-col justify-between">
                   <div className="space-y-2">
                     {/* Captions like 8 Nights | Central Coast */}
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#B8AC94] font-medium block">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-gold-soft font-medium block">
                       {it.duration} Nights | {it.title.includes('Sa Pa') || it.title.includes('North') ? 'Northern Highlands' : 'Bespoke Route'}
                     </span>
-                    <h4 className="font-serif text-lg text-white font-light leading-snug tracking-wide group-hover:text-[#9A4B33] transition-colors duration-300">
+                    <h4 className="font-serif text-lg text-white font-light leading-snug tracking-wide group-hover:text-copper transition-colors duration-300">
                       {it.title}
                     </h4>
                   </div>
 
                   <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-                    <span className="text-[10px] tracking-wider text-[#EDE9E3]/60 font-light">
+                    <span className="text-[10px] tracking-wider text-paper-dim/60 font-light">
                       Fully Customisable
                     </span>
                     <Link
                       href={`/itineraries/${it.slug?.current || ''}`}
-                      className="text-[9px] font-semibold text-[#9A4B33] tracking-[0.2em] uppercase flex items-center gap-1 hover:text-white transition-colors duration-300"
+                      className="text-[9px] font-semibold text-copper tracking-[0.2em] uppercase flex items-center gap-1 hover:text-white transition-colors duration-300"
                     >
                       Explore Trip &rarr;
                     </Link>
@@ -228,11 +228,11 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
           <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="text-left space-y-1">
               <p className="text-xs sm:text-sm font-medium text-white tracking-wide">Not exactly what you had in mind?</p>
-              <p className="text-[11px] text-[#EDE9E3]/60 font-light">Our specialists can craft a 100% custom route from scratch.</p>
+              <p className="text-[11px] text-paper-dim/60 font-light">Our specialists can craft a 100% custom route from scratch.</p>
             </div>
             <Link
               href={`/enquire?traveller=${traveller}&style=${style}&duration=${duration}`}
-              className="w-full sm:w-auto px-8 py-3.5 border border-[#9A4B33] text-[#9A4B33] hover:bg-[#9A4B33] hover:text-[#161C1A] font-semibold text-[10px] tracking-[0.2em] uppercase transition-all duration-300 text-center"
+              className="w-full sm:w-auto px-8 py-3.5 border border-copper text-copper hover:bg-copper hover:text-ink font-semibold text-[10px] tracking-[0.2em] uppercase transition-all duration-300 text-center"
             >
               Customise with a Specialist
             </Link>

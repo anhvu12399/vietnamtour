@@ -67,7 +67,7 @@ export default function VisaGuidePage() {
   return (
     <>
       <Navbar />
-      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
+      <main className="bg-paper text-ink flex-grow flex flex-col">
 
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
@@ -98,42 +98,42 @@ export default function VisaGuidePage() {
 
       {/* Visa Types */}
       <section className="max-w-5xl mx-auto px-6 py-24">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-[#9A4B33] font-semibold text-center mb-4">Visa Options</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">Visa Options</p>
         <h2 className="font-serif text-3xl md:text-4xl font-light text-center mb-16">
           Which Visa Is Right for You?
         </h2>
         <div className="space-y-8">
           {visaTypes.map((v, i) => (
-            <div key={i} className="bg-white border border-[#e6e2d6] p-8 md:p-10">
+            <div key={i} className="bg-white border border-line p-8 md:p-10">
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
                 <div>
-                  <h3 className="font-serif text-xl text-[#343434] mb-1">{v.type}</h3>
-                  <p className="text-[10px] uppercase tracking-widest text-[#9A4B33] font-semibold">{v.suitable}</p>
+                  <h3 className="font-serif text-xl text-ink mb-1">{v.type}</h3>
+                  <p className="text-[10px] uppercase tracking-widest text-copper font-semibold">{v.suitable}</p>
                 </div>
                 <div className="flex gap-6 text-center shrink-0">
-                  <div className="bg-[#faf8f5] px-5 py-3">
-                    <p className="text-[9px] uppercase tracking-widest text-[#545454] mb-1">Cost</p>
-                    <p className="font-serif text-base text-[#343434]">{v.cost}</p>
+                  <div className="bg-paper px-5 py-3">
+                    <p className="text-[9px] uppercase tracking-widest text-ink-soft mb-1">Cost</p>
+                    <p className="font-serif text-base text-ink">{v.cost}</p>
                   </div>
-                  <div className="bg-[#faf8f5] px-5 py-3">
-                    <p className="text-[9px] uppercase tracking-widest text-[#545454] mb-1">Processing</p>
-                    <p className="font-serif text-base text-[#343434]">{v.processingTime}</p>
+                  <div className="bg-paper px-5 py-3">
+                    <p className="text-[9px] uppercase tracking-widest text-ink-soft mb-1">Processing</p>
+                    <p className="font-serif text-base text-ink">{v.processingTime}</p>
                   </div>
-                  <div className="bg-[#faf8f5] px-5 py-3">
-                    <p className="text-[9px] uppercase tracking-widest text-[#545454] mb-1">Stay</p>
-                    <p className="font-serif text-base text-[#343434]">{v.duration}</p>
+                  <div className="bg-paper px-5 py-3">
+                    <p className="text-[9px] uppercase tracking-widest text-ink-soft mb-1">Stay</p>
+                    <p className="font-serif text-base text-ink">{v.duration}</p>
                   </div>
                 </div>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#545454] font-semibold mb-4">Step-by-Step Process</p>
+                <p className="text-[10px] uppercase tracking-widest text-ink-soft font-semibold mb-4">Step-by-Step Process</p>
                 <ol className="space-y-2">
                   {v.steps.map((step, j) => (
                     <li key={j} className="flex gap-4 items-start">
-                      <span className="w-5 h-5 rounded-full bg-[#9A4B33]/10 text-[#9A4B33] text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="w-5 h-5 rounded-full bg-[#9A4B33]/10 text-copper text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                         {j + 1}
                       </span>
-                      <span className="text-sm text-[#545454] font-light leading-relaxed">{step}</span>
+                      <span className="text-sm text-ink-soft font-light leading-relaxed">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -169,7 +169,7 @@ export default function VisaGuidePage() {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <h2 className="font-serif text-3xl font-light mb-4">Ready to Plan Your Vietnam Journey?</h2>
-        <p className="text-sm text-[#545454] font-light mb-10 max-w-md mx-auto">
+        <p className="text-sm text-ink-soft font-light mb-10 max-w-md mx-auto">
           Our travel specialists handle all the details — including visa guidance — so you can simply look forward to your trip.
         </p>
         <Link

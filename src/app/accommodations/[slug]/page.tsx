@@ -46,12 +46,12 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full text-white space-y-4">
           <Link
             href="/"
-            className="text-xs uppercase tracking-widest text-luxury-gold font-semibold hover:underline flex items-center space-x-1.5"
+            className="text-xs uppercase tracking-widest text-gold font-semibold hover:underline flex items-center space-x-1.5"
           >
             <span>←</span>
             <span>Back to Home</span>
           </Link>
-          <div className="flex items-center space-x-3 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
+          <div className="flex items-center space-x-3 text-xs font-semibold tracking-wider text-gold uppercase">
             <span>{accommodation.rating}</span>
             <span>•</span>
             <span>{accommodation.location}</span>
@@ -70,24 +70,24 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
             
             {/* Description */}
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl lg:text-3xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 About the Resort
               </h2>
-              <p className="text-base font-light text-[#545454] leading-relaxed">
+              <p className="text-base font-light text-ink-soft leading-relaxed">
                 {accommodation.description?.[0]?.children?.[0]?.text || ''}
               </p>
             </div>
 
             {/* Features list */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-ink font-medium">
                 Resort Features & Signature Experiences
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {accommodation.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center space-x-3 p-4 bg-luxury-moss/30 border border-luxury-moss/50">
-                    <span className="w-2.5 h-2.5 bg-luxury-gold rounded-full shrink-0" />
-                    <span className="text-sm text-[#545454] font-medium">{feature}</span>
+                  <div key={idx} className="flex items-center space-x-3 p-4 bg-jade-deep/30 border border-jade-deep/50">
+                    <span className="w-2.5 h-2.5 bg-gold rounded-full shrink-0" />
+                    <span className="text-sm text-ink-soft font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -95,12 +95,12 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
 
             {/* Gallery Grid */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-ink font-medium">
                 Photo Gallery
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {accommodation.gallery.map((img, idx) => (
-                  <div key={idx} className="relative h-64 overflow-hidden border border-luxury-moss/50 group">
+                  <div key={idx} className="relative h-64 overflow-hidden border border-jade-deep/50 group">
                     <Image
                       src={img}
                       alt={`${accommodation.name} Gallery ${idx + 1}`}
@@ -116,17 +116,17 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
 
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+            <div className="bg-jade-deep p-8 border border-line space-y-6 shadow-sm">
               <h3 className="font-serif text-xl text-white font-medium">
                 Plan a Luxury Escape
               </h3>
-              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
+              <p className="text-sm text-paper/90 font-light leading-relaxed">
                 Stay at {accommodation.name} as part of your tailor-made Vietnam itinerary. Speak to a travel specialist today.
               </p>
-              <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
+              <div className="pt-4 border-t border-gold/20 space-y-4">
                 <Link
                   href="/enquire"
-                  className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/95 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
+                  className="block w-full py-3 bg-gold hover:bg-gold/95 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
                 >
                   Book this Resort
                 </Link>
@@ -135,7 +135,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
                     href={accommodation.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 border border-luxury-linen text-luxury-linen font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-luxury-linen hover:text-luxury-slate"
+                    className="block w-full py-3 border border-luxury-linen text-paper font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-paper hover:text-ink"
                   >
                     Visit Official Site ↗
                   </a>
@@ -143,8 +143,8 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
               </div>
             </div>
             
-            <div className="border border-luxury-moss p-8 space-y-4 text-xs font-light text-[#343434]/70">
-              <h4 className="font-serif text-xs tracking-widest uppercase text-[#343434] font-semibold">
+            <div className="border border-jade-deep p-8 space-y-4 text-xs font-light text-ink/70">
+              <h4 className="font-serif text-xs tracking-widest uppercase text-ink font-semibold">
                 Why book with us?
               </h4>
               <ul className="space-y-2">

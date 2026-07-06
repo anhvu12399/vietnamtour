@@ -75,7 +75,7 @@ const portableTextComponents: PortableTextComponents = {
     image: ({ value }: any) => {
       if (!value?.url) return null;
       return (
-        <div className="my-10 relative w-full border border-[#e6e2d6] p-1.5 bg-[#f4efe6] rounded-sm group">
+        <div className="my-10 relative w-full border border-line p-1.5 bg-[#f4efe6] rounded-sm group">
           <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xs">
             <Image
               src={value.url}
@@ -86,7 +86,7 @@ const portableTextComponents: PortableTextComponents = {
             />
           </div>
           {value.caption && (
-            <span className="block text-[10px] text-[#545454] uppercase tracking-widest font-light mt-3 text-center">
+            <span className="block text-[10px] text-ink-soft uppercase tracking-widest font-light mt-3 text-center">
               {value.caption}
             </span>
           )}
@@ -99,7 +99,7 @@ const portableTextComponents: PortableTextComponents = {
       return (
         <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           {images.map((item: any, idx: number) => (
-            <div key={idx} className="relative aspect-[4/3] overflow-hidden border border-[#e6e2d6] rounded-sm group">
+            <div key={idx} className="relative aspect-[4/3] overflow-hidden border border-line rounded-sm group">
               {item.url && (
                 <Image src={item.url} alt={item.caption || 'Gallery photo'} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
               )}
@@ -118,33 +118,33 @@ const portableTextComponents: PortableTextComponents = {
       const name = value.customName || value.specialist?.name || 'Travel Specialist';
       const role = value.customRole || value.specialist?.role || 'Expert';
       return (
-        <div className="my-8 float-none lg:float-right lg:w-[42%] lg:ml-10 p-7 bg-[#f4efe6] border border-[#e6e2d6] border-t-2 border-t-[#9A4B33] shadow-md rounded-xs relative z-10">
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#9A4B33] block mb-3">
+        <div className="my-8 float-none lg:float-right lg:w-[42%] lg:ml-10 p-7 bg-[#f4efe6] border border-line border-t-2 border-t-[#9A4B33] shadow-md rounded-xs relative z-10">
+          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-copper block mb-3">
             Specialist Insider Tip
           </span>
-          <p className="text-sm text-[#343434]/90 font-light leading-relaxed italic border-l-2 border-[#9A4B33]/40 pl-4">
+          <p className="text-sm text-ink/90 font-light leading-relaxed italic border-l-2 border-copper/40 pl-4">
             &ldquo;{value.tip}&rdquo;
           </p>
-          <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-[#e6e2d6]">
-            <div className="w-9 h-9 rounded-full overflow-hidden relative flex-shrink-0 border border-[#9A4B33]/30">
+          <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-line">
+            <div className="w-9 h-9 rounded-full overflow-hidden relative flex-shrink-0 border border-copper/30">
               <Image src={avatar} alt={name} fill className="object-cover grayscale" />
             </div>
             <div>
-              <span className="block text-xs font-serif text-[#343434] font-semibold">{name}</span>
-              <span className="block text-[9px] uppercase tracking-wider text-[#545454] font-light">{role}</span>
+              <span className="block text-xs font-serif text-ink font-semibold">{name}</span>
+              <span className="block text-[9px] uppercase tracking-wider text-ink-soft font-light">{role}</span>
             </div>
           </div>
         </div>
       );
     },
     pullQuote: ({ value }: any) => (
-      <blockquote className="clear-both border-y border-[#9A4B33]/30 py-10 my-12 text-center relative max-w-3xl mx-auto px-6">
-        <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-serif text-[#9A4B33]/30 leading-none select-none">&ldquo;</span>
-        <p className="font-serif text-xl sm:text-3xl text-[#343434] font-light italic leading-relaxed">
+      <blockquote className="clear-both border-y border-copper/30 py-10 my-12 text-center relative max-w-3xl mx-auto px-6">
+        <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-serif text-copper/30 leading-none select-none">&ldquo;</span>
+        <p className="font-serif text-xl sm:text-3xl text-ink font-light italic leading-relaxed">
           {value.quote}
         </p>
         {value.author && (
-          <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9A4B33] mt-6 font-medium">
+          <span className="block text-[11px] uppercase tracking-[0.2em] text-copper mt-6 font-medium">
             — {value.author}
           </span>
         )}
@@ -153,29 +153,29 @@ const portableTextComponents: PortableTextComponents = {
   },
   block: {
     normal: ({ children }: any) => (
-      <p className="text-base sm:text-[17px] font-light text-[#343434]/90 leading-relaxed mb-6 max-w-3xl">
+      <p className="text-base sm:text-[17px] font-light text-ink/90 leading-relaxed mb-6 max-w-3xl">
         {children}
       </p>
     ),
     h2: ({ children }: any) => (
-      <h2 className="clear-both font-serif text-2xl sm:text-4xl text-[#343434] font-semibold leading-tight mt-16 mb-8 pb-4 border-b border-[#e6e2d6] max-w-3xl">
+      <h2 className="clear-both font-serif text-2xl sm:text-4xl text-ink font-semibold leading-tight mt-16 mb-8 pb-4 border-b border-line max-w-3xl">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="clear-both font-serif text-xl sm:text-2xl text-[#343434] font-medium leading-tight mt-10 mb-5 max-w-3xl">
+      <h3 className="clear-both font-serif text-xl sm:text-2xl text-ink font-medium leading-tight mt-10 mb-5 max-w-3xl">
         {children}
       </h3>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-2 border-[#9A4B33] pl-6 py-1 my-8 text-lg font-light italic text-[#343434]/70 max-w-3xl">
+      <blockquote className="border-l-2 border-copper pl-6 py-1 my-8 text-lg font-light italic text-ink/70 max-w-3xl">
         {children}
       </blockquote>
     ),
   },
   marks: {
-    strong: ({ children }: any) => <strong className="font-semibold text-[#9A4B33]">{children}</strong>,
-    em: ({ children }: any) => <em className="italic text-[#343434]">{children}</em>,
+    strong: ({ children }: any) => <strong className="font-semibold text-copper">{children}</strong>,
+    em: ({ children }: any) => <em className="italic text-ink">{children}</em>,
   },
 };
 
@@ -307,10 +307,10 @@ function EeatArticleLayout() {
     <div className="space-y-12">
       {/* Introduction text */}
       <div className="space-y-6">
-        <p className="text-base sm:text-[17px] font-light text-[#343434]/95 leading-relaxed max-w-3xl">
+        <p className="text-base sm:text-[17px] font-light text-ink/95 leading-relaxed max-w-3xl">
           Written by the <strong>Vietnam Tours</strong> team, based in Ho Chi Minh City, running tours across Vietnam since 2012. Last updated: July 2026.
         </p>
-        <p className="text-base sm:text-[17px] font-light text-[#343434]/90 leading-relaxed italic max-w-3xl border-l-2 border-luxury-gold pl-4 bg-luxury-slate/20 py-3.5">
+        <p className="text-base sm:text-[17px] font-light text-ink/90 leading-relaxed italic max-w-3xl border-l-2 border-gold pl-4 bg-luxury-slate/20 py-3.5">
           Every destination below has been visited by our own guides within the last 12 months. Prices and opening hours are cross-checked against official sources where available.
         </p>
       </div>
@@ -318,18 +318,18 @@ function EeatArticleLayout() {
       {/* Chapters list */}
       <div className="space-y-16">
         {destinations.map((dest) => (
-          <div key={dest.name} className="space-y-6 border-b border-[#e6e2d6] pb-12 last:border-0 last:pb-0">
+          <div key={dest.name} className="space-y-6 border-b border-line pb-12 last:border-0 last:pb-0">
             <div>
-              <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight mb-2">
+              <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-2">
                 {dest.name}
               </h2>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#9A4B33] font-bold">
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-copper font-bold">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9A4B33]" />
                 <span>Last visited by our guide, {dest.guide}, in {dest.date}</span>
               </div>
             </div>
 
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-[#e6e2d6] p-1.5 bg-[#f4efe6] rounded-sm group">
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-line p-1.5 bg-[#f4efe6] rounded-sm group">
               <div className="relative w-full h-full overflow-hidden rounded-xs">
                 <Image
                   src={dest.image}
@@ -341,7 +341,7 @@ function EeatArticleLayout() {
               </div>
             </div>
 
-            <p className="text-base sm:text-[17px] font-light text-[#343434]/95 leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-[17px] font-light text-ink/95 leading-relaxed max-w-3xl">
               {dest.text}
             </p>
           </div>
@@ -350,71 +350,71 @@ function EeatArticleLayout() {
 
       {/* Verified Travel Essentials Table */}
       <div className="pt-8 space-y-6">
-        <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold border-b border-[#e6e2d6] pb-4">
+        <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold border-b border-line pb-4">
           Verified Travel Essentials
         </h2>
-        <div className="overflow-x-auto border border-[#e6e2d6] rounded-sm shadow-md bg-white">
+        <div className="overflow-x-auto border border-line rounded-sm shadow-md bg-white">
           <table className="min-w-full divide-y divide-[#e6e2d6] text-left">
             <thead className="bg-[#f4efe6]">
               <tr>
-                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Info</th>
-                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Detail</th>
-                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#343434]">Source</th>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-ink">Info</th>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-ink">Detail</th>
+                <th scope="col" className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-ink">Source</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#e6e2d6] text-sm text-[#545454] font-light">
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">E-visa validity</td>
+            <tbody className="divide-y divide-[#e6e2d6] text-sm text-ink-soft font-light">
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">E-visa validity</td>
                 <td className="px-6 py-4">Up to 90 days, single or multiple entry</td>
-                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline font-medium">evisa.gov.vn</a></td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">E-visa fee</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">E-visa fee</td>
                 <td className="px-6 py-4">USD 25 (single entry) / USD 50 (multiple entry)</td>
-                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline font-medium">evisa.gov.vn</a></td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Processing time</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Processing time</td>
                 <td className="px-6 py-4">3–5 working days</td>
-                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline font-medium">evisa.gov.vn</a></td>
+                <td className="px-6 py-4"><a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline font-medium">evisa.gov.vn</a></td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (North)</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Best time (North)</td>
                 <td className="px-6 py-4">October–April</td>
                 <td className="px-6 py-4">Team field notes, 2025–2026</td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (Central)</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Best time (Central)</td>
                 <td className="px-6 py-4">February–August</td>
                 <td className="px-6 py-4">Team field notes, 2025–2026</td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Best time (South)</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Best time (South)</td>
                 <td className="px-6 py-4">November–April</td>
                 <td className="px-6 py-4">Team field notes, 2025–2026</td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Phong Nha Cave entry</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Phong Nha Cave entry</td>
                 <td className="px-6 py-4">150,000 VND/person + boat fee</td>
                 <td className="px-6 py-4">Phong Nha-Ke Bang Tourism Center</td>
               </tr>
-              <tr className="hover:bg-[#faf8f5]">
-                <td className="px-6 py-4 font-semibold text-[#343434]">Paradise Cave entry</td>
+              <tr className="hover:bg-paper">
+                <td className="px-6 py-4 font-semibold text-ink">Paradise Cave entry</td>
                 <td className="px-6 py-4">250,000 VND/person</td>
                 <td className="px-6 py-4">Phong Nha-Ke Bang Tourism Center</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-[#545454] italic">
+        <p className="text-xs text-ink-soft italic">
           Page reviewed and fact-checked July 2026. Prices subject to change — always confirm current rates directly with the relevant park authority or our team before booking.
         </p>
       </div>
 
       {/* Sources list */}
-      <div className="pt-8 border-t border-[#e6e2d6] space-y-4">
-        <h4 className="text-xs font-bold uppercase tracking-widest text-[#343434]">Sources & References</h4>
-        <ol className="list-decimal pl-5 text-xs text-[#545454]/80 space-y-2 font-light">
+      <div className="pt-8 border-t border-line space-y-4">
+        <h4 className="text-xs font-bold uppercase tracking-widest text-ink">Sources & References</h4>
+        <ol className="list-decimal pl-5 text-xs text-ink-soft/80 space-y-2 font-light">
           <li>Top 10 Best Places to Visit in Vietnam 2026 (Ha Long Bay, Hanoi, Hoi An)</li>
           <li>Is the ha long bay cruise worth it? (Reddit field consensus)</li>
           <li>Review of Halong Bay (TripAdvisor traveller feedback reports)</li>
@@ -422,7 +422,7 @@ function EeatArticleLayout() {
           <li>Vietnam Travel Guide, Sapa Rice Terraces harvest patterns</li>
           <li>Unique Things You Cannot Miss in Hoi An (Ancient Town tailoring guide)</li>
           <li>Phong Nha-Ke Bang National Park Official tourism entry rates</li>
-          <li>Vietnam E-visa Official Government Portal: <a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-luxury-gold hover:underline">evisa.gov.vn</a></li>
+          <li>Vietnam E-visa Official Government Portal: <a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">evisa.gov.vn</a></li>
         </ol>
       </div>
     </div>
@@ -463,7 +463,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen bg-paper text-ink">
 
         {/* ════════════════════════════════════════════
             1. SCENIC HERO BANNER
@@ -500,7 +500,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             )}
 
             {/* Breadcrumbs */}
-            <div className="mt-5 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#9A4B33] font-semibold">
+            <div className="mt-5 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-copper font-semibold">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">&gt;</span>
               <Link href="/travel-guides" className="hover:text-white transition-colors">Travel Guides</Link>
@@ -522,18 +522,18 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             {/* ── LEFT: Main article content ── */}
             <div className="lg:col-span-8">
               {/* Published metadata bar */}
-              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-[#e6e2d6]">
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-line">
                 {post.publishedAt && (
-                  <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">
+                  <span className="text-[11px] text-ink-soft uppercase tracking-widest font-medium">
                     Published {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
                 )}
-                <span className="text-luxury-gold/25">|</span>
-                <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">{readingTime} min read</span>
+                <span className="text-gold/25">|</span>
+                <span className="text-[11px] text-ink-soft uppercase tracking-widest font-medium">{readingTime} min read</span>
                 {post.heroAuthor?.name && (
                   <>
-                    <span className="text-luxury-gold/25">|</span>
-                    <span className="text-[11px] text-[#545454] uppercase tracking-widest font-medium">By {post.heroAuthor.name}</span>
+                    <span className="text-gold/25">|</span>
+                    <span className="text-[11px] text-ink-soft uppercase tracking-widest font-medium">By {post.heroAuthor.name}</span>
                   </>
                 )}
               </div>
@@ -560,14 +560,14 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                   )}
                 </div>
               ) : (
-                <p className="text-[#343434]/40 italic">Full article content coming soon.</p>
+                <p className="text-ink/40 italic">Full article content coming soon.</p>
               )}
 
               {/* Social share strip */}
-              <div className="mt-12 pt-8 border-t border-[#e6e2d6] flex items-center gap-4">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-[#343434]/40">Share this guide</span>
+              <div className="mt-12 pt-8 border-t border-line flex items-center gap-4">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-ink/40">Share this guide</span>
                 {['Facebook', 'X (Twitter)', 'Email'].map((sn) => (
-                  <span key={sn} className="text-[10px] uppercase tracking-widest font-bold text-[#ba996a] hover:text-[#343434] transition-colors cursor-pointer">{sn}</span>
+                  <span key={sn} className="text-[10px] uppercase tracking-widest font-bold text-[#ba996a] hover:text-ink transition-colors cursor-pointer">{sn}</span>
                 ))}
               </div>
             </div>
@@ -576,15 +576,15 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             <div className="lg:col-span-4 space-y-8">
 
               {/* Specialist contact card */}
-              <div className="bg-white border border-[#e6e2d6] p-8 shadow-xl flex flex-col items-center text-center space-y-5 sticky top-28">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">
+              <div className="bg-white border border-line p-8 shadow-xl flex flex-col items-center text-center space-y-5 sticky top-28">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-copper block">
                   Plan this journey
                 </span>
-                <h3 className="font-serif text-lg font-semibold text-[#343434] leading-snug">
+                <h3 className="font-serif text-lg font-semibold text-ink leading-snug">
                   Speak to a Vietnam specialist
                 </h3>
 
-                <div className="relative w-24 h-24 rounded-full overflow-hidden border border-[#e6e2d6] shadow-sm shrink-0">
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image
                     src={mainSpecialist.image || "/images/specialist_alice.png"}
                     alt={mainSpecialist.name}
@@ -594,20 +594,20 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="font-sans text-sm font-bold text-[#343434] uppercase tracking-wider">{mainSpecialist.name}</h4>
-                  <p className="text-xs text-[#545454] leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
+                  <h4 className="font-sans text-sm font-bold text-ink uppercase tracking-wider">{mainSpecialist.name}</h4>
+                  <p className="text-xs text-ink-soft leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
                 </div>
 
                 <Link
                   href="/enquire"
-                  className="w-full bg-luxury-gold text-luxury-slate hover:bg-luxury-gold/90 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center"
+                  className="w-full bg-gold text-ink hover:bg-gold/90 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center"
                 >
                   MAKE AN INQUIRY
                 </Link>
 
-                <div className="pt-2 border-t border-[#e6e2d6] w-full flex flex-col items-center">
-                  <span className="text-[10px] uppercase text-[#343434]/40 font-bold tracking-widest block mb-1">Or call us directly</span>
-                  <a href="tel:+84988600388" className="text-base font-bold text-[#343434] hover:text-luxury-gold transition-colors">
+                <div className="pt-2 border-t border-line w-full flex flex-col items-center">
+                  <span className="text-[10px] uppercase text-ink/40 font-bold tracking-widest block mb-1">Or call us directly</span>
+                  <a href="tel:+84988600388" className="text-base font-bold text-ink hover:text-gold transition-colors">
                     +84 988600388
                   </a>
                 </div>
@@ -622,23 +622,23 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             3. RECOMMENDED TOURS SECTION
         ════════════════════════════════════════════ */}
         {recommendedTours.length > 0 && (
-          <section className="bg-luxury-slate/10 border-t border-[#e6e2d6] py-16 px-6 lg:px-12">
+          <section className="bg-luxury-slate/10 border-t border-line py-16 px-6 lg:px-12">
             <div className="max-w-7xl mx-auto">
 
               {/* Section header */}
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#e6e2d6] pb-10 mb-12">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-line pb-10 mb-12">
                 <div className="space-y-3 text-left">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">Signature Journeys</span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-medium">
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-copper block">Signature Journeys</span>
+                  <h2 className="font-serif text-2xl sm:text-3xl text-ink font-medium">
                     Highly Recommended Tours
                   </h2>
-                  <p className="text-sm text-[#545454] font-light">
+                  <p className="text-sm text-ink-soft font-light">
                     Itineraries that pair perfectly with this travel guide.
                   </p>
                 </div>
                 <Link
                   href="/itineraries"
-                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-[#343434] transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
+                  className="text-xs uppercase tracking-widest font-bold text-copper hover:text-ink transition-colors pb-1 border-b border-copper/30 hover:border-gold self-start sm:self-end"
                 >
                   View all tours
                 </Link>
@@ -647,7 +647,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
               {/* Tours grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {recommendedTours.map((it) => (
-                  <div key={it._id} className="group bg-white border border-[#e6e2d6] hover:border-[#e6e2d6] transition-all duration-300 hover:shadow-xl flex flex-col h-full relative">
+                  <div key={it._id} className="group bg-white border border-line hover:border-line transition-all duration-300 hover:shadow-xl flex flex-col h-full relative">
 
                     {/* Featured badge */}
                     {it.featured && (
@@ -659,7 +659,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                     <div>
                       {/* Tour image */}
-                      <div className="relative h-52 overflow-hidden bg-[#f4efe6] border-b border-[#e6e2d6]">
+                      <div className="relative h-52 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
                           src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                           alt={it.title}
@@ -670,12 +670,12 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                       {/* Card content */}
                       <div className="p-5 text-left space-y-2">
-                        <span className="text-[10px] text-[#9A4B33] tracking-widest uppercase font-bold block">VIETNAM</span>
-                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-[#343434] group-hover:text-luxury-gold transition-colors duration-200">
+                        <span className="text-[10px] text-copper tracking-widest uppercase font-bold block">VIETNAM</span>
+                        <h4 className="font-serif text-[16px] leading-snug font-semibold text-ink group-hover:text-gold transition-colors duration-200">
                           <Link href={`/itineraries/${it.slug?.current || ''}`}>{it.title}</Link>
                         </h4>
                         {it.duration && it.priceFrom && (
-                          <p className="text-[12px] font-medium text-[#545454] tracking-wide pt-1">
+                          <p className="text-[12px] font-medium text-ink-soft tracking-wide pt-1">
                             {it.duration} Days from £{it.priceFrom?.toLocaleString('en-GB')}pp
                           </p>
                         )}
@@ -683,11 +683,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                     </div>
 
                     {/* Card footer */}
-                    <div className="px-5 py-4 border-t border-[#e6e2d6] flex items-center justify-between text-xs font-semibold bg-luxury-slate/40 mt-auto">
-                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-[#343434]/70 hover:text-luxury-gold transition-colors">
+                    <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-luxury-slate/40 mt-auto">
+                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink/70 hover:text-gold transition-colors">
                         View detail
                       </Link>
-                      <Link href="/enquire" className="text-luxury-gold hover:text-[#343434] transition-colors">
+                      <Link href="/enquire" className="text-gold hover:text-ink transition-colors">
                         Request a quote
                       </Link>
                     </div>
@@ -704,8 +704,8 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
         ════════════════════════════════════════════ */}
         <section id="faq-section" className="py-20 px-6 lg:px-12 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">Expert Knowledge</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight">
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-copper block">Expert Knowledge</span>
+            <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight">
               Useful information for planning your holiday in Vietnam
             </h2>
             <div className="h-[1.5px] w-12 bg-[#9A4B33] mx-auto mt-4" />
@@ -720,22 +720,22 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             5. MORE TRAVEL GUIDES
         ════════════════════════════════════════════ */}
         {relatedPosts.length > 0 && (
-          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-luxury-slate/10 border-t border-[#e6e2d6]">
+          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-luxury-slate/10 border-t border-line">
             <div className="max-w-7xl mx-auto">
 
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div className="space-y-3 text-left">
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-copper block">
                     Travel Journal
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-[#343434] font-semibold leading-tight">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight">
                     More Vietnam Travel Guides
                   </h2>
                 </div>
                 <Link
                   href="/travel-guides"
-                  className="text-xs uppercase tracking-widest font-bold text-[#9A4B33] hover:text-[#343434] transition-colors pb-1 border-b border-[#9A4B33]/30 hover:border-luxury-gold self-start sm:self-end"
+                  className="text-xs uppercase tracking-widest font-bold text-copper hover:text-ink transition-colors pb-1 border-b border-copper/30 hover:border-gold self-start sm:self-end"
                 >
                   View all guides
                 </Link>
@@ -745,14 +745,14 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {relatedPosts.map((rp, idx) => (
                   <article key={rp._id} className="group flex flex-col space-y-4 text-left h-full">
-                    <div className="relative h-64 overflow-hidden rounded-sm bg-[#f4efe6] border border-[#e6e2d6]">
+                    <div className="relative h-64 overflow-hidden rounded-sm bg-[#f4efe6] border border-line">
                       <Image
                         src={rp.mainImage || FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length]}
                         alt={rp.title}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-[#e6e2d6] backdrop-blur-[2px] text-[#343434] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
+                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-line backdrop-blur-[2px] text-ink text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(rp.content)} minutes read</span>
                       </div>
@@ -760,11 +760,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                     <div className="space-y-2">
                       {rp.publishedAt && (
-                        <span className="text-[9px] text-[#545454] uppercase tracking-widest block font-bold">
+                        <span className="text-[9px] text-ink-soft uppercase tracking-widest block font-bold">
                           {new Date(rp.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </span>
                       )}
-                      <h4 className="font-serif text-lg leading-snug font-semibold text-[#343434] group-hover:text-[#9A4B33] transition-colors duration-200">
+                      <h4 className="font-serif text-lg leading-snug font-semibold text-ink group-hover:text-copper transition-colors duration-200">
                         <Link href={`/travel-guides/${rp.slug?.current || ''}`}>
                           {rp.title}
                         </Link>
@@ -782,19 +782,19 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             6. BOTTOM CTA
         ════════════════════════════════════════════ */}
         <section className="py-20 px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto bg-white border border-[#e6e2d6] p-10 sm:p-16 text-center space-y-8 shadow-xl">
+          <div className="max-w-3xl mx-auto bg-white border border-line p-10 sm:p-16 text-center space-y-8 shadow-xl">
             {post.ctaLabel && (
-              <div className="inline-block border border-[#9A4B33]/40 px-6 py-2 text-[10px] uppercase tracking-[0.25em] font-semibold text-[#9A4B33]">
+              <div className="inline-block border border-copper/40 px-6 py-2 text-[10px] uppercase tracking-[0.25em] font-semibold text-copper">
                 {post.ctaLabel}
               </div>
             )}
 
-            <h3 className="font-serif text-2xl sm:text-4xl text-[#343434] font-medium leading-tight">
+            <h3 className="font-serif text-2xl sm:text-4xl text-ink font-medium leading-tight">
               {post.ctaHeading || 'Ready to Start Planning?'}
             </h3>
 
             {post.ctaDescription && (
-              <p className="text-base text-[#545454] font-light max-w-xl mx-auto leading-relaxed">
+              <p className="text-base text-ink-soft font-light max-w-xl mx-auto leading-relaxed">
                 {post.ctaDescription}
               </p>
             )}
@@ -802,13 +802,13 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link
                 href="/enquire"
-                className="w-full sm:w-auto bg-luxury-gold text-luxury-slate text-xs uppercase tracking-widest font-semibold px-10 py-4 hover:bg-luxury-gold/90 transition-colors"
+                className="w-full sm:w-auto bg-gold text-ink text-xs uppercase tracking-widest font-semibold px-10 py-4 hover:bg-gold/90 transition-colors"
               >
                 Enquire Online
               </Link>
               <Link
                 href="/itineraries"
-                className="w-full sm:w-auto border border-[#e6e2d6] hover:border-luxury-gold hover:text-luxury-gold text-[#343434] text-xs uppercase tracking-widest font-semibold px-10 py-4 transition-colors"
+                className="w-full sm:w-auto border border-line hover:border-gold hover:text-gold text-ink text-xs uppercase tracking-widest font-semibold px-10 py-4 transition-colors"
               >
                 View Vietnam Tours
               </Link>

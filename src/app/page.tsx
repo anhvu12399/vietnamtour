@@ -5,6 +5,7 @@ import PreambleText from "@/components/PreambleText";
 import DestinationsTabbed from "@/components/DestinationsTabbed";
 import BreakingLine from "@/components/BreakingLine";
 import JourneyBlock from "@/components/JourneyBlock";
+import SignatureMap from "@/components/SignatureMap";
 import PossibilitiesCarousel from "@/components/PossibilitiesCarousel";
 import Testimonials from "@/components/Testimonials";
 import CTASection from "@/components/CTASection";
@@ -45,6 +46,7 @@ export default function Home() {
         <DestinationsTabbed />
         <BreakingLine />
         <JourneyBlock />
+        <SignatureMap />
         <PossibilitiesCarousel />
         <Testimonials />
         <CTASection />

@@ -74,7 +74,7 @@ export default async function ItinerariesPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-bg-light text-[#343434] font-sans">
+      <main className="min-h-screen bg-bg-light text-ink font-sans">
         
         {/* ── 1. SCENIC HERO BANNER ── */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[450px] w-full flex items-center justify-center overflow-hidden">
@@ -112,8 +112,8 @@ export default async function ItinerariesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left Column (Vietnam Intro Text) */}
-            <div className="lg:col-span-8 space-y-6 text-[#545454] leading-relaxed font-light text-sm md:text-base">
-              <p className="font-serif text-xl lg:text-2xl font-light text-green leading-relaxed">
+            <div className="lg:col-span-8 space-y-6 text-ink-soft leading-relaxed font-light text-sm md:text-base">
+              <p className="font-serif text-xl lg:text-2xl font-light text-jade leading-relaxed">
                 Travelers love Vietnam for its friendly people, rich culture, and breathtaking landscapes – from charming towns to lush countryside.
               </p>
               
@@ -126,7 +126,7 @@ export default async function ItinerariesPage() {
               </p>
 
               <div className="pt-6 space-y-4">
-                <h3 className="font-serif text-base font-semibold text-green uppercase tracking-wider">
+                <h3 className="font-serif text-base font-semibold text-jade uppercase tracking-wider">
                   Our private tours are designed to highlight the best of Vietnam, including:
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 list-none pl-0 text-xs md:text-sm font-light text-gray-600">
@@ -158,11 +158,11 @@ export default async function ItinerariesPage() {
 
             {/* Right Column (Contact Local Expert Box) */}
             <div className="lg:col-span-4">
-              <div className="bg-white border border-[#d8d8d8] p-8 shadow-sm flex flex-col items-center text-center space-y-6 rounded-none">
+              <div className="bg-white border border-line p-8 shadow-sm flex flex-col items-center text-center space-y-6 rounded-none">
                 <span className="text-[9px] tracking-widest uppercase text-blue font-sans font-bold">
                   Design Team
                 </span>
-                <h3 className="font-serif text-lg font-semibold text-green leading-snug">
+                <h3 className="font-serif text-lg font-semibold text-jade leading-snug">
                   Speak to one of our local experts
                 </h3>
                 
@@ -177,7 +177,7 @@ export default async function ItinerariesPage() {
                 </div>
 
                 <div className="space-y-1">
-                  <h4 className="font-sans text-xs font-bold text-green uppercase tracking-widest">
+                  <h4 className="font-sans text-xs font-bold text-jade uppercase tracking-widest">
                     Alice Mercer
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-relaxed max-w-[240px] mx-auto font-light">
@@ -192,9 +192,9 @@ export default async function ItinerariesPage() {
                   MAKE AN INQUIRY
                 </Link>
 
-                <div className="pt-4 border-t border-[#d8d8d8] w-full flex flex-col items-center">
+                <div className="pt-4 border-t border-line w-full flex flex-col items-center">
                   <span className="text-[9px] uppercase text-gray-400 font-bold tracking-widest block mb-1">Or call us directly</span>
-                  <a href="tel:+84988600388" className="text-sm font-bold text-green hover:text-blue transition-colors">
+                  <a href="tel:+84988600388" className="text-sm font-bold text-jade hover:text-blue transition-colors">
                     +84 988600388
                   </a>
                 </div>
@@ -205,13 +205,13 @@ export default async function ItinerariesPage() {
         </section>
 
         {/* ── 4. VACATIONS HEADER & FILTER SELECTOR ── */}
-        <section className="bg-light-brown/40 border-t border-[#d8d8d8] py-20 px-6 lg:px-12">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[#d8d8d8] pb-10">
+        <section className="bg-light-brown/40 border-t border-line py-20 px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-line pb-10">
             <div className="space-y-4 max-w-2xl text-left">
               <span className="text-[10px] tracking-widest uppercase text-blue font-sans font-bold block">
                 Itinerary Ideas
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-green font-light">
+              <h2 className="font-serif text-3xl sm:text-4xl text-jade font-light">
                 Tailor-made Vietnam Vacations
               </h2>
               <p className="text-xs md:text-sm text-gray-500 font-light leading-relaxed">
@@ -225,7 +225,7 @@ export default async function ItinerariesPage() {
               <div className="relative">
                 <select 
                   defaultValue="vietnam"
-                  className="appearance-none bg-white border border-[#d8d8d8] text-[#343434] text-xs font-bold tracking-widest uppercase py-3.5 pl-5 pr-12 rounded-none focus:outline-none focus:border-gold cursor-pointer min-w-[240px]"
+                  className="appearance-none bg-white border border-line text-ink text-xs font-bold tracking-widest uppercase py-3.5 pl-5 pr-12 rounded-none focus:outline-none focus:border-gold cursor-pointer min-w-[240px]"
                 >
                   <option value="vietnam">Vietnam</option>
                   <option value="cambodia">Cambodia</option>
@@ -244,20 +244,20 @@ export default async function ItinerariesPage() {
           <div id="tours-listing" className="max-w-6xl mx-auto pt-16">
             
             {/* Listing Header Toggles */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-[#d8d8d8]">
-              <h3 className="font-serif text-xl font-medium text-green text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-line">
+              <h3 className="font-serif text-xl font-medium text-jade text-left">
                 Vietnam Expeditions
               </h3>
               
               <div className="flex items-center space-x-6 self-start sm:self-center">
                 {/* Summary / Detail Toggles */}
-                <div className="flex bg-white border border-[#d8d8d8] p-1 rounded-none text-[10px] font-bold uppercase tracking-widest select-none">
+                <div className="flex bg-white border border-line p-1 rounded-none text-[10px] font-bold uppercase tracking-widest select-none">
                   <button className="bg-gold text-white px-4 py-1.5 shadow-sm rounded-none">Summary</button>
-                  <button className="text-gray-500 hover:text-green px-4 py-1.5 transition-colors">Detail</button>
+                  <button className="text-gray-500 hover:text-jade px-4 py-1.5 transition-colors">Detail</button>
                 </div>
 
                 {/* Filter Trigger button */}
-                <button className="flex items-center gap-2 border border-[#d8d8d8] hover:border-gold transition-colors px-4 py-2 text-[10px] font-bold tracking-widest uppercase text-[#343434] bg-white rounded-none cursor-pointer">
+                <button className="flex items-center gap-2 border border-line hover:border-gold transition-colors px-4 py-2 text-[10px] font-bold tracking-widest uppercase text-ink bg-white rounded-none cursor-pointer">
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                   </svg>
@@ -272,16 +272,16 @@ export default async function ItinerariesPage() {
         </section>
 
         {/* ── NEW SECTION: SUGGESTED ACTIVITIES (BESPOKE EXPERIENCES REEL) ── */}
-        <section className="py-24 px-6 lg:px-12 bg-white border-t border-[#d8d8d8]">
+        <section className="py-24 px-6 lg:px-12 bg-white border-t border-line">
           <div className="max-w-6xl mx-auto">
             <div className="text-center flex flex-col items-center gap-4 mb-16">
               <span className="text-[10px] tracking-widest uppercase text-blue font-sans font-bold">
                 Bespoke Experiences
               </span>
-              <h2 className="font-serif text-3xl md:text-5xl text-green font-light tracking-wide leading-tight">
+              <h2 className="font-serif text-3xl md:text-5xl text-jade font-light tracking-wide leading-tight">
                 Suggested Activities for Vietnam
               </h2>
-              <p className="font-sans text-xs md:text-sm text-[#545454] leading-relaxed max-w-2xl font-light">
+              <p className="font-sans text-xs md:text-sm text-ink-soft leading-relaxed max-w-2xl font-light">
                 Enjoy a guided tour of Ho Chi Minh City on the back of a Vespa, sample Hanoi’s best street food with a local guide, or cruise along the Mekong on a wooden boat. Whatever your interests, our specialists will suggest experiences designed to enhance your trip.
               </p>
             </div>
@@ -314,7 +314,7 @@ export default async function ItinerariesPage() {
                   description: "Hike through mist-shrouded green terraces and encounter authentic local Hmong and Dao hilltribe hospitality."
                 }
               ].map((act, index) => (
-                <div key={index} className="group relative flex flex-col justify-between h-[420px] overflow-hidden border border-[#d8d8d8] bg-[#faf8f5]">
+                <div key={index} className="group relative flex flex-col justify-between h-[420px] overflow-hidden border border-line bg-paper">
                   
                   {/* Photo Background */}
                   <div className="absolute inset-0 z-0">
@@ -361,7 +361,7 @@ export default async function ItinerariesPage() {
               <span className="text-[10px] tracking-widest uppercase text-blue font-sans font-bold block">
                 Planning Tips
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl text-green font-light leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl text-jade font-light leading-tight">
                 Useful information for planning your holiday in Vietnam
               </h2>
               <div className="h-[1.5px] w-12 bg-blue mx-auto mt-4" />
@@ -375,7 +375,7 @@ export default async function ItinerariesPage() {
 
         {/* ── 7. MAGAZINE GUIDES & BLOG ── */}
         {inspirationPosts.length > 0 && (
-          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-light-brown/40 border-t border-[#d8d8d8]">
+          <section id="blog-section" className="py-20 px-6 lg:px-12 bg-light-brown/40 border-t border-line">
             <div className="max-w-6xl mx-auto">
               
               {/* Blog Header */}
@@ -384,14 +384,14 @@ export default async function ItinerariesPage() {
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-blue block">
                     Travel Journal
                   </span>
-                  <h2 className="font-serif text-2xl sm:text-3xl text-green font-light leading-tight">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-jade font-light leading-tight">
                     Read more Vietnam Travel Guides on our blog
                   </h2>
                 </div>
                 
                 <Link
                   href="/travel-guides"
-                  className="text-[10px] uppercase tracking-widest font-bold text-blue hover:text-green transition-colors pb-1 border-b border-blue/30 hover:border-green"
+                  className="text-[10px] uppercase tracking-widest font-bold text-blue hover:text-jade transition-colors pb-1 border-b border-blue/30 hover:border-green"
                 >
                   View all articles
                 </Link>
@@ -403,7 +403,7 @@ export default async function ItinerariesPage() {
                   <article key={post._id} className="group flex flex-col space-y-4.5 text-left h-full">
                     
                     {/* Blog Image */}
-                    <div className="relative h-64 overflow-hidden rounded-none bg-white border border-[#d8d8d8]">
+                    <div className="relative h-64 overflow-hidden rounded-none bg-white border border-line">
                       <Image
                         src={post.mainImage || '/images/featured_guide_passport.png'}
                         alt={post.title}
@@ -412,7 +412,7 @@ export default async function ItinerariesPage() {
                       />
                       
                       {/* Duration Overlay */}
-                      <div className="absolute bottom-4 left-4 bg-white border border-[#e6e2d6] text-[#343434] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-none">
+                      <div className="absolute bottom-4 left-4 bg-white border border-line text-ink text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-none">
                         <span>🕒</span>
                         <span>{getReadingTime(post.content)} minutes read</span>
                       </div>
@@ -430,7 +430,7 @@ export default async function ItinerariesPage() {
                         </span>
                       )}
                       
-                      <h4 className="font-serif text-lg leading-snug font-medium text-green group-hover:text-blue transition-colors">
+                      <h4 className="font-serif text-lg leading-snug font-medium text-jade group-hover:text-blue transition-colors">
                         <Link href={`/travel-guides/${post.slug?.current || ''}`}>
                           {post.title}
                         </Link>

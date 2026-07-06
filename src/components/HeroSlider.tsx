@@ -70,7 +70,7 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
   const nextSlide = slides[nextIndex];
 
   return (
-    <section className="relative h-screen min-h-[750px] flex items-center justify-start overflow-hidden bg-[#161C1A] pt-0">
+    <section className="relative h-screen min-h-[750px] flex items-center justify-start overflow-hidden bg-ink pt-0">
       {/* Background images — all stacked, only current one is visible */}
       {slides.map((s, i) => (
         <div
@@ -106,7 +106,7 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
           >
             {/* Category/Location Tag */}
             <div className="space-y-1">
-              <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-[#9A4B33] block">
+              <span className="text-[10px] uppercase tracking-[0.4em] font-semibold text-copper block">
                 {slide.location}
               </span>
               <span className="text-[11px] uppercase tracking-[0.3em] font-semibold text-white/60 block">
@@ -171,10 +171,10 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
               
               {/* Card Text Content */}
               <div className="absolute bottom-6 left-6 right-6 z-20 text-left space-y-1.5">
-                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#9A4B33] block">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-copper block">
                   Next Up
                 </span>
-                <h3 className="font-serif text-lg leading-snug font-medium text-white group-hover:text-[#9A4B33] transition-colors duration-300">
+                <h3 className="font-serif text-lg leading-snug font-medium text-white group-hover:text-copper transition-colors duration-300">
                   {nextSlide.heading}
                 </h3>
                 <span className="text-[10px] text-white/60 tracking-wider block">
@@ -195,9 +195,9 @@ export default function HeroSlider({ heroHeading, heroSubheading }: HeroSliderPr
             </span>
             <button 
               onClick={next} 
-              className="font-serif text-sm lg:text-base text-white/80 hover:text-[#9A4B33] transition-colors duration-200 text-left mt-0.5"
+              className="font-serif text-sm lg:text-base text-white/80 hover:text-copper transition-colors duration-200 text-left mt-0.5"
             >
-              {nextSlide.heading} — <span className="font-sans text-[11px] uppercase tracking-wider text-[#9A4B33]">{nextSlide.location}</span>
+              {nextSlide.heading} — <span className="font-sans text-[11px] uppercase tracking-wider text-copper">{nextSlide.location}</span>
             </button>
           </div>
 

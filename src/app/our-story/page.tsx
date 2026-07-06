@@ -23,7 +23,7 @@ export default function OurStoryPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-[#faf8f5] text-[#343434] flex-grow flex flex-col">
+      <main className="bg-paper text-ink flex-grow flex flex-col">
 
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
@@ -50,14 +50,14 @@ export default function OurStoryPage() {
       <section className="max-w-4xl mx-auto px-6 py-24">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[#9A4B33] font-semibold mb-6">Where It Began</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-[#343434] leading-snug mb-8">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold mb-6">Where It Began</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-ink leading-snug mb-8">
               Born from a love of Vietnam, built for those who seek more than a holiday.
             </h2>
-            <p className="text-[#545454] text-sm leading-loose mb-6 font-light">
+            <p className="text-ink-soft text-sm leading-loose mb-6 font-light">
               Vietnam Heritage Tours was founded in 2008 by a small team of passionate travellers who had fallen irreversibly in love with Vietnam. They had witnessed the country's transformation — its ancient temples standing firm beside gleaming new cities, its fishing villages humming with the same rhythms as they had for centuries — and they wanted to share that wonder with the world.
             </p>
-            <p className="text-[#545454] text-sm leading-loose mb-6 font-light">
+            <p className="text-ink-soft text-sm leading-loose mb-6 font-light">
               What began as a handful of carefully curated itineraries for friends and colleagues has grown into one of the most trusted names in luxury Vietnam travel. Yet our founding principle has never changed: every journey we design must be as extraordinary as the country it explores.
             </p>
           </div>
@@ -105,7 +105,7 @@ export default function OurStoryPage() {
 
       {/* Timeline */}
       <section className="max-w-3xl mx-auto px-6 py-24">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-[#9A4B33] font-semibold text-center mb-4">A Journey of Our Own</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">A Journey of Our Own</p>
         <h2 className="font-serif text-3xl font-light text-center mb-16">Milestones</h2>
         <div className="space-y-12">
           {[
@@ -116,9 +116,9 @@ export default function OurStoryPage() {
             { year: '2024', text: 'Proud to have guided over 12,000 travellers and counting — each journey as personal as the last.' },
           ].map((m) => (
             <div key={m.year} className="flex gap-8 items-start">
-              <span className="font-serif text-2xl text-[#9A4B33] font-light w-16 shrink-0">{m.year}</span>
-              <div className="border-t border-[#e6e2d6] pt-4 flex-1">
-                <p className="text-sm text-[#545454] leading-loose font-light">{m.text}</p>
+              <span className="font-serif text-2xl text-copper font-light w-16 shrink-0">{m.year}</span>
+              <div className="border-t border-line pt-4 flex-1">
+                <p className="text-sm text-ink-soft leading-loose font-light">{m.text}</p>
               </div>
             </div>
           ))}
@@ -126,41 +126,41 @@ export default function OurStoryPage() {
       </section>
 
       {/* Corporate Credentials */}
-      <section className="bg-white border-t border-b border-[#e6e2d6] py-20 px-6">
+      <section className="bg-white border-t border-b border-line py-20 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9A4B33] font-semibold text-center mb-4">Official Credentials</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">Official Credentials</p>
           <h2 className="font-serif text-2xl md:text-3xl font-light text-center mb-10">Licensing &amp; Registration</h2>
-          <p className="text-xs text-[#545454]/80 font-light text-center max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-xs text-ink-soft/80 font-light text-center max-w-xl mx-auto mb-12 leading-relaxed">
             Vietnam Tours is a premier brand operated by My Way Travel. We are fully registered and licensed by the Vietnam National Authority of Tourism (VNAT) as an International Tour Operator.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-8 text-xs text-[#545454] font-light">
+          <div className="grid md:grid-cols-2 gap-8 text-xs text-ink-soft font-light">
             <div className="space-y-4">
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Registered Company</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Registered Company</span>
                 <p className="font-medium">My Way Travel Co., Ltd</p>
               </div>
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Head Office Address</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Head Office Address</span>
                 <p>139/5 Nguyen Cu Trinh Street, Nguyen Cu Trinh Ward, District 1, Ho Chi Minh City, Vietnam</p>
               </div>
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">International Tour Operator License</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">International Tour Operator License</span>
                 <p>No. 79-0743/2017/TCDL (Issued by the Vietnam National Authority of Tourism)</p>
               </div>
             </div>
             
             <div className="space-y-4">
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Travel Service Scope</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Travel Service Scope</span>
                 <p>International Tour Operator (Inbound and Outbound Tourism Services)</p>
               </div>
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Legal Representative</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Legal Representative</span>
                 <p className="font-medium">Mr. Vu Duy Truong (Director)</p>
               </div>
               <div>
-                <span className="font-bold text-[#343434] block uppercase tracking-wider mb-1 text-[9px]">Bonded Deposit Account</span>
+                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Bonded Deposit Account</span>
                 <p>Account No. 1046429987 at Joint Stock Commercial Bank for Foreign Trade of Vietnam (Vietcombank) - Nguyen Trai Transaction Office</p>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function OurStoryPage() {
         </p>
         <Link
           href="/enquire"
-          className="inline-block bg-white text-[#9A4B33] text-[11px] uppercase tracking-widest font-bold py-4 px-10 hover:bg-[#faf8f5] transition-colors"
+          className="inline-block bg-white text-copper text-[11px] uppercase tracking-widest font-bold py-4 px-10 hover:bg-paper transition-colors"
         >
           Plan Your Journey
         </Link>

@@ -72,17 +72,17 @@ export default async function DestinationCruisePage({ params }: PageProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-luxury-slate/95 via-luxury-slate/30 to-transparent z-10" />
         </div>
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pb-16 w-full space-y-4">
-          <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-luxury-gold font-semibold">
+          <div className="flex items-center space-x-2 text-xs uppercase tracking-widest text-gold font-semibold">
             <Link href={`/destinations/${slug}`} className="hover:underline">
               {cruise.destination?.name || slug}
             </Link>
             <span className="opacity-50">›</span>
             <span className="opacity-70">Cruises</span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-[#343434]">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-ink">
             {cruise.title}
           </h1>
-          <div className="flex flex-wrap gap-4 text-xs font-semibold tracking-wider text-luxury-gold uppercase">
+          <div className="flex flex-wrap gap-4 text-xs font-semibold tracking-wider text-gold uppercase">
             {cruise.location && <span>{cruise.location}</span>}
             {cruise.duration && <><span>•</span><span>{cruise.duration}</span></>}
             {cruise.price && <><span>•</span><span>From £{cruise.price.toLocaleString('en-GB')}</span></>}
@@ -96,24 +96,24 @@ export default async function DestinationCruisePage({ params }: PageProps) {
           <div className="lg:col-span-2 space-y-10">
             {cruise.description && (
               <div className="space-y-6">
-                <h2 className="font-serif text-2xl text-[#343434] font-medium border-b border-luxury-moss/50 pb-4">
+                <h2 className="font-serif text-2xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                   About This Cruise
                 </h2>
-                <p className="text-base font-light text-[#545454] leading-relaxed">{cruise.description}</p>
+                <p className="text-base font-light text-ink-soft leading-relaxed">{cruise.description}</p>
               </div>
             )}
           </div>
 
           {/* Right CTA */}
           <div className="space-y-8">
-            <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
+            <div className="bg-jade-deep p-8 border border-line space-y-6 shadow-sm">
               <h3 className="font-serif text-xl text-white font-medium">Enquire About This Cruise</h3>
-              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
+              <p className="text-sm text-paper/90 font-light leading-relaxed">
                 Our specialists can build a complete luxury itinerary around this cruise experience.
               </p>
               <Link
                 href="/enquire"
-                className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
+                className="block w-full py-3 bg-gold hover:bg-gold/90 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 text-center"
               >
                 Request A Quote
               </Link>

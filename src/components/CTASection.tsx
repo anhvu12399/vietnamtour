@@ -22,19 +22,19 @@ export default function CTASection() {
       </div>
 
       {/* Content Card */}
-      <div className="relative z-20 bg-white text-[#343434] p-8 md:p-12 rounded-none shadow-xl text-center max-w-xl mx-4 flex flex-col items-center gap-4 border border-gold/20">
+      <div className="relative z-20 bg-white text-ink p-8 md:p-12 rounded-none shadow-xl text-center max-w-xl mx-4 flex flex-col items-center gap-4 border border-gold/20">
         <span className="text-[10px] tracking-widest uppercase text-gold font-sans font-semibold">
           Design Desk
         </span>
-        <h2 className="font-serif text-2xl md:text-3xl font-light tracking-wide text-green">
+        <h2 className="font-serif text-2xl md:text-3xl font-light tracking-wide text-jade">
           Compose Your Private Expedition
         </h2>
         
-        <div className="font-sans text-xs text-[#545454] uppercase tracking-wider">
+        <div className="font-sans text-xs text-ink-soft uppercase tracking-wider">
           Connect with a Design Specialist
         </div>
 
-        <div className="flex items-center gap-2 text-lg md:text-xl font-bold font-sans text-green">
+        <div className="flex items-center gap-2 text-lg md:text-xl font-bold font-sans text-jade">
           <PhoneIcon className="w-5 h-5 text-gold" />
           <a href="tel:+84988600388" className="hover:underline hover:text-gold transition-colors">
             +84 988600388

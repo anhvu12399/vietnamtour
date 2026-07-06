@@ -31,7 +31,7 @@ export default async function AccommodationsPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen bg-paper text-ink">
         
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
@@ -42,7 +42,7 @@ export default async function AccommodationsPage() {
             className="object-cover brightness-[0.5]"
             priority
           />
-          <div className="absolute inset-0 bg-[#161C1A]/25" />
+          <div className="absolute inset-0 bg-ink/25" />
           
           <div className="relative z-10 text-center px-6 pt-24 sm:pt-32">
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-white font-medium leading-tight tracking-wide">
@@ -50,7 +50,7 @@ export default async function AccommodationsPage() {
             </h1>
             
             {/* Breadcrumbs */}
-            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-[#9A4B33] font-semibold">
+            <div className="mt-3 flex items-center justify-center space-x-2 text-[11px] uppercase tracking-widest text-copper font-semibold">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span className="text-white/40">&gt;</span>
               <span className="text-white/80">Hotels</span>
@@ -65,13 +65,13 @@ export default async function AccommodationsPage() {
           
           {/* Header */}
           <div className="space-y-4 max-w-3xl animate-fade-in">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Elite Hideaways
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Luxury Resorts & Lodges
             </h1>
-            <p className="text-base sm:text-lg text-[#343434]/70 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               We have handpicked only the finest properties in Vietnam. From remote clifftop pool villas overlooking Vinh Hy Bay to heritage palaces in Hanoi, these stays guarantee premium luxury.
             </p>
           </div>
@@ -79,7 +79,7 @@ export default async function AccommodationsPage() {
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {accommodations.map((acc, idx) => (
-              <div key={acc._id} className="bg-luxury-moss border border-luxury-moss p-6 flex flex-col sm:flex-row gap-6 hover:shadow-xl transition-all duration-300">
+              <div key={acc._id} className="bg-jade-deep border border-jade-deep p-6 flex flex-col sm:flex-row gap-6 hover:shadow-xl transition-all duration-300">
                 <div className="relative h-60 sm:h-auto w-full sm:w-56 md:w-64 shrink-0 overflow-hidden">
                   <Image
                     src={acc.gallery[0]}
@@ -92,16 +92,16 @@ export default async function AccommodationsPage() {
                 <div className="flex flex-col justify-between py-2 pr-2 flex-grow space-y-4 sm:space-y-0">
                   <div className="space-y-3">
                     <div>
-                      <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">{acc.rating}</span>
+                      <span className="text-[10px] uppercase tracking-wider text-gold font-semibold block">{acc.rating}</span>
                       <h3 className="font-serif text-xl text-white font-semibold">{acc.name}</h3>
-                      <p className="text-xs text-luxury-linen/70 italic">{acc.location}</p>
+                      <p className="text-xs text-paper/70 italic">{acc.location}</p>
                     </div>
-                    <p className="text-xs text-luxury-linen/90 font-light leading-relaxed line-clamp-3">
+                    <p className="text-xs text-paper/90 font-light leading-relaxed line-clamp-3">
                       {acc.description?.[0]?.children?.[0]?.text || ''}
                     </p>
                     <ul className="flex flex-wrap gap-2 pt-2">
                       {acc.features.slice(0, 3).map((f, i) => (
-                        <li key={i} className="text-[10px] bg-[#faf8f5] text-[#343434]/80 px-2.5 py-1 font-medium border border-[#e6e2d6]">
+                        <li key={i} className="text-[10px] bg-paper text-ink/80 px-2.5 py-1 font-medium border border-line">
                           {f}
                         </li>
                       ))}
@@ -110,7 +110,7 @@ export default async function AccommodationsPage() {
                   <div className="pt-4 border-t border-luxury-slate/50 flex items-center justify-between">
                     <Link
                       href={`/accommodations/${acc.slug?.current || ''}`}
-                      className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
+                      className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1"
                     >
                       <span>Explore Resort</span>
                       <span>→</span>
@@ -120,7 +120,7 @@ export default async function AccommodationsPage() {
                         href={acc.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-luxury-linen/50 hover:underline hover:text-luxury-gold"
+                        className="text-xs text-paper/50 hover:underline hover:text-gold"
                       >
                         Official Site ↗
                       </a>

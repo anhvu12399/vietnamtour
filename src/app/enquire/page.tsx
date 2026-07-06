@@ -130,7 +130,7 @@ export default function EnquiryPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen pt-36 pb-24 bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen pt-36 pb-24 bg-paper text-ink">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           
           {/* Header */}
@@ -141,7 +141,7 @@ export default function EnquiryPage() {
             <h1 className="font-serif text-4xl md:text-5xl text-[#0e1628] font-light tracking-wide">
               Create Your Tailor-Made Journey
             </h1>
-            <p className="text-sm text-[#545454] max-w-2xl font-light leading-relaxed">
+            <p className="text-sm text-ink-soft max-w-2xl font-light leading-relaxed">
               Tell us your travel ideas and preferences. Our luxury travel specialists will craft a bespoke itinerary tailored exclusively for you.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function EnquiryPage() {
                 )}
 
                 {/* Section 1: Travel Plan */}
-                <div className="bg-white border border-[#e6e2d6] p-6 sm:p-8 shadow-xs space-y-6">
+                <div className="bg-white border border-line p-6 sm:p-8 shadow-xs space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
                     {/* Destination Selection */}
@@ -351,7 +351,7 @@ export default function EnquiryPage() {
                     Your Details
                   </h3>
                   
-                  <div className="bg-white border border-[#e6e2d6] p-6 sm:p-8 shadow-xs space-y-6">
+                  <div className="bg-white border border-line p-6 sm:p-8 shadow-xs space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {/* First Name */}
                       <div className="space-y-1">
@@ -450,7 +450,7 @@ export default function EnquiryPage() {
                           <svg className="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                       </div>
-                      <p className="text-[11px] text-[#545454] font-light pt-1">
+                      <p className="text-[11px] text-ink-soft font-light pt-1">
                         Our UK team will contact you during office hours.
                       </p>
                     </div>
@@ -463,7 +463,7 @@ export default function EnquiryPage() {
                     Tell Us More
                   </h3>
                   
-                  <div className="bg-white border border-[#e6e2d6] p-6 sm:p-8 shadow-xs">
+                  <div className="bg-white border border-line p-6 sm:p-8 shadow-xs">
                     <textarea
                       name="notes"
                       rows={5}
@@ -517,7 +517,7 @@ export default function EnquiryPage() {
                 </div>
 
                 {/* Trustpilot Box */}
-                <div className="bg-white border border-[#e6e2d6] p-6 text-center space-y-3 shadow-xs">
+                <div className="bg-white border border-line p-6 text-center space-y-3 shadow-xs">
                   <div className="flex items-center justify-center gap-1.5 text-sm font-sans font-bold text-gray-800">
                     <span>Excellent</span>
                     <div className="flex gap-0.5">
@@ -535,7 +535,7 @@ export default function EnquiryPage() {
                 </div>
 
                 {/* Trust Badges */}
-                <div className="bg-white border border-[#e6e2d6] p-6 space-y-6 shadow-xs">
+                <div className="bg-white border border-line p-6 space-y-6 shadow-xs">
                   <h4 className="text-xs uppercase tracking-widest text-[#0e1628] font-bold text-center border-b border-gray-100 pb-3">
                     Accredited & Protected
                   </h4>
@@ -546,21 +546,21 @@ export default function EnquiryPage() {
                     <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
                       <Award className="w-6 h-6 text-gold mb-1" />
                       <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">Condé Nast</span>
-                      <span className="text-[7px] text-[#545454] mt-0.5 uppercase tracking-tighter">Reader's Choice 2025</span>
+                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">Reader's Choice 2025</span>
                     </div>
 
                     {/* ATOL */}
                     <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
                       <Shield className="w-6 h-6 text-gold mb-1" />
                       <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">ATOL Protected</span>
-                      <span className="text-[7px] text-[#545454] mt-0.5 uppercase tracking-tighter">License No. 2471</span>
+                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">License No. 2471</span>
                     </div>
 
                     {/* ABTOT */}
                     <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
                       <Shield className="w-6 h-6 text-gold mb-1" />
                       <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">ABTOT Member</span>
-                      <span className="text-[7px] text-[#545454] mt-0.5 uppercase tracking-tighter">Member 5222</span>
+                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">Member 5222</span>
                     </div>
 
                     {/* IATA */}
@@ -573,14 +573,14 @@ export default function EnquiryPage() {
                           className="object-contain grayscale"
                         />
                       </div>
-                      <span className="text-[7px] text-[#545454] uppercase tracking-tighter">Code 9123848/6</span>
+                      <span className="text-[7px] text-ink-soft uppercase tracking-tighter">Code 9123848/6</span>
                     </div>
                   </div>
 
                   {/* British Airways Preferred Partner */}
                   <div className="p-3 bg-[#f3f4f6]/40 border border-gray-100 text-center flex flex-col items-center justify-center">
                     <span className="text-[10px] font-bold text-[#0e1628] uppercase tracking-wider">British Airways</span>
-                    <span className="text-[8px] text-[#545454] uppercase tracking-widest mt-0.5">Preferred Partner</span>
+                    <span className="text-[8px] text-ink-soft uppercase tracking-widest mt-0.5">Preferred Partner</span>
                   </div>
                 </div>
               </div>
@@ -588,7 +588,7 @@ export default function EnquiryPage() {
           ) : (
             
             /* Success Screen */
-            <div className="max-w-xl mx-auto bg-white border border-[#e6e2d6] p-8 md:p-12 text-center space-y-6 shadow-sm">
+            <div className="max-w-xl mx-auto bg-white border border-line p-8 md:p-12 text-center space-y-6 shadow-sm">
               <div className="w-16 h-16 bg-gold/10 text-gold rounded-full flex items-center justify-center mx-auto border border-gold/20">
                 <Check className="w-8 h-8" />
               </div>
@@ -601,12 +601,12 @@ export default function EnquiryPage() {
                   Thank You, {formData.firstName}
                 </h2>
                 <div className="h-[1px] w-12 bg-gold mx-auto" />
-                <p className="text-sm text-[#545454] font-light leading-relaxed">
+                <p className="text-sm text-ink-soft font-light leading-relaxed">
                   Your request for a bespoke Vietnam itinerary has been saved. An email confirmation has been dispatched, and our specialist travel team will reach out to you within 24 hours.
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-gray-100 space-y-2 text-xs text-[#545454]">
+              <div className="pt-6 border-t border-gray-100 space-y-2 text-xs text-ink-soft">
                 <p>Enquiry copy dispatched to: <span className="font-medium text-[#0e1628]">{formData.email}</span></p>
                 <p>Direct UK Assistance: <span className="font-semibold text-[#0e1628]">+84 988600388</span></p>
               </div>

@@ -31,7 +31,7 @@ export default function JourneyBlock() {
   ];
 
   return (
-    <section className="bg-white text-green py-24 px-4 lg:px-12 border-t border-[#d8d8d8]/50">
+    <section className="bg-white text-jade py-24 px-4 lg:px-12 border-t border-line/50">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
@@ -44,12 +44,12 @@ export default function JourneyBlock() {
               </span>
             </div>
             
-            <h2 className="font-serif text-3xl md:text-5xl font-light tracking-tight leading-[1.1] text-green">
+            <h2 className="font-serif text-3xl md:text-5xl font-light tracking-tight leading-[1.1] text-jade">
               Expeditions that feel <br />
               <span className="italic text-blue font-light font-serif">like they were waiting</span>
             </h2>
             
-            <p className="font-sans text-sm text-[#545454] leading-relaxed max-w-sm font-light mt-2">
+            <p className="font-sans text-sm text-ink-soft leading-relaxed max-w-sm font-light mt-2">
               You are not meant to see Vietnam like everyone else. You are meant to feel
               it, like only you can. It is why our designers use their deep local insight to craft
               moments that feel fortuitously right.
@@ -70,7 +70,7 @@ export default function JourneyBlock() {
 
                 {/* Step Info */}
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-serif text-lg md:text-xl font-medium tracking-wide text-green group-hover:text-blue transition-colors duration-300">
+                  <h3 className="font-serif text-lg md:text-xl font-medium tracking-wide text-jade group-hover:text-blue transition-colors duration-300">
                     {step.title}
                   </h3>
                   <p className="font-sans text-xs md:text-sm text-gray-500 leading-relaxed font-light">

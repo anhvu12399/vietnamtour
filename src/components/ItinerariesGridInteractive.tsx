@@ -28,7 +28,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
       {/* Grid 4 columns */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {visibleTours.map((it) => (
-          <div key={it._id} className="group bg-white border border-[#d8d8d8] hover:border-blue/30 transition-all duration-300 hover:shadow-md flex flex-col justify-between h-full relative rounded-none">
+          <div key={it._id} className="group bg-white border border-line hover:border-blue/30 transition-all duration-300 hover:shadow-md flex flex-col justify-between h-full relative rounded-none">
             
             {/* Featured Badge */}
             <div className="bg-blue text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-none absolute top-4 left-4 z-10 flex items-center gap-0.5 shadow-sm">
@@ -38,7 +38,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
 
             <div>
               {/* Tour Image */}
-              <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-[#d8d8d8]">
+              <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                 <Image
                   src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
                   alt={it.title}
@@ -53,7 +53,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
                   VIETNAM
                 </span>
                 
-                <h4 className="font-serif text-[15px] leading-snug font-medium text-green hover:text-blue transition-colors">
+                <h4 className="font-serif text-[15px] leading-snug font-medium text-jade hover:text-blue transition-colors">
                   <Link href={`/itineraries/${it.slug?.current || ''}`}>
                     {it.title}
                   </Link>
@@ -66,7 +66,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
             </div>
 
             {/* Card Actions Footer */}
-            <div className="px-5 py-4 border-t border-[#d8d8d8] flex items-center justify-between text-[10px] font-bold tracking-wider uppercase bg-bg-light">
+            <div className="px-5 py-4 border-t border-line flex items-center justify-between text-[10px] font-bold tracking-wider uppercase bg-bg-light">
               <Link 
                 href={`/itineraries/${it.slug?.current || ''}`}
                 className="text-gray-500 hover:text-blue transition-colors"
@@ -75,7 +75,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
               </Link>
               <Link 
                 href="/enquire"
-                className="text-blue hover:text-green transition-colors"
+                className="text-blue hover:text-jade transition-colors"
               >
                 Request quote
               </Link>
@@ -86,7 +86,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
       </div>
 
       {/* Pagination & Progress */}
-      <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-[#d8d8d8]">
+      <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-line">
         <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">
           You've viewed {Math.min(visibleCount, totalCount)} of {totalCount} tours
         </span>

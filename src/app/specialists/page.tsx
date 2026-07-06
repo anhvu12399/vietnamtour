@@ -33,13 +33,13 @@ export default async function SpecialistsPage() {
           
           {/* Header */}
           <div className="space-y-4 max-w-3xl animate-fade-in">
-            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-luxury-gold block">
+            <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Destination Curators
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-[#343434] font-medium leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Our Vietnam Specialists
             </h1>
-            <p className="text-base sm:text-lg text-[#343434]/70 font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               Our travel specialists have spent years living and travelling in Vietnam. They know the country intimately—from hidden street kitchens to exclusive luxury retreats. Talk directly to the expert who will plan your trip.
             </p>
           </div>
@@ -47,8 +47,8 @@ export default async function SpecialistsPage() {
           {/* Grid list */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {specialists.map((spec) => (
-              <div key={spec._id} className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left bg-luxury-moss p-6 border border-luxury-moss">
-                <div className="relative w-36 h-36 rounded-full overflow-hidden shrink-0 border-2 border-[#e6e2d6]">
+              <div key={spec._id} className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left bg-jade-deep p-6 border border-jade-deep">
+                <div className="relative w-36 h-36 rounded-full overflow-hidden shrink-0 border-2 border-line">
                   <Image
                     src={spec.image}
                     alt={spec.name}
@@ -59,18 +59,18 @@ export default async function SpecialistsPage() {
                 <div className="space-y-4 flex-grow">
                   <div>
                     <h3 className="font-serif text-xl text-white font-semibold">{spec.name}</h3>
-                    <p className="text-xs text-luxury-gold uppercase tracking-wider font-semibold">{spec.role}</p>
+                    <p className="text-xs text-gold uppercase tracking-wider font-semibold">{spec.role}</p>
                   </div>
-                  <p className="text-xs sm:text-sm text-luxury-linen/80 font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-paper/80 font-light leading-relaxed">
                     {spec.bio[0]?.children[0]?.text}
                   </p>
                   <div className="pt-2 text-xs space-y-2 border-t border-luxury-linen/20">
-                    <p className="text-luxury-linen/60">📍 Favourite Area: <span className="font-medium text-white">{spec.favoriteDestinations.join(', ')}</span></p>
+                    <p className="text-paper/60">📍 Favourite Area: <span className="font-medium text-white">{spec.favoriteDestinations.join(', ')}</span></p>
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                      <p className="text-luxury-linen/80 font-semibold">📞 UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
+                      <p className="text-paper/80 font-semibold">📞 UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-gold hover:underline">{spec.phone}</a></p>
                       <Link
                         href={`/specialists/${spec.slug?.current || ''}`}
-                        className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"
+                        className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1"
                       >
                         <span>View Profile</span>
                         <span>→</span>

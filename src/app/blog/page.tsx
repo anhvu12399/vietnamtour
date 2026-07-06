@@ -31,7 +31,7 @@ const categoryColors: Record<string, string> = {
 };
 
 function getCategoryColor(cat: string) {
-  return categoryColors[cat] || 'bg-[#faf8f5] text-[#343434] border-[#e6e2d6]';
+  return categoryColors[cat] || 'bg-paper text-ink border-line';
 }
 
 export default async function BlogListingPage() {
@@ -45,15 +45,15 @@ export default async function BlogListingPage() {
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-[#faf8f5] text-[#343434]">
+      <main className="min-h-screen bg-paper text-ink">
         {/* ── Hero Header ── */}
-        <section className="pt-32 pb-16 px-6 lg:px-12 bg-[#f4efe6] relative border-b border-[#e6e2d6]">
+        <section className="pt-32 pb-16 px-6 lg:px-12 bg-[#f4efe6] relative border-b border-line">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #9A4B33 1px, transparent 0)', backgroundSize: '40px 40px' }} />
           <div className="max-w-7xl mx-auto text-center relative z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-normal tracking-tight text-[#343434] mb-6">
-              Vietnam Travel <i className="text-[#9A4B33] italic">Journal</i>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-normal tracking-tight text-ink mb-6">
+              Vietnam Travel <i className="text-copper italic">Journal</i>
             </h1>
-            <p className="text-lg md:text-xl text-[#343434]/70 font-light max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-ink/70 font-light max-w-2xl mx-auto">
               Insider tips, hidden gems, and travel stories crafted by our local specialists to help you plan the perfect journey.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default async function BlogListingPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
           
           {posts.length === 0 ? (
-            <div className="text-center py-24 border border-[#e6e2d6] rounded-xl bg-white/5">
+            <div className="text-center py-24 border border-line rounded-xl bg-white/5">
               <h2 className="text-2xl font-playfair text-white mb-3">No articles yet</h2>
               <p className="text-white/60">Our specialists are currently writing new travel stories. Check back soon!</p>
             </div>
@@ -76,12 +76,12 @@ export default async function BlogListingPage() {
               {/* ── Featured Post ── */}
               {featuredPost && (
                 <section className="mb-20">
-                  <h2 className="text-sm tracking-[0.2em] text-luxury-gold font-bold uppercase mb-8 flex items-center gap-4">
+                  <h2 className="text-sm tracking-[0.2em] text-gold font-bold uppercase mb-8 flex items-center gap-4">
                     <span>Featured Article</span>
                     <span className="h-[1px] flex-1 bg-gradient-to-r from-luxury-gold/50 to-transparent"></span>
                   </h2>
                   
-                  <Link href={`/blog/${featuredPost.slug.current}`} className="group block relative rounded-2xl overflow-hidden bg-white border border-[#e6e2d6] hover:border-[#9A4B33]/50 transition-all duration-500 shadow-lg hover:shadow-xl">
+                  <Link href={`/blog/${featuredPost.slug.current}`} className="group block relative rounded-2xl overflow-hidden bg-white border border-line hover:border-copper/50 transition-all duration-500 shadow-lg hover:shadow-xl">
                     <div className="flex flex-col lg:flex-row">
                       {/* Image side */}
                       <div className="relative h-[300px] lg:h-[500px] lg:w-[60%] overflow-hidden">
@@ -106,7 +106,7 @@ export default async function BlogListingPage() {
 
                       {/* Content side */}
                       <div className="lg:w-[40%] p-8 lg:p-12 flex flex-col justify-center relative">
-                        <div className="text-xs text-[#343434]/55 tracking-wider uppercase mb-4 flex items-center gap-3">
+                        <div className="text-xs text-ink/55 tracking-wider uppercase mb-4 flex items-center gap-3">
                           {featuredPost.publishedAt && (
                             <time dateTime={featuredPost.publishedAt}>
                               {new Date(featuredPost.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -115,20 +115,20 @@ export default async function BlogListingPage() {
                           {featuredPost.author && (
                             <>
                               <span>•</span>
-                              <span className="text-[#343434]/70">By {featuredPost.author.name}</span>
+                              <span className="text-ink/70">By {featuredPost.author.name}</span>
                             </>
                           )}
                         </div>
 
-                        <h3 className="text-2xl lg:text-4xl font-playfair text-[#343434] mb-6 leading-tight group-hover:text-[#9A4B33] transition-colors">
+                        <h3 className="text-2xl lg:text-4xl font-playfair text-ink mb-6 leading-tight group-hover:text-copper transition-colors">
                           {featuredPost.title}
                         </h3>
 
-                        <p className="text-[#343434]/70 leading-relaxed mb-8 text-sm lg:text-base">
+                        <p className="text-ink/70 leading-relaxed mb-8 text-sm lg:text-base">
                           {featuredPost.excerpt}
                         </p>
 
-                        <div className="flex items-center gap-3 text-[#9A4B33] font-medium tracking-wide uppercase text-xs mt-auto">
+                        <div className="flex items-center gap-3 text-copper font-medium tracking-wide uppercase text-xs mt-auto">
                           <span>Read Full Story</span>
                           <span className="transform transition-transform group-hover:translate-x-2">→</span>
                         </div>
@@ -141,14 +141,14 @@ export default async function BlogListingPage() {
               {/* ── Standard Posts Grid ── */}
               {standardPosts.length > 0 && (
                 <section>
-                  <h2 className="text-sm tracking-[0.2em] text-luxury-gold font-bold uppercase mb-8 flex items-center gap-4">
+                  <h2 className="text-sm tracking-[0.2em] text-gold font-bold uppercase mb-8 flex items-center gap-4">
                     <span>Latest Articles</span>
                     <span className="h-[1px] flex-1 bg-gradient-to-r from-luxury-gold/50 to-transparent"></span>
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {standardPosts.map((post: any) => (
-                      <Link key={post._id} href={`/blog/${post.slug.current}`} className="group flex flex-col bg-white border border-[#e6e2d6] rounded-2xl overflow-hidden hover:border-[#9A4B33]/50 transition-all duration-500 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                      <Link key={post._id} href={`/blog/${post.slug.current}`} className="group flex flex-col bg-white border border-line rounded-2xl overflow-hidden hover:border-copper/50 transition-all duration-500 hover:-translate-y-1 shadow-md hover:shadow-lg">
                         
                         {/* Card Image */}
                         <div className="relative h-[240px] overflow-hidden">
@@ -171,7 +171,7 @@ export default async function BlogListingPage() {
 
                         {/* Card Body */}
                         <div className="p-6 flex flex-col flex-1">
-                          <div className="text-xs text-[#343434]/55 tracking-wider uppercase mb-3 flex items-center justify-between">
+                          <div className="text-xs text-ink/55 tracking-wider uppercase mb-3 flex items-center justify-between">
                             {post.publishedAt && (
                               <time dateTime={post.publishedAt}>
                                 {new Date(post.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
@@ -179,16 +179,16 @@ export default async function BlogListingPage() {
                             )}
                           </div>
 
-                          <h3 className="text-xl font-playfair text-[#343434] mb-3 leading-snug group-hover:text-[#9A4B33] transition-colors line-clamp-3">
+                          <h3 className="text-xl font-playfair text-ink mb-3 leading-snug group-hover:text-copper transition-colors line-clamp-3">
                             {post.title}
                           </h3>
 
-                          <p className="text-sm text-[#343434]/70 leading-relaxed mb-6 line-clamp-3 flex-1">
+                          <p className="text-sm text-ink/70 leading-relaxed mb-6 line-clamp-3 flex-1">
                             {post.excerpt}
                           </p>
 
                           {post.author && (
-                            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-[#e6e2d6]">
+                            <div className="flex items-center gap-3 mt-auto pt-4 border-t border-line">
                               {post.author.avatar ? (
                                 <Image
                                   src={post.author.avatar}
@@ -200,7 +200,7 @@ export default async function BlogListingPage() {
                               ) : (
                                 <div className="w-6 h-6 rounded-full bg-[#343434]/10" />
                               )}
-                              <span className="text-xs text-[#343434]/70">{post.author.name}</span>
+                              <span className="text-xs text-ink/70">{post.author.name}</span>
                             </div>
                           )}
                         </div>
