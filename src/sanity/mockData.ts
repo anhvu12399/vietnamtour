@@ -212,7 +212,33 @@ export const mockDestinations: Destination[] = [
       {
         _key: 'b1',
         _type: 'block',
-        children: [{ _type: 'span', text: "Hanoi, the historic capital, is famed for its tree-lined boulevards, busy Old Quarter streets, and unique colonial architecture. It represents the cultural heart of northern Vietnam." }]
+        children: [{ _type: 'span', text: "Hanoi, the historic capital of Vietnam, is a captivating blend of East and West, combining traditional Sino-Vietnamese motifs with French colonial flair. As a city with over a thousand years of history, it stands as the cultural and political heart of the nation. Its tree-lined boulevards, busy Old Quarter streets, and unique colonial architecture create an atmosphere that is both nostalgic and dynamic." }]
+      },
+      {
+        _key: 'b2',
+        _type: 'block',
+        children: [{ _type: 'span', text: "For discerning travelers, Hanoi offers an array of ultra-luxury boutique hotels, fine-dining restaurants serving refined Vietnamese cuisine, and private guided tours through its historic Old Quarter. Our local specialists recommend spending at least three days to fully immerse yourself in its unique atmosphere." }]
+      },
+      {
+        _key: 'h1',
+        _type: 'block',
+        style: 'h3',
+        children: [{ _type: 'span', text: "Exclusive Local Experiences & Activities" }]
+      },
+      {
+        _key: 'b3',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Private Historical Cyclo Ride: Wander through the labyrinth of the 36 guild streets of the Old Quarter, accompanied by a local historian who will share stories of ancient merchant guilds and architectural heritage." }]
+      },
+      {
+        _key: 'b4',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Confucius Heritage: Visit the serene Temple of Literature, Vietnam's first national university built in 1070. Admire the stone steles dedicated to scholars and wander through its peaceful courtyard gardens." }]
+      },
+      {
+        _key: 'b5',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Authentic Coffee Culture: Enjoy Hanoi's famous egg coffee (Ca Phe Trung) at a hidden rooftop café overlooking the mist-shrouded Hoan Kiem Lake, while watching locals practice Tai Chi at sunrise." }]
       }
     ],
     highlights: [
@@ -231,7 +257,33 @@ export const mockDestinations: Destination[] = [
       {
         _key: 'b1',
         _type: 'block',
-        children: [{ _type: 'span', text: "A UNESCO World Heritage Site renowned for its emerald waters and thousands of towering limestone islands topped by rainforests." }]
+        children: [{ _type: 'span', text: "Ha Long Bay, a UNESCO World Heritage Site in northeast Vietnam, is renowned for its emerald waters and thousands of towering limestone karsts topped by rainforests. Junk boat tours and sea kayak expeditions take visitors past islands named for their shapes, including Stone Dog and Teapot islets." }]
+      },
+      {
+        _key: 'b2',
+        _type: 'block',
+        children: [{ _type: 'span', text: "For an unforgettable experience, we recommend embarking on a luxury 2-night or 3-night cruise on a boutique vessel. This allows you to sail deeper into the less-visited Bai Tu Long Bay or Lan Ha Bay, where the water is pristine and the scenery is peaceful." }]
+      },
+      {
+        _key: 'h1',
+        _type: 'block',
+        style: 'h3',
+        children: [{ _type: 'span', text: "Signature Bay Activities" }]
+      },
+      {
+        _key: 'b3',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Ultra-Luxury Junk Cruises: Sail on a classic hand-crafted wooden vessel, complete with private balconies, fine-dining restaurants, and sunrise Tai Chi classes on the sundeck." }]
+      },
+      {
+        _key: 'b4',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Lagoon Kayaking: Paddle through Luon Cave, a low-hanging limestone archway, to enter a hidden circular lagoon surrounded by steep vertical cliffs inhabited by wild monkeys." }]
+      },
+      {
+        _key: 'b5',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Panoramic Island Viewpoints: Hike up the stone steps of Ti Top Island to reach the summit pavilion, which offers an iconic 360-degree view of the karst-studded bay." }]
       }
     ],
     highlights: [
@@ -250,7 +302,33 @@ export const mockDestinations: Destination[] = [
       {
         _key: 'b1',
         _type: 'block',
-        children: [{ _type: 'span', text: "Nestled in the Hoang Lien Son mountains, Sapa is famous for its cascading golden rice terraces, ethnic minority cultures, and misty peaks." }]
+        children: [{ _type: 'span', text: "Nestled in the Hoang Lien Son mountains of northwest Vietnam, Sapa is a premier trekking destination famous for its cascading golden rice terraces, misty mountain peaks, and rich cultural diversity. It overlooks the Muong Hoa Valley and stands in the shadow of Fansipan, Indochina's highest peak." }]
+      },
+      {
+        _key: 'b2',
+        _type: 'block',
+        children: [{ _type: 'span', text: "The region is home to several ethnic minority groups, including the Black H'mong and Red Dzao. Traveling with a private local guide is highly recommended, as it supports the community and provides deep cultural insights into local weaving, agricultural traditions, and folklore." }]
+      },
+      {
+        _key: 'h1',
+        _type: 'block',
+        style: 'h3',
+        children: [{ _type: 'span', text: "Top Highland Activities" }]
+      },
+      {
+        _key: 'b3',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Guided Valley Trekking: Walk along narrow dirt tracks through cascading green and golden rice terraces, passing through tribal villages like Cat Cat, Lao Chai, and Ta Van." }]
+      },
+      {
+        _key: 'b4',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Indigenous Homestays: Spend a night in a traditional stilt house with an ethnic minority family, enjoying home-cooked meals and learning about their daily way of life." }]
+      },
+      {
+        _key: 'b5',
+        _type: 'block',
+        children: [{ _type: 'span', text: "• Fansipan Peak: Ascend Indochina's highest peak (3,143m) via a scenic three-cable gondola ride, which glides above the cloud-veiled valleys and rugged pine forests." }]
       }
     ],
     highlights: [

@@ -130,102 +130,6 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </ul>
             </div>
 
-            {/* Featured Tours from Sanity reference */}
-            {featuredTours.length > 0 && (
-              <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
-                  Signature Land Tours
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {featuredTours.map((it) => (
-                    <div key={it._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
-                      {it.gallery?.[0] && (
-                        <div className="relative h-48 overflow-hidden">
-                          <Image
-                            src={it.gallery[0]}
-                            alt={it.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      )}
-                      <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-white group-hover:text-gold transition-colors">
-                          {it.title}
-                        </h4>
-                        <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-paper/70 font-semibold">{it.duration} Days</span>
-                          <Link
-                            href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
-                            className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1"
-                          >
-                            <span>Explore Trip</span>
-                            <span>→</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Cruises for this destination */}
-            {cruises.length > 0 && (
-              <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
-                  Luxury Cruises
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {cruises.map((cruise) => (
-                    <div key={cruise._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
-                      {cruise.mainImage && (
-                        <div className="relative h-48 overflow-hidden">
-                          <Image src={cruise.mainImage} alt={cruise.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                        </div>
-                      )}
-                      <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <h4 className="font-serif text-base font-medium text-white group-hover:text-gold transition-colors">{cruise.title}</h4>
-                        <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
-                          <span className="text-xs text-paper/70 font-semibold">{cruise.duration}</span>
-                          <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-semibold text-gold hover:underline flex items-center space-x-1">
-                            <span>View Cruise</span><span>→</span>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Travel Guides for this destination */}
-            {guides.length > 0 && (
-              <div className="space-y-8">
-                <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
-                  Travel Guides & Articles
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {guides.map((guide) => (
-                    <Link
-                      key={guide._id}
-                      href={`/destinations/${slug}/blog/${guide.slug?.current || ''}`}
-                      className="group bg-jade-deep border border-jade-deep overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
-                    >
-                      {guide.mainImage && (
-                        <div className="relative h-40 overflow-hidden">
-                          <Image src={guide.mainImage} alt={guide.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                        </div>
-                      )}
-                      <div className="p-5 space-y-2">
-                        <span className="text-[10px] uppercase tracking-widest text-gold font-semibold">Travel Guide</span>
-                        <h4 className="font-serif text-sm font-medium text-white group-hover:text-gold transition-colors">{guide.title}</h4>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Right Column: CTA Panel */}
@@ -256,7 +160,164 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               </p>
             </div>
           </div>
+        </div>
 
+        {/* ─── FULL-WIDTH BOTTOM SECTIONS ─── */}
+        <div className="mt-24 space-y-24 border-t border-jade-deep/20 pt-16">
+          
+          {/* Featured Tours */}
+          {featuredTours.length > 0 && (
+            <div className="space-y-8">
+              <div className="text-center max-w-xl mx-auto space-y-3 mb-10">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-gold block">Bespoke Journeys</span>
+                <h2 className="font-serif text-3xl md:text-4xl text-ink font-medium">
+                  Signature Tours in {destination.name}
+                </h2>
+                <div className="h-[1px] w-12 bg-gold mx-auto" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {featuredTours.map((it) => (
+                  <div key={it._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                    {it.gallery?.[0] && (
+                      <div className="relative h-56 overflow-hidden">
+                        <Image
+                          src={it.gallery[0]}
+                          alt={it.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6 flex-grow flex flex-col justify-between space-y-6">
+                      <div className="space-y-2">
+                        <span className="text-[9px] uppercase tracking-widest text-gold font-semibold">Private Guided Tour</span>
+                        <h4 className="font-serif text-lg font-medium text-white group-hover:text-gold transition-colors leading-snug">
+                          {it.title}
+                        </h4>
+                        <p className="text-xs text-paper/70 font-light line-clamp-3">
+                          {it.intro}
+                        </p>
+                      </div>
+                      <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
+                        <span className="text-xs text-paper/70 font-semibold">{it.duration} Days</span>
+                        <Link
+                          href={`/destinations/${slug}/tours/${it.slug?.current || ''}`}
+                          className="text-xs font-bold text-gold hover:underline flex items-center space-x-1.5 uppercase tracking-wider"
+                        >
+                          <span>Explore Trip</span>
+                          <span>→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Cruises */}
+          {cruises.length > 0 && (
+            <div className="space-y-8">
+              <div className="text-center max-w-xl mx-auto space-y-3 mb-10">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-gold block">Water Expeditions</span>
+                <h2 className="font-serif text-3xl md:text-4xl text-ink font-medium">
+                  Luxury Cruises
+                </h2>
+                <div className="h-[1px] w-12 bg-gold mx-auto" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {cruises.map((cruise) => (
+                  <div key={cruise._id} className="bg-jade-deep border border-jade-deep overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300">
+                    {cruise.mainImage && (
+                      <div className="relative h-56 overflow-hidden">
+                        <Image src={cruise.mainImage} alt={cruise.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    )}
+                    <div className="p-6 flex-grow flex flex-col justify-between space-y-6">
+                      <div className="space-y-2">
+                        <span className="text-[9px] uppercase tracking-widest text-gold font-semibold">Bespoke Cruise</span>
+                        <h4 className="font-serif text-lg font-medium text-white group-hover:text-gold transition-colors leading-snug">{cruise.title}</h4>
+                        <p className="text-xs text-paper/70 font-light line-clamp-3">
+                          Experience {destination.name} from the water with premium cabin amenities, dining, and custom shore excursions.
+                        </p>
+                      </div>
+                      <div className="flex justify-between items-center pt-4 border-t border-luxury-slate/50">
+                        <span className="text-xs text-paper/70 font-semibold">{cruise.duration}</span>
+                        <Link href={`/destinations/${slug}/cruises/${cruise.slug?.current || ''}`} className="text-xs font-bold text-gold hover:underline flex items-center space-x-1.5 uppercase tracking-wider">
+                          <span>View Cruise</span><span>→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Travel Guides */}
+          {guides.length > 0 && (
+            <div className="space-y-8">
+              <div className="text-center max-w-xl mx-auto space-y-3 mb-10">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-gold block">Insider Knowledge</span>
+                <h2 className="font-serif text-3xl md:text-4xl text-ink font-medium">
+                  Travel Guides & Articles
+                </h2>
+                <div className="h-[1px] w-12 bg-gold mx-auto" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {guides.map((guide) => (
+                  <Link
+                    key={guide._id}
+                    href={`/destinations/${slug}/blog/${guide.slug?.current || ''}`}
+                    className="group bg-jade-deep border border-jade-deep overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300"
+                  >
+                    {guide.mainImage && (
+                      <div className="relative h-48 overflow-hidden">
+                        <Image src={guide.mainImage} alt={guide.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    )}
+                    <div className="p-6 space-y-3">
+                      <span className="text-[9px] uppercase tracking-widest text-gold font-semibold">Travel Guide</span>
+                      <h4 className="font-serif text-base font-medium text-white group-hover:text-gold transition-colors leading-snug line-clamp-2">{guide.title}</h4>
+                      <p className="text-xs text-paper/60 font-light line-clamp-3">
+                        {guide.content?.[0]?.children?.[0]?.text || 'Read our expert guide to plan your activities and cultural visits in ' + destination.name + '.'}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Massive Request Quote CTA Card */}
+          <div className="bg-jade-deep border border-line p-10 md:p-16 text-center space-y-6 rounded-none shadow-xl relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c5a880_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+            <span className="text-xs uppercase tracking-[0.25em] font-bold text-gold block">
+              Bespoke Expedition Design
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl text-white font-light tracking-wide max-w-2xl mx-auto leading-tight">
+              Ready to design your bespoke journey to {destination.name}?
+            </h2>
+            <p className="text-sm md:text-base text-paper/85 font-light max-w-2xl mx-auto leading-relaxed">
+              Connect with a luxury travel specialist to customize one of our signature itineraries or design a unique route from scratch.
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/enquire"
+                className="px-10 py-4 bg-gold hover:bg-gold-soft text-ink font-bold text-xs tracking-widest uppercase transition-all duration-300 rounded-none shadow-md"
+              >
+                Request Custom Quote
+              </Link>
+              <a
+                href="https://wa.me/84988600388"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-4 border border-gold/40 hover:border-gold text-gold font-bold text-xs tracking-widest uppercase transition-all duration-300 rounded-none bg-black/20"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
       </main>
 
