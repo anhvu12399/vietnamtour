@@ -117,10 +117,10 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-white font-medium">
                 Plan a Luxury Escape
               </h3>
-              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
+              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
                 Stay at {accommodation.name} as part of your tailor-made Vietnam itinerary. Speak to a travel specialist today.
               </p>
               <div className="pt-4 border-t border-luxury-gold/20 space-y-4">
@@ -135,7 +135,7 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
                     href={accommodation.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 border border-luxury-linen text-[#343434] font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-luxury-linen hover:text-luxury-slate"
+                    className="block w-full py-3 border border-luxury-linen text-luxury-linen font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center hover:bg-luxury-linen hover:text-luxury-slate"
                   >
                     Visit Official Site ↗
                   </a>

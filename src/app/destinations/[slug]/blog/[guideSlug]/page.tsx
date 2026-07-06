@@ -204,8 +204,8 @@ export default async function TravelGuidePage({ params }: PageProps) {
           {/* Right sidebar */}
           <div className="space-y-8">
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6">
-              <h3 className="font-serif text-lg text-[#343434] font-medium">Explore {guide.destination?.name}</h3>
-              <p className="text-sm text-[#343434]/70 font-light leading-relaxed">
+              <h3 className="font-serif text-lg text-white font-medium">Explore {guide.destination?.name}</h3>
+              <p className="text-sm text-luxury-linen/80 font-light leading-relaxed">
                 Discover all tours, cruises and travel guides curated for this region.
               </p>
               <Link

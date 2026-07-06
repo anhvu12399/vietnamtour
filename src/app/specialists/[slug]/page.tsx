@@ -103,7 +103,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
                 {specialist.favoriteDestinations.map((dest, idx) => (
                   <span
                     key={idx}
-                    className="text-xs bg-luxury-moss text-[#343434] px-4 py-2 font-medium tracking-wide border border-[#e6e2d6]"
+                    className="text-xs bg-luxury-moss text-white px-4 py-2 font-medium tracking-wide border border-[#e6e2d6]"
                   >
                     {dest}
                   </span>
@@ -118,7 +118,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
               </h3>
               <div className="space-y-6">
                 {specialist.expertTips.map((tip, idx) => (
-                  <div key={idx} className="relative bg-luxury-moss/30 border border-luxury-moss/50 p-6 space-y-3">
+                  <div key={idx} className="relative bg-[#f4efe6] border border-[#e6e2d6] p-6 space-y-3">
                     <span className="absolute -top-3.5 left-4 text-4xl text-luxury-gold font-serif select-none">“</span>
                     <p className="text-sm sm:text-base font-light text-[#343434]/75 italic leading-relaxed pt-2">
                       {tip}

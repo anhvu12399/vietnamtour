@@ -114,14 +114,14 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
 
             {/* Highlights */}
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-white font-medium">
                 Trip Highlights
               </h3>
               <ul className="space-y-4">
                 {itinerary.highlights.map((hl, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <span className="text-luxury-gold font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-[#343434]/75 font-light leading-relaxed">
+                    <span className="text-sm sm:text-base text-luxury-linen/90 font-light leading-relaxed">
                       {hl}
                     </span>
                   </li>
@@ -189,7 +189,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 <span className="text-[10px] uppercase tracking-wider text-luxury-gold font-semibold block">
                   Your Destination Curator
                 </span>
-                <h3 className="font-serif text-lg text-[#343434] font-semibold">
+                <h3 className="font-serif text-lg text-white font-semibold">
                   Plan with {itinerary.specialist.name}
                 </h3>
               </div>
@@ -203,11 +203,11 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 />
               </div>
 
-              <p className="text-xs sm:text-sm text-[#343434]/70 font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-luxury-linen/80 font-light leading-relaxed">
                 Alice has designed this journey based on personal travels. She can adjust any detail to suit your preferences.
               </p>
 
-              <div className="pt-4 border-t border-luxury-slate space-y-4">
+              <div className="pt-4 border-t border-luxury-linen/20 space-y-4">
                 <Link
                   href="/enquire"
                   className="block w-full py-3 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-slate font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
@@ -215,8 +215,8 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                   Request A Quote
                 </Link>
                 <div className="text-xs space-y-1.5 pt-2">
-                  <p className="text-[#545454]">Direct Phone: <span className="font-semibold text-[#343434]">{itinerary.specialist.phone}</span></p>
-                  <p className="text-[#545454]">Email: <span className="font-semibold text-[#343434]">{itinerary.specialist.email}</span></p>
+                  <p className="text-luxury-linen/60">Direct Phone: <span className="font-semibold text-white">{itinerary.specialist.phone}</span></p>
+                  <p className="text-luxury-linen/60">Email: <span className="font-semibold text-white">{itinerary.specialist.email}</span></p>
                 </div>
               </div>
             </div>

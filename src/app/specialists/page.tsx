@@ -58,16 +58,16 @@ export default async function SpecialistsPage() {
                 </div>
                 <div className="space-y-4 flex-grow">
                   <div>
-                    <h3 className="font-serif text-xl text-[#343434] font-semibold">{spec.name}</h3>
+                    <h3 className="font-serif text-xl text-white font-semibold">{spec.name}</h3>
                     <p className="text-xs text-luxury-gold uppercase tracking-wider font-semibold">{spec.role}</p>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#343434]/75 font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-luxury-linen/80 font-light leading-relaxed">
                     {spec.bio[0]?.children[0]?.text}
                   </p>
-                  <div className="pt-2 text-xs space-y-2 border-t border-luxury-slate/50">
-                    <p className="text-[#545454]">📍 Favourite Area: <span className="font-medium text-[#343434]">{spec.favoriteDestinations.join(', ')}</span></p>
+                  <div className="pt-2 text-xs space-y-2 border-t border-luxury-linen/20">
+                    <p className="text-luxury-linen/60">📍 Favourite Area: <span className="font-medium text-white">{spec.favoriteDestinations.join(', ')}</span></p>
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
-                      <p className="text-[#343434]/70 font-semibold">📞 UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
+                      <p className="text-luxury-linen/80 font-semibold">📞 UK: <a href={`tel:${spec.phone?.replace(/\s+/g, '')}`} className="text-luxury-gold hover:underline">{spec.phone}</a></p>
                       <Link
                         href={`/specialists/${spec.slug?.current || ''}`}
                         className="text-xs font-semibold text-luxury-gold hover:underline flex items-center space-x-1"

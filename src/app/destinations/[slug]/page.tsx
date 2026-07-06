@@ -218,7 +218,7 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                       )}
                       <div className="p-5 space-y-2">
                         <span className="text-[10px] uppercase tracking-widest text-luxury-gold font-semibold">Travel Guide</span>
-                        <h4 className="font-serif text-sm font-medium text-[#343434] group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
+                        <h4 className="font-serif text-sm font-medium text-white group-hover:text-luxury-gold transition-colors">{guide.title}</h4>
                       </div>
                     </Link>
                   ))}
@@ -230,10 +230,10 @@ export default async function DestinationDetailPage({ params }: PageProps) {
           {/* Right Column: CTA Panel */}
           <div className="space-y-8">
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">
+              <h3 className="font-serif text-xl text-white font-medium">
                 Tailormade Travel Planning
               </h3>
-              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
+              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
                 Want to combine {destination.name} with other regions? We will draft an itinerary from scratch tailored to you.
               </p>
               <div className="pt-4 border-t border-luxury-gold/20 space-y-4">

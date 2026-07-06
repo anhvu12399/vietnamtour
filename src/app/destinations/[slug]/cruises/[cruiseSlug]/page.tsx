@@ -107,8 +107,8 @@ export default async function DestinationCruisePage({ params }: PageProps) {
           {/* Right CTA */}
           <div className="space-y-8">
             <div className="bg-luxury-moss p-8 border border-[#e6e2d6] space-y-6 shadow-sm">
-              <h3 className="font-serif text-xl text-[#343434] font-medium">Enquire About This Cruise</h3>
-              <p className="text-sm text-[#343434]/75 font-light leading-relaxed">
+              <h3 className="font-serif text-xl text-white font-medium">Enquire About This Cruise</h3>
+              <p className="text-sm text-luxury-linen/90 font-light leading-relaxed">
                 Our specialists can build a complete luxury itinerary around this cruise experience.
               </p>
               <Link
