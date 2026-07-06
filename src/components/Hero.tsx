@@ -44,7 +44,7 @@ export default function Hero() {
   return (
     <section
       aria-label="Bespoke luxury private Vietnam tours from the UK"
-      className="relative w-full min-h-[90vh] flex items-center bg-[#0e1628] overflow-hidden pt-36 pb-16 px-4 lg:px-12 mt-[80px]"
+      className="relative w-full min-h-[75vh] lg:min-h-[90vh] flex items-center bg-[#0e1628] overflow-hidden pt-28 pb-12 lg:pt-36 lg:pb-16 px-4 lg:px-12 mt-[80px]"
     >
       
       {/* 1. Full-Screen Sharp Background Slideshow (Matches active slide) */}
@@ -83,7 +83,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-light tracking-tight leading-[1.05] text-white">
+            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-tight leading-[1.05] text-white">
               Feel the world <br />
               <span className="font-serif italic text-gold font-light">differently.</span>
             </h1>
@@ -95,13 +95,13 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
               <a
                 href="/enquire"
-                className="bg-gold hover:bg-gold/80 text-white text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase shadow-md"
+                className="bg-gold hover:bg-gold/80 text-white text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase shadow-md animate-fade-in"
               >
                 Design Your Journey
               </a>
               <a
                 href="/itineraries"
-                className="border border-white/30 hover:border-gold text-white hover:text-gold text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase bg-black/10 backdrop-blur-sm"
+                className="border border-white/30 hover:border-gold text-white hover:text-gold text-center font-bold py-4 px-8 rounded-none transition-all duration-300 text-[10px] tracking-widest uppercase bg-black/10 backdrop-blur-sm animate-fade-in"
               >
                 Explore Expeditions
               </a>
@@ -109,7 +109,7 @@ export default function Hero() {
           </div>
 
           {/* Right Side: Sharp Indochine Archway Slideshow & Floating Card */}
-          <div className="lg:col-span-6 relative w-full flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div className="lg:col-span-6 relative w-full flex justify-center lg:justify-end mt-8 lg:mt-0 hidden lg:flex">
             {/* Sharp Arched Image Container */}
             <div className="relative w-full max-w-[380px] aspect-[3/4] rounded-t-full overflow-hidden shadow-2xl border border-gold/25 z-10 bg-[#0e1628]/40">
               {slides.map((slide, idx) => (

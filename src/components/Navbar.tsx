@@ -806,12 +806,12 @@ export default function Navbar() {
 
       {/* ── MOBILE ACCORDION OVERLAY MENU ── */}
       <div 
-        className={`fixed inset-0 z-40 bg-paper-dim text-ink transition-all duration-500 ease-in-out flex flex-col justify-start px-8 pb-12 pt-28 md:hidden overflow-y-auto ${
+        className={`fixed inset-0 z-40 bg-ink text-paper transition-all duration-500 ease-in-out flex flex-col justify-start px-8 pb-12 pt-28 md:hidden overflow-y-auto ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         <div className="space-y-6 max-w-md w-full mx-auto">
-          <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-copper block">
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold-soft block">
             Where will your journey lead?
           </span>
           
@@ -821,10 +821,10 @@ export default function Navbar() {
             <div>
               <button 
                 onClick={() => toggleMobileExpanded('vietnam-tours')}
-                className="w-full text-left font-serif text-2xl text-ink hover:text-copper flex items-center justify-between py-1 focus:outline-none cursor-pointer"
+                className="w-full text-left font-serif text-2xl text-paper hover:text-gold flex items-center justify-between py-1 focus:outline-none cursor-pointer"
               >
                 <span>VIETNAM TOURS</span>
-                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'vietnam-tours' ? 'rotate-90 text-copper' : 'text-ink/50'}`}>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'vietnam-tours' ? 'rotate-90 text-gold' : 'text-paper-dim/50'}`}>
                   &gt;
                 </span>
               </button>
@@ -832,11 +832,11 @@ export default function Navbar() {
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
                 mobileExpanded === 'vietnam-tours' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/itineraries" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Vietnam Tours</Link>
-                <Link href="/itineraries?category=bike" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Bike Tours</Link>
-                <Link href="/itineraries?category=culinary" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Culinary Tours</Link>
-                <Link href="/itineraries?category=luxury" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Luxury Tours</Link>
-                <Link href="/destinations" onClick={() => setIsOpen(false)} className="block text-xs uppercase tracking-widest text-copper font-bold pt-1 hover:underline">All Destinations A-Z</Link>
+                <Link href="/itineraries" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Vietnam Tours</Link>
+                <Link href="/itineraries?category=bike" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Bike Tours</Link>
+                <Link href="/itineraries?category=culinary" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Culinary Tours</Link>
+                <Link href="/itineraries?category=luxury" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Luxury Tours</Link>
+                <Link href="/destinations" onClick={() => setIsOpen(false)} className="block text-xs uppercase tracking-widest text-gold-soft font-bold pt-1 hover:underline">All Destinations A-Z</Link>
               </div>
             </div>
 
@@ -844,10 +844,10 @@ export default function Navbar() {
             <div>
               <button 
                 onClick={() => toggleMobileExpanded('trip-ideas')}
-                className="w-full text-left font-serif text-2xl text-ink hover:text-copper flex items-center justify-between py-1 focus:outline-none cursor-pointer"
+                className="w-full text-left font-serif text-2xl text-paper hover:text-gold flex items-center justify-between py-1 focus:outline-none cursor-pointer"
               >
                 <span>TRIP IDEAS</span>
-                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'trip-ideas' ? 'rotate-90 text-copper' : 'text-ink/50'}`}>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'trip-ideas' ? 'rotate-90 text-gold' : 'text-paper-dim/50'}`}>
                   &gt;
                 </span>
               </button>
@@ -855,12 +855,12 @@ export default function Navbar() {
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
                 mobileExpanded === 'trip-ideas' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/trip-ideas" onClick={() => setIsOpen(false)} className="block text-sm text-copper font-bold py-1">All Trip Ideas &rarr;</Link>
-                <Link href="/trip-ideas/vietnam-culinary-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Culinary Tours</Link>
-                <Link href="/trip-ideas/bike-and-boat-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Bike & Boat Tours</Link>
-                <Link href="/trip-ideas/motorcycling-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Motorcycling Tours</Link>
-                <Link href="/trip-ideas/classic-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Classic Tours</Link>
-                <Link href="/ideas-by-month" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper italic">Best Time / Month Ideas &rarr;</Link>
+                <Link href="/trip-ideas" onClick={() => setIsOpen(false)} className="block text-sm text-gold-soft font-bold py-1 hover:underline">All Trip Ideas &rarr;</Link>
+                <Link href="/trip-ideas/vietnam-culinary-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Culinary Tours</Link>
+                <Link href="/trip-ideas/bike-and-boat-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Bike & Boat Tours</Link>
+                <Link href="/trip-ideas/motorcycling-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Motorcycling Tours</Link>
+                <Link href="/trip-ideas/classic-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Classic Tours</Link>
+                <Link href="/ideas-by-month" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold italic">Best Time / Month Ideas &rarr;</Link>
               </div>
             </div>
 
@@ -868,10 +868,10 @@ export default function Navbar() {
             <div>
               <button 
                 onClick={() => toggleMobileExpanded('inspirations')}
-                className="w-full text-left font-serif text-2xl text-ink hover:text-copper flex items-center justify-between py-1 focus:outline-none cursor-pointer"
+                className="w-full text-left font-serif text-2xl text-paper hover:text-gold flex items-center justify-between py-1 focus:outline-none cursor-pointer"
               >
                 <span>INSPIRATIONS</span>
-                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'inspirations' ? 'rotate-90 text-copper' : 'text-ink/50'}`}>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'inspirations' ? 'rotate-90 text-gold' : 'text-paper-dim/50'}`}>
                   &gt;
                 </span>
               </button>
@@ -879,11 +879,11 @@ export default function Navbar() {
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
                 mobileExpanded === 'inspirations' ? 'max-h-[350px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/inspirations" onClick={() => setIsOpen(false)} className="block text-sm text-copper font-bold py-1">All Inspirations &rarr;</Link>
-                <Link href="/inspirations/luxury-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Luxury Tours</Link>
-                <Link href="/inspirations/adventure-off-beaten-track" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Adventure</Link>
-                <Link href="/inspirations/family-tours" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Family Tours</Link>
-                <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Travel Journal</Link>
+                <Link href="/inspirations" onClick={() => setIsOpen(false)} className="block text-sm text-gold-soft font-bold py-1 hover:underline">All Inspirations &rarr;</Link>
+                <Link href="/inspirations/luxury-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Luxury Tours</Link>
+                <Link href="/inspirations/adventure-off-beaten-track" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Adventure</Link>
+                <Link href="/inspirations/family-tours" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Family Tours</Link>
+                <Link href="/travel-guides" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Travel Journal</Link>
               </div>
             </div>
 
@@ -892,7 +892,7 @@ export default function Navbar() {
               <Link 
                 href="/enquire" 
                 onClick={() => setIsOpen(false)}
-                className="block text-left font-serif text-2xl text-ink hover:text-copper py-1 font-semibold"
+                className="block text-left font-serif text-2xl text-paper hover:text-gold py-1 font-semibold"
               >
                 TAILOR-MADE
               </Link>
@@ -902,10 +902,10 @@ export default function Navbar() {
             <div>
               <button 
                 onClick={() => toggleMobileExpanded('about-us')}
-                className="w-full text-left font-serif text-2xl text-ink hover:text-copper flex items-center justify-between py-1 focus:outline-none cursor-pointer"
+                className="w-full text-left font-serif text-2xl text-paper hover:text-gold flex items-center justify-between py-1 focus:outline-none cursor-pointer"
               >
                 <span>ABOUT US</span>
-                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'about-us' ? 'rotate-90 text-copper' : 'text-ink/50'}`}>
+                <span className={`text-base transition-transform duration-300 ${mobileExpanded === 'about-us' ? 'rotate-90 text-gold' : 'text-paper-dim/50'}`}>
                   &gt;
                 </span>
               </button>
@@ -913,9 +913,9 @@ export default function Navbar() {
               <div className={`overflow-hidden transition-all duration-300 pl-4 ${
                 mobileExpanded === 'about-us' ? 'max-h-[250px] opacity-100 mt-2 space-y-2' : 'max-h-0 opacity-0 pointer-events-none'
               }`}>
-                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Who We Are</Link>
-                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Meet Our Specialists</Link>
-                <Link href="/enquire" onClick={() => setIsOpen(false)} className="block text-sm text-ink/80 py-1 hover:text-copper">Contact Us</Link>
+                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Who We Are</Link>
+                <Link href="/specialists" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Meet Our Specialists</Link>
+                <Link href="/enquire" onClick={() => setIsOpen(false)} className="block text-sm text-paper-dim/90 py-1 hover:text-gold">Contact Us</Link>
               </div>
             </div>
 
@@ -923,22 +923,22 @@ export default function Navbar() {
         </div>
 
         {/* Contact Details (Mobile only, shown at bottom) */}
-        <div className="mt-12 pt-8 border-t border-slate-200 space-y-4 max-w-md w-full mx-auto pb-6">
+        <div className="mt-12 pt-8 border-t border-luxury-linen/10 space-y-4 max-w-md w-full mx-auto pb-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <span className="text-[9px] uppercase tracking-widest text-copper font-bold block mb-1">Phone</span>
-              <a href="tel:+84988600388" className="text-xs text-ink block font-semibold hover:text-copper">
+              <span className="text-[9px] uppercase tracking-widest text-gold-soft font-bold block mb-1">Phone</span>
+              <a href="tel:+84988600388" className="text-xs text-paper block font-semibold hover:text-gold">
                 +84 988600388
               </a>
             </div>
             <div>
-              <span className="text-[9px] uppercase tracking-widest text-copper font-bold block mb-1">Email</span>
-              <a href="mailto:inspire@vietnamtour.co.uk" className="text-xs text-ink block font-semibold truncate hover:text-copper">
+              <span className="text-[9px] uppercase tracking-widest text-gold-soft font-bold block mb-1">Email</span>
+              <a href="mailto:inspire@vietnamtour.co.uk" className="text-xs text-paper block font-semibold truncate hover:text-gold">
                 inspire@vietnamtour.co.uk
               </a>
             </div>
           </div>
-          <div className="text-[9px] tracking-widest text-ink/50 font-light">
+          <div className="text-[9px] tracking-widest text-paper-dim/40 font-light">
             © {new Date().getFullYear()} Vietnam Tour. All rights reserved.
           </div>
         </div>
