@@ -21,8 +21,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Plunge Pool', 'Personal Butler Service', 'Hilltop Infinity Pool', 'Private Beach Club', 'World-Class Spa Pavilions'],
     gallery: [
-      '/images/vietnamtour_amanoi_villa.png',
-      '/images/beach_night.png'
+      '/images/hotel_amanoi.png'
     ],
     websiteUrl: 'https://www.aman.com/resorts/amanoi'
   },
@@ -46,8 +45,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Overwater & Hilltop Villas', 'Wine Cave Dining', 'Pristine Coral Reef Access', 'Award-winning Wellness Spa', 'Eco-friendly Sustainability Philosophy'],
     gallery: [
-      '/images/vietnamtour_cave_dining.png',
-      '/images/halong_night.png'
+      '/images/hotel_six_senses.png'
     ],
     websiteUrl: 'https://www.sixsenses.com/en/resorts/ninh-van-bay'
   },
@@ -71,8 +69,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Historic French-Colonial Wing', 'Michelin-selected Restaurant', 'Bespoke Sommelier Service', 'Heated Outdoor Pool', 'Private Historical Bunker Tour'],
     gallery: [
-      '/images/vietnamtour_hanoi_colonial.png',
-      '/images/sapa_night.png'
+      '/images/hotel_metropole.png'
     ],
     websiteUrl: 'https://all.accor.com/hotel/1555/index.en.shtml'
   },
@@ -96,10 +93,57 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Lagoon Villas', 'Ocean View Sky Pools', 'Omakase & Fine Dining', 'Private Luxury Catamaran', 'Interactive Kids Club'],
     gallery: [
-      '/images/vietnamtour_phu_quoc_beach.png',
-      '/images/beach_night.png'
+      '/images/hotel_regent.png'
     ],
     websiteUrl: 'https://phuquoc.regenthotels.com'
+  },
+  {
+    _id: 'accom-5',
+    name: 'Four Seasons Resort The Nam Hai',
+    slug: { current: 'four-seasons-the-nam-hai-hoi-an' },
+    location: 'Ha My Beach, Hoi An',
+    rating: '5-Star Ultra-Luxury',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: 'A luxurious beachfront oasis along the pristine Ha My Beach, Four Seasons Resort The Nam Hai offers a seamless portal to three UNESCO World Heritage sites. The resort features elegant pool villas, tranquil infinity pools, and a world-class spa floating on a lotus-filled lagoon.'
+          }
+        ]
+      }
+    ],
+    features: ['Private Beachfront Villas', 'Three Tiered Infinity Pools', 'Heart of the Earth Spa', 'Michelin-Caliber Dining', 'Bespoke Cooking Academy'],
+    gallery: [
+      '/images/hotel_nam_hai.png'
+    ],
+    websiteUrl: 'https://www.fourseasons.com/hoian/'
+  },
+  {
+    _id: 'accom-6',
+    name: 'Capella Hanoi',
+    slug: { current: 'capella-hanoi' },
+    location: 'Hoan Kiem, Hanoi',
+    rating: '5-Star Boutique Luxury',
+    description: [
+      {
+        _key: 'b1',
+        _type: 'block',
+        children: [
+          {
+            _type: 'span',
+            text: 'Located just steps from the iconic Hanoi Opera House, Capella Hanoi is a boutique masterpiece designed by Bill Bensley. Celebrating the glamorous opera era of the 1920s, the hotel features individual suites themed after opera legends, a Michelin-starred restaurant, and an opulent indoor pool.'
+          }
+        ]
+      }
+    ],
+    features: ['Bill Bensley Art-Deco Suites', 'Michelin-Starred Hibana Restaurant', 'Auriga Spa & Royal Pool', 'Capella Culturist Service', 'Historical Opera Memorabilia'],
+    gallery: [
+      '/images/hotel_capella.png'
+    ],
+    websiteUrl: 'https://capellahotels.com/en/capella-hanoi'
   }
 ];
 
