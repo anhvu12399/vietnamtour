@@ -1026,7 +1026,7 @@ export const mockItineraries: Itinerary[] = [
       "Cruising the Mekong Delta and uncovering the hidden historical spots of Saigon."
     ],
     gallery: [
-      "/images/vietnamtour_phu_quoc_beach.png",
+      "/images/dest_sapa_highland.png",
       "/images/vietnamtour_mekong_sampan.png",
       "/images/vietnamtour_cave_dining.png"
     ],

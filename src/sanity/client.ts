@@ -164,10 +164,10 @@ export async function getItineraries(): Promise<Itinerary[]> {
   if (!useMock) {
     const query = `*[_type == "itinerary"]{
       ...,
-      "gallery": gallery[].asset->url,
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery),
       accommodations[]->{
         ...,
-        "gallery": gallery[].asset->url
+        "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
       },
       specialist->{
         ...,
@@ -208,10 +208,10 @@ export async function getItineraryBySlug(slug: string): Promise<Itinerary | null
   if (!useMock) {
     const query = `*[_type == "itinerary" && slug.current == $slug][0]{
       ...,
-      "gallery": gallery[].asset->url,
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery),
       accommodations[]->{
         ...,
-        "gallery": gallery[].asset->url
+        "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
       },
       specialist->{
         ...,
@@ -306,7 +306,7 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
     "image": coalesce(image.asset->url, image),
     featuredTours[]->{
       _id, title, slug, duration, priceFrom, intro, featured,
-      "gallery": gallery[].asset->url
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
     },
     "seo": seo{
       metaTitle, metaDescription, keywords,
@@ -648,7 +648,7 @@ export async function getToursLanding(): Promise<ToursLandingData | null> {
     recommendedToursHeading,
     recommendedTours[]->{
       _id, title, slug, duration, priceFrom, intro,
-      "gallery": gallery[].asset->url
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
     },
     faqLabel,
     faqHeading,
@@ -834,7 +834,7 @@ export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | n
     },
     relatedTours[]->{
       _id, title, slug, duration, priceFrom, intro,
-      "gallery": gallery[].asset->url
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
     },
     ctaHeading, ctaBody,
     "seo": seo{
@@ -878,7 +878,7 @@ export async function getThingToDoBySlugFromSanity(slug: string): Promise<any | 
     },
     recommendedTours[]->{
       _id, title, slug, duration, priceFrom, intro,
-      "gallery": gallery[].asset->url
+      "gallery": select(defined(gallery[0].asset) => gallery[].asset->url, gallery)
     },
     ctaHeading, ctaBody,
     "seo": seo{

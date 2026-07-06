@@ -5,7 +5,11 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
+import ItineraryMap from '@/components/ItineraryMapWrapper';
+import RouteStrip from '@/components/RouteStrip';
+import TimelineInteractive from '@/components/TimelineInteractive';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
+import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetailsBuilder';
 
 export const revalidate = 60;
 
@@ -48,6 +52,10 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
   if (!itinerary) {
     notFound();
   }
+
+  // Build route points and Day-by-Day timeline dynamically
+  const routePoints = getRoutePoints(itinerary);
+  const timelineDays = generateDayByDayTimeline(itinerary);
 
   return (
     <>
@@ -99,11 +107,11 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
       {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Left Columns - Description, Highlights, Timeline */}
+          {/* Left Columns - Description, Highlights, Map, Timeline, Tips */}
           <div className="lg:col-span-2 space-y-16">
             
             {/* Overview */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-left">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 Overview
               </h2>
@@ -113,7 +121,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             </div>
 
             {/* Highlights */}
-            <div className="bg-jade-deep p-8 border border-line space-y-6">
+            <div className="bg-jade-deep p-8 border border-line space-y-6 text-left">
               <h3 className="font-serif text-xl text-white font-medium">
                 Trip Highlights
               </h3>
@@ -129,56 +137,54 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
               </ul>
             </div>
 
+            {/* Interactive Journey Map */}
+            <div className="space-y-6 text-left">
+              <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
+                Interactive Journey Map
+              </h2>
+              <ItineraryMap points={routePoints} />
+              <RouteStrip points={routePoints} />
+            </div>
+
             {/* Day-by-Day Timeline */}
             <div className="space-y-12">
-              <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
+              <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4 text-left">
                 Day-by-Day Itinerary
               </h2>
               
-              <div className="relative pl-6 sm:pl-8 border-l border-gold/40 space-y-16">
-                {itinerary.timeline.map((item, idx) => (
-                  <div key={idx} className="relative space-y-4">
-                    {/* Circle Marker */}
-                    <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 bg-gold border-2 border-luxury-slate rounded-full" />
-                    
-                    {/* Header */}
-                    <div className="space-y-1">
-                      <span className="text-xs uppercase tracking-widest text-gold font-semibold block">
-                        {item.dayRange}
-                      </span>
-                      <h3 className="font-serif text-lg sm:text-xl text-ink font-medium">
-                        {item.title}
-                      </h3>
-                    </div>
+              <TimelineInteractive timelineDays={timelineDays} />
+            </div>
 
-                    {/* Body */}
-                    <p className="text-sm sm:text-base font-light text-ink/75 leading-relaxed">
-                      {item.description?.[0]?.children?.[0]?.text || ''}
-                    </p>
+            {/* Essential Expedition Tips & Info */}
+            <div className="border border-jade-deep p-8 space-y-8 bg-paper-dim text-left">
+              <h3 className="font-serif text-2xl text-ink font-semibold border-b border-line pb-3">
+                📍 Expedition Planning & Practical Info
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm leading-relaxed text-ink-soft">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-ink uppercase tracking-wider text-[11px]">Best Time to Travel</h4>
+                  <p className="font-light">
+                    The best season for this route is <strong>October to April</strong>. The skies are generally clear and temperatures are comfortable.
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  <h4 className="font-bold text-ink uppercase tracking-wider text-[11px]">What to Pack</h4>
+                  <p className="font-light">
+                    Pack lightweight linen clothing for walking. Smart casual attire is recommended for dining at luxury hotels. Don't forget sun protection and comfortable walking shoes.
+                  </p>
+                </div>
 
-                    {/* Accommodation Tag */}
-                    {item.accommodation && (
-                      <div className="pt-2">
-                        {typeof item.accommodation === 'object' ? (
-                          <div className="inline-flex items-center space-x-3 bg-jade-deep/50 border border-jade-deep/60 p-3 px-4">
-                            <span className="text-[10px] uppercase tracking-wider text-ink-soft">Stay:</span>
-                            <span className="text-xs font-semibold text-ink">{item.accommodation.name}</span>
-                            <span className="text-[10px] bg-gold/20 text-ink px-2 py-0.5 rounded-none font-medium">
-                              {item.accommodation.rating}
-                            </span>
-                          </div>
-                        ) : (
-                          <div className="inline-flex items-center space-x-2 bg-jade-deep/50 border border-jade-deep/60 p-2 px-3 text-xs">
-                            <span className="text-[10px] uppercase tracking-wider text-ink-soft">Stay:</span>
-                            <span className="font-medium text-ink">{item.accommodation}</span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                <div className="space-y-2">
+                  <h4 className="font-bold text-ink uppercase tracking-wider text-[11px]">Practical Info</h4>
+                  <p className="font-light">
+                    UK passport holders require a visa for stays exceeding 45 days. Local currency is VND, though credit cards are widely accepted at all pre-selected luxury establishments.
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
 
           {/* Right Column - Specialist Sidebar & Quick Actions */}
@@ -224,7 +230,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             </div>
 
             {/* Quick Facts */}
-            <div className="border border-jade-deep p-8 space-y-4">
+            <div className="border border-jade-deep p-8 space-y-4 text-left">
               <h4 className="font-serif text-sm tracking-widest uppercase text-ink font-semibold">
                 Trip Details
               </h4>
@@ -241,7 +247,6 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                   <span className="text-ink-soft">Best Season:</span>
                   <span className="font-medium">Oct to Apr</span>
                 </li>
-
               </ul>
             </div>
           </div>
