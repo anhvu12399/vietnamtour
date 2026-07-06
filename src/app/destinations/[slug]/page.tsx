@@ -10,6 +10,7 @@ import {
   getTravelGuidesByDestination,
   getCruisesByDestination,
 } from '@/sanity/client';
+import { PortableText } from '@portabletext/react';
 
 export const revalidate = 60;
 
@@ -107,9 +108,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 Region Overview
               </h2>
-              <p className="text-base font-light text-ink-soft leading-relaxed">
-                {destination.description?.[0]?.children?.[0]?.text || ''}
-              </p>
+              <div className="text-base font-light text-ink-soft leading-relaxed space-y-4 [&>p]:mb-4 [&>h3]:font-serif [&>h3]:text-xl [&>h3]:text-ink [&>h3]:mt-8 [&>h3]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ul]:mb-4">
+                <PortableText value={destination.description || []} />
+              </div>
             </div>
 
             {/* Highlights */}

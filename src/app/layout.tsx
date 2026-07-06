@@ -191,7 +191,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-paper text-ink">
+      <body className="min-h-full flex flex-col bg-paper text-ink font-medium">
         {children}
         <WhatsAppFloating />
         <Analytics />

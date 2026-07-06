@@ -195,16 +195,18 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
               </div>
 
               <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto border-2 border-line">
-                <Image
-                  src={itinerary.specialist.image}
-                  alt={itinerary.specialist.name}
-                  fill
-                  className="object-cover"
-                />
+                {itinerary.specialist?.image && (
+                  <Image
+                    src={typeof itinerary.specialist.image === 'string' ? itinerary.specialist.image : itinerary.specialist.image}
+                    alt={itinerary.specialist.name}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </div>
 
               <p className="text-xs sm:text-sm text-paper/80 font-light leading-relaxed">
-                Alice has designed this journey based on personal travels. She can adjust any detail to suit your preferences.
+                {itinerary.specialist?.name?.split(' ')[0] || 'Our specialist'} has designed this journey based on personal travels. They can adjust any detail to suit your preferences.
               </p>
 
               <div className="pt-4 border-t border-luxury-linen/20 space-y-4">
