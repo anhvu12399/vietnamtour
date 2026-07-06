@@ -310,7 +310,7 @@ export default function Navbar() {
         <div className={`flex md:hidden w-full h-20 px-6 items-center justify-between relative z-50 transition-all duration-300 ${
           isTransparent 
             ? 'bg-transparent border-b border-white/10 text-white' 
-            : 'bg-paper-dim text-ink border-b border-[#2A2D2B]/15'
+            : 'bg-ink text-paper border-b border-white/5'
         }`}>
           {/* Logo (Left) */}
           <div className="flex-shrink-0">
@@ -337,7 +337,7 @@ export default function Navbar() {
           {/* Actions (Right) */}
           <div className="flex items-center space-x-4">
             {/* Quick Phone Call Icon */}
-            <a href="tel:+84988600388" className={`transition-colors duration-200 ${isTransparent ? 'text-white/80 hover:text-white' : 'text-ink/80 hover:text-copper'}`} aria-label="Call Us">
+            <a href="tel:+84988600388" className={`transition-colors duration-200 ${isTransparent ? 'text-white/80 hover:text-white' : 'text-paper-dim/80 hover:text-white'}`} aria-label="Call Us">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -350,7 +350,7 @@ export default function Navbar() {
               className={`${
                 isTransparent 
                   ? 'bg-white/95 text-slate-900 hover:bg-copper hover:text-ink' 
-                  : 'bg-ink text-paper-dim hover:bg-copper hover:text-ink'
+                  : 'bg-gold text-ink hover:bg-gold-soft hover:text-ink'
               } transition-all duration-300 font-sans text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-2 rounded-none`}
             >
               QUOTE
