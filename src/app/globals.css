@@ -169,3 +169,12 @@
     @apply font-sans;
   }
 }
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.05); }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 3s infinite ease-in-out;
+}

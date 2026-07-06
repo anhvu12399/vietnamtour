@@ -315,8 +315,8 @@ export default async function TravelGuidesPage() {
                       </div>
 
                       {/* Card Footer */}
-                      <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-luxury-slate/50">
-                        <span className="text-ink/70 group-hover:text-gold transition-colors">
+                      <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-paper-dim">
+                        <span className="text-ink/80 group-hover:text-copper transition-colors">
                           Read guide
                         </span>
                         <svg className="w-3.5 h-3.5 text-copper group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

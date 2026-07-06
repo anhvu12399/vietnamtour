@@ -314,10 +314,10 @@ export default async function InspirationSlugPage({ params }: PageProps) {
                     </div>
 
                     {/* Card Actions Footer */}
-                    <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold select-none bg-luxury-slate/50">
+                    <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold select-none bg-paper-dim">
                       <Link 
                         href={`/itineraries/${tour.slug?.current || ''}`}
-                        className="text-ink/70 hover:text-copper transition-colors"
+                        className="text-ink/80 hover:text-copper transition-colors"
                       >
                         View Itinerary
                       </Link>
