@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Manrope, Fraunces, Space_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-manrope",
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  axes: ["opsz"],
   style: ["normal", "italic"],
-  variable: "--font-playfair-display",
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
@@ -171,7 +178,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} h-full antialiased`}
+      className={`${manrope.variable} ${fraunces.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -184,7 +191,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#faf8f5] text-[#343434]">
+      <body className="min-h-full flex flex-col bg-paper text-ink">
         {children}
         <WhatsAppFloating />
         <Analytics />
