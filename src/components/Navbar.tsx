@@ -169,9 +169,9 @@ export default function Navbar() {
                   <Image
                     src="/logo-sun-hat.png"
                     alt="Vietnam Tours Logo"
-                    width={40}
+                    width={64}
                     height={40}
-                    className="w-[40px] h-[40px] shrink-0 object-contain rounded-full border border-gold/20"
+                    className="h-[40px] w-auto shrink-0 object-contain"
                     priority
                   />
                   <span className="flex flex-col leading-none">
@@ -318,9 +318,9 @@ export default function Navbar() {
               <Image
                 src="/logo-sun-hat.png"
                 alt="Vietnam Tours Logo"
-                width={32}
+                width={50}
                 height={32}
-                className="w-[32px] h-[32px] shrink-0 object-contain rounded-full border border-gold/20"
+                className="h-[32px] w-auto shrink-0 object-contain"
                 priority
               />
               <span className="flex flex-col leading-none">
