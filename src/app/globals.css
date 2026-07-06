@@ -45,6 +45,11 @@
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-heading: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-mono: var(--font-space-mono), monospace;
+
+  /* Increase font weights by one step globally for readability */
+  --font-weight-light: 400;
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
   
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
