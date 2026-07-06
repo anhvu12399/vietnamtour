@@ -82,7 +82,7 @@ export default function EnquiryPage() {
     setServerError('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/info@vietnamtours.co.uk', {
+      const response = await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -13,7 +13,7 @@ export default function Footer() {
     if (email.trim()) {
       setIsSubmitting(true);
       try {
-        await fetch("https://formsubmit.co/ajax/info@vietnamtours.co.uk", {
+        await fetch("https://formsubmit.co/ajax/mywaytravelinc@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
