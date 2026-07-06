@@ -83,7 +83,7 @@ export default async function AccommodationsPage() {
                 <div className="relative h-60 sm:h-auto w-full sm:w-56 md:w-64 shrink-0 overflow-hidden">
                   <Image
                     src={acc.gallery[0]}
-                    alt={acc.name}
+                    alt={`${acc.name || 'Luxury hotel'} — five-star hotel in ${acc.location || 'Vietnam'}`}
                     fill
                     className="object-cover"
                     priority={idx < 2}

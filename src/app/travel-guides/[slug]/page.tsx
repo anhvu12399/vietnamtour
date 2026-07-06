@@ -471,7 +471,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
         <section className="relative h-[360px] sm:h-[440px] lg:h-[500px] w-full flex items-center justify-center overflow-hidden">
           <Image
             src={heroImage}
-            alt={post.title}
+            alt={`${post.title || 'Vietnam travel guide'} — expert tips by Vietnam Tours`}
             fill
             className="object-cover brightness-[0.50]"
             priority

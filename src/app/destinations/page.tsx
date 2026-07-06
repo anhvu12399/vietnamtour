@@ -83,7 +83,7 @@ export default async function DestinationsPage() {
                 <div className="absolute inset-0 z-0">
                   <Image
                     src={dest.image}
-                    alt={dest.name}
+                    alt={`${dest.name || 'Vietnam destination'} — luxury places to visit in Vietnam`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-75"
                     priority={idx < 2}

@@ -41,7 +41,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
               <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                 <Image
                   src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
-                  alt={it.title}
+                  alt={`${it.title || 'Vietnam luxury tour'} — bespoke private holiday by Vietnam Tours`}
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                 />
