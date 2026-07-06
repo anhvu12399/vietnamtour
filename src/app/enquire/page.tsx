@@ -516,71 +516,36 @@ export default function EnquiryPage() {
                   </div>
                 </div>
 
-                {/* Trustpilot Box */}
+                {/* TripAdvisor Box */}
                 <div className="bg-white border border-line p-6 text-center space-y-3 shadow-xs">
                   <div className="flex items-center justify-center gap-1.5 text-sm font-sans font-bold text-gray-800">
-                    <span>Excellent</span>
+                    <span>Excellent 4.9/5</span>
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map((s) => (
-                        <div key={s} className="w-4 h-4 bg-[#00b67a] flex items-center justify-center text-white">
-                          <Star className="w-2.5 h-2.5 fill-current" />
+                        <div key={s} className="w-4 h-4 bg-[#34e0a1] rounded-full flex items-center justify-center text-white">
+                          <Star className="w-2.5 h-2.5 fill-current text-white" />
                         </div>
                       ))}
                     </div>
                   </div>
                   <div className="flex items-center justify-center gap-1">
-                    <Star className="w-5 h-5 text-[#00b67a] fill-[#00b67a]" />
-                    <span className="font-bold text-base tracking-tight font-sans text-gray-800">Trustpilot</span>
+                    <span className="font-bold text-base tracking-tight font-sans text-[#00af87]">Tripadvisor</span>
                   </div>
                 </div>
 
                 {/* Trust Badges */}
                 <div className="bg-white border border-line p-6 space-y-6 shadow-xs">
                   <h4 className="text-xs uppercase tracking-widest text-[#0e1628] font-bold text-center border-b border-gray-100 pb-3">
-                    Accredited & Protected
+                    Accredited & Awards
                   </h4>
 
-                  <div className="grid grid-cols-2 gap-4 items-center justify-items-center">
-                    
+                  <div className="flex flex-col items-center justify-center">
                     {/* Condé Nast */}
-                    <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
-                      <Award className="w-6 h-6 text-gold mb-1" />
-                      <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">Condé Nast</span>
-                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">Reader's Choice 2025</span>
+                    <div className="flex flex-col items-center text-center p-4 border border-gray-100 w-full max-w-xs h-28 justify-center">
+                      <Award className="w-8 h-8 text-gold mb-2" />
+                      <span className="text-[11px] font-bold text-[#0e1628] uppercase tracking-wider leading-none">Condé Nast</span>
+                      <span className="text-[8px] text-ink-soft mt-1.5 uppercase tracking-wider">Reader's Choice 2025</span>
                     </div>
-
-                    {/* ATOL */}
-                    <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
-                      <Shield className="w-6 h-6 text-gold mb-1" />
-                      <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">ATOL Protected</span>
-                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">License No. 2471</span>
-                    </div>
-
-                    {/* ABTOT */}
-                    <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center">
-                      <Shield className="w-6 h-6 text-gold mb-1" />
-                      <span className="text-[9px] font-bold text-[#0e1628] uppercase tracking-tighter leading-none">ABTOT Member</span>
-                      <span className="text-[7px] text-ink-soft mt-0.5 uppercase tracking-tighter">Member 5222</span>
-                    </div>
-
-                    {/* IATA */}
-                    <div className="flex flex-col items-center text-center p-2 border border-gray-100 w-full h-24 justify-center relative">
-                      <div className="relative w-12 h-6 mb-1">
-                        <Image
-                          src="/images/iata-26.svg"
-                          alt="IATA Accredited Agency"
-                          fill
-                          className="object-contain grayscale"
-                        />
-                      </div>
-                      <span className="text-[7px] text-ink-soft uppercase tracking-tighter">Code 9123848/6</span>
-                    </div>
-                  </div>
-
-                  {/* British Airways Preferred Partner */}
-                  <div className="p-3 bg-[#f3f4f6]/40 border border-gray-100 text-center flex flex-col items-center justify-center">
-                    <span className="text-[10px] font-bold text-[#0e1628] uppercase tracking-wider">British Airways</span>
-                    <span className="text-[8px] text-ink-soft uppercase tracking-widest mt-0.5">Preferred Partner</span>
                   </div>
                 </div>
               </div>

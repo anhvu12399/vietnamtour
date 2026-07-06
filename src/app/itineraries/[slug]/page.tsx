@@ -239,10 +239,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                   <span className="text-ink-soft">Best Season:</span>
                   <span className="font-medium">Oct to Apr</span>
                 </li>
-                <li className="flex justify-between py-1">
-                  <span className="text-ink-soft">Protection:</span>
-                  <span className="font-medium text-gold">ATOL Protected</span>
-                </li>
+
               </ul>
             </div>
           </div>
