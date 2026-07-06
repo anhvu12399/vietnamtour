@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getAccommodations } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Luxury Hotels & Resorts in Vietnam | Handpicked Accommodation | VietnamTours.co.uk',

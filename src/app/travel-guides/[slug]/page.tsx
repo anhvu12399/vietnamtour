@@ -683,8 +683,8 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                     </div>
 
                     {/* Card footer */}
-                    <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-paper-dim mt-auto">
-                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink/80 hover:text-copper transition-colors">
+                    <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-white mt-auto">
+                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink hover:text-copper transition-colors">
                         View detail
                       </Link>
                       <Link href="/enquire" className="text-copper hover:text-ink transition-colors">
@@ -752,7 +752,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute bottom-4 left-4 bg-luxury-slate/85 border border-line backdrop-blur-[2px] text-ink text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
+                      <div className="absolute bottom-4 left-4 bg-black/60 border border-white/10 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 shadow-sm rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(rp.content)} minutes read</span>
                       </div>

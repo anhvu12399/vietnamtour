@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getDestinations } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Vietnam Destinations | Places to Visit | VietnamTours.co.uk',

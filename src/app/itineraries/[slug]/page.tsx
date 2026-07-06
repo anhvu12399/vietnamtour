@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const itineraries = await getItineraries();

@@ -8,7 +8,7 @@ import CategoriesTabBar from '@/components/CategoriesTabBar';
 import ItinerariesGridInteractive from '@/components/ItinerariesGridInteractive';
 import { getItineraries, getSpecialists, getToursLanding, getPosts } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Vietnam Tours & Itineraries | Luxury Private Holidays | VietnamTours.co.uk',

@@ -337,8 +337,8 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                         </p>
                       )}
                     </div>
-                    <div className="px-5 py-3.5 border-t border-line flex items-center justify-between text-xs font-semibold bg-paper-dim">
-                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink/80 hover:text-copper transition-colors">
+                    <div className="px-5 py-3.5 border-t border-line flex items-center justify-between text-xs font-semibold bg-white">
+                      <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink hover:text-copper transition-colors">
                         View itinerary
                       </Link>
                       <Link href="/enquire" className="text-copper hover:text-ink transition-colors">

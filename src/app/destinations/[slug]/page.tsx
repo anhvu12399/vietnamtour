@@ -11,7 +11,7 @@ import {
   getCruisesByDestination,
 } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const destinations = await getDestinations();

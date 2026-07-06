@@ -237,7 +237,7 @@ export default async function TravelGuidesPage() {
                       <div className="absolute top-5 left-5 bg-gold text-ink text-[9px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm">
                         FEATURED GUIDE
                       </div>
-                      <div className="absolute bottom-5 left-5 bg-luxury-slate/85 border border-line backdrop-blur-[2px] text-ink text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 rounded-sm">
+                      <div className="absolute bottom-5 left-5 bg-black/60 border border-white/10 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 flex items-center gap-1 rounded-sm">
                         <span>🕒</span>
                         <span>{getReadingTime(featuredPost.content)} min read</span>
                       </div>
@@ -293,7 +293,7 @@ export default async function TravelGuidesPage() {
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         />
-                        <div className="absolute bottom-3 left-3 bg-luxury-slate/85 border border-line backdrop-blur-[2px] text-ink text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 flex items-center gap-1 rounded-sm">
+                        <div className="absolute bottom-3 left-3 bg-black/60 border border-white/10 backdrop-blur-[2px] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 flex items-center gap-1 rounded-sm">
                           <span>🕒</span>
                           <span>{getReadingTime(post.content)} min</span>
                         </div>
@@ -315,8 +315,8 @@ export default async function TravelGuidesPage() {
                       </div>
 
                       {/* Card Footer */}
-                      <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-paper-dim">
-                        <span className="text-ink/80 group-hover:text-copper transition-colors">
+                      <div className="px-5 py-4 border-t border-line flex items-center justify-between text-xs font-semibold bg-white">
+                        <span className="text-ink group-hover:text-copper transition-colors">
                           Read guide
                         </span>
                         <svg className="w-3.5 h-3.5 text-copper group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

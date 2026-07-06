@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getSpecialistBySlug, getSpecialists } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const specialists = await getSpecialists();

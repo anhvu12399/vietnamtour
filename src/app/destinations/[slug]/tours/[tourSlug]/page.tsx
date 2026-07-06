@@ -6,7 +6,7 @@
 import { redirect } from 'next/navigation';
 import { getDestinations, getItineraries } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const [destinations, itineraries] = await Promise.all([

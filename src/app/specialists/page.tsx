@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getSpecialists } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Meet Our Vietnam Travel Specialists | VietnamTours.co.uk',

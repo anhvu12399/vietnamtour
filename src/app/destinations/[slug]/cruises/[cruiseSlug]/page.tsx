@@ -10,7 +10,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getCruiseBySlug, getCruisesByDestination, getDestinations } from '@/sanity/client';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const destinations = await getDestinations();
