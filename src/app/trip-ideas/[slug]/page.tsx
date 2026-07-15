@@ -34,15 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = sanityData || getTripIdea(slug);
   if (!data) return {};
 
+  const baseKeywords = ["Vietnam travel ideas", "Vietnam vacation inspiration", "Vietnam tailor-made trips", "Vietnam custom holidays"];
+  const dynamicKeywords = data.seo?.keywords || data.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
-    title: data.metaTitle,
-    description: data.metaDescription,
+    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
+    keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/trip-ideas/${data.slug}`,
+      canonical: `https://www.vietnamtours.co.uk/trip-ideas/${data.slug?.current || data.slug}`,
     },
     openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
+      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
   };

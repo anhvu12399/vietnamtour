@@ -30,17 +30,24 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const data = getThingToDo(slug);
+  const sanityData = await getThingToDoBySlugFromSanity(slug);
+  const data = sanityData || getThingToDo(slug);
   if (!data) return {};
+
+  const baseKeywords = [`Things to do in ${data.title || "Vietnam"}`, `Activities in Vietnam`, "Vietnam experiences", "Vietnam must do", "Vietnam excursions"];
+  const dynamicKeywords = data.seo?.keywords || data.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
-    title: data.metaTitle,
-    description: data.metaDescription,
+    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
+    keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/things-to-do/${data.slug}`,
+      canonical: `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug}`,
     },
     openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
+      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
   };

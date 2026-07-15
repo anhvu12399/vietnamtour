@@ -34,10 +34,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = seo?.metaTitle || `${destination.name} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `Discover the beauty of ${destination.name}. Explore tailor-made luxury tours, travel guides and insider tips with Vietnam Tour UK.`;
 
+  const baseKeywords = [`Visit ${destination.name}`, `${destination.name} luxury travel`, `Best places in ${destination.name}`, "Vietnam luxury tours", "Vietnam private holidays"];
+  const dynamicKeywords = seo?.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
     title,
     description,
-    keywords: seo?.keywords?.join(', '),
+    keywords: mergedKeywords,
     openGraph: {
       title,
       description,
