@@ -61,13 +61,13 @@ async function fetchSanity<T>(query: string, params: Record<string, any> = {}): 
     } catch (error) {
       console.error('sanityFetch failed, falling back to client.fetch:', error);
       if (client) {
-        return await client.fetch(query, params);
+        return await client.fetch(query, params, { next: { revalidate: 60 } });
       }
       throw error;
     }
   }
   if (client) {
-    return await client.fetch(query, params);
+    return await client.fetch(query, params, { next: { revalidate: 60 } });
   }
   throw new Error('Sanity client not configured');
 }

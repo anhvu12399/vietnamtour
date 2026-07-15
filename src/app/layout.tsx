@@ -169,6 +169,7 @@ const jsonLd = {
 };
 
 import WhatsAppFloating from "@/components/WhatsAppFloating";
+import { SanityLive } from "@/sanity/client";
 
 export default function RootLayout({
   children,
@@ -195,6 +196,7 @@ export default function RootLayout({
         {children}
         <WhatsAppFloating />
         <Analytics />
+        <SanityLive />
       </body>
     </html>
   );
