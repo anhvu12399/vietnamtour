@@ -4,7 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { tripIdeasData } from '@/lib/tripIdeasData';
+import { getTripIdeasFromSanity } from '@/sanity/client';
 import type { Metadata } from 'next';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration | VietnamTours.co.uk',
@@ -21,7 +24,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TripIdeasListingPage() {
+export default async function TripIdeasListingPage() {
+  // Try Sanity first, fallback to hardcoded data
+  let items = tripIdeasData;
+  try {
+    const sanityItems = await getTripIdeasFromSanity();
+    if (sanityItems && sanityItems.length > 0) {
+      items = sanityItems;
+    }
+  } catch {
+    // fallback to hardcoded data
+  }
   return (
     <>
       <Navbar />
@@ -75,7 +88,7 @@ export default function TripIdeasListingPage() {
 
           {/* Grid of Trip Ideas */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tripIdeasData.map((item) => (
+            {items.map((item) => (
               <div 
                 key={item.slug} 
                 className="group bg-white border border-line shadow-md hover:shadow-xl hover:border-line transition-all duration-300 flex flex-col h-full rounded-xs overflow-hidden"

@@ -6,6 +6,8 @@ import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getBlogPostsFromSanity } from '@/sanity/client';
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Vietnam Travel Blog | Insider Tips & Stories | VietnamTours.co.uk',
   description: 'Read the latest travel stories, tips, and hidden gems from our local Vietnam specialists. Plan your perfect journey with our insider blog.',

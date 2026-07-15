@@ -8,17 +8,24 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 import { tripIdeasData, getTripIdea, getAllTripSlugs } from '@/lib/tripIdeasData';
-import { getItineraries, getSpecialists, getTripIdeaFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getTripIdeaFromSanity, getTripIdeasFromSanity } from '@/sanity/client';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllTripSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  const hardcodedSlugs = getAllTripSlugs();
+  try {
+    const sanityItems = await getTripIdeasFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((slug) => ({ slug }));
+  } catch {
+    return hardcodedSlugs.map((slug) => ({ slug }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

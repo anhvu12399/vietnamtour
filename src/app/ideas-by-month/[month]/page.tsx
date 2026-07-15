@@ -7,18 +7,25 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ideasByMonthData, getMonthBySlug, getAllMonthSlugs } from '@/lib/ideasByMonthData';
-import { getItineraries, getSpecialists, getMonthGuideFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getMonthGuideFromSanity, getMonthGuidesFromSanity } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ month: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllMonthSlugs();
-  return slugs.map((month) => ({
-    month,
-  }));
+  const hardcodedSlugs = getAllMonthSlugs();
+  try {
+    const sanityItems = await getMonthGuidesFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((month) => ({ month }));
+  } catch {
+    return hardcodedSlugs.map((month) => ({ month }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

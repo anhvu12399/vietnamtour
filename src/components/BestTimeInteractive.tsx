@@ -19,10 +19,15 @@ const monthsList = [
   { slug: 'december', label: 'DEC' },
 ];
 
-export default function BestTimeInteractive() {
+interface BestTimeInteractiveProps {
+  initialMonthData?: any[];
+}
+
+export default function BestTimeInteractive({ initialMonthData }: BestTimeInteractiveProps) {
   const [activeMonthSlug, setActiveMonthSlug] = useState('january');
   
-  const currentMonthData = ideasByMonthData.find(m => m.slug === activeMonthSlug) || ideasByMonthData[0];
+  const items = initialMonthData && initialMonthData.length > 0 ? initialMonthData : ideasByMonthData;
+  const currentMonthData = items.find((m: any) => m.slug === activeMonthSlug) || items[0];
 
   return (
     <section className="py-10 md:py-20 bg-paper border-t border-b border-line">
@@ -82,7 +87,7 @@ export default function BestTimeInteractive() {
                   Key Highlights for {currentMonthData.breadcrumb}:
                 </h4>
                 <ul className="grid sm:grid-cols-2 gap-2 text-xs text-ink-soft font-light">
-                  {currentMonthData.highlights.slice(0, 4).map((hl, index) => (
+                  {currentMonthData.highlights.slice(0, 4).map((hl: any, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <span className="text-copper mt-0.5">•</span>
                       <span>{hl}</span>

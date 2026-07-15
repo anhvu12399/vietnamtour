@@ -7,18 +7,25 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { inspirationsData, getInspiration, getAllInspirationSlugs } from '@/lib/inspirationsData';
-import { getItineraries, getSpecialists, getInspirationFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getInspirationFromSanity, getInspirationsFromSanity } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllInspirationSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  const hardcodedSlugs = getAllInspirationSlugs();
+  try {
+    const sanityItems = await getInspirationsFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((slug) => ({ slug }));
+  } catch {
+    return hardcodedSlugs.map((slug) => ({ slug }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

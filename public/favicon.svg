@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#121816" rx="4"/>
-  <!-- Calligraphic V using path -->
-  <text x="4" y="26" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" font-weight="700" fill="#c5a880">V</text>
+  <rect width="32" height="32" fill="#161C1A" rx="6"/>
+  <!-- Stylized Lotus / V Emblem in premium gold -->
+  <path d="M16 6 L21 14 L16 12.5 L11 14 Z" fill="#c5a880"/>
+  <path d="M16 12.5 C19 16, 22 20, 23 23 C19 21, 17 21, 16 26 C15 21, 13 21, 9 23 C10 20, 13 16, 16 12.5 Z" fill="#c5a880"/>
+  <path d="M16 18 C18.5 21, 23 23, 27 22 C23 24.5, 19 25.5, 16 26 C13 25.5, 9 24.5, 5 22 C9 23, 13.5 21, 16 18 Z" fill="#c5a880" opacity="0.8"/>
 </svg>

@@ -5,6 +5,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { thingsToDoData } from '@/lib/thingsToDoData';
+import { getThingsToDoFromSanity } from '@/sanity/client';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Things To Do in Vietnam | Authentic Experiences & Activities | Vietnam Tour',
@@ -28,7 +31,21 @@ const categoryColors: Record<string, string> = {
   'RIVER JOURNEYS':      'bg-teal-50 text-teal-800 border border-teal-200',
 };
 
-export default function ThingsToDoListingPage() {
+export default async function ThingsToDoListingPage() {
+  // Try Sanity first, fallback to hardcoded data
+  let items = thingsToDoData;
+  try {
+    const sanityItems = await getThingsToDoFromSanity();
+    if (sanityItems && sanityItems.length > 0) {
+      items = sanityItems.map((item: any) => ({
+        ...item,
+        slug: item.slug?.current || item.slug,
+        heroImage: item.heroImage || '/images/things_halong_kayaking.png',
+      }));
+    }
+  } catch (e) {
+    // fallback to hardcoded data
+  }
   return (
     <>
       <Navbar />
@@ -82,7 +99,7 @@ export default function ThingsToDoListingPage() {
           {/* Featured (first article) */}
           <div className="mb-10">
             {(() => {
-              const featured = thingsToDoData[0];
+              const featured = items[0];
               const colorClass = categoryColors[featured.category] || 'bg-white text-gold border-gold/20';
               return (
                 <Link href={`/things-to-do/${featured.slug}`} className="group block">
@@ -130,7 +147,7 @@ export default function ThingsToDoListingPage() {
 
           {/* Remaining articles grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {thingsToDoData.slice(1).map((item) => {
+            {items.slice(1).map((item) => {
               const colorClass = categoryColors[item.category] || 'bg-white text-gold border-gold/20';
               return (
                 <Link
