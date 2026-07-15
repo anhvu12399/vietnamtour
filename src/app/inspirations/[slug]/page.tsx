@@ -102,7 +102,7 @@ export default async function InspirationSlugPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
         { name: 'Inspirations', url: 'https://www.vietnamtours.co.uk/inspirations' },
         { name: inspiration.title, url: `https://www.vietnamtours.co.uk/inspirations/${inspiration.slug}` },
       ]} />

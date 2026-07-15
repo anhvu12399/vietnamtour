@@ -105,7 +105,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
         { name: 'Trip Ideas', url: 'https://www.vietnamtours.co.uk/trip-ideas' },
         { name: idea.title, url: `https://www.vietnamtours.co.uk/trip-ideas/${idea.slug}` },
       ]} />

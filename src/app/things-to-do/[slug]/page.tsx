@@ -94,8 +94,8 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
-        { name: 'Things To Do', url: 'https://www.vietnamtours.co.uk/things-to-do' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Things to do', url: 'https://www.vietnamtours.co.uk/things-to-do' },
         { name: thing.title, url: `https://www.vietnamtours.co.uk/things-to-do/${thing.slug}` },
       ]} />
       <ArticleJsonLd

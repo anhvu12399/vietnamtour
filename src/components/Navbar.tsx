@@ -165,7 +165,7 @@ export default function Navbar() {
               
               {/* Logo (Left) */}
               <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center gap-3 group select-none">
+                <Link href="/" title="Vietnam Tours - Luxury Vietnam Private Tours" aria-label="VietnamTours.co.uk - Luxury Vietnam Private Tours" className="flex items-center gap-3 group select-none">
                   <Image
                     src="/logo-sun-hat.png"
                     alt="Vietnam Tours Logo"
@@ -314,7 +314,7 @@ export default function Navbar() {
         }`}>
           {/* Logo (Left) */}
           <div className="flex-shrink-0">
-            <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 group select-none">
+            <Link href="/" onClick={() => setIsOpen(false)} title="Vietnam Tours - Luxury Vietnam Private Tours" aria-label="VietnamTours.co.uk - Luxury Vietnam Private Tours" className="flex items-center gap-2 group select-none">
               <Image
                 src="/logo-sun-hat.png"
                 alt="Vietnam Tours Logo"

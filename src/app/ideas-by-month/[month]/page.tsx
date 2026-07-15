@@ -102,8 +102,8 @@ export default async function MonthSlugPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
-        { name: 'Ideas By Month', url: 'https://www.vietnamtours.co.uk/ideas-by-month' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Ideas by Month', url: 'https://www.vietnamtours.co.uk/ideas-by-month' },
         { name: monthData.title, url: `https://www.vietnamtours.co.uk/ideas-by-month/${monthData.slug}` },
       ]} />
       <ArticleJsonLd
