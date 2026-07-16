@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
     keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug}`,
+      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug || slug}`,
     },
     openGraph: {
       title: data.seo?.metaTitle || data.metaTitle || data.title,

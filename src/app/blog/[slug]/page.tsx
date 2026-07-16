@@ -38,11 +38,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: mergedKeywords,
-    ...(post.seo?.canonicalUrl && {
-      alternates: {
-        canonical: post.seo.canonicalUrl,
-      },
-    }),
+    alternates: {
+      canonical: post.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/blog/${slug}`,
+    },
     ...(post.seo?.noIndex && {
       robots: {
         index: false,
