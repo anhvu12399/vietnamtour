@@ -34,7 +34,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
 
   const baseKeywords = ["Vietnam private itinerary", "Luxury Vietnam tours", "Bespoke Vietnam holidays", "Tailor-made Vietnam trips", "Vietnam custom tours"];
-  const dynamicKeywords = seo?.keywords || [];
+  let dynamicKeywords = seo?.keywords || [];
+  if (dynamicKeywords.length === 0) {
+    const destName = itinerary.destination?.name || 'Vietnam';
+    dynamicKeywords = [
+      itinerary.title,
+      `${itinerary.title} private tour`,
+      `${itinerary.title} itinerary`,
+      `${destName} private tour`,
+      `${destName} holiday`,
+      `${itinerary.duration} days in Vietnam`
+    ];
+  }
   const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
 
   return {

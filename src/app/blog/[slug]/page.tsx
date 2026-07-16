@@ -31,7 +31,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = post.seo?.metaDescription || post.excerpt || `Read ${post.title} on the Vietnam Tour Travel Blog.`;
   
   const baseKeywords = ["Vietnam travel blog", "Vietnam travel tips", "Vietnam local guides", "Vietnam luxury experiences", "Vietnam vacation", "Vietnam private tours"];
-  const dynamicKeywords = post.seo?.keywords || [];
+  let dynamicKeywords = post.seo?.keywords || [];
+  if (dynamicKeywords.length === 0) {
+    dynamicKeywords = [
+      post.title,
+      ...(post.tags || []),
+      post.category
+    ].filter(Boolean);
+  }
   const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
 
   return {
