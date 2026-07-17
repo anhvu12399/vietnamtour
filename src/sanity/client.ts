@@ -401,7 +401,10 @@ export async function getHomepage(): Promise<HomepageData | null> {
 
 export async function getPosts(): Promise<Post[]> {
   if (useMock) return [];
-  return await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
+  // Use client.fetch directly with cache:no-store to guarantee fresh data for generateStaticParams
+  if (!client) return [];
+  return await client.fetch(
+    `*[_type == "post"] | order(publishedAt desc){
     _id, title, slug, publishedAt, excerpt,
     "mainImage": mainImage.asset->url,
     heroAuthor{
@@ -434,10 +437,13 @@ export async function getPosts(): Promise<Post[]> {
     },
     ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
-  }`);
+  }`,
+    {},
+    { next: { revalidate: 60 } }
+  );
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -475,7 +481,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     },
     ctaLabel, ctaHeading, ctaDescription,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;

@@ -46,17 +46,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords: mergedKeywords,
     alternates: {
-      canonical: post.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/blog/${slug}`,
+      // /blog/[slug] is a mirror of /travel-guides/[slug] (same content from same Sanity posts).
+      // We canonical to /travel-guides/ to consolidate all link equity and avoid duplicate content.
+      // This prevents Google from choosing arbitrarily and splitting PageRank between the two URLs.
+      canonical: `https://www.vietnamtours.co.uk/travel-guides/${slug}`,
     },
-    ...(post.seo?.noIndex && {
-      robots: {
-        index: false,
-        follow: false,
-      },
-    }),
+    robots: {
+      // noindex to prevent duplicate indexing — canonical already signals the preferred URL.
+      // The /travel-guides/ version will be indexed instead.
+      index: false,
+      follow: true,
+    },
     openGraph: {
       title,
       description,
+      url: `https://www.vietnamtours.co.uk/travel-guides/${slug}`,
       ...(post.seo?.ogImage ? { images: [{ url: post.seo.ogImage }] } : post.featuredImage ? { images: [{ url: post.featuredImage }] } : {}),
     },
   };
