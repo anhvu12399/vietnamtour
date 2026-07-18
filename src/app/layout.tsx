@@ -53,9 +53,11 @@ export const metadata: Metadata = {
   authors: [{ name: "VietnamTours.co.uk" }],
   creator: "VietnamTours.co.uk",
   publisher: "VietnamTours.co.uk",
-  alternates: {
-    canonical: "https://www.vietnamtours.co.uk",
-  },
+  // NOTE: Do NOT set alternates.canonical here in layout.tsx!
+  // In Next.js App Router, layout-level canonical overrides page-level canonical.
+  // Each page (generateMetadata) sets its own self-referencing canonical.
+  // Setting a global canonical here was causing ALL pages to canonicalize to the homepage,
+  // which was the #1 reason only 27/136 sitemap URLs were being indexed by Google.
   openGraph: {
     type: "website",
     locale: "en_GB",
