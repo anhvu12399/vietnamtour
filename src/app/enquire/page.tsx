@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { trackEvent } from '@/lib/analytics';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -27,6 +28,11 @@ export default function EnquiryPage() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Conversion event for analytics (fires once when the enquiry is accepted)
+  useEffect(() => {
+    if (submitted) trackEvent('enquiry_submit');
+  }, [submitted]);
   const [serverError, setServerError] = useState('');
   const [errors, setErrors] = useState({ firstName: '', lastName: '', email: '', phone: '' });
 

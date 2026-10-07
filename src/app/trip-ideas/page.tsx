@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration | VietnamTours.co.uk',
+  title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration',
   description: 'Explore our curated Vietnam trip ideas. From culinary street food adventures and motorcycle loop tours to classic luxury journeys and family holidays.',
   keywords: ['Vietnam trip ideas', 'Vietnam holiday inspiration', 'Vietnam itinerary ideas', 'Vietnam travel themes', 'Vietnam family holidays', 'Vietnam adventure tours'],
   alternates: {

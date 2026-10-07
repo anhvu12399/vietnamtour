@@ -88,3 +88,11 @@ export const AI_SEARCH_BOTS = [
 /** Crawlers used for model training. Allowed by default; flip to block. */
 export const AI_TRAINING_BOTS = ['GPTBot', 'ClaudeBot', 'Google-Extended', 'Applebot-Extended', 'CCBot'] as const;
 export const ALLOW_AI_TRAINING = process.env.GEO_ALLOW_AI_TRAINING !== 'false';
+
+/**
+ * The root layout appends " | VietnamTours.co.uk" via `title.template`.
+ * Strip a brand suffix already present in a CMS/data title so it is not doubled.
+ */
+export function stripBrand(title: string): string {
+  return title.replace(/\s*[|\-–—]\s*(VietnamTours\.co\.uk|Vietnam Tours?(\s+UK)?)\s*$/i, '').trim();
+}

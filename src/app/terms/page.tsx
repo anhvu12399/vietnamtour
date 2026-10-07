@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://www.vietnamtours.co.uk/terms' },
   title: 'Terms & Conditions | Vietnam Heritage Tours',
   description: 'Please read these terms and conditions carefully before booking your journey with Vietnam Heritage Tours.',
 };

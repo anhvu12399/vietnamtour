@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Best Time to Visit Vietnam | Travel Ideas by Month | VietnamTours.co.uk',
+  title: 'Best Time to Visit Vietnam | Travel Ideas by Month',
   description: 'Find the best time to visit Vietnam. Explore weather forecasts, regional climate zones, month-by-month recommendations, and detailed temperature guides.',
   keywords: ['best time to visit Vietnam', 'Vietnam weather', 'Vietnam climate zones', 'when to go to Vietnam', 'Vietnam weather table'],
   alternates: {

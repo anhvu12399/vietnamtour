@@ -3,7 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
 import { getSpecialistBySlug, getSpecialists } from '@/sanity/client';
+import { BreadcrumbJsonLd, PersonJsonLd } from '@/components/SeoJsonLd';
+import { absoluteUrl } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -18,6 +21,21 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const specialist = await getSpecialistBySlug(slug);
+  if (!specialist) return {};
+  const title = `${specialist.name} – ${specialist.role} | Vietnam Travel Specialist`;
+  const description = `Meet ${specialist.name}, ${specialist.role} at VietnamTours.co.uk. Plan a tailor-made private Vietnam tour with a specialist who knows the country first-hand.`;
+  const url = absoluteUrl(`/specialists/${slug}`);
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url, type: 'profile', ...(specialist.image && { images: [{ url: specialist.image }] }) },
+  };
+}
+
 export default async function SpecialistDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const specialist = await getSpecialistBySlug(slug);
@@ -28,6 +46,22 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Specialists', url: '/specialists' },
+          { name: specialist.name, url: `/specialists/${slug}` },
+        ]}
+      />
+      <PersonJsonLd
+        person={{
+          name: specialist.name,
+          jobTitle: specialist.role,
+          url: `/specialists/${slug}`,
+          image: specialist.image,
+          knowsAbout: specialist.favoriteDestinations,
+        }}
+      />
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6 lg:px-12 py-32 sm:py-40">

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 export default function WhatsAppFloating() {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,6 +21,7 @@ export default function WhatsAppFloating() {
       href="https://wa.me/84988600388"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('whatsapp_click', { page: window.location.pathname })}
       className="fixed bottom-6 right-6 z-50 flex items-center group bg-jade-deep text-gold border border-gold/40 hover:border-gold px-4 py-3 rounded-full shadow-2xl transition-all duration-500 ease-out hover:shadow-[0_0_20px_rgba(197,168,128,0.3)] transform scale-100 hover:scale-105 animate-bounce"
       aria-label="Chat with a Specialist on WhatsApp"
     >

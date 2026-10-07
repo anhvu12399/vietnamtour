@@ -11,9 +11,10 @@ import TimelineInteractive from '@/components/TimelineInteractive';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetailsBuilder';
 import { BreadcrumbJsonLd, FaqJsonLd, TouristTripJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
-import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
+import { GeoAnswer, GeoFaqSection, GeoSources, PlanningGuides } from '@/components/GeoBlocks';
 import { itineraryAnswer, itineraryFaqs } from '@/lib/geoDefaults';
-import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
+import { CONTENT_REVIEWED_AT, absoluteUrl, stripBrand } from '@/lib/siteConfig';
+import { isThinItinerary } from '@/lib/contentQuality';
 
 export const revalidate = 60;
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!itinerary) return {};
 
   const seo = itinerary.seo;
-  const title = seo?.metaTitle || `${itinerary.title} – Luxury Vietnam Tours`;
+  const title = stripBrand(seo?.metaTitle || '') || `${itinerary.title} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
 
   const url = absoluteUrl(`/itineraries/${slug}`);
@@ -58,6 +59,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: mergedKeywords,
+    // Quality gate: pages with almost no unique content stay out of the index
+    ...(isThinItinerary(itinerary) && { robots: { index: false, follow: true } }),
     alternates: {
       canonical: seo?.canonicalUrl || `https://www.vietnamtours.co.uk/itineraries/${slug}`,
     },
@@ -254,6 +257,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
 
             <GeoFaqSection faqs={faqs} heading={`${itinerary.title}: your questions answered`} />
             <GeoSources sources={itinerary.sources} />
+            <PlanningGuides />
 
           </div>
 

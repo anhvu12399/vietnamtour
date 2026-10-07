@@ -172,3 +172,28 @@ Target: 5 relevant UK referring domains by month 3, 15 by month 6 (hypothesis; a
 | 5–8 | Content | 6–8 new landings (durations, combos, honeymoon, family), rewrite top 15 pages, internal-link pass |
 | 9–10 | Trust & CRO | Review collection live, specialist pages, credentials (if real), funnel tweaks |
 | 11–13 | Authority | First PR campaign, partnerships, linkable asset #1, 90-day report & next-quarter plan |
+
+---
+
+## 10. Implementation status (branch `geo/chatgpt-uk`)
+
+| Plan item | Status |
+|---|---|
+| Canonical map, sitemap rules, noindex mirrors | ✅ (main + this branch); sitemap built from `siteIndex.ts` |
+| Visa cannibalisation | ✅ `/vietnam-guides/vietnam-visa-for-uk-citizens` → 308 → `/visa-guide`; FAQ/answer data in `visaFaqData.ts` |
+| Quality gate for thin itineraries | ✅ `contentQuality.ts` (< 250 words ⇒ `noindex` + out of sitemap) |
+| New landing pages | ✅ 14-day, 3-week, 1-week, Vietnam & Cambodia, honeymoon, family, Hanoi→HCMC route (+ matching tours from the catalogue) |
+| Internal linking | ✅ planning-guides block on tour/destination pages, tour cards on landings, footer links |
+| E-E-A-T | ✅ `/specialists/[slug]` metadata + Person + Breadcrumb JSON-LD · ⏳ real reviews, credentials (need real data) |
+| Conversion tracking | ✅ `enquiry_submit`, `whatsapp_click`, `ai_visit` events (Vercel Analytics) · ⏳ GA4 if desired |
+| Titles | ✅ brand no longer doubled (`stripBrand`), list-page titles shortened · ⏳ long Sanity titles on `/travel-guides/*` |
+| Audit tooling | ✅ `npm run seo:audit -- <url>` and `npm run geo:check -- <url>` |
+| Core Web Vitals work | ⏳ measure on Vercel first (see §2) |
+| Off-site (reviews, PR, links, Bing/GSC setup) | ⏳ manual — see GEO_RUNBOOK |
+
+### Findings from the first audit run (local build of the merged branch)
+1. **Catalogue shrank to 3 Sanity itineraries (£5,200–£7,800).** The scraped `tours_data.json` is no longer merged on `main`, but the homepage still says "from £3,960pp" and `/itineraries` says "From £2,495pp". Fix the claims or add the missing tours; the cost guide and JSON-LD use live data.
+2. **Brand/entity inconsistency.** `/privacy-policy`, `/terms` and `/our-story` refer to "Vietnam Heritage Tours (Ltd)" and "founded in 2008" while the site, schema and domain say VietnamTours.co.uk. Confirm the legal entity and align the copy — AI engines and Google compare entity names across pages.
+3. **Long titles on `/travel-guides/*`** (90–96 chars) come from Sanity titles/`seo.metaTitle`; shorten to ≤ 60 chars in the CMS (`scripts/auto-fill-seo.mjs` can help).
+4. **Descriptions > 170 chars** on `/`, `/itineraries`, `/destinations`, `/things-to-do`, `/visa-guide`.
+5. `/specialists/*` pages are thin (~250–280 words): add bios, experience, favourite itineraries.

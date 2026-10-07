@@ -5,10 +5,9 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
 import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
-import { getUkGuide } from '@/lib/ukGuidesData';
+import { ukVisaAnswer, ukVisaFaqs, ukVisaSources } from '@/lib/visaFaqData';
 import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
 
-const ukVisa = getUkGuide('vietnam-visa-for-uk-citizens')!;
 
 export const metadata: Metadata = {
   title: 'Vietnam Visa Guide 2026 | VietnamTours.co.uk',
@@ -73,8 +72,8 @@ export default function VisaGuidePage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Visa Guide', url: '/visa-guide' }]} />
-      <WebPageJsonLd name="Vietnam Visa Guide" description={ukVisa.answer} url={absoluteUrl('/visa-guide')} modifiedAt={CONTENT_REVIEWED_AT} speakable={['[data-answer]']} />
-      <FaqJsonLd faqs={ukVisa.faqs} />
+      <WebPageJsonLd name="Vietnam Visa Guide" description={ukVisaAnswer} url={absoluteUrl('/visa-guide')} modifiedAt={CONTENT_REVIEWED_AT} speakable={['[data-answer]']} />
+      <FaqJsonLd faqs={ukVisaFaqs} />
       <Navbar />
       <main className="bg-paper text-ink flex-grow flex flex-col">
 
@@ -106,7 +105,7 @@ export default function VisaGuidePage() {
       </section>
 
       <section className="max-w-4xl mx-auto w-full px-6 pt-12">
-        <GeoAnswer answer={ukVisa.answer} reviewedAt={CONTENT_REVIEWED_AT} label="Quick answer for UK passport holders" />
+        <GeoAnswer answer={ukVisaAnswer} reviewedAt={CONTENT_REVIEWED_AT} label="Quick answer for UK passport holders" />
       </section>
 
       {/* Visa Types */}
@@ -194,8 +193,8 @@ export default function VisaGuidePage() {
       </section>
 
     <section className="max-w-4xl mx-auto w-full px-6 pb-20 space-y-10">
-        <GeoFaqSection faqs={ukVisa.faqs} heading="UK travellers: visa questions answered" />
-        <GeoSources sources={ukVisa.sources} />
+        <GeoFaqSection faqs={ukVisaFaqs} heading="UK travellers: visa questions answered" />
+        <GeoSources sources={ukVisaSources} />
       </section>
       </main>
       <Footer />

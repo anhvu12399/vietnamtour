@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  poweredByHeader: false,
+  async redirects() {
+    return [
+      // One ranking URL per query: the visa guide for UK travellers lives at /visa-guide
+      { source: '/vietnam-guides/vietnam-visa-for-uk-citizens', destination: '/visa-guide', permanent: true },
+    ];
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

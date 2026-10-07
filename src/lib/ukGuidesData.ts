@@ -46,6 +46,8 @@ export interface UkGuide {
   related: string[]; // slugs
   /** If true, a live "tour prices from the catalogue" table is rendered */
   showPricing?: boolean;
+  /** Show matching tours from the catalogue (by duration) for internal linking */
+  tours?: { minDays: number; maxDays: number; heading: string };
 }
 
 const FCDO = { label: 'FCDO – Vietnam travel advice (GOV.UK)', url: 'https://www.gov.uk/foreign-travel-advice/vietnam' };
@@ -58,9 +60,9 @@ export const ukGuides: UkGuide[] = [
     slug: 'vietnam-holidays-from-uk',
     path: '/vietnam-holidays-from-uk',
     title: 'Vietnam Holidays from the UK: The Complete Planning Guide',
-    metaTitle: 'Vietnam Holidays from the UK: Flights, Visa, Cost & Best Time',
+    metaTitle: 'Vietnam Holidays from the UK: Complete Guide',
     metaDescription:
-      'Planning a Vietnam holiday from the UK? Flights from London, visa rules for UK passports, time difference, currency, costs and the best time to go — answered by Vietnam specialists.',
+      'Planning a Vietnam holiday from the UK? Flights from London, visa rules, time difference, costs and the best time to go.',
     answer:
       'From the UK, Vietnam is reached by direct flights from London to Hanoi (around 11–12 hours) or one-stop routes to Ho Chi Minh City and Da Nang. UK passport holders can currently enter visa-free for up to 45 days. Allow 10–14 days for a first private tour covering north, centre and south.',
     heroImage: '/images/dest_halong_limestone.png',
@@ -134,7 +136,7 @@ export const ukGuides: UkGuide[] = [
       { question: 'Is Vietnam suitable for a tailor-made private tour?', answer: 'Yes. Private tours with a dedicated guide and driver are the most flexible way to see several regions, especially for families, honeymooners and travellers with limited time.' },
     ],
     sources: [FCDO, THP, EVISA],
-    related: ['best-time-to-visit-vietnam-uk-travellers', 'vietnam-tour-cost-from-uk', 'vietnam-visa-for-uk-citizens', 'is-vietnam-safe-for-uk-travellers'],
+    related: ['best-time-to-visit-vietnam-uk-travellers', 'vietnam-tour-cost-from-uk', 'is-vietnam-safe-for-uk-travellers', 'vietnam-14-day-itinerary', 'vietnam-and-cambodia-tour', 'vietnam-honeymoon-tour', 'vietnam-family-holiday'],
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -142,7 +144,7 @@ export const ukGuides: UkGuide[] = [
     slug: 'vietnam-tour-cost-from-uk',
     path: '/vietnam-guides/vietnam-tour-cost-from-uk',
     title: 'How Much Does a Private Vietnam Tour Cost from the UK?',
-    metaTitle: 'Private Vietnam Tour Cost from the UK (£ per person) | Price Guide',
+    metaTitle: 'Private Vietnam Tour Cost from the UK (£)',
     metaDescription:
       'What does a private tour of Vietnam cost from the UK? Live "from" prices per person in pounds, what is included, flights, and what changes the price.',
     answer:
@@ -197,7 +199,7 @@ export const ukGuides: UkGuide[] = [
     slug: 'best-time-to-visit-vietnam-uk-travellers',
     path: '/vietnam-guides/best-time-to-visit-vietnam-uk-travellers',
     title: 'Best Time to Visit Vietnam for UK Travellers, Region by Region',
-    metaTitle: 'Best Time to Visit Vietnam for UK Travellers | Month & Region Guide',
+    metaTitle: 'Best Time to Visit Vietnam for UK Travellers',
     metaDescription:
       'The best time to visit Vietnam for UK travellers: north, centre and south compared, with the best months for Ha Long Bay, Hoi An, Sa Pa and the Mekong Delta.',
     answer:
@@ -242,55 +244,12 @@ export const ukGuides: UkGuide[] = [
   },
 
   // ───────────────────────────────────────────────────────────────────────────
-  {
-    slug: 'vietnam-visa-for-uk-citizens',
-    path: '/vietnam-guides/vietnam-visa-for-uk-citizens',
-    title: 'Vietnam Visa for UK Citizens: Entry Rules Explained',
-    metaTitle: 'Vietnam Visa for UK Citizens | Visa-Free Stay & E-Visa Guide',
-    metaDescription:
-      'Do UK citizens need a visa for Vietnam? Visa-free stay, e-visa for longer trips, passport rules and official sources to confirm before you travel.',
-    answer:
-      'UK passport holders currently receive visa-free entry to Vietnam for up to 45 days. For longer stays, an e-visa valid up to 90 days can be applied for online on the official government portal. Rules change, so confirm on the official portal and GOV.UK before travelling.',
-    heroImage: '/images/dest_halong_limestone.png',
-    category: 'Visa',
-    sections: [
-      {
-        heading: 'Your options as a UK passport holder',
-        table: {
-          caption: 'Entry options for UK citizens (check official sources for live rules)',
-          headers: ['Option', 'Stay', 'How to get it'],
-          rows: [
-            ['Visa exemption', 'Up to 45 days', 'No application; present a valid passport on arrival'],
-            ['E-visa', 'Up to 90 days', 'Apply online on the official Vietnamese immigration portal'],
-          ],
-        },
-      },
-      {
-        heading: 'Passport and entry checklist',
-        bullets: [
-          'Passport valid for at least 6 months beyond your arrival date, with blank pages',
-          'Proof of onward or return travel may be requested by airlines',
-          'Check the FCDO page for current entry requirements and health advice',
-          'Use the official government e-visa site only — avoid look-alike paid sites',
-        ],
-      },
-    ],
-    faqs: [
-      { question: 'Do UK citizens need a visa to visit Vietnam?', answer: 'Not for short stays. UK passport holders currently get visa-free entry for up to 45 days. For longer stays they can apply for an e-visa valid up to 90 days.' },
-      { question: 'How do I apply for a Vietnam e-visa?', answer: 'Apply on the official Vietnamese government immigration portal. Beware of unofficial websites that add large fees.' },
-      { question: 'How long must my passport be valid?', answer: 'At least 6 months from your date of arrival is the standard requirement, with blank pages.' },
-      { question: 'Where can I check the latest entry rules?', answer: 'Check the FCDO travel advice for Vietnam on GOV.UK and the official Vietnam immigration portal before you book and again before you travel.' },
-    ],
-    sources: [FCDO, EVISA],
-    related: ['vietnam-holidays-from-uk', 'is-vietnam-safe-for-uk-travellers'],
-  },
-
   // ───────────────────────────────────────────────────────────────────────────
   {
     slug: 'is-vietnam-safe-for-uk-travellers',
     path: '/vietnam-guides/is-vietnam-safe-for-uk-travellers',
     title: 'Is Vietnam Safe for UK Travellers? Safety, Health and Solo Travel',
-    metaTitle: 'Is Vietnam Safe for UK Travellers? Safety, Health & Solo Travel Guide',
+    metaTitle: 'Is Vietnam Safe for UK Travellers?',
     metaDescription:
       'Is Vietnam safe for UK travellers, families and solo women? Practical safety advice, health and vaccines, road safety and where to check FCDO guidance.',
     answer:
@@ -328,7 +287,7 @@ export const ukGuides: UkGuide[] = [
       { question: 'Is the tap water safe to drink?', answer: 'Use bottled or filtered water. Your hotels and guides will provide it.' },
     ],
     sources: [FCDO, THP],
-    related: ['vietnam-holidays-from-uk', 'vietnam-visa-for-uk-citizens'],
+    related: ['vietnam-holidays-from-uk'],
   },
 
   // ───────────────────────────────────────────────────────────────────────────
@@ -336,7 +295,7 @@ export const ukGuides: UkGuide[] = [
     slug: 'ha-long-bay-vs-lan-ha-bay',
     path: '/vietnam-guides/ha-long-bay-vs-lan-ha-bay',
     title: 'Ha Long Bay vs Lan Ha Bay: Which Should You Choose?',
-    metaTitle: 'Ha Long Bay vs Lan Ha Bay | Luxury Cruise Comparison',
+    metaTitle: 'Ha Long Bay vs Lan Ha Bay: Which to Choose',
     metaDescription:
       'Ha Long Bay or Lan Ha Bay for a luxury cruise? Differences in crowds, scenery, access and best time, with a clear recommendation.',
     answer:
@@ -379,7 +338,7 @@ export const ukGuides: UkGuide[] = [
     slug: 'private-vs-group-tour-vietnam',
     path: '/vietnam-guides/private-vs-group-tour-vietnam',
     title: 'Private vs Group Tour in Vietnam: Which Is Right for You?',
-    metaTitle: 'Private vs Group Tour in Vietnam | Pros, Cons & Costs',
+    metaTitle: 'Private vs Group Tour in Vietnam',
     metaDescription:
       'Should you book a private or small-group Vietnam tour? Compare flexibility, cost, pace and who each option suits.',
     answer:
@@ -416,7 +375,7 @@ export const ukGuides: UkGuide[] = [
     slug: 'vietnam-itinerary-10-14-days',
     path: '/vietnam-guides/vietnam-itinerary-10-14-days',
     title: 'Vietnam Itinerary for 10–14 Days: A Sample Route from the UK',
-    metaTitle: 'Vietnam 10–14 Day Itinerary | Sample Route for UK Travellers',
+    metaTitle: 'Vietnam 10–14 Day Itinerary for UK Travellers',
     metaDescription:
       'A sensible 10–14 day Vietnam itinerary: Hanoi, Ha Long Bay, Hue, Hoi An, Ho Chi Minh City and the Mekong, with days per stop and pacing tips.',
     answer:
@@ -455,6 +414,297 @@ export const ukGuides: UkGuide[] = [
     ],
     sources: [],
     related: ['best-time-to-visit-vietnam-uk-travellers', 'vietnam-tour-cost-from-uk'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-14-day-itinerary',
+    path: '/vietnam-guides/vietnam-14-day-itinerary',
+    title: 'Vietnam in 14 Days: A Private Tour Itinerary for UK Travellers',
+    metaTitle: 'Vietnam 14-Day Itinerary | Private Tour Route',
+    metaDescription:
+      'A realistic 14-day Vietnam itinerary for UK travellers: north, centre and south with nights per stop, internal flights, pacing tips and matching private tours.',
+    answer:
+      'Fourteen days is the sweet spot for a first private tour of Vietnam: roughly 3 nights in Hanoi, 1–2 on a Ha Long or Lan Ha Bay cruise, 1 in Hue, 3 in Hoi An, 2–3 in Ho Chi Minh City and 1–2 in the Mekong Delta, with internal flights between regions.',
+    heroImage: '/images/hero_halong_bay.png',
+    category: 'Itineraries',
+    tours: { minDays: 12, maxDays: 16, heading: 'Private tours of about two weeks' },
+    sections: [
+      {
+        heading: 'Day-by-day outline',
+        table: {
+          caption: 'Sample 14-day Vietnam route',
+          headers: ['Days', 'Where', 'Highlights'],
+          rows: [
+            ['1–3', 'Hanoi', 'Old Quarter, Temple of Literature, street food, water puppets'],
+            ['4–5', 'Ha Long or Lan Ha Bay', 'Overnight cruise, kayaking, caves'],
+            ['6', 'Hue', 'Imperial Citadel, royal tombs (fly or drive from Da Nang)'],
+            ['7–9', 'Hoi An', 'Ancient Town, cooking class, countryside cycling, beach'],
+            ['10–12', 'Ho Chi Minh City', 'Reunification Palace, markets, Cu Chi tunnels'],
+            ['13', 'Mekong Delta', 'Boat trip, orchards, floating markets'],
+            ['14', 'Departure', 'Fly home from Ho Chi Minh City or Hanoi'],
+          ],
+        },
+      },
+      {
+        heading: 'How to make two weeks feel relaxed',
+        bullets: [
+          'Fly between Hanoi, Da Nang and Ho Chi Minh City; overland transfers eat days.',
+          'Allow a gentle first day for the flight from the UK (the time difference is 6–7 hours).',
+          'Stay at least 2 nights in each main base; use one-night stays only for the cruise and Hue.',
+          'Book an open-jaw flight (fly into Hanoi, home from Ho Chi Minh City) to avoid backtracking.',
+        ],
+      },
+      {
+        heading: 'Who suits this route',
+        paragraphs: ['First-time visitors, couples and families with older children who want a balanced mix of culture, food, landscapes and a little beach time. For a slower pace, drop the Mekong or Hue; for more adventure, swap the cruise for the northern highlands.'],
+      },
+    ],
+    faqs: [
+      { question: 'Is 14 days enough for Vietnam?', answer: 'Yes. Two weeks covers north, centre and south at a comfortable pace with internal flights.' },
+      { question: 'Can I add a beach stay?', answer: 'Yes. Add 3–4 nights on the central coast (Da Nang / Hoi An) or an island such as Phu Quoc, choosing the beach by season.' },
+      { question: 'Should I fly or take the train between regions?', answer: 'Flights save time (Hanoi to Ho Chi Minh City is roughly two hours). The Reunification Express train is scenic but takes well over a day end to end.' },
+    ],
+    sources: [],
+    related: ['best-time-to-visit-vietnam-uk-travellers', 'vietnam-tour-cost-from-uk', 'vietnam-3-week-itinerary'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-3-week-itinerary',
+    path: '/vietnam-guides/vietnam-3-week-itinerary',
+    title: 'Vietnam in 3 Weeks: An In-Depth Private Itinerary',
+    metaTitle: 'Vietnam 3-Week Itinerary | In-Depth Private Tour',
+    metaDescription:
+      'Three weeks in Vietnam: northern highlands, Ha Long Bay, the central coast, the south and a beach finish — a slower route for UK travellers, with matching private tours.',
+    answer:
+      'Three weeks lets you add the northern highlands (Sa Pa or Ha Giang), a longer central-coast stay and a beach finish to the classic north–south route, at an unhurried pace of 2–4 nights per base.',
+    heroImage: '/images/hero_hoian.png',
+    category: 'Itineraries',
+    tours: { minDays: 15, maxDays: 25, heading: 'Longer private tours' },
+    sections: [
+      {
+        heading: 'Sample 3-week structure',
+        table: {
+          caption: 'Sample 21-day Vietnam route',
+          headers: ['Days', 'Region', 'What you add vs a 2-week trip'],
+          rows: [
+            ['1–4', 'Hanoi and surroundings', 'Day trip to Ninh Binh or a village homestay'],
+            ['5–8', 'Northern highlands', 'Sa Pa terraces or the Ha Giang loop; trekking with local guides'],
+            ['9–10', 'Ha Long / Lan Ha Bay', 'Two-night cruise for quieter bays'],
+            ['11–15', 'Hue, Da Nang, Hoi An', 'Extra days for the coast, My Son and countryside'],
+            ['16–19', 'Ho Chi Minh City and Mekong', 'Cu Chi tunnels, deeper Mekong stay'],
+            ['20–21', 'Beach finish', 'Phu Quoc, Con Dao or Nha Trang depending on season'],
+          ],
+        },
+      },
+      {
+        heading: 'Tips for a longer trip',
+        bullets: [
+          'Check seasons region by region: the north is best roughly October–April, the centre February–August, the south December–April.',
+          'Build in at least two rest days with no fixed plan.',
+          'Consider combining with Cambodia (Angkor Wat) or Laos if you have extra time.',
+        ],
+      },
+    ],
+    faqs: [
+      { question: 'Is 3 weeks too long for Vietnam?', answer: 'Not at all. Three weeks allows slower travel, the northern highlands and a proper beach stay without rushing.' },
+      { question: 'Can I add Cambodia or Laos?', answer: 'Yes, short regional flights make Siem Reap (Angkor Wat) and Luang Prabang easy additions. Each country has its own entry rules, so check official sources.' },
+    ],
+    sources: [],
+    related: ['vietnam-14-day-itinerary', 'vietnam-and-cambodia-tour', 'best-time-to-visit-vietnam-uk-travellers'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-and-cambodia-tour',
+    path: '/vietnam-guides/vietnam-and-cambodia-tour',
+    title: 'Vietnam and Cambodia Combined Tour from the UK',
+    metaTitle: 'Vietnam & Cambodia Combined Tour from the UK',
+    metaDescription:
+      'Combine Vietnam with Cambodia on one private tour from the UK: Angkor Wat, Siem Reap and the best order, flights, seasons and visa notes.',
+    answer:
+      'Vietnam and Cambodia combine easily on one trip: short flights link Hanoi, Da Nang or Ho Chi Minh City with Siem Reap (roughly 1–2 hours). Allow 3 nights in Siem Reap for Angkor Wat and 14–18 days in total. Each country has its own entry rules.',
+    heroImage: '/images/dest_halong_limestone.png',
+    category: 'Combinations',
+    tours: { minDays: 14, maxDays: 25, heading: 'Longer tours that can be extended to Cambodia' },
+    sections: [
+      {
+        heading: 'Best way to combine them',
+        bullets: [
+          'North–south in Vietnam, then fly Ho Chi Minh City to Siem Reap, and fly home from Siem Reap or Phnom Penh.',
+          'Or start in Siem Reap and finish in Hanoi if your flights suit.',
+          'Allow 3 nights for Angkor Wat, Ta Prohm and Bayon at a relaxed pace, ideally with sunrise or sunset visits.',
+        ],
+      },
+      {
+        heading: 'Seasons and entry rules',
+        paragraphs: [
+          'Cambodia is generally best in the cooler, drier months (roughly November–March), which overlaps well with the north and south of Vietnam. Cambodia is a separate country with its own visa and health requirements — confirm both on GOV.UK FCDO and TravelHealthPro before you travel.',
+        ],
+      },
+    ],
+    faqs: [
+      { question: 'How many days do I need for Vietnam and Cambodia?', answer: 'Around 14–18 days: roughly 10–12 in Vietnam and 3–4 in Cambodia, with short flights between them.' },
+      { question: 'Do UK citizens need a separate visa for Cambodia?', answer: 'Cambodia has its own entry requirements separate from Vietnam. Check the FCDO travel advice and the official Cambodian e-visa site before booking.' },
+    ],
+    sources: [{ label: 'FCDO – Cambodia travel advice (GOV.UK)', url: 'https://www.gov.uk/foreign-travel-advice/cambodia' }],
+    related: ['vietnam-3-week-itinerary', 'best-time-to-visit-vietnam-uk-travellers', 'vietnam-14-day-itinerary'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-honeymoon-tour',
+    path: '/vietnam-guides/vietnam-honeymoon-tour',
+    title: 'Vietnam Honeymoon: Romantic Private Tours from the UK',
+    metaTitle: 'Vietnam Honeymoon Tours | Romantic Itineraries',
+    metaDescription:
+      'Plan a Vietnam honeymoon: romantic stays in Hoi An and Ha Long Bay, the best beaches by season, and a private tour structure that gives you time together.',
+    answer:
+      'A Vietnam honeymoon works best as 10–14 days: culture and food in Hanoi, a private Ha Long or Lan Ha Bay cruise, lantern-lit Hoi An, then 4–5 nights on a beach chosen for the season. Private guides and transfers keep the days effortless.',
+    heroImage: '/images/hero_hoian.png',
+    category: 'Trip types',
+    tours: { minDays: 9, maxDays: 14, heading: 'Private tours suited to honeymooners' },
+    sections: [
+      {
+        heading: 'A romantic route',
+        table: {
+          caption: 'Sample honeymoon structure',
+          headers: ['Stage', 'Where', 'Why'],
+          rows: [
+            ['Arrive', 'Hanoi (2 nights)', 'Boutique hotel, street food, private evening tour'],
+            ['Scenery', 'Ha Long / Lan Ha Bay (1–2 nights)', 'Private cabin, sunset on deck, kayaking'],
+            ['Romance', 'Hoi An (3 nights)', 'Lantern-lit Old Town, tailoring, cooking class'],
+            ['Relax', 'Beach (4–5 nights)', 'Da Nang coast, Phu Quoc or Nha Trang depending on month'],
+          ],
+        },
+      },
+      {
+        heading: 'Choosing the beach by season',
+        paragraphs: ['Central-coast beaches (Da Nang, Hoi An) are at their best roughly March–August; southern islands such as Phu Quoc are best around November–April. Tell your planner your dates and the beach can be matched to the weather.'],
+      },
+    ],
+    faqs: [
+      { question: 'How long should a Vietnam honeymoon be?', answer: '10–14 days works well: about a week of sightseeing plus 4–5 nights of beach time.' },
+      { question: 'When is the best time for a honeymoon in Vietnam?', answer: 'Spring (March–May) and autumn are popular, but the right month depends on the regions and beach you choose.' },
+    ],
+    sources: [],
+    related: ['best-time-to-visit-vietnam-uk-travellers', 'ha-long-bay-vs-lan-ha-bay', 'vietnam-14-day-itinerary'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-family-holiday',
+    path: '/vietnam-guides/vietnam-family-holiday',
+    title: 'Vietnam Family Holiday: Private Tours with Children from the UK',
+    metaTitle: 'Vietnam Family Holiday | Private Tours with Kids',
+    metaDescription:
+      'Taking children to Vietnam? Family-friendly private itineraries, pacing, health and safety notes, and the best activities for kids and teenagers.',
+    answer:
+      'Vietnam suits families well when the pace is gentle: 10–14 days, short drives, internal flights, 2–3 nights per base and hands-on activities such as cooking classes, cycling, boat trips and water puppets. A private guide and driver make logistics with children much easier.',
+    heroImage: '/images/vietnamtour_hanoi_colonial.png',
+    category: 'Trip types',
+    tours: { minDays: 8, maxDays: 14, heading: 'Private tours that work for families' },
+    sections: [
+      {
+        heading: 'Family-friendly highlights',
+        bullets: [
+          'Hanoi: water-puppet show, egg coffee and street-food walk (child-friendly pace)',
+          'Ha Long / Lan Ha Bay: kayaking and swimming on a private cruise',
+          'Hoi An: lantern-making, cooking class and countryside cycling',
+          'Mekong Delta: boat rides and coconut candy workshops',
+          'Beach days to balance sightseeing',
+        ],
+      },
+      {
+        heading: 'Planning with children',
+        bullets: [
+          'Check vaccinations and sun/water precautions with your GP or TravelHealthPro 6–8 weeks before departure.',
+          'Choose hotels with family rooms or connecting rooms and a pool.',
+          'Keep drives under about 3 hours where possible and add free afternoons.',
+          'Ask for car seats and child-friendly meal options when you book.',
+        ],
+      },
+    ],
+    faqs: [
+      { question: 'Is Vietnam suitable for young children?', answer: 'Yes, with a relaxed itinerary and good planning. Check health advice for children and avoid very long travel days.' },
+      { question: 'What age is best for a Vietnam family trip?', answer: 'Primary-school age and older children tend to enjoy the activities most, but families travel with toddlers too — pacing and hotel choice matter most.' },
+    ],
+    sources: [{ label: 'TravelHealthPro (NaTHNaC) – Vietnam', url: 'https://travelhealthpro.org.uk/country/227/vietnam' }],
+    related: ['is-vietnam-safe-for-uk-travellers', 'vietnam-14-day-itinerary', 'vietnam-tour-cost-from-uk'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'hanoi-to-ho-chi-minh-city-route',
+    path: '/vietnam-guides/hanoi-to-ho-chi-minh-city-route',
+    title: 'Hanoi to Ho Chi Minh City: Best Route, Stops and Transport',
+    metaTitle: 'Hanoi to Ho Chi Minh City Route: Stops & Transport',
+    metaDescription:
+      'The classic Hanoi to Ho Chi Minh City route: best stops (Ha Long, Hue, Hoi An, Mekong), flying vs train, how many days to allow and a sample plan.',
+    answer:
+      'The classic north–south route runs Hanoi – Ha Long/Lan Ha Bay – Hue – Hoi An/Da Nang – Ho Chi Minh City – Mekong Delta. Fly Hanoi to Da Nang and Da Nang to Ho Chi Minh City (about 1–2 hours each) and allow 10–14 days.',
+    heroImage: '/images/vietnamtour_hanoi_colonial.png',
+    category: 'Itineraries',
+    tours: { minDays: 9, maxDays: 14, heading: 'North-to-south private tours' },
+    sections: [
+      {
+        heading: 'Transport options',
+        table: {
+          caption: 'Hanoi to Ho Chi Minh City: transport compared',
+          headers: ['Option', 'Time', 'Notes'],
+          rows: [
+            ['Direct flight', 'About 2 hours', 'Fastest; several flights daily'],
+            ['Fly via Da Nang', 'About 1–2 hours per leg', 'Best for the classic stops: Hue and Hoi An'],
+            ['Reunification Express train', 'Well over a day end to end', 'Scenic; best done in sections, e.g. Hue–Da Nang'],
+            ['Private car/driver', 'Days', 'Used for regional legs, not the full length'],
+          ],
+        },
+      },
+      {
+        heading: 'Recommended stops',
+        bullets: ['Ha Long / Lan Ha Bay (north)', 'Ninh Binh (day trip from Hanoi)', 'Hue and Hoi An (centre)', 'Mekong Delta (south)'],
+      },
+    ],
+    faqs: [
+      { question: 'How far is Hanoi from Ho Chi Minh City?', answer: 'Roughly 1,600 km by road; the direct flight takes about 2 hours.' },
+      { question: 'Is the train worth it?', answer: 'It is scenic and memorable in sections, but flying is the practical option for most itineraries.' },
+    ],
+    sources: [],
+    related: ['vietnam-14-day-itinerary', 'vietnam-itinerary-10-14-days', 'best-time-to-visit-vietnam-uk-travellers'],
+  },
+
+  // ───────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'vietnam-one-week-itinerary',
+    path: '/vietnam-guides/vietnam-one-week-itinerary',
+    title: 'One Week in Vietnam: Best 7–9 Day Private Itinerary',
+    metaTitle: 'Vietnam 7-Day Itinerary | One Week Options',
+    metaDescription:
+      'How to spend one week in Vietnam: pick two regions, avoid rushing, and see sample 7–9 day routes with matching private tours.',
+    answer:
+      'With a week in Vietnam, choose two regions rather than three: for example Hanoi, Ha Long Bay and Hoi An, or Ho Chi Minh City, the Mekong Delta and a beach. Use one internal flight and keep to 2–3 nights per base.',
+    heroImage: '/images/hero_halong_bay.png',
+    category: 'Itineraries',
+    tours: { minDays: 5, maxDays: 9, heading: 'Shorter private tours' },
+    sections: [
+      {
+        heading: 'Two sample one-week routes',
+        table: {
+          caption: 'Sample 7–9 day Vietnam routes',
+          headers: ['Route', 'Nights', 'Best for'],
+          rows: [
+            ['Hanoi → Ha Long Bay → Hoi An', '3 + 1 + 3', 'Culture, scenery and a heritage town'],
+            ['Ho Chi Minh City → Mekong Delta → beach', '3 + 1 + 3', 'Food, river life and relaxation'],
+          ],
+        },
+      },
+    ],
+    faqs: [
+      { question: 'Is one week enough for Vietnam?', answer: 'It is enough to see two regions well. For the full north–south journey, plan 12–14 days.' },
+    ],
+    sources: [],
+    related: ['vietnam-14-day-itinerary', 'vietnam-itinerary-10-14-days', 'vietnam-tour-cost-from-uk'],
   },
 ];
 

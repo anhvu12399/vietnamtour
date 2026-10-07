@@ -10,7 +10,7 @@ import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getPostBySlug, getPosts, getItineraries } from '@/sanity/client';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from '@/components/SeoJsonLd';
-import { absoluteUrl } from '@/lib/siteConfig';
+import { absoluteUrl, stripBrand } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
-  const title = post.seo?.metaTitle || `${post.title} | Vietnam Travel Guide`;
+  const title = stripBrand(post.seo?.metaTitle || '') || post.title;
   const description = post.seo?.metaDescription || post.excerpt || `Expert travel guide: ${post.title}. Insider knowledge for planning your perfect Vietnam trip.`;
   const url = absoluteUrl(`/travel-guides/${slug}`);
   const baseKeywords = ["Vietnam travel guide", "Vietnam holiday guide", "Vietnam insider tips", "Vietnam local expert"];

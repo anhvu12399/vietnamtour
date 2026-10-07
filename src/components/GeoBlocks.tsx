@@ -1,4 +1,5 @@
 import FaqAccordion from '@/components/FaqAccordion';
+import Link from 'next/link';
 import type { GeoFaq } from '@/lib/geoDefaults';
 
 function formatDate(iso: string): string {
@@ -49,5 +50,31 @@ export function GeoSources({ sources }: { sources?: { label?: string; url?: stri
         ))}
       </ul>
     </div>
+  );
+}
+
+const PLANNING_LINKS = [
+  { href: '/vietnam-holidays-from-uk', label: 'Vietnam holidays from the UK: flights, time difference & money' },
+  { href: '/vietnam-guides/vietnam-tour-cost-from-uk', label: 'How much does a private Vietnam tour cost?' },
+  { href: '/vietnam-guides/best-time-to-visit-vietnam-uk-travellers', label: 'Best time to visit Vietnam, region by region' },
+  { href: '/visa-guide', label: 'Vietnam visa for UK passport holders' },
+  { href: '/vietnam-guides/is-vietnam-safe-for-uk-travellers', label: 'Is Vietnam safe? Health & safety advice' },
+];
+
+/** Contextual internal links to the core planning guides. */
+export function PlanningGuides({ heading = 'Planning your trip from the UK' }: { heading?: string }) {
+  return (
+    <nav aria-label="Planning guides" className="border border-line p-6 bg-white text-left">
+      <h2 className="font-serif text-xl text-ink font-semibold mb-4">{heading}</h2>
+      <ul className="space-y-2 text-sm">
+        {PLANNING_LINKS.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="text-copper underline underline-offset-2 hover:text-ink">
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

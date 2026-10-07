@@ -10,7 +10,7 @@ import { getThingsToDoFromSanity } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Things To Do in Vietnam | Authentic Experiences & Activities | Vietnam Tour',
+  title: 'Things To Do in Vietnam | Authentic Experiences & Activities',
   description: 'Discover the most remarkable things to do in Vietnam — from kayaking hidden Ha Long Bay lagoons and trekking Sapa\'s rice terraces to attending Hoi An\'s full moon lantern festival. First-hand guides from specialists who know Vietnam deeply.',
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/things-to-do',

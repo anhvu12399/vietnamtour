@@ -8,7 +8,7 @@ import { getSpecialists } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Meet Our Vietnam Travel Specialists | VietnamTours.co.uk',
+  title: 'Meet Our Vietnam Travel Specialists',
   description: 'Meet the Vietnam specialists behind your journey. Our team of local experts, each with years of in-country experience, craft every itinerary from first-hand knowledge.',
   keywords: ['Vietnam travel specialists', 'Vietnam tour experts', 'Vietnam travel consultants UK', 'Vietnam holiday advisors', 'meet our team'],
   alternates: {

@@ -11,7 +11,7 @@ import { getItineraries, getSpecialists, getToursLanding, getPosts } from '@/san
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Tours & Itineraries | Luxury Private Holidays | VietnamTours.co.uk',
+  title: 'Vietnam Tours & Itineraries | Luxury Private Holidays',
   description: 'Browse our collection of handcrafted Vietnam tour itineraries — from classic 10-day journeys to luxury 3-week expeditions. All tours are private, guided, and fully customisable. From £2,495pp.',
   keywords: ['Vietnam tours', 'Vietnam itineraries', 'luxury Vietnam holidays', 'private guided tours Vietnam', 'Vietnam holiday packages UK', 'bespoke Vietnam tours', 'tailor-made Vietnam holidays'],
   alternates: {

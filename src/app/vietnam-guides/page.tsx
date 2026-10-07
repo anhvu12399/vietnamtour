@@ -7,9 +7,9 @@ import { ukGuides } from '@/lib/ukGuidesData';
 import { absoluteUrl } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Vietnam Guides for UK Travellers: Cost, Visa, Best Time & Safety',
+  title: 'Vietnam Travel Guides for UK Travellers',
   description:
-    'Plain-English Vietnam planning guides for UK travellers: flights from London, visa rules, tour costs in pounds, best time to visit, safety and itinerary advice.',
+    'Vietnam planning guides for UK travellers: flights from London, tour costs in pounds, best time to visit, safety and 7–21 day itineraries.',
   alternates: { canonical: absoluteUrl('/vietnam-guides') },
 };
 

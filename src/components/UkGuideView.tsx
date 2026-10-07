@@ -81,6 +81,31 @@ async function PricingTable() {
   );
 }
 
+async function GuideTours({ minDays, maxDays, heading }: { minDays: number; maxDays: number; heading: string }) {
+  const itineraries = await getItineraries();
+  const matches = itineraries
+    .filter((it) => it.slug?.current && it.duration >= minDays && it.duration <= maxDays)
+    .sort((a, b) => a.priceFrom - b.priceFrom)
+    .slice(0, 6);
+  if (matches.length === 0) return null;
+  return (
+    <section className="mb-14" id="tours">
+      <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-5 pb-4 border-b border-line">{heading}</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {matches.map((it) => (
+          <li key={it._id}>
+            <Link href={`/itineraries/${it.slug.current}`} className="block border border-line bg-white p-5 hover:border-gold transition-colors">
+              <span className="text-[9px] uppercase tracking-widest text-gold font-bold">{it.duration} days</span>
+              <span className="block font-serif text-lg text-ink mt-1 leading-snug">{it.title}</span>
+              <span className="block text-sm text-ink-soft mt-2">From £{it.priceFrom.toLocaleString('en-GB')} per person</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export default function UkGuideView({ guide }: { guide: UkGuide }) {
   const url = absoluteUrl(guide.path);
   const related = guide.related.map((s) => getUkGuide(s)).filter((g): g is UkGuide => !!g);
@@ -197,6 +222,8 @@ export default function UkGuideView({ guide }: { guide: UkGuide }) {
               )}
             </section>
           ))}
+
+          {guide.tours && <GuideTours {...guide.tours} />}
 
           <section className="mb-14">
             <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold mb-6 pb-4 border-b border-line">

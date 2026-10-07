@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  alternates: { canonical: 'https://www.vietnamtours.co.uk/privacy-policy' },
   title: 'Privacy Policy | Vietnam Heritage Tours',
   description: 'Learn how Vietnam Heritage Tours collects, uses, and protects your personal data in accordance with UK GDPR.',
 };

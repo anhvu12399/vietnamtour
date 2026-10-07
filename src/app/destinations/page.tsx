@@ -9,7 +9,7 @@ import { getDestinations } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Destinations | Places to Visit | VietnamTours.co.uk',
+  title: 'Vietnam Destinations | Places to Visit',
   description: 'Explore Vietnam\'s most captivating destinations — Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta, Phú Quốc, Da Nang, Da Lat and Phong Nha. Expert destination guides and recommended tours.',
   keywords: ['Vietnam destinations', 'places to visit in Vietnam', 'Ha Long Bay', 'Hanoi', 'Hoi An', 'Sapa Vietnam', 'Mekong Delta', 'Phu Quoc', 'Da Nang', 'Phong Nha'],
   alternates: {
@@ -67,9 +67,9 @@ export default async function DestinationsPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Regions & Landscapes
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Vietnam Destinations
-            </h1>
+            </h2>
             <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               From the high Sapa highlands to the tropical beaches of Phu Quoc, explore our key regions to inspire your custom journey.
             </p>

@@ -37,7 +37,7 @@ export function itineraryFaqs(it: Itinerary): GeoFaq[] {
     },
     {
       question: 'Do UK citizens need a visa for Vietnam?',
-      answer: `UK passport holders currently receive visa-free entry for up to 45 days, and an e-visa is available for longer stays. Rules change, so confirm on the official sources listed in our visa guide: ${absoluteUrl('/vietnam-guides/vietnam-visa-for-uk-citizens')}.`,
+      answer: `UK passport holders currently receive visa-free entry for up to 45 days, and an e-visa is available for longer stays. Rules change, so confirm on the official sources listed in our visa guide: ${absoluteUrl('/visa-guide')}.`,
     },
     {
       question: 'When is the best time to go?',

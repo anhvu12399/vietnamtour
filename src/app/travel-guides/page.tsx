@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Travel Guides | Expert Tips & Insider Insights | VietnamTours.co.uk',
+  title: 'Vietnam Travel Guides | Expert Tips & Insider Insights',
   description: 'Expert-written Vietnam travel guides. Real experiences, authentic advice on Hanoi, Halong Bay, Hoi An, Sapa, Mekong Delta and every region in between.',
   keywords: ['Vietnam travel guide', 'Vietnam travel tips', 'Vietnam first time visit', 'Vietnam insider tips', 'Hanoi guide', 'Ha Long Bay guide', 'Hoi An travel guide', 'Sapa trekking guide'],
   alternates: {

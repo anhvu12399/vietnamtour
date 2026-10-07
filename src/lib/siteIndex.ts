@@ -11,6 +11,8 @@ import { inspirationsData } from '@/lib/inspirationsData';
 import { ideasByMonthData } from '@/lib/ideasByMonthData';
 import { ukGuides } from '@/lib/ukGuidesData';
 import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
+import { isThinItinerary } from '@/lib/contentQuality';
+import type { Itinerary } from '@/sanity/types';
 
 export type SiteSection =
   | 'Guides'
@@ -66,6 +68,7 @@ export async function getSiteEntries(): Promise<SiteEntry[]> {
 
   for (const it of itineraries as (WithSlug & { title: string; intro?: string; duration?: number; priceFrom?: number })[]) {
     if (!it.slug?.current) continue;
+    if (isThinItinerary(it as unknown as Itinerary)) continue; // noindex'd pages stay out of the sitemap
     const price = it.priceFrom ? ` From £${it.priceFrom.toLocaleString('en-GB')} per person.` : '';
     entries.push({
       url: absoluteUrl(`/itineraries/${it.slug.current}`),
