@@ -7,7 +7,7 @@ export const revalidate = 3600;
 // Plain-text rendering of the key answer content so agents can read it without
 // parsing HTML. Everything here is also visible on the public pages.
 export async function GET() {
-  const itineraries = await getItineraries();
+  const itineraries = await getItineraries().catch(() => []);
   const out: string[] = [
     `# ${siteConfig.name} — full content index`,
     '',

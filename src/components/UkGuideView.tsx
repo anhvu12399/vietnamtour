@@ -30,7 +30,7 @@ const BANDS: { label: string; min: number; max: number }[] = [
 ];
 
 async function PricingTable() {
-  const itineraries = await getItineraries();
+  const itineraries = await safeItineraries();
   const priced = itineraries.filter((it) => it.slug?.current && it.duration && it.priceFrom);
   const rows = BANDS.map((band) => {
     const inBand = priced.filter((it) => it.duration >= band.min && it.duration <= band.max);
@@ -81,8 +81,18 @@ async function PricingTable() {
   );
 }
 
+// Catalogue blocks are an enhancement: a CMS hiccup must never fail the page (or the build).
+async function safeItineraries() {
+  try {
+    return await getItineraries();
+  } catch (e) {
+    console.error('UkGuideView: could not load itineraries', e);
+    return [];
+  }
+}
+
 async function GuideTours({ minDays, maxDays, heading }: { minDays: number; maxDays: number; heading: string }) {
-  const itineraries = await getItineraries();
+  const itineraries = await safeItineraries();
   const matches = itineraries
     .filter((it) => it.slug?.current && it.duration >= minDays && it.duration <= maxDays)
     .sort((a, b) => a.priceFrom - b.priceFrom)
