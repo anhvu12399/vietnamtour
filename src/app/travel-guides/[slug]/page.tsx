@@ -9,6 +9,8 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getPostBySlug, getPosts, getItineraries } from '@/sanity/client';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from '@/components/SeoJsonLd';
+import { absoluteUrl } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -29,14 +31,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return {};
   const title = post.seo?.metaTitle || `${post.title} | Vietnam Travel Guide`;
   const description = post.seo?.metaDescription || post.excerpt || `Expert travel guide: ${post.title}. Insider knowledge for planning your perfect Vietnam trip.`;
+  const url = absoluteUrl(`/travel-guides/${slug}`);
   return {
     title,
     description,
+    alternates: { canonical: post.seo?.canonicalUrl || url },
     openGraph: {
       title,
       description,
+      url,
+      type: 'article',
+      locale: 'en_GB',
       ...(post.mainImage && { images: [{ url: post.mainImage }] }),
     },
+    twitter: { card: 'summary_large_image', title, description, ...(post.mainImage && { images: [post.mainImage] }) },
   };
 }
 
@@ -459,8 +467,32 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
   const readingTime = getReadingTime(post.content);
   const category = getCategory(post.title);
 
+  const guideUrl = absoluteUrl(`/travel-guides/${post.slug.current}`);
+  const guideFaqs = post.geoFaqs && post.geoFaqs.length > 0 ? post.geoFaqs : relatedFaqs;
+
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Travel Guides', url: '/travel-guides' },
+          { name: post.title, url: guideUrl },
+        ]}
+      />
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt || post.seo?.metaDescription || post.title}
+        url={guideUrl}
+        image={heroImage}
+        publishedAt={post.publishedAt}
+        modifiedAt={post._updatedAt || post.publishedAt}
+        person={post.heroAuthor?.name ? { name: post.heroAuthor.name, jobTitle: post.heroAuthor.role, image: post.heroAuthor.avatar } : undefined}
+        section={category}
+        answer={post.answerSummary}
+        sources={post.sources}
+      />
+      <FaqJsonLd faqs={guideFaqs} />
+
       <Navbar />
 
       <main className="min-h-screen bg-paper text-ink">
@@ -712,7 +744,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
           </div>
 
           <div className="w-full flex justify-center">
-            <FaqAccordion faqs={relatedFaqs} />
+            <FaqAccordion faqs={guideFaqs} />
           </div>
         </section>
 

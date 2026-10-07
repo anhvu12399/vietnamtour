@@ -527,7 +527,7 @@ export async function getPosts(): Promise<Post[]> {
   if (useMock) return [customEeatPost];
   try {
     const posts = await fetchSanity<Post[]>(`*[_type == "post"] | order(publishedAt desc){
-      _id, title, slug, publishedAt, excerpt,
+      _id, _updatedAt, title, slug, publishedAt, excerpt,
       "mainImage": mainImage.asset->url,
       heroAuthor{
         name, role,
@@ -579,7 +579,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (slug === customEeatPost.slug?.current) return customEeatPost;
   if (useMock) return null;
   const query = `*[_type == "post" && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, excerpt,
+    _id, _updatedAt, title, slug, publishedAt, excerpt, answerSummary, geoFaqs, lastReviewedAt, sources,
     "mainImage": mainImage.asset->url,
     heroAuthor{
       name, role,
@@ -770,7 +770,7 @@ export async function getMonthGuideFromSanity(slug: string): Promise<any | null>
 export async function getBlogPostsFromSanity(): Promise<any[]> {
   if (useMock) return [];
   const query = `*[_type in ["blogPost", "post"]] | order(publishedAt desc){
-    _id, title, slug, publishedAt, category, excerpt,
+    _id, _updatedAt, title, slug, publishedAt, category, excerpt,
     "featuredImage": coalesce(featuredImage.asset->url, featuredImage, mainImage.asset->url, mainImage),
     "imageAlt": coalesce(featuredImage.alt, imageAlt, title),
     author->{
@@ -785,7 +785,7 @@ export async function getBlogPostsFromSanity(): Promise<any[]> {
 export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | null> {
   if (useMock) return null;
   const query = `*[_type in ["blogPost", "post"] && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, category, excerpt, tags,
+    _id, _updatedAt, title, slug, publishedAt, category, excerpt, tags, answerSummary, geoFaqs, lastReviewedAt, sources,
     "featuredImage": coalesce(featuredImage.asset->url, featuredImage),
     "imageAlt": coalesce(featuredImage.alt, imageAlt, title),
     "author": coalesce(

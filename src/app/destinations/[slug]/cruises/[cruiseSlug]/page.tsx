@@ -31,7 +31,7 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { cruiseSlug } = await params;
+  const { slug, cruiseSlug } = await params;
   const cruise = await getCruiseBySlug(cruiseSlug);
   if (!cruise) return {};
 
@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: seo?.keywords?.join(', '),
+    alternates: { canonical: `https://www.vietnamtours.co.uk/destinations/${slug}/cruises/${cruiseSlug}` },
     openGraph: {
       title,
       description,

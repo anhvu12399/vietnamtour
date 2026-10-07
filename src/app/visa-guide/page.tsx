@@ -3,6 +3,12 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { BreadcrumbJsonLd, FaqJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
+import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
+import { getUkGuide } from '@/lib/ukGuidesData';
+import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
+
+const ukVisa = getUkGuide('vietnam-visa-for-uk-citizens')!;
 
 export const metadata: Metadata = {
   title: 'Vietnam Visa Guide 2026 | VietnamTours.co.uk',
@@ -66,6 +72,9 @@ const visaTypes = [
 export default function VisaGuidePage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Visa Guide', url: '/visa-guide' }]} />
+      <WebPageJsonLd name="Vietnam Visa Guide" description={ukVisa.answer} url={absoluteUrl('/visa-guide')} modifiedAt={CONTENT_REVIEWED_AT} speakable={['[data-answer]']} />
+      <FaqJsonLd faqs={ukVisa.faqs} />
       <Navbar />
       <main className="bg-paper text-ink flex-grow flex flex-col">
 
@@ -94,6 +103,10 @@ export default function VisaGuidePage() {
           <span className="font-bold">Good news for UK travellers:</span> British passport holders currently enjoy{' '}
           <span className="underline underline-offset-2">45-day visa-free entry</span> to Vietnam. No application required.
         </p>
+      </section>
+
+      <section className="max-w-4xl mx-auto w-full px-6 pt-12">
+        <GeoAnswer answer={ukVisa.answer} reviewedAt={CONTENT_REVIEWED_AT} label="Quick answer for UK passport holders" />
       </section>
 
       {/* Visa Types */}
@@ -180,7 +193,11 @@ export default function VisaGuidePage() {
         </Link>
       </section>
 
-    </main>
+    <section className="max-w-4xl mx-auto w-full px-6 pb-20 space-y-10">
+        <GeoFaqSection faqs={ukVisa.faqs} heading="UK travellers: visa questions answered" />
+        <GeoSources sources={ukVisa.sources} />
+      </section>
+      </main>
       <Footer />
     </>
   );

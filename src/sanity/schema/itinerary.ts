@@ -1,8 +1,10 @@
+import { geoFields } from './geoFields';
 export const itinerary = {
   name: 'itinerary',
   title: 'Itinerary',
   type: 'document',
   fields: [
+    ...geoFields,
     {
       name: 'title',
       title: 'Title',

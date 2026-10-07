@@ -82,29 +82,82 @@ export default function EnquiryPage() {
     setServerError('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
+      const urlParams = new URLSearchParams(window.location.search);
+      let ref = '';
+      let land = '';
+      let utmSrc = '';
+      let utmMed = '';
+      let utmCam = '';
+
+      try {
+        ref = sessionStorage.getItem('vpt_initial_referrer') || '';
+        land = sessionStorage.getItem('vpt_landing_page') || '';
+        utmSrc = sessionStorage.getItem('vpt_utm_source') || '';
+        utmMed = sessionStorage.getItem('vpt_utm_medium') || '';
+        utmCam = sessionStorage.getItem('vpt_utm_campaign') || '';
+      } catch {}
+
+      if (!ref) ref = document.referrer || '';
+      if (!land) land = window.location.pathname || '/enquire';
+      if (!utmSrc) utmSrc = urlParams.get('utm_source') || '';
+      if (!utmMed) utmMed = urlParams.get('utm_medium') || '';
+      if (!utmCam) utmCam = urlParams.get('utm_campaign') || '';
+
+      const trackingData = {
+        ...formData,
+        referrer: ref,
+        landingPage: land,
+        utmSource: utmSrc,
+        utmMedium: utmMed,
+        utmCampaign: utmCam,
+      };
+
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          ...formData,
-          name: `${formData.firstName} ${formData.lastName}`,
-          _subject: `New Tailor-Made Enquiry from ${formData.firstName} ${formData.lastName}`,
-          _template: "table"
-        }),
+        body: JSON.stringify(trackingData),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        // Fallback directly to formsubmit.co if internal endpoint fails
+        await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            name: `${formData.firstName} ${formData.lastName}`,
+            _subject: `New Tailor-Made Enquiry from ${formData.firstName} ${formData.lastName}`,
+            _template: 'table',
+          }),
+        });
       }
 
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err: any) {
       console.error('Submission error:', err);
-      setServerError('An error occurred during submission. Please try again.');
+      // Emergency fallback to formsubmit.co
+      try {
+        await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            ...formData,
+            name: `${formData.firstName} ${formData.lastName}`,
+            _subject: `New Tailor-Made Enquiry from ${formData.firstName} ${formData.lastName}`,
+            _template: 'table',
+          }),
+        });
+        setSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch {
+        setServerError('An error occurred during submission. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }

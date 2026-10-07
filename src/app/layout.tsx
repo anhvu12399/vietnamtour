@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Fraunces, Space_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
+import { TrafficTracker } from "@/components/TrafficTracker";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -53,9 +54,11 @@ export const metadata: Metadata = {
   authors: [{ name: "VietnamTours.co.uk" }],
   creator: "VietnamTours.co.uk",
   publisher: "VietnamTours.co.uk",
-  alternates: {
-    canonical: "https://www.vietnamtours.co.uk",
-  },
+  // NOTE: Do NOT set alternates.canonical here in layout.tsx!
+  // In Next.js App Router, layout-level canonical overrides page-level canonical.
+  // Each page (generateMetadata) sets its own self-referencing canonical.
+  // Setting a global canonical here was causing ALL pages to canonicalize to the homepage,
+  // which was the #1 reason only 27/136 sitemap URLs were being indexed by Google.
   openGraph: {
     type: "website",
     locale: "en_GB",
@@ -169,6 +172,7 @@ const jsonLd = {
 };
 
 import WhatsAppFloating from "@/components/WhatsAppFloating";
+import { SanityLive } from "@/sanity/client";
 
 export default function RootLayout({
   children,
@@ -192,9 +196,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-paper text-ink font-medium">
+        <TrafficTracker />
         {children}
         <WhatsAppFloating />
         <Analytics />
+        <SanityLive />
       </body>
     </html>
   );

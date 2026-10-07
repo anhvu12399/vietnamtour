@@ -11,6 +11,10 @@ import {
   getCruisesByDestination,
 } from '@/sanity/client';
 import { PortableText } from '@portabletext/react';
+import { BreadcrumbJsonLd, FaqJsonLd, TouristDestinationJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
+import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
+import { destinationAnswer, destinationFaqs } from '@/lib/geoDefaults';
+import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -34,15 +38,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = seo?.metaTitle || `${destination.name} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `Discover the beauty of ${destination.name}. Explore tailor-made luxury tours, travel guides and insider tips with Vietnam Tour UK.`;
 
+  const url = absoluteUrl(`/destinations/${slug}`);
+  const ogImage = seo?.ogImage || destination.image;
   return {
     title,
     description,
     keywords: seo?.keywords?.join(', '),
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
-      ...(seo?.ogImage && { images: [{ url: seo.ogImage }] }),
+      url,
+      type: 'website',
+      locale: 'en_GB',
+      ...(ogImage && { images: [{ url: ogImage }] }),
     },
+    twitter: { card: 'summary_large_image', title, description, ...(ogImage && { images: [ogImage] }) },
   };
 }
 
@@ -60,8 +71,30 @@ export default async function DestinationDetailPage({ params }: PageProps) {
 
   const featuredTours = destination.featuredTours || [];
 
+  const pageUrl = absoluteUrl(`/destinations/${destination.slug.current}`);
+  const answer = destinationAnswer(destination);
+  const faqs = destinationFaqs(destination);
+  const reviewedAt = destination.lastReviewedAt || (destination._updatedAt ? destination._updatedAt.slice(0, 10) : CONTENT_REVIEWED_AT);
+
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Destinations', url: '/destinations' },
+          { name: destination.name, url: pageUrl },
+        ]}
+      />
+      <WebPageJsonLd name={`${destination.name} – Luxury Vietnam Tours`} description={answer} url={pageUrl} modifiedAt={reviewedAt} speakable={['[data-answer]']} />
+      <TouristDestinationJsonLd
+        name={destination.name}
+        description={answer}
+        url={pageUrl}
+        image={destination.image}
+        includesAttraction={destination.highlights}
+      />
+      <FaqJsonLd faqs={faqs} />
+
       <Navbar />
 
       {/* Hero Banner */}
@@ -103,6 +136,8 @@ export default async function DestinationDetailPage({ params }: PageProps) {
           {/* Left columns */}
           <div className="lg:col-span-2 space-y-20">
             
+            <GeoAnswer answer={answer} reviewedAt={reviewedAt} label={`${destination.name} at a glance`} />
+
             {/* Description */}
             <div className="space-y-6">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
@@ -129,6 +164,9 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 ))}
               </ul>
             </div>
+
+            <GeoFaqSection faqs={faqs} heading={`${destination.name}: your questions answered`} />
+            <GeoSources sources={destination.sources} />
 
           </div>
 

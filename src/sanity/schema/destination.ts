@@ -1,8 +1,10 @@
+import { geoFields } from './geoFields';
 export const destination = {
   name: 'destination',
   title: 'Destination',
   type: 'document',
   fields: [
+    ...geoFields,
     {
       name: 'name',
       title: 'Name',

@@ -1,3 +1,4 @@
+import { geoFields } from './geoFields';
 import { defineField, defineType } from 'sanity';
 
 export const post = defineType({
@@ -13,6 +14,7 @@ export const post = defineType({
     { name: 'seo', title: '⑥ SEO' },
   ],
   fields: [
+    ...geoFields,
     // ────────────────────────────────────
     // GROUP 1: HERO & BASIC INFO
     // ────────────────────────────────────

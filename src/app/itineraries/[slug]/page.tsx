@@ -10,6 +10,10 @@ import RouteStrip from '@/components/RouteStrip';
 import TimelineInteractive from '@/components/TimelineInteractive';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetailsBuilder';
+import { BreadcrumbJsonLd, FaqJsonLd, TouristTripJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
+import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
+import { itineraryAnswer, itineraryFaqs } from '@/lib/geoDefaults';
+import { CONTENT_REVIEWED_AT, absoluteUrl } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -33,15 +37,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = seo?.metaTitle || `${itinerary.title} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
 
+  const url = absoluteUrl(`/itineraries/${slug}`);
+  const ogImage = seo?.ogImage || itinerary.gallery?.[0];
   return {
     title,
     description,
     keywords: seo?.keywords?.join(', '),
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
-      ...(seo?.ogImage && { images: [{ url: seo.ogImage }] }),
+      url,
+      type: 'website',
+      locale: 'en_GB',
+      ...(ogImage && { images: [{ url: ogImage }] }),
     },
+    twitter: { card: 'summary_large_image', title, description, ...(ogImage && { images: [ogImage] }) },
   };
 }
 
@@ -57,8 +68,44 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
   const routePoints = getRoutePoints(itinerary);
   const timelineDays = generateDayByDayTimeline(itinerary);
 
+  const pageUrl = absoluteUrl(`/itineraries/${itinerary.slug.current}`);
+  const answer = itineraryAnswer(itinerary);
+  const faqs = itineraryFaqs(itinerary);
+  const reviewedAt = itinerary.lastReviewedAt || (itinerary._updatedAt ? itinerary._updatedAt.slice(0, 10) : CONTENT_REVIEWED_AT);
+
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Itineraries', url: '/itineraries' },
+          ...(itinerary.destination?.slug?.current
+            ? [{ name: itinerary.destination.name, url: `/destinations/${itinerary.destination.slug.current}` }]
+            : []),
+          { name: itinerary.title, url: pageUrl },
+        ]}
+      />
+      <WebPageJsonLd
+        name={itinerary.seo?.metaTitle || itinerary.title}
+        description={answer}
+        url={pageUrl}
+        modifiedAt={reviewedAt}
+        speakable={['[data-answer]']}
+      />
+      <TouristTripJsonLd
+        name={itinerary.title}
+        description={answer}
+        url={pageUrl}
+        image={(itinerary.gallery || []).slice(0, 4)}
+        duration={itinerary.duration}
+        price={itinerary.priceFrom}
+        destination={itinerary.destination?.name || 'Vietnam'}
+        days={timelineDays.map((d) => ({ name: `Day ${d.dayNumber}: ${d.title}`, description: d.description }))}
+        highlights={itinerary.highlights}
+        modifiedAt={reviewedAt}
+      />
+      <FaqJsonLd faqs={faqs} />
+
       <Navbar />
 
       {/* Hero Header Banner */}
@@ -110,6 +157,9 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
           {/* Left Columns - Description, Highlights, Map, Timeline, Tips */}
           <div className="lg:col-span-2 space-y-16">
             
+            {/* Direct answer — quotable by answer engines */}
+            <GeoAnswer answer={answer} reviewedAt={reviewedAt} />
+
             {/* Overview */}
             <div className="space-y-6 text-left">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
@@ -184,6 +234,9 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
+
+            <GeoFaqSection faqs={faqs} heading={`${itinerary.title}: your questions answered`} />
+            <GeoSources sources={itinerary.sources} />
 
           </div>
 

@@ -1,3 +1,4 @@
+import { geoFields } from './geoFields';
 import { defineField, defineType } from 'sanity';
 
 export const blogPost = defineType({
@@ -38,6 +39,7 @@ export const blogPost = defineType({
     },
   },
   fields: [
+    ...geoFields,
     // ═══════════════════════════════════════════
     // GROUP 1: BÀI VIẾT
     // ═══════════════════════════════════════════

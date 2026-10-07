@@ -1,3 +1,4 @@
+import { geoFields } from './geoFields';
 import { defineField, defineType } from 'sanity';
 
 export const travelGuide = defineType({
@@ -5,6 +6,7 @@ export const travelGuide = defineType({
   title: 'Travel Guide',
   type: 'document',
   fields: [
+    ...geoFields,
     defineField({
       name: 'title',
       title: 'Title',

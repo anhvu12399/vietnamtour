@@ -62,6 +62,60 @@ export const enquiry = {
       title: 'Additional Notes / Request details',
       type: 'text',
     },
+    // ── Traffic Forensics & AI Detection Fields ──
+    {
+      name: 'trafficSource',
+      title: 'Traffic Source Label (Nguồn vào)',
+      type: 'string',
+      description: 'Ví dụ: 🤖 ChatGPT, 🧭 Perplexity, 🔍 Google Search, 👤 Direct',
+    },
+    {
+      name: 'trafficChannel',
+      title: 'Channel',
+      type: 'string',
+      description: 'ai | organic | cpc | referral | direct',
+    },
+    {
+      name: 'isAi',
+      title: 'AI Assistant Detected?',
+      type: 'boolean',
+    },
+    {
+      name: 'confidence',
+      title: 'Confidence (%)',
+      type: 'number',
+    },
+    {
+      name: 'referrer',
+      title: 'Entry Referrer URL',
+      type: 'string',
+    },
+    {
+      name: 'landingPage',
+      title: 'First Landing Page',
+      type: 'string',
+    },
+    {
+      name: 'utmSource',
+      title: 'UTM Source',
+      type: 'string',
+    },
+    {
+      name: 'utmMedium',
+      title: 'UTM Medium',
+      type: 'string',
+    },
+    {
+      name: 'utmCampaign',
+      title: 'UTM Campaign',
+      type: 'string',
+    },
+    {
+      name: 'aiSignals',
+      title: 'AI Forensics Signals',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
     {
       name: 'submittedAt',
       title: 'Submitted At',

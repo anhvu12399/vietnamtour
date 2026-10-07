@@ -35,9 +35,15 @@ export interface SeoFields {
   metaDescription?: string;
   ogImage?: string; // URL resolved by client
   keywords?: string[];
+  canonicalUrl?: string;
 }
 
 export interface Destination {
+  _updatedAt?: string;
+  answerSummary?: string;
+  geoFaqs?: { question: string; answer: string }[];
+  lastReviewedAt?: string;
+  sources?: { label?: string; url?: string }[];
   _id: string;
   name: string;
   slug: { current: string };
@@ -50,6 +56,11 @@ export interface Destination {
 }
 
 export interface Itinerary {
+  _updatedAt?: string;
+  answerSummary?: string;
+  geoFaqs?: { question: string; answer: string }[];
+  lastReviewedAt?: string;
+  sources?: { label?: string; url?: string }[];
   _id: string;
   title: string;
   slug: { current: string };
@@ -69,6 +80,11 @@ export interface Itinerary {
 }
 
 export interface Cruise {
+  _updatedAt?: string;
+  answerSummary?: string;
+  geoFaqs?: { question: string; answer: string }[];
+  lastReviewedAt?: string;
+  sources?: { label?: string; url?: string }[];
   _id: string;
   title: string;
   slug: { current: string };
@@ -82,6 +98,11 @@ export interface Cruise {
 }
 
 export interface TravelGuide {
+  _updatedAt?: string;
+  answerSummary?: string;
+  geoFaqs?: { question: string; answer: string }[];
+  lastReviewedAt?: string;
+  sources?: { label?: string; url?: string }[];
   _id: string;
   title: string;
   slug: { current: string };
@@ -93,6 +114,11 @@ export interface TravelGuide {
 }
 
 export interface Post {
+  _updatedAt?: string;
+  answerSummary?: string;
+  geoFaqs?: { question: string; answer: string }[];
+  lastReviewedAt?: string;
+  sources?: { label?: string; url?: string }[];
   _id: string;
   title: string;
   slug: { current: string };

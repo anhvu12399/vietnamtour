@@ -7,7 +7,9 @@ import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getBlogPostBySlugFromSanity, getBlogPostsFromSanity } from '@/sanity/client';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
-import { ArticleJsonLd } from '@/components/SeoJsonLd';
+import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from '@/components/SeoJsonLd';
+import { GeoAnswer, GeoFaqSection, GeoSources } from '@/components/GeoBlocks';
+import { absoluteUrl } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -33,11 +35,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    ...(post.seo?.canonicalUrl && {
-      alternates: {
-        canonical: post.seo.canonicalUrl,
-      },
-    }),
+    alternates: {
+      canonical: post.seo?.canonicalUrl || absoluteUrl(`/blog/${slug}`),
+    },
     ...(post.seo?.noIndex && {
       robots: {
         index: false,
@@ -290,15 +290,31 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' },
+          { name: post.title, url: `/blog/${post.slug?.current}` },
+        ]}
+      />
       <ArticleJsonLd
         title={post.title}
         description={post.excerpt || post.seo?.metaDescription || post.title}
-        url={`https://www.vietnamtours.co.uk/blog/${post.slug?.current}`}
-        image={post.seo?.ogImage || featuredImage || 'https://www.vietnamtours.co.uk/images/things_halong_kayaking.png'}
+        url={absoluteUrl(`/blog/${post.slug?.current}`)}
+        image={post.seo?.ogImage || featuredImage || '/images/things_halong_kayaking.png'}
         publishedAt={post.publishedAt}
-        author={post.author?.name || 'Vietnam Tour Specialists'}
+        modifiedAt={post._updatedAt || post.publishedAt}
+        person={{
+          name: post.author?.name || 'Vietnam Tour Specialists',
+          jobTitle: post.author?.role,
+          image: post.author?.avatar,
+          sameAs: [post.author?.facebook, post.author?.instagram].filter((x): x is string => !!x),
+        }}
         section={post.category || 'Travel'}
+        answer={post.answerSummary}
+        sources={post.sources}
       />
+      {post.geoFaqs && post.geoFaqs.length > 0 && <FaqJsonLd faqs={post.geoFaqs} />}
 
       <Navbar />
 
@@ -405,12 +421,27 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           )}
 
+          {post.answerSummary && (
+            <div className="mb-12">
+              <GeoAnswer answer={post.answerSummary} reviewedAt={post.lastReviewedAt} label="Quick answer" />
+            </div>
+          )}
+
           <div className="prose prose-slate prose-lg lg:prose-xl max-w-none prose-headings:text-ink prose-p:text-ink/80 prose-li:text-ink/80">
             {post.content ? (
               <PortableText value={post.content} components={portableTextComponents} />
             ) : (
               <p className="text-center text-white/50 py-20">Content coming soon...</p>
             )}
+          </div>
+
+          {post.geoFaqs && post.geoFaqs.length > 0 && (
+            <div className="mt-16">
+              <GeoFaqSection faqs={post.geoFaqs} />
+            </div>
+          )}
+          <div className="mt-10">
+            <GeoSources sources={post.sources} />
           </div>
 
           {/* ── E-E-A-T: Author Bio Card ── */}

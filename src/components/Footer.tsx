@@ -49,7 +49,10 @@ export default function Footer() {
       title: "Resources",
       links: [
         { label: "Visa Guide", href: "/visa-guide" },
-        { label: "Best Time to Visit", href: "/best-time-to-visit" },
+        { label: "Vietnam Holidays from the UK", href: "/vietnam-holidays-from-uk" },
+        { label: "Best Time to Visit", href: "/vietnam-guides/best-time-to-visit-vietnam-uk-travellers" },
+        { label: "Tour Costs in £", href: "/vietnam-guides/vietnam-tour-cost-from-uk" },
+        { label: "All Vietnam Guides", href: "/vietnam-guides" },
         { label: "Travel Guides", href: "/travel-guides" },
         { label: "Enquire Now", href: "/enquire" },
       ],
