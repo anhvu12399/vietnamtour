@@ -40,11 +40,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = absoluteUrl(`/destinations/${slug}`);
   const ogImage = seo?.ogImage || destination.image;
+  const baseKeywords = [`Visit ${destination.name}`, `${destination.name} luxury travel`, `Best places in ${destination.name}`, "Vietnam luxury tours", "Vietnam private holidays"];
+  const dynamicKeywords = seo?.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
     title,
     description,
-    keywords: seo?.keywords?.join(', '),
-    alternates: { canonical: url },
+    keywords: mergedKeywords,
+    alternates: {
+      canonical: seo?.canonicalUrl || `https://www.vietnamtours.co.uk/destinations/${slug}`,
+    },
     openGraph: {
       title,
       description,

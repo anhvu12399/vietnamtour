@@ -7,31 +7,47 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { thingsToDoData, getThingToDo, getAllThingToDoSlugs } from '@/lib/thingsToDoData';
-import { getItineraries, getSpecialists } from '@/sanity/client';
+import { getItineraries, getSpecialists, getThingToDoBySlugFromSanity, getThingsToDoFromSanity } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllThingToDoSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const hardcodedSlugs = getAllThingToDoSlugs();
+  try {
+    const sanityItems = await getThingsToDoFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug?.current).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((slug) => ({ slug }));
+  } catch {
+    return hardcodedSlugs.map((slug) => ({ slug }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const data = getThingToDo(slug);
+  const sanityData = await getThingToDoBySlugFromSanity(slug);
+  const data = sanityData || getThingToDo(slug);
   if (!data) return {};
+
+  const baseKeywords = [`Things to do in ${data.title || "Vietnam"}`, `Activities in Vietnam`, "Vietnam experiences", "Vietnam must do", "Vietnam excursions"];
+  const dynamicKeywords = data.seo?.keywords || data.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
-    title: data.metaTitle,
-    description: data.metaDescription,
+    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
+    keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/things-to-do/${data.slug}`,
+      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug || slug}`,
     },
     openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
+      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
   };
@@ -47,7 +63,24 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
   };
 
   const { slug } = await params;
-  const thing = getThingToDo(slug);
+  
+  // Try Sanity first, fallback to hardcoded data
+  let thing: any = null;
+  try {
+    const sanityThing = await getThingToDoBySlugFromSanity(slug);
+    if (sanityThing) {
+      thing = {
+        ...sanityThing,
+        slug: sanityThing.slug?.current || slug,
+        heroImage: sanityThing.heroImage || '/images/things_halong_kayaking.png',
+      };
+    }
+  } catch {
+    // fallback below
+  }
+  if (!thing) {
+    thing = getThingToDo(slug);
+  }
 
   if (!thing) notFound();
 
@@ -55,14 +88,14 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
   const recommendedTours = itineraries.slice(0, 3);
 
   const crossLinks = (thing.relatedSlugs || [])
-    .map((s) => thingsToDoData.find((t) => t.slug === s))
-    .filter((x): x is typeof thingsToDoData[0] => !!x);
+    .map((s: string) => thingsToDoData.find((t) => t.slug === s))
+    .filter((x: any): x is typeof thingsToDoData[0] => !!x);
 
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
-        { name: 'Things To Do', url: 'https://www.vietnamtours.co.uk/things-to-do' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Things to do', url: 'https://www.vietnamtours.co.uk/things-to-do' },
         { name: thing.title, url: `https://www.vietnamtours.co.uk/things-to-do/${thing.slug}` },
       ]} />
       <ArticleJsonLd
@@ -166,7 +199,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   What Makes This Experience Special
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {thing.highlights.map((hl, i) => (
+                  {thing.highlights.map((hl: any, i: number) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-ink-soft font-light">
                       <span className="text-gold font-bold shrink-0 mt-0.5">✦</span>
                       {hl}
@@ -176,14 +209,14 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
               </div>
 
               {/* Sections */}
-              {thing.sections.map((section, idx) => (
+              {thing.sections.map((section: any, idx: number) => (
                 <div key={idx} className="mb-14">
                   <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-6 pb-4 border-b border-line">
                     {section.heading}
                   </h2>
 
                   {/* Body paragraphs */}
-                  {section.body.split('\n\n').map((para, pi) => (
+                  {section.body.split('\n\n').map((para: any, pi: number) => (
                     <p key={pi} className="text-base sm:text-[17px] font-light text-ink leading-relaxed mb-6">
                       {para}
                     </p>
@@ -366,7 +399,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {crossLinks.map((item) => (
+                {crossLinks.map((item: any) => (
                   <Link
                     key={item.slug}
                     href={`/things-to-do/${item.slug}`}

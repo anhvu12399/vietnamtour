@@ -17,6 +17,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('About Us')
                 .child(S.document().schemaType('about').documentId('about')),
+              S.listItem()
+                .title('Tours Landing Page')
+                .child(S.document().schemaType('toursLanding').documentId('toursLanding')),
             ])
         ),
       
@@ -50,20 +53,34 @@ export const structure: StructureResolver = (S) =>
       
       S.divider(),
       
-      // 4. Marketing & Content
+      // 4. Editorial Content
       S.listItem()
-        .title('Marketing & Content')
+        .title('Editorial Content')
         .child(
           S.list()
-            .title('Marketing')
+            .title('Editorial')
             .items([
-              S.documentTypeListItem('post').title('Blog / Articles'),
+              S.documentTypeListItem('blogPost').title('📝 Blog Posts'),
+              S.documentTypeListItem('post').title('📰 Inspiration Articles'),
+              S.documentTypeListItem('tripIdea').title('💡 Trip Ideas'),
+              S.documentTypeListItem('inspiration').title('✨ Inspiration Pages'),
+              S.documentTypeListItem('thingToDo').title('🎯 Things to Do'),
+              S.documentTypeListItem('monthGuide').title('📅 Month Guides'),
             ])
         ),
       
       S.divider(),
       
-      // 5. System & Operations
+      // 5. Media Library
+      S.listItem()
+        .title('Media Library')
+        .child(
+          S.documentTypeList('mediaAsset').title('Media Assets')
+        ),
+      
+      S.divider(),
+      
+      // 6. System & Operations
       S.listItem()
         .title('System & Operations')
         .child(

@@ -8,17 +8,24 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 import { tripIdeasData, getTripIdea, getAllTripSlugs } from '@/lib/tripIdeasData';
-import { getItineraries, getSpecialists, getTripIdeaFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getTripIdeaFromSanity, getTripIdeasFromSanity } from '@/sanity/client';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllTripSlugs();
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  const hardcodedSlugs = getAllTripSlugs();
+  try {
+    const sanityItems = await getTripIdeasFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((slug) => ({ slug }));
+  } catch {
+    return hardcodedSlugs.map((slug) => ({ slug }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -27,15 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = sanityData || getTripIdea(slug);
   if (!data) return {};
 
+  const baseKeywords = ["Vietnam travel ideas", "Vietnam vacation inspiration", "Vietnam tailor-made trips", "Vietnam custom holidays"];
+  const dynamicKeywords = data.seo?.keywords || data.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
-    title: data.metaTitle,
-    description: data.metaDescription,
+    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
+    keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/trip-ideas/${data.slug}`,
+      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/trip-ideas/${data.slug?.current || data.slug || slug}`,
     },
     openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
+      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
   };
@@ -93,7 +105,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
         { name: 'Trip Ideas', url: 'https://www.vietnamtours.co.uk/trip-ideas' },
         { name: idea.title, url: `https://www.vietnamtours.co.uk/trip-ideas/${idea.slug}` },
       ]} />

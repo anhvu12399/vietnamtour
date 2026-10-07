@@ -39,11 +39,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = absoluteUrl(`/itineraries/${slug}`);
   const ogImage = seo?.ogImage || itinerary.gallery?.[0];
+  const baseKeywords = ["Vietnam private itinerary", "Luxury Vietnam tours", "Bespoke Vietnam holidays", "Tailor-made Vietnam trips", "Vietnam custom tours"];
+  let dynamicKeywords = seo?.keywords || [];
+  if (dynamicKeywords.length === 0) {
+    const destName = itinerary.destination?.name || 'Vietnam';
+    dynamicKeywords = [
+      itinerary.title,
+      `${itinerary.title} private tour`,
+      `${itinerary.title} itinerary`,
+      `${destName} private tour`,
+      `${destName} holiday`,
+      `${itinerary.duration} days in Vietnam`
+    ];
+  }
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
     title,
     description,
-    keywords: seo?.keywords?.join(', '),
-    alternates: { canonical: url },
+    keywords: mergedKeywords,
+    alternates: {
+      canonical: seo?.canonicalUrl || `https://www.vietnamtours.co.uk/itineraries/${slug}`,
+    },
     openGraph: {
       title,
       description,

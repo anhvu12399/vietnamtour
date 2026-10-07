@@ -42,8 +42,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    keywords: seo?.keywords?.join(', '),
-    alternates: { canonical: `https://www.vietnamtours.co.uk/destinations/${slug}/cruises/${cruiseSlug}` },
+    keywords: seo?.keywords || [],
+    alternates: {
+      canonical: `https://www.vietnamtours.co.uk/destinations/${slug}/cruises/${cruiseSlug}`,
+    },
     openGraph: {
       title,
       description,

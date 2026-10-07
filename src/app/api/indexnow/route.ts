@@ -11,7 +11,7 @@ import { getSiteEntries, staticPages } from '@/lib/siteIndex';
 //     Body may carry { slug, _type }; otherwise the full URL list is submitted.
 //   • Manual: curl -X POST "$SITE/api/indexnow?secret=…&all=1"
 //
-// Env: INDEXNOW_KEY, INDEXNOW_WEBHOOK_SECRET
+// Env: INDEXNOW_KEY, INDEXNOW_SECRET (INDEXNOW_WEBHOOK_SECRET also accepted)
 
 export const dynamic = 'force-dynamic';
 
@@ -30,7 +30,7 @@ const PATH_BY_TYPE: Record<string, (slug: string) => string[]> = {
 };
 
 function authorised(req: NextRequest): boolean {
-  const secret = process.env.INDEXNOW_WEBHOOK_SECRET;
+  const secret = process.env.INDEXNOW_SECRET || process.env.INDEXNOW_WEBHOOK_SECRET;
   if (!secret) return false;
   const given = req.nextUrl.searchParams.get('secret') || req.headers.get('x-webhook-secret');
   return given === secret;

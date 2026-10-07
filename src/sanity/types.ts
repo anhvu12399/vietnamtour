@@ -36,6 +36,7 @@ export interface SeoFields {
   ogImage?: string; // URL resolved by client
   keywords?: string[];
   canonicalUrl?: string;
+  noIndex?: boolean;
 }
 
 export interface Destination {

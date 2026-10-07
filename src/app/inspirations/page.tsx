@@ -4,7 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { inspirationsData } from '@/lib/inspirationsData';
+import { getInspirationsFromSanity } from '@/sanity/client';
 import type { Metadata } from 'next';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Travel Inspiration & Curated Styles | VietnamTours.co.uk',
@@ -21,7 +24,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function InspirationsListingPage() {
+export default async function InspirationsListingPage() {
+  // Try Sanity first, fallback to hardcoded data
+  let items = inspirationsData;
+  try {
+    const sanityItems = await getInspirationsFromSanity();
+    if (sanityItems && sanityItems.length > 0) {
+      items = sanityItems.map((item: any) => ({
+        ...item,
+        slug: item.slug?.current || item.slug,
+        heroImage: item.heroImage || '/images/trip_luxury_villa.png',
+      }));
+    }
+  } catch {
+    // fallback to hardcoded data
+  }
   return (
     <>
       <Navbar />
@@ -75,7 +92,7 @@ export default function InspirationsListingPage() {
 
           {/* Grid of Inspiration Articles */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {inspirationsData.map((item) => (
+            {items.map((item) => (
               <div 
                 key={item.slug} 
                 className="group bg-white border border-line shadow-md hover:shadow-xl hover:border-line transition-all duration-300 flex flex-col h-full rounded-xs overflow-hidden"

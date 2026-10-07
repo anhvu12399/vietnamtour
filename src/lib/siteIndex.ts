@@ -3,7 +3,7 @@ import {
   getItineraries,
   getPosts,
   getDestinations,
-  getBlogPostsFromSanity,
+  getSpecialists,
 } from '@/sanity/client';
 import { thingsToDoData } from '@/lib/thingsToDoData';
 import { tripIdeasData } from '@/lib/tripIdeasData';
@@ -49,11 +49,11 @@ interface WithSlug {
 }
 
 export async function getSiteEntries(): Promise<SiteEntry[]> {
-  const [itineraries, travelGuides, destinations, blogPosts] = await Promise.all([
+  const [itineraries, travelGuides, destinations, specialists] = await Promise.all([
     getItineraries(),
     getPosts(),
     getDestinations(),
-    getBlogPostsFromSanity(),
+    getSpecialists(),
   ]);
 
   const entries: SiteEntry[] = [];
@@ -98,15 +98,16 @@ export async function getSiteEntries(): Promise<SiteEntry[]> {
     });
   }
 
-  for (const b of blogPosts as (WithSlug & { title: string; excerpt?: string; publishedAt?: string })[]) {
-    if (!b.slug?.current) continue;
+  // /blog/* mirrors /travel-guides/* (noindex + canonical) so it is intentionally not indexed here.
+
+  for (const sp of specialists as (WithSlug & { name: string; role?: string })[]) {
+    if (!sp.slug?.current) continue;
     entries.push({
-      url: absoluteUrl(`/blog/${b.slug.current}`),
-      title: b.title,
-      description: b.excerpt,
-      section: 'Blog',
-      lastModified: toDate(b._updatedAt) || toDate(b.publishedAt) || EDITORIAL_DATE,
-      publishedAt: toDate(b.publishedAt),
+      url: absoluteUrl(`/specialists/${sp.slug.current}`),
+      title: sp.name,
+      description: sp.role,
+      section: 'Company',
+      lastModified: toDate(sp._updatedAt) || EDITORIAL_DATE,
     });
   }
 
@@ -137,14 +138,11 @@ export const staticPages: { path: string; title: string; description: string; se
   { path: '/itineraries', title: 'All private Vietnam itineraries', description: 'Tailor-made tours with starting prices in £ per person', section: 'Tours' },
   { path: '/destinations', title: 'Vietnam destinations', description: 'Hanoi, Ha Long Bay, Sa Pa, Hue, Hoi An, Ho Chi Minh City, Mekong Delta and more', section: 'Destinations' },
   { path: '/travel-guides', title: 'Travel guides', description: 'Specialist travel guides for Vietnam', section: 'Travel guides' },
-  { path: '/blog', title: 'Vietnam travel blog', description: 'Articles and tips from our Vietnam specialists', section: 'Blog' },
   { path: '/things-to-do', title: 'Things to do in Vietnam', description: 'Experiences and activities', section: 'Things to do' },
   { path: '/ideas-by-month', title: 'Vietnam by month', description: 'When to go, month by month', section: 'Month guides' },
   { path: '/trip-ideas', title: 'Trip ideas', description: 'Honeymoon, family, adventure and more', section: 'Trip ideas' },
   { path: '/inspirations', title: 'Inspiration', description: 'Ideas for your Vietnam journey', section: 'Inspiration' },
-  { path: '/accommodations', title: 'Hotels and accommodation', description: 'Handpicked luxury hotels', section: 'Plan' },
   { path: '/visa-guide', title: 'Vietnam visa guide', description: 'Entry requirements and e-visa', section: 'Guides' },
-  { path: '/enquire', title: 'Enquire', description: 'Request a tailor-made quote', section: 'Plan' },
   { path: '/our-story', title: 'Our story', description: 'Who we are', section: 'Company' },
   { path: '/specialists', title: 'Our specialists', description: 'Meet your Vietnam travel specialists', section: 'Company' },
   { path: '/privacy-policy', title: 'Privacy policy', description: '', section: 'Company' },

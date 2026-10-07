@@ -7,18 +7,25 @@ import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ideasByMonthData, getMonthBySlug, getAllMonthSlugs } from '@/lib/ideasByMonthData';
-import { getItineraries, getSpecialists, getMonthGuideFromSanity } from '@/sanity/client';
+import { getItineraries, getSpecialists, getMonthGuideFromSanity, getMonthGuidesFromSanity } from '@/sanity/client';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ month: string }>;
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllMonthSlugs();
-  return slugs.map((month) => ({
-    month,
-  }));
+  const hardcodedSlugs = getAllMonthSlugs();
+  try {
+    const sanityItems = await getMonthGuidesFromSanity();
+    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
+    return allSlugs.map((month) => ({ month }));
+  } catch {
+    return hardcodedSlugs.map((month) => ({ month }));
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -27,15 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = sanityData || getMonthBySlug(month);
   if (!data) return {};
 
+  const baseKeywords = [`Vietnam in ${data.metaTitle?.split(' ')[0] || "this month"}`, `Best time to visit Vietnam`, "Vietnam weather", "Vietnam seasonal travel", "Vietnam holiday guide"];
+  const dynamicKeywords = data.seo?.keywords || data.keywords || [];
+  const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
+
   return {
-    title: data.metaTitle,
-    description: data.metaDescription,
+    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
+    keywords: mergedKeywords,
     alternates: {
-      canonical: `https://www.vietnamtours.co.uk/ideas-by-month/${data.slug}`,
+      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/ideas-by-month/${data.slug?.current || data.slug || month}`,
     },
     openGraph: {
-      title: data.metaTitle,
-      description: data.metaDescription,
+      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
   };
@@ -90,8 +102,8 @@ export default async function MonthSlugPage({ params }: PageProps) {
   return (
     <>
       <BreadcrumbJsonLd items={[
-        { name: 'Home', url: 'https://www.vietnamtours.co.uk' },
-        { name: 'Ideas By Month', url: 'https://www.vietnamtours.co.uk/ideas-by-month' },
+        { name: 'Vietnam Tours', url: 'https://www.vietnamtours.co.uk' },
+        { name: 'Ideas by Month', url: 'https://www.vietnamtours.co.uk/ideas-by-month' },
         { name: monthData.title, url: `https://www.vietnamtours.co.uk/ideas-by-month/${monthData.slug}` },
       ]} />
       <ArticleJsonLd

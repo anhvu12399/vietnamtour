@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     description: 'Tell us your travel preferences — our Vietnam specialists will craft a personalised itinerary within 48 hours. No obligation.',
     url: 'https://www.vietnamtours.co.uk/enquire',
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function EnquireLayout({ children }: { children: React.ReactNode }) {

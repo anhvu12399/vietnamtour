@@ -4,7 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import BestTimeInteractive from '@/components/BestTimeInteractive';
+import { getMonthGuidesFromSanity } from '@/sanity/client';
 import type { Metadata } from 'next';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Best Time to Visit Vietnam | Travel Ideas by Month | VietnamTours.co.uk',
@@ -215,7 +218,20 @@ const climateGuide = [
   }
 ];
 
-export default function IdeasByMonthListingPage() {
+export default async function IdeasByMonthListingPage() {
+  let monthGuides: any[] = [];
+  try {
+    const sanityItems = await getMonthGuidesFromSanity();
+    if (sanityItems && sanityItems.length > 0) {
+      monthGuides = sanityItems.map((item: any) => ({
+        ...item,
+        slug: item.slug?.current || item.slug,
+        heroImage: item.heroImage || '/images/trip_bike_rice_paddies.png',
+      }));
+    }
+  } catch (e) {
+    // fallback
+  }
   return (
     <>
       <Navbar />
@@ -333,7 +349,7 @@ export default function IdeasByMonthListingPage() {
         </section>
 
         {/* Month-by-month Interactive Tab Section */}
-        <BestTimeInteractive />
+        <BestTimeInteractive initialMonthData={monthGuides} />
 
         {/* Climate Table Section */}
         <section className="py-12 md:py-24 bg-white">

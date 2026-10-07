@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope, Fraunces, Space_Mono } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { TrafficTracker } from "@/components/TrafficTracker";
+import { OrganizationJsonLd } from "@/components/SeoJsonLd";
+import AiReferralTracker from "@/components/AiReferralTracker";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -96,79 +97,13 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "placeholder-google-site-verification",
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }),
+    // Bing Webmaster Tools — Bing's index feeds ChatGPT Search
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }),
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TravelAgency",
-      "@id": "https://www.vietnamtours.co.uk/#organization",
-      name: "VietnamTours.co.uk",
-      url: "https://www.vietnamtours.co.uk",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.vietnamtours.co.uk/images/adventuretravel-26.svg",
-      },
-      description:
-        "Bespoke private Vietnam tours and luxury tailor-made holidays for discerning travellers from the United Kingdom. Specialists in Ha Long Bay cruises, Sa Pa trekking, Hoi An heritage journeys and Mekong Delta escapes.",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "GB",
-      },
-      areaServed: {
-        "@type": "Country",
-        name: "Vietnam",
-      },
-      priceRange: "£££",
-      telephone: "+84-98-8600-388",
-      sameAs: [
-        "https://www.facebook.com/vietnamtoursuk",
-        "https://www.instagram.com/vietnamtoursuk",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.vietnamtours.co.uk/#website",
-      url: "https://www.vietnamtours.co.uk",
-      name: "VietnamTours.co.uk",
-      description: "Bespoke luxury private Vietnam tours from the UK",
-      publisher: {
-        "@id": "https://www.vietnamtours.co.uk/#organization",
-      },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://www.vietnamtours.co.uk/itineraries?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://www.vietnamtours.co.uk/#webpage",
-      url: "https://www.vietnamtours.co.uk",
-      name: "Luxury Vietnam Private Tours | Bespoke Holidays from the UK",
-      isPartOf: { "@id": "https://www.vietnamtours.co.uk/#website" },
-      about: { "@id": "https://www.vietnamtours.co.uk/#organization" },
-      description:
-        "Discover Vietnam on a bespoke private tour crafted exclusively for you. Luxury tailor-made holidays from the UK — Ha Long Bay cruises, Sa Pa trekking, Hoi An heritage and Mekong Delta escapes.",
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://www.vietnamtours.co.uk",
-          },
-        ],
-      },
-    },
-  ],
+  alternates: {
+    types: { "application/rss+xml": "https://www.vietnamtours.co.uk/rss.xml" },
+  },
 };
 
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -188,18 +123,14 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <Script
-          id="json-ld-organization"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          strategy="beforeInteractive"
-        />
+        <OrganizationJsonLd />
       </head>
       <body className="min-h-full flex flex-col bg-paper text-ink font-medium">
         <TrafficTracker />
         {children}
         <WhatsAppFloating />
         <Analytics />
+        <AiReferralTracker />
         <SanityLive />
       </body>
     </html>

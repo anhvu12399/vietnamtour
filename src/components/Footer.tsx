@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -141,6 +142,11 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* SEO Contextual Internal Linking */}
+        <div className="border-t border-gray-800 pt-8 pb-4 text-center text-xs text-gray-400 font-light leading-relaxed max-w-4xl mx-auto">
+          VietnamTours.co.uk is a leading specialist in <Link href="/" title="Luxury Vietnam Private Tours" className="text-gold hover:underline">Luxury Vietnam Private Tours</Link>. We craft bespoke holidays and tailor-made journeys to Vietnam, Cambodia, and Laos, guaranteeing authentic experiences and exceptional service. Let our local experts guide you on your next unforgettable adventure.
         </div>
 
         {/* Social Media & Badges Row */}

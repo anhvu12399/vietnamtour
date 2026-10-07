@@ -25,8 +25,8 @@ Per-page canonicals are now set on every dynamic route (the root layout no longe
 ## 2. Manual steps (cannot be done from code)
 
 1. **Bing Webmaster Tools** → add `https://www.vietnamtours.co.uk` (import from Google Search Console), copy the meta-tag value to Vercel env `NEXT_PUBLIC_BING_SITE_VERIFICATION`, submit `/sitemap.xml`.
-2. **IndexNow**: in Vercel env set `INDEXNOW_KEY` (random 32-char alphanumeric) and `INDEXNOW_WEBHOOK_SECRET`. Check `https://www.vietnamtours.co.uk/api/indexnow/key` returns the key.
-3. **Sanity webhook** (sanity.io/manage → API → Webhooks): URL `https://www.vietnamtours.co.uk/api/indexnow?secret=<INDEXNOW_WEBHOOK_SECRET>`, trigger on create/update/delete, projection `{ "_type": _type, "slug": slug.current }`, HTTP POST. One-off full submit: `curl -X POST "https://www.vietnamtours.co.uk/api/indexnow?secret=…&all=1"`.
+2. **IndexNow**: in Vercel env set `INDEXNOW_KEY` (random 32-char alphanumeric) and `INDEXNOW_SECRET`. Check `https://www.vietnamtours.co.uk/api/indexnow/key` returns the key.
+3. **Sanity webhook** (sanity.io/manage → API → Webhooks): URL `https://www.vietnamtours.co.uk/api/indexnow?secret=<INDEXNOW_SECRET>`, trigger on create/update/delete, projection `{ "_type": _type, "slug": slug.current }`, HTTP POST. One-off full submit: `curl -X POST "https://www.vietnamtours.co.uk/api/indexnow?secret=…&all=1"`.
 4. **Vercel → Firewall / Bot Protection**: make sure `OAI-SearchBot`, `ChatGPT-User`, `Bingbot` are not challenged. Verify: `node scripts/geo-check.mjs https://www.vietnamtours.co.uk`.
 5. **Fill the entity data you actually have** (Vercel env, see `.env.example`): `NEXT_PUBLIC_SAME_AS` (TripAdvisor, Trustpilot, LinkedIn, YouTube…), UK phone/address, `NEXT_PUBLIC_MEMBERSHIPS` (ABTA/ATOL only if held), rating only if it matches a public profile.
 6. **Editors**: fill `Answer Summary` + `FAQs (GEO)` in Studio on the top tours/destinations; bump `Last reviewed` when prices/visa change. Defaults are generated from existing data when empty.

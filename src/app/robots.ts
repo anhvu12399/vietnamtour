@@ -1,7 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { AI_SEARCH_BOTS, AI_TRAINING_BOTS, ALLOW_AI_TRAINING, SITE_URL } from '@/lib/siteConfig';
 
-const PRIVATE_PATHS = ['/studio/', '/api/', '/enquire/thank-you'];
+// Only disallow admin/API routes. Pages with a noindex meta (e.g. /enquire, /blog/*)
+// must stay crawlable so bots can read the noindex directive — blocking them in
+// robots.txt would prevent that.
+const PRIVATE_PATHS = ['/studio/', '/api/'];
 
 export default function robots(): MetadataRoute.Robots {
   return {
