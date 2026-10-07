@@ -105,6 +105,24 @@ if (dupDescs.length) {
 }
 if (orphans.length) console.log(`\n⚠ ${orphans.length} sitemap URLs with no internal links (orphans), e.g.\n  ${orphans.slice(0, 10).join('\n  ')}`);
 
+// Broken / redirected internal links (unique targets found in page HTML)
+{
+  const targets = new Set();
+  for (const r of results) for (const l of r.links || []) if (!/\.(png|jpe?g|svg|webp|avif|ico|css|js|txt|xml)$/i.test(l) && !l.startsWith('/_next') && !l.startsWith('/studio') && !l.startsWith('/api')) targets.add(l);
+  const bad = [];
+  const list = [...targets];
+  for (let i = 0; i < list.length; i += CONCURRENCY) {
+    await Promise.all(list.slice(i, i + CONCURRENCY).map(async (l) => {
+      const r = await get(base + l);
+      if (r.status >= 300) bad.push(`${l} → ${r.status}${r.location ? ` ${r.location}` : ''}`);
+    }));
+  }
+  if (bad.length) {
+    console.log(`\n⚠ ${bad.length} internal links that do not return 200 (fix the link or the target):`);
+    bad.slice(0, 30).forEach((b) => console.log(`  ${b}`));
+  } else console.log(`\n✔ ${list.length} internal link targets all return 200`);
+}
+
 // Pricing consistency: day-tour vs journey ratios, homepage claim vs catalogue minimum
 try {
   const home = await get(base + '/');

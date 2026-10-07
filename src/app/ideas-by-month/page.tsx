@@ -10,15 +10,15 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Best Time to Visit Vietnam | Travel Ideas by Month',
-  description: 'Find the best time to visit Vietnam. Explore weather forecasts, regional climate zones, month-by-month recommendations, and detailed temperature guides.',
+  title: 'Vietnam by Month: Weather & Holiday Ideas',
+  description: 'What is Vietnam like each month? Weather by region, festivals and holiday ideas for January to December. For a quick answer see our UK best-time guide.',
   keywords: ['best time to visit Vietnam', 'Vietnam weather', 'Vietnam climate zones', 'when to go to Vietnam', 'Vietnam weather table'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/ideas-by-month',
   },
   openGraph: {
-    title: 'Best Time to Visit Vietnam | Travel Ideas by Month',
-    description: 'Explore weather forecasts, regional climate zones, and month-by-month recommendations for your Vietnam trip.',
+    title: 'Vietnam by Month: Weather & Holiday Ideas',
+    description: 'What is Vietnam like each month? Weather by region, festivals and holiday ideas for January to December. For a quick answer see our UK best-time guide.',
     url: 'https://www.vietnamtours.co.uk/ideas-by-month',
     images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Best time to visit Vietnam — Ha Long Bay' }],
   },

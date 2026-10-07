@@ -197,3 +197,38 @@ Target: 5 relevant UK referring domains by month 3, 15 by month 6 (hypothesis; a
 3. **Long titles on `/travel-guides/*`** (90–96 chars) come from Sanity titles/`seo.metaTitle`; shorten to ≤ 60 chars in the CMS (`scripts/auto-fill-seo.mjs` can help).
 4. **Descriptions > 170 chars** on `/`, `/itineraries`, `/destinations`, `/things-to-do`, `/visa-guide`.
 5. `/specialists/*` pages are thin (~250–280 words): add bios, experience, favourite itineraries.
+
+---
+
+## 11. Round 2 — on-page keyword pass (implemented)
+
+**Method.** One primary query → one URL. Keyword targets below are *hypotheses from search-intent knowledge*, not volume-validated — confirm with GSC / Ahrefs and adjust. Titles are written without the brand (the root template appends ` | VietnamTours.co.uk`); `seoTitle()` trims CMS/data titles to ≤ ~50 chars and removes doubled brands and stale years ("2025").
+
+| URL | Primary query (UK intent) | Title | Notes |
+|---|---|---|---|
+| `/` | luxury private Vietnam tours UK | Luxury Private Vietnam Tours from the UK | absolute title; price in description computed from the catalogue |
+| `/itineraries` | private Vietnam tours / itineraries | Private Vietnam Tours & Itineraries | "From £X" computed (`lib/pricing.ts`), never hard-coded |
+| `/destinations` | places to visit in Vietnam | Places to Visit in Vietnam: Destination Guides | |
+| `/travel-guides` | Vietnam travel guides | Vietnam Travel Guides for UK Travellers | |
+| `/things-to-do` | things to do in Vietnam | Best Things to Do in Vietnam | |
+| `/ideas-by-month` | Vietnam weather by month | Vietnam by Month: Weather & Holiday Ideas | deliberately *not* "best time to visit" (owned by the UK guide) |
+| `/trip-ideas` / `/inspirations` | Vietnam holiday ideas / luxury, adventure, family | see files | |
+| `/visa-guide` | Vietnam visa UK citizens | Vietnam Visa for UK Citizens: Entry Rules | single owner of the visa query |
+| `/vietnam-holidays-from-uk` | Vietnam holidays from the UK | hub | |
+| `/vietnam-guides/best-time-to-visit-vietnam-uk-travellers` | best time to visit Vietnam | | |
+| `/vietnam-guides/vietnam-tour-cost-from-uk` | Vietnam tour cost | | live prices |
+| `/vietnam-guides/vietnam-beach-holidays-by-season`, `-christmas-new-year-holiday`, `-vs-thailand-for-uk-travellers`, `-solo-travel-uk`, `-multi-generational-holiday` | gap queries | | **new** |
+
+**Cannibalisation resolved.** Three of my first-round guides duplicated existing Sanity posts, so they now 308-redirect to the established URL (which already has history):
+- `/vietnam-guides/vietnam-14-day-itinerary`, `/vietnam-itinerary-10-14-days` → `/travel-guides/the-ultimate-14-day-vietnam-itinerary-a-british-guide-to-going-private`
+- `/vietnam-guides/ha-long-bay-vs-lan-ha-bay` → `/travel-guides/halong-bay-vs-lan-ha-bay-guide`
+
+The hub now links to all destination/itinerary posts ("Go deeper"), so the cluster is interlinked.
+
+**Still open (Sanity / content decisions — cannot be done in code):**
+1. `/travel-guides/2-week-vietnam-itinerary-private-tour` and `…the-ultimate-14-day…` target the same query → set `seo.canonicalUrl` of the weaker one to the stronger, or merge.
+2. `/travel-guides/*` titles are 83–96 chars (they come from the post title); set a ≤ 55-char `seo.metaTitle` per post.
+3. `/travel-guides/best-places-to-visit-in-vietnam-2026` links to 5 itineraries that no longer exist (404): edit in Studio. There are also two near-identical "best places" posts — merge.
+4. Homepage carousel cards (Uncover Vietnam, Essence of Vietnam, Gourmet Vietnam) now link to `/itineraries` because those tours are no longer in the catalogue.
+5. `things-to-do/*` and `trip-ideas/*` meta descriptions are 190–220 chars (`lib/*Data.ts`); shorten to ≤ 160.
+6. Thin pages: `/specialists/*` (~240–280 words).

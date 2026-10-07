@@ -7,7 +7,7 @@ import { ukGuides } from '@/lib/ukGuidesData';
 import { absoluteUrl } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Vietnam Travel Guides for UK Travellers',
+  title: 'Vietnam Planning Guides for UK Travellers',
   description:
     'Vietnam planning guides for UK travellers: flights from London, tour costs in pounds, best time to visit, safety and 7–21 day itineraries.',
   alternates: { canonical: absoluteUrl('/vietnam-guides') },

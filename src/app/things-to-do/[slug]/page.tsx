@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
+import { seoTitle } from '@/lib/siteConfig';
 import Footer from '@/components/Footer';
 import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
@@ -39,14 +40,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
 
   return {
-    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    title: seoTitle(data.seo?.metaTitle || data.metaTitle || data.title),
     description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
     keywords: mergedKeywords,
     alternates: {
       canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug || slug}`,
     },
     openGraph: {
-      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      title: seoTitle(data.seo?.metaTitle || data.metaTitle || data.title),
       description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },

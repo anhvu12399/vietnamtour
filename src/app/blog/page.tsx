@@ -9,15 +9,15 @@ import { getBlogPostsFromSanity } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Travel Blog | Insider Tips & Stories | VietnamTours.co.uk',
-  description: 'Read the latest travel stories, tips, and hidden gems from our local Vietnam specialists. Plan your perfect journey with our insider blog.',
+  title: 'Vietnam Travel Blog: Tips & Stories',
+  description: 'Travel stories, tips and hidden gems from our local Vietnam specialists.',
   keywords: ['Vietnam travel blog', 'Vietnam travel stories', 'Vietnam tips advice', 'things to know Vietnam', 'Vietnam travel journal', 'Vietnam insider blog'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/blog',
   },
   openGraph: {
-    title: 'Vietnam Travel Blog | Insider Tips & Stories',
-    description: 'Travel stories, hidden gems, and insider tips from our local Vietnam specialists.',
+    title: 'Vietnam Travel Blog: Tips & Stories',
+    description: 'Travel stories, tips and hidden gems from our local Vietnam specialists.',
     url: 'https://www.vietnamtours.co.uk/blog',
     images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam travel blog — Ha Long Bay' }],
   },

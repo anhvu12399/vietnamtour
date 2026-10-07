@@ -13,7 +13,7 @@ import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetails
 import { BreadcrumbJsonLd, FaqJsonLd, TouristTripJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
 import { GeoAnswer, GeoFaqSection, GeoSources, PlanningGuides } from '@/components/GeoBlocks';
 import { itineraryAnswer, itineraryFaqs } from '@/lib/geoDefaults';
-import { CONTENT_REVIEWED_AT, absoluteUrl, stripBrand } from '@/lib/siteConfig';
+import { CONTENT_REVIEWED_AT, absoluteUrl, seoTitle } from '@/lib/siteConfig';
 import { isThinItinerary } from '@/lib/contentQuality';
 
 export const revalidate = 60;
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!itinerary) return {};
 
   const seo = itinerary.seo;
-  const title = stripBrand(seo?.metaTitle || '') || `${itinerary.title} – Luxury Vietnam Tours`;
+  const title = seoTitle(seo?.metaTitle || '') || `${itinerary.title} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
 
   const url = absoluteUrl(`/itineraries/${slug}`);

@@ -42,7 +42,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'vietnam-culinary-tours',
     title: 'Vietnam Culinary Tours: Eat Your Way Through the Country',
-    metaTitle: 'Vietnam Culinary Tours 2025 | Private Food & Cooking Experiences | Vietnam Tour',
+    metaTitle: 'Vietnam Culinary Tours | Private Food & Cooking Experiences | Vietnam Tour',
     metaDescription: 'Discover Vietnam through its extraordinary food culture. Private culinary tours from Hanoi pho to Hoi An cao lau, market visits, cooking classes, and chef\'s table dinners curated by food specialists.',
     heroImage: '/images/trip_culinary_street_food.png',
     heroSubtitle: 'From street food stalls to imperial banquets — Vietnam\'s culinary landscape is one of the world\'s great undiscovered food journeys.',
@@ -95,7 +95,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'bike-and-boat-tours',
     title: 'Vietnam Bike & Boat Tours: Cycling Through the Country\'s Heart',
-    metaTitle: 'Vietnam Bike & Boat Tours 2025 | Private Cycling & River Cruises | Vietnam Tour',
+    metaTitle: 'Vietnam Bike & Boat Tours | Private Cycling & River Cruises | Vietnam Tour',
     metaDescription: 'Explore Vietnam by bicycle and boat — cycle through Sapa\'s rice terraces, pedal Hoi An\'s village paths, and cruise the Mekong Delta on a private river boat. Fully supported private cycling tours.',
     heroImage: '/images/trip_bike_rice_paddies.png',
     heroSubtitle: 'Vietnam reveals itself differently from a bicycle saddle. The roads that tour buses bypass lead to the places worth remembering.',
@@ -148,7 +148,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'motorcycling-tours',
     title: 'Vietnam Motorcycling Tours: The Road Trip of a Lifetime',
-    metaTitle: 'Vietnam Motorcycle Tours 2025 | Ha Giang Loop & Coastal Routes | Vietnam Tour',
+    metaTitle: 'Vietnam Motorcycle Tours | Ha Giang Loop & Coastal Routes | Vietnam Tour',
     metaDescription: 'Explore Vietnam by motorcycle — from the legendary Ha Giang Loop through limestone peaks to the coastal Hai Van Pass. Private guided motorcycle tours with expert local riders and full support.',
     heroImage: '/images/trip_motorcycle_hagiang.png',
     heroSubtitle: 'Vietnam\'s mountain roads were made to be ridden. The Ha Giang Loop is among the most spectacular road journeys on the planet.',
@@ -201,7 +201,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'classic-tours',
     title: 'Classic Vietnam Tours: The Essential Journey from North to South',
-    metaTitle: 'Classic Vietnam Tours 2025 | Private Hanoi to Ho Chi Minh City | Vietnam Tour',
+    metaTitle: 'Classic Vietnam Tours | Private Hanoi to Ho Chi Minh City | Vietnam Tour',
     metaDescription: 'The definitive private Vietnam tour from Hanoi to Ho Chi Minh City. Two weeks through Halong Bay, Hoi An, Hue, and the Mekong Delta with a private guide, driver, and handpicked luxury hotels.',
     heroImage: '/images/vietnamtour_hanoi_colonial.png',
     heroSubtitle: 'Vietnam from north to south is one of the great travel journeys — 1,600 kilometres of landscape, history, and culture that deserves to be done slowly and well.',
@@ -254,7 +254,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'golf-tours',
     title: 'Vietnam Golf Tours: World-Class Courses in Extraordinary Settings',
-    metaTitle: 'Vietnam Golf Tours 2025 | Private Golf Holidays | Vietnam Tour',
+    metaTitle: 'Vietnam Golf Tours | Private Golf Holidays | Vietnam Tour',
     metaDescription: 'Vietnam is one of Asia\'s premier golf destinations — championship courses set against limestone karsts, rice terraces, and coastal scenery. Private golf tours combining tee times with luxury accommodation and cultural exploration.',
     heroImage: '/images/trip_golf_vietnam.png',
     heroSubtitle: 'Vietnam\'s golf scene has matured into one of Asia\'s finest — spectacular courses, excellent facilities, and green fees that still surprise most Western golfers.',
@@ -307,7 +307,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'beach-holidays',
     title: 'Vietnam Beach Holidays: The Country\'s Most Magnificent Coasts',
-    metaTitle: 'Vietnam Beach Holidays 2025 | Phu Quoc, Da Nang & Nha Trang | Vietnam Tour',
+    metaTitle: 'Vietnam Beach Holidays | Phu Quoc, Da Nang & Nha Trang | Vietnam Tour',
     metaDescription: 'Vietnam\'s coastline stretches 3,260km with some of Southeast Asia\'s finest beaches. Private beach holidays combining Phu Quoc island paradise, Da Nang\'s resort coast, and Nha Trang\'s azure waters.',
     heroImage: '/images/trip_beach_vietnam.png',
     heroSubtitle: 'Vietnam\'s 3,260-kilometre coastline contains some of Southeast Asia\'s finest beaches — and the best of them are still discovering their potential.',
@@ -360,7 +360,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'first-time-guide-vietnam',
     title: 'First Time in Vietnam: Your Complete Planning Guide',
-    metaTitle: 'First Time Vietnam Guide 2025 | Expert Planning Advice | Vietnam Tour',
+    metaTitle: 'First Time Vietnam Guide | Expert Planning Advice | Vietnam Tour',
     metaDescription: 'Everything first-time visitors need to know about travelling Vietnam — visas, best regions, when to go, what to budget, and how to avoid the most common planning mistakes. Expert advice from specialists who know Vietnam intimately.',
     heroImage: '/images/hero_hoian.png',
     heroSubtitle: 'Vietnam rewards preparation. Every first-time traveller who plans well has a trip they talk about for the rest of their life.',
@@ -413,7 +413,7 @@ export const tripIdeasData: TripPageData[] = [
   {
     slug: 'schools-tours',
     title: 'Vietnam Educational School Tours: Learning Through Travel',
-    metaTitle: 'Vietnam School Tours 2025 | Educational Group Travel | Vietnam Tour',
+    metaTitle: 'Vietnam School Tours | Educational Group Travel | Vietnam Tour',
     metaDescription: 'Inspiring educational tours to Vietnam for school and university groups. History, culture, geography, and sustainability programmes designed around curriculum objectives. Private groups with specialist educational guides.',
     heroImage: '/images/vietnamtour_hanoi_colonial.png',
     heroSubtitle: 'Vietnam\'s history, geography, and culture offer some of the most powerful educational experiences available to student groups anywhere in the world.',

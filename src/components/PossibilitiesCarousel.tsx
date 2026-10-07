@@ -34,21 +34,21 @@ export default function PossibilitiesCarousel() {
       destinations: "Saigon, Mekong Delta, Hoi An, Hanoi, Halong",
       price: "12 days from £1,580pp",
       image: "/images/trip_motorcycle_hagiang.png",
-      link: "/itineraries/uncover-vietnam-from-south-to-north",
+      link: "/itineraries",
     },
     {
       title: "The Essence of Vietnam - North to South",
       destinations: "Hanoi, Halong Bay, Hoi An, Saigon, Mekong",
       price: "11 days from £1,490pp",
       image: "/images/trip_luxury_villa.png",
-      link: "/itineraries/the-essence-of-vietnam-north-to-south",
+      link: "/itineraries",
     },
     {
       title: "Gourmet Vietnam Tour",
       destinations: "Hanoi, Hue, Hoi An, Saigon Street Eats",
       price: "11 days from £1,850pp",
       image: "/images/trip_culinary_street_food.png",
-      link: "/itineraries/gourmet-vietnam-tour",
+      link: "/itineraries",
     },
   ];
 

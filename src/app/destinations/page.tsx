@@ -9,15 +9,15 @@ import { getDestinations } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Vietnam Destinations | Places to Visit',
-  description: 'Explore Vietnam\'s most captivating destinations — Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta, Phú Quốc, Da Nang, Da Lat and Phong Nha. Expert destination guides and recommended tours.',
+  title: 'Places to Visit in Vietnam: Destination Guides',
+  description: "Explore Vietnam's top destinations — Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta, Phu Quoc, Da Nang and more — with expert guides and private tours.",
   keywords: ['Vietnam destinations', 'places to visit in Vietnam', 'Ha Long Bay', 'Hanoi', 'Hoi An', 'Sapa Vietnam', 'Mekong Delta', 'Phu Quoc', 'Da Nang', 'Phong Nha'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/destinations',
   },
   openGraph: {
-    title: 'Vietnam Destinations | Places to Visit',
-    description: 'Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta and beyond — discover Vietnam\'s finest destinations with expert-curated guides.',
+    title: 'Places to Visit in Vietnam: Destination Guides',
+    description: "Explore Vietnam's top destinations — Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta, Phu Quoc, Da Nang and more — with expert guides and private tours.",
     url: 'https://www.vietnamtours.co.uk/destinations',
     images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Hoi An Ancient Town lanterns — top Vietnam destination' }],
   },

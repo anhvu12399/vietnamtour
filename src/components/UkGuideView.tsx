@@ -233,6 +233,21 @@ export default function UkGuideView({ guide }: { guide: UkGuide }) {
             </section>
           ))}
 
+          {guide.links && (
+            <section className="mb-14">
+              <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-5 pb-4 border-b border-line">{guide.links.heading}</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {guide.links.items.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="block border border-line p-4 text-ink hover:border-gold transition-colors font-serif">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {guide.tours && <GuideTours {...guide.tours} />}
 
           <section className="mb-14">

@@ -12,29 +12,31 @@ import CTASection from "@/components/CTASection";
 import BrochureRequest from "@/components/BrochureRequest";
 import WhyUs from "@/components/WhyUs";
 import Footer from "@/components/Footer";
+import { fromPriceLabel, getMultiDayStartingPrice } from "@/lib/pricing";
 
-export const metadata: Metadata = {
-  title: "Luxury Vietnam Private Tours | Bespoke Tailor-Made Holidays from the UK",
-  description:
-    "Vietnam Tours specialises in handcrafted private holidays to Vietnam for discerning UK travellers. Explore Ha Long Bay, Sa Pa, Hoi An and the Mekong Delta on a bespoke itinerary designed around you. From £3,960pp.",
-  alternates: {
-    canonical: "https://www.vietnamtours.co.uk",
-  },
-  openGraph: {
-    title: "Luxury Vietnam Private Tours | Bespoke Tailor-Made Holidays from the UK",
-    description:
-      "Handcrafted bespoke Vietnam holidays for UK travellers. Private guided tours, luxury Ha Long Bay cruises, highland trekking in Sa Pa and lantern-lit heritage journeys through Hoi An. From £3,960pp.",
-    url: "https://www.vietnamtours.co.uk",
-    images: [
-      {
-        url: "/images/dest_halong_limestone.png",
-        width: 1200,
-        height: 630,
-        alt: "Ha Long Bay limestone karsts at sunrise — luxury private Vietnam tour from the UK",
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const price = fromPriceLabel(await getMultiDayStartingPrice());
+  const title = { absolute: "Luxury Private Vietnam Tours from the UK | VietnamTours.co.uk" };
+  const description = `Bespoke private Vietnam tours for UK travellers: tailor-made itineraries, Ha Long Bay cruises, Hoi An and the Mekong.${price}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: "https://www.vietnamtours.co.uk" },
+    openGraph: {
+      title: "Luxury Private Vietnam Tours from the UK",
+      description: `Handcrafted private Vietnam holidays for UK travellers: Ha Long Bay cruises, Sa Pa trekking, Hoi An heritage journeys and Mekong escapes.${price}`,
+      url: "https://www.vietnamtours.co.uk",
+      images: [
+        {
+          url: "/images/dest_halong_limestone.png",
+          width: 1200,
+          height: 630,
+          alt: "Ha Long Bay limestone karsts at sunrise — luxury private Vietnam tour from the UK",
+        },
+      ],
+    },
+  };
+}
 
 export default function Home() {
   return (

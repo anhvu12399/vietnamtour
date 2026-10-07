@@ -10,14 +10,14 @@ import { getThingsToDoFromSanity } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Things To Do in Vietnam | Authentic Experiences & Activities',
-  description: 'Discover the most remarkable things to do in Vietnam — from kayaking hidden Ha Long Bay lagoons and trekking Sapa\'s rice terraces to attending Hoi An\'s full moon lantern festival. First-hand guides from specialists who know Vietnam deeply.',
+  title: 'Best Things to Do in Vietnam',
+  description: "The best things to do in Vietnam: kayaking Ha Long Bay, trekking Sapa's rice terraces, Hoi An lantern nights, cooking classes and more, from local specialists.",
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/things-to-do',
   },
   openGraph: {
-    title: 'Things To Do in Vietnam | Vietnam Tour',
-    description: 'Kayaking hidden lagoons, trekking rice terraces, learning imperial cuisine — the experiences that make Vietnam unforgettable.',
+    title: 'Best Things to Do in Vietnam',
+    description: "The best things to do in Vietnam: kayaking Ha Long Bay, trekking Sapa's rice terraces, Hoi An lantern nights, cooking classes and more, from local specialists.",
     images: [{ url: '/images/things_halong_kayaking.png' }],
   },
 };

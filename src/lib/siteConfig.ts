@@ -98,3 +98,13 @@ export const ALLOW_AI_TRAINING = process.env.GEO_ALLOW_AI_TRAINING !== 'false';
 export function stripBrand(title: string): string {
   return title.replace(/\s*[|\-–—]\s*(VietnamTours\.co\.uk|Vietnam Tours?(\s+UK)?)\s*$/i, '').trim();
 }
+
+/**
+ * Title for use with the root `title.template` (which appends " | VietnamTours.co.uk").
+ * Removes a brand suffix, and drops trailing "|" segments until it fits `max` characters.
+ */
+export function seoTitle(title: string, max = 50): string {
+  const parts = stripBrand(title).split(/\s*\|\s*/).filter(Boolean);
+  while (parts.length > 1 && parts.join(' | ').length > max) parts.pop();
+  return parts.join(' | ');
+}

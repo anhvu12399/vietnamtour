@@ -10,15 +10,15 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Travel Inspiration & Curated Styles',
-  description: 'Immerse yourself in our collection of curated travel inspirations. Discover luxury pool villas, adventure expeditions, and family tours to Vietnam.',
+  title: 'Luxury, Adventure & Family Vietnam Tours',
+  description: 'Inspiration for private Vietnam tours: luxury pool villas, adventure expeditions and family journeys, tailored to your dates and interests.',
   keywords: ['Vietnam travel inspiration', 'luxury Vietnam tours', 'Vietnam pool villas', 'Vietnam family tours', 'Vietnam adventure expeditions'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/inspirations',
   },
   openGraph: {
-    title: 'Travel Inspiration & Curated Styles',
-    description: 'Discover curated travel styles — luxury pool villas, adventure expeditions, and family tours to Vietnam.',
+    title: 'Luxury, Adventure & Family Vietnam Tours',
+    description: 'Inspiration for private Vietnam tours: luxury pool villas, adventure expeditions and family journeys, tailored to your dates and interests.',
     url: 'https://www.vietnamtours.co.uk/inspirations',
     images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Vietnam travel inspiration — Hoi An lanterns' }],
   },

@@ -14,7 +14,7 @@ import { PortableText } from '@portabletext/react';
 import { BreadcrumbJsonLd, FaqJsonLd, TouristDestinationJsonLd, WebPageJsonLd } from '@/components/SeoJsonLd';
 import { GeoAnswer, GeoFaqSection, GeoSources, PlanningGuides } from '@/components/GeoBlocks';
 import { destinationAnswer, destinationFaqs } from '@/lib/geoDefaults';
-import { CONTENT_REVIEWED_AT, absoluteUrl, stripBrand } from '@/lib/siteConfig';
+import { CONTENT_REVIEWED_AT, absoluteUrl, seoTitle } from '@/lib/siteConfig';
 
 export const revalidate = 60;
 
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!destination) return {};
 
   const seo = destination.seo;
-  const title = stripBrand(seo?.metaTitle || '') || `${destination.name} – Luxury Vietnam Tours`;
+  const title = seoTitle(seo?.metaTitle || '') || `${destination.name} – Luxury Vietnam Tours`;
   const description = seo?.metaDescription || `Discover the beauty of ${destination.name}. Explore tailor-made luxury tours, travel guides and insider tips with Vietnam Tour UK.`;
 
   const url = absoluteUrl(`/destinations/${slug}`);

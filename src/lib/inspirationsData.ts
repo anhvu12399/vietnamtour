@@ -5,7 +5,7 @@ export const inspirationsData: TripPageData[] = [
   {
     slug: 'luxury-tours',
     title: 'Vietnam Luxury Tours: The Ultimate Private Travel Experience',
-    metaTitle: 'Vietnam Luxury Tours 2025 | Ultra-Private Bespoke Holidays | Vietnam Tour',
+    metaTitle: 'Vietnam Luxury Tours | Ultra-Private Bespoke Holidays | Vietnam Tour',
     metaDescription: 'Vietnam\'s finest luxury travel experiences — private junk cruises on Halong Bay, pool villas at Amanoi, exclusive access and bespoke itineraries for discerning travellers.',
     heroImage: '/images/trip_luxury_villa.png',
     heroSubtitle: 'True luxury in Vietnam is not about cost — it is about access, personalisation, and the quiet confidence of knowing every detail has been considered.',
@@ -58,7 +58,7 @@ export const inspirationsData: TripPageData[] = [
   {
     slug: 'adventure-off-beaten-track',
     title: 'Adventure Vietnam: Off the Beaten Track Tours',
-    metaTitle: 'Vietnam Adventure & Off the Beaten Track Tours 2025 | Vietnam Tour',
+    metaTitle: 'Vietnam Adventure & Off the Beaten Track Tours | Vietnam Tour',
     metaDescription: 'Vietnam\'s greatest adventures lie beyond the tourist circuit — the Ha Giang karst plateau, Phong Nha\'s cathedral caves, and the forests of Ba Be National Park. Private adventure tours for genuine explorers.',
     heroImage: '/images/trip_adventure_jungle.png',
     heroSubtitle: 'Vietnam\'s most extraordinary places are not on the standard itinerary. They require commitment, the right guide, and a willingness to go where most travellers do not.',
@@ -107,7 +107,7 @@ export const inspirationsData: TripPageData[] = [
   {
     slug: 'family-tours',
     title: 'Vietnam Family Tours: Extraordinary Adventures for All Ages',
-    metaTitle: 'Vietnam Family Tours 2025 | Private Family Holiday Experts | Vietnam Tour',
+    metaTitle: 'Vietnam Family Tours | Private Family Holiday Experts | Vietnam Tour',
     metaDescription: 'Vietnam is one of Asia\'s most rewarding family travel destinations. Private family tours with activities for all ages, child-friendly accommodation, and itineraries that keep both parents and children genuinely engaged.',
     heroImage: '/images/trip_family_halong.png',
     heroSubtitle: 'Vietnam engages children in ways that few other destinations can match — the food culture, the living history, the wildlife, and the sheer visual drama of the landscape.',
@@ -153,7 +153,7 @@ export const inspirationsData: TripPageData[] = [
   {
     slug: 'culinary-tours',
     title: 'Vietnam Culinary Inspiration: A Journey Through the Country\'s Food Soul',
-    metaTitle: 'Vietnam Culinary Tour Inspiration 2025 | Food Travel Ideas | Vietnam Tour',
+    metaTitle: 'Vietnam Culinary Tour Inspiration | Food Travel Ideas | Vietnam Tour',
     metaDescription: 'Get inspired for a Vietnam culinary journey — from Hanoi\'s dawn pho kitchens to Hoi An\'s ocean-to-table restaurants. Food travel inspiration from specialists who have eaten their way through Vietnam.',
     heroImage: '/images/trip_culinary_street_food.png',
     heroSubtitle: 'Every meal in Vietnam tells a story about the region, the season, the family, and the century of history that shaped the recipe.',
@@ -199,7 +199,7 @@ export const inspirationsData: TripPageData[] = [
   {
     slug: 'golf-tours',
     title: 'Vietnam Golf Inspiration: Asia\'s Most Beautiful Courses',
-    metaTitle: 'Vietnam Golf Tours Inspiration 2025 | Championship Courses | Vietnam Tour',
+    metaTitle: 'Vietnam Golf Tours Inspiration | Championship Courses | Vietnam Tour',
     metaDescription: 'Discover why Vietnam has become one of Asia\'s premier golf destinations — championship courses against limestone karsts, coastal links, and mountain fairways at prices that surprise every visitor.',
     heroImage: '/images/trip_golf_vietnam.png',
     heroSubtitle: 'Vietnam\'s golf scene has quietly matured into one of Asia\'s most compelling — extraordinary courses, world-class architects, and scenery that no other golf destination can match.',

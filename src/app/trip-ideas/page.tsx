@@ -10,15 +10,15 @@ import type { Metadata } from 'next';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration',
-  description: 'Explore our curated Vietnam trip ideas. From culinary street food adventures and motorcycle loop tours to classic luxury journeys and family holidays.',
+  title: 'Vietnam Holiday Ideas by Travel Style',
+  description: 'Vietnam holiday ideas by style: luxury, family, adventure, culinary, cycling and motorcycle tours, all as private tailor-made journeys.',
   keywords: ['Vietnam trip ideas', 'Vietnam holiday inspiration', 'Vietnam itinerary ideas', 'Vietnam travel themes', 'Vietnam family holidays', 'Vietnam adventure tours'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/trip-ideas',
   },
   openGraph: {
-    title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration',
-    description: 'Curated trip ideas — from street food tours and motorcycle loops to classic luxury journeys.',
+    title: 'Vietnam Holiday Ideas by Travel Style',
+    description: 'Vietnam holiday ideas by style: luxury, family, adventure, culinary, cycling and motorcycle tours, all as private tailor-made journeys.',
     url: 'https://www.vietnamtours.co.uk/trip-ideas',
     images: [{ url: '/images/dest_hanoi_train.png', width: 1200, height: 630, alt: 'Vietnam trip inspiration — Hanoi Train Street' }],
   },

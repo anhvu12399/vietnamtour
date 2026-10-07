@@ -7,23 +7,27 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import ItinerariesGridInteractive from '@/components/ItinerariesGridInteractive';
 import { getItineraries, getSpecialists, getToursLanding, getPosts } from '@/sanity/client';
+import { fromPriceLabel, getMultiDayStartingPrice } from '@/lib/pricing';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Vietnam Tours & Itineraries | Luxury Private Holidays',
-  description: 'Browse our collection of handcrafted Vietnam tour itineraries — from classic 10-day journeys to luxury 3-week expeditions. All tours are private, guided, and fully customisable. From £2,495pp.',
-  keywords: ['Vietnam tours', 'Vietnam itineraries', 'luxury Vietnam holidays', 'private guided tours Vietnam', 'Vietnam holiday packages UK', 'bespoke Vietnam tours', 'tailor-made Vietnam holidays'],
-  alternates: {
-    canonical: 'https://www.vietnamtours.co.uk/itineraries',
-  },
-  openGraph: {
-    title: 'Vietnam Tours & Itineraries | Luxury Private Holidays',
-    description: 'Handcrafted private Vietnam tour itineraries — classic journeys, luxury expeditions, and bespoke adventures. All fully customisable.',
-    url: 'https://www.vietnamtours.co.uk/itineraries',
-    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam luxury tour itinerary — Ha Long Bay cruise at sunrise' }],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const price = fromPriceLabel(await getMultiDayStartingPrice());
+  const title = 'Private Vietnam Tours & Itineraries';
+  const description = `Browse private, tailor-made Vietnam tours from day trips to three weeks, each with a dedicated guide and fully customisable.${price}`;
+  return {
+    title,
+    description,
+    keywords: ['Vietnam tours', 'Vietnam itineraries', 'luxury Vietnam holidays', 'private guided tours Vietnam', 'Vietnam holiday packages UK', 'bespoke Vietnam tours', 'tailor-made Vietnam holidays'],
+    alternates: { canonical: 'https://www.vietnamtours.co.uk/itineraries' },
+    openGraph: {
+      title,
+      description,
+      url: 'https://www.vietnamtours.co.uk/itineraries',
+      images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam luxury tour itinerary — Ha Long Bay cruise at sunrise' }],
+    },
+  };
+}
 
 // Helper function to calculate reading time based on block content
 function getReadingTime(content: any[] | undefined | null): number {

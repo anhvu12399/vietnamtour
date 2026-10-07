@@ -8,15 +8,15 @@ import { getSpecialists } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Meet Our Vietnam Travel Specialists',
-  description: 'Meet the Vietnam specialists behind your journey. Our team of local experts, each with years of in-country experience, craft every itinerary from first-hand knowledge.',
+  title: 'Our Vietnam Travel Specialists',
+  description: 'Meet the Vietnam specialists who design your private tour, each with first-hand, in-country experience.',
   keywords: ['Vietnam travel specialists', 'Vietnam tour experts', 'Vietnam travel consultants UK', 'Vietnam holiday advisors', 'meet our team'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/specialists',
   },
   openGraph: {
-    title: 'Meet Our Vietnam Travel Specialists',
-    description: 'Local experts with years of in-country experience. Every itinerary crafted from first-hand knowledge of Vietnam.',
+    title: 'Our Vietnam Travel Specialists',
+    description: 'Meet the Vietnam specialists who design your private tour, each with first-hand, in-country experience.',
     url: 'https://www.vietnamtours.co.uk/specialists',
   },
 };
