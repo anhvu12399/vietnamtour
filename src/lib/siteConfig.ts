@@ -56,7 +56,9 @@ export const siteConfig = {
 } as const;
 
 /** Absolute URL helper */
-export function absoluteUrl(path = '/'): string {
+export function absoluteUrl(path?: string | null): string {
+  // CMS images can be missing or non-string; never throw while rendering JSON-LD
+  if (typeof path !== 'string' || path.length === 0) return SITE_URL;
   if (/^https?:\/\//i.test(path)) return path;
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }

@@ -151,7 +151,7 @@ interface ArticleJsonLdProps {
   title: string;
   description: string;
   url: string;
-  image: string;
+  image?: string | null;
   publishedAt?: string;
   modifiedAt?: string;
   /** Legacy: organisation name. Prefer `person`. */
@@ -187,7 +187,7 @@ export function ArticleJsonLd({
         description,
         ...(answer && { abstract: answer }),
         url,
-        image: absoluteUrl(image),
+        ...(typeof image === 'string' && image && { image: absoluteUrl(image) }),
         inLanguage: 'en-GB',
         ...(publishedAt && { datePublished: publishedAt }),
         dateModified: modifiedAt || publishedAt,
@@ -234,7 +234,7 @@ interface TouristTripProps {
   name: string;
   description: string;
   url: string;
-  image: string | string[];
+  image?: string | null | (string | null)[];
   /** Either ISO ("P10D") or a number of days */
   duration?: string | number;
   price?: string | number;
@@ -257,7 +257,7 @@ export function TouristTripJsonLd({
   highlights,
   modifiedAt,
 }: TouristTripProps) {
-  const images = (Array.isArray(image) ? image : [image]).filter(Boolean).map(absoluteUrl);
+  const images = (Array.isArray(image) ? image : [image]).filter((i): i is string => typeof i === 'string' && i.length > 0).map((i) => absoluteUrl(i));
   const isoDuration = typeof duration === 'number' ? isoDays(duration) : duration;
   return (
     <JsonLd
@@ -308,7 +308,7 @@ interface TouristDestinationProps {
   name: string;
   description: string;
   url: string;
-  image: string;
+  image?: string | null;
   touristTypes?: string[];
   includesAttraction?: string[];
 }
@@ -323,7 +323,7 @@ export function TouristDestinationJsonLd({ name, description, url, image, touris
         name,
         description,
         url,
-        image: absoluteUrl(image),
+        ...(typeof image === 'string' && image && { image: absoluteUrl(image) }),
         touristType: touristTypes && touristTypes.length > 0 ? touristTypes : ['Luxury travellers', 'Couples', 'Families'],
         ...(includesAttraction && includesAttraction.length > 0 && {
           includesAttraction: includesAttraction.map((a) => ({ '@type': 'TouristAttraction', name: a })),
