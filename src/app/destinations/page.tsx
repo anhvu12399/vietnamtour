@@ -67,9 +67,9 @@ export default async function DestinationsPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Regions & Landscapes
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Vietnam Destinations
-            </h1>
+            </h2>
             <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               From the high Sapa highlands to the tropical beaches of Phu Quoc, explore our key regions to inspire your custom journey.
             </p>

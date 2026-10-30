@@ -13,6 +13,7 @@ export const post = defineType({
     { name: 'seo', title: '⑥ SEO' },
   ],
   fields: [
+    defineField({ name: 'editorial', title: 'Author, review & sources', type: 'editorialEvidence' }),
     // ────────────────────────────────────
     // GROUP 1: HERO & BASIC INFO
     // ────────────────────────────────────

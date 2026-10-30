@@ -10,7 +10,7 @@ interface Specialist {
   slug: { current: string };
   image?: string;
   role?: string;
-  bio?: any[];
+  bio?: { children?: { text?: string }[] }[];
   favoriteDestinations?: string[];
   email?: string;
 }
@@ -20,72 +20,9 @@ interface SpecialistsCarouselProps {
 }
 
 export default function SpecialistsCarousel({ specialists }: SpecialistsCarouselProps) {
-  // Bổ sung thêm mock specialists nếu danh sách thực tế ít hơn 3 người để giao diện cân đối
-  const [displayList, setDisplayList] = useState<Specialist[]>([]);
+  const displayList = specialists;
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let list = [...specialists];
-    if (list.length === 0) {
-      list = [
-        {
-          _id: 'mock-1',
-          name: 'Milly Darnell',
-          slug: { current: 'milly-darnell' },
-          image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300&h=300',
-          role: 'Luxury Travel Specialist',
-          bio: [{ children: [{ text: "With 14 years' experience in the travel industry, I've been fortunate to explore a wide range of incredible destinations, which has only strengthened my..." }] }]
-        },
-        {
-          _id: 'mock-2',
-          name: 'Rikki Poynton',
-          slug: { current: 'rikki-poynton' },
-          image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300&h=300',
-          role: 'Luxury Travel Specialist',
-          bio: [{ children: [{ text: "I've always been interested in travel from a young age after several visits to Russia with school and then learning languages in university. After graduating, I moved..." }] }]
-        },
-        {
-          _id: 'mock-3',
-          name: 'Hannah Ingle',
-          slug: { current: 'hannah-ingle' },
-          image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=300&h=300',
-          role: 'Luxury Travel Specialist',
-          bio: [{ children: [{ text: "My career in travel has exposed me to some of the most incredible travel experiences across Southern Europe & Scandinavia. Italy has a special..." }] }]
-        }
-      ];
-    } else if (list.length === 1) {
-      list.push(
-        {
-          _id: 'mock-2',
-          name: 'Rikki Poynton',
-          slug: { current: 'rikki-poynton' },
-          image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300&h=300',
-          role: 'Luxury Travel Specialist',
-          bio: [{ children: [{ text: "I've always been interested in travel from a young age after several visits to Russia with school and then learning languages in university. After graduating, I moved..." }] }]
-        },
-        {
-          _id: 'mock-3',
-          name: 'Hannah Ingle',
-          slug: { current: 'hannah-ingle' },
-          image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=300&h=300',
-          role: 'Luxury Travel Specialist',
-          bio: [{ children: [{ text: "My career in travel has exposed me to some of the most incredible travel experiences across Southern Europe & Scandinavia. Italy has a special..." }] }]
-        }
-      );
-    } else if (list.length === 2) {
-      // Đổi tên hoặc giữ nguyên 2 người chính và bổ sung người thứ 3
-      list.push({
-        _id: 'mock-3',
-        name: 'Hannah Ingle',
-        slug: { current: 'hannah-ingle' },
-        image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=300&h=300',
-        role: 'Luxury Travel Specialist',
-        bio: [{ children: [{ text: "My career in travel has exposed me to some of the most incredible travel experiences across Southern Europe & Scandinavia. Italy has a special..." }] }]
-      });
-    }
-    setDisplayList(list);
-  }, [specialists]);
 
   // Số lượng item hiển thị cùng lúc
   // Desktop: 3, Tablet: 2, Mobile: 1
@@ -167,7 +104,7 @@ export default function SpecialistsCarousel({ specialists }: SpecialistsCarousel
                       {/* Avatar */}
                       <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold/20 group-hover:border-gold/50 transition-colors duration-500 shadow-lg bg-black/20">
                         <Image
-                          src={spec.image || '/images/specialist_alice.png'}
+                          src={spec.image || '/logo-sun-hat.png'}
                           alt={spec.name}
                           fill
                           className="object-cover grayscale brightness-90 group-hover:brightness-100 group-hover:scale-105 transition-all duration-500"

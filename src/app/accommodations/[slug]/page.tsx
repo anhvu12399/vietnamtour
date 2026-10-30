@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -16,6 +17,15 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = await getAccommodationBySlug(slug);
+  if (!item) return {};
+  const title = `${item.name} | Vietnam Accommodation`;
+  const url = `https://www.vietnamtours.co.uk/accommodations/${slug}`;
+  return { title, description: `Plan a stay at ${item.name} as part of your private Vietnam travel planning.`, alternates: { canonical: url }, openGraph: { title, url } };
 }
 
 export default async function AccommodationDetailPage({ params }: PageProps) {

@@ -24,23 +24,23 @@ async function main() {
     const itineraries = await client.fetch(`*[_type == "itinerary"]`);
 
     console.log('--- SPECIALISTS ---');
-    specialists.forEach((s: any) => {
+    specialists.forEach((s: { name: string; image: unknown }) => {
       console.log(`${s.name}: image type = ${typeof s.image}`, JSON.stringify(s.image));
     });
 
     console.log('--- DESTINATIONS ---');
-    destinations.forEach((d: any) => {
+    destinations.forEach((d: { name: string; image: unknown }) => {
       console.log(`${d.name}: image type = ${typeof d.image}`, JSON.stringify(d.image));
     });
 
     console.log('--- ACCOMMODATIONS ---');
-    accommodations.forEach((a: any) => {
-      console.log(`${a.name}: gallery types =`, a.gallery?.map((img: any) => typeof img));
+    accommodations.forEach((a: { name: string; gallery?: unknown[] }) => {
+      console.log(`${a.name}: gallery types =`, a.gallery?.map((img: unknown) => typeof img));
     });
 
     console.log('--- ITINERARIES ---');
-    itineraries.forEach((it: any) => {
-      console.log(`${it.title}: gallery types =`, it.gallery?.map((img: any) => typeof img));
+    itineraries.forEach((it: { title: string; gallery?: unknown[] }) => {
+      console.log(`${it.title}: gallery types =`, it.gallery?.map((img: unknown) => typeof img));
     });
 
   } catch (err) {

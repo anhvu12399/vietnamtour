@@ -1,4 +1,4 @@
-import { Itinerary, TimelineItem, Accommodation } from '@/sanity/types';
+import { Itinerary } from '@/sanity/types';
 
 export interface RoutePoint {
   id: string;
@@ -13,9 +13,10 @@ export interface RoutePoint {
 
 export interface DayTimelineDetail {
   dayNumber: number;
+  dayLabel?: string;
   title: string;
   description: string;
-  region: 'North' | 'Central' | 'South';
+  region: 'North' | 'Central' | 'South' | 'Route';
   phase: string;
   hotelName: string;
   meals: string;
@@ -109,147 +110,29 @@ export function getRoutePoints(itinerary: Itinerary): RoutePoint[] {
     });
   }
 
-  // Fallbacks based on typical tours
-  if (points.length === 0) {
-    if (itinerary.slug?.current.includes('romance')) {
-      return [DESTINATION_POINTS.camranh, DESTINATION_POINTS.phuquoc];
-    }
-    if (itinerary.slug?.current.includes('culinary')) {
-      return [DESTINATION_POINTS.hanoi, DESTINATION_POINTS.hoian, DESTINATION_POINTS.nhatrang];
-    }
-    return [DESTINATION_POINTS.hanoi, DESTINATION_POINTS.halong, DESTINATION_POINTS.hue, DESTINATION_POINTS.hoian, DESTINATION_POINTS.camranh];
-  }
 
   return points;
 }
 
+function blockText(value: unknown): string {
+  if (!Array.isArray(value)) return '';
+  return value.map((block: unknown) => {
+    if (!block || typeof block !== 'object' || !('children' in block) || !Array.isArray(block.children)) return '';
+    return block.children.map((span: unknown) => span && typeof span === 'object' && 'text' in span && typeof span.text === 'string' ? span.text : '').join('');
+  }).filter(Boolean).join('\n\n');
+}
+
 export function generateDayByDayTimeline(itinerary: Itinerary): DayTimelineDetail[] {
-  const points = getRoutePoints(itinerary);
-  const totalDays = itinerary.duration || 15;
-  const dayList: DayTimelineDetail[] = [];
-
-  // Determine regions visited
-  const hasNorth = points.some(p => p.region === 'North');
-  const hasCentral = points.some(p => p.region === 'Central');
-  const hasSouth = points.some(p => p.region === 'South');
-
-  // Distribute days across regions
-  const activeRegions: ('North' | 'Central' | 'South')[] = [];
-  if (hasNorth) activeRegions.push('North');
-  if (hasCentral) activeRegions.push('Central');
-  if (hasSouth) activeRegions.push('South');
-
-  if (activeRegions.length === 0) activeRegions.push('North');
-
-  const daysPerRegion = Math.ceil(totalDays / activeRegions.length);
-
-  for (let d = 1; d <= totalDays; d++) {
-    // Determine region for this day
-    const regionIdx = Math.min(Math.floor((d - 1) / daysPerRegion), activeRegions.length - 1);
-    const region = activeRegions[regionIdx];
-
-    // Find destination in this region
-    const dest = points.find(p => p.region === region) || DESTINATION_POINTS.hanoi;
-
-    let phase = 'Phase 1: Northern Highlands & Wonders';
-    if (region === 'Central') phase = 'Phase 2: Central Imperial Heritage';
-    if (region === 'South') phase = 'Phase 3: Southern Tropical Pulse';
-
-    // Activity tags
-    const activityPool = {
-      North: [
-        ['Michelin Dining', 'Cyclo Heritage Tour', 'Private Water Puppets'],
-        ['VIP Catamaran Sailing', 'Hidden Caves Kayaking', 'Sunset Champagne'],
-        ['Hilltribe Trekking', 'Bespoke Ecolodge Stay', 'Mountain Sunrise']
-      ],
-      Central: [
-        ['Imperial Tombs Tour', 'Perfume River Cruise', 'Royal Feast'],
-        ['Organic Farming', 'Lantern Making Workshop', 'Beachfront Bliss'],
-        ['UNESCO Heritage Walk', 'Bespoke Tailoring', 'Cycling Excursion']
-      ],
-      South: [
-        ['Floating Markets', 'Private Sampan Cruise', 'Local Artisans'],
-        ['Vespa Night Crawl', 'Skyline Cocktails', 'Heritage Landmarks'],
-        ['Couples Spa Ritual', 'Beachfront Barbecue', 'Private Yacht Snorkeling']
-      ]
+  // Render only documented days. Never manufacture activities, hotels or VIP access.
+  return (itinerary.timeline || []).map((item, index) => {
+    const points = getRoutePoints({ ...itinerary, title: '', timeline: [item] });
+    const region = (points[0]?.region || 'Route') as DayTimelineDetail['region'];
+    return {
+      dayNumber: index + 1, dayLabel: item.dayRange,
+      title: item.title, description: blockText(item.description), region,
+      phase: region === 'Route' ? 'Your itinerary' : `${region} Vietnam`,
+      hotelName: typeof item.accommodation === 'string' ? item.accommodation : item.accommodation?.name || '',
+      meals: '', tags: [], insiderNotes: '', hourlySchedule: [],
     };
-
-    const tags = activityPool[region][(d - 1) % 3];
-
-    // Meals
-    let meals = 'B, L, D';
-    if (d === 1) meals = 'D'; // Arrive day
-    else if (d === totalDays) meals = 'B'; // Depart day
-
-    // Dynamic descriptions based on day
-    let title = `${dest.name} Discovery & Leisure`;
-    let description = `Enjoy a luxury private tour around the historic sights of ${dest.name}, culminating in a bespoke evening dinner curated by local chefs.`;
-    let insiderNotes = `Ask our private driver for the scenic route to avoid highway traffic.`;
-
-    if (d === 1) {
-      title = `Arrival in ${dest.name} - Airport Fast-Track VIP Check-in`;
-      description = `Land in Vietnam where you are met at the aircraft door by our hostess and fast-tracked through VIP immigration. Board your private vehicle transfer to the luxury ${dest.hotel}.`;
-      insiderNotes = `Keep your flight details updated. Our private host coordinates the landing time in real-time.`;
-    } else if (d === totalDays) {
-      title = `Departure from ${dest.name}`;
-      description = `Morning at leisure to enjoy the resort's premium spa or infinity pool. Transfer by private vehicle to the airport for your onward international flight back to the UK.`;
-      insiderNotes = `Late check-out is pre-arranged subject to flight schedule.`;
-    } else {
-      if (region === 'North') {
-        if (dest.id === 'hanoi') {
-          title = `Hanoi Old Quarter Heritage & Art Tour`;
-          description = `Explore Hanoi's ancient guild streets by vintage sidecar. Visit private art galleries, talk with local curators, and savor a refined lunch at a Michelin-selected Vietnamese townhouse.`;
-          insiderNotes = `Try the famous egg coffee at a quiet rooftop spot overlooking Hoan Kiem Lake. Ask your guide for the secret entrance.`;
-        } else if (dest.id === 'halong') {
-          title = `Lan Ha Bay & Halong Bay Luxury Cruise`;
-          description = `Board your private charter yacht. Cruise past towering limestone karsts, kayak through the low arch of Luon Cave into a hidden monkey-inhabited lagoon, and dine under the stars on deck.`;
-          insiderNotes = `Sunrise Tai Chi on the sundeck is highly recommended. The mist rising over the karsts is magical.`;
-        }
-      } else if (region === 'Central') {
-        if (dest.id === 'hoian') {
-          title = `Hoi An Ancient Town Artistry & Cooking`;
-          description = `Join a local chef at an organic farm to harvest ingredients, followed by a private cooking masterclass. Stroll the lantern-lit streets of the ancient town in the evening.`;
-          insiderNotes = `The best local tailors can deliver custom pieces in 24 hours. Your guide will introduce you to a master tailor.`;
-        } else if (dest.id === 'hue') {
-          title = `Forbidden Purple City & Royal Garden Feast`;
-          description = `Explore the Royal Palace ruins with private access to restricted sectors. Dine on a multi-course royal feast inside a beautifully restored garden home of a royal descendant.`;
-          insiderNotes = `The sunset over the Perfume River is best viewed from the terrace of La Residence.`;
-        }
-      } else {
-        if (dest.id === 'camranh') {
-          title = `Amanoi Cliffside Seclusion & Wellness`;
-          description = `A day dedicated to peace. Enjoy a personalized holistic spa therapy, join a private yoga session on the floating lake pavilion, and savor a private beach barbecue.`;
-          insiderNotes = `Ask your host to set up a private sunset cocktail session on the cliffs overlooking Vinh Hy Bay.`;
-        } else if (dest.id === 'phuquoc') {
-          title = `Private Catamaran Charter & Sunset Snorkelling`;
-          description = `Charter the resort's private catamaran to sail around Phu Quoc's southern islands. Swim in turquoise waters, snorkel over pristine coral gardens, and enjoy champagne on board.`;
-          insiderNotes = `Phu Quoc black pepper is world-renowned. Visit an organic farm to pick up gifts for friends back in the UK.`;
-        }
-      }
-    }
-
-    // Hourly Schedule
-    const hourlySchedule = [
-      { time: '09:00 AM', activity: 'Private Host Briefing', desc: `Meet your specialist guide in the hotel lobby for a day itinerary alignment.` },
-      { time: '10:30 AM', activity: 'VIP Guided Expedition', desc: `Enter historic landmarks via priority skip-the-line access.` },
-      { time: '01:00 PM', activity: 'Gourmet Lunch Experience', desc: `Dine at a handpicked boutique restaurant specializing in refined local cuisine.` },
-      { time: '03:30 PM', activity: 'Hands-on Cultural Artistry', desc: `Engage with master craftsmen in a private workshop setting.` },
-      { time: '07:30 PM', activity: 'Signature Culinary Dinner', desc: `Relish a tasting menu crafted by executive chefs with wine pairings.` }
-    ];
-
-    dayList.push({
-      dayNumber: d,
-      title,
-      description,
-      region,
-      phase,
-      hotelName: dest.hotel,
-      meals,
-      tags,
-      insiderNotes,
-      hourlySchedule
-    });
-  }
-
-  return dayList;
+  });
 }

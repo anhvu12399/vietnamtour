@@ -1,41 +1,19 @@
-/**
- * Silo route: /destinations/[slug]/tours/[tourSlug]
- * Renders the same itinerary detail page but under a destination-scoped URL
- * for SEO Silo architecture. The canonical content lives at this URL.
- */
-import { redirect } from 'next/navigation';
-import { getDestinations, getItineraries } from '@/sanity/client';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { getDestinationBySlug, getItineraryBySlug, getItineraries } from '@/sanity/client';
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const [destinations, itineraries] = await Promise.all([
-    getDestinations(),
-    getItineraries(),
-  ]);
-
-  const params: { slug: string; tourSlug: string }[] = [];
-  for (const dest of destinations) {
-    if (!dest.slug?.current) continue;
-    for (const it of itineraries) {
-      if (!it.slug?.current) continue;
-      // Include only tours whose destination matches or tours that have no destination
-      if (!it.destination || it.destination?.slug?.current === dest.slug.current) {
-        params.push({ slug: dest.slug.current, tourSlug: it.slug.current });
-      }
-    }
-  }
-  return params;
+  const itineraries = await getItineraries();
+  return itineraries.filter((tour) => tour.destination?.slug?.current && tour.slug?.current).map((tour) => ({
+    slug: tour.destination!.slug.current, tourSlug: tour.slug.current,
+  }));
 }
+interface PageProps { params: Promise<{ slug: string; tourSlug: string }> }
 
-interface PageProps {
-  params: Promise<{ slug: string; tourSlug: string }>;
-}
-
-// For silo linking we reuse the /itineraries/[slug] page content.
-// We pass the destination context via the URL for breadcrumbs.
 export default async function DestinationTourPage({ params }: PageProps) {
-  const { tourSlug } = await params;
-  // Redirect to the canonical itinerary detail page which reads destination from Sanity
-  redirect(`/itineraries/${tourSlug}`);
+  const { slug, tourSlug } = await params;
+  const [destination, tour] = await Promise.all([getDestinationBySlug(slug), getItineraryBySlug(tourSlug)]);
+  if (!destination || !tour || (tour.destination && tour.destination.slug.current !== slug)) notFound();
+  permanentRedirect(`/itineraries/${tourSlug}`);
 }

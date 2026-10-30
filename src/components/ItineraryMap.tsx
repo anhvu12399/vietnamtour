@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
+import type { Map, LatLngTuple, CircleMarker } from 'leaflet';
 
 interface RoutePoint {
   id: string;
@@ -20,7 +21,7 @@ interface Props {
 
 export default function ItineraryMap({ points }: Props) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<any>(null);
+  const mapInstanceRef = useRef<Map | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function ItineraryMap({ points }: Props) {
     if (!isClient || !mapContainerRef.current || points.length === 0) return;
 
     let isMounted = true;
-    let L: any;
+    let L: typeof import('leaflet');
 
     const initMap = async () => {
       // Dynamically import Leaflet to bypass Next.js SSR issues
@@ -46,7 +47,7 @@ export default function ItineraryMap({ points }: Props) {
       }
 
       // Initialize map instance
-      const map = L.map(mapContainerRef.current, {
+      const map = L.map(mapContainerRef.current!, {
         zoomControl: true,
         scrollWheelZoom: false,
       });
@@ -66,12 +67,12 @@ export default function ItineraryMap({ points }: Props) {
         red: '#8B0000'      // Lacquer red
       };
 
-      const latlngs: any[] = [];
-      const markers: any[] = [];
+      const latlngs: LatLngTuple[] = [];
+      const markers: CircleMarker[] = [];
 
       // Add markers
       points.forEach((pt) => {
-        const pointLatLng = [pt.lat, pt.lng];
+        const pointLatLng: LatLngTuple = [pt.lat, pt.lng];
         latlngs.push(pointLatLng);
 
         const circleMarker = L.circleMarker(pointLatLng, {
@@ -128,7 +129,7 @@ export default function ItineraryMap({ points }: Props) {
       for (let i = 0; i < points.length - 1; i++) {
         const from = points[i];
         const to = points[i + 1];
-        const pathCoords = [[from.lat, from.lng], [to.lat, to.lng]];
+        const pathCoords: LatLngTuple[] = [[from.lat, from.lng], [to.lat, to.lng]];
 
         if (isRoadOrCruise(from.id, to.id)) {
           // lacquer red solid line for cruise/road

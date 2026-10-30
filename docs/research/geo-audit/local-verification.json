@@ -1,0 +1,792 @@
+{
+  "testedAt": "2026-10-28T15:54:19.740Z",
+  "server": "http://localhost:3200",
+  "sitemapUrls": 130,
+  "tours": 50,
+  "blogRedirects": 14,
+  "hotels": 6,
+  "canonicalFailures": 0,
+  "invalidEnquiryRejected": true,
+  "pages": [
+    {
+      "pathname": "/",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/amanoi-ninh-thuan",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/amanoi-ninh-thuan",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/capella-hanoi",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/capella-hanoi",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/four-seasons-the-nam-hai-hoi-an",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/four-seasons-the-nam-hai-hoi-an",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/regent-phu-quoc",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/regent-phu-quoc",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/six-senses-ninh-van-bay",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/six-senses-ninh-van-bay",
+      "h1": 1
+    },
+    {
+      "pathname": "/accommodations/sofitel-legend-metropole-hanoi",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/accommodations/sofitel-legend-metropole-hanoi",
+      "h1": 1
+    },
+    {
+      "pathname": "/blog",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/blog",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/da-lat",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/da-lat",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/da-nang",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/da-nang",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/ha-long-bay",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/ha-long-bay",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/hanoi",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/hanoi",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/ho-chi-minh-city",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/ho-chi-minh-city",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/hoi-an",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/hoi-an",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/hue",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/hue",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/mekong-delta",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/mekong-delta",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/ninh-binh",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/ninh-binh",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/phong-nha",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/phong-nha",
+      "h1": 1
+    },
+    {
+      "pathname": "/destinations/sapa",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/destinations/sapa",
+      "h1": 1
+    },
+    {
+      "pathname": "/editorial-policy",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/editorial-policy",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/april",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/april",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/august",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/august",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/december",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/december",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/february",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/february",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/january",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/january",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/july",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/july",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/june",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/june",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/march",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/march",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/may",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/may",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/november",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/november",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/october",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/october",
+      "h1": 1
+    },
+    {
+      "pathname": "/ideas-by-month/september",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/ideas-by-month/september",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations/adventure-off-beaten-track",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations/adventure-off-beaten-track",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations/culinary-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations/culinary-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations/family-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations/family-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations/golf-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations/golf-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/inspirations/luxury-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/inspirations/luxury-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/a-cultural-tour-of-hanoi",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/a-cultural-tour-of-hanoi",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/a-local-s-story-from-north-to-south",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/a-local-s-story-from-north-to-south",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/cai-be-princess-mekong-delta-boat-trip",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/cai-be-princess-mekong-delta-boat-trip",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/classic-cu-chi-tunnels-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/classic-cu-chi-tunnels-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/cooking-class-in-hoi-an",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/cooking-class-in-hoi-an",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/cu-chi-tunnels-by-saigon-river",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/cu-chi-tunnels-by-saigon-river",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/culture-creativity-in-saigon",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/culture-creativity-in-saigon",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/da-nang-discovery",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/da-nang-discovery",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/discover-the-legend-of-ninh-binh",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/discover-the-legend-of-ninh-binh",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/discover-vietnam-home-of-kong-skull-island",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/discover-vietnam-home-of-kong-skull-island",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/essence-of-hoi-an-highlights-hidden-charms",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/essence-of-hoi-an-highlights-hidden-charms",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/explore-hue-countryside-culture-by-vespa",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/explore-hue-countryside-culture-by-vespa",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/explore-the-nature-and-culture-of-untouched-da-bac",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/explore-the-nature-and-culture-of-untouched-da-bac",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/gourmet-vietnam-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/gourmet-vietnam-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/halong-bay-by-seaplane",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/halong-bay-by-seaplane",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/halong-lazalee-classic-cruise",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/halong-lazalee-classic-cruise",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hanoi-city-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hanoi-city-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hanoi-countryside-vespa-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hanoi-countryside-vespa-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hanoi-highlights-afternoon-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hanoi-highlights-afternoon-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hanoi-street-eats",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hanoi-street-eats",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hidden-hanoi-walking-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hidden-hanoi-walking-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/highlights-of-vietnam-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/highlights-of-vietnam-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/ho-chi-minh-city-evening-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/ho-chi-minh-city-evening-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/ho-chi-minh-city-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/ho-chi-minh-city-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hoa-lu-and-trang-an-day-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hoa-lu-and-trang-an-day-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hoi-an-countryside-adventure-by-vespa-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hoi-an-countryside-adventure-by-vespa-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hoi-an-countryside-cycling",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hoi-an-countryside-cycling",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hoi-an-farming-fishing",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hoi-an-farming-fishing",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/hue-city-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/hue-city-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/indochine-romance-and-beach-escape",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/indochine-romance-and-beach-escape",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/lazalee-halong-bay-2-day-cruise",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/lazalee-halong-bay-2-day-cruise",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/local-life-hoi-an-street-eats",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/local-life-hoi-an-street-eats",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/local-life-river-cruise-in-hoi-an",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/local-life-river-cruise-in-hoi-an",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/luxury-ha-long-bay-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/luxury-ha-long-bay-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/mekong-delta-le-jarai-cruise",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/mekong-delta-le-jarai-cruise",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/my-son-morning-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/my-son-morning-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/off-beaten-track-in-halong-bay",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/off-beaten-track-in-halong-bay",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/saigon-craft-beer-evening-vespa-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/saigon-craft-beer-evening-vespa-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/saigon-street-eats",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/saigon-street-eats",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/sapa-adventure-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/sapa-adventure-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/sapa-bac-ha-market-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/sapa-bac-ha-market-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/sapa-in-style-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/sapa-in-style-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/the-essence-of-vietnam-north-to-south",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/the-essence-of-vietnam-north-to-south",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/the-grand-tour-of-vietnam",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/the-grand-tour-of-vietnam",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/the-story-of-saigon",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/the-story-of-saigon",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/trekking-adventure-in-vietnam-s-remote-north",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/trekking-adventure-in-vietnam-s-remote-north",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/uncover-vietnam-from-south-to-north",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/uncover-vietnam-from-south-to-north",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/vietnam-caves-karsts-and-trekking-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/vietnam-caves-karsts-and-trekking-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/vietnam-in-depth-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/vietnam-in-depth-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/itineraries/vietnamese-culinary-and-culture-journey",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/itineraries/vietnamese-culinary-and-culture-journey",
+      "h1": 1
+    },
+    {
+      "pathname": "/our-story",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/our-story",
+      "h1": 1
+    },
+    {
+      "pathname": "/privacy-policy",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/privacy-policy",
+      "h1": 1
+    },
+    {
+      "pathname": "/specialists",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/specialists",
+      "h1": 1
+    },
+    {
+      "pathname": "/terms",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/terms",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/cruising-mekong-delta",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/cruising-mekong-delta",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/hoi-an-lantern-festival",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/hoi-an-lantern-festival",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/kayaking-halong-bay",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/kayaking-halong-bay",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/trekking-sapa-rice-terraces",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/trekking-sapa-rice-terraces",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/vietnamese-cooking-class-hue",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/vietnamese-cooking-class-hue",
+      "h1": 1
+    },
+    {
+      "pathname": "/things-to-do/watching-water-puppets-hanoi",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/things-to-do/watching-water-puppets-hanoi",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/2-week-vietnam-itinerary-private-tour",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/2-week-vietnam-itinerary-private-tour",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/best-places-to-visit-in-vietnam-2026",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/best-places-to-visit-in-vietnam-2026",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/best-places-to-visit-in-vietnam-local-operators-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/best-places-to-visit-in-vietnam-local-operators-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/choosing-vietnam-private-tour-operator",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/choosing-vietnam-private-tour-operator",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/first-time-visiting-vietnam-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/first-time-visiting-vietnam-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/ha-giang-loop-complete-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/ha-giang-loop-complete-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/halong-bay-vs-lan-ha-bay-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/halong-bay-vs-lan-ha-bay-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/hanoi-city-guide-luxury-travel",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/hanoi-city-guide-luxury-travel",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/hoi-an-complete-travel-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/hoi-an-complete-travel-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/luxury-vietnam-tour-what-to-expect",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/luxury-vietnam-tour-what-to-expect",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/mekong-delta-private-tour-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/mekong-delta-private-tour-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/phu-quoc-island-luxury-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/phu-quoc-island-luxury-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/sapa-trekking-guide-vietnam",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/sapa-trekking-guide-vietnam",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/the-ultimate-14-day-vietnam-itinerary-a-british-guide-to-going-private",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/the-ultimate-14-day-vietnam-itinerary-a-british-guide-to-going-private",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/vietnam-culinary-food-tour-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/vietnam-culinary-food-tour-guide",
+      "h1": 1
+    },
+    {
+      "pathname": "/travel-guides/vietnam-private-tour-cost",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/travel-guides/vietnam-private-tour-cost",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/beach-holidays",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/beach-holidays",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/bike-and-boat-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/bike-and-boat-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/classic-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/classic-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/first-time-guide-vietnam",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/first-time-guide-vietnam",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/golf-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/golf-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/motorcycling-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/motorcycling-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/schools-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/schools-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/trip-ideas/vietnam-culinary-tours",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/trip-ideas/vietnam-culinary-tours",
+      "h1": 1
+    },
+    {
+      "pathname": "/visa-guide",
+      "status": 200,
+      "canonical": "https://www.vietnamtours.co.uk/visa-guide",
+      "h1": 1
+    }
+  ]
+}

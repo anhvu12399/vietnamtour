@@ -1,3 +1,4 @@
+import type { RichTextBlock } from './types';
 import { createClient } from '@sanity/client';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'knxuvin4';
@@ -307,20 +308,20 @@ async function importPosts() {
   console.log(`Importing ${posts.length} blog posts to Sanity...`);
   for (const post of posts) {
     // Fix any nested slug typo ('slash' -> 'slug')
-    if ((post.slug as any)._type === 'slash') {
-      (post.slug as any)._type = 'slug';
+    if (post.slug._type === 'slash') {
+      post.slug._type = 'slug';
     }
-    const doc: any = {
+    const doc = {
       _type: post._type,
       _id: post._id,
       title: post.title,
       slug: post.slug,
       publishedAt: post.publishedAt,
       excerpt: post.excerpt,
-      content: (post.content as any[]).map((block: any) => ({
+      content: (post.content as RichTextBlock[]).map((block) => ({
         ...block,
         _key: block._key || Math.random().toString(36).slice(2),
-        children: block.children?.map((child: any) => ({
+        children: block.children?.map((child) => ({
           ...child,
           _key: child._key || Math.random().toString(36).slice(2),
         })),
@@ -330,10 +331,10 @@ async function importPosts() {
       ctaDescription: post.ctaDescription,
     };
     try {
-      await (client as any).createOrReplace(doc);
+      await client!.createOrReplace(doc);
       console.log(`✓ ${post.title}`);
-    } catch (err: any) {
-      console.error(`✗ Failed: ${post.title} — ${err.message}`);
+    } catch (err: unknown) {
+      console.error(`✗ Failed: ${post.title} — ${err instanceof Error ? err.message : "Unknown import error"}`);
     }
   }
   console.log('\n✅ Done importing blog posts!');

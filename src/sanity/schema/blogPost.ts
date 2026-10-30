@@ -1,3 +1,4 @@
+import type { Rule, PreviewValue } from 'sanity';
 import { defineField, defineType } from 'sanity';
 
 export const blogPost = defineType({
@@ -38,6 +39,7 @@ export const blogPost = defineType({
     },
   },
   fields: [
+    defineField({ name: 'editorial', title: 'Author, review & sources', type: 'editorialEvidence' }),
     // ═══════════════════════════════════════════
     // GROUP 1: BÀI VIẾT
     // ═══════════════════════════════════════════
@@ -108,7 +110,7 @@ export const blogPost = defineType({
           type: 'string',
           title: 'Mô tả ảnh (Alt Text)',
           description: 'Bắt buộc cho SEO.',
-          validation: (rule: any) => rule.required().error('Alt text bắt buộc'),
+          validation: (rule: Rule) => rule.required().error('Alt text bắt buộc'),
         },
       ],
       validation: (rule) => rule.required(),
@@ -176,7 +178,7 @@ export const blogPost = defineType({
                     name: 'href',
                     type: 'url',
                     title: 'URL',
-                    validation: (rule: any) =>
+                    validation: (rule: Rule) =>
                       rule.uri({
                         scheme: ['http', 'https', 'mailto', 'tel'],
                         allowRelative: true,
@@ -223,7 +225,7 @@ export const blogPost = defineType({
               type: 'string',
               title: 'Alt Text',
               description: 'Mô tả ảnh cho SEO',
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
             {
               name: 'caption',
@@ -252,7 +254,7 @@ export const blogPost = defineType({
                   ],
                 },
               ],
-              validation: (rule: any) => rule.max(4),
+              validation: (rule: Rule) => rule.max(4),
             },
           ],
         },
@@ -273,7 +275,7 @@ export const blogPost = defineType({
               type: 'text',
               title: 'Nội dung tip',
               rows: 4,
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
           ],
         },
@@ -287,7 +289,7 @@ export const blogPost = defineType({
               name: 'quote',
               type: 'text',
               title: 'Nội dung trích dẫn',
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
             {
               name: 'source',

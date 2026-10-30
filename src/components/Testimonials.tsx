@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 
 export default function Testimonials() {
   const quotes = [
-    "“Watching the sunrise over the limestone karsts of Ha Long Bay from our private deck was a moment of absolute serenity.”",
-    "“It was in the quiet valleys of Sa Pa that the country truly spoke to us. The emerald terraces, the warm smiles of our local Hmong hosts.”",
-    "“Wandering the lantern-lit canals of Hoi An after midnight, we felt as though we had stepped back into another century.”",
-    "“Our specialist managed to arrange a private meeting with a calligraphy master in Hanoi—an unforgettable window into Vietnamese art.”",
-    "“Floating down the peaceful backwaters of the Mekong, watching the river life drift by, was the ultimate peace we were seeking.”",
+    'Plan time on the water in Ha Long Bay, with the cruise route and cabin confirmed in your proposal.',
+    'Explore the highland scenery around Sa Pa at a walking pace suited to your fitness.',
+    'Build a stay in Hoi An around its old town, food, crafts and nearby coast.',
+    'Combine Hanoi neighbourhood walks with the museums and historical sites that interest you.',
+    'Discuss a Mekong Delta visit with enough time for transfers and the activities you choose.',
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,7 +24,7 @@ export default function Testimonials() {
     <section className="bg-white py-16 px-4 border-t border-[#e1e3e4]">
       <div className="container mx-auto max-w-4xl text-center flex flex-col items-center gap-8">
         <h2 className="font-serif text-3xl md:text-4xl text-ink font-light tracking-wide">
-          Moments we’ve created
+          Ideas for your journey
         </h2>
 
         {/* Quotes Display Box */}

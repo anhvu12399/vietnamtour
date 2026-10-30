@@ -1,3 +1,5 @@
+import { absoluteUrl, serializeJsonLd, SITE_NAME, SITE_URL, validIsoDate } from '@/lib/seo';
+
 // ─── Reusable JSON-LD Structured Data Components ───────────────────────────
 // These generate Schema.org structured data that Google uses for rich snippets
 
@@ -11,9 +13,9 @@ interface OrganizationProps {
 }
 
 export function OrganizationJsonLd({
-  name = 'VietnamTours',
+  name = SITE_NAME,
   url = 'https://www.vietnamtours.co.uk',
-  logo = 'https://www.vietnamtours.co.uk/logo-dark.png',
+  logo = 'https://www.vietnamtours.co.uk/logo-sun-hat.png',
   phone = '+84988600388',
   email = 'info@vietnamtours.co.uk',
   sameAs = [],
@@ -21,16 +23,12 @@ export function OrganizationJsonLd({
   const data = {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
+    '@id': `${SITE_URL}/#organization`,
     name,
     url,
     logo,
     telephone: phone,
     email,
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'GB',
-      addressLocality: 'London',
-    },
     areaServed: {
       '@type': 'Country',
       name: 'Vietnam',
@@ -41,7 +39,7 @@ export function OrganizationJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -66,7 +64,7 @@ export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -79,6 +77,8 @@ interface ArticleJsonLdProps {
   publishedAt?: string;
   modifiedAt?: string;
   author?: string;
+  authorType?: 'Person' | 'Organization';
+  authorUrl?: string;
   section?: string;
 }
 
@@ -89,7 +89,9 @@ export function ArticleJsonLd({
   image,
   publishedAt,
   modifiedAt,
-  author = 'Vietnam Tour',
+  author = SITE_NAME,
+  authorType = 'Organization',
+  authorUrl,
   section = 'Travel',
 }: ArticleJsonLdProps) {
   const data = {
@@ -98,21 +100,21 @@ export function ArticleJsonLd({
     headline: title,
     description,
     url,
-    image,
-    ...(publishedAt && { datePublished: publishedAt }),
-    ...(modifiedAt && { dateModified: modifiedAt }),
+    image: absoluteUrl(image),
+    ...(validIsoDate(publishedAt) && { datePublished: validIsoDate(publishedAt) }),
+    ...(validIsoDate(modifiedAt) && { dateModified: validIsoDate(modifiedAt) }),
     author: {
-      '@type': 'Organization',
+      '@type': authorType,
       name: author,
-      url: 'https://www.vietnamtours.co.uk',
+      ...(authorUrl ? { url: authorUrl } : authorType === 'Organization' ? { '@id': `${SITE_URL}/#organization`, url: SITE_URL } : {}),
     },
     publisher: {
       '@type': 'Organization',
-      name: 'VietnamTours',
+      name: SITE_NAME,
       url: 'https://www.vietnamtours.co.uk',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.vietnamtours.co.uk/favicon.ico',
+        url: absoluteUrl('/logo-sun-hat.png'),
       },
     },
     articleSection: section,
@@ -125,7 +127,7 @@ export function ArticleJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -154,7 +156,7 @@ export function FaqJsonLd({ faqs }: { faqs: FaqItem[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -178,7 +180,7 @@ export function TouristTripJsonLd({
   price,
   destination,
 }: TouristTripProps) {
-  const data: Record<string, any> = {
+  const data: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
     name,
@@ -187,7 +189,7 @@ export function TouristTripJsonLd({
     image,
     provider: {
       '@type': 'TravelAgency',
-      name: 'VietnamTours',
+      name: SITE_NAME,
       url: 'https://www.vietnamtours.co.uk',
     },
   };
@@ -220,7 +222,7 @@ export function TouristTripJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
@@ -254,7 +256,7 @@ export function TouristDestinationJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }

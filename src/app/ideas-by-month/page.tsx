@@ -219,13 +219,13 @@ const climateGuide = [
 ];
 
 export default async function IdeasByMonthListingPage() {
-  let monthGuides: any[] = [];
+  let monthGuides: import('@/lib/tripIdeasData').TripPageData[] = [];
   try {
     const sanityItems = await getMonthGuidesFromSanity();
     if (sanityItems && sanityItems.length > 0) {
-      monthGuides = sanityItems.map((item: any) => ({
+      monthGuides = sanityItems.map((item) => ({
         ...item,
-        slug: item.slug?.current || item.slug,
+        slug: item.slug,
         heroImage: item.heroImage || '/images/trip_bike_rice_paddies.png',
       }));
     }
@@ -358,7 +358,7 @@ export default async function IdeasByMonthListingPage() {
               Vietnam Climate Guide
             </h2>
             <p className="text-center text-xs text-ink-soft font-light max-w-lg mx-auto mb-8 md:mb-16 leading-relaxed">
-              Explore the detailed average temperature and monthly rainfall (inches) guide across Vietnam's main destinations.
+              Explore the detailed average temperature and monthly rainfall (inches) guide across Vietnam&apos;s main destinations.
             </p>
 
             <div className="overflow-x-auto border border-line">

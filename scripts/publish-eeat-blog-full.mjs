@@ -1,10 +1,12 @@
 import { createClient } from '@sanity/client';
 
+if (!process.env.SANITY_WRITE_TOKEN) throw new Error('SANITY_WRITE_TOKEN is required');
+
 const client = createClient({
   projectId: 'knxuvin4',
   dataset: 'production',
   apiVersion: '2024-01-01',
-  token: 'skgyWLvpfJJaWSoaBLQXUw3KaI8WVqoTl0CVr1JcHOfL1pdE1ZD04dncxMO5WY85Uo2ZELrU8G5B83LfYRIgfJ668CaUDDbOu9kgNKyV1Eif8tTB95CrHyrdsFES981QLRqw7zB5aCPr8jC8zQ6wCD8WLu4zPoT6rwnWlSdtVd9dWkt9tUU1',
+  token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,
 });
 

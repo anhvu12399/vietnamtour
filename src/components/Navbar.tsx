@@ -8,13 +8,17 @@ import { fetchMainSpecialistAction } from '@/app/actions';
 import { Specialist } from '@/sanity/types';
 
 export default function Navbar() {
+  const pathname = usePathname();
+  return <NavbarContent key={pathname} pathname={pathname} />;
+}
+
+function NavbarContent({ pathname }: { pathname: string }) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [mainSpecialist, setMainSpecialist] = useState<Specialist | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showBottomBar, setShowBottomBar] = useState(true);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   const lastScrollYRef = useRef(0);
   
@@ -66,12 +70,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeMenu]);
-
-  // Close menus when route changes
-  useEffect(() => {
-    setIsOpen(false);
-    setActiveMenu(null);
-  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -189,16 +187,21 @@ export default function Navbar() {
               <div className="flex items-center space-x-6 lg:space-x-8">
 
 
-                {/* Contact phone info */}
-                <div className={`text-[12px] font-sans flex items-center gap-1.5 ${phoneTextClass}`}>
-                  <span>Call us today until 8pm</span>
+                {/* Contact phone & email info */}
+                <div className={`text-[12px] font-sans flex items-center gap-3 ${phoneTextClass}`}>
+                  <a href="mailto:info@vietnamtours.co.uk" className="hidden xl:flex items-center gap-1 hover:text-gold transition-colors" title="Email VietnamTours">
+                    <svg className="w-3.5 h-3.5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>info@vietnamtours.co.uk</span>
+                  </a>
+                  <span className="hidden xl:inline text-slate-300/40">|</span>
                   <a href="tel:+84988600388" className={phoneLinkClass}>
                     <svg className="w-3.5 h-3.5 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     +84 988600388
                   </a>
-                  <span className="text-slate-300">or</span>
                 </div>
 
                 {/* Quote Button */}
@@ -781,18 +784,18 @@ export default function Navbar() {
                 <div className="flex items-start gap-4">
                   <div className="relative w-[70px] h-[70px] flex-shrink-0 rounded-full overflow-hidden border border-[#2A2D2B]/10">
                     <Image 
-                      src={mainSpecialist?.image || "/images/specialist_alice.png"}
-                      alt={mainSpecialist?.name || "Alice Mercer"}
+                      src={mainSpecialist?.image || "/logo-sun-hat.png"}
+                      alt={mainSpecialist?.name || "VietnamTours travel team"}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="font-serif text-sm font-semibold text-ink">{mainSpecialist?.name || "Alice Mercer"}</h4>
+                    <h4 className="font-serif text-sm font-semibold text-ink">{mainSpecialist?.name || "VietnamTours travel team"}</h4>
                     <p className="text-[11px] leading-relaxed text-ink/70 font-light mt-0.5">
                       {mainSpecialist?.role || "12+ years designing bespoke luxury itineraries."}
                     </p>
-                    <Link href={`/specialists/${mainSpecialist?.slug?.current || "alice-mercer"}`} onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-copper font-bold hover:underline mt-1">
+                    <Link href={`/specialists/${mainSpecialist?.slug?.current || ""}`} onClick={() => setActiveMenu(null)} className="inline-block text-[11px] uppercase tracking-wider text-copper font-bold hover:underline mt-1">
                       Read Profile &rarr;
                     </Link>
                   </div>

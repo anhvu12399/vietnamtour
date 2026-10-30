@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import React, { useRef } from "react";
 import Image from "next/image";
 
@@ -78,12 +80,12 @@ export default function PossibilitiesCarousel() {
           <p className="font-sans text-sm text-ink-soft leading-relaxed font-light">
             Only you decide where your journey will take you. These custom curated itineraries are just possibilities to inspire you for an expedition that is as individual as you.
           </p>
-          <a
+          <Link
             href="/itineraries"
             className="text-jade hover:text-gold font-semibold underline text-xs tracking-wider uppercase transition-colors mt-2"
           >
             Open Trip Finder
-          </a>
+          </Link>
 
           {/* Navigation Buttons (Desktop) */}
           <div className="hidden lg:flex gap-4 mt-8">
@@ -135,7 +137,7 @@ export default function PossibilitiesCarousel() {
                       {slide.destinations.split(",")[0]}
                     </span>
                     <h3 className="font-serif text-lg text-ink leading-snug font-normal hover:text-jade transition-colors">
-                      <a href={slide.link}>{slide.title}</a>
+                      <Link href={slide.link}>{slide.title}</Link>
                     </h3>
                   </div>
                   
@@ -144,12 +146,12 @@ export default function PossibilitiesCarousel() {
                       {slide.price.split("from")[0]} from{" "}
                       <strong className="text-xs font-semibold text-jade block">{slide.price.split("from")[1]}</strong>
                     </span>
-                    <a
+                    <Link
                       href={slide.link}
                       className="border border-green hover:bg-[#f5f0e6] text-jade font-bold py-2 px-4 transition-colors text-[9px] tracking-widest uppercase"
                     >
                       View Journey
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

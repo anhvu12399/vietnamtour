@@ -5,6 +5,7 @@ export const travelGuide = defineType({
   title: 'Travel Guide',
   type: 'document',
   fields: [
+    defineField({ name: 'editorial', title: 'Author, review & sources', type: 'editorialEvidence' }),
     defineField({
       name: 'title',
       title: 'Title',

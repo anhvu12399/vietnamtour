@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 };
 
 // Helper function to calculate reading time based on block content
-function getReadingTime(content: any[] | undefined | null): number {
+function getReadingTime(content: import('@/sanity/types').RichTextBlock[] | undefined | null): number {
   if (!content || !Array.isArray(content)) return 5;
   let wordCount = 0;
-  content.forEach((block: any) => {
+  content.forEach((block) => {
     if (block._type === 'block' && block.children) {
-      block.children.forEach((child: any) => {
+      block.children.forEach((child) => {
         if (child.text) {
           wordCount += child.text.trim().split(/\s+/).length;
         }
@@ -169,8 +169,8 @@ export default async function TravelGuidesPage() {
 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image
-                    src="/images/specialist_james.png"
-                    alt="James Harrison"
+                    src="/logo-sun-hat.png"
+                    alt="VietnamTours travel team"
                     fill
                     className="object-cover"
                   />
@@ -178,7 +178,7 @@ export default async function TravelGuidesPage() {
 
                 <div className="space-y-2">
                   <h4 className="font-sans text-sm font-bold text-ink uppercase tracking-wider">
-                    James Harrison
+                    VietnamTours travel team
                   </h4>
                   <p className="text-xs text-ink-soft leading-relaxed max-w-[240px] mx-auto font-light">
                     Vietnam travel specialist with 12 years of on-the-ground expertise
@@ -332,7 +332,7 @@ export default async function TravelGuidesPage() {
             {/* Count progress bar */}
             <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-line">
               <span className="text-[11px] text-ink-soft font-medium">
-                You've viewed {posts.length} of {posts.length} guides
+                You&apos;ve viewed {posts.length} of {posts.length} guides
               </span>
               <div className="w-full h-[3px] bg-luxury-slate border border-line rounded-full overflow-hidden">
                 <div className="h-full bg-gold rounded-full w-full" />

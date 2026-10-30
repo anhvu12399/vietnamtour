@@ -18,7 +18,7 @@ export default function WhyUs() {
     },
     {
       title: "Handpicked Storytellers",
-      description: "Private local scholars, historians, and guides who bring Vietnam's rich heritage to life.",
+      description: "Choose the guiding and cultural activities that match your interests; confirm the arrangements in your proposal.",
       icon: "/images/70x70_specialist_white.svg",
     },
     {
@@ -28,7 +28,7 @@ export default function WhyUs() {
     },
     {
       title: "Seamless Logistics",
-      description: "From VIP airport fast-track arrival services to private transfers, we handle every detail 24/7.",
+      description: "Discuss airport transfers, onward journeys and the contact arrangements available during your trip.",
       icon: "/images/70x70_experts_white.svg",
     },
   ];

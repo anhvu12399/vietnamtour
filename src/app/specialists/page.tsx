@@ -8,15 +8,15 @@ import { getSpecialists } from '@/sanity/client';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Meet Our Vietnam Travel Specialists | VietnamTours.co.uk',
-  description: 'Meet the Vietnam specialists behind your journey. Our team of local experts, each with years of in-country experience, craft every itinerary from first-hand knowledge.',
+  title: 'Contact the Vietnam Travel Team',
+  description: 'Discuss your route, dates, accommodation and travel priorities with the VietnamTours team.',
   keywords: ['Vietnam travel specialists', 'Vietnam tour experts', 'Vietnam travel consultants UK', 'Vietnam holiday advisors', 'meet our team'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/specialists',
   },
   openGraph: {
     title: 'Meet Our Vietnam Travel Specialists',
-    description: 'Local experts with years of in-country experience. Every itinerary crafted from first-hand knowledge of Vietnam.',
+    description: 'Discuss a private Vietnam itinerary and the services that suit your dates.',
     url: 'https://www.vietnamtours.co.uk/specialists',
   },
 };
@@ -45,6 +45,12 @@ export default async function SpecialistsPage() {
           </div>
 
           {/* Grid list */}
+          {!specialists.length && <section className="mx-auto max-w-2xl space-y-5 border border-line bg-white p-8 text-sm leading-relaxed text-ink-soft">
+            <h2 className="font-serif text-2xl text-ink">Discuss your journey with the team</h2>
+            <p>Share the places you want to visit, your dates and preferred pace. Ask who will handle your proposal and guide your chosen activities before confirming a trip.</p>
+            <p><a href="mailto:info@vietnamtours.co.uk" className="underline">info@vietnamtours.co.uk</a> · <a href="tel:+84988600388" className="underline">+84 988600388</a></p>
+            <Link href="/enquire" className="inline-block bg-copper px-6 py-3 text-white">Request a private itinerary</Link>
+          </section>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {specialists.map((spec) => (
               <div key={spec._id} className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-center sm:text-left bg-jade-deep p-6 border border-jade-deep">
@@ -62,7 +68,7 @@ export default async function SpecialistsPage() {
                     <p className="text-xs text-gold uppercase tracking-wider font-semibold">{spec.role}</p>
                   </div>
                   <p className="text-xs sm:text-sm text-paper/80 font-light leading-relaxed">
-                    {spec.bio[0]?.children[0]?.text}
+                    {spec.bio[0]?.children?.[0]?.text}
                   </p>
                   <div className="pt-2 text-xs space-y-2 border-t border-luxury-linen/20">
                     <p className="text-paper/60">📍 Favourite Area: <span className="font-medium text-white">{spec.favoriteDestinations.join(', ')}</span></p>

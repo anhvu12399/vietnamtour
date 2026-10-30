@@ -68,9 +68,9 @@ export default async function AccommodationsPage() {
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
               Elite Hideaways
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
               Luxury Resorts & Lodges
-            </h1>
+            </h2>
             <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
               We have handpicked only the finest properties in Vietnam. From remote clifftop pool villas overlooking Vinh Hy Bay to heritage palaces in Hanoi, these stays guarantee premium luxury.
             </p>

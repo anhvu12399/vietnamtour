@@ -1,6 +1,8 @@
+import { hasVerifiedProfile } from '@/lib/team';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getSpecialistBySlug, getSpecialists } from '@/sanity/client';
@@ -18,6 +20,16 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const item = await getSpecialistBySlug(slug);
+  if (!item) return {};
+  if (!hasVerifiedProfile(item)) permanentRedirect('/specialists');
+  const title = `${item.name} | Vietnam Travel Specialist`;
+  const url = `https://www.vietnamtours.co.uk/specialists/${slug}`;
+  return { title, description: `Meet ${item.name} as part of your private Vietnam travel planning.`, alternates: { canonical: url }, openGraph: { title, url } };
+}
+
 export default async function SpecialistDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const specialist = await getSpecialistBySlug(slug);
@@ -25,6 +37,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
   if (!specialist) {
     notFound();
   }
+  if (!hasVerifiedProfile(specialist)) permanentRedirect('/specialists');
 
   return (
     <>
@@ -90,7 +103,7 @@ export default async function SpecialistDetailPage({ params }: PageProps) {
                 My Travel Story
               </h2>
               <p className="text-base font-light text-ink-soft leading-relaxed">
-                {specialist.bio[0]?.children[0]?.text}
+                {specialist.bio[0]?.children?.[0]?.text}
               </p>
             </div>
 

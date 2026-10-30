@@ -1,8 +1,14 @@
+import { publicSpecialist } from '@/lib/team';
+import { planningGuides } from '@/lib/planningGuides';
+import type { TripPageData } from '@/lib/tripIdeasData';
+import type { ThingToDoData } from '@/lib/thingsToDoData';
 import { createClient } from '@sanity/client';
 import { defineLive } from 'next-sanity/live';
 import { draftMode } from 'next/headers';
+import { mergeItineraryCatalogue } from '@/lib/legacyItineraries';
+import { applyEditorialCorrections } from '@/lib/editorialCorrections';
 import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
-import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post } from './types';
+import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post, BlogPost } from './types';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'knxuvin4';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -27,47 +33,21 @@ export const { sanityFetch, SanityLive } = client
   ? defineLive({
       client,
       serverToken: process.env.SANITY_WRITE_TOKEN,
-      browserToken: process.env.SANITY_WRITE_TOKEN,
     })
   : { sanityFetch: null, SanityLive: () => null };
 
-async function fetchSanity<T>(query: string, params: Record<string, any> = {}): Promise<T> {
-  if (sanityFetch) {
-    let previewOptions: {
-      perspective: 'published' | 'previewDrafts';
-      stega: boolean;
-    } = {
-      perspective: 'published',
-      stega: false,
-    };
-
-    try {
-      const draft = await draftMode();
-      previewOptions = {
-        perspective: draft.isEnabled ? 'previewDrafts' : 'published',
-        stega: draft.isEnabled,
-      };
-    } catch (e) {
-      // draftMode() throws during static generation / build time without HTTP request context
-    }
-
-    try {
-      const { data } = await sanityFetch({
-        query,
-        params,
-        ...previewOptions,
-      });
-      return data as T;
-    } catch (error) {
-      console.error('sanityFetch failed, falling back to client.fetch:', error);
-      if (client) {
-        return await client.fetch(query, params, { next: { revalidate: 60 } });
-      }
-      throw error;
-    }
+async function fetchSanity<T>(query: string, params: Record<string, string> = {}): Promise<T> {
+  let isPreview = false;
+  try { isPreview = (await draftMode()).isEnabled; } catch { /* No request context during prerendering. */ }
+  if (isPreview && sanityFetch) {
+    const { data } = await sanityFetch({ query, params, perspective: 'drafts', stega: true });
+    return data as T;
   }
   if (client) {
-    return await client.fetch(query, params, { next: { revalidate: 60 } });
+    // Public routes must refresh even without a Studio session/live invalidation.
+    return await client.fetch<T>(query, params, {
+      perspective: 'published', stega: false, next: { revalidate: 60 },
+    });
   }
   throw new Error('Sanity client not configured');
 }
@@ -91,11 +71,11 @@ export async function getItineraries(): Promise<Itinerary[]> {
     },
     destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<Itinerary[]>(query);
+  return mergeItineraryCatalogue(await fetchSanity<Itinerary[]>(query));
 }
 
 export async function getFeaturedItineraries(): Promise<Itinerary[]> {
@@ -115,11 +95,11 @@ export async function getFeaturedItineraries(): Promise<Itinerary[]> {
     },
     destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<Itinerary[]>(query);
+  return (await fetchSanity<Itinerary[]>(query)).map((tour) => ({ ...tour, specialist: publicSpecialist(tour.specialist) }));
 }
 
 export async function getItineraryBySlug(slug: string): Promise<Itinerary | null> {
@@ -139,11 +119,12 @@ export async function getItineraryBySlug(slug: string): Promise<Itinerary | null
     },
     destination->{ _id, name, slug, "image": image.asset->url },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<Itinerary | null>(query, { slug });
+  const itinerary = await fetchSanity<Itinerary | null>(query, { slug });
+  return itinerary ? { ...itinerary, specialist: publicSpecialist(itinerary.specialist) } : mergeItineraryCatalogue([]).find((tour) => tour.slug.current === slug) || null;
 }
 
 // --- Accommodations ---
@@ -172,9 +153,9 @@ export async function getAccommodationBySlug(slug: string): Promise<Accommodatio
 
 export async function getSpecialists(): Promise<Specialist[]> {
   if (useMock) {
-    return mockSpecialists;
+    return [];
   }
-  return await fetchSanity<Specialist[]>(`*[_type == "specialist"]{
+  return await fetchSanity<Specialist[]>(`*[_type == "specialist" && profileVerified == true && defined(profileEvidenceUrl)]{
     ...,
     "image": image.asset->url
   }`);
@@ -200,7 +181,7 @@ export async function getDestinations(): Promise<Destination[]> {
     ...,
     "image": image.asset->url,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`);
@@ -218,7 +199,7 @@ export async function getDestinationBySlug(slug: string): Promise<Destination | 
       "gallery": gallery[].asset->url
     },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
@@ -235,7 +216,7 @@ export async function getCruises(): Promise<Cruise[]> {
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`);
@@ -248,7 +229,7 @@ export async function getCruiseBySlug(slug: string): Promise<Cruise | null> {
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
@@ -274,7 +255,7 @@ export async function getTravelGuides(): Promise<TravelGuide[]> {
     destination->{ _id, name, slug },
     "mainImage": mainImage.asset->url,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`);
@@ -301,7 +282,7 @@ export async function getTravelGuideBySlug(destinationSlug: string, guideSlug: s
       }
     },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
@@ -401,11 +382,12 @@ export async function getHomepage(): Promise<HomepageData | null> {
 
 export async function getPosts(): Promise<Post[]> {
   if (useMock) return [];
-  // Use client.fetch directly with cache:no-store to guarantee fresh data for generateStaticParams
+  // Refresh public article data on the same bounded interval as the detail route.
   if (!client) return [];
-  return await client.fetch(
+  const posts: Post[] = await client.fetch(
     `*[_type == "post"] | order(publishedAt desc){
-    _id, title, slug, publishedAt, excerpt,
+    _id, _updatedAt, title, slug, publishedAt, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     "mainImage": mainImage.asset->url,
     heroAuthor{
       name, role,
@@ -442,14 +424,17 @@ export async function getPosts(): Promise<Post[]> {
     }
   }`,
     {},
-    { next: { revalidate: 60 } }
+    { perspective: 'published', stega: false, next: { revalidate: 60 } }
   );
+  const publishedSlugs = new Set(posts.map((post) => post.slug.current));
+  return [...posts, ...planningGuides.filter((guide) => !publishedSlugs.has(guide.slug.current))].map(applyEditorialCorrections);
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (useMock) return null;
   const query = `*[_type == "post" && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, excerpt,
+    _id, _updatedAt, title, slug, publishedAt, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     "mainImage": mainImage.asset->url,
     heroAuthor{
       name, role,
@@ -485,7 +470,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<Post | null>(query, { slug });
+  const post = await fetchSanity<Post | null>(query, { slug });
+  const article = post || planningGuides.find((guide) => guide.slug.current === slug);
+  return article ? applyEditorialCorrections(article) : null;
 }
 
 // --- Tours Landing Page ---
@@ -526,11 +513,12 @@ export async function getToursLanding(): Promise<ToursLandingData | null> {
     inspirationLabel,
     inspirationHeading,
     inspirationPosts[]->{
-      _id, title, slug, publishedAt, excerpt, content,
+      _id, _updatedAt, title, slug, publishedAt, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)}, content,
       "mainImage": mainImage.asset->url
     },
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
@@ -539,9 +527,10 @@ export async function getToursLanding(): Promise<ToursLandingData | null> {
 
 // ─── Editorial dynamic pages (Sanity support) ─────────────────────────────────
 
-export async function getTripIdeasFromSanity(): Promise<any[]> {
+export async function getTripIdeasFromSanity(): Promise<TripPageData[]> {
   if (useMock) return [];
   const query = `*[_type == "tripIdea"] | order(_createdAt desc){
+    _updatedAt, seo{noIndex},
     title,
     "slug": slug.current,
     metaTitle,
@@ -552,12 +541,13 @@ export async function getTripIdeasFromSanity(): Promise<any[]> {
     breadcrumb,
     intro
   }`;
-  return await fetchSanity<any[]>(query);
+  return await fetchSanity<TripPageData[]>(query);
 }
 
-export async function getInspirationsFromSanity(): Promise<any[]> {
+export async function getInspirationsFromSanity(): Promise<TripPageData[]> {
   if (useMock) return [];
   const query = `*[_type == "inspiration"] | order(_createdAt desc){
+    _updatedAt, seo{noIndex},
     title,
     "slug": slug.current,
     metaTitle,
@@ -568,12 +558,13 @@ export async function getInspirationsFromSanity(): Promise<any[]> {
     breadcrumb,
     intro
   }`;
-  return await fetchSanity<any[]>(query);
+  return await fetchSanity<TripPageData[]>(query);
 }
 
-export async function getMonthGuidesFromSanity(): Promise<any[]> {
+export async function getMonthGuidesFromSanity(): Promise<TripPageData[]> {
   if (useMock) return [];
   const query = `*[_type == "monthGuide"] | order(_createdAt desc){
+    _updatedAt, seo{noIndex},
     title,
     "slug": slug.current,
     metaTitle,
@@ -584,11 +575,11 @@ export async function getMonthGuidesFromSanity(): Promise<any[]> {
     breadcrumb,
     intro
   }`;
-  return await fetchSanity<any[]>(query);
+  return await fetchSanity<TripPageData[]>(query);
 }
 
 
-export async function getTripIdeaFromSanity(slug: string): Promise<any | null> {
+export async function getTripIdeaFromSanity(slug: string): Promise<TripPageData | null> {
   if (useMock) return null;
   const query = `*[_type == "tripIdea" && slug.current == $slug][0]{
     title,
@@ -600,6 +591,7 @@ export async function getTripIdeaFromSanity(slug: string): Promise<any | null> {
     category,
     breadcrumb,
     intro,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     sections[]{
       heading,
       body,
@@ -613,14 +605,14 @@ export async function getTripIdeaFromSanity(slug: string): Promise<any | null> {
     ctaHeading,
     ctaBody,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<any>(query, { slug });
+  return await fetchSanity<TripPageData>(query, { slug });
 }
 
-export async function getInspirationFromSanity(slug: string): Promise<any | null> {
+export async function getInspirationFromSanity(slug: string): Promise<TripPageData | null> {
   if (useMock) return null;
   const query = `*[_type == "inspiration" && slug.current == $slug][0]{
     title,
@@ -632,6 +624,7 @@ export async function getInspirationFromSanity(slug: string): Promise<any | null
     category,
     breadcrumb,
     intro,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     sections[]{
       heading,
       body,
@@ -645,14 +638,14 @@ export async function getInspirationFromSanity(slug: string): Promise<any | null
     ctaHeading,
     ctaBody,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<any>(query, { slug });
+  return await fetchSanity<TripPageData>(query, { slug });
 }
 
-export async function getMonthGuideFromSanity(slug: string): Promise<any | null> {
+export async function getMonthGuideFromSanity(slug: string): Promise<TripPageData | null> {
   if (useMock) return null;
   const query = `*[_type == "monthGuide" && slug.current == $slug][0]{
     title,
@@ -664,6 +657,7 @@ export async function getMonthGuideFromSanity(slug: string): Promise<any | null>
     category,
     breadcrumb,
     intro,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     sections[]{
       heading,
       body,
@@ -677,38 +671,42 @@ export async function getMonthGuideFromSanity(slug: string): Promise<any | null>
     ctaHeading,
     ctaBody,
     "seo": seo{
-      metaTitle, metaDescription, keywords,
+      metaTitle, metaDescription, keywords, canonicalUrl, noIndex,
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<any>(query, { slug });
+  return await fetchSanity<TripPageData>(query, { slug });
 }
 
 // ─── New Redesigned Schemas ─────────────────────────────────────────────────
 
-export async function getBlogPostsFromSanity(): Promise<any[]> {
+export async function getBlogPostsFromSanity(): Promise<BlogPost[]> {
   if (useMock) return [];
   const query = `*[_type == "blogPost"] | order(publishedAt desc){
-    _id, title, slug, publishedAt, category, excerpt,
+    _updatedAt, seo{noIndex},
+    "hasContent": count(content) > 0,
+    _id, _updatedAt, title, slug, publishedAt, category, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     "featuredImage": featuredImage.asset->url,
     "imageAlt": featuredImage.alt,
     author->{
-      name, role,
+      name, role, slug, bio,
       "avatar": image.asset->url
     },
     tags
   }`;
-  return await fetchSanity<any[]>(query);
+  return await fetchSanity<BlogPost[]>(query);
 }
 
-export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | null> {
+export async function getBlogPostBySlugFromSanity(slug: string): Promise<BlogPost | null> {
   if (useMock) return null;
   const query = `*[_type == "blogPost" && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, category, excerpt,
+    _id, _updatedAt, title, slug, publishedAt, category, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     "featuredImage": featuredImage.asset->url,
     "imageAlt": featuredImage.alt,
     author->{
-      name, role,
+      name, role, slug, bio,
       "avatar": image.asset->url
     },
     tags,
@@ -735,7 +733,8 @@ export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | n
       }
     },
     relatedPosts[]->{
-      _id, title, slug, publishedAt, category, excerpt,
+      _id, _updatedAt, title, slug, publishedAt, category, excerpt,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
       "featuredImage": featuredImage.asset->url,
       "imageAlt": featuredImage.alt
     },
@@ -749,27 +748,29 @@ export async function getBlogPostBySlugFromSanity(slug: string): Promise<any | n
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<any | null>(query, { slug });
+  return await fetchSanity<BlogPost | null>(query, { slug });
 }
 
-export async function getThingsToDoFromSanity(): Promise<any[]> {
+export async function getThingsToDoFromSanity(): Promise<ThingToDoData[]> {
   if (useMock) return [];
   const query = `*[_type == "thingToDo"] | order(_createdAt desc){
-    _id, title, slug, category, breadcrumb, readingTime, heroSubtitle,
+    _updatedAt, seo{noIndex},
+    _id, title, "slug": slug.current, category, breadcrumb, readingTime, heroSubtitle,
     "heroImage": heroImage.asset->url,
     "imageAlt": heroImage.alt,
     intro, highlights
   }`;
-  return await fetchSanity<any[]>(query);
+  return await fetchSanity<ThingToDoData[]>(query);
 }
 
-export async function getThingToDoBySlugFromSanity(slug: string): Promise<any | null> {
+export async function getThingToDoBySlugFromSanity(slug: string): Promise<ThingToDoData | null> {
   if (useMock) return null;
   const query = `*[_type == "thingToDo" && slug.current == $slug][0]{
-    _id, title, slug, category, breadcrumb, readingTime, heroSubtitle,
+    _id, title, "slug": slug.current, category, breadcrumb, readingTime, heroSubtitle,
     "heroImage": heroImage.asset->url,
     "imageAlt": heroImage.alt,
     intro, highlights, practicalInfo,
+    editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
     sections[]{
       heading,
       body,
@@ -779,12 +780,12 @@ export async function getThingToDoBySlugFromSanity(slug: string): Promise<any | 
     },
     faqs[]{ question, answer },
     relatedThings[]->{
-      _id, title, slug, category,
+      _id, title, "slug": slug.current, category,
       "heroImage": heroImage.asset->url,
       "imageAlt": heroImage.alt
     },
     recommendedTours[]->{
-      _id, title, slug, duration, priceFrom, intro,
+      _id, title, "slug": slug.current, duration, priceFrom, intro,
       "gallery": gallery[].asset->url
     },
     ctaHeading, ctaBody,
@@ -793,10 +794,10 @@ export async function getThingToDoBySlugFromSanity(slug: string): Promise<any | 
       "ogImage": ogImage.asset->url
     }
   }`;
-  return await fetchSanity<any | null>(query, { slug });
+  return await fetchSanity<ThingToDoData | null>(query, { slug });
 }
 
-export async function getMediaAssetsFromSanity(category?: string): Promise<any[]> {
+export async function getMediaAssetsFromSanity(category?: string): Promise<MediaAsset[]> {
   if (useMock) return [];
   const categoryFilter = category ? ' && category == $category' : '';
   const query = `*[_type == "mediaAsset"${categoryFilter}] | order(_createdAt desc){
@@ -804,5 +805,18 @@ export async function getMediaAssetsFromSanity(category?: string): Promise<any[]
     "url": image.asset->url,
     "metadata": image.asset->metadata
   }`;
-  return await fetchSanity<any[]>(query, category ? { category } : {});
+  return await fetchSanity<MediaAsset[]>(query, category ? { category } : {});
+}
+
+interface MediaAsset {
+  _id: string;
+  title?: string;
+  alt?: string;
+  caption?: string;
+  category?: string;
+  tags?: string[];
+  photographer?: string;
+  usedIn?: string[];
+  url?: string;
+  metadata?: unknown;
 }

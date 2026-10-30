@@ -1,3 +1,4 @@
+import type { Rule, PreviewValue } from 'sanity';
 export const itinerary = {
   name: 'itinerary',
   title: 'Itinerary',
@@ -7,7 +8,7 @@ export const itinerary = {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'slug',
@@ -17,25 +18,25 @@ export const itinerary = {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'duration',
       title: 'Duration (Days)',
       type: 'number',
-      validation: (Rule: any) => Rule.required().min(1),
+      validation: (Rule: Rule) => Rule.required().min(1),
     },
     {
       name: 'priceFrom',
       title: 'Price From (£ GBP)',
       type: 'number',
-      validation: (Rule: any) => Rule.required().min(0),
+      validation: (Rule: Rule) => Rule.required().min(0),
     },
     {
       name: 'intro',
       title: 'Intro Description',
       type: 'text',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',
@@ -94,7 +95,7 @@ export const itinerary = {
       title: 'Assigned Specialist',
       type: 'reference',
       to: [{ type: 'specialist' }],
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'featured',

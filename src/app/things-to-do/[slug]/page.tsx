@@ -1,3 +1,5 @@
+import { EditorialEvidence } from '@/components/EditorialEvidence';
+import { enquiryUrl } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -20,7 +22,7 @@ export async function generateStaticParams() {
   const hardcodedSlugs = getAllThingToDoSlugs();
   try {
     const sanityItems = await getThingsToDoFromSanity();
-    const sanitySlugs = sanityItems.map((item: any) => item.slug?.current).filter(Boolean);
+    const sanitySlugs = sanityItems.map((item) => item.slug).filter(Boolean);
     const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
     return allSlugs.map((slug) => ({ slug }));
   } catch {
@@ -39,14 +41,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
 
   return {
-    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    title: data.title,
     description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
     keywords: mergedKeywords,
+    robots: { index: !data.seo?.noIndex, follow: true },
     alternates: {
-      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/things-to-do/${data.slug?.current || data.slug || slug}`,
+      canonical: `https://www.vietnamtours.co.uk/things-to-do/${data.slug || slug}`,
     },
     openGraph: {
-      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      type: 'article',
+      title: data.title,
       description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
@@ -56,22 +60,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ThingToDoDetailPage({ params }: PageProps) {
   const specialists = await getSpecialists();
   const mainSpecialist = specialists[0] || {
-    name: "Alice Mercer",
+    name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/images/specialist_alice.png",
-    slug: { current: "alice-mercer" }
+    image: "/logo-sun-hat.png",
+    slug: { current: "" }
   };
 
   const { slug } = await params;
   
   // Try Sanity first, fallback to hardcoded data
-  let thing: any = null;
+  let thing: import('@/lib/thingsToDoData').ThingToDoData | null = null;
   try {
     const sanityThing = await getThingToDoBySlugFromSanity(slug);
     if (sanityThing) {
       thing = {
         ...sanityThing,
-        slug: sanityThing.slug?.current || slug,
+        slug: sanityThing.slug || slug,
         heroImage: sanityThing.heroImage || '/images/things_halong_kayaking.png',
       };
     }
@@ -79,7 +83,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
     // fallback below
   }
   if (!thing) {
-    thing = getThingToDo(slug);
+    thing = getThingToDo(slug) || null;
   }
 
   if (!thing) notFound();
@@ -89,7 +93,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
 
   const crossLinks = (thing.relatedSlugs || [])
     .map((s: string) => thingsToDoData.find((t) => t.slug === s))
-    .filter((x: any): x is typeof thingsToDoData[0] => !!x);
+    .filter((x): x is typeof thingsToDoData[0] => !!x);
 
   return (
     <>
@@ -102,7 +106,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
         title={thing.title}
         description={thing.metaDescription || thing.intro.substring(0, 160)}
         url={`https://www.vietnamtours.co.uk/things-to-do/${thing.slug}`}
-        image={`https://www.vietnamtours.co.uk${thing.heroImage}`}
+        image={thing.heroImage}
         section={thing.category}
       />
       {thing.faqs && thing.faqs.length > 0 && (
@@ -190,6 +194,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   <p className="text-base sm:text-[17px] font-light text-ink/90 leading-relaxed">
                     {thing.intro}
                   </p>
+                <EditorialEvidence evidence={thing.editorial} />
                 </div>
               </div>
 
@@ -199,7 +204,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   What Makes This Experience Special
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {thing.highlights.map((hl: any, i: number) => (
+                  {thing.highlights.map((hl, i: number) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-ink-soft font-light">
                       <span className="text-gold font-bold shrink-0 mt-0.5">✦</span>
                       {hl}
@@ -209,14 +214,14 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
               </div>
 
               {/* Sections */}
-              {thing.sections.map((section: any, idx: number) => (
+              {thing.sections.map((section, idx: number) => (
                 <div key={idx} className="mb-14">
                   <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-6 pb-4 border-b border-line">
                     {section.heading}
                   </h2>
 
                   {/* Body paragraphs */}
-                  {section.body.split('\n\n').map((para: any, pi: number) => (
+                  {section.body.split('\n\n').map((para, pi: number) => (
                     <p key={pi} className="text-base sm:text-[17px] font-light text-ink leading-relaxed mb-6">
                       {para}
                     </p>
@@ -288,14 +293,14 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   Speak to a Vietnam specialist
                 </h3>
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border border-line shadow-md shrink-0">
-                  <Image src={mainSpecialist.image || "/images/specialist_alice.png"} alt={mainSpecialist.name} fill className="object-cover" />
+                  <Image src={mainSpecialist.image || "/logo-sun-hat.png"} alt={mainSpecialist.name} fill className="object-cover" />
                 </div>
                 <div className="space-y-0.5">
                   <h4 className="font-sans text-xs font-bold text-ink uppercase tracking-wider">{mainSpecialist.name}</h4>
                   <p className="text-[11px] text-ink/55 font-light">Senior Vietnam Travel Specialist</p>
                 </div>
                 <Link
-                  href="/enquire"
+                  href={enquiryUrl(thing.title)}
                   className="w-full bg-gold text-ink hover:bg-gold/90 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3 text-center block"
                 >
                   MAKE AN ENQUIRY
@@ -374,7 +379,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                       <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink hover:text-copper transition-colors">
                         View itinerary
                       </Link>
-                      <Link href="/enquire" className="text-copper hover:text-ink transition-colors">
+                      <Link href={enquiryUrl(thing.title)} className="text-copper hover:text-ink transition-colors">
                         Enquire
                       </Link>
                     </div>
@@ -399,7 +404,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {crossLinks.map((item: any) => (
+                {crossLinks.map((item) => (
                   <Link
                     key={item.slug}
                     href={`/things-to-do/${item.slug}`}
@@ -442,7 +447,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link
-                href="/enquire"
+                href={enquiryUrl(thing.title)}
                 className="w-full sm:w-auto bg-gold text-ink text-xs uppercase tracking-widest font-semibold px-10 py-4 hover:bg-gold/90 transition-colors"
               >
                 Enquire Online

@@ -1,3 +1,6 @@
+import { SeasonalPlanning } from '@/components/SeasonalPlanning';
+import { EditorialEvidence } from '@/components/EditorialEvidence';
+import { enquiryUrl } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -20,7 +23,7 @@ export async function generateStaticParams() {
   const hardcodedSlugs = getAllMonthSlugs();
   try {
     const sanityItems = await getMonthGuidesFromSanity();
-    const sanitySlugs = sanityItems.map((item: any) => item.slug).filter(Boolean);
+    const sanitySlugs = sanityItems.map((item) => item.slug).filter(Boolean);
     const allSlugs = [...new Set([...hardcodedSlugs, ...sanitySlugs])];
     return allSlugs.map((month) => ({ month }));
   } catch {
@@ -39,14 +42,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const mergedKeywords = Array.from(new Set([...baseKeywords, ...dynamicKeywords]));
 
   return {
-    title: data.seo?.metaTitle || data.metaTitle || data.title,
+    title: data.title,
     description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
     keywords: mergedKeywords,
+    robots: { index: !data.seo?.noIndex, follow: true },
     alternates: {
-      canonical: data.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/ideas-by-month/${data.slug?.current || data.slug || month}`,
+      canonical: `https://www.vietnamtours.co.uk/ideas-by-month/${data.slug || month}`,
     },
     openGraph: {
-      title: data.seo?.metaTitle || data.metaTitle || data.title,
+      type: 'article',
+      title: data.title,
       description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
       images: [{ url: data.heroImage }],
     },
@@ -56,10 +61,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function MonthSlugPage({ params }: PageProps) {
   const specialists = await getSpecialists();
   const mainSpecialist = specialists[0] || {
-    name: "Alice Mercer",
+    name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/images/specialist_alice.png",
-    slug: { current: "alice-mercer" }
+    image: "/logo-sun-hat.png",
+    slug: { current: "" }
   };
 
   const { month } = await params;
@@ -97,7 +102,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
   // Related months (e.g. adjacent months)
   const crossLinks = (monthData.relatedSlugs || [])
     .map((relSlug: string) => ideasByMonthData.find(m => m.slug === relSlug))
-    .filter((x: any): x is typeof ideasByMonthData[0] => !!x);
+    .filter((x): x is typeof ideasByMonthData[0] => !!x);
 
   return (
     <>
@@ -167,11 +172,13 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 <p className="font-serif text-lg sm:text-xl font-medium text-ink leading-relaxed italic">
                   {monthData.intro}
                 </p>
+                <EditorialEvidence evidence={monthData.editorial} />
+                <SeasonalPlanning month={month} />
               </div>
 
               {/* Dynamic sections */}
               <div className="space-y-12 font-light text-ink leading-relaxed text-base">
-                {(monthData.sections || []).map((section: any, idx: number) => (
+                {(monthData.sections || []).map((section, idx: number) => (
                   <div key={idx} className="space-y-6">
                     <h2 className="font-serif text-2xl sm:text-3xl text-ink font-medium border-b border-line pb-3">
                       {section.heading}
@@ -220,7 +227,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image 
-                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    src={mainSpecialist.image || "/logo-sun-hat.png"}
                     alt={mainSpecialist.name}
                     fill
                     className="object-cover"
@@ -229,18 +236,18 @@ export default async function MonthSlugPage({ params }: PageProps) {
 
                 <div>
                   <h4 className="font-sans text-sm font-bold text-ink uppercase tracking-wider">
-                    Alice Mercer
+                    VietnamTours travel team
                   </h4>
                   <span className="text-[10px] uppercase tracking-widest text-ink-soft font-semibold mt-0.5 block">{mainSpecialist.role || "Bespoke Holiday Designer"}</span>
                 </div>
 
                 <p className="text-xs text-ink/70 font-light leading-relaxed">
-                  "I know the weather patterns of Vietnam inside out. I will make sure you are in the right region at the absolute best time."
+                  Discuss the regions, travel dates and weather alternatives with our trip-planning team.
                 </p>
 
                 <div className="w-full pt-4 border-t border-line flex flex-col gap-3">
                   <Link 
-                    href="/enquire"
+                    href={enquiryUrl(monthData.title)}
                     className="bg-gold hover:bg-gold/90 text-ink text-[11px] font-bold tracking-widest uppercase py-3 transition-colors duration-300 rounded-none w-full"
                   >
                     Start Custom Quote
@@ -264,7 +271,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                 </span>
                 
                 <ul className="space-y-4">
-                  {(monthData.highlights || []).map((item: any, idx: number) => (
+                  {(monthData.highlights || []).map((item, idx: number) => (
                     <li key={idx} className="flex items-start gap-3 text-xs text-ink-soft leading-relaxed">
                       <span className="text-copper font-bold text-sm shrink-0 leading-none">✓</span>
                       <span>{item}</span>
@@ -332,7 +339,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                         View Itinerary
                       </Link>
                       <Link 
-                        href="/enquire" 
+                        href={enquiryUrl(monthData.title)}
                         className="text-copper hover:text-ink transition-colors"
                       >
                         Enquire
@@ -377,7 +384,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {crossLinks.map((item: any) => (
+                {crossLinks.map((item) => (
                   <Link 
                     key={item.slug} 
                     href={`/ideas-by-month/${item.slug}`}
@@ -421,7 +428,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
-                href="/enquire"
+                href={enquiryUrl(monthData.title)}
                 className="w-full sm:w-auto bg-[#9A4B33] hover:bg-gold hover:text-ink text-ink text-xs uppercase tracking-widest font-bold px-10 py-4 transition-colors duration-300"
               >
                 Request a Custom Quote

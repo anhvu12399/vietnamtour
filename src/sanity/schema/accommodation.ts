@@ -1,3 +1,4 @@
+import type { Rule, PreviewValue } from 'sanity';
 export const accommodation = {
   name: 'accommodation',
   title: 'Accommodation',
@@ -7,7 +8,7 @@ export const accommodation = {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'slug',
@@ -17,19 +18,19 @@ export const accommodation = {
         source: 'name',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'location',
       title: 'Location (e.g. Nha Trang, Vietnam)',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'rating',
       title: 'Luxury Rating (e.g. 5-Star Ultra-Luxury)',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',

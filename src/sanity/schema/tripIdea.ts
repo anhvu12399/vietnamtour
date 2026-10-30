@@ -13,6 +13,7 @@ export const tripIdea = defineType({
     { name: 'seo', title: '⑥ SEO Metadata' },
   ],
   fields: [
+    defineField({ name: 'editorial', title: 'Author, review & sources', type: 'editorialEvidence' }),
     // Hero Group
     defineField({
       name: 'title',

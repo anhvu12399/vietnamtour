@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -54,7 +56,7 @@ export default function DestinationsTabbed() {
         },
         {
           title: "Best Places to Visit in Vietnam",
-          description: "Our Ho Chi Minh City-based specialists share a definitive, field-verified list of destinations for 2026.",
+          description: "Compare destinations, seasonal considerations and routes for your Vietnam trip.",
           image: "/images/dest_phongnha_cave.png",
           link: "/blog/best-places-to-visit-in-vietnam-2026",
           btnText: "Read Operator Guide",
@@ -143,12 +145,12 @@ export default function DestinationsTabbed() {
                 <p className="font-sans text-xs text-gray-200 font-light leading-relaxed max-w-md">
                   {card.description}
                 </p>
-                <a
+                <Link
                   href={card.link}
                   className="border border-white hover:bg-gold hover:border-gold text-white text-center font-bold py-3 px-6 transition-all duration-300 text-[10px] tracking-widest uppercase mt-2 w-max"
                 >
                   {card.btnText}
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -156,12 +158,12 @@ export default function DestinationsTabbed() {
 
         {/* Explore All CTA */}
         <div className="text-center mt-16">
-          <a
+          <Link
             href="/blog"
             className="border border-green hover:bg-green hover:text-white text-jade font-bold py-3.5 px-8 transition-colors text-[10px] tracking-widest uppercase"
           >
             VIEW ALL TRAVEL GUIDES
-          </a>
+          </Link>
         </div>
       </div>
     </section>

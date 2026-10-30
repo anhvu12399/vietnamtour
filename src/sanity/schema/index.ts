@@ -16,6 +16,7 @@ import { monthGuide } from './monthGuide';
 import { thingToDo } from './thingToDo';
 import { blogPost } from './blogPost';
 import { mediaAsset } from './mediaAsset';
+import { editorialEvidence } from './editorialEvidence';
 
 export const schemaTypes = [
   // ─── Core Pages ───────────────────────
@@ -46,5 +47,6 @@ export const schemaTypes = [
 
   // ─── Configuration ────────────────────
   seoFields,
+  editorialEvidence,
   toursLanding,
 ];

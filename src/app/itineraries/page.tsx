@@ -26,12 +26,12 @@ export const metadata: Metadata = {
 };
 
 // Helper function to calculate reading time based on block content
-function getReadingTime(content: any[] | undefined | null): number {
+function getReadingTime(content: import('@/sanity/types').RichTextBlock[] | undefined | null): number {
   if (!content || !Array.isArray(content)) return 4; // fallback to 4 min read
   let wordCount = 0;
-  content.forEach((block: any) => {
+  content.forEach((block) => {
     if (block._type === 'block' && block.children) {
-      block.children.forEach((child: any) => {
+      block.children.forEach((child) => {
         if (child.text) {
           wordCount += child.text.trim().split(/\s+/).length;
         }
@@ -44,10 +44,10 @@ function getReadingTime(content: any[] | undefined | null): number {
 export default async function ItinerariesPage() {
   const specialists = await getSpecialists();
   const mainSpecialist = specialists[0] || {
-    name: "Alice Mercer",
+    name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/images/specialist_alice.png",
-    slug: { current: "alice-mercer" }
+    image: "/logo-sun-hat.png",
+    slug: { current: "" }
   };
 
   const [itineraries, toursLanding, allPosts] = await Promise.all([
@@ -169,7 +169,7 @@ export default async function ItinerariesPage() {
                 {/* Specialist Circular Image */}
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-gold/15 shadow-sm shrink-0">
                   <Image 
-                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    src={mainSpecialist.image || "/logo-sun-hat.png"}
                     alt={mainSpecialist.name}
                     fill
                     className="object-cover"
@@ -178,7 +178,7 @@ export default async function ItinerariesPage() {
 
                 <div className="space-y-1">
                   <h4 className="font-sans text-xs font-bold text-jade uppercase tracking-widest">
-                    Alice Mercer
+                    VietnamTours travel team
                   </h4>
                   <p className="text-[11px] text-gray-500 leading-relaxed max-w-[240px] mx-auto font-light">
                     Start planning your tailor-made trip by contacting one of our travel experts

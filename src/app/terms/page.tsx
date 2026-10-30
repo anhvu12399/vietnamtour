@@ -3,8 +3,9 @@ import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Vietnam Heritage Tours',
-  description: 'Please read these terms and conditions carefully before booking your journey with Vietnam Heritage Tours.',
+  alternates: { canonical: "https://www.vietnamtours.co.uk/terms" },
+  title: 'Terms & Conditions | VietnamTours.co.uk',
+  description: 'Please read these terms and conditions carefully before booking your journey with VietnamTours.co.uk.',
 };
 
 export default function TermsPage() {
@@ -22,7 +23,7 @@ export default function TermsPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">1. Definitions</h2>
-          <p>"Vietnam Heritage Tours", "we", "us", or "our" refers to Vietnam Heritage Tours Ltd. "You" or "the client" refers to the person or persons who have booked a tour or service with us. "Journey" refers to any tour, itinerary, accommodation booking, or travel service arranged by us.</p>
+          <p>&quot;VietnamTours.co.uk&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; refers to the operator identified in your VietnamTours.co.uk booking documents. &quot;You&quot; or &quot;the client&quot; refers to the person or persons who have booked a tour or service with us. &quot;Journey&quot; refers to any tour, itinerary, accommodation booking, or travel service arranged by us.</p>
         </div>
 
         <div>
@@ -44,7 +45,7 @@ export default function TermsPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">4. Travel Insurance</h2>
-          <p>It is a condition of booking with Vietnam Heritage Tours that all clients hold valid travel insurance covering medical expenses, emergency evacuation, trip cancellation, and personal liability. We reserve the right to refuse participation on a journey where no such insurance is held.</p>
+          <p>It is a condition of booking with VietnamTours.co.uk that all clients hold valid travel insurance covering medical expenses, emergency evacuation, trip cancellation, and personal liability. We reserve the right to refuse participation on a journey where no such insurance is held.</p>
         </div>
 
         <div>

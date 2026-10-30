@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Vietnam Visa Guide 2026 | VietnamTours.co.uk',
-  description: 'Everything you need to know about obtaining a visa for Vietnam — e-visa applications, visa on arrival, entry requirements, and expert tips for UK, EU, and international travellers.',
+  title: 'Vietnam Visa Guide for UK Travellers',
+  description: 'Everything you need to know about obtaining a visa for Vietnam — visa exemption, e-visa fees and official entry guidance for UK and international travellers.',
   keywords: ['Vietnam visa', 'e-visa Vietnam', 'Vietnam visa on arrival', 'Vietnam entry requirements', 'UK passport Vietnam visa', 'Vietnam visa 2026'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/visa-guide',
@@ -21,45 +21,16 @@ export const metadata: Metadata = {
 
 const visaTypes = [
   {
-    type: 'E-Visa (Recommended)',
-    duration: 'Up to 90 days, single or multiple entry',
-    cost: 'USD $25',
-    processingTime: '3 business days',
-    suitable: 'All nationalities. The simplest and most convenient option.',
-    steps: [
-      'Apply online at evisa.xuatnhapcanh.gov.vn',
-      'Upload your passport photo and passport data page',
-      'Pay the $25 fee by card',
-      'Receive your e-visa via email within 3 business days',
-      'Present the printed or digital e-visa upon arrival',
-    ],
+    type: 'Visa exemption: British citizen passports',
+    duration: 'Up to 45 days', cost: 'No visa fee', processingTime: 'No visa application',
+    suitable: 'Check the conditions for your passport, purpose and length of stay.',
+    steps: ['Check GOV.UK and the Vietnamese authorities before travel', 'Check passport validity and your permitted stay', 'Check any arrival-card or health-declaration requirements'],
   },
   {
-    type: 'Visa on Arrival (Pre-arranged)',
-    duration: 'Up to 30 days (extendable)',
-    cost: 'USD $25 stamping fee + agency processing fee',
-    processingTime: '1–3 business days for the approval letter',
-    suitable: 'Travellers arriving by air only. Not valid for land or sea borders.',
-    steps: [
-      'Apply through a licensed Vietnam agency for an approval letter',
-      'Receive your approval letter by email',
-      'On arrival, queue at the Visa on Arrival counter',
-      'Present your approval letter, photos, and fee',
-      'Receive your visa stamp and proceed to immigration',
-    ],
-  },
-  {
-    type: 'Visa Exemption',
-    duration: 'Up to 45 days (no extension possible)',
-    cost: 'Free',
-    processingTime: 'No application required',
-    suitable: 'Citizens of the UK, Germany, France, Italy, Spain, and several other countries.',
-    steps: [
-      'No action required',
-      'Simply book your flights and accommodation',
-      'Present your valid passport upon arrival in Vietnam',
-      'You may stay for up to 45 days without a visa',
-    ],
+    type: 'E-visa for eligible longer stays',
+    duration: 'Up to 90 days', cost: 'US$25 single / US$50 multiple entry', processingTime: 'Allow time for processing',
+    suitable: 'Check eligibility, entry points and validity on the official portal.',
+    steps: ['Apply through evisa.gov.vn', 'Upload the required passport details and photograph', 'Select single or multiple entry and pay the applicable fee', 'Check the application result; approval within 24 hours is not guaranteed', 'Check the approved dates and entry details before departure'],
   },
 ];
 
@@ -91,9 +62,18 @@ export default function VisaGuidePage() {
       {/* UK Exemption Banner */}
       <section className="bg-[#9A4B33] text-white py-8 px-6 text-center">
         <p className="text-sm font-light">
-          <span className="font-bold">Good news for UK travellers:</span> British passport holders currently enjoy{' '}
-          <span className="underline underline-offset-2">45-day visa-free entry</span> to Vietnam. No application required.
+          <span className="font-bold">Good news for UK travellers:</span> British citizen passport holders can generally use{' '}
+          <span className="underline underline-offset-2">45-day visa-free entry</span> to Vietnam. Check the official conditions before booking.
         </p>
+      </section>
+
+      <section className="mx-auto w-full max-w-5xl px-6 pt-10 text-sm leading-relaxed text-ink-soft">
+        <h2 className="font-serif text-2xl text-ink">Official sources</h2>
+        <p className="mt-3">Entry guidance consulted on <time dateTime="2026-10-28">28 October 2026</time>. Rules can change; confirm your individual requirements before travelling.</p>
+        <ul className="mt-3 space-y-2">
+          <li><a className="underline" href="https://www.gov.uk/foreign-travel-advice/vietnam/entry-requirements">GOV.UK: Vietnam entry requirements</a></li>
+          <li><a className="underline" href="https://evisa.gov.vn/">Vietnam official e-visa application and fees</a></li>
+        </ul>
       </section>
 
       {/* Visa Types */}
@@ -110,7 +90,7 @@ export default function VisaGuidePage() {
                   <h3 className="font-serif text-xl text-ink mb-1">{v.type}</h3>
                   <p className="text-[10px] uppercase tracking-widest text-copper font-semibold">{v.suitable}</p>
                 </div>
-                <div className="flex gap-6 text-center shrink-0">
+                <div className="grid gap-4 text-center sm:grid-cols-3 md:max-w-lg">
                   <div className="bg-paper px-5 py-3">
                     <p className="text-[9px] uppercase tracking-widest text-ink-soft mb-1">Cost</p>
                     <p className="font-serif text-base text-ink">{v.cost}</p>
@@ -150,11 +130,11 @@ export default function VisaGuidePage() {
           <h2 className="font-serif text-3xl font-light text-center mb-14">Before You Travel</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
-              { tip: 'Passport validity', detail: 'Your passport must be valid for at least 6 months beyond your intended departure date from Vietnam.' },
+              { tip: 'Passport validity', detail: 'GOV.UK specifies at least 6 months of passport validity from arrival. Check the current requirements before travel.' },
               { tip: 'Blank pages', detail: 'Ensure you have at least two blank visa pages in your passport for stamps.' },
               { tip: 'E-visa format', detail: 'Download and print your e-visa approval letter before you fly. Airline staff may ask to see it at check-in.' },
-              { tip: 'Entry points', detail: 'E-visas are valid at all official international border crossings — airports, land borders, and seaports.' },
-              { tip: 'Extension', detail: 'If you wish to stay beyond your visa period, extensions can be arranged in-country through a local agent.' },
+              { tip: 'Entry points', detail: 'Check that your intended entry and exit points are permitted for your visa on the official portal.' },
+              { tip: 'Extension', detail: 'Do not assume an extension is available. Ask the Vietnamese immigration authorities about your circumstances before your permission expires.' },
               { tip: 'Our assistance', detail: 'Our specialists are happy to guide you through the application process as part of your trip planning — simply ask.' },
             ].map((t) => (
               <div key={t.tip} className="border-t border-white/10 pt-6">

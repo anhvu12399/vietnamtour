@@ -88,7 +88,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
       {/* Pagination & Progress */}
       <div className="mt-16 pb-12 flex flex-col items-center space-y-4 max-w-xs mx-auto text-center border-b border-line">
         <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-          You've viewed {Math.min(visibleCount, totalCount)} of {totalCount} tours
+          You&apos;ve viewed {Math.min(visibleCount, totalCount)} of {totalCount} tours
         </span>
         
         {/* Progress Line */}

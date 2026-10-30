@@ -1,3 +1,4 @@
+import type { Rule, PreviewValue } from 'sanity';
 export const destination = {
   name: 'destination',
   title: 'Destination',
@@ -7,7 +8,7 @@ export const destination = {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'slug',
@@ -17,14 +18,14 @@ export const destination = {
         source: 'name',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'image',
       title: 'Featured Image',
       type: 'image',
       options: { hotspot: true },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',

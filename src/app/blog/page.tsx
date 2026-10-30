@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
-import { getBlogPostsFromSanity } from '@/sanity/client';
+import { getBlogPostsFromSanity, getPosts } from '@/sanity/client';
 
 export const revalidate = 60;
 
@@ -32,12 +32,17 @@ const categoryColors: Record<string, string> = {
   'News & Updates':       'bg-rose-50 text-rose-800 border border-rose-200',
 };
 
-function getCategoryColor(cat: string) {
+function getCategoryColor(cat: string = 'Travel Guides') {
   return categoryColors[cat] || 'bg-paper text-ink border-line';
 }
 
 export default async function BlogListingPage() {
-  const posts = await getBlogPostsFromSanity();
+  const [blogs, guides] = await Promise.all([getBlogPostsFromSanity(), getPosts()]);
+  const guideSlugs = new Set(guides.map((guide) => guide.slug.current));
+  const posts: (import('@/sanity/types').BlogPost & { href: string })[] = [
+    ...guides.map((guide) => ({ ...guide, featuredImage: guide.mainImage, imageAlt: guide.title, category: 'Travel Guides', href: `/travel-guides/${guide.slug.current}` })),
+    ...blogs.filter((blog) => blog.hasContent && !guideSlugs.has(blog.slug?.current)).map((blog) => ({ ...blog, href: `/blog/${blog.slug.current}` })),
+  ];
   
   // If no posts yet, we show a graceful empty state
   const featuredPost = posts.length > 0 ? posts[0] : null;
@@ -83,7 +88,7 @@ export default async function BlogListingPage() {
                     <span className="h-[1px] flex-1 bg-gradient-to-r from-luxury-gold/50 to-transparent"></span>
                   </h2>
                   
-                  <Link href={`/blog/${featuredPost.slug.current}`} className="group block relative rounded-2xl overflow-hidden bg-white border border-line hover:border-copper/50 transition-all duration-500 shadow-lg hover:shadow-xl">
+                  <Link href={featuredPost.href} className="group block relative rounded-2xl overflow-hidden bg-white border border-line hover:border-copper/50 transition-all duration-500 shadow-lg hover:shadow-xl">
                     <div className="flex flex-col lg:flex-row">
                       {/* Image side */}
                       <div className="relative h-[300px] lg:h-[500px] lg:w-[60%] overflow-hidden">
@@ -149,8 +154,8 @@ export default async function BlogListingPage() {
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {standardPosts.map((post: any) => (
-                      <Link key={post._id} href={`/blog/${post.slug.current}`} className="group flex flex-col bg-white border border-line rounded-2xl overflow-hidden hover:border-copper/50 transition-all duration-500 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                    {standardPosts.map((post) => (
+                      <Link key={post._id} href={post.href} className="group flex flex-col bg-white border border-line rounded-2xl overflow-hidden hover:border-copper/50 transition-all duration-500 hover:-translate-y-1 shadow-md hover:shadow-lg">
                         
                         {/* Card Image */}
                         <div className="relative h-[240px] overflow-hidden">

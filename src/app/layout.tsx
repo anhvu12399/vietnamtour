@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Manrope, Fraunces, Space_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
+import { TrafficTracker } from "@/components/TrafficTracker";
 import "./globals.css";
+import { serializeJsonLd } from "@/lib/seo";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -53,11 +55,7 @@ export const metadata: Metadata = {
   authors: [{ name: "VietnamTours.co.uk" }],
   creator: "VietnamTours.co.uk",
   publisher: "VietnamTours.co.uk",
-  // NOTE: Do NOT set alternates.canonical here in layout.tsx!
-  // In Next.js App Router, layout-level canonical overrides page-level canonical.
-  // Each page (generateMetadata) sets its own self-referencing canonical.
-  // Setting a global canonical here was causing ALL pages to canonicalize to the homepage,
-  // which was the #1 reason only 27/136 sitemap URLs were being indexed by Google.
+  // Canonicals belong to individual routes; never inherit the home URL.
   openGraph: {
     type: "website",
     locale: "en_GB",
@@ -94,9 +92,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "placeholder-google-site-verification",
-  },
+  ...(process.env.GOOGLE_SITE_VERIFICATION && { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }),
 };
 
 const jsonLd = {
@@ -109,14 +105,10 @@ const jsonLd = {
       url: "https://www.vietnamtours.co.uk",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.vietnamtours.co.uk/images/adventuretravel-26.svg",
+        url: "https://www.vietnamtours.co.uk/logo-sun-hat.png",
       },
       description:
         "Bespoke private Vietnam tours and luxury tailor-made holidays for discerning travellers from the United Kingdom. Specialists in Ha Long Bay cruises, Sa Pa trekking, Hoi An heritage journeys and Mekong Delta escapes.",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "GB",
-      },
       areaServed: {
         "@type": "Country",
         name: "Vietnam",
@@ -137,36 +129,9 @@ const jsonLd = {
       publisher: {
         "@id": "https://www.vietnamtours.co.uk/#organization",
       },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://www.vietnamtours.co.uk/itineraries?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
+
     },
-    {
-      "@type": "WebPage",
-      "@id": "https://www.vietnamtours.co.uk/#webpage",
-      url: "https://www.vietnamtours.co.uk",
-      name: "Luxury Vietnam Private Tours | Bespoke Holidays from the UK",
-      isPartOf: { "@id": "https://www.vietnamtours.co.uk/#website" },
-      about: { "@id": "https://www.vietnamtours.co.uk/#organization" },
-      description:
-        "Discover Vietnam on a bespoke private tour crafted exclusively for you. Luxury tailor-made holidays from the UK — Ha Long Bay cruises, Sa Pa trekking, Hoi An heritage and Mekong Delta escapes.",
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://www.vietnamtours.co.uk",
-          },
-        ],
-      },
-    },
+
   ],
 };
 
@@ -190,11 +155,24 @@ export default function RootLayout({
         <Script
           id="json-ld-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
           strategy="beforeInteractive"
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-414204624"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-414204624');
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col bg-paper text-ink font-medium">
+        <TrafficTracker />
         {children}
         <WhatsAppFloating />
         <Analytics />

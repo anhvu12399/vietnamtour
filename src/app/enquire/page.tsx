@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { track } from '@vercel/analytics';
 import Link from 'next/link';
-import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Plus, Minus, Phone, Star, Shield, Award, Check } from 'lucide-react';
+import { Plus, Minus, Phone, Mail, Award, Check } from 'lucide-react';
 
 export default function EnquiryPage() {
   const [formData, setFormData] = useState({
@@ -24,6 +24,14 @@ export default function EnquiryPage() {
     availableTime: 'Any time',
     notes: '',
   });
+
+  const submissionId = useRef('');
+  const formStarted = useRef(false);
+  const [interest, setInterest] = useState('');
+  useEffect(() => {
+    submissionId.current = crypto.randomUUID();
+    setInterest((new URLSearchParams(window.location.search).get('interest') || '').slice(0, 300));
+  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -82,29 +90,62 @@ export default function EnquiryPage() {
     setServerError('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
+      const urlParams = new URLSearchParams(window.location.search);
+      let ref = '';
+      let land = '';
+      let utmSrc = '';
+      let utmMed = '';
+      let utmCam = '';
+
+      try {
+        ref = sessionStorage.getItem('vpt_initial_referrer') || '';
+        land = sessionStorage.getItem('vpt_landing_page') || '';
+        utmSrc = sessionStorage.getItem('vpt_utm_source') || '';
+        utmMed = sessionStorage.getItem('vpt_utm_medium') || '';
+        utmCam = sessionStorage.getItem('vpt_utm_campaign') || '';
+      } catch {}
+
+      if (!ref) ref = document.referrer || '';
+      if (!land) land = window.location.pathname || '/enquire';
+      if (!utmSrc) utmSrc = urlParams.get('utm_source') || '';
+      if (!utmMed) utmMed = urlParams.get('utm_medium') || '';
+      if (!utmCam) utmCam = urlParams.get('utm_campaign') || '';
+
+      const trackingData = {
+        submissionId: submissionId.current || (submissionId.current = crypto.randomUUID()),
+        interest,
+        ...formData,
+        referrer: ref,
+        landingPage: land,
+        utmSource: utmSrc,
+        utmMedium: utmMed,
+        utmCampaign: utmCam,
+      };
+
+      const response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          ...formData,
-          name: `${formData.firstName} ${formData.lastName}`,
-          _subject: `New Tailor-Made Enquiry from ${formData.firstName} ${formData.lastName}`,
-          _template: "table"
-        }),
+        body: JSON.stringify(trackingData),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
+      const receipt: { success?: boolean; leadId?: string; duplicate?: boolean; error?: string } = await response.json();
+      if (!response.ok || !receipt.success || !receipt.leadId) {
+        throw new Error(receipt.error || 'We could not confirm receipt. Please try again.');
       }
-
+      if (!receipt.duplicate) {
+        track('lead_accepted', { form: 'enquiry' });
+        if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+          (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'conversion', {
+            send_to: 'AW-414204624/ZL87CM30hq0dENCFwcUB',
+          });
+        }
+      }
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err: any) {
-      console.error('Submission error:', err);
-      setServerError('An error occurred during submission. Please try again.');
+    } catch (error: unknown) {
+      setServerError(error instanceof Error ? error.message : 'We could not confirm receipt. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -146,8 +187,11 @@ export default function EnquiryPage() {
             </p>
           </div>
 
+          {interest && !submitted && <p className="mb-6 border border-line bg-white p-4 text-sm text-ink">Planning enquiry: {interest}</p>}
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            <form onFocus={() => {
+              if (!formStarted.current) { formStarted.current = true; track('form_start', { form: 'enquiry' }); }
+            }} onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
               
               {/* Left Side: Form Fields (Takes 2 columns) */}
               <div className="lg:col-span-2 space-y-8">
@@ -451,7 +495,7 @@ export default function EnquiryPage() {
                         </div>
                       </div>
                       <p className="text-[11px] text-ink-soft font-light pt-1">
-                        Our UK team will contact you during office hours.
+                        Tell us your preferred contact window and time zone.
                       </p>
                     </div>
                   </div>
@@ -508,43 +552,42 @@ export default function EnquiryPage() {
                   <p className="text-xs text-gray-300 leading-relaxed font-light">
                     Our team of specialist travel consultants is on hand to design your perfect bespoke Vietnam itinerary.
                   </p>
-                  <div className="pt-2 border-t border-gray-800 flex flex-col items-center justify-center gap-1.5">
-                    <Phone className="w-5 h-5 text-gold" />
+                  <div className="pt-4 border-t border-gray-800 flex flex-col items-center justify-center gap-2">
+                    <div className="flex items-center gap-1.5 text-gold text-xs font-semibold uppercase tracking-wider">
+                      <Phone className="w-4 h-4" />
+                      <span>Phone & WhatsApp</span>
+                    </div>
                     <a href="tel:+84988600388" className="text-xl md:text-2xl font-bold font-sans tracking-wide hover:text-gold transition-colors block">
                       +84 988600388
+                    </a>
+
+                    <div className="flex items-center gap-1.5 text-gold text-xs font-semibold uppercase tracking-wider mt-2">
+                      <Mail className="w-4 h-4" />
+                      <span>Direct Email</span>
+                    </div>
+                    <a href="mailto:info@vietnamtours.co.uk" className="text-sm font-sans text-gray-200 hover:text-gold transition-colors block underline underline-offset-4">
+                      info@vietnamtours.co.uk
                     </a>
                   </div>
                 </div>
 
-                {/* TripAdvisor Box */}
                 <div className="bg-white border border-line p-6 text-center space-y-3 shadow-xs">
-                  <div className="flex items-center justify-center gap-1.5 text-sm font-sans font-bold text-gray-800">
-                    <span>Excellent 4.9/5</span>
-                    <div className="flex gap-0.5">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <div key={s} className="w-4 h-4 bg-[#34e0a1] rounded-full flex items-center justify-center text-white">
-                          <Star className="w-2.5 h-2.5 fill-current text-white" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-center gap-1">
-                    <span className="font-bold text-base tracking-tight font-sans text-[#00af87]">Tripadvisor</span>
-                  </div>
+                  <h4 className="text-sm font-bold text-ink">A proposal built around your priorities</h4>
+                  <p className="text-xs leading-relaxed text-ink-soft">Share your dates, preferred pace and budget. Confirm the itinerary and inclusions before booking.</p>
                 </div>
 
                 {/* Trust Badges */}
                 <div className="bg-white border border-line p-6 space-y-6 shadow-xs">
                   <h4 className="text-xs uppercase tracking-widest text-[#0e1628] font-bold text-center border-b border-gray-100 pb-3">
-                    Accredited & Awards
+                    Personal planning
                   </h4>
 
                   <div className="flex flex-col items-center justify-center">
                     {/* Condé Nast */}
                     <div className="flex flex-col items-center text-center p-4 border border-gray-100 w-full max-w-xs h-28 justify-center">
                       <Award className="w-8 h-8 text-gold mb-2" />
-                      <span className="text-[11px] font-bold text-[#0e1628] uppercase tracking-wider leading-none">Condé Nast</span>
-                      <span className="text-[8px] text-ink-soft mt-1.5 uppercase tracking-wider">Reader's Choice 2025</span>
+                      <span className="text-[11px] font-bold text-[#0e1628] uppercase tracking-wider leading-none">Tailored proposal</span>
+                      <span className="text-[8px] text-ink-soft mt-1.5 uppercase tracking-wider">Personal trip planning</span>
                     </div>
                   </div>
                 </div>
@@ -573,7 +616,7 @@ export default function EnquiryPage() {
 
               <div className="pt-6 border-t border-gray-100 space-y-2 text-xs text-ink-soft">
                 <p>Enquiry copy dispatched to: <span className="font-medium text-[#0e1628]">{formData.email}</span></p>
-                <p>Direct UK Assistance: <span className="font-semibold text-[#0e1628]">+84 988600388</span></p>
+                <p>Direct UK Assistance: <span className="font-semibold text-[#0e1628]">+84 988600388</span> · <a href="mailto:info@vietnamtours.co.uk" className="underline text-gold hover:text-gold/80">info@vietnamtours.co.uk</a></p>
               </div>
 
               <div className="pt-6">

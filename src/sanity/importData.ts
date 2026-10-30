@@ -86,7 +86,7 @@ async function importData() {
     console.log('\nImporting itineraries...');
     for (const it of mockItineraries) {
       // Convert objects back to references
-      const accommodationsRefs = it.accommodations.map((acc: any) => ({
+      const accommodationsRefs = it.accommodations.map((acc) => ({
         _type: 'reference',
         _ref: acc._id,
         _key: acc._id,
@@ -97,8 +97,8 @@ async function importData() {
         _ref: it.specialist._id,
       };
 
-      const timelineMapped = it.timeline.map((item: any, idx: number) => {
-        let accommodationField: any = undefined;
+      const timelineMapped = it.timeline.map((item, idx: number) => {
+        let accommodationField: string | { _type: string; _ref: string } | undefined = undefined;
         if (item.accommodation) {
           if (typeof item.accommodation === 'object') {
             accommodationField = {

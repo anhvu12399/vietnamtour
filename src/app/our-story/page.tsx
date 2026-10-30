@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Story | VietnamTours.co.uk',
-  description: 'Discover how VietnamTours.co.uk was founded — a passion-led journey to share the authentic soul of Vietnam with discerning travellers from around the world.',
+  title: 'About VietnamTours',
+  description: 'Learn how to plan a private Vietnam journey, contact the travel team and check the operator information before booking.',
   keywords: ['Vietnam travel company', 'luxury Vietnam tours', 'about us', 'VietnamTours.co.uk story'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/our-story',
   },
   openGraph: {
-    title: 'Our Story | VietnamTours.co.uk',
+    title: 'About VietnamTours',
     description: 'A passion-led journey to share the authentic soul of Vietnam with discerning travellers.',
     url: 'https://www.vietnamtours.co.uk/our-story',
     images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Our Story - VietnamTours.co.uk' }],
@@ -36,12 +36,12 @@ export default function OurStoryPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70" />
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-20 text-center px-4">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold mb-4">Est. 2008</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-gold font-semibold mb-4">Private Vietnam travel</p>
           <h1 className="font-serif text-4xl md:text-6xl text-white font-light max-w-3xl leading-tight">
             Our Story
           </h1>
           <p className="mt-4 text-white/80 text-sm md:text-base max-w-xl font-light leading-relaxed">
-            A decade and a half of crafting extraordinary journeys through Indochina's heart.
+            Plan your Vietnam journey around the places, pace and experiences that matter to you.
           </p>
         </div>
       </section>
@@ -55,10 +55,10 @@ export default function OurStoryPage() {
               Born from a love of Vietnam, built for those who seek more than a holiday.
             </h2>
             <p className="text-ink-soft text-sm leading-loose mb-6 font-light">
-              Vietnam Heritage Tours was founded in 2008 by a small team of passionate travellers who had fallen irreversibly in love with Vietnam. They had witnessed the country's transformation — its ancient temples standing firm beside gleaming new cities, its fishing villages humming with the same rhythms as they had for centuries — and they wanted to share that wonder with the world.
+              VietnamTours.co.uk brings together sample private itineraries, destination guides and practical planning information. Use these as a starting point, then discuss the route, accommodation and budget with the travel team.
             </p>
             <p className="text-ink-soft text-sm leading-loose mb-6 font-light">
-              What began as a handful of carefully curated itineraries for friends and colleagues has grown into one of the most trusted names in luxury Vietnam travel. Yet our founding principle has never changed: every journey we design must be as extraordinary as the country it explores.
+              A sample itinerary is not a confirmed booking. Your written proposal should identify the operator, the services included, the total price and the applicable booking conditions before you pay.
             </p>
           </div>
           <div className="relative h-[460px] w-full overflow-hidden">
@@ -83,11 +83,11 @@ export default function OurStoryPage() {
             {[
               {
                 title: 'Authenticity Above All',
-                body: 'We reject the superficial. Every experience we recommend — every guide, every lodge, every meal — has been personally vetted by our specialists. If it doesn\'t feel real, it doesn\'t make the cut.'
+                body: 'Discuss the experiences you want and ask how each activity will be delivered. Confirm the guide, language and local arrangements in your proposal.'
               },
               {
                 title: 'Responsible Luxury',
-                body: 'We believe that privilege comes with responsibility. Our journeys support local communities, champion sustainable practices, and leave destinations better than we found them.'
+                body: 'Ask about local guides, community visits and the practical impact of your itinerary. Choose the activities and pace that suit your interests.'
               },
               {
                 title: 'Bespoke by Nature',
@@ -105,15 +105,14 @@ export default function OurStoryPage() {
 
       {/* Timeline */}
       <section className="max-w-3xl mx-auto px-6 py-24">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">A Journey of Our Own</p>
-        <h2 className="font-serif text-3xl font-light text-center mb-16">Milestones</h2>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">From enquiry to itinerary</p>
+        <h2 className="font-serif text-3xl font-light text-center mb-16">How planning works</h2>
         <div className="space-y-12">
           {[
-            { year: '2008', text: 'Founded in Hanoi with a team of five specialists and a shared love of authentic Vietnamese travel.' },
-            { year: '2011', text: 'Expanded to cover Cambodia and Laos, offering full Indochina journey planning.' },
-            { year: '2015', text: 'Recognised by Condé Nast Traveller as one of Southeast Asia\'s leading boutique operators.' },
-            { year: '2019', text: 'Launched our Responsible Travel Charter, committing to carbon-conscious, community-first itineraries.' },
-            { year: '2024', text: 'Proud to have guided over 12,000 travellers and counting — each journey as personal as the last.' },
+            { year: '01', text: 'Share your dates, interests, group size and budget.' },
+            { year: '02', text: 'Discuss the route, pace, accommodation and transport options.' },
+            { year: '03', text: 'Check the written proposal, operator details, inclusions and cancellation conditions.' },
+            { year: '04', text: 'Confirm your chosen arrangements and keep a copy of your booking documents.' },
           ].map((m) => (
             <div key={m.year} className="flex gap-8 items-start">
               <span className="font-serif text-2xl text-copper font-light w-16 shrink-0">{m.year}</span>
@@ -125,46 +124,13 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      {/* Corporate Credentials */}
-      <section className="bg-white border-t border-b border-line py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-copper font-semibold text-center mb-4">Official Credentials</p>
-          <h2 className="font-serif text-2xl md:text-3xl font-light text-center mb-10">Licensing &amp; Registration</h2>
-          <p className="text-xs text-ink-soft/80 font-light text-center max-w-xl mx-auto mb-12 leading-relaxed">
-            Vietnam Tours is a premier brand operated by My Way Travel. We are fully registered and licensed by the Vietnam National Authority of Tourism (VNAT) as an International Tour Operator.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8 text-xs text-ink-soft font-light">
-            <div className="space-y-4">
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Registered Company</span>
-                <p className="font-medium">My Way Travel Co., Ltd</p>
-              </div>
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Head Office Address</span>
-                <p>139/5 Nguyen Cu Trinh Street, Nguyen Cu Trinh Ward, District 1, Ho Chi Minh City, Vietnam</p>
-              </div>
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">International Tour Operator License</span>
-                <p>No. 79-0743/2017/TCDL (Issued by the Vietnam National Authority of Tourism)</p>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Travel Service Scope</span>
-                <p>International Tour Operator (Inbound and Outbound Tourism Services)</p>
-              </div>
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Legal Representative</span>
-                <p className="font-medium">Mr. Vu Duy Truong (Director)</p>
-              </div>
-              <div>
-                <span className="font-bold text-ink block uppercase tracking-wider mb-1 text-[9px]">Bonded Deposit Account</span>
-                <p>Account No. 1046429987 at Joint Stock Commercial Bank for Foreign Trade of Vietnam (Vietcombank) - Nguyen Trai Transaction Office</p>
-              </div>
-            </div>
-          </div>
+      <section className="border-y border-line bg-white px-6 py-20">
+        <div className="mx-auto max-w-3xl space-y-6 text-sm leading-relaxed text-ink-soft">
+          <h2 className="font-serif text-3xl text-ink">Operator information and contact</h2>
+          <p>VietnamTours.co.uk identifies My Way Travel as its operator. My Way Travel publishes its company and licensing information on its own website. Consult that source and confirm the contracting company in your written quotation.</p>
+          <p><a href="https://www.mywaytravel.com/why-us/" className="underline">My Way Travel: company and operator information</a></p>
+          <p>Website contact: <a href="mailto:info@vietnamtours.co.uk" className="underline">info@vietnamtours.co.uk</a> · <a href="tel:+84988600388" className="underline">+84 988600388</a>.</p>
+          <p>This is a link to information supplied by the operator, not an independent certification. Request the current licence and booking documents if you need to verify them before payment.</p>
         </div>
       </section>
 

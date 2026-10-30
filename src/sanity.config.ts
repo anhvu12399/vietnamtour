@@ -7,7 +7,7 @@ import { structure } from './sanity/structure';
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'knxuvin4';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 
-export default defineConfig({
+const contentWorkspace = {
   name: 'default',
   title: 'Vietnam Tour Admin',
 
@@ -97,7 +97,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Destination', href: `/destinations/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           accommodation: defineLocations({
@@ -108,7 +108,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Accommodation', href: `/accommodations/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           itinerary: defineLocations({
@@ -121,7 +121,7 @@ export default defineConfig({
               locations: [
                 doc?.slug ? { title: doc.title || 'Itinerary', href: `/itineraries/${doc.slug}` } : null,
                 doc?.slug && doc?.destinationSlug ? { title: `${doc.title} (Region Tour)`, href: `/destinations/${doc.destinationSlug}/tours/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           cruise: defineLocations({
@@ -133,7 +133,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug && doc?.destinationSlug ? { title: doc.title || 'Cruise', href: `/destinations/${doc.destinationSlug}/cruises/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           travelGuide: defineLocations({
@@ -145,7 +145,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug && doc?.destinationSlug ? { title: doc.title || 'Travel Guide', href: `/destinations/${doc.destinationSlug}/blog/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           post: defineLocations({
@@ -156,7 +156,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Inspiration Article', href: `/inspiration/${doc.slug}` } : null
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           // ─── New document types ─────────────────
@@ -168,7 +168,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Blog Post', href: `/blog/${doc.slug}` } : null,
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           tripIdea: defineLocations({
@@ -179,7 +179,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Trip Idea', href: `/trip-ideas/${doc.slug}` } : null,
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           thingToDo: defineLocations({
@@ -190,7 +190,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Thing to Do', href: `/things-to-do/${doc.slug}` } : null,
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           monthGuide: defineLocations({
@@ -201,7 +201,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Month Guide', href: `/ideas-by-month/${doc.slug}` } : null,
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           inspiration: defineLocations({
@@ -212,7 +212,7 @@ export default defineConfig({
             resolve: (doc) => ({
               locations: [
                 doc?.slug ? { title: doc.title || 'Inspiration', href: `/inspirations/${doc.slug}` } : null,
-              ].filter(Boolean) as any
+              ].filter((location): location is NonNullable<typeof location> => location !== null)
             })
           }),
           toursLanding: defineLocations({
@@ -242,6 +242,17 @@ export default defineConfig({
   ],
 
   schema: {
-    types: schemaTypes,
+    types: schemaTypes.filter((type) => type.name !== 'enquiry'),
   },
-});
+};
+
+const enquiryDataset = process.env.NEXT_PUBLIC_SANITY_ENQUIRY_DATASET;
+
+export default defineConfig([
+  contentWorkspace,
+  ...(enquiryDataset ? [{
+    name: 'leads', title: 'Private Enquiries', projectId, dataset: enquiryDataset,
+    basePath: '/studio/leads', plugins: [structureTool()],
+    schema: { types: schemaTypes.filter((type) => type.name === 'enquiry') },
+  }] : []),
+]);

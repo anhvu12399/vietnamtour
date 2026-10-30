@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { enquiryUrl } from '@/lib/seo';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!itinerary) return {};
 
   const seo = itinerary.seo;
-  const title = seo?.metaTitle || `${itinerary.title} – Luxury Vietnam Tours`;
+  const title = itinerary.title;
   const description = seo?.metaDescription || `${itinerary.intro?.slice(0, 155)}...`;
 
   const baseKeywords = ["Vietnam private itinerary", "Luxury Vietnam tours", "Bespoke Vietnam holidays", "Tailor-made Vietnam trips", "Vietnam custom tours"];
@@ -52,10 +53,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: mergedKeywords,
+    robots: { index: !seo?.noIndex, follow: true },
     alternates: {
-      canonical: seo?.canonicalUrl || `https://www.vietnamtours.co.uk/itineraries/${slug}`,
+      canonical: `https://www.vietnamtours.co.uk/itineraries/${slug}`,
     },
     openGraph: {
+      url: `https://www.vietnamtours.co.uk/itineraries/${slug}`,
       title,
       description,
       ...(seo?.ogImage && { images: [{ url: seo.ogImage }] }),
@@ -114,7 +117,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-gold uppercase">
             <span>{itinerary.duration} Days Tailor-Made</span>
             <span>•</span>
-            <span>From £{itinerary.priceFrom.toLocaleString('en-GB')} per person</span>
+            <span>{itinerary.catalogueSource ? 'Archived guide price' : 'From'} £{itinerary.priceFrom.toLocaleString('en-GB')} per person</span>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-white">
             {itinerary.title}
@@ -155,12 +158,14 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
               </ul>
             </div>
 
+            {itinerary.catalogueSource && <p className="border border-line p-4 text-sm leading-relaxed text-ink-soft">This sample route and guide price come from our existing catalogue. Ask us to confirm current operation, hotels, inclusions and pricing for your dates before booking.</p>}
+
             {/* Interactive Journey Map */}
             <div className="space-y-6 text-left">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
                 Interactive Journey Map
               </h2>
-              <ItineraryMap points={routePoints} />
+              {routePoints.length > 0 && <ItineraryMap points={routePoints} />}
               <RouteStrip points={routePoints} />
             </div>
 
@@ -183,14 +188,14 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 <div className="space-y-2">
                   <h4 className="font-bold text-ink uppercase tracking-wider text-[11px]">Best Time to Travel</h4>
                   <p className="font-light">
-                    The best season for this route is <strong>October to April</strong>. The skies are generally clear and temperatures are comfortable.
+                    Weather differs between the north, central coast and south. <Link href="/ideas-by-month" className="underline">Compare travel months</Link> before choosing your dates.
                   </p>
                 </div>
                 
                 <div className="space-y-2">
                   <h4 className="font-bold text-ink uppercase tracking-wider text-[11px]">What to Pack</h4>
                   <p className="font-light">
-                    Pack lightweight linen clothing for walking. Smart casual attire is recommended for dining at luxury hotels. Don't forget sun protection and comfortable walking shoes.
+                    Pack lightweight linen clothing for walking. Smart casual attire is recommended for dining at luxury hotels. Don&apos;t forget sun protection and comfortable walking shoes.
                   </p>
                 </div>
 
@@ -214,7 +219,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                   Your Destination Curator
                 </span>
                 <h3 className="font-serif text-lg text-white font-semibold">
-                  Plan with {itinerary.specialist.name}
+                  Plan with {itinerary.specialist?.name || 'our travel team'}
                 </h3>
               </div>
 
@@ -230,19 +235,19 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
               </div>
 
               <p className="text-xs sm:text-sm text-paper/80 font-light leading-relaxed">
-                {itinerary.specialist?.name?.split(' ')[0] || 'Our specialist'} has designed this journey based on personal travels. They can adjust any detail to suit your preferences.
+                Discuss the route, accommodation and pace with our team. Your proposal will confirm the arrangements available for your dates.
               </p>
 
               <div className="pt-4 border-t border-luxury-linen/20 space-y-4">
                 <Link
-                  href="/enquire"
+                  href={enquiryUrl(itinerary.title)}
                   className="block w-full py-3 bg-gold hover:bg-gold/90 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
                 >
                   Request A Quote
                 </Link>
                 <div className="text-xs space-y-1.5 pt-2">
-                  <p className="text-paper/60">Direct Phone: <span className="font-semibold text-white">{itinerary.specialist.phone}</span></p>
-                  <p className="text-paper/60">Email: <span className="font-semibold text-white">{itinerary.specialist.email}</span></p>
+                  <p className="text-paper/60">Direct Phone: <span className="font-semibold text-white">{itinerary.specialist?.phone || '+84988600388'}</span></p>
+                  <p className="text-paper/60">Email: <span className="font-semibold text-white">{itinerary.specialist?.email || 'info@vietnamtours.co.uk'}</span></p>
                 </div>
               </div>
             </div>

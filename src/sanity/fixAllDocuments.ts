@@ -22,7 +22,7 @@ const client = createClient({
   useCdn: false,
 });
 
-async function uploadImageIfNeeded(imageVal: any): Promise<any> {
+async function uploadImageIfNeeded(imageVal: unknown): Promise<unknown> {
   if (typeof imageVal !== 'string') {
     return imageVal; // Already an object or null/undefined
   }

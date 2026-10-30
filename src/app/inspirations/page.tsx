@@ -30,9 +30,9 @@ export default async function InspirationsListingPage() {
   try {
     const sanityItems = await getInspirationsFromSanity();
     if (sanityItems && sanityItems.length > 0) {
-      items = sanityItems.map((item: any) => ({
+      items = sanityItems.map((item) => ({
         ...item,
-        slug: item.slug?.current || item.slug,
+        slug: item.slug,
         heroImage: item.heroImage || '/images/trip_luxury_villa.png',
       }));
     }

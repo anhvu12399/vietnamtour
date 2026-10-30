@@ -9,6 +9,9 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getPostBySlug, getPosts, getItineraries } from '@/sanity/client';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+import { EditorialEvidence } from '@/components/EditorialEvidence';
+import { absoluteUrl, enquiryUrl } from '@/lib/seo';
 
 export const revalidate = 60;
 
@@ -27,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
-  const title = post.seo?.metaTitle || `${post.title} | Vietnam Travel Guide`;
+  const title = post.title;
   const description = post.seo?.metaDescription || post.excerpt || `Expert travel guide: ${post.title}. Insider knowledge for planning your perfect Vietnam trip.`;
   const baseKeywords = ["Vietnam travel guide", "Vietnam holiday guide", "Vietnam insider tips", "Vietnam local expert"];
   let dynamicKeywords = post.seo?.keywords || [];
@@ -46,10 +49,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: mergedKeywords,
+    robots: { index: !post.seo?.noIndex, follow: true },
     alternates: {
-      canonical: post.seo?.canonicalUrl || `https://www.vietnamtours.co.uk/travel-guides/${slug}`,
+      canonical: `https://www.vietnamtours.co.uk/travel-guides/${slug}`,
     },
     openGraph: {
+      type: 'article',
+      url: `https://www.vietnamtours.co.uk/travel-guides/${slug}`,
       title,
       description,
       ...(post.mainImage && { images: [{ url: post.mainImage }] }),
@@ -58,12 +64,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // ─── Reading time helper ──────────────────────────────────────────────────────
-function getReadingTime(content: any[] | undefined | null): number {
+function getReadingTime(content: import('@/sanity/types').RichTextBlock[] | undefined | null): number {
   if (!content || !Array.isArray(content)) return 5;
   let wordCount = 0;
-  content.forEach((block: any) => {
+  content.forEach((block) => {
     if (block._type === 'block' && block.children) {
-      block.children.forEach((child: any) => {
+      block.children.forEach((child) => {
         if (child.text) wordCount += child.text.trim().split(/\s+/).length;
       });
     }
@@ -89,7 +95,7 @@ function getCategory(title: string): string {
 // ─── PortableText components (matching itineraries style) ────────────────────
 const portableTextComponents: PortableTextComponents = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }) => {
       if (!value?.url) return null;
       return (
         <div className="my-10 relative w-full border border-line p-1.5 bg-[#f4efe6] rounded-sm group">
@@ -110,12 +116,12 @@ const portableTextComponents: PortableTextComponents = {
         </div>
       );
     },
-    gallery: ({ value }: any) => {
+    gallery: ({ value }) => {
       const images = value?.images || [];
       if (images.length === 0) return null;
       return (
         <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {images.map((item: any, idx: number) => (
+          {images.map((item: { url?: string; caption?: string }, idx: number) => (
             <div key={idx} className="relative aspect-[4/3] overflow-hidden border border-line rounded-sm group">
               {item.url && (
                 <Image src={item.url} alt={item.caption || 'Gallery photo'} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -130,8 +136,8 @@ const portableTextComponents: PortableTextComponents = {
         </div>
       );
     },
-    specialistTip: ({ value }: any) => {
-      const avatar = value.customAvatar?.url || value.specialist?.image || '/images/specialist_alice.png';
+    specialistTip: ({ value }) => {
+      const avatar = value.customAvatar?.url || value.specialist?.image || '/logo-sun-hat.png';
       const name = value.customName || value.specialist?.name || 'Travel Specialist';
       const role = value.customRole || value.specialist?.role || 'Expert';
       return (
@@ -154,7 +160,7 @@ const portableTextComponents: PortableTextComponents = {
         </div>
       );
     },
-    pullQuote: ({ value }: any) => (
+    pullQuote: ({ value }) => (
       <blockquote className="clear-both border-y border-copper/30 py-10 my-12 text-center relative max-w-3xl mx-auto px-6">
         <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-5xl font-serif text-copper/30 leading-none select-none">&ldquo;</span>
         <p className="font-serif text-xl sm:text-3xl text-ink font-light italic leading-relaxed">
@@ -169,30 +175,32 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
   block: {
-    normal: ({ children }: any) => (
+    normal: ({ children }) => (
       <p className="text-base sm:text-[17px] font-light text-ink/90 leading-relaxed mb-6 max-w-3xl">
         {children}
       </p>
     ),
-    h2: ({ children }: any) => (
+    h2: ({ children }) => (
       <h2 className="clear-both font-serif text-2xl sm:text-4xl text-ink font-semibold leading-tight mt-16 mb-8 pb-4 border-b border-line max-w-3xl">
         {children}
       </h2>
     ),
-    h3: ({ children }: any) => (
+    h3: ({ children }) => (
       <h3 className="clear-both font-serif text-xl sm:text-2xl text-ink font-medium leading-tight mt-10 mb-5 max-w-3xl">
         {children}
       </h3>
     ),
-    blockquote: ({ children }: any) => (
+    blockquote: ({ children }) => (
       <blockquote className="border-l-2 border-copper pl-6 py-1 my-8 text-lg font-light italic text-ink/70 max-w-3xl">
         {children}
       </blockquote>
     ),
   },
   marks: {
-    strong: ({ children }: any) => <strong className="font-semibold text-copper">{children}</strong>,
-    em: ({ children }: any) => <em className="italic text-ink">{children}</em>,
+    link: ({ children, value }) => <a href={value?.href || value?.url} className="text-copper underline underline-offset-4">{children}</a>,
+    link2: ({ children, value }) => <a href={value?.href || value?.url} className="text-copper underline underline-offset-4">{children}</a>,
+    strong: ({ children }) => <strong className="font-semibold text-copper">{children}</strong>,
+    em: ({ children }) => <em className="italic text-ink">{children}</em>,
   },
 };
 
@@ -221,9 +229,9 @@ function getRelatedFaqs(title: string) {
   ];
   // default FAQs for all other guides
   return [
-    { question: 'How far in advance should I book a Vietnam tour?', answer: 'We recommend booking 2-4 months in advance for travel between October and March (peak season). For other periods, 6-8 weeks is usually sufficient, though popular properties and cruise boats can fill up quickly year-round.' },
-    { question: 'Is Vietnam suitable for solo travellers?', answer: 'Yes — Vietnam is one of the most rewarding destinations for solo travellers. With a private guide and driver, you have complete flexibility of schedule while still having expert support. Our single-traveller supplements are kept as low as possible.' },
-    { question: 'What is included in a private Vietnam tour?', answer: 'Every private tour includes: private car and driver for all transfers, a dedicated English-speaking guide, accommodation at 4 or 5-star properties, and selected meals. International and domestic flights are arranged but priced separately. All activities and excursions are included unless marked optional.' },
+    { question: 'How far in advance should I book a Vietnam tour?', answer: 'Ask for availability once your dates are known. The right lead time depends on the hotels, cruises, flights and activities you choose; a sample itinerary does not reserve them.' },
+    { question: 'Is Vietnam suitable for solo travellers?', answer: 'A private itinerary can be discussed for a solo traveller. Ask for a quotation based on your actual room, transport and guiding arrangements, including any single-room supplements.' },
+    { question: 'What is included in a private Vietnam tour?', answer: 'Inclusions depend on the written proposal. Check private or shared transport, guiding, accommodation, meals, flights, baggage, tickets and optional activities. Ask for exclusions and any supplements before comparing prices.' },
   ];
 }
 
@@ -243,78 +251,56 @@ function EeatArticleLayout() {
   const destinations = [
     {
       name: "Hanoi",
-      guide: "Tuấn",
-      date: "May 2026",
       image: "/images/vietnamtour_hanoi_colonial.png",
-      text: "Nobody warns you properly about the traffic here — Tuấn's advice to every first-time guest is the same: walk slowly, steadily, and let the motorbikes flow around you, don't stop halfway. The Old Quarter's 36 streets are each named after the guild that once traded there, and a proper visit needs at least two full days — one for the Temple of Literature and Hoan Kiem Lake at sunrise, one for wandering without a plan."
+      text: "Nobody warns you properly about the traffic here — a useful approach for visitors is to walk slowly, steadily, and let the motorbikes flow around you, don't stop halfway. The Old Quarter's 36 streets are each named after the guild that once traded there, and a proper visit needs at least two full days — one for the Temple of Literature and Hoan Kiem Lake at sunrise, one for wandering without a plan."
     },
     {
       name: "Ha Long Bay",
-      guide: "Linh",
-      date: "March 2026",
       image: "/images/dest_halong_limestone.png",
-      text: "The limestone islands really do look exactly like the photos at dawn, but we'll be upfront — parts of the bay do get crowded with tour boats, and some travellers report litter near the more popular routes. Most cruises run 2 days/1 night, including kayaking through Luon Cave, a stop at Sung Sot Cave, and the roughly 400-step climb up Ti Top Island. For a quieter alternative with similar scenery, our guides often recommend Lan Ha Bay instead of the standard Ha Long route."
+      text: "The limestone islands really do look exactly like the photos at dawn, but we'll be upfront — parts of the bay do get crowded with tour boats, and some travellers report litter near the more popular routes. Most cruises run 2 days/1 night, including kayaking through Luon Cave, a stop at Sung Sot Cave, and the roughly 400-step climb up Ti Top Island. For a quieter alternative with similar scenery, consider Lan Ha Bay instead of the standard Ha Long route."
     },
     {
       name: "Sapa",
-      guide: "Mai",
-      date: "September 2025 (harvest season)",
       image: "/images/dest_sapa_highland.png",
-      text: "Mai treks this route regularly and recommends September–October for golden rice terraces, versus April for the flooded, mirror-like paddies. A two-night homestay with a H'Mong family gives a far better sense of the region than a rushed day trip — expect a wood-fire dinner and, often, a bowl of home-brewed rice wine offered as a welcome."
+      text: "September–October is a popular period for golden rice terraces, versus April for the flooded, mirror-like paddies. A two-night homestay with a H'Mong family gives a far better sense of the region than a rushed day trip — expect a wood-fire dinner and, often, a bowl of home-brewed rice wine offered as a welcome."
     },
     {
       name: "Ninh Binh",
-      guide: "Tuấn",
-      date: "April 2026",
       image: "/images/tour_ninhbinh_landscape.png",
-      text: "Trang An's boat route takes you under low limestone arches through caves connecting several valleys — quieter than the more commercial Tam Coc route nearby, according to our team's repeated visits this year."
+      text: "Trang An's boat route takes you under low limestone arches through caves connecting several valleys."
     },
     {
       name: "Hue",
-      guide: "Linh",
-      date: "June 2026",
       image: "/images/things_cooking_class_hue.png",
       text: "The Imperial Citadel, a UNESCO World Heritage Site, needs a half-day minimum to appreciate its scale. Hue's imperial cuisine — dozens of small, refined dishes originally prepared for the royal court — is distinct from food anywhere else in the country, and worth building an extra day around."
     },
     {
       name: "Da Nang",
-      guide: "Mai",
-      date: "May 2026",
       image: "/images/trip_adventure_jungle.png",
       text: "A relaxed base with long beaches, best used as a stopover between Hue and Hoi An or for day trips to the Marble Mountains."
     },
     {
       name: "Hoi An",
-      guide: "Tuấn",
-      date: "June 2026",
       image: "/images/dest_hoian_lanterns.png",
       text: "This UNESCO-listed ancient town is where visitors commission tailored clothing — our recommendation, based on repeated client feedback, is to allow a minimum of three days for fittings rather than trust same-day turnaround offers. Street-stall bánh mì and cao lầu noodles are consistently rated by our guests above restaurant versions of the same dishes."
     },
     {
       name: "Phong Nha-Ke Bang National Park",
-      guide: "Linh",
-      date: "April 2026",
       image: "/images/dest_phongnha_cave.png",
       text: "This UNESCO World Heritage Site holds the world's largest cave system. As of the official park pricing, entrance to Phong Nha Cave is 150,000 VND per person plus a shared boat fee, while Paradise Cave entry is 250,000 VND per person; the Dark Cave zipline-and-mudbath package runs 250,000–450,000 VND depending on season. Caves are open daily 07:30–16:00; Son Doong itself requires a licensed multi-day expedition booked well in advance."
     },
     {
       name: "Da Lat",
-      guide: "Mai",
-      date: "February 2026",
       image: "/images/trip_bike_rice_paddies.png",
       text: "Noticeably cooler than the rest of the south, with pine forests and French colonial-era villas. Two to three days suits the pace better than an overnight stop."
     },
     {
       name: "Ho Chi Minh City",
-      guide: "Team",
-      date: "Ongoing",
       image: "/images/tour_saigon_vespa_night.png",
       text: "Beyond the traffic (same rule as Hanoi — walk steadily, don't stop), District 1 holds the War Remnants Museum, the Central Post Office, and the Reunification Palace, all within walking distance of each other."
     },
     {
       name: "Mekong Delta",
-      guide: "Team",
-      date: "Weekly since 2012",
       image: "/images/dest_mekong_canal.png",
       text: "The Cai Rang floating market is busiest before 7am, when vendors sell produce boat-to-boat rather than to tourists directly. Slower, narrower-canal routes tend to feel markedly less commercial than the standard day-tour circuit."
     }
@@ -325,10 +311,10 @@ function EeatArticleLayout() {
       {/* Introduction text */}
       <div className="space-y-6">
         <p className="text-base sm:text-[17px] font-light text-ink/95 leading-relaxed max-w-3xl">
-          Written by the <strong>Vietnam Tours</strong> team, based in Ho Chi Minh City, running tours across Vietnam since 2012. Last updated: July 2026.
+          A planning overview from <strong>VietnamTours.co.uk</strong>. Choose destinations around your dates, travel pace and interests.
         </p>
         <p className="text-base sm:text-[17px] font-light text-ink/90 leading-relaxed italic max-w-3xl border-l-2 border-gold pl-4 bg-luxury-slate/20 py-3.5">
-          Every destination below has been visited by our own guides within the last 12 months. Prices and opening hours are cross-checked against official sources where available.
+          Opening hours, prices and cruise routes can change. Confirm current arrangements with the relevant operator before booking.
         </p>
       </div>
 
@@ -340,10 +326,7 @@ function EeatArticleLayout() {
               <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight mb-2">
                 {dest.name}
               </h2>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-copper font-bold">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9A4B33]" />
-                <span>Last visited by our guide, {dest.guide}, in {dest.date}</span>
-              </div>
+
             </div>
 
             <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden border border-line p-1.5 bg-[#f4efe6] rounded-sm group">
@@ -365,10 +348,10 @@ function EeatArticleLayout() {
         ))}
       </div>
 
-      {/* Verified Travel Essentials Table */}
+      {/* Travel Essentials Table */}
       <div className="pt-8 space-y-6">
         <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold border-b border-line pb-4">
-          Verified Travel Essentials
+          Travel Essentials
         </h2>
         <div className="overflow-x-auto border border-line rounded-sm shadow-md bg-white">
           <table className="min-w-full divide-y divide-[#e6e2d6] text-left">
@@ -398,17 +381,17 @@ function EeatArticleLayout() {
               <tr className="hover:bg-paper">
                 <td className="px-6 py-4 font-semibold text-ink">Best time (North)</td>
                 <td className="px-6 py-4">October–April</td>
-                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+                <td className="px-6 py-4">Seasonal planning overview; see the official climate guide</td>
               </tr>
               <tr className="hover:bg-paper">
                 <td className="px-6 py-4 font-semibold text-ink">Best time (Central)</td>
                 <td className="px-6 py-4">February–August</td>
-                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+                <td className="px-6 py-4">Seasonal planning overview; see the official climate guide</td>
               </tr>
               <tr className="hover:bg-paper">
                 <td className="px-6 py-4 font-semibold text-ink">Best time (South)</td>
                 <td className="px-6 py-4">November–April</td>
-                <td className="px-6 py-4">Team field notes, 2025–2026</td>
+                <td className="px-6 py-4">Seasonal planning overview; see the official climate guide</td>
               </tr>
               <tr className="hover:bg-paper">
                 <td className="px-6 py-4 font-semibold text-ink">Phong Nha Cave entry</td>
@@ -424,7 +407,7 @@ function EeatArticleLayout() {
           </table>
         </div>
         <p className="text-xs text-ink-soft italic">
-          Page reviewed and fact-checked July 2026. Prices subject to change — always confirm current rates directly with the relevant park authority or our team before booking.
+          Visa sources were consulted on 28 October 2026. This does not verify every price or opening hour above; confirm these directly with the relevant operator before booking.
         </p>
       </div>
 
@@ -432,14 +415,9 @@ function EeatArticleLayout() {
       <div className="pt-8 border-t border-line space-y-4">
         <h4 className="text-xs font-bold uppercase tracking-widest text-ink">Sources & References</h4>
         <ol className="list-decimal pl-5 text-xs text-ink-soft/80 space-y-2 font-light">
-          <li>Top 10 Best Places to Visit in Vietnam 2026 (Ha Long Bay, Hanoi, Hoi An)</li>
-          <li>Is the ha long bay cruise worth it? (Reddit field consensus)</li>
-          <li>Review of Halong Bay (TripAdvisor traveller feedback reports)</li>
-          <li>Halong Bay Travel Guide for Overnight Cruise Seekers</li>
-          <li>Vietnam Travel Guide, Sapa Rice Terraces harvest patterns</li>
-          <li>Unique Things You Cannot Miss in Hoi An (Ancient Town tailoring guide)</li>
-          <li>Phong Nha-Ke Bang National Park Official tourism entry rates</li>
-          <li>Vietnam E-visa Official Government Portal: <a href="https://evisa.gov.vn" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">evisa.gov.vn</a></li>
+          <li><a href="https://evisa.gov.vn/" className="underline">Vietnam official e-visa portal</a></li>
+          <li><a href="https://www.gov.uk/foreign-travel-advice/vietnam/entry-requirements" className="underline">GOV.UK: entry requirements for British citizen passport holders</a></li>
+          <li><a href="https://vietnam.travel/things-to-do/weather-and-climate-vietnam/" className="underline">Vietnam Tourism: regional weather and climate</a></li>
         </ol>
       </div>
     </div>
@@ -450,10 +428,10 @@ function EeatArticleLayout() {
 export default async function TravelGuideDetailPage({ params }: PageProps) {
   const specialists = await getSpecialists();
   const mainSpecialist = specialists[0] || {
-    name: "Alice Mercer",
+    name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/images/specialist_alice.png",
-    slug: { current: "alice-mercer" }
+    image: "/logo-sun-hat.png",
+    slug: { current: "" }
   };
 
   const { slug } = await params;
@@ -476,8 +454,16 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
   const readingTime = getReadingTime(post.content);
   const category = getCategory(post.title);
 
+  const author = post.editorial?.author;
+  const articleUrl = absoluteUrl(`/travel-guides/${slug}`);
   return (
     <>
+      <ArticleJsonLd title={post.title} description={post.excerpt || post.title} url={articleUrl}
+        image={absoluteUrl(heroImage)} publishedAt={post.publishedAt}
+        author={author?.name || post.heroAuthor?.name}
+        authorType={author ? 'Person' : 'Organization'}
+        authorUrl={author?.slug?.current ? absoluteUrl(`/specialists/${author.slug.current}`) : undefined} />
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: absoluteUrl('/') }, { name: 'Travel guides', url: absoluteUrl('/travel-guides') }, { name: post.title, url: articleUrl }]} />
       <Navbar />
 
       <main className="min-h-screen bg-paper text-ink">
@@ -555,6 +541,9 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                 )}
               </div>
 
+              <EditorialEvidence evidence={post.editorial} />
+              <p className="my-6 text-xs leading-relaxed text-ink-soft">Published by VietnamTours.co.uk. Prices, schedules and services mentioned in a guide need confirmation for your dates. <Link href="/editorial-policy" className="underline">How to use our guides and sources</Link>.</p>
+
               {/* Drop-cap article content */}
               {post.content && post.content.length > 0 ? (
                 <div className="article-body">
@@ -580,6 +569,16 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                 <p className="text-ink/40 italic">Full article content coming soon.</p>
               )}
 
+              {slug === 'first-time-visiting-vietnam-guide' && <aside className="mt-8 border-t border-line pt-6 text-sm text-ink-soft">
+                <h2 className="font-semibold text-ink">Check official entry and health guidance</h2>
+                <p className="mt-2">Entry guidance consulted on 28 October 2026. Check again before travel; requirements depend on your passport and journey.</p>
+                <ul className="mt-3 space-y-2">
+                  <li><a className="underline" href="https://www.gov.uk/foreign-travel-advice/vietnam/entry-requirements">GOV.UK: entry requirements</a></li>
+                  <li><a className="underline" href="https://evisa.gov.vn/">Vietnam official e-visa portal</a></li>
+                  <li><a className="underline" href="https://www.gov.uk/foreign-travel-advice/vietnam/health">GOV.UK: health guidance</a></li>
+                </ul>
+              </aside>}
+
               {/* Social share strip */}
               <div className="mt-12 pt-8 border-t border-line flex items-center gap-4">
                 <span className="text-[10px] uppercase tracking-widest font-bold text-ink/40">Share this guide</span>
@@ -603,7 +602,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image
-                    src={mainSpecialist.image || "/images/specialist_alice.png"}
+                    src={mainSpecialist.image || "/logo-sun-hat.png"}
                     alt={mainSpecialist.name}
                     fill
                     className="object-cover"
@@ -612,11 +611,11 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                 <div className="space-y-1">
                   <h4 className="font-sans text-sm font-bold text-ink uppercase tracking-wider">{mainSpecialist.name}</h4>
-                  <p className="text-xs text-ink-soft leading-relaxed font-light">Senior Vietnam Travel Specialist</p>
+                  <p className="text-xs text-ink-soft leading-relaxed font-light">Private trip planning</p>
                 </div>
 
                 <Link
-                  href="/enquire"
+                  href={enquiryUrl(post.title)}
                   className="w-full bg-gold text-ink hover:bg-gold/90 transition-colors duration-300 font-sans text-xs font-bold tracking-[0.2em] uppercase py-3.5 text-center"
                 >
                   MAKE AN INQUIRY
@@ -704,7 +703,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                       <Link href={`/itineraries/${it.slug?.current || ''}`} className="text-ink hover:text-copper transition-colors">
                         View detail
                       </Link>
-                      <Link href="/enquire" className="text-copper hover:text-ink transition-colors">
+                      <Link href={enquiryUrl(post.title)} className="text-copper hover:text-ink transition-colors">
                         Request a quote
                       </Link>
                     </div>
@@ -818,7 +817,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link
-                href="/enquire"
+                href={enquiryUrl(post.title)}
                 className="w-full sm:w-auto bg-gold text-ink text-xs uppercase tracking-widest font-semibold px-10 py-4 hover:bg-gold/90 transition-colors"
               >
                 Enquire Online

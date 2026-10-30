@@ -16,14 +16,14 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Luxury Vietnam Private Tours | Bespoke Tailor-Made Holidays from the UK",
   description:
-    "Vietnam Tours specialises in handcrafted private holidays to Vietnam for discerning UK travellers. Explore Ha Long Bay, Sa Pa, Hoi An and the Mekong Delta on a bespoke itinerary designed around you. From £3,960pp.",
+    "Vietnam Tours specialises in handcrafted private holidays to Vietnam for discerning UK travellers. Explore Ha Long Bay, Sa Pa, Hoi An and the Mekong Delta on a bespoke itinerary designed around you.",
   alternates: {
     canonical: "https://www.vietnamtours.co.uk",
   },
   openGraph: {
     title: "Luxury Vietnam Private Tours | Bespoke Tailor-Made Holidays from the UK",
     description:
-      "Handcrafted bespoke Vietnam holidays for UK travellers. Private guided tours, luxury Ha Long Bay cruises, highland trekking in Sa Pa and lantern-lit heritage journeys through Hoi An. From £3,960pp.",
+      "Handcrafted bespoke Vietnam holidays for UK travellers. Private guided tours, luxury Ha Long Bay cruises, highland trekking in Sa Pa and lantern-lit heritage journeys through Hoi An.",
     url: "https://www.vietnamtours.co.uk",
     images: [
       {

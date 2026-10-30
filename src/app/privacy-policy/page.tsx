@@ -3,8 +3,9 @@ import Footer from '@/components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Vietnam Heritage Tours',
-  description: 'Learn how Vietnam Heritage Tours collects, uses, and protects your personal data in accordance with UK GDPR.',
+  alternates: { canonical: "https://www.vietnamtours.co.uk/privacy-policy" },
+  title: 'Privacy Policy | VietnamTours.co.uk',
+  description: 'Learn how VietnamTours.co.uk collects, uses, and protects your personal data in accordance with UK GDPR.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -22,7 +23,7 @@ export default function PrivacyPolicyPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">1. Who We Are</h2>
-          <p>Vietnam Heritage Tours Ltd ("we", "us", "our") is committed to protecting and respecting your privacy. This policy explains how we collect, use, and safeguard your personal data when you interact with our website and services, in accordance with the UK General Data Protection Regulation (UK GDPR).</p>
+          <p>the operator identified in your VietnamTours.co.uk booking documents (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting and respecting your privacy. This policy explains how we collect, use, and safeguard your personal data when you interact with our website and services, in accordance with the UK General Data Protection Regulation (UK GDPR).</p>
         </div>
 
         <div>
@@ -76,7 +77,7 @@ export default function PrivacyPolicyPage() {
 
         <div>
           <h2 className="font-serif text-xl text-ink mb-4">9. Contact &amp; Complaints</h2>
-          <p>For any data protection queries, please contact us at <a href="mailto:info@vietnamtours.co.uk" className="text-copper underline underline-offset-2">info@vietnamtours.co.uk</a>. If you are unsatisfied with our response, you have the right to lodge a complaint with the Information Commissioner's Office (ICO) at ico.org.uk.</p>
+          <p>For any data protection queries, please contact us at <a href="mailto:info@vietnamtours.co.uk" className="text-copper underline underline-offset-2">info@vietnamtours.co.uk</a>. If you are unsatisfied with our response, you have the right to lodge a complaint with the Information Commissioner&apos;s Office (ICO) at ico.org.uk.</p>
         </div>
 
       </section>

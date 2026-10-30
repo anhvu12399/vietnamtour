@@ -1,3 +1,4 @@
+import type { Rule, PreviewValue } from 'sanity';
 import { defineField, defineType } from 'sanity';
 
 export const thingToDo = defineType({
@@ -28,6 +29,7 @@ export const thingToDo = defineType({
     },
   },
   fields: [
+    defineField({ name: 'editorial', title: 'Author, review & sources', type: 'editorialEvidence' }),
     // ═══════════════════════════════════════════
     // GROUP 1: HERO & HEADER
     // ═══════════════════════════════════════════
@@ -69,7 +71,7 @@ export const thingToDo = defineType({
           type: 'string',
           title: 'Mô tả ảnh (Alt Text)',
           description: 'Mô tả ngắn cho SEO và accessibility. Ví dụ: "Chèo kayak qua hang đá vôi vào đầm ẩn ở Vịnh Hạ Long"',
-          validation: (rule: any) => rule.required().error('Alt text bắt buộc cho SEO'),
+          validation: (rule: Rule) => rule.required().error('Alt text bắt buộc cho SEO'),
         },
       ],
       validation: (rule) => rule.required().error('Bắt buộc tải ảnh banner'),
@@ -154,7 +156,7 @@ export const thingToDo = defineType({
           icon: () => '📄',
           preview: {
             select: { title: 'heading', media: 'image' },
-            prepare({ title, media }: { title?: string; media?: any }) {
+            prepare({ title, media }: { title?: string; media?: PreviewValue['media'] }) {
               return { title: title || 'Chưa có tiêu đề', media };
             },
           },
@@ -164,7 +166,7 @@ export const thingToDo = defineType({
               type: 'string',
               title: '📌 Tiêu đề phần',
               description: 'Ví dụ: "Luon Cave: The Passage That Changes Everything"',
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
             {
               name: 'body',
@@ -271,14 +273,14 @@ export const thingToDo = defineType({
               name: 'question',
               type: 'string',
               title: '❓ Câu hỏi',
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
             {
               name: 'answer',
               type: 'text',
               title: '💬 Câu trả lời',
               rows: 4,
-              validation: (rule: any) => rule.required(),
+              validation: (rule: Rule) => rule.required(),
             },
           ],
         },

@@ -14,6 +14,7 @@ interface Review {
 
 interface TripAdvisorReviewsProps {
   reviews: Review[];
+  sourceUrl?: string;
 }
 
 // TripAdvisor official green owl logo SVG
@@ -60,7 +61,7 @@ function StarRating({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'md
   );
 }
 
-export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps) {
+export default function TripAdvisorReviews({ reviews, sourceUrl }: TripAdvisorReviewsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -79,9 +80,10 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
     intervalRef.current = setInterval(() => {
       goTo(activeIndex + 1);
     }, 7000);
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [activeIndex]);
 
+  if (!sourceUrl || !/^https:\/\/(www\.)?tripadvisor\.[a-z.]+\//.test(sourceUrl) || !reviews.length) return null;
   const review = reviews[activeIndex];
 
   return (
@@ -115,16 +117,9 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
             <div className="flex items-center gap-4 p-5 border border-[#34E0A1]/20 bg-[#34E0A1]/5 rounded-sm">
               <TripAdvisorOwlLogo className="w-[100px] h-[50px]" />
               <div className="border-l border-[#34E0A1]/20 pl-4 space-y-1">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="#34E0A1">
-                      <circle cx="10" cy="10" r="9" />
-                    </svg>
-                  ))}
-                  <span className="text-white font-bold text-sm ml-1">5.0</span>
-                </div>
+                <a href={sourceUrl} className="text-sm text-white underline">Read the original reviews</a>
                 <p className="text-[10px] text-paper/50 font-light leading-snug max-w-[140px]">
-                  #1 Tour Operator in Vietnam on TripAdvisor
+                  Traveller feedback
                 </p>
               </div>
             </div>
@@ -157,7 +152,7 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
             >
               {/* Big quote mark */}
               <div className="text-[120px] leading-none text-gold/15 font-serif -mb-8 -ml-2 select-none">
-                "
+                &quot;
               </div>
 
               {/* Review title */}
@@ -220,7 +215,7 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
                 >
                   <StarRating rating={rev.rating} />
                   <p className="text-xs text-paper/60 font-light leading-relaxed mt-2 line-clamp-2 group-hover:text-paper/80 transition-colors">
-                    "{rev.title}"
+                    &quot;{rev.title}&quot;
                   </p>
                   <span className="text-[10px] text-gold/60 mt-2 block font-medium">{rev.author}</span>
                 </button>
@@ -251,21 +246,7 @@ export default function TripAdvisorReviews({ reviews }: TripAdvisorReviewsProps)
 
         </div>
 
-        {/* Bottom stat bar */}
-        <div className="mt-16 pt-10 border-t border-luxury-linen/8 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { num: '5.0', label: 'Average TripAdvisor Rating', sub: 'Based on 200+ reviews' },
-            { num: '38+', label: 'Years in Vietnam Travel', sub: 'Since 1986' },
-            { num: '97%', label: 'Guests Would Return', sub: 'Or Recommend Us' },
-            { num: '100%', label: 'Tailor-Made Itineraries', sub: 'No two trips alike' },
-          ].map((stat, i) => (
-            <div key={i} className="space-y-1">
-              <div className="font-serif text-3xl text-gold font-light">{stat.num}</div>
-              <div className="text-xs text-paper/80 font-medium leading-tight">{stat.label}</div>
-              <div className="text-[10px] text-paper/40 font-light">{stat.sub}</div>
-            </div>
-          ))}
-        </div>
+        <p className="mt-12 text-center text-sm text-paper/70"><a href={sourceUrl} className="underline">Read the original traveller reviews and current rating</a></p>
 
       </div>
     </section>

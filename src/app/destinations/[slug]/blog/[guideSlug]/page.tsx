@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: seo?.keywords || [],
     alternates: {
       // Canonical points to the /travel-guides/ version to avoid duplicate content
-      canonical: `https://www.vietnamtours.co.uk/travel-guides/${guideSlug}`,
+      canonical: `https://www.vietnamtours.co.uk/destinations/${slug}/blog/${guideSlug}`,
     },
     robots: {
       index: false,
@@ -119,9 +119,9 @@ export default async function TravelGuidePage({ params }: PageProps) {
             {/* Content (PortableText simplified) */}
             {guide.content && guide.content.length > 0 && (
               <div className="prose prose-invert prose-lg max-w-none space-y-6">
-                {guide.content.map((block: any, i: number) => (
+                {guide.content.map((block, i: number) => (
                   <p key={i} className="text-base font-light text-ink-soft leading-relaxed">
-                    {block.children?.map((c: any) => c.text).join('')}
+                    {block.children?.map((c) => c.text).join('')}
                   </p>
                 ))}
               </div>

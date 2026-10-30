@@ -37,9 +37,9 @@ export default async function ThingsToDoListingPage() {
   try {
     const sanityItems = await getThingsToDoFromSanity();
     if (sanityItems && sanityItems.length > 0) {
-      items = sanityItems.map((item: any) => ({
+      items = sanityItems.map((item) => ({
         ...item,
-        slug: item.slug?.current || item.slug,
+        slug: item.slug,
         heroImage: item.heroImage || '/images/things_halong_kayaking.png',
       }));
     }
