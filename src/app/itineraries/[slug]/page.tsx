@@ -11,6 +11,7 @@ import RouteStrip from '@/components/RouteStrip';
 import TimelineInteractive from '@/components/TimelineInteractive';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetailsBuilder';
+import { getItineraryCitation } from '@/lib/tour-citations';
 
 export const revalidate = 60;
 
@@ -27,7 +28,13 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const itinerary = await getItineraryBySlug(slug);
+  let itinerary;
+  try {
+    itinerary = await getItineraryBySlug(slug);
+  } catch (err) {
+    console.warn(`[generateMetadata] Sanity fetch warning for ${slug}:`, err);
+    return { title: 'Vietnam Tailor-Made Itinerary | Vietnam Tours' };
+  }
   if (!itinerary) return {};
 
   const seo = itinerary.seo;
@@ -68,7 +75,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ItineraryDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const itinerary = await getItineraryBySlug(slug);
+  let itinerary;
+  try {
+    itinerary = await getItineraryBySlug(slug);
+  } catch (err) {
+    console.warn(`[ItineraryDetailPage] Sanity fetch error for ${slug}:`, err);
+  }
 
   if (!itinerary) {
     notFound();
@@ -77,6 +89,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
   // Build route points and Day-by-Day timeline dynamically
   const routePoints = getRoutePoints(itinerary);
   const timelineDays = generateDayByDayTimeline(itinerary);
+  const citation = getItineraryCitation(slug, itinerary.destination?.name);
 
   return (
     <>
@@ -159,6 +172,66 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             </div>
 
             {itinerary.catalogueSource && <p className="border border-line p-4 text-sm leading-relaxed text-ink-soft">This sample route and guide price come from our existing catalogue. Ask us to confirm current operation, hotels, inclusions and pricing for your dates before booking.</p>}
+
+            {/* Authentic Expert Quote Callout & Verified Geographic Facts */}
+            {citation && (
+              <div className="space-y-6 text-left">
+                {/* Quote Callout */}
+                <figure className="bg-paper-dim border-l-4 border-gold p-6 sm:p-7 rounded-r shadow-xs">
+                  <blockquote cite={citation.quote.sourceUrl} className="mb-3">
+                    <p className="font-serif italic text-xl sm:text-2xl text-ink leading-snug">
+                      “{citation.quote.text}”
+                    </p>
+                  </blockquote>
+                  <figcaption className="text-xs sm:text-sm text-ink-soft space-y-0.5">
+                    <div className="font-semibold text-ink">— {citation.quote.author}</div>
+                    <div className="text-xs text-ink-soft/80">{citation.quote.role}</div>
+                    <a
+                      href={citation.quote.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-1 text-xs text-gold hover:text-ink font-medium underline underline-offset-2"
+                    >
+                      Source: {citation.quote.source} ↗
+                    </a>
+                  </figcaption>
+                </figure>
+
+                {/* Verified Facts Card */}
+                {citation.stats && citation.stats.length > 0 && (
+                  <div className="border border-line bg-paper p-6 sm:p-7 shadow-xs">
+                    <div className="flex flex-wrap items-baseline gap-2 pb-3 mb-4 border-b border-line">
+                      <span className="text-xs font-bold uppercase tracking-wider text-ink">
+                        ✓ Verified Geographical & Heritage Facts
+                      </span>
+                      <span className="text-xs text-ink-soft">
+                        Official records from UNESCO, MRC & National Authorities
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {citation.stats.map((stat, sIdx) => (
+                        <div key={sIdx} className="bg-paper-dim p-4 rounded border-l-2 border-gold">
+                          <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-soft mb-1">
+                            {stat.label}
+                          </div>
+                          <div className="text-sm font-medium text-ink mb-2 leading-relaxed">
+                            {stat.value}
+                          </div>
+                          <a
+                            href={stat.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[11px] text-jade-deep hover:text-gold underline underline-offset-2"
+                          >
+                            Source: {stat.source} ↗
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Interactive Journey Map */}
             <div className="space-y-6 text-left">
@@ -281,6 +354,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
         title={itinerary.title}
         duration={itinerary.duration}
         priceFrom={itinerary.priceFrom}
+        archived={Boolean(itinerary.catalogueSource)}
       />
 
       <Footer />
