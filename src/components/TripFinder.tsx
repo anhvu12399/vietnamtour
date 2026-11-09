@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Itinerary } from '@/sanity/types';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
 
 interface TripFinderProps {
   itineraries: Itinerary[];
@@ -101,6 +102,8 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
     setStep(1);
   };
 
+  const resultImages = uniqueEditorialImages(results, (tour) => `${tour.title} ${tour.slug?.current || ''}`);
+
   return (
     <div className="w-full bg-ink py-16 px-6 sm:px-12 relative overflow-hidden transition-all duration-500 text-paper-dim">
       {/* Background soft lighting */}
@@ -178,7 +181,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
 
           {/* Results Display: Tall cards, Image occupies 70%, Text occupies 30% */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
-            {results.map((it) => (
+            {results.map((it, index) => (
               <div 
                 key={it._id} 
                 className="group flex flex-col justify-between border border-[#EDE9E3]/5 bg-[#222927]/40 overflow-hidden hover:border-copper/40 transition-all duration-500"
@@ -186,7 +189,7 @@ export default function TripFinder({ itineraries }: TripFinderProps) {
                 {/* Image 70% Height */}
                 <div className="relative h-80 w-full overflow-hidden">
                   <Image
-                    src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                    src={resultImages[index] || it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                     alt={it.title}
                     fill
                     className="object-cover group-hover:scale-102 transition-transform duration-[4000ms] ease-out brightness-[0.7] img-editorial"

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Best Time to Visit Vietnam | Travel Ideas by Month',
     description: 'Explore weather forecasts, regional climate zones, and month-by-month recommendations for your Vietnam trip.',
     url: 'https://www.vietnamtours.co.uk/ideas-by-month',
-    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Best time to visit Vietnam — Ha Long Bay' }],
+    images: [{ url: '/images/unsplash/halong.jpg', width: 1200, height: 630, alt: 'Best time to visit Vietnam — Ha Long Bay' }],
   },
 };
 
@@ -226,7 +226,7 @@ export default async function IdeasByMonthListingPage() {
       monthGuides = sanityItems.map((item) => ({
         ...item,
         slug: item.slug,
-        heroImage: item.heroImage || '/images/trip_bike_rice_paddies.png',
+        heroImage: item.heroImage || '/images/unsplash/sapa.jpg',
       }));
     }
   } catch (e) {
@@ -241,7 +241,7 @@ export default async function IdeasByMonthListingPage() {
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/trip_bike_rice_paddies.png"
+            src="/images/unsplash/sapa.jpg"
             alt="Best Time to Visit Vietnam Header"
             fill
             className="object-cover brightness-[0.55]"
@@ -408,25 +408,25 @@ export default async function IdeasByMonthListingPage() {
                   <li className="flex items-start gap-3">
                     <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-ink">100% custom and private:</strong> Every itinerary is handcrafted from scratch matching your travel pace and style.
+                      <strong className="font-semibold text-ink">Private trip planning:</strong> Discuss the route, pace and services you are looking for; the proposal will confirm what is available for your dates.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-ink">Official Registration:</strong> Operated by My Way Travel Co., Ltd with International Tour Operator License No. 79-0743/2017/TCDL.
+                      <strong className="font-semibold text-ink">Vietnam tour-operator licence:</strong> MYWAY LIMITED LIABILITY COMPANY (Công ty TNHH MyWay) lists international operator licence 79-0743/2017/CDLQGVN-GP LHQT, issued for inbound and outbound services. Confirm the contracting company in your booking documents. <Link className="underline" href="/our-story">View the licence and company details</Link>.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-ink">Financial Protection:</strong> Bounded security deposit under Government regulations at Vietcombank.
+                      <strong className="font-semibold text-ink">Payment terms:</strong> Review the current booking contract, payment schedule and applicable protections before paying.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold text-lg font-bold">✓</span>
                     <div>
-                      <strong className="font-semibold text-ink">Expert Specialists:</strong> Dedicated local specialists providing 24/7 on-ground assistance during your journey.
+                      <strong className="font-semibold text-ink">In-trip contacts:</strong> Ask for the contact details, support hours and emergency arrangements that apply to your confirmed trip.
                     </div>
                   </li>
                 </ul>

@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getDestinations } from '@/sanity/client';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 
 export const revalidate = 60;
 
@@ -19,12 +21,13 @@ export const metadata: Metadata = {
     title: 'Vietnam Destinations | Places to Visit',
     description: 'Ha Long Bay, Hanoi, Hoi An, Sa Pa, Mekong Delta and beyond — discover Vietnam\'s finest destinations with expert-curated guides.',
     url: 'https://www.vietnamtours.co.uk/destinations',
-    images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Hoi An Ancient Town lanterns — top Vietnam destination' }],
+    images: [{ url: '/images/unsplash/hoian.jpg', width: 1200, height: 630, alt: 'Hoi An Ancient Town lanterns — top Vietnam destination' }],
   },
 };
 
 export default async function DestinationsPage() {
   const destinations = await getDestinations();
+  const destinationImages = uniqueEditorialImages(destinations, (dest) => `${dest.name} ${dest.slug?.current || ''}`);
 
   return (
     <>
@@ -35,7 +38,7 @@ export default async function DestinationsPage() {
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/hero_sapa.png"
+            src="/images/unsplash/sapa.jpg"
             alt="Vietnam Destinations Header"
             fill
             className="object-cover brightness-[0.5]"
@@ -82,8 +85,8 @@ export default async function DestinationsPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                   <Image
-                    src={dest.image}
-                    alt={`${dest.name || 'Vietnam destination'} — luxury places to visit in Vietnam`}
+                    src={destinationImages[idx] || dest.image}
+                    alt={editorialImageDescription(destinationImages[idx] || dest.image)}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-75"
                     priority={idx < 2}

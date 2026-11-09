@@ -90,6 +90,9 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
   const routePoints = getRoutePoints(itinerary);
   const timelineDays = generateDayByDayTimeline(itinerary);
   const citation = getItineraryCitation(slug, itinerary.destination?.name);
+  const heroImage = (itinerary.gallery && itinerary.gallery.length > 0 && itinerary.gallery[0])
+    ? itinerary.gallery[0]
+    : '/images/1319931-temple-of-heaven-beijing.webp';
 
   return (
     <>
@@ -99,7 +102,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
       <section className="relative h-[60vh] min-h-[400px] flex items-end justify-start">
         <div className="absolute inset-0 z-0">
           <Image
-            src={itinerary.gallery[0]}
+            src={heroImage}
             alt={itinerary.title}
             fill
             className="object-cover brightness-[0.7] animate-fade-in"
@@ -130,7 +133,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-gold uppercase">
             <span>{itinerary.duration} Days Tailor-Made</span>
             <span>•</span>
-            <span>{itinerary.catalogueSource ? 'Archived guide price' : 'From'} £{itinerary.priceFrom.toLocaleString('en-GB')} per person</span>
+            <span>{itinerary.catalogueSource ? 'Archived guide price' : 'From'} £{(itinerary.priceFrom || 0).toLocaleString('en-GB')} per person</span>
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight max-w-4xl text-white">
             {itinerary.title}
@@ -155,21 +158,23 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             </div>
 
             {/* Highlights */}
-            <div className="bg-jade-deep p-8 border border-line space-y-6 text-left">
-              <h3 className="font-serif text-xl text-white font-medium">
-                Trip Highlights
-              </h3>
-              <ul className="space-y-4">
-                {itinerary.highlights.map((hl, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="text-gold font-semibold text-lg leading-none">✓</span>
-                    <span className="text-sm sm:text-base text-paper/90 font-light leading-relaxed">
-                      {hl}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {itinerary.highlights && itinerary.highlights.length > 0 && (
+              <div className="bg-jade-deep p-8 border border-line space-y-6 text-left">
+                <h3 className="font-serif text-xl text-white font-medium">
+                  Trip Highlights
+                </h3>
+                <ul className="space-y-4">
+                  {itinerary.highlights.map((hl, index) => (
+                    <li key={index} className="flex items-start space-x-3">
+                      <span className="text-gold font-semibold text-lg leading-none">✓</span>
+                      <span className="text-sm sm:text-base text-paper/90 font-light leading-relaxed">
+                        {hl}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {itinerary.catalogueSource && <p className="border border-line p-4 text-sm leading-relaxed text-ink-soft">This sample route and guide price come from our existing catalogue. Ask us to confirm current operation, hotels, inclusions and pricing for your dates before booking.</p>}
 

@@ -5,27 +5,35 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getAccommodations } from '@/sanity/client';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Luxury Hotels & Resorts in Vietnam | Handpicked Accommodation | VietnamTours.co.uk',
-  description: 'Our handpicked collection of Vietnam\'s finest hotels, boutique resorts, and luxury lodges — personally inspected by our specialists. From heritage properties in Hoi An to overwater villas in Ha Long Bay.',
+  title: 'Hotels & Resorts in Vietnam | Accommodation Guide | VietnamTours.co.uk',
+  description: 'Explore hotel, resort and lodge options across Vietnam. Ask the team to confirm current availability, room details and prices for your dates.',
   keywords: ['luxury hotels Vietnam', 'Vietnam resorts', 'boutique hotels Vietnam', 'best hotels Ha Long Bay', 'Hoi An luxury hotels', 'Vietnam accommodation', 'five star hotels Vietnam'],
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/accommodations',
   },
   openGraph: {
-    title: 'Luxury Hotels & Resorts in Vietnam | Handpicked Accommodation',
-    description: 'Vietnam\'s finest hotels and resorts — personally inspected heritage properties, boutique lodges, and luxury villas.',
+    title: 'Hotels & Resorts in Vietnam | Accommodation Options',
+    description: 'Explore accommodation options across Vietnam and confirm current availability and prices for your dates.',
     url: 'https://www.vietnamtours.co.uk/accommodations',
-    images: [{ url: '/images/dest_phuquoc_beach.png', width: 1200, height: 630, alt: 'Luxury beach resort in Phu Quoc, Vietnam' }],
+    images: [{ url: '/images/unsplash/dalat-resort-pool.jpg', width: 1200, height: 630, alt: 'Pool at Ana Mandara Villas Dalat Resort & Spa' }],
   },
 };
 
 
 export default async function AccommodationsPage() {
   const accommodations = await getAccommodations();
+  const hotelImageContexts = [
+    ...accommodations.map((acc) => `${acc.name} ${acc.location} ${acc.slug?.current || ''}`),
+    'Vietnam accommodation collection hero image',
+  ];
+  const accommodationImages = uniqueEditorialImages(hotelImageContexts, (context) => context);
+  const hotelHeroImage = accommodationImages[accommodations.length] || '/images/unsplash/dalat-resort-pool.jpg';
 
   return (
     <>
@@ -36,8 +44,8 @@ export default async function AccommodationsPage() {
         {/* Scenic Hero Banner */}
         <section className="relative h-[250px] sm:h-[300px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/vietnamtour_amanoi_villa.png"
-            alt="Luxury Resorts Header"
+            src={hotelHeroImage}
+            alt={editorialImageDescription(hotelHeroImage)}
             fill
             className="object-cover brightness-[0.5]"
             priority
@@ -72,7 +80,7 @@ export default async function AccommodationsPage() {
               Luxury Resorts & Lodges
             </h2>
             <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
-              We have handpicked only the finest properties in Vietnam. From remote clifftop pool villas overlooking Vinh Hy Bay to heritage palaces in Hanoi, these stays guarantee premium luxury.
+              Compare accommodation options across Vietnam. Property names and catalogue details are planning references; confirm the operating property, room category, availability, inclusions and price for your dates.
             </p>
           </div>
 
@@ -82,8 +90,8 @@ export default async function AccommodationsPage() {
               <div key={acc._id} className="bg-jade-deep border border-jade-deep p-6 flex flex-col sm:flex-row gap-6 hover:shadow-xl transition-all duration-300">
                 <div className="relative h-60 sm:h-auto w-full sm:w-56 md:w-64 shrink-0 overflow-hidden">
                   <Image
-                    src={acc.gallery[0]}
-                    alt={`${acc.name || 'Luxury hotel'} — five-star hotel in ${acc.location || 'Vietnam'}`}
+                    src={accommodationImages[idx] || acc.gallery[0]}
+                    alt={editorialImageDescription(accommodationImages[idx] || acc.gallery[0])}
                     fill
                     className="object-cover"
                     priority={idx < 2}

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Itinerary } from '@/sanity/types';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 
 interface Props {
   itineraries: Itinerary[];
@@ -15,6 +17,7 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
 
   const totalCount = itineraries.length;
   const visibleTours = itineraries.slice(0, visibleCount);
+  const tourImages = uniqueEditorialImages(visibleTours, (tour) => `${tour.title} ${tour.slug?.current || ''}`);
   const isAllLoaded = visibleCount >= totalCount;
 
   const handleLoadMore = () => {
@@ -27,21 +30,21 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
     <>
       {/* Grid 4 columns */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {visibleTours.map((it) => (
+        {visibleTours.map((it, index) => (
           <div key={it._id} className="group bg-white border border-line hover:border-blue/30 transition-all duration-300 hover:shadow-md flex flex-col justify-between h-full relative rounded-none">
             
             {/* Featured Badge */}
-            <div className="bg-blue text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-none absolute top-4 left-4 z-10 flex items-center gap-0.5 shadow-sm">
+            {it.featured && <div className="bg-blue text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-none absolute top-4 left-4 z-10 flex items-center gap-0.5 shadow-sm">
               <span>★</span>
               <span>FEATURED</span>
-            </div>
+            </div>}
 
             <div>
               {/* Tour Image */}
               <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                 <Image
-                  src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
-                  alt={`${it.title || 'Vietnam luxury tour'} — bespoke private holiday by Vietnam Tours`}
+                  src={tourImages[index] || it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
+                  alt={editorialImageDescription(tourImages[index] || it.gallery?.[0] || '/images/unsplash/phuquoc.jpg')}
                   fill
                   className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                 />
@@ -60,7 +63,8 @@ export default function ItinerariesGridInteractive({ itineraries }: Props) {
                 </h4>
 
                 <p className="text-[11px] font-medium text-gray-500 tracking-wide pt-1">
-                  {it.duration} Days from <span className="text-blue font-semibold block text-xs">£{it.priceFrom?.toLocaleString('en-GB')}pp</span>
+                  {it.duration} Days {it.catalogueSource ? 'guide price' : 'from'} <span className="text-blue font-semibold block text-xs">£{it.priceFrom?.toLocaleString('en-GB')}pp</span>
+                  {it.catalogueSource && <span className="block text-[10px] font-normal normal-case text-gray-500">Confirm current price and availability</span>}
                 </p>
               </div>
             </div>

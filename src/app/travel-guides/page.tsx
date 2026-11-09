@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getPosts } from '@/sanity/client';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Vietnam Travel Guides | Expert Tips & Insider Insights',
     description: 'Expert-written guides with real experiences and authentic local advice for every region of Vietnam.',
     url: 'https://www.vietnamtours.co.uk/travel-guides',
-    images: [{ url: '/images/dest_sapa_highland.png', width: 1200, height: 630, alt: 'Sapa rice terraces — Vietnam travel guide' }],
+    images: [{ url: '/images/unsplash/sapa.jpg', width: 1200, height: 630, alt: 'Sapa rice terraces — Vietnam travel guide' }],
   },
 };
 
@@ -68,22 +70,19 @@ function getCategory(title: string): string {
   return 'VIETNAM';
 }
 
-const FALLBACK_IMAGES = [
-  '/images/hero_hoian.png',
-  '/images/hero_halong_bay.png',
-  '/images/hero_sapa.png',
-  '/images/vietnamtour_cave_dining.png',
-  '/images/vietnamtour_mekong_sampan.png',
-  '/images/vietnamtour_phu_quoc_beach.png',
-  '/images/vietnamtour_sapa_lodge.png',
-  '/images/vietnamtour_hanoi_colonial.png',
-  '/images/halong_night.png',
-  '/images/beach_night.png',
-  '/images/sapa_night.png',
-];
-
 export default async function TravelGuidesPage() {
   const posts = await getPosts();
+  const featuredTours = [
+    { label: 'Classic Vietnam', desc: '14 days from Hanoi to Saigon', link: '/itineraries' },
+    { label: 'Luxury Coastal', desc: 'Halong Bay, Hoi An & the coast', link: '/itineraries' },
+    { label: 'Culinary Journey', desc: 'Vietnam through its food culture', link: '/itineraries' },
+  ];
+  const guideImageContexts = [
+    ...posts.map((post) => `${post.title} ${post.slug?.current || ''}`),
+    ...featuredTours.map((tour) => `${tour.label} ${tour.desc}`),
+    'Vietnam travel guides page header',
+  ];
+  const guideImages = uniqueEditorialImages(guideImageContexts, (context) => context);
 
   const featuredPost = posts[0];
   const gridPosts = posts.slice(1);
@@ -97,8 +96,8 @@ export default async function TravelGuidesPage() {
         {/* ── 1. HERO BANNER ── */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[450px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/vietnamtour_cave_dining.png"
-            alt="Vietnam Travel Guides"
+            src={guideImages[posts.length + featuredTours.length] || '/images/unsplash/vietnam-temple.jpg'}
+            alt={editorialImageDescription(guideImages[posts.length + featuredTours.length] || '/images/unsplash/vietnam-temple.jpg')}
             fill
             className="object-cover brightness-[0.52]"
             priority
@@ -156,7 +155,7 @@ export default async function TravelGuidesPage() {
               </div>
 
               <p className="text-sm italic text-ink-soft pt-4">
-                All guides are updated regularly. For personalised advice based on your specific travel dates and interests, our Vietnam specialists are available by phone or email.
+                Travel rules, schedules and prices can change. Check the linked source and confirm details for your dates. Contact the team if you would like to discuss a private itinerary.
               </p>
             </div>
 
@@ -164,7 +163,7 @@ export default async function TravelGuidesPage() {
             <div className="lg:col-span-4">
               <div className="bg-white border border-line p-8 shadow-md flex flex-col items-center text-center space-y-6">
                 <h3 className="font-serif text-xl font-semibold text-ink leading-snug">
-                  Speak to one of our local experts
+                  Discuss your Vietnam trip
                 </h3>
 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
@@ -228,8 +227,8 @@ export default async function TravelGuidesPage() {
                     {/* Image */}
                     <div className="relative h-72 lg:h-[420px] overflow-hidden bg-[#f4efe6]">
                       <Image
-                        src={featuredPost.mainImage || FALLBACK_IMAGES[0]}
-                        alt={featuredPost.title}
+                        src={guideImages[0] || '/images/unsplash/sapa.jpg'}
+                          alt={editorialImageDescription(guideImages[0] || '/images/unsplash/sapa.jpg')}
                         fill
                         className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
                         priority
@@ -281,15 +280,15 @@ export default async function TravelGuidesPage() {
             {/* Grid — remaining posts */}
             {gridPosts.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {gridPosts.map((post, idx) => (
+            {gridPosts.map((post, idx) => (
                   <Link key={post._id} href={`/travel-guides/${post.slug?.current || ''}`}>
                     <article className="group bg-white border border-line hover:border-line transition-all duration-300 hover:shadow-xl flex flex-col h-full">
 
                       {/* Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={post.mainImage || FALLBACK_IMAGES[(idx + 1) % FALLBACK_IMAGES.length]}
-                          alt={post.title}
+                          src={guideImages[idx + 1] || '/images/unsplash/hanoi.jpg'}
+                          alt={editorialImageDescription(guideImages[idx + 1] || '/images/unsplash/hanoi.jpg')}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         />
@@ -382,14 +381,10 @@ export default async function TravelGuidesPage() {
             <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold">Explore Our Vietnam Tour Collection</h2>
           </div>
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-6 justify-center">
-            {[
-              { label: 'Classic Vietnam', desc: '14 days from Hanoi to Saigon', link: '/itineraries', img: '/images/vietnamtour_hanoi_colonial.png' },
-              { label: 'Luxury Coastal', desc: 'Halong Bay, Hoi An & the coast', link: '/itineraries', img: '/images/hero_halong_bay.png' },
-              { label: 'Culinary Journey', desc: 'Vietnam through its food culture', link: '/itineraries', img: '/images/vietnamtour_cave_dining.png' },
-            ].map((item, i) => (
+            {featuredTours.map((item, i) => (
               <Link key={i} href={item.link} className="group flex-1 min-w-[240px] max-w-sm">
                 <div className="relative h-56 overflow-hidden rounded-sm border border-line bg-white">
-                  <Image src={item.img} alt={item.label} fill className="object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+                  <Image src={guideImages[posts.length + i]} alt={editorialImageDescription(guideImages[posts.length + i])} fill className="object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 text-left">
                     <h4 className="font-serif text-lg text-white font-semibold">{item.label}</h4>

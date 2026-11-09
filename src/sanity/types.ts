@@ -17,6 +17,8 @@ export interface Accommodation {
   features: string[];
   gallery: string[]; // Mocked as image urls
   websiteUrl?: string;
+  editorial?: EditorialEvidence;
+  photoNote?: string;
 }
 
 export interface Specialist {

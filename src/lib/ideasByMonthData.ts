@@ -6,7 +6,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in January: Best Places to Visit & Travel Guide',
     metaTitle: 'Vietnam in January | Where to Go & Weather Guide | Vietnam Tour',
     metaDescription: 'Complete guide to travelling Vietnam in January. Discover the best destinations, weather forecasts by region (North, Central, South), and holiday highlights.',
-    heroImage: '/images/trip_beach_vietnam.png',
+    heroImage: '/images/unsplash/phuquoc.jpg',
     heroSubtitle: 'Dry skies in the south, crisp winter in the north — January is one of the most rewarding times to explore Vietnam.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'January',
@@ -15,7 +15,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Regional Weather Analysis: North, Central, and South',
         body: 'Vietnam\'s geography creates three distinct climate zones. In the North (Hanoi, Halong Bay, Sapa), January is mid-winter. Temperatures average 15°C to 20°C (59°F to 68°F), with Sapa dropping below 10°C. You will experience cool, dry days often accompanied by atmospheric mist or light drizzle — ideal for city walking tours but requiring warm layers for the highlands.\n\nCentral Vietnam (Hue, Da Nang, Hoi An) is in a transitional phase. The heavy monsoon rains of late autumn are clearing, and temperatures hover around a pleasant 20°C to 24°C. While some overcast days remain, it is an excellent time for exploring historical citadels and walking the ancient streets of Hoi An without the summer heat.\n\nSouth Vietnam (Ho Chi Minh City, Mekong Delta, Phu Quoc) is in its absolute prime. Dry, sunny, and warm weather prevails across the board, with temperatures ranging from 26°C to 32°C. Skies are brilliant blue, humidity is low, and the sea is calm, making it the perfect month for beach escapes and river cruising.',
-        image: '/images/trip_beach_vietnam.png',
+        image: '/images/unsplash/phuquoc.jpg',
         imageAlt: 'Pristine sunny beach in Phu Quoc during January dry season',
         imageCaption: 'Phu Quoc Island in January — dry, sunny skies and calm turquoise waters make it the ultimate winter sun getaway.',
       },
@@ -33,7 +33,7 @@ export const ideasByMonthData: TripPageData[] = [
     ],
     faqs: [
       { question: 'Is January a good time to visit Halong Bay?', answer: 'Yes, but expect cooler, misty weather. While it is rarely rainy, morning fog is common, which actually adds a dramatic, mystical feel to the limestone karsts. You will need a jacket for the sundeck.' },
-      { question: 'Is it warm enough to swim in Hoi An in January?', answer: 'It is borderline. Sea temperatures are around 22°C (71°F) and the breeze can be cool. While sunny days are perfect for swimming, overcast days might feel a bit chilly. For guaranteed swimming weather, head further south to Nha Trang or Phu Quoc.' },
+      { question: 'Is it warm enough to swim in Hoi An in January?', answer: 'Conditions can be cool and changeable around Hoi An in January. Nha Trang and Phu Quoc are generally warmer farther south, but sea conditions and weather still vary; check local forecasts before planning beach days.' },
       { question: 'Does Tet (Lunar New Year) happen in January?', answer: 'Tet typically falls between late January and mid-February. The week of Tet is a national holiday when many shops, restaurants, and museums close. However, the 2-3 weeks leading up to Tet are an incredible time to visit, as the cities are decorated and markets are bustling.' }
     ],
     relatedSlugs: ['february', 'december', 'vietnam-culinary-tours'],
@@ -45,7 +45,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in February: Weather, Places to Go & Festivals',
     metaTitle: 'Vietnam in February | Weather, Tet Festival & Highlights | Vietnam Tour',
     metaDescription: 'A complete guide to travelling Vietnam in February. Read about the weather, Tet Lunar New Year festival, and the best beach and mountain destinations.',
-    heroImage: '/images/trip_culinary_street_food.png',
+    heroImage: '/images/unsplash/food.jpg',
     heroSubtitle: 'Spring blossoms, warmer northern days, and the vibrant colors of Lunar New Year celebrations.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'February',
@@ -54,7 +54,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'The Spring Climate and Regional Guide',
         body: 'In Northern Vietnam, February brings a transition from winter to spring. Temperatures rise to a comfortable 17°C to 22°C, though misty mornings and light drizzle are still common. Sapa begins to warm up, and wild peach and plum trees burst into white and pink blossoms across the highlands.\n\nCentral Vietnam experiences excellent weather in February. The rains are gone, and temperatures rise to 22°C - 26°C. Cities like Hue and Hoi An are at their most beautiful, with mild humidity and ample sunshine.\n\nSouthern Vietnam continues its run of perfect dry-season weather. Temperatures hover between 27°C and 33°C, with virtually no rainfall. Coastal resorts in Phu Quoc, Mui Ne, and Con Dao offer ideal beach conditions.',
-        image: '/images/trip_culinary_street_food.png',
+        image: '/images/unsplash/food.jpg',
         imageAlt: 'Festive street decorations and flower markets in Vietnam during February spring',
         imageCaption: 'Lunar New Year celebrations transform the streets with vibrant peach blossoms and traditional lanterns.',
       },
@@ -83,7 +83,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in March: Golden Weather and Perfect Cruising',
     metaTitle: 'Vietnam in March | Peak Weather & Travel Planning | Vietnam Tour',
     metaDescription: 'Explore Vietnam in March. Warm, dry conditions nationwide make it the ideal month for cruising Halong Bay, beach holidays, and highland trekking.',
-    heroImage: '/images/trip_bike_rice_paddies.png',
+    heroImage: '/images/unsplash/sapa.jpg',
     heroSubtitle: 'Dry and pleasant weather across the entire country — March is arguably the best month of the year to visit.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'March',
@@ -92,7 +92,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Nationwide Weather Overview: Flawless Transitions',
         body: 'In March, Northern Vietnam enters its warm spring phase. Temperatures average 19°C to 24°C, and the winter mist clears to reveal blue skies over Hanoi and Halong Bay. It is a fantastic time for outdoor activities like trekking in Sapa and cycling in Ninh Binh.\n\nCentral Vietnam is in its peak dry season. Temperatures rise to a beautiful 24°C - 28°C. Hoi An\'s beaches are warm enough for swimming, and the Hue historical monuments can be explored comfortably.\n\nSouthern Vietnam is warm and dry, with temperatures hovering around 28°C to 34°C. While humidity is rising slightly, it is still very pleasant for exploring Ho Chi Minh City, cruising the Mekong Delta, or relaxing in beach villas.',
-        image: '/images/trip_bike_rice_paddies.png',
+        image: '/images/unsplash/sapa.jpg',
         imageAlt: 'Cycling through Sapa terraced fields in March clear weather',
         imageCaption: 'March brings clear blue skies and rising spring temperatures, making it the perfect season for cycling and trekking in Sapa.',
       },
@@ -102,7 +102,7 @@ export const ideasByMonthData: TripPageData[] = [
       }
     ],
     highlights: [
-      'Enjoy guaranteed dry, sunny weather across the entire country',
+      'Plan around regional weather differences; conditions vary by location and year',
       'Cruise Halong Bay under crystal-clear blue skies',
       'Trek through Sapa and Ninh Binh on dry, safe mountain trails',
       'Swim in the warm, pleasant seas of Hoi An, Nha Trang, and Phu Quoc',
@@ -121,7 +121,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in April: Warm Sun and Beach Escapes',
     metaTitle: 'Vietnam in April | Easter Travel & Weather Guide | Vietnam Tour',
     metaDescription: 'Travel to Vietnam in April. Discover sunny skies, warm beach conditions, and essential tips for Easter holidays and local festivals.',
-    heroImage: '/images/trip_beach_vietnam.png',
+    heroImage: '/images/unsplash/phuquoc.jpg',
     heroSubtitle: 'Warm sunshine, clear seas, and the beginning of summer energy across the country.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'April',
@@ -130,7 +130,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Regional Climate Breakdown',
         body: 'Northern Vietnam is warm and mostly dry, with temperatures averaging 22°C to 28°C. Halong Bay is warm and clear, ideal for kayaking and swimming. Sapa is in full bloom and highly pleasant.\n\nCentral Vietnam is dry and sunny, with temperatures between 25°C and 30°C. Beach resorts in Danang and Hoi An are at their peak, with calm seas and warm sun.\n\nSouthern Vietnam is in its hottest month of the year, with temperatures averaging 30°C to 35°C. Although brief afternoon showers might occur towards the end of the month, beach destinations like Phu Quoc and Con Dao remain excellent options.',
-        image: '/images/trip_beach_vietnam.png',
+        image: '/images/unsplash/phuquoc.jpg',
         imageAlt: 'Beach resort pool overlooking turquoise sea in April',
         imageCaption: 'April is peak season for Vietnam\'s central and southern beaches, offering sunny skies and calm, warm waters.',
       }
@@ -154,7 +154,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in May: Emerald Paddies & Great Value',
     metaTitle: 'Vietnam in May | Weather, Rice Terraces & Travel Tips | Vietnam Tour',
     metaDescription: 'A complete guide to travelling Vietnam in May. Learn about the weather, shoulder-season value, and Sapa\'s spectacular water-mirror terraces.',
-    heroImage: '/images/trip_bike_rice_paddies.png',
+    heroImage: '/images/unsplash/sapa.jpg',
     heroSubtitle: 'Water-mirrors in the terraced fields, warm beach days, and excellent shoulder-season travel value.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'May',
@@ -163,7 +163,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Sapa\'s Water-Mirror Season',
         body: 'In May, ethnic minority farmers in Sapa and Mu Cang Chai flood the terraced fields in preparation for planting the single crop of the year. This phase is known as the "water-falling season" or "mirror season." The terraces act as hundreds of small mirrors, reflecting the blue sky, white clouds, and mountain peaks. It is a stunning visual phenomenon and a dream for photographers.',
-        image: '/images/trip_bike_rice_paddies.png',
+        image: '/images/unsplash/sapa.jpg',
         imageAlt: 'Terraced rice paddies in Sapa flooded with water in May',
         imageCaption: 'Flooded terraced fields in Sapa in May, reflecting the sky and clouds like hundreds of mirrors.',
       }
@@ -187,7 +187,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in June: Summer Sun and Family Adventures',
     metaTitle: 'Vietnam in June | Summer Travel & Family Guide | Vietnam Tour',
     metaDescription: 'Plan your June trip to Vietnam. Read about summer cruising in Halong Bay, central coast beach holidays, and lush green highland trekking.',
-    heroImage: '/images/trip_family_halong.png',
+    heroImage: '/images/unsplash/halong.jpg',
     heroSubtitle: 'Peak summer sun, perfect beach conditions in Central Vietnam, and lush tropical landscapes.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'June',
@@ -196,7 +196,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Central Coast: The Ultimate Summer Beach Escape',
         body: 'While Hanoi and Saigon see regular rain, the central coast (Hoi An, Danang, Nha Trang, Quy Nhon) is in its weather prime. June is dry, sunny, and hot (average 30°C - 34°C). The sea is calm and warm, making it perfect for snorkeling, diving, and family beach holidays.',
-        image: '/images/trip_family_halong.png',
+        image: '/images/unsplash/halong.jpg',
         imageAlt: 'Family kayaking in Halong Bay in June summer sun',
         imageCaption: 'Halong Bay in June is hot and sunny — perfect for kayaking, swimming, and exploring sea caves.',
       }
@@ -220,7 +220,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in July: Peak Summer & Beach Holidays',
     metaTitle: 'Vietnam in July | Weather & Summer Travel Guide | Vietnam Tour',
     metaDescription: 'Travel to Vietnam in July. Discover the best beaches, summer weather updates, and recommendations for summer family itineraries.',
-    heroImage: '/images/trip_family_halong.png',
+    heroImage: '/images/unsplash/halong.jpg',
     heroSubtitle: 'Golden sunshine on the central coast, lush mountain landscapes, and vibrant summer vibes.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'July',
@@ -229,7 +229,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Summer Beach & Cruising Guide',
         body: 'Hoi An, Danang, and Nha Trang are hot and sunny in July. It is peak beach season, with long days and clear waters. In the north, Sapa\'s rice fields are a sea of emerald green. While Halong Bay can experience occasional summer storms, most days are clear, sunny, and perfect for cruising.',
-        image: '/images/trip_family_halong.png',
+        image: '/images/unsplash/halong.jpg',
         imageAlt: 'Cruising Halong Bay in July under blue sky',
         imageCaption: 'A luxury junk anchors in Halong Bay during a sunny July afternoon, offering spectacular views of the limestone pillars.',
       }
@@ -253,7 +253,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in August: Green Highlands & Summer Travel',
     metaTitle: 'Vietnam in August | Weather, Green Rice & Tips | Vietnam Tour',
     metaDescription: 'Complete guide to travelling Vietnam in August. Discover the ripening green rice paddies, regional weather patterns, and the best places to visit.',
-    heroImage: '/images/trip_bike_rice_paddies.png',
+    heroImage: '/images/unsplash/sapa.jpg',
     heroSubtitle: 'Green rice paddies beginning to turn gold, beach weather on the central coast, and great value.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'August',
@@ -262,7 +262,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Regional Weather Details',
         body: 'August is warm and wet in the North, with Sapa and Halong Bay seeing regular rain. Central Vietnam is dry and hot (30°C - 33°C), with Nha Trang and Hoi An offering excellent beach conditions. Southern Vietnam has warm temperatures with daily tropical showers, keeping the Mekong Delta rich and green.',
-        image: '/images/trip_bike_rice_paddies.png',
+        image: '/images/unsplash/sapa.jpg',
         imageAlt: 'Ripening green-gold rice terraces in August in Vietnam',
         imageCaption: 'Sapa\'s rice terraces in August are a spectacular sight as the emerald fields start to turn golden-yellow.',
       }
@@ -286,7 +286,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in September: The Golden Rice Harvest',
     metaTitle: 'Vietnam in September | Rice Harvest & Autumn Guide | Vietnam Tour',
     metaDescription: 'A complete guide to travelling Vietnam in September. Read about the spectacular golden rice harvest in Sapa and Mu Cang Chai, and regional weather updates.',
-    heroImage: '/images/trip_bike_rice_paddies.png',
+    heroImage: '/images/unsplash/sapa.jpg',
     heroSubtitle: 'The spectacular golden rice harvest in the north, cooler days, and the start of autumn.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'September',
@@ -295,7 +295,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Sapa\'s Golden Harvest: A Photographer\'s Dream',
         body: 'From early to late September, the terraced rice fields of Sapa, Mu Cang Chai, and Y Ty ripen and turn bright yellow. The hillsides look like cascading sheets of gold. This is the peak harvest period, and you can watch ethnic minority communities gathering the rice by hand, using traditional wooden threshing boxes. It is an incredibly rich cultural and visual experience.',
-        image: '/images/trip_bike_rice_paddies.png',
+        image: '/images/unsplash/sapa.jpg',
         imageAlt: 'Golden harvested rice terraces in Sapa during September',
         imageCaption: 'The golden harvest season in Sapa — one of the most iconic landscapes and photographer favorites in Asia.',
       }
@@ -319,7 +319,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in October: Autumn Colors and Mountain Trails',
     metaTitle: 'Vietnam in October | Autumn Travel & Weather Guide | Vietnam Tour',
     metaDescription: 'Travel to Vietnam in October. Discover the cool autumn weather of Hanoi, peak trekking in the north, and the bloom of buckwheat flowers in Ha Giang.',
-    heroImage: '/images/trip_motorcycle_hagiang.png',
+    heroImage: '/images/unsplash/hagiang.jpg',
     heroSubtitle: 'Cool autumn breeze in Hanoi, peak trekking weather, and the start of dry season in the south.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'October',
@@ -328,7 +328,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'Ha Giang: Buckwheat Flowers and Limestone Peaks',
         body: 'October is the start of the buckwheat flower season in Ha Giang. The valleys between the limestone karst peaks are filled with purple and pink blossoms, softening the rugged gray stone landscape. The weather is cool and clear, offering perfect visibility on mountain roads like the Ma Pi Leng Pass.',
-        image: '/images/trip_motorcycle_hagiang.png',
+        image: '/images/unsplash/hagiang.jpg',
         imageAlt: 'Motorbike rider on the Ma Pi Leng pass cliff road in October',
         imageCaption: 'Clear autumn skies and cool weather make October the ultimate month for motorcycling and road-tripping in Ha Giang.',
       }
@@ -352,7 +352,7 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in November: Peak Season and Beach Escapes',
     metaTitle: 'Vietnam in November | Dry Season & Beach Guide | Vietnam Tour',
     metaDescription: 'Complete guide to travelling Vietnam in November. Weather forecasts, peak-season travel tips, and recommendations for Phu Quoc beach escapes.',
-    heroImage: '/images/trip_luxury_villa.png',
+    heroImage: '/images/unsplash/phuquoc.jpg',
     heroSubtitle: 'Dry sunny weather in the south, cool crisp air in the north, and peak travel season nationwide.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'November',
@@ -361,7 +361,7 @@ export const ideasByMonthData: TripPageData[] = [
       {
         heading: 'The Return of Southern Sunshine',
         body: 'November sees the return of perfect dry-season conditions to Ho Chi Minh City, the Mekong Delta, and the southern islands of Phu Quoc and Con Dao. Skies are bright blue, the sea is flat and warm, and temperatures hover around a pleasant 28°C - 32°C. It is the ideal time to conclude a northern tour with a beach resort retreat.',
-        image: '/images/trip_luxury_villa.png',
+        image: '/images/unsplash/phuquoc.jpg',
         imageAlt: 'Luxury resort villa in Phu Quoc overlooking sea in November',
         imageCaption: 'A luxury beachfront villa in Phu Quoc — November starts the peak season for southern beach escapes.',
       }
@@ -385,23 +385,23 @@ export const ideasByMonthData: TripPageData[] = [
     title: 'Vietnam in December: Festive Season & Winter Sun',
     metaTitle: 'Vietnam in December | Christmas Travel & Weather | Vietnam Tour',
     metaDescription: 'Explore Vietnam in December. Discover the festive holiday atmosphere in Hanoi and Saigon, and perfect beach weather in the south.',
-    heroImage: '/images/trip_beach_vietnam.png',
+    heroImage: '/images/unsplash/phuquoc.jpg',
     heroSubtitle: 'Winter sun in the south, festive street lighting in Hanoi & Saigon, and crisp northern days.',
     category: 'IDEAS BY MONTH',
     breadcrumb: 'December',
-    intro: 'December is a festive and beautiful month to travel in Vietnam. The Christmas and New Year period brings a lively, celebratory atmosphere to major cities, while the southern beaches offer guaranteed winter sunshine. It is a peak holiday month that requires advance planning to secure the best hotels and cruises.',
+    intro: 'December brings holiday events in major cities and is often a drier period for southern beach destinations, though weather varies. Demand can be high around Christmas and New Year; confirm accommodation and cruise availability for your dates.',
     sections: [
       {
         heading: 'Festive Energy & Peak Winter Sun',
         body: 'In December, Northern Vietnam is in full winter, with dry, cool, and crisp days (15°C - 19°C) that are perfect for city walking. Southern Vietnam is warm, dry, and sunny, offering the ultimate winter beach escape in Phu Quoc or Con Dao. Hanoi and Ho Chi Minh City are beautifully decorated with Christmas lights, and local restaurants and hotels offer special festive banquets.',
-        image: '/images/trip_beach_vietnam.png',
+        image: '/images/unsplash/phuquoc.jpg',
         imageAlt: 'Sunny Phu Quoc beach with palm trees in December winter sun',
         imageCaption: 'Phu Quoc Island in December offers pristine white sand beaches and clear blue skies, making it a perfect Christmas holiday retreat.',
       }
     ],
     highlights: [
       'Celebrate Christmas and New Year in the festive atmosphere of Hanoi and Saigon',
-      'Bask in guaranteed winter sunshine on Phu Quoc and Con Dao beaches',
+      'Consider Phu Quoc and Con Dao for a southern beach stay; check local weather and sea conditions',
       'Cruise Halong Bay in cool, refreshing, and dry winter weather',
       'Enjoy Hanoi\'s hot street food and egg coffee in the cool winter air',
       'Witness the Christmas preparations and light displays around local cathedrals'

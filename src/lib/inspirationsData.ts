@@ -6,7 +6,7 @@ export const inspirationsData: TripPageData[] = [
     "title": "Vietnam Luxury Tours: The Ultimate Private Travel Experience",
     "metaTitle": "Vietnam Luxury Tours 2025 | Ultra-Private Bespoke Holidays | Vietnam Tour",
     "metaDescription": "Vietnam's finest luxury travel experiences — private junk cruises on Halong Bay, pool villas at Amanoi, exclusive access and bespoke itineraries for discerning travellers.",
-    "heroImage": "/images/trip_luxury_villa.png",
+    "heroImage": "/images/unsplash/phuquoc.jpg",
     "heroSubtitle": "True luxury in Vietnam is not about cost — it is about access, personalisation, and the quiet confidence of knowing every detail has been considered.",
     "category": "LUXURY",
     "breadcrumb": "Luxury Tours",
@@ -15,7 +15,7 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "The Finest Accommodation in Vietnam",
         "body": "Amanoi overlooks Vinh Hy Bay beside Nui Chua National Park. The resort is reached by road from Cam Ranh Airport; Aman gives a transfer time of approximately 75 minutes. It is a different property from Six Senses Ninh Van Bay, so confirm the resort name and transfer arrangements when comparing a quote.\n\nThe Four Seasons Nam Hai near Hoi An represents a different kind of luxury: 100 pool villas on Ha My Beach, three pool complexes descending to the sea, an extraordinary spa, and a culinary programme that draws from the Hoi An food culture surrounding it. The Heritage Line's Jasmine and Au Co — the finest junk boats on Halong Bay — represent luxury afloat: teakwood cabins, private sun decks, wines chosen by a sommelier, a route that avoids the crowded central bay for the quieter Lan Ha waters.",
-        "image": "/images/trip_luxury_villa.png",
+        "image": "/images/unsplash/phuquoc.jpg",
         "imageAlt": "Luxury pool villa at sunset in Vietnam with bay view and butler service",
         "imageCaption": "Private villa dining with bay views — the defining image of Vietnam's ultra-luxury resort experience."
       },
@@ -26,7 +26,7 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "Private Charters: Air, Sea, and Road",
         "body": "At the highest tier of luxury travel in Vietnam, the vehicle is itself part of the experience. A private helicopter transfer from Da Nang to Hue (12 minutes, following the coastline over the Hai Van Pass) replaces a 2-hour road journey with one of the great aerial views in Southeast Asia. A private junk with eight cabins occupied entirely by your group of six — no other guests, your schedule, your route, your menu — on Halong Bay transforms the most popular attraction in Vietnam into something genuinely private.\n\nOn the road, the finest private vehicle available in Vietnam is the Toyota Land Cruiser V8 with a dedicated driver: air-conditioned, supremely comfortable, and large enough for four passengers with significant luggage. For groups, private minibuses maintain the same standard of cleanliness, driver training, and flexibility. Private domestic flights can be chartered for groups of 6-12 on select routes.",
-        "image": "/images/vietnamtour_halong_yacht_luxury.png",
+        "image": "/images/unsplash/halong.jpg",
         "imageAlt": "Luxury junk boat on Halong Bay at sunset with limestone karst islands",
         "imageCaption": "A Heritage Line junk at anchor in Halong Bay — when the entire boat is chartered for your group, the experience is incomparably different from a shared cruise."
       }
@@ -90,7 +90,7 @@ export const inspirationsData: TripPageData[] = [
     "title": "Adventure Vietnam: Off the Beaten Track Tours",
     "metaTitle": "Vietnam Adventure & Off the Beaten Track Tours 2025 | Vietnam Tour",
     "metaDescription": "Vietnam's greatest adventures lie beyond the tourist circuit — the Ha Giang karst plateau, Phong Nha's cathedral caves, and the forests of Ba Be National Park. Private adventure tours for genuine explorers.",
-    "heroImage": "/images/trip_adventure_jungle.png",
+    "heroImage": "/images/unsplash/hagiang.jpg",
     "heroSubtitle": "Vietnam's most extraordinary places are not on the standard itinerary. They require commitment, the right guide, and a willingness to go where most travellers do not.",
     "category": "ADVENTURE",
     "breadcrumb": "Adventure Tours",
@@ -99,14 +99,14 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "Ha Giang: Vietnam's Last Frontier",
         "body": "Ha Giang Province in Vietnam's far north is the destination that has most dramatically emerged in the past five years. Its 350-kilometre loop through the Dong Van Karst Plateau — a UNESCO Global Geopark — crosses landscapes that have barely changed in centuries: H'Mong villages perched on cliff edges, markets where ethnic minorities from six different groups trade in the same square on Sunday mornings, roads that cling to cliff faces above gorges so deep that clouds sit at the bottom.\n\nThe Ma Pi Leng Pass is the centrepiece: a 20-kilometre stretch of road carved into a limestone cliff face above the Nho Que River, 1,000 metres below. There is no comparative road experience in Southeast Asia. We offer the loop by private motorcycle (for experienced riders), by private 4x4 (for all fitness and experience levels), and by foot for those who want to trek between the H'Mong villages at human pace.",
-        "image": "/images/trip_motorcycle_hagiang.png",
+        "image": "/images/unsplash/hagiang.jpg",
         "imageAlt": "Motorcycle on cliff edge road above the Nho Que River gorge in Ha Giang Vietnam",
         "imageCaption": "The Ma Pi Leng Pass — 1,000 metres above the Nho Que River gorge, and the most dramatic road in Vietnam."
       },
       {
         "heading": "Phong Nha: The World's Most Spectacular Caves",
         "body": "Phong Nha-Ke Bang National Park in central Vietnam contains what were, until 2009, the world's largest known cave systems — and several that remain the largest. Son Doong Cave, discovered in 1991 and not entered by explorers until 2009, is so vast that it contains its own internal weather system: jungle, clouds, and a river that vanishes underground and resurfaces 30 kilometres away.\n\nLimited access to Son Doong (only 1,000 visitors per year, US$3,000 per person minimum) makes it the most exclusive adventure tourism experience in Asia. The queue for permits extends years in advance. We maintain waiting list access through our partnership with Oxalis Adventure Tours, the only operator authorised to run Son Doong expeditions. Paradise Cave, Tu Lan Cave, and Hang En (the world's third largest cave, with an underground river beach) are extraordinary alternatives with considerably easier access.",
-        "image": "/images/trip_adventure_jungle.png",
+        "image": "/images/unsplash/hagiang.jpg",
         "imageAlt": "Explorer inside a vast cave in Phong Nha National Park Vietnam with underground river",
         "imageCaption": "Phong Nha's cave systems — some of the world's largest and most spectacular, now accessible via guided expeditions through certified operators."
       }
@@ -165,7 +165,7 @@ export const inspirationsData: TripPageData[] = [
     "title": "Vietnam Family Tours: Extraordinary Adventures for All Ages",
     "metaTitle": "Vietnam Family Tours 2025 | Private Family Holiday Experts | Vietnam Tour",
     "metaDescription": "Vietnam is one of Asia's most rewarding family travel destinations. Private family tours with activities for all ages, child-friendly accommodation, and itineraries that keep both parents and children genuinely engaged.",
-    "heroImage": "/images/trip_family_halong.png",
+    "heroImage": "/images/unsplash/halong.jpg",
     "heroSubtitle": "Vietnam engages children in ways that few other destinations can match — the food culture, the living history, the wildlife, and the sheer visual drama of the landscape.",
     "category": "FAMILY",
     "breadcrumb": "Family Tours",
@@ -174,7 +174,7 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "What Makes Vietnam Ideal for Families",
         "body": "Vietnamese people love children with a warmth that feels completely genuine. A family walking through Hanoi's Old Quarter or Hoi An's Ancient Town will be stopped constantly — by shopkeepers wanting to practise English, by elderly men who want to shake the children's hands, by market women who will press fruit into small palms as gifts. This social warmth is one of Vietnam's great gifts to family travellers, and no amount of guidebook reading can prepare you for how immediately it makes children feel welcome and interesting.\n\nThe food is another natural engagement point. Children who are adventurous about food will find Vietnam overwhelming in the best possible way. Cooking classes designed for families — market in the morning, cooking at noon, eating what you made in the afternoon — are among the best experiences we offer for mixed-age groups. Even children who are initially cautious about unfamiliar food tend to open up after 48 hours in Vietnam's company.",
-        "image": "/images/trip_family_halong.png",
+        "image": "/images/unsplash/halong.jpg",
         "imageAlt": "Family kayaking through Halong Bay limestone karst islands in Vietnam",
         "imageCaption": "Kayaking through Halong Bay's limestone lagoons — one of the great family adventure experiences in Southeast Asia."
       },
@@ -237,7 +237,7 @@ export const inspirationsData: TripPageData[] = [
     "title": "Vietnam Culinary Inspiration: A Journey Through the Country's Food Soul",
     "metaTitle": "Vietnam Culinary Tour Inspiration 2025 | Food Travel Ideas | Vietnam Tour",
     "metaDescription": "Get inspired for a Vietnam culinary journey — from Hanoi's dawn pho kitchens to Hoi An's ocean-to-table restaurants. Food travel inspiration from specialists who have eaten their way through Vietnam.",
-    "heroImage": "/images/trip_culinary_street_food.png",
+    "heroImage": "/images/unsplash/food.jpg",
     "heroSubtitle": "Every meal in Vietnam tells a story about the region, the season, the family, and the century of history that shaped the recipe.",
     "category": "CULINARY",
     "breadcrumb": "Culinary Inspiration",
@@ -246,7 +246,7 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "The Three Cuisines of Vietnam",
         "body": "To understand Vietnamese food, you need to understand that the country's 1,650-kilometre length produces three genuinely distinct culinary traditions. Northern Vietnamese cooking (centred on Hanoi) is the most restrained: cleaner broths, fewer herbs, almost no sugar, a precision that rewards attention. Central Vietnamese cooking (Hue and Hoi An) is the most complex: layered, ceremonial, influenced by centuries of imperial court tradition and the particular geography of the central coast. Southern Vietnamese cooking (Ho Chi Minh City and the Mekong Delta) is the most abundant: sweeter, richer, more Chinese and Cambodian in influence, shaped by the extraordinary productivity of the Mekong Delta's rice bowl.\n\nA culinary tour connecting all three is not repetitive — each region's food reveals a completely different country.",
-        "image": "/images/trip_culinary_street_food.png",
+        "image": "/images/unsplash/food.jpg",
         "imageAlt": "Traditional Vietnamese food preparation in Hoi An ancient town",
         "imageCaption": "Hoi An's food culture is the most distinctive in Vietnam — its iconic dishes are specific to the town and cannot be authentically replicated elsewhere."
       },
@@ -280,7 +280,7 @@ export const inspirationsData: TripPageData[] = [
       },
       {
         "question": "Are Vietnamese cooking classes worth doing?",
-        "answer": "Excellent ones are genuinely among the best travel experiences available in Vietnam. The key is choosing a class that starts at the market (not a pre-stocked kitchen), uses a private teacher (not a group demonstration), and produces dishes you will actually make at home. We book all cooking classes through vetted providers we have used personally."
+        "answer": "A cooking class may include a market visit, a private instructor or a group demonstration, depending on the provider. Ask what is included, where it starts, how many people attend, which dishes are taught and whether dietary needs can be accommodated before booking."
       },
       {
         "question": "What is Vietnamese coffee?",
@@ -309,7 +309,7 @@ export const inspirationsData: TripPageData[] = [
     "title": "Vietnam Golf Inspiration: Asia's Most Beautiful Courses",
     "metaTitle": "Vietnam Golf Tours Inspiration 2025 | Championship Courses | Vietnam Tour",
     "metaDescription": "Discover why Vietnam has become one of Asia's premier golf destinations — championship courses against limestone karsts, coastal links, and mountain fairways at prices that surprise every visitor.",
-    "heroImage": "/images/trip_golf_vietnam.png",
+    "heroImage": "/images/unsplash/dalat.jpg",
     "heroSubtitle": "Vietnam's golf scene has quietly matured into one of Asia's most compelling — extraordinary courses, world-class architects, and scenery that no other golf destination can match.",
     "category": "GOLF",
     "breadcrumb": "Golf Inspiration",
@@ -318,7 +318,7 @@ export const inspirationsData: TripPageData[] = [
       {
         "heading": "Why Vietnam for Golf?",
         "body": "Plan the number of rounds around your flights, transfers and preferred pace. A route can focus on one region or combine golf with other parts of Vietnam, but extra transfers reduce the time available for playing and sightseeing.\n\nRequest the total price and a clear breakdown of the golf-related inclusions. Compare proposals on the same dates, accommodation standard and number of rounds.",
-        "image": "/images/trip_golf_vietnam.png",
+        "image": "/images/unsplash/dalat.jpg",
         "imageAlt": "Championship golf course with limestone mountains behind in Vietnam at dawn",
         "imageCaption": "BRG Kings Island Mountain Course at dawn — where the karst landscape provides the most dramatic natural backdrop of any golf course in Southeast Asia."
       },

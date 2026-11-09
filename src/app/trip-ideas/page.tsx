@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Bespoke Vietnam Trip Ideas & Travel Inspiration',
     description: 'Curated trip ideas — from street food tours and motorcycle loops to classic luxury journeys.',
     url: 'https://www.vietnamtours.co.uk/trip-ideas',
-    images: [{ url: '/images/dest_hanoi_train.png', width: 1200, height: 630, alt: 'Vietnam trip inspiration — Hanoi Train Street' }],
+    images: [{ url: '/images/unsplash/hanoi.jpg', width: 1200, height: 630, alt: 'Vietnam trip inspiration — Hanoi Train Street' }],
   },
 };
 
@@ -44,7 +44,7 @@ export default async function TripIdeasListingPage() {
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/trip_bike_rice_paddies.png"
+            src="/images/unsplash/sapa.jpg"
             alt="Vietnam Trip Ideas Header"
             fill
             className="object-cover brightness-[0.55]"

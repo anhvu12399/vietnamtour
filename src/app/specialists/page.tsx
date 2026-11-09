@@ -34,13 +34,13 @@ export default async function SpecialistsPage() {
           {/* Header */}
           <div className="space-y-4 max-w-3xl animate-fade-in">
             <span className="text-xs uppercase tracking-[0.3em] font-semibold text-gold block">
-              Destination Curators
+              Plan a Vietnam trip
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl text-ink font-medium leading-tight">
-              Our Vietnam Specialists
+              Talk to our Vietnam travel team
             </h1>
             <p className="text-base sm:text-lg text-ink/70 font-light leading-relaxed">
-              Our travel specialists have spent years living and travelling in Vietnam. They know the country intimately—from hidden street kitchens to exclusive luxury retreats. Talk directly to the expert who will plan your trip.
+              Share your dates, preferred pace and the places you hope to visit. The team can discuss route options, accommodation and activities, then confirm who will prepare your proposal and which services are available for your dates.
             </p>
           </div>
 

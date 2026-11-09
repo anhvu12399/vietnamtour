@@ -18,15 +18,15 @@ export default function JourneyBlock() {
     },
     {
       num: "02",
-      title: "Handcrafting your unique route",
+      title: "Preparing a route proposal",
       description:
-        "Every hotel, private transfer, and local dining recommendation is handpicked by a designer who has personally vetted them.",
+        "Compare route, accommodation and activity options. Confirm the provider, availability, inclusions and price in writing before booking.",
     },
     {
       num: "03",
-      title: "Hosting you at every single step",
+      title: "Confirming support arrangements",
       description:
-        "Our local concierge is active 24/7 on the ground. From VIP airport tracks to sudden itinerary changes, you are fully hosted.",
+        "Ask which contact and support hours apply during your trip, and what assistance is included in the confirmed arrangements.",
     },
   ];
 
@@ -50,9 +50,7 @@ export default function JourneyBlock() {
             </h2>
             
             <p className="font-sans text-sm text-ink-soft leading-relaxed max-w-sm font-light mt-2">
-              You are not meant to see Vietnam like everyone else. You are meant to feel
-              it, like only you can. It is why our designers use their deep local insight to craft
-              moments that feel fortuitously right.
+              Share your dates, interests and preferred pace. The travel team can use these details to discuss route options and prepare a proposal for your trip.
             </p>
           </div>
 

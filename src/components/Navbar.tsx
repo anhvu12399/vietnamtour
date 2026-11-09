@@ -606,7 +606,7 @@ function NavbarContent({ pathname }: { pathname: string }) {
                 <div className="space-y-4">
                   <div className="relative w-full h-[120px] border border-[#2A2D2B]/10">
                     <Image 
-                      src="/images/trip_culinary_street_food.png"
+                      src="/images/unsplash/food.jpg"
                       alt="Hoi An Culinary Tour"
                       fill
                       className="object-cover"
@@ -701,7 +701,7 @@ function NavbarContent({ pathname }: { pathname: string }) {
                 <div className="space-y-4">
                   <div className="relative w-full h-[120px] border border-[#2A2D2B]/10">
                     <Image 
-                      src="/images/trip_luxury_villa.png"
+                      src="/images/unsplash/phuquoc.jpg"
                       alt="Luxury Amanoi resort"
                       fill
                       className="object-cover"

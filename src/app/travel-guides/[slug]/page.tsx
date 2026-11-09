@@ -236,72 +236,72 @@ function getRelatedFaqs(title: string) {
 }
 
 const FALLBACK_IMAGES = [
-  '/images/hero_hoian.png',
-  '/images/hero_halong_bay.png',
-  '/images/hero_sapa.png',
-  '/images/vietnamtour_cave_dining.png',
-  '/images/vietnamtour_mekong_sampan.png',
-  '/images/vietnamtour_phu_quoc_beach.png',
-  '/images/vietnamtour_sapa_lodge.png',
-  '/images/vietnamtour_hanoi_colonial.png',
-  '/images/halong_night.png',
+  '/images/unsplash/hoian.jpg',
+  '/images/unsplash/halong.jpg',
+  '/images/unsplash/sapa.jpg',
+  '/images/unsplash/cave.jpg',
+  '/images/unsplash/mekong.jpg',
+  '/images/unsplash/phuquoc.jpg',
+  '/images/unsplash/sapa.jpg',
+  '/images/unsplash/hanoi.jpg',
+  '/images/unsplash/halong.jpg',
 ];
 
 function EeatArticleLayout() {
   const destinations = [
     {
       name: "Hanoi",
-      image: "/images/vietnamtour_hanoi_colonial.png",
+      image: "/images/unsplash/hanoi.jpg",
       text: "Nobody warns you properly about the traffic here — a useful approach for visitors is to walk slowly, steadily, and let the motorbikes flow around you, don't stop halfway. The Old Quarter's 36 streets are each named after the guild that once traded there, and a proper visit needs at least two full days — one for the Temple of Literature and Hoan Kiem Lake at sunrise, one for wandering without a plan."
     },
     {
       name: "Ha Long Bay",
-      image: "/images/dest_halong_limestone.png",
+      image: "/images/unsplash/halong.jpg",
       text: "The limestone islands really do look exactly like the photos at dawn, but we'll be upfront — parts of the bay do get crowded with tour boats, and some travellers report litter near the more popular routes. Most cruises run 2 days/1 night, including kayaking through Luon Cave, a stop at Sung Sot Cave, and the roughly 400-step climb up Ti Top Island. For a quieter alternative with similar scenery, consider Lan Ha Bay instead of the standard Ha Long route."
     },
     {
       name: "Sapa",
-      image: "/images/dest_sapa_highland.png",
+      image: "/images/unsplash/sapa.jpg",
       text: "September–October is a popular period for golden rice terraces, versus April for the flooded, mirror-like paddies. A two-night homestay with a H'Mong family gives a far better sense of the region than a rushed day trip — expect a wood-fire dinner and, often, a bowl of home-brewed rice wine offered as a welcome."
     },
     {
       name: "Ninh Binh",
-      image: "/images/tour_ninhbinh_landscape.png",
+      image: "/images/unsplash/ninhbinh.jpg",
       text: "Trang An's boat route takes you under low limestone arches through caves connecting several valleys."
     },
     {
       name: "Hue",
-      image: "/images/things_cooking_class_hue.png",
+      image: "/images/unsplash/food.jpg",
       text: "The Imperial Citadel, a UNESCO World Heritage Site, needs a half-day minimum to appreciate its scale. Hue's imperial cuisine — dozens of small, refined dishes originally prepared for the royal court — is distinct from food anywhere else in the country, and worth building an extra day around."
     },
     {
       name: "Da Nang",
-      image: "/images/trip_adventure_jungle.png",
+      image: "/images/unsplash/hagiang.jpg",
       text: "A relaxed base with long beaches, best used as a stopover between Hue and Hoi An or for day trips to the Marble Mountains."
     },
     {
       name: "Hoi An",
-      image: "/images/dest_hoian_lanterns.png",
+      image: "/images/unsplash/hoian.jpg",
       text: "This UNESCO-listed ancient town is where visitors commission tailored clothing — our recommendation, based on repeated client feedback, is to allow a minimum of three days for fittings rather than trust same-day turnaround offers. Street-stall bánh mì and cao lầu noodles are consistently rated by our guests above restaurant versions of the same dishes."
     },
     {
       name: "Phong Nha-Ke Bang National Park",
-      image: "/images/dest_phongnha_cave.png",
+      image: "/images/unsplash/cave.jpg",
       text: "This UNESCO World Heritage Site holds the world's largest cave system. As of the official park pricing, entrance to Phong Nha Cave is 150,000 VND per person plus a shared boat fee, while Paradise Cave entry is 250,000 VND per person; the Dark Cave zipline-and-mudbath package runs 250,000–450,000 VND depending on season. Caves are open daily 07:30–16:00; Son Doong itself requires a licensed multi-day expedition booked well in advance."
     },
     {
       name: "Da Lat",
-      image: "/images/trip_bike_rice_paddies.png",
+      image: "/images/unsplash/sapa.jpg",
       text: "Noticeably cooler than the rest of the south, with pine forests and French colonial-era villas. Two to three days suits the pace better than an overnight stop."
     },
     {
       name: "Ho Chi Minh City",
-      image: "/images/tour_saigon_vespa_night.png",
+      image: "/images/unsplash/hanoi.jpg",
       text: "Beyond the traffic (same rule as Hanoi — walk steadily, don't stop), District 1 holds the War Remnants Museum, the Central Post Office, and the Reunification Palace, all within walking distance of each other."
     },
     {
       name: "Mekong Delta",
-      image: "/images/dest_mekong_canal.png",
+      image: "/images/unsplash/mekong.jpg",
       text: "The Cai Rang floating market is busiest before 7am, when vendors sell produce boat-to-boat rather than to tourists directly. Slower, narrower-canal routes tend to feel markedly less commercial than the standard day-tour circuit."
     }
   ];
@@ -677,7 +677,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                       {/* Tour image */}
                       <div className="relative h-52 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                          src={it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                           alt={it.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

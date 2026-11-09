@@ -81,17 +81,33 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
             {/* Description */}
             <div className="space-y-6">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
-                About the Resort
+                About the Hotel
               </h2>
               <p className="text-base font-light text-ink-soft leading-relaxed">
                 {accommodation.description?.[0]?.children?.[0]?.text || ''}
               </p>
+              {accommodation.photoNote && (
+                <p className="text-xs text-ink/60 leading-relaxed">{accommodation.photoNote}</p>
+              )}
+              {!!accommodation.editorial?.sources?.length && (
+                <div className="border-l-2 border-gold pl-4 text-sm text-ink-soft">
+                  <h3 className="font-semibold text-ink">Rating and property sources</h3>
+                  <ul className="mt-2 space-y-2">
+                    {accommodation.editorial.sources.map((source) => (
+                      <li key={source.url}>
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" className="underline">{source.label}</a>
+                        {source.accessedAt ? ` — checked ${source.accessedAt}` : ''}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* Features list */}
             <div className="space-y-6">
               <h3 className="font-serif text-xl text-ink font-medium">
-                Resort Features & Signature Experiences
+                Hotel Information
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {accommodation.features.map((feature, idx) => (
@@ -128,17 +144,17 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
           <div className="space-y-8">
             <div className="bg-jade-deep p-8 border border-line space-y-6 shadow-sm">
               <h3 className="font-serif text-xl text-white font-medium">
-                Plan a Luxury Escape
+                Discuss a Stay
               </h3>
               <p className="text-sm text-paper/90 font-light leading-relaxed">
-                Stay at {accommodation.name} as part of your tailor-made Vietnam itinerary. Speak to a travel specialist today.
+                Ask our team to include {accommodation.name} in a draft itinerary. Confirm room type, operating facilities, availability, inclusions and current prices with the property for your dates.
               </p>
               <div className="pt-4 border-t border-gold/20 space-y-4">
                 <Link
                   href="/enquire"
                   className="block w-full py-3 bg-gold hover:bg-gold/95 text-ink font-semibold text-xs tracking-widest uppercase transition-all duration-300 rounded-none text-center"
                 >
-                  Book this Resort
+                  Discuss this Hotel
                 </Link>
                 {accommodation.websiteUrl && (
                   <a
@@ -158,9 +174,9 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
                 Why book with us?
               </h4>
               <ul className="space-y-2">
-                <li>✓ Preferential rates & exclusive room upgrades (subject to availability).</li>
-                <li>✓ Bespoke transfers and local airport meet-and-greets.</li>
-                <li>✓ Integrated booking: flights, transfers, accommodation, and private tours.</li>
+                <li>Share your dates, room preferences and any accessibility requirements.</li>
+                <li>We can discuss accommodation alongside transfers and private tours in your proposal.</li>
+                <li>All inclusions, rates and availability are confirmed for the requested dates.</li>
               </ul>
             </div>
           </div>

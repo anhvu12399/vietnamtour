@@ -11,6 +11,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { ideasByMonthData, getMonthBySlug, getAllMonthSlugs } from '@/lib/ideasByMonthData';
 import { getItineraries, getSpecialists, getMonthGuideFromSanity, getMonthGuidesFromSanity } from '@/sanity/client';
+import { editorialImageFor } from '@/lib/editorialPhotos';
 import { ArticleJsonLd, FaqJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
 
 export const revalidate = 60;
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       title: data.title,
       description: data.seo?.metaDescription || data.metaDescription || data.excerpt,
-      images: [{ url: data.heroImage }],
+      images: [{ url: `https://www.vietnamtours.co.uk${editorialImageFor(`${data.slug} ${data.breadcrumb} Vietnam month guide`)}` }],
     },
   };
 }
@@ -74,6 +75,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
   if (!monthData) {
     notFound();
   }
+  const monthHeroImage = editorialImageFor(`${monthData.slug} ${monthData.breadcrumb} Vietnam month guide`);
 
   // Load all itineraries to display relevant recommendations
   const itineraries = await getItineraries();
@@ -115,7 +117,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
         title={monthData.title}
         description={monthData.metaDescription || monthData.intro?.substring(0, 160)}
         url={`https://www.vietnamtours.co.uk/ideas-by-month/${monthData.slug}`}
-        image={monthData.heroImage.startsWith('http') ? monthData.heroImage : `https://www.vietnamtours.co.uk${monthData.heroImage}`}
+        image={`https://www.vietnamtours.co.uk${monthHeroImage}`}
         section={monthData.category}
       />
       {monthData.faqs && monthData.faqs.length > 0 && (
@@ -129,7 +131,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
         {/* Scenic Hero Banner */}
         <section className="relative h-[320px] sm:h-[400px] lg:h-[480px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src={monthData.heroImage}
+            src={monthHeroImage}
             alt={monthData.title}
             fill
             className="object-cover brightness-[0.55]"
@@ -305,7 +307,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                       {/* Tour Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={tour.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                          src={tour.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                           alt={tour.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

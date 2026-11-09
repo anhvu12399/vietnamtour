@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Vietnam Travel Blog | Insider Tips & Stories',
     description: 'Travel stories, hidden gems, and insider tips from our local Vietnam specialists.',
     url: 'https://www.vietnamtours.co.uk/blog',
-    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam travel blog — Ha Long Bay' }],
+    images: [{ url: '/images/unsplash/halong.jpg', width: 1200, height: 630, alt: 'Vietnam travel blog — Ha Long Bay' }],
   },
 };
 

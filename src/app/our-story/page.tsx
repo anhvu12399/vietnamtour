@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'About VietnamTours',
-    description: 'A passion-led journey to share the authentic soul of Vietnam with discerning travellers.',
+    description: 'Learn about the VietnamTours travel brand, its Vietnam tour operator and the company information available before booking.',
     url: 'https://www.vietnamtours.co.uk/our-story',
-    images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Our Story - VietnamTours.co.uk' }],
+    images: [{ url: '/images/unsplash/hoian.jpg', width: 1200, height: 630, alt: 'Our Story - VietnamTours.co.uk' }],
   },
 };
 
@@ -28,8 +28,8 @@ export default function OurStoryPage() {
       {/* Hero */}
       <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
         <Image
-          src="/images/our-story-hero.jpg"
-          alt="Traditional junk boat sailing Halong Bay at sunset"
+          src="/images/unsplash/hanoi.jpg"
+          alt="A motorbike travelling along a Hanoi street"
           fill
           priority
           className="object-cover"
@@ -63,8 +63,8 @@ export default function OurStoryPage() {
           </div>
           <div className="relative h-[460px] w-full overflow-hidden">
             <Image
-              src="/images/our-story-hero.jpg"
-              alt="Halong Bay at sunset"
+              src="/images/unsplash/hanoi.jpg"
+              alt="A motorbike travelling along a Hanoi street"
               fill
               className="object-cover"
             />
@@ -126,11 +126,20 @@ export default function OurStoryPage() {
 
       <section className="border-y border-line bg-white px-6 py-20">
         <div className="mx-auto max-w-3xl space-y-6 text-sm leading-relaxed text-ink-soft">
-          <h2 className="font-serif text-3xl text-ink">Operator information and contact</h2>
-          <p>VietnamTours.co.uk identifies My Way Travel as its operator. My Way Travel publishes its company and licensing information on its own website. Consult that source and confirm the contracting company in your written quotation.</p>
-          <p><a href="https://www.mywaytravel.com/why-us/" className="underline">My Way Travel: company and operator information</a></p>
+          <h2 className="font-serif text-3xl text-ink">My Way Travel group and operator details</h2>
+          <p>VietnamTours.co.uk is the Vietnam-focused travel brand of My Way Travel. The company named as the contracting operator for a trip must appear in your written quotation and booking documents.</p>
+          <div className="space-y-3 border border-line bg-paper p-5">
+            <h3 className="font-semibold text-ink">Vietnam tour operator</h3>
+            <p>Vietnam tour services are licensed to <strong>MYWAY LIMITED LIABILITY COMPANY (Công ty TNHH MyWay)</strong> under International Tour Operator Licence <strong>79-0743/2017/CDLQGVN-GP LHQT</strong>, issued by Vietnam&apos;s National Authority of Tourism for inbound and outbound tour services. The licence shown by My Way Travel is dated 6 May 2024.</p>
+            <p>The public <a href="https://quanlyluhanh.vn/en/search/116" className="underline" target="_blank" rel="noreferrer">Vietnam tour-operator registry listing</a> shows an earlier 2017 record using a different company-name and licence-number format. My Way Travel publishes the 2024 licence information on its <a href="https://www.mywaytravel.com/why-us/" className="underline" target="_blank" rel="noreferrer">company information page</a>. Ask the operator to reconcile the current certificate with the legal entity named in your booking contract.</p>
+          </div>
+          <div className="space-y-3 border border-line bg-paper p-5">
+            <h3 className="font-semibold text-ink">United States company registration</h3>
+            <p>My Way Travel reports that <strong>My Way Luxury Travel LLC</strong> is registered in New York under Department of State ID <strong>7926729</strong>. A New York entity ID is a company-record identifier, not a travel licence, government endorsement or proof of booking protection.</p>
+            <p>Look up the identifier in the <a href="https://dos.ny.gov/corporation-and-business-entity-database" className="underline" target="_blank" rel="noreferrer">New York Department of State entity database</a>; see the <a href="https://www.mywaytravel.com/why-us/" className="underline" target="_blank" rel="noreferrer">company&apos;s published registration details</a>.</p>
+          </div>
+          <p>Ask for the current licence, contracting entity, payment terms, inclusions and cancellation conditions with your written quotation before paying. The Vietnam operating licence and New York company registration describe separate records; neither by itself guarantees a particular service or consumer protection.</p>
           <p>Website contact: <a href="mailto:info@vietnamtours.co.uk" className="underline">info@vietnamtours.co.uk</a> · <a href="tel:+84988600388" className="underline">+84 988600388</a>.</p>
-          <p>This is a link to information supplied by the operator, not an independent certification. Request the current licence and booking documents if you need to verify them before payment.</p>
         </div>
       </section>
 

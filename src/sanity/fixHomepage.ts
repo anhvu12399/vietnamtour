@@ -45,7 +45,7 @@ async function main() {
       // If the image is a string, we need to upload it and replace it with an asset reference object.
       if (typeof item.image === 'string') {
         const imagePath = item.image;
-        // The image path is relative to public, e.g. /images/vietnamtour_halong_yacht_luxury.png
+        // The image path is relative to public, e.g. /images/unsplash/halong.jpg
         const fullLocalPath = path.join(process.cwd(), 'public', imagePath);
         
         console.log(`Image is a string: "${imagePath}". Local path: "${fullLocalPath}"`);

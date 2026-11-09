@@ -10,7 +10,7 @@ export default function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/cta_vietnam_sapa_aerial.png"
+          src="/images/unsplash/sapa.jpg"
           alt="Aerial view of Sa Pa rice terraces in Vietnam — design your bespoke private tour"
           fill
           sizes="100vw"

@@ -7,7 +7,7 @@ const block = (text: string, index: number, style = 'normal'): RichTextBlock => 
 function article(slug: string, title: string, excerpt: string, sections: [string, string][]): Post {
   return {
     _id: `planning-${slug}`, slug: { current: slug }, title, excerpt,
-    mainImage: '/images/dest_halong_limestone.png',
+    mainImage: '/images/unsplash/halong.jpg',
     content: sections.flatMap(([heading, text], index) => [block(heading, index * 2, 'h2'), block(text, index * 2 + 1)]),
     ctaHeading: 'Request a proposal for your dates',
     ctaDescription: 'Share your dates, number of travellers, preferred pace and budget. Ask for a written breakdown of the route and included services.',

@@ -25,8 +25,8 @@ export async function POST(req: NextRequest) {
   if (!input) return NextResponse.json({ error: 'Please check your contact details and traveller numbers.' }, { status: 400 });
   const attribution = detectTrafficSource(input.referrer, input.utmSource, input.notes, input.landingPage, input.utmMedium);
   const id = `enquiry-${input.submissionId}`;
-  const name = `${input.firstName} ${input.lastName}`;
-  const phone = `${input.phoneCode} ${input.phone}`.trim();
+  const name = `${input.firstName} ${input.lastName}`.trim() || input.email;
+  const phone = input.phone ? `${input.phoneCode} ${input.phone}`.trim() : '';
   const result = await deliverEnquiry({
     save: async () => {
       if (!sanityClient || !enquiryDataset) return null;

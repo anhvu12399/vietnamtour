@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <ArticleJsonLd title={post.title} description={post.excerpt || post.title} url={url}
-        image={absoluteUrl(post.featuredImage || '/images/dest_halong_limestone.png')}
+        image={absoluteUrl(post.featuredImage || '/images/unsplash/halong.jpg')}
         publishedAt={post.publishedAt} author={author?.name}
         authorType={author ? 'Person' : 'Organization'}
         authorUrl={author?.slug?.current ? absoluteUrl(`/specialists/${author.slug.current}`) : undefined} />

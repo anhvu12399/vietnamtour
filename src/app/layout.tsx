@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       "Handcrafted bespoke Vietnam holidays for discerning UK travellers. Private guided tours, luxury Ha Long Bay cruises, highland trekking in Sa Pa and heritage journeys through Hoi An.",
     images: [
       {
-        url: "/images/dest_halong_limestone.png",
+        url: "/images/unsplash/halong.jpg",
         width: 1200,
         height: 630,
         alt: "Ha Long Bay limestone karsts at sunrise — luxury private Vietnam tour",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "Luxury Vietnam Private Tours | Bespoke Holidays from the UK",
     description:
       "Handcrafted bespoke Vietnam holidays for discerning UK travellers. Private guided tours, luxury cruises and highland trekking.",
-    images: ["/images/dest_halong_limestone.png"],
+    images: ["/images/unsplash/halong.jpg"],
     creator: "@vietnamtoursuk",
   },
   robots: {

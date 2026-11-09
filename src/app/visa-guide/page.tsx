@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Vietnam Visa Guide 2026 | Entry Requirements & Tips',
     description: 'Everything you need to know about obtaining a visa for Vietnam — e-visa applications, entry requirements, and expert tips for UK travellers.',
     url: 'https://www.vietnamtours.co.uk/visa-guide',
-    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam visa guide' }],
+    images: [{ url: '/images/unsplash/halong.jpg', width: 1200, height: 630, alt: 'Vietnam visa guide' }],
   },
 };
 
@@ -43,7 +43,7 @@ export default function VisaGuidePage() {
       {/* Hero */}
       <section className="relative h-[55vh] min-h-[380px] w-full overflow-hidden">
         <Image
-          src="/images/visa-guide-hero.jpg"
+          src="/images/unsplash/hanoi.jpg"
           alt="Vietnam travel essentials: passport, map and visa"
           fill
           priority

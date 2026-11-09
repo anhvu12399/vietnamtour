@@ -85,7 +85,7 @@ const posts = [
     ],
     ctaLabel: 'Ready to Plan Your First Vietnam Trip?',
     ctaHeading: 'Start With a Free Specialist Consultation',
-    ctaDescription: 'Our Vietnam specialists have helped hundreds of first-time travellers design journeys that genuinely exceed expectations. No obligation, just expert advice.',
+    ctaDescription: 'Share your dates, interests and practical requirements. We can discuss a route and confirm proposed services and prices in writing.',
   },
 
   // ── 3. Halong Bay ─────────────────────────────────────────────────────────
@@ -109,7 +109,7 @@ const posts = [
     ],
     ctaLabel: 'Discover Our Halong Bay Cruise Selection',
     ctaHeading: 'Book the Right Junk for Your Bay Voyage',
-    ctaDescription: 'We have personally vetted every cruise operator we recommend. Our specialists will match you with the right vessel, route, and cabin for your group.',
+    ctaDescription: 'Cruise vessels, routes, cabins and availability vary by date. Ask for the proposed operator and written inclusions before booking.',
   },
 
   // ── 4. Hoi An Guide ───────────────────────────────────────────────────────

@@ -19,6 +19,7 @@ export interface TripPageData {
   _updatedAt?: string;
   seo?: SeoFields;
   editorial?: EditorialEvidence;
+  sources?: { label: string; url: string }[];
   excerpt?: string;
   keywords?: string[];
   readingTime?: number;
@@ -50,9 +51,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "vietnam-culinary-tours",
     "title": "Vietnam Culinary Tours: Eat Your Way Through the Country",
-    "metaTitle": "Vietnam Culinary Tours 2025 | Private Food & Cooking Experiences | Vietnam Tour",
+    "metaTitle": "Vietnam Culinary Tours | Private Food & Cooking Experiences | Vietnam Tour",
     "metaDescription": "Discover Vietnam through its extraordinary food culture. Private culinary tours from Hanoi pho to Hoi An cao lau, market visits, cooking classes, and chef's table dinners curated by food specialists.",
-    "heroImage": "/images/trip_culinary_street_food.png",
+    "heroImage": "/images/unsplash/food.jpg",
     "heroSubtitle": "From street food stalls to imperial banquets — Vietnam's culinary landscape is one of the world's great undiscovered food journeys.",
     "category": "CULINARY TOURS",
     "breadcrumb": "Culinary Tours",
@@ -61,7 +62,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Hanoi: Where Pho Was Born",
         "body": "The north is the place to understand Vietnamese cooking's fundamentals. Pho originated in Nam Dinh province and evolved into Hanoi's defining dish over a century of refinement. At Pho Thin on Dinh Tien Hoang, the broth has been simmering since 4am; the star anise, cinnamon, and charred ginger are balanced to within a breath of perfection. Your private food guide knows which stalls open at 5:30am and which family restaurants have been serving the same recipes for three generations without a printed menu. On a private Hanoi food walk, you eat where the city actually eats — not where tourists are directed.\n\nBeyond pho, Hanoi's food story includes bun cha (the dish Barack Obama ate with Anthony Bourdain in 2016), banh cuon (steamed rice rolls with wood ear mushroom), and bun doc mung (rice noodle soup with taro stem) — dishes that barely register on tourist food maps but represent the city's culinary soul.",
-        "image": "/images/trip_culinary_street_food.png",
+        "image": "/images/unsplash/food.jpg",
         "imageAlt": "Street food vendor in Hoi An ancient town preparing bánh mì",
         "imageCaption": "A bánh mì vendor at Hoi An's famous Bánh Mì Phượng — the sandwich that helped put Vietnamese street food on the global map."
       },
@@ -72,7 +73,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Cooking Classes: Learning to Cook Vietnamese",
         "body": "The best cooking classes in Vietnam are not hotel programmes with tourist kitchens. They begin at the market at 7am, where you shop alongside actual home cooks, selecting herbs by smell and fish by eye. Your private cooking teacher — typically a specialist with decades of experience, not a chef hired for tourist programmes — explains the philosophy: balance between hot and cold, the role of fresh herbs as a primary ingredient rather than garnish, why fish sauce is the foundation of everything.\n\nWe recommend classes in Hoi An (where the market walk is genuinely extraordinary), Hue (for royal-influenced dishes), and Saigon (for the complexity of southern cooking). Three to four hours, a private kitchen, six to eight dishes — and you leave with recipes you will actually use at home.",
-        "image": "/images/vietnamtour_cave_dining.png",
+        "image": "/images/unsplash/cave.jpg",
         "imageAlt": "Private cave dining experience in Halong Bay Vietnam",
         "imageCaption": "Cave dining in Halong Bay — one of Vietnam's most dramatic and exclusive culinary experiences, bookable through our specialists."
       }
@@ -94,7 +95,7 @@ export const tripIdeasData: TripPageData[] = [
       },
       {
         "question": "Can I do a culinary tour without eating meat?",
-        "answer": "Yes, with advance planning. Vietnamese vegetarian cuisine is substantial and delicious — not a reduced version of the main menu. We have designed fully vegetarian culinary itineraries that hit every major flavour note of Vietnamese cooking through plant-based ingredients."
+        "answer": "Vegetarian food is available across Vietnam, but dishes, ingredients and cross-contact practices vary by restaurant. Tell us your dietary requirements and allergies; we will confirm suitable meals with the providers included in your written itinerary."
       },
       {
         "question": "How many cooking classes should I do on a culinary tour?",
@@ -129,9 +130,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "bike-and-boat-tours",
     "title": "Vietnam Bike & Boat Tours: Cycling Through the Country's Heart",
-    "metaTitle": "Vietnam Bike & Boat Tours 2025 | Private Cycling & River Cruises | Vietnam Tour",
+    "metaTitle": "Vietnam Bike & Boat Tours | Private Cycling & River Cruises | Vietnam Tour",
     "metaDescription": "Explore Vietnam by bicycle and boat — cycle through Sapa's rice terraces, pedal Hoi An's village paths, and cruise the Mekong Delta on a private river boat. Fully supported private cycling tours.",
-    "heroImage": "/images/trip_bike_rice_paddies.png",
+    "heroImage": "/images/unsplash/sapa.jpg",
     "heroSubtitle": "Vietnam reveals itself differently from a bicycle saddle. The roads that tour buses bypass lead to the places worth remembering.",
     "category": "BIKE & BOAT TOURS",
     "breadcrumb": "Bike & Boat Tours",
@@ -140,7 +141,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Sapa: Cycling the Terraced Highlands",
         "body": "The road from Sapa town descends through the Muong Hoa Valley — 1,200 metres of elevation loss over 18 kilometres of beautifully paved switchbacks. In October, when the rice harvest turns the terraces gold, this descent is among the most visually extraordinary bicycle routes in Asia. Your private guide knows which village tracks to take at the valley floor, threading between paddy fields and past H'Mong weaving cooperatives, stopping for lunch at a family home that doesn't appear on any map.\n\nAll bikes are quality aluminium hybrids or road bikes, properly fitted before departure. A support vehicle follows at a discreet distance, carrying luggage, water, and anyone who finds the terrain more demanding than anticipated. Discuss your experience and fitness before choosing a route; support arrangements and shorter alternatives must be confirmed in your proposal.",
-        "image": "/images/trip_bike_rice_paddies.png",
+        "image": "/images/unsplash/sapa.jpg",
         "imageAlt": "Cyclists on a winding road through terraced rice paddies in Sapa Vietnam",
         "imageCaption": "The Muong Hoa Valley descent, Sapa — arguably the most beautiful cycling route in Southeast Asia at harvest time."
       },
@@ -151,7 +152,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "The Mekong Delta: Cycling and River Life",
         "body": "The Mekong Delta is the flattest, most cycle-friendly landscape in Vietnam. The challenge here is not terrain but navigation — thousands of small roads threading between canals, rice paddies, and orchards in a landscape that rewards getting genuinely lost with a local guide. Base yourself in Can Tho for two nights, cycling the levee roads between villages in the morning and taking a private river boat to Cai Rang floating market at dawn.\n\nThe combination of bicycle (for the villages) and small wooden river boat (for the canals between them) gives you access to a landscape that no vehicle larger than a bicycle can reach. Your private river guide navigates the delta's water highways; your cycling guide knows the village paths between them.",
-        "image": "/images/vietnamtour_mekong_sampan.png",
+        "image": "/images/unsplash/mekong.jpg",
         "imageAlt": "Traditional wooden sampan on the Mekong Delta river",
         "imageCaption": "A private sampan navigates the Mekong Delta's waterways — the river portion of a bike and boat itinerary through southern Vietnam."
       }
@@ -169,7 +170,7 @@ export const tripIdeasData: TripPageData[] = [
     "faqs": [
       {
         "question": "How fit do I need to be for a Vietnam bike and boat tour?",
-        "answer": "Our standard cycling routes are designed for recreational cyclists with basic fitness. The Sapa valley descent is physically easy (mostly downhill). The Hoi An loops and Mekong Delta routes are flat. A support vehicle is always present. For more experienced cyclists, we have challenging options in Ha Giang and the northern mountains."
+        "answer": "Cycling difficulty depends on the selected route, surface, distance and elevation. Ask for the current route profile and confirm whether a support vehicle, bicycle, helmet and guide are included before booking; these arrangements vary by provider."
       },
       {
         "question": "What type of bike is provided?",
@@ -208,9 +209,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "motorcycling-tours",
     "title": "Vietnam Motorcycling Tours: The Road Trip of a Lifetime",
-    "metaTitle": "Vietnam Motorcycle Tours 2025 | Ha Giang Loop & Coastal Routes | Vietnam Tour",
+    "metaTitle": "Vietnam Motorcycle Tours | Ha Giang Loop & Coastal Routes | Vietnam Tour",
     "metaDescription": "Explore Vietnam by motorcycle — from the legendary Ha Giang Loop through limestone peaks to the coastal Hai Van Pass. Private guided motorcycle tours with expert local riders and full support.",
-    "heroImage": "/images/trip_motorcycle_hagiang.png",
+    "heroImage": "/images/unsplash/hagiang.jpg",
     "heroSubtitle": "Vietnam's mountain roads were made to be ridden. The Ha Giang Loop is among the most spectacular road journeys on the planet.",
     "category": "MOTORCYCLING",
     "breadcrumb": "Motorcycling Tours",
@@ -219,7 +220,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "The Ha Giang Loop: Vietnam's Greatest Road",
         "body": "The Ha Giang Loop is a 350-kilometre circuit through Vietnam's far north: Ha Giang city to Quan Ba (Heaven's Gate) to Yen Minh to Dong Van to Meo Vac and back. It crosses the UNESCO Dong Van Karst Plateau — a geological formation 400 million years old — and delivers views that feel genuinely impossible: limestone peaks dissolving into cloud, valleys of buckwheat flowers turning bright pink in October, ethnic minority villages clinging to hillsides that appear vertical. The Ma Pi Leng Pass between Dong Van and Meo Vac is the high point, in every sense.\n\nWe do not put novice riders on this road. The Ha Giang Loop requires a reasonable level of motorcycling competence, concentration, and respect for mountain roads. For guests who prefer to experience the scenery without riding, a private car follows the same route on the same schedule — the views from the car windows are identical, and equally extraordinary.",
-        "image": "/images/trip_motorcycle_hagiang.png",
+        "image": "/images/unsplash/hagiang.jpg",
         "imageAlt": "Motorcycle on the Ma Pi Leng pass above the Nho Que River gorge in Ha Giang Vietnam",
         "imageCaption": "The Ma Pi Leng Pass — the most dramatic road in Vietnam, 1,000 metres above the turquoise Nho Que River gorge."
       },
@@ -230,7 +231,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "The Ho Chi Minh Road: Vietnam's Legendary Highway",
         "body": "The Ho Chi Minh Road (National Route 15) runs roughly parallel to the better-known Highway 1, following the old wartime supply route through the country's mountainous interior. From Hanoi to Ho Chi Minh City, the road covers 1,800 kilometres of highland scenery — dense jungle, highland waterfalls, remote ethnic minority communities, and the emptiness of the central highlands — that Highway 1's coastal towns never deliver.\n\nWe design custom Ho Chi Minh Road itineraries over 10 to 21 days, combining motorcycle sections with overnight accommodation in highland towns and private car transfers where the roads become unsuitable for touring riders.",
-        "image": "/images/hero_sapa.png",
+        "image": "/images/unsplash/sapa.jpg",
         "imageAlt": "Mountain road through misty highlands in northern Vietnam",
         "imageCaption": "The northern highlands of Vietnam — a landscape that reveals itself completely differently from a motorcycle saddle."
       }
@@ -287,9 +288,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "classic-tours",
     "title": "Classic Vietnam Tours: The Essential Journey from North to South",
-    "metaTitle": "Classic Vietnam Tours 2025 | Private Hanoi to Ho Chi Minh City | Vietnam Tour",
+    "metaTitle": "Classic Vietnam Tours | Private Hanoi to Ho Chi Minh City | Vietnam Tour",
     "metaDescription": "The definitive private Vietnam tour from Hanoi to Ho Chi Minh City. Two weeks through Halong Bay, Hoi An, Hue, and the Mekong Delta with a private guide, driver, and handpicked luxury hotels.",
-    "heroImage": "/images/vietnamtour_hanoi_colonial.png",
+    "heroImage": "/images/unsplash/hanoi.jpg",
     "heroSubtitle": "Vietnam from north to south is one of the great travel journeys — 1,600 kilometres of landscape, history, and culture that deserves to be done slowly and well.",
     "category": "CLASSIC TOURS",
     "breadcrumb": "Classic Tours",
@@ -298,7 +299,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "The Classic Route: What to Expect",
         "body": "The standard north-to-south route runs: Hanoi (2-3 nights) → Halong Bay cruise (2 nights) → Hue (2 nights) → Hoi An (3 nights) → Ho Chi Minh City (2 nights) → optional Mekong Delta extension (1-2 nights). Each stop is connected by domestic flight or private car, depending on distance and preference. All transfers are private — no shared shuttles, no group minibuses.\n\nThis is the route that most first-time visitors to Vietnam take, and it has not become a cliché because of overexposure — it has become canonical because it works brilliantly. The cities are genuinely distinct. The landscapes change dramatically. The food evolves from Hanoi's restraint to Hue's ceremony to Hoi An's complexity to Saigon's exuberance. The classic route shows you an entire country in motion.",
-        "image": "/images/vietnamtour_hanoi_colonial.png",
+        "image": "/images/unsplash/hanoi.jpg",
         "imageAlt": "French colonial architecture in Hanoi old quarter",
         "imageCaption": "Hanoi's French colonial district — the starting point of every classic Vietnam tour, and a city that rewards three days of serious exploration."
       },
@@ -309,7 +310,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Why Private Matters on the Classic Route",
         "body": "Group tours of the classic Vietnam route have been running for decades, and the difference between a group tour and a private tour on the same route is not marginal — it is fundamental. A private guide adjusts pace, depth, and focus to you specifically. They can spend an extra hour at the Hue Citadel if you are interested in Nguyen dynasty history. They can skip the standard sites in favour of the neighbourhood market on Tuesday morning. They speak directly to the restaurant kitchen and the museum curator and the local family.\n\nA private driver means your car leaves when you are ready and stops at the roadside viewpoint you want to photograph. A private junk on Halong Bay means no strangers at breakfast, no schedule set by committee, no group dynamic.",
-        "image": "/images/hero_hoian.png",
+        "image": "/images/unsplash/hoian.jpg",
         "imageAlt": "Hoi An ancient town at dusk with lanterns glowing",
         "imageCaption": "Hoi An at dusk — the centrepiece of every classic Vietnam itinerary, and a town that genuinely improves after the day's tour groups have left."
       }
@@ -352,7 +353,7 @@ export const tripIdeasData: TripPageData[] = [
       "bike-and-boat-tours"
     ],
     "ctaHeading": "Plan Your Classic Vietnam Tour",
-    "ctaBody": "We have designed this route hundreds of times and still find ways to improve it. Every itinerary is freshly considered — not pulled from a catalogue.",
+    "ctaBody": "Use this route as a starting point. Dates, pace, transport, accommodation and availability can be discussed and confirmed in a written proposal.",
     "editorial": {
       "sources": [
         {
@@ -366,9 +367,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "golf-tours",
     "title": "Vietnam Golf Tours: World-Class Courses in Extraordinary Settings",
-    "metaTitle": "Vietnam Golf Tours 2025 | Private Golf Holidays | Vietnam Tour",
+    "metaTitle": "Vietnam Golf Tours | Private Golf Holidays | Vietnam Tour",
     "metaDescription": "Vietnam is one of Asia's premier golf destinations — championship courses set against limestone karsts, rice terraces, and coastal scenery. Private golf tours combining tee times with luxury accommodation and cultural exploration.",
-    "heroImage": "/images/trip_golf_vietnam.png",
+    "heroImage": "/images/unsplash/dalat.jpg",
     "heroSubtitle": "Vietnam's golf scene has matured into one of Asia's finest — spectacular courses, excellent facilities, and green fees that still surprise most Western golfers.",
     "category": "GOLF TOURS",
     "breadcrumb": "Golf Tours",
@@ -377,7 +378,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "The Best Golf Courses in Vietnam",
         "body": "Candidate courses can include BRG Kings Island near Hanoi, Ba Na Hills and The Montgomerie Links around Da Nang, and Laguna Golf Lang Co. These are suggestions for a quotation, not confirmation of availability or a ranking of the courses.\n\nAsk which course and tee time are being quoted. Check the current course information directly with the club, including maintenance, playing conditions and any booking requirements.",
-        "image": "/images/trip_golf_vietnam.png",
+        "image": "/images/unsplash/dalat.jpg",
         "imageAlt": "Golfer on a championship course with limestone karst mountains in background, Vietnam",
         "imageCaption": "BRG Kings Island Golf Resort's Mountain Course, Hanoi — the most visually dramatic course in Vietnam, set against Dong Mo Lake's limestone backdrop."
       },
@@ -388,7 +389,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Golf and Culture: Making the Most of Both",
         "body": "Non-playing companions may prefer a different daytime programme. Agree which excursions and transfers are included, rather than assuming they accompany every round.\n\nCheck the arrangements if weather or course operations affect play, and which changes would require a new quotation.",
-        "image": "/images/hero_hoian.png",
+        "image": "/images/unsplash/hoian.jpg",
         "imageAlt": "Hoi An ancient town at dusk during a Vietnam cultural experience",
         "imageCaption": "A rest day in Hoi An between Da Nang golf rounds — the town's Ancient Quarter rewards an entire day of slow exploration."
       }
@@ -405,7 +406,7 @@ export const tripIdeasData: TripPageData[] = [
       },
       {
         "question": "How much do green fees cost in Vietnam?",
-        "answer": "Green fees at Vietnam's best courses range from approximately £40-£120 for 18 holes, depending on the course and season — significantly less than equivalent courses in Thailand or Malaysia. We book tee times through our established partnerships, often at preferential rates."
+        "answer": "Green fees, caddie charges, transport and tee-time availability vary by course and date. Request a current itemised quote and written confirmation of any included golf services before booking."
       },
       {
         "question": "Can I hire clubs in Vietnam?",
@@ -440,9 +441,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "beach-holidays",
     "title": "Vietnam Beach Holidays: The Country's Most Magnificent Coasts",
-    "metaTitle": "Vietnam Beach Holidays 2025 | Phu Quoc, Da Nang & Nha Trang | Vietnam Tour",
+    "metaTitle": "Vietnam Beach Holidays | Phu Quoc, Da Nang & Nha Trang | Vietnam Tour",
     "metaDescription": "Vietnam's coastline stretches 3,260km with some of Southeast Asia's finest beaches. Private beach holidays combining Phu Quoc island paradise, Da Nang's resort coast, and Nha Trang's azure waters.",
-    "heroImage": "/images/trip_beach_vietnam.png",
+    "heroImage": "/images/unsplash/phuquoc.jpg",
     "heroSubtitle": "Vietnam's 3,260-kilometre coastline contains some of Southeast Asia's finest beaches — and the best of them are still discovering their potential.",
     "category": "BEACH HOLIDAYS",
     "breadcrumb": "Beach Holidays",
@@ -451,7 +452,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Phu Quoc: Vietnam's Island Paradise",
         "body": "Compare Phu Quoc accommodation by the actual beach location, room category and transfer arrangements. A hotel name or a photograph does not tell you how easy it is to reach the beach or what the sea conditions will be.\n\nAsk for current property details, travel times and a quote for your dates. Check the seasonal conditions for the coast you choose; a beach extension should fit the rest of the route rather than add an awkward transfer.",
-        "image": "/images/trip_beach_vietnam.png",
+        "image": "/images/unsplash/phuquoc.jpg",
         "imageAlt": "Luxury resort infinity pool overlooking turquoise bay in Phu Quoc island Vietnam at sunset",
         "imageCaption": "Phu Quoc's northern resort corridor at sunset — where Vietnam's most sophisticated beach resort infrastructure meets an island that still feels genuinely undiscovered in the right places."
       },
@@ -462,9 +463,9 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "Nha Trang and the Offshore Islands",
         "body": "Nha Trang's main beach is busy year-round and best approached as a base for offshore island exploration rather than as a destination in itself. The Vinpearl resort complex on Hon Tre island is an interesting anomaly — a self-contained luxury island resort with cable car access from the mainland. More interesting for genuine beach seekers are the private islands accessible only by chartered boat: Hon Mun (the best snorkelling in Vietnam), Hon Mot, and the utterly deserted beaches of the Bai Tram archipelago, 30 kilometres south.\n\nFor complete privacy, the Six Senses Ninh Van Bay — accessible only by speedboat from Nha Trang — offers 58 villa suites built among granite boulders above a private beach, with no roads, no outside visitors, and a spa programme rated consistently among Asia's best.",
-        "image": "/images/vietnamtour_phu_quoc_beach.png",
+        "image": "/images/unsplash/phuquoc.jpg",
         "imageAlt": "Pristine sandy beach with clear waters in Phu Quoc Vietnam",
-        "imageCaption": "Sao Beach, Phu Quoc — consistently rated among Southeast Asia's finest beaches, accessible only by boat and always quiet."
+        "imageCaption": "Sao Beach on Phu Quoc. Conditions, access and visitor numbers vary by season and time of day."
       }
     ],
     "highlights": [
@@ -496,7 +497,7 @@ export const tripIdeasData: TripPageData[] = [
       },
       {
         "question": "Is sea swimming safe in Vietnam?",
-        "answer": "The calm-season water at all major Vietnamese beach destinations is safe for swimming. Some beaches, particularly on Da Nang's exposed northern sections, have seasonal rip currents — the lifeguarded zones are always well-marked. Phu Quoc's western beaches in the dry season are exceptionally calm and safe for all swimmers."
+        "answer": "Sea conditions and lifeguard coverage vary by beach, weather and season. Check local flags and warnings, follow lifeguard advice, and do not assume a beach is supervised or safe for swimming on a particular day."
       }
     ],
     "relatedSlugs": [
@@ -519,9 +520,14 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "first-time-guide-vietnam",
     "title": "First Time in Vietnam: Your Complete Planning Guide",
-    "metaTitle": "First Time Vietnam Guide 2025 | Expert Planning Advice | Vietnam Tour",
-    "metaDescription": "Everything first-time visitors need to know about travelling Vietnam — visas, best regions, when to go, what to budget, and how to avoid the most common planning mistakes. Expert advice from specialists who know Vietnam intimately.",
-    "heroImage": "/images/hero_hoian.png",
+    "metaTitle": "First Time Vietnam Guide | Practical Planning Advice | Vietnam Tour",
+    "metaDescription": "Plan a first trip to Vietnam with a sample route, regional considerations, and links to current official entry and health guidance.",
+    "sources": [
+      { "label": "GOV.UK Vietnam entry requirements", "url": "https://www.gov.uk/foreign-travel-advice/vietnam/entry-requirements" },
+      { "label": "Vietnam official e-visa portal", "url": "https://evisa.gov.vn/" },
+      { "label": "GOV.UK Vietnam health advice", "url": "https://www.gov.uk/foreign-travel-advice/vietnam/health" }
+    ],
+    "heroImage": "/images/unsplash/hoian.jpg",
     "heroSubtitle": "Vietnam rewards preparation. Every first-time traveller who plans well has a trip they talk about for the rest of their life.",
     "category": "FIRST TIME",
     "breadcrumb": "First Time Guide",
@@ -529,19 +535,19 @@ export const tripIdeasData: TripPageData[] = [
     "sections": [
       {
         "heading": "How Much Time Do You Need?",
-        "body": "Ten days is the absolute minimum for a meaningful first visit. Two weeks is the recommended standard. Three weeks is ideal if you want to add Sapa and Phu Quoc Island to the classic route without feeling rushed. The single most common mistake first-time visitors make is trying to see too much in too little time — stringing together seven cities in ten days and experiencing each one only superficially.\n\nOur recommendation for a two-week first visit: Hanoi (3 nights) → Halong Bay cruise (2 nights) → Hue (2 nights) → Hoi An (3 nights) → Ho Chi Minh City (2 nights). This covers the country's essential highlights at a genuinely comfortable pace. It can be adjusted in either direction depending on what interests you most.",
-        "image": "/images/hero_hoian.png",
+        "body": "Trip length depends on flight times, pace, interests and how much ground you want to cover. A two-week sample route might include Hanoi (3 nights), a Ha Long Bay cruise (2 nights), Hue (2 nights), Hoi An (3 nights) and Ho Chi Minh City (2 nights), with the remaining time for transfers. This is a planning example; check current transport schedules and confirm every service and overnight stop before booking. Add fewer stops if you prefer a slower pace.",
+        "image": "/images/unsplash/hoian.jpg",
         "imageAlt": "Hoi An ancient town with traditional yellow buildings and paper lanterns",
         "imageCaption": "Hoi An's ancient town — the highlight of almost every first-time visitor's Vietnam itinerary, and a destination that rewards at least three full days."
       },
       {
         "heading": "The Essential Practical Information",
-        "body": "Visas: British citizen passport holders can generally visit visa-free for up to 45 days. For longer stays, check eligibility for an e-visa of up to 90 days at evisa.gov.vn: US$25 single entry or US$50 multiple entry. Processing is not guaranteed within 24 hours. Check GOV.UK and the official portal for your passport and dates.\n\nMoney: The Vietnamese Dong (VND). Approximately 30,000 VND to £1. ATMs are widely available in cities; BIDV and Vietcombank machines are most reliable. Card payment is accepted at hotels and restaurants; markets and street food are cash only.\n\nHealth: The NHS recommends Hepatitis A, Typhoid, and current Tetanus vaccines for Vietnam. Malaria prophylaxis for rural/jungle areas — your GP will advise based on your specific itinerary. Travel insurance is essential and non-negotiable.\n\nLanguage: English is widely spoken in tourist areas, hotels, and restaurants. Vietnamese is a tonal language that very few short-term visitors learn beyond basic pleasantries — a good phrasebook or translation app covers the small gaps."
+        "body": "Visas: Entry rules depend on your passport and trip. Check the current GOV.UK entry requirements and use Vietnam's official e-visa portal if you need an e-visa. Allow time for processing and check your approved dates and entry points before departure.\n\nMoney: Vietnam's currency is the Vietnamese dong (VND). Exchange rates and card/ATM fees change; check current rates and your provider's charges before travel. Keep some cash for purchases where cards are not accepted.\n\nHealth: Health risks and vaccine recommendations depend on your itinerary and personal circumstances. Check GOV.UK and TravelHealthPro, then ask a qualified travel-health professional for advice.\n\nLanguage: Vietnamese is the national language. English availability varies by place and provider; save important addresses and booking details offline and consider a translation app."
       },
       {
         "heading": "The Regions: What to Know Before You Choose",
         "body": "Vietnam's three distinct regions have different characters, climates, and cuisines. The north (Hanoi, Halong Bay, Sapa, Ha Giang) is cooler, more traditional, and culinarily austere — the food here is precise and refined. The centre (Hue, Hoi An, Da Nang) is where Vietnam's cultural density is highest — UNESCO heritage towns, imperial architecture, and the country's most complex food traditions. The south (Ho Chi Minh City, Mekong Delta, Phu Quoc) is hotter, more energetic, and more Chinese-influenced in both food and character.\n\nWeather varies significantly between regions. The north has four seasons (cool and misty in winter, hot and humid in summer). The centre has a distinct wet season (October to December). The south is hot year-round with a wet season (May to October). The advantage of Vietnam's length is that when one region is in its wet season, another is in its best weather — there is always a good time to visit somewhere.",
-        "image": "/images/hero_sapa.png",
+        "image": "/images/unsplash/sapa.jpg",
         "imageAlt": "Misty morning over rice terraces and mountains in Sapa northern Vietnam",
         "imageCaption": "Sapa in the northern highlands — a very different Vietnam from the coastal cities, and one of the country's most rewarding additions to a first-time itinerary."
       }
@@ -584,7 +590,7 @@ export const tripIdeasData: TripPageData[] = [
       "beach-holidays"
     ],
     "ctaHeading": "Talk to a First-Time Vietnam Specialist",
-    "ctaBody": "Our specialists have helped hundreds of first-time visitors plan trips that exceeded every expectation. No question is too basic, no detail too small.",
+    "ctaBody": "Share your dates, interests and practical requirements. We can discuss a route and confirm the proposed services and price in writing.",
     "editorial": {
       "sources": [
         {
@@ -603,9 +609,9 @@ export const tripIdeasData: TripPageData[] = [
   {
     "slug": "schools-tours",
     "title": "Vietnam Educational School Tours: Learning Through Travel",
-    "metaTitle": "Vietnam School Tours 2025 | Educational Group Travel | Vietnam Tour",
+    "metaTitle": "Vietnam School Tours | Educational Group Travel | Vietnam Tour",
     "metaDescription": "Inspiring educational tours to Vietnam for school and university groups. History, culture, geography, and sustainability programmes designed around curriculum objectives. Private groups with specialist educational guides.",
-    "heroImage": "/images/vietnamtour_hanoi_colonial.png",
+    "heroImage": "/images/unsplash/hanoi.jpg",
     "heroSubtitle": "Vietnam's history, geography, and culture offer some of the most powerful educational experiences available to student groups anywhere in the world.",
     "category": "EDUCATIONAL",
     "breadcrumb": "Schools Tours",
@@ -614,7 +620,7 @@ export const tripIdeasData: TripPageData[] = [
       {
         "heading": "History and Modern Vietnam",
         "body": "The American War (what Vietnam calls the period known in the West as the \"Vietnam War\") is one of the most studied conflicts of the 20th century. A private educational programme covering this period typically includes: the War Remnants Museum in Ho Chi Minh City (confronting but essential); the Cu Chi Tunnels underground network used by Viet Cong fighters; the Reunification Palace, frozen in the moment of the 1975 fall of Saigon; and Hoa Lo Prison (the \"Hanoi Hilton\") in the north, used both as a colonial prison and a US POW facility. These sites deliver history with an immediacy and emotional weight that no classroom can replicate.",
-        "image": "/images/press_hero_colonial.png",
+        "image": "/images/unsplash/hanoi.jpg",
         "imageAlt": "Colonial era architecture in Hanoi representing Vietnamese historical study",
         "imageCaption": "Hanoi's French colonial architecture tells the story of a century of colonial rule — part of any serious historical study of modern Vietnam."
       },
@@ -629,9 +635,9 @@ export const tripIdeasData: TripPageData[] = [
       "Cat Ba Island biodiversity and conservation programme",
       "Vietnamese culture and society: ethnic minority village visits in Sapa",
       "Sustainable development: comparing Doi Moi economic reforms with today's Vietnam",
-      "All programmes designed to specific curriculum objectives on request",
-      "Private educational guides with academic backgrounds",
-      "Risk assessments, teacher briefing packs, and student activity resources provided"
+      "Discuss curriculum themes and learning objectives for your group",
+      "Confirm guide experience and group suitability for the selected route",
+      "Request written risk information, safeguarding details and teacher resources before booking"
     ],
     "faqs": [
       {
@@ -644,11 +650,11 @@ export const tripIdeasData: TripPageData[] = [
       },
       {
         "question": "Is Vietnam suitable for student safety?",
-        "answer": "Vietnam is one of the safer Asian destinations for student groups. We provide comprehensive risk assessments for every itinerary, have 24/7 emergency support, and our local guides are experienced with student groups. Standard insurance requirements apply."
+        "answer": "A school group's risk assessment and in-trip contacts must be agreed for its specific route and providers. Ask for the written risk information, safeguarding arrangements, emergency contacts, support hours and insurance responsibilities before booking; do not assume these are included."
       },
       {
         "question": "What accommodation is available for school groups?",
-        "answer": "We use reliable 3-4 star hotels with twin-share or triple rooms, single-sex floor arrangements where required, and dining facilities that can accommodate group meals. All hotels are vetted for security and student-appropriate facilities."
+        "answer": "Accommodation, rooming and meal arrangements depend on the selected properties and dates. Confirm the hotel names, room configuration, supervision plan, meal arrangements and cancellation conditions in the written proposal before booking."
       },
       {
         "question": "How far in advance should we book a school tour to Vietnam?",

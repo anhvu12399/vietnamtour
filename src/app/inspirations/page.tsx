@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Travel Inspiration & Curated Styles',
     description: 'Discover curated travel styles — luxury pool villas, adventure expeditions, and family tours to Vietnam.',
     url: 'https://www.vietnamtours.co.uk/inspirations',
-    images: [{ url: '/images/dest_hoian_lanterns.png', width: 1200, height: 630, alt: 'Vietnam travel inspiration — Hoi An lanterns' }],
+    images: [{ url: '/images/unsplash/hoian.jpg', width: 1200, height: 630, alt: 'Vietnam travel inspiration — Hoi An lanterns' }],
   },
 };
 
@@ -33,7 +33,7 @@ export default async function InspirationsListingPage() {
       items = sanityItems.map((item) => ({
         ...item,
         slug: item.slug,
-        heroImage: item.heroImage || '/images/trip_luxury_villa.png',
+        heroImage: item.heroImage || '/images/unsplash/phuquoc.jpg',
       }));
     }
   } catch {
@@ -48,7 +48,7 @@ export default async function InspirationsListingPage() {
         {/* Scenic Hero Banner */}
         <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/trip_luxury_villa.png"
+            src="/images/unsplash/phuquoc.jpg"
             alt="Travel Inspiration Header"
             fill
             className="object-cover brightness-[0.55]"

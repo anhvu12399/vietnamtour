@@ -160,37 +160,37 @@ async function importData() {
         {
           _key: 'grid-cat-0',
           title: 'A Lifetime of Memories',
-          image: '/images/vietnamtour_halong_yacht_luxury.png',
+          image: '/images/unsplash/halong.jpg',
           link: '/itineraries/the-grand-tour-of-vietnam'
         },
         {
           _key: 'grid-cat-1',
           title: 'Elite Resort Offers',
-          image: '/images/vietnamtour_amanoi_villa.png',
+          image: '/images/unsplash/phuquoc.jpg',
           link: '/accommodations'
         },
         {
           _key: 'grid-cat-2',
           title: 'Best Winter Sun Spots',
-          image: '/images/vietnamtour_phu_quoc_beach.png',
+          image: '/images/unsplash/phuquoc.jpg',
           link: '/destinations/phu-quoc-island'
         },
         {
           _key: 'grid-cat-3',
           title: 'Top Culinary Expeditions',
-          image: '/images/vietnamtour_cave_dining.png',
+          image: '/images/unsplash/cave.jpg',
           link: '/itineraries/vietnamese-culinary-and-culture-journey'
         },
         {
           _key: 'grid-cat-4',
           title: 'Bucket List Journeys',
-          image: '/images/vietnamtour_sapa_lodge.png',
+          image: '/images/unsplash/sapa.jpg',
           link: '/itineraries'
         },
         {
           _key: 'grid-cat-5',
           title: 'Active & Wilderness',
-          image: '/images/vietnamtour_mekong_sampan.png',
+          image: '/images/unsplash/mekong.jpg',
           link: '/destinations/hanoi-and-the-north'
         }
       ],

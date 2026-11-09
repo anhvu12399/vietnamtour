@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Plus, Minus, Phone, Mail, Award, Check } from 'lucide-react';
+import { detectTrafficSource } from '@/lib/trafficDetector';
 
 export default function EnquiryPage() {
   const [formData, setFormData] = useState({
@@ -57,20 +58,12 @@ export default function EnquiryPage() {
     const newErrors = { firstName: '', lastName: '', email: '', phone: '' };
     let isValid = true;
 
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First name is required';
-      isValid = false;
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'Last name is required';
-      isValid = false;
-    }
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'A valid email is required';
       isValid = false;
     }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+    if (formData.phone.trim() && formData.phone.replace(/\D/g, '').length < 7) {
+      newErrors.phone = 'Enter at least 7 digits, or leave this field blank';
       isValid = false;
     }
 
@@ -110,6 +103,7 @@ export default function EnquiryPage() {
       if (!utmSrc) utmSrc = urlParams.get('utm_source') || '';
       if (!utmMed) utmMed = urlParams.get('utm_medium') || '';
       if (!utmCam) utmCam = urlParams.get('utm_campaign') || '';
+      const attribution = detectTrafficSource(ref, utmSrc, '', land, utmMed);
 
       const trackingData = {
         submissionId: submissionId.current || (submissionId.current = crypto.randomUUID()),
@@ -135,7 +129,12 @@ export default function EnquiryPage() {
         throw new Error(receipt.error || 'We could not confirm receipt. Please try again.');
       }
       if (!receipt.duplicate) {
-        track('lead_accepted', { form: 'enquiry' });
+        track('lead_accepted', {
+          form: 'enquiry',
+          channel: attribution.channel,
+          ai_source: attribution.isAi,
+          evidence: attribution.evidence,
+        });
         if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
           (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'conversion', {
             send_to: 'AW-414204624/ZL87CM30hq0dENCFwcUB',
@@ -394,6 +393,7 @@ export default function EnquiryPage() {
                   <h3 className="font-serif text-2xl text-[#0e1628] font-light tracking-wide">
                     Your Details
                   </h3>
+                  <p className="text-sm text-ink-soft">A valid email is enough to get started. Your name and phone number are optional.</p>
                   
                   <div className="bg-white border border-line p-6 sm:p-8 shadow-xs space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -402,9 +402,11 @@ export default function EnquiryPage() {
                         <input
                           type="text"
                           name="firstName"
+                          autoComplete="given-name"
+                          aria-label="First name, optional"
                           value={formData.firstName}
                           onChange={handleInputChange}
-                          placeholder="First name *"
+                          placeholder="First name (optional)"
                           className={`w-full bg-[#f3f4f6]/20 border px-4 py-3 text-sm focus:outline-none focus:border-[#0e1628] focus:bg-white rounded-none transition-all ${
                             errors.firstName ? 'border-red-500' : 'border-gray-300'
                           }`}
@@ -417,9 +419,11 @@ export default function EnquiryPage() {
                         <input
                           type="text"
                           name="lastName"
+                          autoComplete="family-name"
+                          aria-label="Last name, optional"
                           value={formData.lastName}
                           onChange={handleInputChange}
-                          placeholder="Last name *"
+                          placeholder="Last name (optional)"
                           className={`w-full bg-[#f3f4f6]/20 border px-4 py-3 text-sm focus:outline-none focus:border-[#0e1628] focus:bg-white rounded-none transition-all ${
                             errors.lastName ? 'border-red-500' : 'border-gray-300'
                           }`}
@@ -446,9 +450,11 @@ export default function EnquiryPage() {
                           <input
                             type="tel"
                             name="phone"
+                            autoComplete="tel-national"
+                            aria-label="Phone number, optional"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            placeholder="Phone number *"
+                            placeholder="Phone number (optional)"
                             className={`w-full bg-[#f3f4f6]/20 border px-4 py-3 text-sm focus:outline-none focus:border-[#0e1628] focus:bg-white rounded-none transition-all ${
                               errors.phone ? 'border-red-500' : 'border-gray-300'
                             }`}
@@ -462,6 +468,9 @@ export default function EnquiryPage() {
                         <input
                           type="email"
                           name="email"
+                          autoComplete="email"
+                          aria-label="Email address"
+                          required
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="Email address *"
@@ -610,7 +619,7 @@ export default function EnquiryPage() {
                 </h2>
                 <div className="h-[1px] w-12 bg-gold mx-auto" />
                 <p className="text-sm text-ink-soft font-light leading-relaxed">
-                  Your request for a bespoke Vietnam itinerary has been saved. An email confirmation has been dispatched, and our specialist travel team will reach out to you within 24 hours.
+                  Your request has been received. An email confirmation has been sent, and the travel team will contact you to discuss possible next steps.
                 </p>
               </div>
 

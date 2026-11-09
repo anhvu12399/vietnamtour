@@ -40,7 +40,8 @@ export function parseEnquiry(value: unknown): EnquiryInput | null {
     utmMedium: read('utmMedium'), utmCampaign: read('utmCampaign'), interest: read('interest', 300),
   };
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.submissionId)) return null;
-  if (!input.firstName || !input.lastName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email) || !/\d{5}/.test(input.phone.replace(/\D/g, ''))) return null;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.email)) return null;
+  if (input.phone && input.phone.replace(/\D/g, '').length < 7) return null;
   if ([input.adults, input.teens, input.children].some((n) => !Number.isInteger(n) || n < 0 || n > 100) || input.adults < 1) return null;
   return input;
 }

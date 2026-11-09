@@ -11,14 +11,14 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Things To Do in Vietnam | Authentic Experiences & Activities | Vietnam Tour',
-  description: 'Discover the most remarkable things to do in Vietnam — from kayaking hidden Ha Long Bay lagoons and trekking Sapa\'s rice terraces to attending Hoi An\'s full moon lantern festival. First-hand guides from specialists who know Vietnam deeply.',
+  description: 'Compare Vietnam activities, from Ha Long Bay kayaking and Sa Pa trekking to Hoi An lantern events. Check current schedules, access and conditions with the relevant provider before booking.',
   alternates: {
     canonical: 'https://www.vietnamtours.co.uk/things-to-do',
   },
   openGraph: {
     title: 'Things To Do in Vietnam | Vietnam Tour',
     description: 'Kayaking hidden lagoons, trekking rice terraces, learning imperial cuisine — the experiences that make Vietnam unforgettable.',
-    images: [{ url: '/images/things_halong_kayaking.png' }],
+    images: [{ url: '/images/unsplash/halong.jpg' }],
   },
 };
 
@@ -29,6 +29,8 @@ const categoryColors: Record<string, string> = {
   'FESTIVALS & CULTURE': 'bg-rose-50 text-rose-800 border border-rose-200',
   'CULINARY EXPERIENCES':'bg-orange-50 text-orange-800 border border-orange-200',
   'RIVER JOURNEYS':      'bg-teal-50 text-teal-800 border border-teal-200',
+  'NATURE & HERITAGE':   'bg-emerald-50 text-emerald-800 border border-emerald-200',
+  'NATURE & ADVENTURE':  'bg-sky-50 text-sky-800 border border-sky-200',
 };
 
 export default async function ThingsToDoListingPage() {
@@ -40,7 +42,7 @@ export default async function ThingsToDoListingPage() {
       items = sanityItems.map((item) => ({
         ...item,
         slug: item.slug,
-        heroImage: item.heroImage || '/images/things_halong_kayaking.png',
+        heroImage: item.heroImage || '/images/unsplash/halong.jpg',
       }));
     }
   } catch (e) {
@@ -55,7 +57,7 @@ export default async function ThingsToDoListingPage() {
         {/* ── Hero Banner ── */}
         <section className="relative h-[340px] sm:h-[420px] lg:h-[480px] w-full flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/things_halong_kayaking.png"
+            src="/images/unsplash/halong.jpg"
             alt="Kayaking through a limestone cave into a hidden Ha Long Bay lagoon"
             fill
             className="object-cover brightness-[0.45]"
@@ -71,7 +73,7 @@ export default async function ThingsToDoListingPage() {
               Things To Do in Vietnam
             </h1>
             <p className="mt-5 text-sm sm:text-base text-white/75 font-light leading-relaxed max-w-2xl mx-auto">
-              Written by specialists who have done them — every experience below is chosen because it genuinely changes how you understand Vietnam.
+              Each guide cites destination or heritage sources and flags details travellers should confirm with local operators before booking.
             </p>
           </div>
         </section>
@@ -88,7 +90,7 @@ export default async function ThingsToDoListingPage() {
             Not a checklist. A collection of moments.
           </h2>
           <p className="text-base text-ink/75 font-light leading-relaxed max-w-2xl mx-auto">
-            Vietnam rewards those who move slowly and choose deliberately. The activities listed here are not tours — they are doorways. Each one leads somewhere that generalist travel cannot reach: into a hidden lagoon, a century-old kitchen, a festival that has been repeating since the 11th century. They are written in the voice of people who were actually there.
+            Use these guides to compare Vietnam experiences, understand their cultural or natural context, and plan around current local conditions. We identify the sources behind each guide and recommend confirming prices, access and schedules with the relevant venue or operator.
           </p>
           <div className="h-[1.5px] w-12 bg-gold mx-auto mt-8" />
         </section>
@@ -218,10 +220,10 @@ export default async function ThingsToDoListingPage() {
         <section className="border-t border-line bg-white py-14 px-6 lg:px-12">
           <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: '🧭', label: 'Private Guides', desc: 'All experiences are led by private, expert local guides — no group tours' },
-              { icon: '🗓', label: 'Year-Round', desc: 'Most experiences are available all year; we match activities to the best season for you' },
-              { icon: '✦', label: 'Fully Bespoke', desc: 'Every experience is tailored — timing, pace, depth — to your exact preferences' },
-              { icon: '📞', label: 'Expert Planning', desc: 'Speak to a Vietnam specialist who has done every experience listed here personally' },
+              { icon: '🧭', label: 'Guide Options', desc: 'Ask whether a private guide is included for the activity and date you choose' },
+              { icon: '🗓', label: 'Seasonal Access', desc: 'Schedules and conditions vary; confirm access with the provider before booking' },
+              { icon: '✦', label: 'Flexible Planning', desc: 'Discuss timing, pace and activity options for your proposed route' },
+              { icon: '📞', label: 'Trip Planning', desc: 'Ask the team about route options, provider details and which experiences can be arranged for your dates' },
             ].map((item, i) => (
               <div key={i} className="space-y-2">
                 <span className="text-2xl block">{item.icon}</span>

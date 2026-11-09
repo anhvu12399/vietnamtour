@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const slides = [
   {
-    src: '/images/hero_halong_bay.png',
+    src: '/images/unsplash/halong.jpg',
     alt: 'Halong Bay limestone karsts at golden sunset, Vietnam',
     location: 'Halong Bay · Northern Vietnam',
     heading: 'The Art of Travel',
@@ -14,7 +14,7 @@ const slides = [
     cta: { label: 'Explore Halong Bay', href: '/destinations/hanoi-and-the-north' },
   },
   {
-    src: '/images/hero_sapa.png',
+    src: '/images/unsplash/sapa.jpg',
     alt: 'Golden rice terraces of Sapa at harvest season, Vietnam',
     location: 'Sapa · Northwest Highlands',
     heading: 'A World Apart',
@@ -22,7 +22,7 @@ const slides = [
     cta: { label: 'Explore Sapa', href: '/destinations/hanoi-and-the-north' },
   },
   {
-    src: '/images/hero_hoian.png',
+    src: '/images/unsplash/hoian.jpg',
     alt: 'Hoi An ancient town lantern festival by the river at night',
     location: 'Hoi An · Central Vietnam',
     heading: 'A Thousand Lanterns',

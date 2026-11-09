@@ -7,6 +7,8 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import ItinerariesGridInteractive from '@/components/ItinerariesGridInteractive';
 import { getItineraries, getSpecialists, getToursLanding, getPosts } from '@/sanity/client';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 
 export const revalidate = 60;
 
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Vietnam Tours & Itineraries | Luxury Private Holidays',
     description: 'Handcrafted private Vietnam tour itineraries — classic journeys, luxury expeditions, and bespoke adventures. All fully customisable.',
     url: 'https://www.vietnamtours.co.uk/itineraries',
-    images: [{ url: '/images/dest_halong_limestone.png', width: 1200, height: 630, alt: 'Vietnam luxury tour itinerary — Ha Long Bay cruise at sunrise' }],
+    images: [{ url: '/images/unsplash/halong.jpg', width: 1200, height: 630, alt: 'Vietnam luxury tour itinerary — Ha Long Bay cruise at sunrise' }],
   },
 };
 
@@ -58,7 +60,6 @@ export default async function ItinerariesPage() {
 
   // Fallbacks if data is missing or useMock is true
   const heroHeading = toursLanding?.heroHeading || 'Bespoke Vietnam Itineraries';
-  const heroImage = toursLanding?.heroImage || '/images/hero_hoian.png';
   
   const faqs = toursLanding?.faqs?.length ? toursLanding.faqs : [
     { question: 'When is the best time to visit Vietnam?', answer: 'Vietnam is a year-round destination, but the best time generally depends on the regions you plan to visit. Spring (February to April) and Autumn (August to October) offer the most pleasant weather across the country.' },
@@ -69,6 +70,21 @@ export default async function ItinerariesPage() {
   const inspirationPosts = toursLanding?.inspirationPosts?.length 
     ? toursLanding.inspirationPosts 
     : allPosts.slice(0, 3);
+
+  const activityCards = [
+    { title: 'Cruise on a traditional junk', location: 'Halong Bay', description: 'Set sail into the bay area and enjoy the stunning limestone scenery from the sundeck or private cabin balcony.' },
+    { title: 'Ho Chi Minh City Vespa Tour', location: 'Ho Chi Minh City', description: 'Wander through glowing food stalls and street markets on the back of a vintage Vespa scooter with a local guide.' },
+    { title: 'Private Mekong Sampan Cruise', location: 'Mekong Delta', description: 'Float down peaceful coconut-shaded canals and visit local cottage workshops on a private wooden sampan.' },
+    { title: 'Sa Pa Highland Trekking', location: 'Sa Pa Valley', description: 'Hike through mist-shrouded green terraces and encounter authentic local Hmong and Dao hilltribe hospitality.' },
+  ];
+  const pageImageContexts = [
+    ...itineraries.slice(0, 8).map((tour) => `${tour.title} ${tour.slug?.current || ''}`),
+    `${heroHeading} itinerary page header`,
+    ...activityCards.map((activity) => `${activity.title} ${activity.location}`),
+    ...inspirationPosts.map((post) => `${post.title} ${post.slug?.current || ''}`),
+  ];
+  const pageImages = uniqueEditorialImages(pageImageContexts, (context) => context);
+  const heroImage = pageImages[8] || '/images/unsplash/hoian.jpg';
 
   return (
     <>
@@ -152,7 +168,7 @@ export default async function ItinerariesPage() {
               </div>
 
               <p className="text-xs italic text-gray-400 pt-6">
-                All tours are private, available year-round, and fully customizable. For more info, feel free to submit an online query or consult with our team.
+                These route descriptions are planning examples. Availability, services, seasonality and prices must be confirmed in a written proposal for your dates.
               </p>
             </div>
 
@@ -163,7 +179,7 @@ export default async function ItinerariesPage() {
                   Design Team
                 </span>
                 <h3 className="font-serif text-lg font-semibold text-jade leading-snug">
-                  Speak to one of our local experts
+                  Discuss a route with the travel team
                 </h3>
                 
                 {/* Specialist Circular Image */}
@@ -288,39 +304,14 @@ export default async function ItinerariesPage() {
 
             {/* Activities Staggered Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  title: "Cruise on a traditional junk",
-                  location: "Halong Bay",
-                  image: "/images/halong_card.jpg",
-                  description: "Set sail into the bay area and enjoy the stunning limestone scenery from the sundeck or private cabin balcony."
-                },
-                {
-                  title: "Ho Chi Minh City Vespa Tour",
-                  location: "Ho Chi Minh City",
-                  image: "/images/hoian.jpg",
-                  description: "Wander through glowing food stalls and street markets on the back of a vintage Vespa scooter with a local guide."
-                },
-                {
-                  title: "Private Mekong Sampan Cruise",
-                  location: "Mekong Delta",
-                  image: "/images/mekong.jpg",
-                  description: "Float down peaceful coconut-shaded canals and visit local cottage workshops on a private wooden sampan."
-                },
-                {
-                  title: "Sa Pa Highland Trekking",
-                  location: "Sa Pa Valley",
-                  image: "/images/sapa.jpg",
-                  description: "Hike through mist-shrouded green terraces and encounter authentic local Hmong and Dao hilltribe hospitality."
-                }
-              ].map((act, index) => (
+              {activityCards.map((act, index) => (
                 <div key={index} className="group relative flex flex-col justify-between h-[420px] overflow-hidden border border-line bg-paper">
                   
                   {/* Photo Background */}
                   <div className="absolute inset-0 z-0">
                     <Image
-                      src={act.image}
-                      alt={act.title}
+                      src={pageImages[9 + index] || '/images/unsplash/halong-day-cruise.jpg'}
+                      alt={editorialImageDescription(pageImages[9 + index] || '/images/unsplash/halong-day-cruise.jpg')}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -399,14 +390,14 @@ export default async function ItinerariesPage() {
 
               {/* Grid 3 columns */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {inspirationPosts.map((post) => (
+                {inspirationPosts.map((post, index) => (
                   <article key={post._id} className="group flex flex-col space-y-4.5 text-left h-full">
                     
                     {/* Blog Image */}
                     <div className="relative h-64 overflow-hidden rounded-none bg-white border border-line">
                       <Image
-                        src={post.mainImage || '/images/featured_guide_passport.png'}
-                        alt={post.title}
+                        src={pageImages[13 + index] || '/images/unsplash/vietnam-temple.jpg'}
+                        alt={editorialImageDescription(pageImages[13 + index] || '/images/unsplash/vietnam-temple.jpg')}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />

@@ -2,11 +2,14 @@ import { publicSpecialist } from '@/lib/team';
 import { planningGuides } from '@/lib/planningGuides';
 import type { TripPageData } from '@/lib/tripIdeasData';
 import type { ThingToDoData } from '@/lib/thingsToDoData';
+import { curatedAccommodations, getCuratedAccommodationBySlug } from '@/lib/accommodationData';
+import { thingsToDoData } from '@/lib/thingsToDoData';
 import { createClient } from '@sanity/client';
 import { defineLive } from 'next-sanity/live';
 import { draftMode } from 'next/headers';
 import { mergeItineraryCatalogue } from '@/lib/legacyItineraries';
 import { applyEditorialCorrections } from '@/lib/editorialCorrections';
+import { editorialImageFor, uniqueEditorialImages } from '@/lib/editorialPhotos';
 import { mockItineraries, mockAccommodations, mockSpecialists, mockDestinations } from './mockData';
 import { Itinerary, Accommodation, Specialist, Destination, TravelGuide, Cruise, Post, BlogPost } from './types';
 
@@ -29,6 +32,29 @@ export const client = projectId
 
 const useMock = !client;
 
+const imageFields = new Set(['image', 'mainImage', 'heroImage', 'featuredImage', 'pressBackgroundImage', 'artOfTravelImage', 'ogImage', 'mapImage']);
+const isSanityImage = (value: string): boolean => value.startsWith('https://cdn.sanity.io/images/');
+
+function replaceCmsPhotos<T>(value: T, inheritedContext = ''): T {
+  if (Array.isArray(value)) return value.map((item) => replaceCmsPhotos(item, inheritedContext)) as T;
+  if (!value || typeof value !== 'object') return value;
+
+  const record = value as Record<string, unknown>;
+  const context = [record.title, record.name, record.location, record.category, record.heading,
+    typeof record.slug === 'object' && record.slug ? (record.slug as { current?: unknown }).current : record.slug,
+    inheritedContext].filter((part): part is string => typeof part === 'string').join(' ');
+
+  const updated = Object.fromEntries(Object.entries(record).map(([key, item]) => {
+    if (key === 'specialist') return [key, item];
+    if (key === 'gallery' && Array.isArray(item)) {
+      return [key, uniqueEditorialImages(item, (_, index) => `${context} gallery-${index}`)];
+    }
+    if ((imageFields.has(key) || key === 'url') && typeof item === 'string' && isSanityImage(item)) return [key, editorialImageFor(context)];
+    return [key, replaceCmsPhotos(item, context)];
+  }));
+  return updated as T;
+}
+
 export const { sanityFetch, SanityLive } = client
   ? defineLive({
       client,
@@ -40,16 +66,37 @@ async function fetchSanity<T>(query: string, params: Record<string, string> = {}
   let isPreview = false;
   try { isPreview = (await draftMode()).isEnabled; } catch { /* No request context during prerendering. */ }
   if (isPreview && sanityFetch) {
-    const { data } = await sanityFetch({ query, params, perspective: 'drafts', stega: true });
-    return data as T;
+    try {
+      const { data } = await sanityFetch({ query, params, perspective: 'drafts', stega: true });
+      return replaceCmsPhotos(data as T);
+    } catch (e) {
+      console.warn('[sanityFetch draft error]:', e);
+    }
   }
   if (client) {
-    // Public routes must refresh even without a Studio session/live invalidation.
-    return await client.fetch<T>(query, params, {
-      perspective: 'published', stega: false, next: { revalidate: 60 },
-    });
+    // Retry up to 3 times to prevent build worker timeouts on Vercel/CI
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const data = await client.fetch<T>(query, params, {
+          perspective: 'published', stega: false, next: { revalidate: 60 },
+        });
+        return replaceCmsPhotos(data);
+      } catch (err) {
+        if (attempt === 3) {
+          console.warn(`[fetchSanity] Network timeout/error after 3 attempts:`, (err as Error)?.message || err);
+          if (query.trim().startsWith('*[_type ==') && query.includes('][0]')) {
+            return null as unknown as T;
+          }
+          if (query.trim().startsWith('*[_type ==')) {
+            return [] as unknown as T;
+          }
+          return null as unknown as T;
+        }
+        await new Promise((res) => setTimeout(res, 500 * attempt));
+      }
+    }
   }
-  throw new Error('Sanity client not configured');
+  return (query.includes('][0]') ? null : []) as unknown as T;
 }
 
 // --- Itineraries ---
@@ -131,22 +178,29 @@ export async function getItineraryBySlug(slug: string): Promise<Itinerary | null
 
 export async function getAccommodations(): Promise<Accommodation[]> {
   if (useMock) {
-    return mockAccommodations;
+    return mergeAccommodationCatalogue(mockAccommodations);
   }
-  return await fetchSanity<Accommodation[]>(`*[_type == "accommodation"]{
+  const accommodations = await fetchSanity<Accommodation[]>(`*[_type == "accommodation"]{
     ...,
     "gallery": gallery[].asset->url
   }`);
+  return mergeAccommodationCatalogue(accommodations);
+}
+
+function mergeAccommodationCatalogue(accommodations: Accommodation[]): Accommodation[] {
+  const existingSlugs = new Set(accommodations.map((accommodation) => accommodation.slug?.current));
+  return [...accommodations, ...curatedAccommodations.filter((accommodation) => !existingSlugs.has(accommodation.slug.current))];
 }
 
 export async function getAccommodationBySlug(slug: string): Promise<Accommodation | null> {
   if (useMock) {
-    return mockAccommodations.find(acc => acc.slug.current === slug) || null;
+    return mockAccommodations.find(acc => acc.slug.current === slug) || getCuratedAccommodationBySlug(slug) || null;
   }
-  return await fetchSanity<Accommodation | null>(`*[_type == "accommodation" && slug.current == $slug][0]{
+  const accommodation = await fetchSanity<Accommodation | null>(`*[_type == "accommodation" && slug.current == $slug][0]{
     ...,
     "gallery": gallery[].asset->url
   }`, { slug });
+  return accommodation || getCuratedAccommodationBySlug(slug) || null;
 }
 
 // --- Specialists ---
@@ -384,7 +438,7 @@ export async function getPosts(): Promise<Post[]> {
   if (useMock) return [];
   // Refresh public article data on the same bounded interval as the detail route.
   if (!client) return [];
-  const posts: Post[] = await client.fetch(
+  const fetchedPosts: Post[] = await client.fetch(
     `*[_type == "post"] | order(publishedAt desc){
     _id, _updatedAt, title, slug, publishedAt, excerpt,
     editorial{lastReviewedAt, sources, fieldVisits, "author": select(author->profileVerified == true && defined(author->profileEvidenceUrl) => author->{name, slug}, null), "reviewer": select(reviewer->profileVerified == true && defined(reviewer->profileEvidenceUrl) => reviewer->{name, slug}, null)},
@@ -426,6 +480,7 @@ export async function getPosts(): Promise<Post[]> {
     {},
     { perspective: 'published', stega: false, next: { revalidate: 60 } }
   );
+  const posts = replaceCmsPhotos(fetchedPosts);
   const publishedSlugs = new Set(posts.map((post) => post.slug.current));
   return [...posts, ...planningGuides.filter((guide) => !publishedSlugs.has(guide.slug.current))].map(applyEditorialCorrections);
 }
@@ -758,9 +813,11 @@ export async function getThingsToDoFromSanity(): Promise<ThingToDoData[]> {
     _id, title, "slug": slug.current, category, breadcrumb, readingTime, heroSubtitle,
     "heroImage": heroImage.asset->url,
     "imageAlt": heroImage.alt,
-    intro, highlights
+    intro, highlights, practicalInfo
   }`;
-  return await fetchSanity<ThingToDoData[]>(query);
+  const sanityItems = await fetchSanity<ThingToDoData[]>(query);
+  const sanitySlugs = new Set(sanityItems.map((item) => item.slug));
+  return [...sanityItems, ...thingsToDoData.filter((item) => !sanitySlugs.has(item.slug))];
 }
 
 export async function getThingToDoBySlugFromSanity(slug: string): Promise<ThingToDoData | null> {

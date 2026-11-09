@@ -55,6 +55,7 @@ export default function Footer() {
         { label: "Best Time to Visit", href: "/ideas-by-month" },
         { label: "Travel Guides", href: "/travel-guides" },
         { label: "Editorial Policy", href: "/editorial-policy" },
+        { label: "Photo Credits", href: "/photo-credits" },
         { label: "Enquire Now", href: "/enquire" },
       ],
     },
@@ -144,13 +145,13 @@ export default function Footer() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            +84 988600388 (24/7 Hotline & WhatsApp)
+            +84 988600388 (Phone & WhatsApp)
           </a>
         </div>
 
         {/* SEO Contextual Internal Linking */}
         <div className="border-t border-gray-800 pt-8 pb-4 text-center text-xs text-gray-400 font-light leading-relaxed max-w-4xl mx-auto">
-          VietnamTours.co.uk is a leading specialist in <Link href="/" title="Luxury Vietnam Private Tours" className="text-gold hover:underline">Luxury Vietnam Private Tours</Link>. We craft bespoke holidays and tailor-made journeys to Vietnam, Cambodia, and Laos, guaranteeing authentic experiences and exceptional service. Let our local experts guide you on your next unforgettable adventure.
+          Browse Vietnam trip ideas, sample routes, and travel-planning guides. Availability, providers, inclusions and prices are confirmed for your dates in a written proposal.
         </div>
 
         <nav aria-label="Company and contact information" className="flex flex-wrap justify-center gap-6 border-t border-gray-800 pt-8 text-xs text-gold">
@@ -161,7 +162,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-[9px] text-gray-500 mt-16 border-t border-gray-900 pt-6 uppercase tracking-widest leading-relaxed">
-          &copy; 2026 VIETNAM TOURS. OPERATED BY MY WAY TRAVEL. ALL RIGHTS RESERVED. HANDCRAFTED LUXURY TRAVELS IN INDOCHINA.
+          &copy; 2026 VIETNAM TOURS · A VIETNAM-FOCUSED TRAVEL BRAND OF MY WAY TRAVEL. ALL RIGHTS RESERVED.
         </div>
 
       </div>

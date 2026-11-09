@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ideasByMonthData } from '@/lib/ideasByMonthData';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { editorialImageDescription } from '@/lib/photoCredits';
 
 const monthsList = [
   { slug: 'january', label: 'JAN' },
@@ -27,7 +29,9 @@ export default function BestTimeInteractive({ initialMonthData }: BestTimeIntera
   const [activeMonthSlug, setActiveMonthSlug] = useState('january');
   
   const items = initialMonthData && initialMonthData.length > 0 ? initialMonthData : ideasByMonthData;
-  const currentMonthData = items.find((m) => m.slug === activeMonthSlug) || items[0];
+  const monthImages = uniqueEditorialImages(items, (month) => `${month.slug} ${month.breadcrumb}`);
+  const activeMonthIndex = Math.max(0, items.findIndex((m) => m.slug === activeMonthSlug));
+  const currentMonthData = items[activeMonthIndex];
 
   return (
     <section className="py-10 md:py-20 bg-paper border-t border-b border-line">
@@ -112,8 +116,8 @@ export default function BestTimeInteractive({ initialMonthData }: BestTimeIntera
             {/* Right Media Image */}
             <div className="md:col-span-5 relative w-full h-[280px] sm:h-[350px] overflow-hidden rounded-sm bg-paper">
               <Image
-                src={currentMonthData.heroImage}
-                alt={currentMonthData.title}
+                src={monthImages[activeMonthIndex] || currentMonthData.heroImage}
+                alt={editorialImageDescription(monthImages[activeMonthIndex] || currentMonthData.heroImage)}
                 fill
                 sizes="(max-w-768px) 100vw, 40vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"

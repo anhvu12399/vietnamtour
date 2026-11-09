@@ -17,8 +17,8 @@ function escapeHtml(str: string): string {
 
 export function buildCustomerThankYouEmail(input: EnquiryInput, leadId: string) {
   const safeName = escapeHtml(`${input.firstName} ${input.lastName}`.trim());
-  const safeFirstName = escapeHtml(input.firstName || 'Valued Traveller');
-  const safeDestinations = escapeHtml(input.destinations.join(', ') || 'Vietnam');
+  const safeFirstName = escapeHtml(input.firstName || 'traveler');
+  const safeDestinations = escapeHtml(input.destinations.join(', ') || 'Vietnam & Indochina');
   const safeDuration = escapeHtml(input.duration || 'Not specified');
   const safeTiming = escapeHtml(`${input.travelMonth} ${input.travelYear}`.trim() || 'Flexible');
   const safeBudget = escapeHtml(input.budgetPerPerson || 'Custom');
@@ -26,163 +26,252 @@ export function buildCustomerThankYouEmail(input: EnquiryInput, leadId: string) 
   const safeContactTime = escapeHtml(input.availableTime || 'Anytime');
   const travellersCount = `${input.adults} Adults${input.teens ? `, ${input.teens} Teens` : ''}${input.children ? `, ${input.children} Children` : ''}`;
 
-  const subject = `Thank you for your Vietnam travel enquiry — Vietnam Tours [Ref: ${leadId}]`;
+  const subject = `${safeFirstName}, thank you for your Vietnam travel enquiry [Ref: #${leadId}]`;
 
-  const html = `<!DOCTYPE html>
-<html lang="en">
+  const html = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(subject)}</title>
+  <style type="text/css">
+    body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; background-color: #ebeff2; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; }
+    .email-wrapper { width: 100%; background-color: #ebeff2; padding: 30px 10px; }
+    .email-container { max-width: 620px; margin: 0 auto; background-color: #ffffff; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+    @media only screen and (max-width: 600px) {
+      .email-container { width: 100% !important; border-radius: 0 !important; }
+      .header-col-left, .header-col-right { display: block !important; width: 100% !important; text-align: left !important; }
+      .header-col-right { margin-top: 12px !important; }
+      .feature-col-img, .feature-col-text { display: block !important; width: 100% !important; }
+      .feature-col-img img { width: 100% !important; height: auto !important; max-height: 220px !important; }
+      .feature-col-text { padding: 20px 20px 24px 20px !important; }
+      .content-padding { padding: 22px 20px !important; }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f4f5f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f5f7; padding: 30px 10px;">
-    <tr>
-      <td align="center">
-        <!-- Main Email Container -->
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-          
-          <!-- Header Banner -->
-          <tr>
-            <td style="background-color: #0e1628; padding: 32px 24px; text-align: center; border-bottom: 2px solid #c5a880;">
-              <span style="font-size: 11px; letter-spacing: 0.25em; color: #c5a880; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 6px;">
-                Bespoke Luxury Travel
-              </span>
-              <h1 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 26px; font-weight: 400; letter-spacing: 0.08em; color: #ffffff;">
-                VIETNAM TOURS
-              </h1>
-            </td>
-          </tr>
+<body style="margin: 0; padding: 0; background-color: #ebeff2;">
+  <center class="email-wrapper">
+    <table class="email-container" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 620px; background-color: #ffffff; margin: 0 auto; text-align: left;">
+      
+      <!-- ── 1. HEADER (Logo with Letter 'M' Mark + UK Hotline) ── -->
+      <tr>
+        <td style="padding: 24px 32px 20px; border-bottom: 1px solid #f1f5f9;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <!-- Brand Identity with 'M' Mark -->
+              <td class="header-col-left" valign="middle" align="left" style="width: 58%;">
+                <a href="https://www.vietnamtours.co.uk" target="_blank" style="text-decoration: none; display: inline-block;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="middle" style="padding-right: 12px;">
+                        <!-- Official letter 'M' emblem from live web -->
+                        <img src="https://www.mywaytravel.com/images/myway-icon-192.png" 
+                             alt="Vietnam Tours 'M' Mark" 
+                             width="46" 
+                             height="46" 
+                             style="display: block; border-radius: 50%;" />
+                      </td>
+                      <td valign="middle">
+                        <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 19px; font-weight: 700; color: #011b31; letter-spacing: 0.5px; line-height: 1.1;">
+                          VIETNAM TOURS
+                        </div>
+                        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 9.5px; font-weight: 600; color: #b48530; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;">
+                          BY MY WAY TRAVEL
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </a>
+              </td>
+              <!-- UK Phone / Hours -->
+              <td class="header-col-right" valign="middle" align="right" style="width: 42%;">
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 17px; font-weight: 800; color: #011b31;">
+                  020 8126 8998
+                </div>
+                <div style="margin-top: 3px;">
+                  <a href="https://www.vietnamtours.co.uk" target="_blank" style="font-size: 12px; color: #64748b; text-decoration: underline; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    Our London office hours
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-          <!-- Body Content -->
-          <tr>
-            <td style="padding: 36px 32px 24px 32px;">
-              <h2 style="margin: 0 0 16px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 22px; font-weight: 400; color: #0e1628;">
-                Thank You, ${safeFirstName}
-              </h2>
-              
-              <div style="height: 2px; width: 44px; background-color: #c5a880; margin-bottom: 20px;"></div>
+      <!-- ── 2. HERO IMAGE BANNER (Halong Bay Limestone / Vietnam Scenic) ── -->
+      <tr>
+        <td style="padding: 0; position: relative;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+              <td style="padding: 0; position: relative; background-color: #011b31;">
+                <img src="https://www.vietnamtours.co.uk/images/dest_halong_limestone.png" 
+                     alt="Halong Bay Luxury Private Cruise" 
+                     width="620" 
+                     style="display: block; width: 100%; max-width: 620px; height: auto; max-height: 290px; object-fit: cover;" />
+                <div style="background-color: #0c1524; padding: 7px 18px; text-align: right;">
+                  <span style="font-family: Georgia, serif; font-style: italic; font-size: 12px; color: #e2e8f0;">
+                    Image by Vietnam Tours client David Thornton
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-              <p style="font-size: 15px; line-height: 1.6; color: #4b5563; margin: 0 0 16px 0;">
-                We are delighted to confirm that your enquiry for a tailor-made journey across Vietnam and Indochina has been received.
-              </p>
-              
-              <p style="font-size: 15px; line-height: 1.6; color: #4b5563; margin: 0 0 24px 0;">
-                Our private travel designers are already reviewing your preferences to handcraft an authentic, personalized itinerary. One of our destination specialists will reach out to you within <strong>24 hours</strong> with an initial travel proposal.
-              </p>
+      <!-- ── 3. LETTER BODY (Salutation & Reassurance) ── -->
+      <tr>
+        <td class="content-padding" style="padding: 32px 36px 16px;">
+          <p style="margin: 0 0 18px; font-size: 16px; color: #1e293b; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+            Dear ${safeFirstName},
+          </p>
+          <p style="margin: 0 0 18px; font-size: 14.5px; line-height: 1.68; color: #334155;">
+            Thank you for your interest in <strong>Vietnam Tours</strong> — I&#39;m thrilled you&#39;re considering a private tailor-made journey across Vietnam with us.
+          </p>
+          <p style="margin: 0 0 18px; font-size: 14.5px; line-height: 1.68; color: #334155;">
+            If they haven&#39;t yet, someone from our UK Travel Specialist Team will reach out shortly and put you in touch with a dedicated specialist, who knows Vietnam and Indochina inside-out — from the emerald waters of Halong Bay and lantern-lit streets of Hoi An to the misty terraced valleys of Sapa. As always, they&#39;ll take time to listen to what you want from your travels so they can meticulously craft the journey you&#39;ve been imagining.
+          </p>
+          <p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.68; color: #334155;">
+            We&#39;re looking forward to planning your journey across Vietnam.
+          </p>
+          <p style="margin: 0 0 24px; font-size: 14.5px; font-weight: 500; color: #1e293b;">
+            Here&#39;s to adventure.
+          </p>
 
-              <!-- Reference Badge -->
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border-left: 4px solid #c5a880; margin-bottom: 24px;">
-                <tr>
-                  <td style="padding: 14px 16px;">
-                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; font-weight: 600; display: block;">Enquiry Reference</span>
-                    <strong style="font-size: 15px; color: #0e1628; letter-spacing: 0.03em;">#${escapeHtml(leadId)}</strong>
-                  </td>
-                </tr>
-              </table>
+          <!-- Signoff + Ken Fish Signature -->
+          <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 10px;">
+            <tr>
+              <td valign="middle" style="padding-right: 18px;">
+                <img src="https://www.mywaytravel.com/images/founder_ken_fish.jpg" 
+                     alt="Ken Fish" 
+                     width="76" 
+                     height="76" 
+                     style="display: block; border-radius: 50%; object-fit: cover; border: 2px solid #e2e8f0;" />
+              </td>
+              <td valign="middle">
+                <!-- SVG Signature Mark -->
+                <svg width="190" height="46" viewBox="0 0 190 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:4px 0 6px;">
+                  <path d="M12 36C22 28 34 10 38 7C40 5 44 8 42 14C39 24 30 33 28 38C26 42 32 39 37 32C42 24 49 14 54 11C57 9 58 12 55 18C50 28 47 37 52 35C57 33 65 22 72 17C79 12 83 14 80 20C76 27 71 35 77 34C83 33 93 21 101 16C108 12 112 14 109 20C104 29 99 37 106 35C114 32 125 19 133 16C138 14 141 16 138 22C133 32 129 39 138 35C146 32 159 20 167 18C174 16 179 21 170 29C160 38 142 41 127 41C102 41 68 40 40 40C25 40 10 41 5 41" stroke="#011b31" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 700; color: #011b31; line-height: 1.2;">
+                  Ken Fish
+                </div>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12.5px; color: #64748b; line-height: 1.3;">
+                  Managing Director of My Way Travel
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-              <!-- Journey Summary Card -->
-              <h3 style="margin: 0 0 12px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: #0e1628; font-weight: 700;">
-                Your Journey Summary
-              </h3>
+      <!-- ── 4. FEATURE BLOCK 1: BROCHURE PROMO ── -->
+      <tr>
+        <td style="padding: 12px 32px 14px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #556c6e; border-radius: 4px; overflow: hidden;">
+            <tr>
+              <td class="feature-col-img" width="45%" valign="middle" align="center" style="padding: 0; background-color: #4a5f61;">
+                <img src="https://www.vietnamtours.co.uk/images/brochure_vietnam_cover.png" 
+                     alt="Vietnam Tours Bespoke Brochure" 
+                     width="270" 
+                     style="display: block; width: 100%; height: 100%; max-height: 230px; object-fit: cover;" />
+              </td>
+              <td class="feature-col-text" width="55%" valign="middle" style="padding: 24px 24px 24px 20px;">
+                <div style="font-family: Georgia, serif; font-style: italic; font-size: 19px; color: #ffffff; line-height: 1.25; margin-bottom: 10px;">
+                  Explore Vietnam your way
+                </div>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12.5px; color: #e8ecef; line-height: 1.5; margin-bottom: 16px;">
+                  Our brochure, <em style="color:#ffffff;">The World on Your Terms</em>, is designed to inspire your future travels and show you what your trip can look like when you explore with us. Inside, you&#39;ll find trip ideas alongside hand-picked stays.
+                </div>
+                <div>
+                  <a href="https://www.vietnamtours.co.uk/itineraries" 
+                     target="_blank" 
+                     style="display: inline-block; background-color: #ffffff; color: #011b31; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 10px 18px; border-radius: 2px;">
+                    VIEW ONLINE BROCHURE &rsaquo;
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; margin-bottom: 28px;">
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280; width: 38%;">Destinations</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827; font-weight: 500;">${safeDestinations}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">Timing</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827; font-weight: 500;">${safeTiming}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">Duration</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827; font-weight: 500;">${safeDuration}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">Travellers</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827; font-weight: 500;">${travellersCount}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">Budget (per person)</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827; font-weight: 500;">${safeBudget}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 13px; color: #6b7280;">Preferred Contact Time</td>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #111827;">${safeContactTime}</td>
-                </tr>
-                ${safeNotes !== 'None specified' ? `
-                <tr>
-                  <td style="padding: 12px 16px; font-size: 13px; color: #6b7280; vertical-align: top;">Notes &amp; Interests</td>
-                  <td style="padding: 12px 16px; font-size: 14px; color: #111827; line-height: 1.5;">${safeNotes}</td>
-                </tr>
-                ` : ''}
-              </table>
+      <!-- ── 5. FEATURE BLOCK 2: SPECIALIST INTRO ── -->
+      <tr>
+        <td style="padding: 8px 32px 26px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #556c6e; border-radius: 4px; overflow: hidden;">
+            <tr>
+              <td class="feature-col-img" width="45%" valign="middle" align="center" style="padding: 0; background-color: #4a5f61;">
+                <img src="https://www.vietnamtours.co.uk/images/specialist_alice.png" 
+                     alt="Dedicated UK Travel Specialist" 
+                     width="270" 
+                     style="display: block; width: 100%; height: 100%; max-height: 220px; object-fit: cover;" />
+              </td>
+              <td class="feature-col-text" width="55%" valign="middle" style="padding: 24px 24px 24px 20px;">
+                <div style="font-family: Georgia, serif; font-style: italic; font-size: 19px; color: #ffffff; line-height: 1.25; margin-bottom: 10px;">
+                  What happens next
+                </div>
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12.5px; color: #e8ecef; line-height: 1.5;">
+                  Keep an eye (and ear) out for our call — one of our UK specialists will be ringing you on a number starting with <strong>020 8126</strong> to talk through your plans and start exploring all the possibilities for your next trip.
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
 
-              <!-- Next Steps -->
-              <h3 style="margin: 0 0 12px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: #0e1628; font-weight: 700;">
-                What Happens Next?
-              </h3>
+      <!-- ── 6. TRUST BADGES & FOOTER ── -->
+      <tr>
+        <td style="background-color: #f8fafc; padding: 26px 32px 22px; text-align: center; border-top: 1px solid #e2e8f0;">
+          <div style="font-size: 11.5px; color: #64748b; line-height: 1.55; margin-bottom: 8px;">
+            You&#39;ve received this email because you recently enquired about a tailor-made journey with Vietnam Tours.
+          </div>
+          <div style="font-size: 12px; font-weight: 600; color: #011b31; margin-bottom: 18px;">
+            Please reply directly to this email if you&#39;d like to get in touch.
+          </div>
 
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 28px;">
-                <tr>
-                  <td style="width: 28px; vertical-align: top; padding-bottom: 12px;">
-                    <span style="display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 50%; background-color: #0e1628; color: #c5a880; font-size: 12px; font-weight: bold;">1</span>
-                  </td>
-                  <td style="padding-bottom: 12px; font-size: 14px; color: #4b5563; line-height: 1.5;">
-                    <strong style="color: #111827;">Itinerary Curation:</strong> Our specialist selects authentic heritage experiences, private guides, and boutique stays based on your dates.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 28px; vertical-align: top; padding-bottom: 12px;">
-                    <span style="display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 50%; background-color: #0e1628; color: #c5a880; font-size: 12px; font-weight: bold;">2</span>
-                  </td>
-                  <td style="padding-bottom: 12px; font-size: 14px; color: #4b5563; line-height: 1.5;">
-                    <strong style="color: #111827;">Direct Consultation:</strong> We share your interactive proposal by email or phone at your preferred time.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 28px; vertical-align: top;">
-                    <span style="display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 50%; background-color: #0e1628; color: #c5a880; font-size: 12px; font-weight: bold;">3</span>
-                  </td>
-                  <td style="font-size: 14px; color: #4b5563; line-height: 1.5;">
-                    <strong style="color: #111827;">Fine-Tuning:</strong> Adjust, customize, and finalize every detail before any commitment.
-                  </td>
-                </tr>
-              </table>
+          <!-- Trust Badges (B-Corp / Which? / Travel Awards) -->
+          <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 18px;">
+            <tr>
+              <td align="center" valign="middle" style="padding: 0 16px;">
+                <div style="border: 1.5px solid #1e293b; border-radius: 50%; width: 56px; height: 56px; display: table-cell; vertical-align: middle; text-align: center; background-color: #ffffff;">
+                  <span style="font-family: Arial, sans-serif; font-size: 6px; font-weight: 800; color: #1e293b; letter-spacing: 0.5px; text-transform: uppercase; display: block;">CERTIFIED</span>
+                  <span style="font-family: Georgia, serif; font-size: 24px; font-weight: 700; color: #1e293b; line-height: 1; display: block; margin: -2px 0;">B</span>
+                  <span style="font-family: Arial, sans-serif; font-size: 6px; font-weight: 700; color: #1e293b; letter-spacing: 0.5px; text-transform: uppercase; display: block;">CORP STYLE</span>
+                </div>
+              </td>
+              <td align="center" valign="middle" style="padding: 0 16px;">
+                <div style="border: 1.5px solid #dc2626; border-radius: 50%; width: 56px; height: 56px; display: cell; vertical-align: middle; text-align: center; background-color: #ffffff;">
+                  <span style="font-family: Arial, sans-serif; font-size: 5.5px; font-weight: 700; color: #dc2626; letter-spacing: 0.5px; text-transform: uppercase; display: block;">RECOMMENDED</span>
+                  <span style="font-family: Georgia, serif; font-size: 13px; font-weight: 800; color: #dc2626; line-height: 1.1; display: block;">Which?</span>
+                  <span style="font-family: Arial, sans-serif; font-size: 5.5px; font-weight: 700; color: #dc2626; letter-spacing: 0.5px; text-transform: uppercase; display: block;">PROVIDER</span>
+                </div>
+              </td>
+              <td align="center" valign="middle" style="padding: 0 16px;">
+                <div style="border: 1.5px solid #1e293b; width: 62px; height: 56px; display: table-cell; vertical-align: middle; text-align: center; background-color: #ffffff;">
+                  <span style="font-family: Arial, sans-serif; font-size: 5.5px; font-weight: 700; color: #64748b; letter-spacing: 0.5px; text-transform: uppercase; display: block;">LUXURY</span>
+                  <span style="font-family: Georgia, serif; font-size: 9px; font-weight: 700; color: #011b31; line-height: 1; display: block; margin: 2px 0;">TRAVEL</span>
+                  <span style="font-family: Georgia, serif; font-size: 9px; font-weight: 700; color: #011b31; line-height: 1; display: block;">AWARDS</span>
+                  <span style="font-family: Arial, sans-serif; font-size: 6.5px; font-weight: 800; color: #b48530; letter-spacing: 0.5px; display: block; margin-top: 2px;">WINNER 2025</span>
+                </div>
+              </td>
+            </tr>
+          </table>
 
-              <!-- Assistance Box -->
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f1f5f9; border-radius: 4px; margin-bottom: 12px;">
-                <tr>
-                  <td style="padding: 16px 20px; font-size: 13px; color: #475569; line-height: 1.5;">
-                    <strong style="color: #0f172a; display: block; margin-bottom: 4px;">Need immediate assistance?</strong>
-                    Speak directly with our concierge team on <a href="tel:+84988600388" style="color: #0e1628; font-weight: 600; text-decoration: underline;">+84 988600388</a> (Phone / WhatsApp) or email <a href="mailto:info@vietnamtours.co.uk" style="color: #0e1628; font-weight: 600; text-decoration: underline;">info@vietnamtours.co.uk</a>.
-                  </td>
-                </tr>
-              </table>
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; color: #64748b; line-height: 1.6;">
+            <strong>Vietnam Tours</strong> · By My Way Travel<br />
+            20-22 Wenlock Road, London N1 7GU, United Kingdom · Tel: 020 8126 8998<br />
+            <a href="https://www.vietnamtours.co.uk" target="_blank" style="color: #64748b; text-decoration: underline;">vietnamtours.co.uk</a>
+          </div>
+        </td>
+      </tr>
 
-            </td>
-          </tr>
-
-          <!-- Footer -->
-          <tr>
-            <td style="background-color: #0e1628; padding: 24px; text-align: center; color: #94a3b8; font-size: 12px; line-height: 1.6;">
-              <p style="margin: 0 0 6px 0; color: #e2e8f0; font-size: 13px; font-weight: 500;">
-                Vietnam Tours — Bespoke Luxury Journeys
-              </p>
-              <p style="margin: 0 0 10px 0;">
-                Curated Private Travel &amp; Heritage Tours Across Vietnam &amp; Indochina
-              </p>
-              <p style="margin: 0; color: #64748b; font-size: 11px;">
-                &copy; ${new Date().getFullYear()} Vietnam Tours. All rights reserved.
-              </p>
-            </td>
-          </tr>
-
-        </table>
-      </td>
-    </tr>
-  </table>
+    </table>
+  </center>
 </body>
 </html>`;
 
@@ -190,7 +279,7 @@ export function buildCustomerThankYouEmail(input: EnquiryInput, leadId: string) 
 Thank you, ${safeName}
 
 We have received your enquiry for a tailor-made journey across Vietnam and Indochina.
-Our private travel specialists are reviewing your request and will be in touch within 24 hours with an initial travel proposal.
+The travel team will review your request and contact you to discuss possible next steps. Availability, services and prices will be confirmed separately.
 
 ENQUIRY REFERENCE: #${leadId}
 

@@ -7,9 +7,10 @@ interface FloatingCTAProps {
   title: string;
   duration: number;
   priceFrom: number;
+  archived?: boolean;
 }
 
-export default function FloatingCTA({ title, duration, priceFrom }: FloatingCTAProps) {
+export default function FloatingCTA({ title, duration, priceFrom, archived = false }: FloatingCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function FloatingCTA({ title, duration, priceFrom }: FloatingCTAP
         {/* Right Price & Button */}
         <div className="flex items-center space-x-6">
           <div className="text-right hidden xs:block">
-            <span className="text-[9px] uppercase tracking-wider text-paper/50 block font-light">From</span>
+            <span className="text-[9px] uppercase tracking-wider text-paper/50 block font-light">{archived ? 'Guide price' : 'From'}</span>
             <span className="text-sm md:text-base font-bold text-paper">£{priceFrom.toLocaleString('en-GB')}pp</span>
           </div>
           <Link

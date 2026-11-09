@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://www.vietnamtours.co.uk",
     images: [
       {
-        url: "/images/dest_halong_limestone.png",
+        url: "/images/unsplash/halong.jpg",
         width: 1200,
         height: 630,
         alt: "Ha Long Bay limestone karsts at sunrise — luxury private Vietnam tour from the UK",

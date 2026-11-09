@@ -76,7 +76,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
       thing = {
         ...sanityThing,
         slug: sanityThing.slug || slug,
-        heroImage: sanityThing.heroImage || '/images/things_halong_kayaking.png',
+        heroImage: sanityThing.heroImage || '/images/unsplash/halong.jpg',
       };
     }
   } catch {
@@ -358,7 +358,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   <div key={it._id} className="group bg-white border border-line hover:border-line transition-all duration-300 hover:shadow-xl flex flex-col">
                     <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                       <Image
-                        src={it.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                        src={it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                         alt={it.title}
                         fill
                         className="object-cover group-hover:scale-[1.04] transition-transform duration-700"

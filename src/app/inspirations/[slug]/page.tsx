@@ -306,7 +306,7 @@ export default async function InspirationSlugPage({ params }: PageProps) {
                       {/* Tour Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={tour.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                          src={tour.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                           alt={tour.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

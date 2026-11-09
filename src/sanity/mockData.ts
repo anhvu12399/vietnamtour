@@ -21,7 +21,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Plunge Pool', 'Personal Butler Service', 'Hilltop Infinity Pool', 'Private Beach Club', 'World-Class Spa Pavilions'],
     gallery: [
-      '/images/hotel_amanoi.png'
+      '/images/unsplash/phuquoc.jpg'
     ],
     websiteUrl: 'https://www.aman.com/resorts/amanoi'
   },
@@ -45,7 +45,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Overwater & Hilltop Villas', 'Wine Cave Dining', 'Pristine Coral Reef Access', 'Award-winning Wellness Spa', 'Eco-friendly Sustainability Philosophy'],
     gallery: [
-      '/images/hotel_six_senses.png'
+      '/images/unsplash/phuquoc.jpg'
     ],
     websiteUrl: 'https://www.sixsenses.com/en/resorts/ninh-van-bay'
   },
@@ -69,7 +69,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Historic French-Colonial Wing', 'Michelin-selected Restaurant', 'Bespoke Sommelier Service', 'Heated Outdoor Pool', 'Private Historical Bunker Tour'],
     gallery: [
-      '/images/hotel_metropole.png'
+      '/images/unsplash/hanoi.jpg'
     ],
     websiteUrl: 'https://all.accor.com/hotel/1555/index.en.shtml'
   },
@@ -93,7 +93,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Lagoon Villas', 'Ocean View Sky Pools', 'Omakase & Fine Dining', 'Private Luxury Catamaran', 'Interactive Kids Club'],
     gallery: [
-      '/images/hotel_regent.png'
+      '/images/unsplash/phuquoc.jpg'
     ],
     websiteUrl: 'https://phuquoc.regenthotels.com'
   },
@@ -117,7 +117,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Private Beachfront Villas', 'Three Tiered Infinity Pools', 'Heart of the Earth Spa', 'Michelin-Caliber Dining', 'Bespoke Cooking Academy'],
     gallery: [
-      '/images/hotel_nam_hai.png'
+      '/images/unsplash/hoian.jpg'
     ],
     websiteUrl: 'https://www.fourseasons.com/hoian/'
   },
@@ -141,7 +141,7 @@ export const mockAccommodations: Accommodation[] = [
     ],
     features: ['Bill Bensley Art-Deco Suites', 'Michelin-Starred Hibana Restaurant', 'Auriga Spa & Royal Pool', 'Capella Culturist Service', 'Historical Opera Memorabilia'],
     gallery: [
-      '/images/hotel_capella.png'
+      '/images/unsplash/hanoi.jpg'
     ],
     websiteUrl: 'https://capellahotels.com/en/capella-hanoi'
   }
@@ -207,7 +207,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-hanoi',
     name: 'Hanoi',
     slug: { current: 'hanoi' },
-    image: '/images/vietnamtour_hanoi_colonial.png',
+    image: '/images/unsplash/hanoi.jpg',
     description: [
       {
         _key: 'b1',
@@ -252,7 +252,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-halong',
     name: 'Ha Long Bay',
     slug: { current: 'ha-long-bay' },
-    image: '/images/dest_halong_limestone.png',
+    image: '/images/unsplash/halong.jpg',
     description: [
       {
         _key: 'b1',
@@ -297,7 +297,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-sapa',
     name: 'Sapa',
     slug: { current: 'sapa' },
-    image: '/images/dest_sapa_highland.png',
+    image: '/images/unsplash/sapa.jpg',
     description: [
       {
         _key: 'b1',
@@ -342,7 +342,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-ninhbinh',
     name: 'Ninh Binh',
     slug: { current: 'ninh-binh' },
-    image: '/images/tour_ninhbinh_landscape.png',
+    image: '/images/unsplash/ninhbinh.jpg',
     description: [
       {
         _key: 'b1',
@@ -361,7 +361,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-hue',
     name: 'Hue',
     slug: { current: 'hue' },
-    image: '/images/things_cooking_class_hue.png',
+    image: '/images/unsplash/food.jpg',
     description: [
       {
         _key: 'b1',
@@ -380,7 +380,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-danang',
     name: 'Da Nang',
     slug: { current: 'da-nang' },
-    image: '/images/dest_danang_beach_bridge.png',
+    image: '/images/unsplash/phuquoc.jpg',
     description: [
       {
         _key: 'b1',
@@ -399,7 +399,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-hoian',
     name: 'Hoi An',
     slug: { current: 'hoi-an' },
-    image: '/images/dest_hoian_lanterns.png',
+    image: '/images/unsplash/hoian.jpg',
     description: [
       {
         _key: 'b1',
@@ -418,7 +418,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-phongnha',
     name: 'Phong Nha',
     slug: { current: 'phong-nha' },
-    image: '/images/dest_phongnha_cave.png',
+    image: '/images/unsplash/cave.jpg',
     description: [
       {
         _key: 'b1',
@@ -437,7 +437,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-dalat',
     name: 'Da Lat',
     slug: { current: 'da-lat' },
-    image: '/images/dest_dalat_pine_villas.png',
+    image: '/images/unsplash/dalat.jpg',
     description: [
       {
         _key: 'b1',
@@ -456,7 +456,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-hcmc',
     name: 'Ho Chi Minh City',
     slug: { current: 'ho-chi-minh-city' },
-    image: '/images/tour_saigon_vespa_night.png',
+    image: '/images/unsplash/hanoi.jpg',
     description: [
       {
         _key: 'b1',
@@ -475,7 +475,7 @@ export const mockDestinations: Destination[] = [
     _id: 'dest-mekong',
     name: 'Mekong Delta',
     slug: { current: 'mekong-delta' },
-    image: '/images/dest_mekong_canal.png',
+    image: '/images/unsplash/mekong.jpg',
     description: [
       {
         _key: 'b1',
@@ -520,9 +520,9 @@ export const mockItineraries: Itinerary[] = [
       '4 nights of ultimate luxury and wellness at the prestigious Amanoi.'
     ],
     gallery: [
-      '/images/vietnamtour_halong_yacht_luxury.png',
-      '/images/vietnamtour_amanoi_villa.png',
-      '/images/vietnamtour_hanoi_colonial.png'
+      '/images/unsplash/halong.jpg',
+      '/images/unsplash/phuquoc.jpg',
+      '/images/unsplash/hanoi.jpg'
     ],
     timeline: [
       {
@@ -625,8 +625,8 @@ export const mockItineraries: Itinerary[] = [
       'Craft beer and rooftop culinary crawl in Saigon by Vespa.'
     ],
     gallery: [
-      '/images/vietnamtour_cave_dining.png',
-      '/images/vietnamtour_mekong_sampan.png'
+      '/images/unsplash/cave.jpg',
+      '/images/unsplash/mekong.jpg'
     ],
     timeline: [
       {
@@ -712,8 +712,8 @@ export const mockItineraries: Itinerary[] = [
       'Customized 24/7 butler service throughout the journey.'
     ],
     gallery: [
-      '/images/vietnamtour_phu_quoc_beach.png',
-      '/images/vietnamtour_amanoi_villa.png'
+      '/images/unsplash/phuquoc.jpg',
+      '/images/unsplash/phuquoc.jpg'
     ],
     timeline: [
       {
@@ -784,9 +784,9 @@ export const mockItineraries: Itinerary[] = [
       "Feeling the metropolitan pulse of Ho Chi Minh City and cruising the Mekong Delta."
     ],
     gallery: [
-      "/images/vietnamtour_hanoi_colonial.png",
-      "/images/hero_halong_bay.png",
-      "/images/hero_hoian.png"
+      "/images/unsplash/hanoi.jpg",
+      "/images/unsplash/halong.jpg",
+      "/images/unsplash/hoian.jpg"
     ],
     timeline: [
       {
@@ -1026,9 +1026,9 @@ export const mockItineraries: Itinerary[] = [
       "Cruising the Mekong Delta and uncovering the hidden historical spots of Saigon."
     ],
     gallery: [
-      "/images/dest_sapa_highland.png",
-      "/images/vietnamtour_mekong_sampan.png",
-      "/images/vietnamtour_cave_dining.png"
+      "/images/unsplash/sapa.jpg",
+      "/images/unsplash/mekong.jpg",
+      "/images/unsplash/cave.jpg"
     ],
     timeline: [
       {

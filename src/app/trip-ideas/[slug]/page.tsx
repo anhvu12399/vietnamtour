@@ -175,6 +175,18 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
                   {idea.intro}
                 </p>
                 <EditorialEvidence evidence={idea.editorial} />
+                {idea.sources && idea.sources.length > 0 && (
+                  <section aria-labelledby="primary-sources-heading" className="mt-6 border-t border-line pt-5">
+                    <h2 id="primary-sources-heading" className="text-sm font-semibold text-ink">Official travel information</h2>
+                    <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                      {idea.sources.map((source) => (
+                        <li key={source.url}>
+                          <a href={source.url} target="_blank" rel="noreferrer" className="underline underline-offset-2">{source.label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
                 {slug === 'first-time-guide-vietnam' && <p className="mt-4 text-xs leading-relaxed text-ink-soft">Check the <Link href="/visa-guide" className="underline">visa guide and official sources</Link> for your passport and dates. Processing and entry requirements can change.</p>}
               </div>
 
@@ -308,7 +320,7 @@ export default async function TripIdeaSlugPage({ params }: PageProps) {
                       {/* Tour Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={tour.gallery?.[0] || '/images/vietnamtour_amanoi_villa.png'}
+                          src={tour.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
                           alt={tour.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
