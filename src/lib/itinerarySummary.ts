@@ -114,7 +114,7 @@ const LOCATION_RULES: LocationRule[] = [
     label: 'Cu Chi Tunnels',
     region: 'south',
     pattern: /\bcu chi\b/,
-    commonsFiles: ['/images/commons/cuchi-1.jpg', '/images/commons/saigon-1.jpg'],
+    commonsFiles: ['/images/commons/cuchi-1.jpg', '/images/commons/saigon-1.jpg', '/images/commons/saigon-2.jpg'],
   },
   {
     label: 'Ho Chi Minh City',
@@ -286,19 +286,22 @@ export function wikimediaGalleryForItinerary(itinerary: Itinerary, routePoints: 
   if (/amanoi|vinh hy/.test(searchCorpus)) candidatePaths.push('/images/commons/vinhhy-1.jpg');
   if (/six senses|ninh van/.test(searchCorpus)) candidatePaths.push('/images/commons/ninhvanbay-1.jpg');
 
-  for (const rule of LOCATION_RULES) {
-    if (rule.pattern.test(searchCorpus)) {
-      candidatePaths.push(...rule.commonsFiles);
-    }
+  const matchedLocations = LOCATION_RULES.filter((rule) => rule.pattern.test(searchCorpus));
+  const routeMatched = routePoints
+    .map((point) => LOCATION_RULES.find((rule) => rule.pattern.test(point.name.toLowerCase())))
+    .filter((rule): rule is LocationRule => Boolean(rule));
+
+  const allMatches = Array.from(new Set([...routeMatched, ...matchedLocations]));
+  for (const rule of allMatches) {
+    if (rule.commonsFiles[0]) candidatePaths.push(rule.commonsFiles[0]);
+  }
+  for (const rule of allMatches) {
+    candidatePaths.push(...rule.commonsFiles.slice(1));
   }
 
-  for (const point of routePoints) {
-    const matched = LOCATION_RULES.find((rule) => rule.pattern.test(point.name.toLowerCase()));
-    if (matched) candidatePaths.push(...matched.commonsFiles);
-  }
-
-  if (/honeymoon|luxury|romance|resort|retreat/.test(searchCorpus)) {
-    candidatePaths.push('/images/commons/metropole-hanoi-1.jpg', '/images/commons/dalat-1.jpg', '/images/commons/phuquoc-1.jpg');
+  const titleSlugCorpus = `${itinerary.slug?.current || ''} ${itinerary.title || ''}`.toLowerCase();
+  if (/honeymoon|romance|beach|resort|retreat/.test(titleSlugCorpus)) {
+    candidatePaths.push('/images/commons/phuquoc-1.jpg', '/images/commons/dalat-1.jpg', '/images/commons/metropole-hanoi-1.jpg');
   }
 
   // Balanced regional fallback if an itinerary mentions fewer than 3 distinct locations
