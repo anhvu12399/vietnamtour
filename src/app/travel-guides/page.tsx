@@ -168,10 +168,10 @@ export default async function TravelGuidesPage() {
 
                 <div className="relative w-28 h-28 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image
-                    src="/logo-sun-hat.png"
+                    src="/images/specialist_alice.png"
                     alt="VietnamTours travel team"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
 

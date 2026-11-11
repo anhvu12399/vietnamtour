@@ -2,16 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { enquiryUrl } from '@/lib/seo';
+import { absoluteUrl, enquiryUrl } from '@/lib/seo';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import ItineraryMap from '@/components/ItineraryMapWrapper';
 import RouteStrip from '@/components/RouteStrip';
 import TimelineInteractive from '@/components/TimelineInteractive';
+import { BreadcrumbJsonLd, TouristTripJsonLd } from '@/components/SeoJsonLd';
 import { getItineraryBySlug, getItineraries } from '@/sanity/client';
 import { getRoutePoints, generateDayByDayTimeline } from '@/lib/itineraryDetailsBuilder';
 import { getItineraryCitation } from '@/lib/tour-citations';
+import { buildItineraryShortAnswer, wikimediaGalleryForItinerary } from '@/lib/itinerarySummary';
+import { licenseUrl } from '@/lib/photoCredits';
+import { specialistAvatarFor } from '@/lib/team';
 
 export const revalidate = 60;
 
@@ -90,12 +94,32 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
   const routePoints = getRoutePoints(itinerary);
   const timelineDays = generateDayByDayTimeline(itinerary);
   const citation = getItineraryCitation(slug, itinerary.destination?.name);
+  const shortAnswer = buildItineraryShortAnswer(itinerary, routePoints);
+  const wikiGallery = wikimediaGalleryForItinerary(itinerary, routePoints, 3);
+  const curatorAvatar = itinerary.specialist?.image || specialistAvatarFor(slug);
   const heroImage = (itinerary.gallery && itinerary.gallery.length > 0 && itinerary.gallery[0])
     ? itinerary.gallery[0]
-    : '/images/1319931-temple-of-heaven-beijing.webp';
+    : wikiGallery[0]?.path || '/images/commons/hanoi-2.jpg';
+  const itineraryUrl = absoluteUrl(`/itineraries/${slug}`);
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: absoluteUrl('/') },
+          { name: 'Itineraries', url: absoluteUrl('/itineraries') },
+          { name: itinerary.title, url: itineraryUrl },
+        ]}
+      />
+      <TouristTripJsonLd
+        name={itinerary.title}
+        description={shortAnswer.directAnswer}
+        url={itineraryUrl}
+        image={absoluteUrl(heroImage)}
+        duration={`P${Math.max(1, itinerary.duration || 1)}D`}
+        price={itinerary.priceFrom ? String(itinerary.priceFrom) : undefined}
+        destination={itinerary.destination?.name || 'Vietnam'}
+      />
       <Navbar />
 
       {/* Hero Header Banner */}
@@ -131,7 +155,7 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
             )}
           </div>
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold tracking-wider text-gold uppercase">
-            <span>{itinerary.duration} Days Tailor-Made</span>
+            <span>{itinerary.duration} {itinerary.duration === 1 ? 'Day' : 'Days'} Tailor-Made</span>
             <span>•</span>
             <span>{itinerary.catalogueSource ? 'Archived guide price' : 'From'} £{(itinerary.priceFrom || 0).toLocaleString('en-GB')} per person</span>
           </div>
@@ -144,9 +168,39 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
       {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Left Columns - Description, Highlights, Map, Timeline, Tips */}
+          {/* Left Columns - Short Answer, Description, Trust Gallery, Highlights, Map, Timeline, Tips */}
           <div className="lg:col-span-2 space-y-16">
             
+            {/* Short Answer (Direct AEO/GEO Summary) */}
+            <section
+              aria-labelledby="short-answer-heading"
+              className="border border-jade-deep/30 border-l-4 border-l-gold bg-paper-dim p-6 sm:p-8 shadow-xs space-y-5 text-left"
+            >
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-copper block">
+                  Short Answer · At a Glance
+                </span>
+                <h2 id="short-answer-heading" className="font-serif text-xl sm:text-2xl text-ink font-medium">
+                  Quick Summary: {itinerary.title}
+                </h2>
+              </div>
+              <p className="text-sm sm:text-base text-ink leading-relaxed font-normal">
+                {shortAnswer.directAnswer}
+              </p>
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-line">
+                {shortAnswer.facts.map((fact) => (
+                  <div key={fact.label} className="bg-white border border-line/80 p-3.5 space-y-1">
+                    <dt className="text-[10px] font-bold uppercase tracking-wider text-ink-soft">
+                      {fact.label}
+                    </dt>
+                    <dd className="text-xs sm:text-sm text-ink leading-relaxed font-normal">
+                      {fact.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
             {/* Overview */}
             <div className="space-y-6 text-left">
               <h2 className="font-serif text-2xl lg:text-3xl text-ink font-medium border-b border-jade-deep/50 pb-4">
@@ -155,6 +209,58 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
               <p className="text-base font-light text-ink-soft leading-relaxed">
                 {itinerary.description?.[0]?.children?.[0]?.text || itinerary.intro}
               </p>
+
+              {/* Compact Wikimedia Commons Trust Photo Strip */}
+              {wikiGallery.length > 0 && (
+                <div className="pt-4 space-y-3">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-ink">
+                      Destination Visuals · Wikimedia Commons
+                    </h3>
+                    <Link href="/photo-credits" className="text-[11px] text-copper underline underline-offset-2 hover:text-ink">
+                      Full photo credits
+                    </Link>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {wikiGallery.map((photo) => (
+                      <figure key={photo.file} className="border border-line bg-white p-2 space-y-2">
+                        <div className="relative h-32 w-full overflow-hidden bg-paper-dim">
+                          <Image
+                            src={photo.path}
+                            alt={photo.description}
+                            fill
+                            sizes="(max-width: 640px) 100vw, 240px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <figcaption className="space-y-1 text-[11px] leading-snug text-ink-soft">
+                          <p className="font-medium text-ink line-clamp-2">{photo.description}</p>
+                          <p className="text-[10px] text-ink-soft/80">
+                            Photo: {photo.photographer} ·{' '}
+                            <a
+                              href={licenseUrl(photo.license)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline hover:text-ink"
+                            >
+                              {photo.license}
+                            </a>{' '}
+                            ·{' '}
+                            <a
+                              href={photo.source}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-copper underline hover:text-ink"
+                            >
+                              Wiki ↗
+                            </a>
+                          </p>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Highlights */}
@@ -301,15 +407,14 @@ export default async function ItineraryDetailPage({ params }: PageProps) {
                 </h3>
               </div>
 
-              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto border-2 border-line">
-                {itinerary.specialist?.image && (
-                  <Image
-                    src={typeof itinerary.specialist.image === 'string' ? itinerary.specialist.image : itinerary.specialist.image}
-                    alt={itinerary.specialist.name}
-                    fill
-                    className="object-cover"
-                  />
-                )}
+              <div className="relative w-28 h-28 rounded-full overflow-hidden mx-auto border-2 border-line bg-paper-dim">
+                <Image
+                  src={curatorAvatar}
+                  alt={itinerary.specialist?.name || 'VietnamTours travel team'}
+                  fill
+                  sizes="112px"
+                  className="object-cover object-top"
+                />
               </div>
 
               <p className="text-xs sm:text-sm text-paper/80 font-light leading-relaxed">

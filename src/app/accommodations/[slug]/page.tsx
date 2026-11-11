@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getAccommodationBySlug, getAccommodations } from '@/sanity/client';
+import { uniqueEditorialImages } from '@/lib/editorialPhotos';
+import { creditForImagePath, licenseUrl } from '@/lib/photoCredits';
 
 export const revalidate = 60;
 
@@ -35,6 +37,14 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
   if (!accommodation) {
     notFound();
   }
+
+  const candidatePair = uniqueEditorialImages(
+    [0, 1],
+    (_, idx) => `${accommodation.name} ${accommodation.location} gallery-${idx}`,
+  );
+  const galleryImages = accommodation.gallery.length > 1
+    ? accommodation.gallery
+    : Array.from(new Set([...accommodation.gallery, ...candidatePair])).slice(0, 2);
 
   return (
     <>
@@ -121,20 +131,45 @@ export default async function AccommodationDetailPage({ params }: PageProps) {
 
             {/* Gallery Grid */}
             <div className="space-y-6">
-              <h3 className="font-serif text-xl text-ink font-medium">
-                Photo Gallery
-              </h3>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-serif text-xl text-ink font-medium">
+                  Photo Gallery
+                </h3>
+                <Link href="/photo-credits" className="text-xs text-copper underline underline-offset-2 hover:text-ink">
+                  Photo credits &amp; licences
+                </Link>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {accommodation.gallery.map((img, idx) => (
-                  <div key={idx} className="relative h-64 overflow-hidden border border-jade-deep/50 group">
-                    <Image
-                      src={img}
-                      alt={`${accommodation.name} Gallery ${idx + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
+                {galleryImages.map((img, idx) => {
+                  const credit = creditForImagePath(img);
+                  return (
+                    <figure key={idx} className="border border-jade-deep/50 bg-white overflow-hidden">
+                      <div className="relative h-64 overflow-hidden group">
+                        <Image
+                          src={img}
+                          alt={credit?.description || `${accommodation.name} Gallery ${idx + 1}`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      {credit && (
+                        <figcaption className="p-3 text-[11px] leading-snug text-ink-soft border-t border-line">
+                          <span className="font-medium text-ink block truncate">{credit.description}</span>
+                          <span>
+                            Photo: {credit.photographer} ·{' '}
+                            <a href={licenseUrl(credit.license)} target="_blank" rel="noopener noreferrer" className="underline hover:text-ink">
+                              {credit.license}
+                            </a>{' '}
+                            ·{' '}
+                            <a href={credit.source} target="_blank" rel="noopener noreferrer" className="text-copper underline hover:text-ink">
+                              Source ↗
+                            </a>
+                          </span>
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                })}
               </div>
             </div>
 

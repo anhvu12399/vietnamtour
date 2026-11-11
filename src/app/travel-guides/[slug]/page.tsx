@@ -137,7 +137,7 @@ const portableTextComponents: PortableTextComponents = {
       );
     },
     specialistTip: ({ value }) => {
-      const avatar = value.customAvatar?.url || value.specialist?.image || '/logo-sun-hat.png';
+      const avatar = value.customAvatar?.url || value.specialist?.image || '/images/specialist_alice.png';
       const name = value.customName || value.specialist?.name || 'Travel Specialist';
       const role = value.customRole || value.specialist?.role || 'Expert';
       return (
@@ -430,7 +430,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
   const mainSpecialist = specialists[0] || {
     name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/logo-sun-hat.png",
+    image: "/images/specialist_alice.png",
     slug: { current: "" }
   };
 
@@ -602,10 +602,10 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border border-line shadow-sm shrink-0">
                   <Image
-                    src={mainSpecialist.image || "/logo-sun-hat.png"}
+                    src={mainSpecialist.image || "/images/specialist_alice.png"}
                     alt={mainSpecialist.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
 

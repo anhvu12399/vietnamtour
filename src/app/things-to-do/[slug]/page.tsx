@@ -62,7 +62,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
   const mainSpecialist = specialists[0] || {
     name: "VietnamTours travel team",
     role: "Vietnam Specialist",
-    image: "/logo-sun-hat.png",
+    image: "/images/specialist_alice.png",
     slug: { current: "" }
   };
 
@@ -293,7 +293,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   Speak to a Vietnam specialist
                 </h3>
                 <div className="relative w-20 h-20 rounded-full overflow-hidden border border-line shadow-md shrink-0">
-                  <Image src={mainSpecialist.image || "/logo-sun-hat.png"} alt={mainSpecialist.name} fill className="object-cover" />
+                  <Image src={mainSpecialist.image || "/images/specialist_alice.png"} alt={mainSpecialist.name} fill className="object-cover object-top" />
                 </div>
                 <div className="space-y-0.5">
                   <h4 className="font-sans text-xs font-bold text-ink uppercase tracking-wider">{mainSpecialist.name}</h4>

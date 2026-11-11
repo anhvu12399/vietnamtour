@@ -1,21 +1,13 @@
 import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { photoCredits } from '@/lib/photoCredits';
+import { licenseUrl, photoCredits } from '@/lib/photoCredits';
 
 export const metadata: Metadata = {
   title: 'Photo Credits & Image Sources | VietnamTours.co.uk',
   description: 'Photographer credits, image sources and licence details for editorial travel photography used on VietnamTours.co.uk.',
   alternates: { canonical: 'https://www.vietnamtours.co.uk/photo-credits' },
 };
-
-function licenseUrl(license: string): string {
-  if (license === 'Unsplash License') return 'https://unsplash.com/license';
-  if (license === 'CC0') return 'https://creativecommons.org/publicdomain/zero/1.0/';
-  const match = license.match(/^CC BY(-SA)? (\d+\.\d+)$/);
-  if (match) return `https://creativecommons.org/licenses/by${match[1] ? '-sa' : ''}/${match[2]}/`;
-  return 'https://commons.wikimedia.org/wiki/Commons:Licensing';
-}
 
 export default function PhotoCreditsPage() {
   return (

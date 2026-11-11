@@ -1,4 +1,4 @@
-import { publicSpecialist } from './team';
+import { publicSpecialist, specialistAvatarFor } from './team';
 import catalogue from './tours_data.json';
 import type { Itinerary } from '@/sanity/types';
 
@@ -36,7 +36,7 @@ export function mergeItineraryCatalogue(published: Itinerary[]): Itinerary[] {
       gallery: tour.gallery, accommodations: [], featured: false, catalogueSource: 'archive',
       specialist: {
         _id: 'travel-team', name: 'VietnamTours travel team', slug: { current: '' },
-        role: 'Trip planning', image: '', email: 'info@vietnamtours.co.uk', phone: '+84988600388',
+        role: 'Trip planning', image: specialistAvatarFor(tour.slug), email: 'info@vietnamtours.co.uk', phone: '+84988600388',
         bio: [], favoriteDestinations: [], expertTips: [],
       },
       timeline: [...days.values()].map((day, i) => ({

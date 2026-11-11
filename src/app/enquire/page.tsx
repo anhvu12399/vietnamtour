@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Plus, Minus, Phone, Mail, Award, Check } from 'lucide-react';
 import { detectTrafficSource } from '@/lib/trafficDetector';
+import { emailAcknowledged } from '@/lib/enquiryDelivery';
 
 export default function EnquiryPage() {
   const [formData, setFormData] = useState({
@@ -103,48 +104,66 @@ export default function EnquiryPage() {
       if (!utmSrc) utmSrc = urlParams.get('utm_source') || '';
       if (!utmMed) utmMed = urlParams.get('utm_medium') || '';
       if (!utmCam) utmCam = urlParams.get('utm_campaign') || '';
-      const attribution = detectTrafficSource(ref, utmSrc, '', land, utmMed);
+      const attribution = detectTrafficSource(ref, utmSrc, formData.notes, land, utmMed);
+      const displayName = `${formData.firstName} ${formData.lastName}`.trim() || formData.email.trim();
+      const formattedPhone = formData.phone.trim() ? `${formData.phoneCode} ${formData.phone.trim()}` : '';
+      const leadReference = `enquiry-${submissionId.current || (submissionId.current = crypto.randomUUID())}`;
 
-      const trackingData = {
-        submissionId: submissionId.current || (submissionId.current = crypto.randomUUID()),
-        interest,
-        ...formData,
-        referrer: ref,
-        landingPage: land,
-        utmSource: utmSrc,
-        utmMedium: utmMed,
-        utmCampaign: utmCam,
-      };
-
-      const response = await fetch('/api/enquiry', {
+      const response = await fetch('https://formsubmit.co/ajax/mywaytravelinc@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
-        body: JSON.stringify(trackingData),
+        body: JSON.stringify({
+          name: displayName,
+          email: formData.email.trim(),
+          phone: formattedPhone,
+          destination: formData.destination,
+          travelMonth: formData.travelMonth,
+          travelYear: formData.travelYear,
+          travellers: `${formData.adults} adults, ${formData.teens} teens, ${formData.children} children`,
+          budgetPerPerson: formData.budgetPerPerson,
+          availableTime: formData.availableTime,
+          interest,
+          notes: formData.notes,
+          source: attribution.source,
+          channel: attribution.channel,
+          aiTraffic: attribution.isAi ? 'YES' : 'No',
+          sourceEvidence: attribution.evidence,
+          sourceSignals: attribution.signals.join('; '),
+          contentHints: attribution.contentHints.join('; '),
+          landingPage: land,
+          referrer: ref,
+          utmSource: utmSrc,
+          utmMedium: utmMed,
+          utmCampaign: utmCam,
+          leadReference,
+          _subject: `New Tailor-Made Enquiry from ${displayName}`,
+          _template: 'table',
+        }),
       });
 
-      const receipt: { success?: boolean; leadId?: string; duplicate?: boolean; error?: string } = await response.json();
-      if (!response.ok || !receipt.success || !receipt.leadId) {
-        throw new Error(receipt.error || 'We could not confirm receipt. Please try again.');
+      const receipt: { success?: boolean | string; message?: string } | null = await response.json().catch(() => null);
+      if (!emailAcknowledged(response.ok, receipt)) {
+        throw new Error(receipt?.message || 'An error occurred during submission. Please try again.');
       }
-      if (!receipt.duplicate) {
-        track('lead_accepted', {
-          form: 'enquiry',
-          channel: attribution.channel,
-          ai_source: attribution.isAi,
-          evidence: attribution.evidence,
+
+      track('lead_accepted', {
+        form: 'enquiry',
+        channel: attribution.channel,
+        ai_source: attribution.isAi,
+        evidence: attribution.evidence,
+      });
+      if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
+        (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'conversion', {
+          send_to: 'AW-414204624/ZL87CM30hq0dENCFwcUB',
         });
-        if (typeof window !== 'undefined' && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === 'function') {
-          (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'conversion', {
-            send_to: 'AW-414204624/ZL87CM30hq0dENCFwcUB',
-          });
-        }
       }
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error: unknown) {
-      setServerError(error instanceof Error ? error.message : 'We could not confirm receipt. Please try again.');
+      setServerError(error instanceof Error ? error.message : 'An error occurred during submission. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -197,7 +216,7 @@ export default function EnquiryPage() {
                 
                 {/* Server Error Banner */}
                 {serverError && (
-                  <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                  <div role="alert" aria-live="polite" className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
                     {serverError}
                   </div>
                 )}
@@ -452,6 +471,7 @@ export default function EnquiryPage() {
                             name="phone"
                             autoComplete="tel-national"
                             aria-label="Phone number, optional"
+                            aria-invalid={Boolean(errors.phone)}
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="Phone number (optional)"
@@ -470,6 +490,7 @@ export default function EnquiryPage() {
                           name="email"
                           autoComplete="email"
                           aria-label="Email address"
+                          aria-invalid={Boolean(errors.email)}
                           required
                           value={formData.email}
                           onChange={handleInputChange}
@@ -615,7 +636,7 @@ export default function EnquiryPage() {
                   Enquiry Received
                 </span>
                 <h2 className="font-serif text-3xl text-[#0e1628] font-light">
-                  Thank You, {formData.firstName}
+                  {formData.firstName.trim() ? `Thank You, ${formData.firstName.trim()}` : 'Thank You'}
                 </h2>
                 <div className="h-[1px] w-12 bg-gold mx-auto" />
                 <p className="text-sm text-ink-soft font-light leading-relaxed">

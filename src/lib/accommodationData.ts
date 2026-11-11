@@ -20,7 +20,7 @@ export const curatedAccommodations: Accommodation[] = [
       }],
     }],
     features: ['143 rooms (property-published)', 'Fitness centre', 'Restaurant and lounge'],
-    gallery: ['/images/commons/hanoi-1.jpg'],
+    gallery: ['/images/commons/hanoi-1.jpg', '/images/commons/hanoi-2.jpg'],
     websiteUrl: 'https://www.sunwayhotels.com/sunway-hanoi',
     photoNote: illustrativePhotoNote,
     editorial: {
@@ -43,7 +43,7 @@ export const curatedAccommodations: Accommodation[] = [
       }],
     }],
     features: ['Beachfront area', 'Room options listed by the property', 'Confirm current facilities with the hotel'],
-    gallery: ['/images/commons/danang-1.jpg'],
+    gallery: ['/images/commons/danang-1.jpg', '/images/commons/danang-2.jpg'],
     websiteUrl: 'https://haianbeachhotelspa.com/',
     photoNote: illustrativePhotoNote,
     editorial: {
@@ -67,7 +67,7 @@ export const curatedAccommodations: Accommodation[] = [
       }],
     }],
     features: ['City-centre address', 'Pool listed in the government database', 'Restaurant and spa listed in the government database'],
-    gallery: ['/images/commons/hue-1.jpg'],
+    gallery: ['/images/commons/hue-1.jpg', '/images/commons/hue-2.jpg'],
     websiteUrl: 'https://www.whitelotushotel.com/',
     photoNote: illustrativePhotoNote,
     editorial: {
