@@ -1,6 +1,7 @@
 import type { Post, RichTextBlock } from '@/sanity/types';
 import { cambodiaGuides } from './cambodiaGuides';
 import { regionalGuides } from './regionalGuides';
+import { leisureGuides } from './leisureGuides';
 
 const block = (text: string, index: number, style = 'normal'): RichTextBlock => ({
   _type: 'block', _key: `planning-${index}`, style, markDefs: [],
@@ -37,4 +38,5 @@ export const planningGuides: Post[] = [
     ]),
   ...cambodiaGuides,
   ...regionalGuides,
+  ...leisureGuides,
 ];

@@ -81,6 +81,8 @@ function getCategory(title: string): string {
   const t = title.toLowerCase();
   if (t.includes('cambodia') || t.includes('laos')) return 'VIETNAM & NEIGHBOURS';
   if (t.includes('solo')) return 'SOLO TRAVEL';
+  if (t.includes('cycling')) return 'CYCLING';
+  if (t.includes('family')) return 'FAMILY';
   if (t.includes('halong')) return 'HALONG BAY';
   if (t.includes('hanoi')) return 'HANOI';
   if (t.includes('hoi an')) return 'HOI AN';
@@ -238,6 +240,18 @@ function getRelatedFaqs(title: string) {
   if (t.includes('thailand')) return [
     { question: 'Is Vietnam or Thailand cheaper for a UK traveller?', answer: 'Neither is cheaper in every case. Cost depends mainly on flights, hotel category, private or shared guiding and season. Ask for written quotes for the same route, dates and hotel standard, then compare what each includes.' },
     { question: 'How long can UK citizens stay in Vietnam and Thailand without a visa?', answer: 'GOV.UK says UK travellers can visit Vietnam for up to 45 days without a visa. For Thailand, from 15 September 2026 the visa-exempt tourist stay is up to 30 days, and officials may ask for proof of funds and onward travel. Check both pages before you travel.' },
+  ];
+  if (t.includes('cycling')) return [
+    { question: 'Is cycling in Vietnam safe?', answer: 'GOV.UK says compliance with road laws in Vietnam is poor and that motorbike accidents are common. Choose short guided rides on quieter roads, wear a well-fitting helmet and check that your travel insurance covers cycling.' },
+    { question: 'Where are the best places for an easy guided ride?', answer: 'Countryside near Hoi An, the Ninh Binh karst area and village paths in the Mekong Delta suit short guided rides. Ask the operator for the actual route, surface and traffic before you book.' },
+  ];
+  if (t.includes('family')) return [
+    { question: 'Is Vietnam suitable for families with children?', answer: 'Yes, with a paced route: fewer bases, shorter transfers and a mix of heritage, boat time and beach. Ask the operator about child policies, family rooms, child seats and activities for each age.' },
+    { question: 'Do UK children need a visa for Vietnam?', answer: 'GOV.UK says UK travellers can visit Vietnam without a visa for up to 45 days. Check the current GOV.UK entry page and your passports before you travel.' },
+  ];
+  if (t.includes('luxury')) return [
+    { question: 'How do I choose a luxury hotel in Vietnam?', answer: 'Start with the place and the trip purpose, then compare the exact room category, inclusions, transfers and cancellation terms in writing. Read recent independent reviews for your travel period rather than relying on star ratings alone.' },
+    { question: 'Is breakfast and airport transfer included?', answer: 'It depends on the hotel and rate. Ask for each inclusion to be listed in the written proposal and check for resort fees.' },
   ];
   if (t.includes('solo')) return [
     { question: 'Is Vietnam safe for solo travellers?', answer: 'GOV.UK says violent crime against foreigners is rare, but theft, pickpocketing and motorbike bag-snatching occur regularly, especially around Christmas and Tet. Hold bags in front of you or on the side away from traffic and check the current FCDO advice before you travel.' },
