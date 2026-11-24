@@ -1,4 +1,6 @@
 import type { Post, RichTextBlock } from '@/sanity/types';
+import { cambodiaGuides } from './cambodiaGuides';
+import { regionalGuides } from './regionalGuides';
 
 const block = (text: string, index: number, style = 'normal'): RichTextBlock => ({
   _type: 'block', _key: `planning-${index}`, style, markDefs: [],
@@ -33,4 +35,6 @@ export const planningGuides: Post[] = [
       ['Read the proposal and booking conditions together', 'Check dates, names, prices, included services, payment schedule and cancellation or amendment conditions. Clarify anything that differs between the itinerary, quotation and booking terms before confirming. Keep copies of the agreed documents. This guide is a planning checklist, not a substitute for advice about your individual contract or insurance.'],
       ['Questions for VietnamTours.co.uk', 'Ask the team to identify the operator and explain the route, pace, accommodation and services in a written proposal. Tell us which arrangements need additional confirmation before you decide. Our company-information page links to the operator information published by My Way Travel; that link should be assessed as information from the operator itself.'],
     ]),
+  ...cambodiaGuides,
+  ...regionalGuides,
 ];

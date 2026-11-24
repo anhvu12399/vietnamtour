@@ -9,7 +9,7 @@ import FaqAccordion from '@/components/FaqAccordion';
 import CategoriesTabBar from '@/components/CategoriesTabBar';
 import { getPostBySlug, getPosts, getItineraries } from '@/sanity/client';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
-import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/SeoJsonLd';
+import { ArticleJsonLd, BreadcrumbJsonLd, FaqJsonLd } from '@/components/SeoJsonLd';
 import { EditorialEvidence } from '@/components/EditorialEvidence';
 import { absoluteUrl, enquiryUrl } from '@/lib/seo';
 
@@ -79,6 +79,8 @@ function getReadingTime(content: import('@/sanity/types').RichTextBlock[] | unde
 
 function getCategory(title: string): string {
   const t = title.toLowerCase();
+  if (t.includes('cambodia') || t.includes('laos')) return 'VIETNAM & NEIGHBOURS';
+  if (t.includes('solo')) return 'SOLO TRAVEL';
   if (t.includes('halong')) return 'HALONG BAY';
   if (t.includes('hanoi')) return 'HANOI';
   if (t.includes('hoi an')) return 'HOI AN';
@@ -226,6 +228,20 @@ function getRelatedFaqs(title: string) {
     { question: 'How many days should I spend in Hanoi?', answer: 'Two full days covers the major highlights. Three days allows you to go deeper — the Museum of Ethnology, a bicycle ride to the flower villages, a cooking class, and evening egg coffee in a rooftop bar overlooking Hoan Kiem Lake.' },
     { question: 'Is Hanoi safe to visit?', answer: 'Hanoi is a very safe city for tourists. Petty theft (bag snatching from motorbikes) is the main risk on busy Old Quarter streets — keep cameras inside bags and avoid phone use on the pavement. Violent crime against tourists is extremely rare.' },
     { question: 'Which are the best restaurants in Hanoi?', answer: 'For authentic local food: Pho Thin (pho), Bun Cha Huong Lien (bun cha), Cha Ca La Vong (turmeric fish). For a fine-dining experience: Secrets of Hanoi (multi-course Vietnamese tasting menu) or HOME Restaurant (modern Vietnamese in a beautifully restored French villa).' },
+  ];
+  if (t.includes('cambodia')) return [
+    { question: 'Do UK citizens need a visa for Vietnam and Cambodia?', answer: 'Vietnam: UK travellers can generally visit for up to 45 days without a visa for tourism, according to GOV.UK. Cambodia: a visa is required. GOV.UK says tourist visas are valid for 30 days, the e-visa should be requested at least 4 days ahead, and air arrivals must also submit a free electronic Arrival Card within 7 days before arrival. Check both pages again before you travel.' },
+    { question: 'Is it safe to visit Angkor and Siem Reap now?', answer: 'The FCDO advises against all but essential travel within 20 km of the Cambodia–Thailand land border and says some border temples are closed. That warning does not name Siem Reap or Phnom Penh, but read the current FCDO page before booking and confirm your insurance covers your route.' },
+    { question: 'How many nights do I need at Angkor?', answer: 'Three nights gives two full days at Angkor Wat, the Bayon and Ta Prohm with a lighter day between. If your time is shorter, choose fewer temples rather than rushing all of them.' },
+    { question: 'Should I fly or travel overland between Vietnam and Cambodia?', answer: 'For a trip of two weeks or less, flying saves time. Routes and schedules between Vietnamese cities and Siem Reap change by season, so ask for the current timetable and baggage rules in your written proposal.' },
+  ];
+  if (t.includes('thailand')) return [
+    { question: 'Is Vietnam or Thailand cheaper for a UK traveller?', answer: 'Neither is cheaper in every case. Cost depends mainly on flights, hotel category, private or shared guiding and season. Ask for written quotes for the same route, dates and hotel standard, then compare what each includes.' },
+    { question: 'How long can UK citizens stay in Vietnam and Thailand without a visa?', answer: 'GOV.UK says UK travellers can visit Vietnam for up to 45 days without a visa. For Thailand, from 15 September 2026 the visa-exempt tourist stay is up to 30 days, and officials may ask for proof of funds and onward travel. Check both pages before you travel.' },
+  ];
+  if (t.includes('solo')) return [
+    { question: 'Is Vietnam safe for solo travellers?', answer: 'GOV.UK says violent crime against foreigners is rare, but theft, pickpocketing and motorbike bag-snatching occur regularly, especially around Christmas and Tet. Hold bags in front of you or on the side away from traffic and check the current FCDO advice before you travel.' },
+    { question: 'Do I pay extra to travel alone?', answer: 'Often yes: many hotels and private services are priced for two sharing. Ask for the single supplement to be shown separately in the written proposal.' },
   ];
   // default FAQs for all other guides
   return [
@@ -464,6 +480,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
         authorType={author ? 'Person' : 'Organization'}
         authorUrl={author?.slug?.current ? absoluteUrl(`/specialists/${author.slug.current}`) : undefined} />
       <BreadcrumbJsonLd items={[{ name: 'Home', url: absoluteUrl('/') }, { name: 'Travel guides', url: absoluteUrl('/travel-guides') }, { name: post.title, url: articleUrl }]} />
+      {relatedFaqs && relatedFaqs.length > 0 && <FaqJsonLd faqs={relatedFaqs} />}
       <Navbar />
 
       <main className="min-h-screen bg-paper text-ink">
@@ -543,6 +560,43 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
 
               <EditorialEvidence evidence={post.editorial} />
               <p className="my-6 text-xs leading-relaxed text-ink-soft">Published by VietnamTours.co.uk. Prices, schedules and services mentioned in a guide need confirmation for your dates. <Link href="/editorial-policy" className="underline">How to use our guides and sources</Link>.</p>
+
+              {/* Short Answer (Direct AEO/GEO Summary) */}
+              {(post.excerpt || relatedFaqs.length > 0) && (
+                <section
+                  aria-labelledby="guide-short-answer-heading"
+                  className="my-8 border border-jade-deep/30 border-l-4 border-l-gold bg-paper-dim p-6 sm:p-7 shadow-xs space-y-4 text-left"
+                >
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-copper block">
+                      Short Answer · Key Takeaways
+                    </span>
+                    <h2 id="guide-short-answer-heading" className="font-serif text-lg sm:text-xl text-ink font-medium">
+                      At a Glance: {post.title}
+                    </h2>
+                  </div>
+                  {post.excerpt && (
+                    <p className="text-sm sm:text-base text-ink leading-relaxed font-normal">
+                      {post.excerpt}
+                    </p>
+                  )}
+                  {relatedFaqs.length > 0 && (
+                    <div className="pt-3 border-t border-line/80 space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-ink-soft">
+                        Fast Facts & Planning Rules:
+                      </p>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-ink-soft">
+                        {relatedFaqs.slice(0, 2).map((faq, i) => (
+                          <li key={i} className="bg-white border border-line/80 p-3 rounded-none space-y-1">
+                            <strong className="text-ink font-medium block">{faq.question}</strong>
+                            <span className="leading-relaxed block">{faq.answer}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </section>
+              )}
 
               {/* Drop-cap article content */}
               {post.content && post.content.length > 0 ? (
