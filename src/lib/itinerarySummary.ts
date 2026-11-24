@@ -1,5 +1,5 @@
 import type { Itinerary } from '@/sanity/types';
-import type { RoutePoint } from '@/lib/itineraryDetailsBuilder';
+import { getRoutePoints, type RoutePoint } from '@/lib/itineraryDetailsBuilder';
 import { commonsPhotoCredits, type CreditEntry } from '@/lib/photoCredits';
 
 export interface ShortAnswerFact {
@@ -325,4 +325,23 @@ export function wikimediaGalleryForItinerary(itinerary: Itinerary, routePoints: 
     if (selected.length >= limit) break;
   }
   return selected;
+}
+
+const FALLBACK_COVER = '/images/unsplash/phuquoc.jpg';
+
+// Several catalogue tours share the same first gallery photo, so a row of tour cards can show one
+// picture three times. Choose a cover per tour that is unique within the row: route-matched Wikimedia
+// photos first, then the tour's own gallery.
+export function distinctCover(list: Itinerary[], target: Itinerary): string {
+  const used = new Set<string>();
+  for (const item of list) {
+    const candidates = [
+      ...wikimediaGalleryForItinerary(item, getRoutePoints(item), 6).map((credit) => credit.path),
+      ...(item.gallery || []),
+    ];
+    const pick = candidates.find((path) => !used.has(path)) || candidates[0] || FALLBACK_COVER;
+    used.add(pick);
+    if (item._id === target._id) return pick;
+  }
+  return target.gallery?.[0] || FALLBACK_COVER;
 }

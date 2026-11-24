@@ -1,4 +1,5 @@
 import { EditorialEvidence } from '@/components/EditorialEvidence';
+import { distinctCover } from '@/lib/itinerarySummary';
 import { enquiryUrl } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -306,7 +307,7 @@ export default async function InspirationSlugPage({ params }: PageProps) {
                       {/* Tour Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={tour.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
+                          src={distinctCover(recommendedTours, tour)}
                           alt={tour.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

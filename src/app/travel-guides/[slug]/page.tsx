@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { distinctCover } from '@/lib/itinerarySummary';
 import { getSpecialists } from '@/sanity/client';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -745,7 +746,7 @@ export default async function TravelGuideDetailPage({ params }: PageProps) {
                       {/* Tour image */}
                       <div className="relative h-52 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
+                          src={distinctCover(recommendedTours, it)}
                           alt={it.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

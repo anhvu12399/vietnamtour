@@ -1,4 +1,5 @@
 import { SeasonalPlanning } from '@/components/SeasonalPlanning';
+import { distinctCover } from '@/lib/itinerarySummary';
 import { EditorialEvidence } from '@/components/EditorialEvidence';
 import { enquiryUrl } from '@/lib/seo';
 import Link from 'next/link';
@@ -307,7 +308,7 @@ export default async function MonthSlugPage({ params }: PageProps) {
                       {/* Tour Image */}
                       <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                         <Image
-                          src={tour.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
+                          src={distinctCover(recommendedTours, tour)}
                           alt={tour.title}
                           fill
                           className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"

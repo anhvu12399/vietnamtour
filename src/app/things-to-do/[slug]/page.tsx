@@ -1,4 +1,5 @@
 import { EditorialEvidence } from '@/components/EditorialEvidence';
+import { distinctCover } from '@/lib/itinerarySummary';
 import { enquiryUrl } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -358,7 +359,7 @@ export default async function ThingToDoDetailPage({ params }: PageProps) {
                   <div key={it._id} className="group bg-white border border-line hover:border-line transition-all duration-300 hover:shadow-xl flex flex-col">
                     <div className="relative h-48 overflow-hidden bg-[#f4efe6] border-b border-line">
                       <Image
-                        src={it.gallery?.[0] || '/images/unsplash/phuquoc.jpg'}
+                        src={distinctCover(recommendedTours, it)}
                         alt={it.title}
                         fill
                         className="object-cover group-hover:scale-[1.04] transition-transform duration-700"
